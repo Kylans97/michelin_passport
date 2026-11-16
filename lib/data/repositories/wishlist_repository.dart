@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/booking_window.dart';
 import '../../models/event.dart';
 import '../../models/hotel.dart';
 import '../../models/passport_venue.dart';
@@ -89,6 +90,35 @@ class WishlistRepository {
         if (byId[id] != null) byId[id]!,
     ];
   }
+
+  // ── When the member wants to go (20261101400000) ───────────────────────
+  //
+  // wishlist.planned_month is the member's own: friends may read the rest
+  // of the row, never this column, so it is read and written only
+  // through these two RPCs.
+
+  /// Every restaurant on the member's wishlist with a month set, keyed by
+  /// restaurant id, with when that month opens for booking.
+  Future<Map<String, WishlistPlan>> loadPlans() async {
+    final rows = await _client.rpc('get_my_wishlist_plans');
+    return {
+      for (final row in (rows as List).cast<Map<String, dynamic>>())
+        row['restaurant_id'] as String: WishlistPlan.fromRow(row),
+    };
+  }
+
+  /// Sets the month (any day in it; stored as its 1st), or clears it with
+  /// null. The restaurant must already be on the wishlist.
+  Future<void> setPlannedMonth({
+    required String restaurantId,
+    required DateTime? month,
+  }) => _client.rpc(
+    'set_wishlist_planned_month',
+    params: {
+      'p_restaurant_id': restaurantId,
+      'p_month': month == null ? null : isoDate(DateTime(month.year, month.month)),
+    },
+  );
 
   // ── Hotel API — mirrors the restaurant one exactly ──────────────────────
 

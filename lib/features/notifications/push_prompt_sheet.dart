@@ -21,6 +21,13 @@ class FriendsPrompt extends PushPromptReason {
   const FriendsPrompt();
 }
 
+/// A month was just planned for a restaurant whose booking window is
+/// known (20261101400000).
+class BookingReminderPrompt extends PushPromptReason {
+  final String restaurantName;
+  const BookingReminderPrompt(this.restaurantName);
+}
+
 /// The app's own ask, shown before iOS's one-time prompt so that prompt
 /// only ever appears to someone who has already said yes. Returns true
 /// for "Turn on", false for "Not now", null if dismissed.
@@ -49,6 +56,11 @@ class PushPromptSheet extends StatelessWidget {
       FriendsPrompt() => (
         'Know when friends reach out',
         'We can let you know when someone sends you a friend request.',
+      ),
+      BookingReminderPrompt(:final restaurantName) => (
+        'Book $restaurantName in time',
+        'We can send a notification to your phone the day before bookings '
+            'open for your month.',
       ),
     };
 

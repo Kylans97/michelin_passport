@@ -1,3 +1,5 @@
+import 'booking_window.dart' show monthNames, monthYear, timezoneCity;
+
 /// The notification types this app can create today — wire values match
 /// `notifications.type`'s own CHECK constraint exactly (see the
 /// migration). Push (20261030130000) delivers some of these to the phone
@@ -44,7 +46,11 @@ enum AppNotificationType {
 
   // A happy birthday from Mantelier, on the day (20261101210000). Only
   // get_notifications_v5 returns it.
-  birthday;
+  birthday,
+
+  // Bookings for a month the member planned open tomorrow
+  // (20261101400000). Only get_notifications_v6 returns it.
+  bookingWindowOpening;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -66,6 +72,7 @@ enum AppNotificationType {
     'trip_invite_accepted' => AppNotificationType.tripInviteAccepted,
     'followed_venue_event' => AppNotificationType.followedVenueEvent,
     'birthday' => AppNotificationType.birthday,
+    'booking_window_opening' => AppNotificationType.bookingWindowOpening,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 
@@ -175,6 +182,17 @@ class AppNotification {
   final DateTime? tripEndDate;
   final String? tripMemberStatus;
 
+  // subjectId is the booking_reminders id when subjectType ==
+  // 'booking_reminder' (get_notifications_v6). What the reminder said, as
+  // fixed when it was sent: dates and time local to bookingTimezone,
+  // bookingOpensTime null when the time is not known.
+  final String? bookingRestaurantId;
+  final String? bookingRestaurantName;
+  final DateTime? bookingPlannedMonth;
+  final DateTime? bookingOpensOn;
+  final String? bookingOpensTime;
+  final String? bookingTimezone;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -217,7 +235,31 @@ class AppNotification {
     this.tripStartDate,
     this.tripEndDate,
     this.tripMemberStatus,
+    this.bookingRestaurantId,
+    this.bookingRestaurantName,
+    this.bookingPlannedMonth,
+    this.bookingOpensOn,
+    this.bookingOpensTime,
+    this.bookingTimezone,
   });
+
+  /// A booking reminder's line: "Bookings for March 2027 at Le Pré
+  /// Catelan open on 1 January at 10:00 (Paris time)." Read any time
+  /// after it was sent, so it names the date rather than "tomorrow".
+  String get bookingReminderDescription {
+    final name = bookingRestaurantName ?? 'a restaurant on your wishlist';
+    final month = bookingPlannedMonth == null
+        ? 'your month'
+        : monthYear(bookingPlannedMonth!);
+    final on = bookingOpensOn;
+    if (on == null) return 'Bookings for $month at $name open soon.';
+    final time = bookingOpensTime == null
+        ? ''
+        : ' at ${bookingOpensTime!.substring(0, 5)} '
+              '(${timezoneCity(bookingTimezone ?? '')} time)';
+    return 'Bookings for $month at $name open on '
+        '${on.day} ${monthNames[on.month - 1]} ${on.year}$time.';
+  }
 
   /// [fromRow], but null for a notification type this build doesn't know.
   static AppNotification? tryFromRow(Map<String, dynamic> row) {
@@ -275,6 +317,16 @@ class AppNotification {
         ? null
         : DateTime.parse(row['trip_end_date'] as String),
     tripMemberStatus: row['trip_member_status'] as String?,
+    bookingRestaurantId: row['booking_restaurant_id'] as String?,
+    bookingRestaurantName: row['booking_restaurant_name'] as String?,
+    bookingPlannedMonth: row['booking_planned_month'] == null
+        ? null
+        : DateTime.parse(row['booking_planned_month'] as String),
+    bookingOpensOn: row['booking_opens_on'] == null
+        ? null
+        : DateTime.parse(row['booking_opens_on'] as String),
+    bookingOpensTime: row['booking_opens_time'] as String?,
+    bookingTimezone: row['booking_timezone'] as String?,
   );
 
   /// Whether a friend_request_received row should still offer

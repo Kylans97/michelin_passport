@@ -10,11 +10,14 @@ import '../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../core/widgets/cs_section_title.dart';
 import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/wishlist_repository.dart';
+import '../../models/booking_window.dart';
 import '../../models/event.dart';
 import '../../models/passport_venue.dart';
+import '../../models/restaurant.dart';
 import '../events/events_screen.dart';
 import '../passport/widgets/passport_empty_state.dart';
 import 'event_wishlist_schedule.dart';
+import 'planned_month_flow.dart';
 import 'widgets/event_wishlist_card.dart';
 import 'widgets/add_to_wishlist_sheet.dart';
 import 'widgets/event_wishlist_empty_state.dart';
@@ -70,6 +73,8 @@ class _WishlistBodyState extends State<WishlistBody> {
   bool _defaultApplied = false;
 
   List<PassportVenue>? _venues; // null until the first load completes.
+  // Restaurant id -> the member's month and when it opens.
+  Map<String, WishlistPlan> _plans = const {};
   List<Event>? _events; // null until the first load completes.
   bool _loading = true; // true only for the very first, blocking load.
   bool _loadError = false;
@@ -89,11 +94,18 @@ class _WishlistBodyState extends State<WishlistBody> {
     try {
       final venuesFuture = _repo.loadWishlistVenues(_userId);
       final eventsFuture = _repo.getWishlistEvents(_userId);
+      // Plans are an extra: a failure leaves the cards without them rather
+      // than failing the whole wishlist.
+      final plansFuture = _repo.loadPlans().catchError(
+        (_) => <String, WishlistPlan>{},
+      );
       final venues = await venuesFuture;
       final events = await eventsFuture;
+      final plans = await plansFuture;
       if (!mounted) return;
       setState(() {
         _venues = venues;
+        _plans = plans;
         _events = events;
         _loading = false;
         _loadError = false;
@@ -107,6 +119,28 @@ class _WishlistBodyState extends State<WishlistBody> {
       });
     } finally {
       _refreshing = false;
+    }
+  }
+
+  Future<void> _editPlan(Restaurant restaurant) async {
+    final outcome = await askPlannedMonth(
+      context,
+      repository: _repo,
+      restaurantId: restaurant.id,
+      restaurantName: restaurant.name,
+      initial: _plans[restaurant.id]?.plannedMonth,
+    );
+    if (!mounted) return;
+    if (outcome.changed) {
+      setState(() {
+        _plans = {..._plans}..remove(restaurant.id);
+        if (outcome.plan != null) _plans[restaurant.id] = outcome.plan!;
+      });
+    }
+    if (outcome.isError && outcome.message != null) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text(outcome.message!)));
     }
   }
 
@@ -329,6 +363,10 @@ class _WishlistBodyState extends State<WishlistBody> {
                           WishlistRestaurantCard(
                             restaurant: restaurant,
                             onRemove: () => _remove(item),
+                            plan: _plans[restaurant.id],
+                            onEditPlan: _userId.isEmpty
+                                ? null
+                                : () => _editPlan(restaurant),
                           ),
                         HotelVenue(:final hotel) => WishlistHotelCard(
                           hotel: hotel,

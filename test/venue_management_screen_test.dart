@@ -14,8 +14,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:michelin_passport/data/repositories/venue_events_repository.dart';
+import 'package:michelin_passport/data/repositories/booking_window_repository.dart';
 import 'package:michelin_passport/data/repositories/opening_hours_repository.dart';
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
+import 'package:michelin_passport/models/booking_window.dart';
 import 'package:michelin_passport/models/opening_hours.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_contact_repository.dart';
@@ -298,6 +300,13 @@ class _FakeOpeningHoursRepository extends OpeningHoursRepository {
   Future<OpeningHours> load(String restaurantId) async => OpeningHours.empty;
 }
 
+class _FakeBookingWindowRepository extends BookingWindowRepository {
+  _FakeBookingWindowRepository() : super(_dummyClient());
+
+  @override
+  Future<BookingWindow?> load(String restaurantId) async => null;
+}
+
 class _FakeContactRepository extends VenueContactRepository {
   _FakeContactRepository() : super(_dummyClient());
 
@@ -327,6 +336,7 @@ Future<void> _pumpLanding(
         eventsRepo: eventsRepo ?? _FakeEventsRepository(),
         teamRepo: teamRepo ?? _FakeTeamRepository(),
         openingHoursRepo: _FakeOpeningHoursRepository(),
+        bookingWindowRepo: _FakeBookingWindowRepository(),
         contactRepo: _FakeContactRepository(),
         shouldShowWelcome: () async => showWelcome,
       ),
@@ -965,6 +975,10 @@ void main() {
       expect(find.text('2 photos · 1 awaiting review'), findsOneWidget);
       expect(find.text('Events'), findsOneWidget);
       expect(find.text('2 upcoming'), findsOneWidget);
+      // Below the fold since the Booking window row joined the list.
+      await tester.scrollUntilVisible(find.text('Preview my page'), 200);
+      expect(find.text('Booking window'), findsOneWidget);
+      expect(find.text('Not set'), findsOneWidget);
       expect(find.text('Preview my page'), findsOneWidget);
       expect(find.byType(TextField), findsNothing);
       expect(find.text('Add a photo'), findsNothing);
@@ -1223,6 +1237,7 @@ void main() {
             eventsRepo: _FakeEventsRepository(),
             teamRepo: _FakeTeamRepository(),
             openingHoursRepo: _FakeOpeningHoursRepository(),
+            bookingWindowRepo: _FakeBookingWindowRepository(),
             contactRepo: _FakeContactRepository(),
             restaurantRepo: restaurantRepo,
           ),
@@ -1230,7 +1245,7 @@ void main() {
       );
       await tester.pumpAndSettle();
       observer.pushed.clear();
-      await tester.ensureVisible(find.text('Preview my page'));
+      await tester.scrollUntilVisible(find.text('Preview my page'), 200);
       await tester.tap(find.text('Preview my page'));
       await tester.pumpAndSettle();
 

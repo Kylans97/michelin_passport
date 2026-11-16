@@ -27,13 +27,13 @@ Widget _wrap({
 );
 
 void main() {
-  testWidgets('both toggles default to on', (tester) async {
+  testWidgets('every toggle defaults to on', (tester) async {
     await tester.pumpWidget(_wrap());
     await tester.pumpAndSettle();
     expect(find.text('Friend requests'), findsOneWidget);
     expect(find.text('Events from venues you follow'), findsOneWidget);
     final switches = tester.widgetList<Switch>(find.byType(Switch));
-    expect(switches.map((s) => s.value), [true, true]);
+    expect(switches.map((s) => s.value), [true, true, true]);
     expect(find.text('Turn on notifications'), findsNothing);
   });
 
@@ -41,11 +41,11 @@ void main() {
     final saved = <NotificationPreferences>[];
     await tester.pumpWidget(_wrap(save: (p) async => saved.add(p)));
     await tester.pumpAndSettle();
-    await tester.tap(find.byType(Switch).last);
+    await tester.tap(find.byType(Switch).at(1));
     await tester.pumpAndSettle();
     expect(saved, [const NotificationPreferences(followedVenueEvents: false)]);
     final switches = tester.widgetList<Switch>(find.byType(Switch));
-    expect(switches.map((s) => s.value), [true, false]);
+    expect(switches.map((s) => s.value), [true, false, true]);
   });
 
   testWidgets('a failed save leaves the switch where it was', (tester) async {
@@ -76,13 +76,19 @@ void main() {
     );
     await tester.pumpAndSettle();
     expect(find.text('Turn on notifications'), findsNothing);
-    expect(tester.widgetList<Switch>(find.byType(Switch)).map((s) => s.value), [false, false]);
+    expect(
+      tester.widgetList<Switch>(find.byType(Switch)).map((s) => s.value),
+      [false, false, false],
+    );
 
-    await tester.tap(find.byType(Switch).last);
+    await tester.tap(find.byType(Switch).at(1));
     await tester.pumpAndSettle();
     expect(requested, 1);
     expect(saved, [const NotificationPreferences()]);
-    expect(tester.widgetList<Switch>(find.byType(Switch)).map((s) => s.value), [true, true]);
+    expect(
+      tester.widgetList<Switch>(find.byType(Switch)).map((s) => s.value),
+      [true, true, true],
+    );
   });
 
   testWidgets('never asked, and iOS says no: nothing is saved', (tester) async {

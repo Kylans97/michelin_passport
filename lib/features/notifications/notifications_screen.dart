@@ -13,12 +13,14 @@ import '../../core/utils/mailto_uri.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
+import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_invite_repository.dart';
 import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/identity_row.dart';
 import '../profile/my_venues_screen.dart';
 import '../profile/venue_host_welcome_screen.dart';
+import '../restaurants/restaurant_detail_screen.dart';
 import '../../core/analytics/screen_usage.dart';
 import 'push_prompt_sheet.dart';
 import 'push_service.dart';
@@ -533,6 +535,28 @@ class _NotificationRow extends StatelessWidget {
     avatarUrl: notification.otherAvatarUrl,
   );
 
+  // A booking reminder names its restaurant by id; the page needs the
+  // whole row, read when tapped. A restaurant since removed opens nothing.
+  Future<void> _openRestaurant(BuildContext context, String id) async {
+    final navigator = Navigator.of(context);
+    try {
+      final restaurant = await RestaurantRepository(
+        Supabase.instance.client,
+      ).getById(id);
+      if (restaurant == null) return;
+      navigator.push(
+        MaterialPageRoute(
+          builder: (_) => RestaurantDetailScreen(
+            restaurant: restaurant,
+            openSource: AnalyticsOpenSource.notifications,
+          ),
+        ),
+      );
+    } catch (_) {
+      // Best-effort: the reminder itself already said what it had to.
+    }
+  }
+
   void _openEvent(BuildContext context) => Navigator.push(
     context,
     MaterialPageRoute(
@@ -635,6 +659,15 @@ class _NotificationRow extends StatelessWidget {
           unread: _unread,
           leading: const _IconCircle(Icons.cake_outlined),
           description: 'Happy birthday from all of us at Mantelier.',
+        );
+      case AppNotificationType.bookingWindowOpening:
+        return _NotificationTile(
+          unread: _unread,
+          leading: const _IconCircle(Icons.event_seat_outlined),
+          description: n.bookingReminderDescription,
+          onTap: n.bookingRestaurantId == null
+              ? null
+              : () => _openRestaurant(context, n.bookingRestaurantId!),
         );
     }
   }

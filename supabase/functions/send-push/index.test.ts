@@ -6,6 +6,9 @@ import { assert, assertEquals } from 'jsr:@std/assert@1';
 import {
   type ApnsMessage,
   type ApnsResult,
+  type BookingReminderContent,
+  bookingReminderCopy,
+  convertLocalTime,
   createApnsJwt,
   type DeviceRow,
   type EventContent,
@@ -16,6 +19,7 @@ import {
   type NotificationRow,
   type PreferenceRow,
   type PushStore,
+  timezoneCity,
 } from './index.ts';
 
 const SECRET = 'test-webhook-secret';
@@ -41,6 +45,14 @@ class FakeStore implements PushStore {
   deleted: string[] = [];
   environmentChanges: Array<[string, string]> = [];
   pushed: string[] = [];
+  reminder: BookingReminderContent | null = {
+    restaurantName: 'Le Pré Catelan',
+    plannedMonth: '2027-03-01',
+    opensOn: '2027-01-01',
+    opensTime: '10:00:00',
+    restaurantTimezone: 'Europe/Paris',
+    memberTimezone: 'Europe/Amsterdam',
+  };
   eventLookups = 0;
   lookups = 0;
 
@@ -60,6 +72,9 @@ class FakeStore implements PushStore {
   eventContent(_id: string) {
     this.eventLookups++;
     return Promise.resolve(this.event);
+  }
+  bookingReminderContent(_id: string) {
+    return Promise.resolve(this.reminder);
   }
   deleteDevice(token: string) {
     this.deleted.push(token);
@@ -310,4 +325,89 @@ Deno.test('a birthday is pushed with its greeting, whatever the other toggles sa
     body: 'Happy birthday from all of us at Mantelier.',
   });
   assertEquals(payload.type, 'birthday');
+});
+
+// ── Booking reminders (20261101400000) ────────────────────────────────
+
+const REMINDER: BookingReminderContent = {
+  restaurantName: 'Le Pré Catelan',
+  plannedMonth: '2027-03-01',
+  opensOn: '2027-01-01',
+  opensTime: '10:00:00',
+  restaurantTimezone: 'Europe/Paris',
+  memberTimezone: 'Europe/Amsterdam',
+};
+
+Deno.test('booking reminder: same clock, one time with the city', () => {
+  assertEquals(bookingReminderCopy(REMINDER), {
+    title: 'Le Pré Catelan',
+    body: 'Bookings for March 2027 open tomorrow at 10:00 (Paris time).',
+  });
+});
+
+Deno.test('booking reminder: another clock, the member\'s time first', () => {
+  assertEquals(
+    bookingReminderCopy({
+      ...REMINDER,
+      restaurantName: 'Sézanne',
+      opensOn: '2027-03-02',
+      opensTime: '00:00:00',
+      restaurantTimezone: 'Asia/Tokyo',
+    }).body,
+    'Bookings for March 2027 open tomorrow at 16:00 your time (00:00 in Tokyo).',
+  );
+});
+
+Deno.test('booking reminder: no known time, none given', () => {
+  assertEquals(
+    bookingReminderCopy({ ...REMINDER, opensTime: null }).body,
+    'Bookings for March 2027 open tomorrow.',
+  );
+});
+
+Deno.test('booking reminder: times convert across DST and zones', () => {
+  // New York midnight in winter is 06:00 Amsterdam, in summer still 06:00.
+  assertEquals(convertLocalTime('2027-01-15', '00:00', 'America/New_York', 'Europe/Amsterdam'), '06:00');
+  assertEquals(convertLocalTime('2027-07-15', '00:00', 'America/New_York', 'Europe/Amsterdam'), '06:00');
+  // Between the US (14 March) and EU (28 March) changes the gap is 5 hours.
+  assertEquals(convertLocalTime('2027-03-20', '00:00', 'America/New_York', 'Europe/Amsterdam'), '05:00');
+  // The day summer time starts in Europe.
+  assertEquals(convertLocalTime('2027-03-28', '10:00', 'Europe/Paris', 'Asia/Tokyo'), '17:00');
+  assertEquals(convertLocalTime('2027-03-27', '10:00', 'Europe/Paris', 'Asia/Tokyo'), '18:00');
+  assertEquals(timezoneCity('America/New_York'), 'New York');
+});
+
+Deno.test('a booking reminder is pushed unless its own toggle is off', async () => {
+  const store = new FakeStore();
+  store.notifications = [{ id: 'b1', recipient_id: 'u1', type: 'booking_window_opening', subject_id: 'r1' }];
+  store.devices = [DEVICE];
+  // The other toggles off, this one missing (a row from before it existed): on.
+  store.preferences = [{ user_id: 'u1', push_friend_requests: false, push_followed_venue_events: false }];
+  let apns = recordingApns();
+  await handleRequest(req({ body: { notification_ids: ['b1'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(apns.sent.length, 1);
+  const payload = apns.sent[0].payload as Record<string, unknown>;
+  assertEquals((payload.aps as { alert: unknown }).alert, {
+    title: 'Le Pré Catelan',
+    body: 'Bookings for March 2027 open tomorrow at 10:00 (Paris time).',
+  });
+  assertEquals(payload.type, 'booking_window_opening');
+
+  store.preferences = [{
+    user_id: 'u1', push_friend_requests: true, push_followed_venue_events: true, push_booking_reminders: false,
+  }];
+  apns = recordingApns();
+  await handleRequest(req({ body: { notification_ids: ['b1'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(apns.sent.length, 0);
+});
+
+Deno.test('a booking reminder whose row is gone is skipped, not sent blank', async () => {
+  const store = new FakeStore();
+  store.notifications = [{ id: 'b2', recipient_id: 'u1', type: 'booking_window_opening', subject_id: 'gone' }];
+  store.devices = [DEVICE];
+  store.reminder = null;
+  const apns = recordingApns();
+  const res = await handleRequest(req({ body: { notification_ids: ['b2'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(res.status, 200);
+  assertEquals(apns.sent.length, 0);
 });

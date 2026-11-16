@@ -30,7 +30,9 @@ class NotificationsRepository {
 
   final SupabaseClient _client;
 
-  /// Reads the newest functions this server has: _v4 (20261030130000,
+  /// Reads the newest functions this server has: _v6 (20261101400000,
+  /// adds booking reminders), _v5 (20261101210000, adds birthdays), _v4
+  /// (20261030130000,
   /// adds followed venues' events), else _v3 (20261022120000,
   /// adds trip invitations), else _v2 (20261018130000, adds event
   /// notifications), else the originals — each step down on PostgREST's
@@ -46,6 +48,7 @@ class NotificationsRepository {
   Future<NotificationsPage> getNotifications({int offset = 0}) async {
     final rows = await _rpcWithFallback(
       const [
+        'get_notifications_v6',
         'get_notifications_v5',
         'get_notifications_v4',
         'get_notifications_v3',
@@ -76,6 +79,7 @@ class NotificationsRepository {
 
   Future<int> getUnreadCount() async {
     final result = await _rpcWithFallback(const [
+      'get_unread_notification_count_v6',
       'get_unread_notification_count_v5',
       'get_unread_notification_count_v4',
       'get_unread_notification_count_v3',

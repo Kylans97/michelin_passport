@@ -28,7 +28,11 @@
 
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
-export type PushType = 'friend_request_received' | 'followed_venue_event' | 'birthday';
+export type PushType =
+  | 'friend_request_received'
+  | 'followed_venue_event'
+  | 'birthday'
+  | 'booking_window_opening';
 export type ApnsEnvironment = 'sandbox' | 'production';
 
 export interface NotificationRow {
@@ -42,6 +46,8 @@ export interface PreferenceRow {
   user_id: string;
   push_friend_requests: boolean;
   push_followed_venue_events: boolean;
+  /// Missing on a row read before 20261101400000; treated as on.
+  push_booking_reminders?: boolean;
 }
 
 export interface DeviceRow {
@@ -56,6 +62,18 @@ export interface EventContent {
   hostName: string | null;
 }
 
+/// A booking reminder (booking_reminders, 20261101400000), as fixed when
+/// the reminder job sent it. Dates and times are local to
+/// restaurantTimezone; openTime is null when the time is not known.
+export interface BookingReminderContent {
+  restaurantName: string;
+  plannedMonth: string; // yyyy-mm-01
+  opensOn: string; // yyyy-mm-dd
+  opensTime: string | null; // HH:MM[:SS]
+  restaurantTimezone: string;
+  memberTimezone: string;
+}
+
 /// Every read and write this function makes, behind one narrow interface
 /// so tests use a hand-rolled fake (same convention as the notify-*
 /// functions' admin-client interfaces) rather than a query-builder mock.
@@ -65,6 +83,7 @@ export interface PushStore {
   loadDevices(userIds: string[]): Promise<DeviceRow[]>;
   friendRequesterName(friendshipId: string): Promise<string | null>;
   eventContent(eventId: string): Promise<EventContent | null>;
+  bookingReminderContent(reminderId: string): Promise<BookingReminderContent | null>;
   deleteDevice(token: string): Promise<void>;
   setDeviceEnvironment(token: string, environment: ApnsEnvironment): Promise<void>;
   /// Records that APNs accepted the push for at least one device
@@ -90,6 +109,7 @@ const PUSH_TYPES: ReadonlySet<string> = new Set([
   'friend_request_received',
   'followed_venue_event',
   'birthday',
+  'booking_window_opening',
 ]);
 
 function jsonResponse(body: unknown, status: number): Response {
@@ -105,6 +125,7 @@ function wantsPush(type: PushType, pref: PreferenceRow | undefined): boolean {
   if (type === 'birthday') return true;
   // No row means the defaults, which are on.
   if (!pref) return true;
+  if (type === 'booking_window_opening') return pref.push_booking_reminders ?? true;
   return type === 'friend_request_received'
     ? pref.push_friend_requests
     : pref.push_followed_venue_events;
@@ -141,6 +162,66 @@ export function followedVenueEventCopy(event: EventContent, now: Date = new Date
 
 export function birthdayCopy(): PushCopy {
   return { title: 'Mantelier', body: 'Happy birthday from all of us at Mantelier.' };
+}
+
+const MONTHS = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December',
+];
+
+/// "Paris" for Europe/Paris, "New York" for America/New_York.
+export function timezoneCity(timezone: string): string {
+  return (timezone.split('/').pop() ?? timezone).replace(/_/g, ' ');
+}
+
+/// The wall-clock time HH:MM in [timezone] at the moment that is
+/// [localDate] [localTime] in [sourceTimezone]. Found by correcting a UTC
+/// guess by the source zone's offset, twice so a DST change between the
+/// guess and the answer is caught.
+export function convertLocalTime(
+  localDate: string,
+  localTime: string,
+  sourceTimezone: string,
+  timezone: string,
+): string {
+  const [y, m, d] = localDate.split('-').map(Number);
+  const [hh, mm] = localTime.split(':').map(Number);
+  const wanted = Date.UTC(y, m - 1, d, hh, mm);
+  const wallClock = (instant: number, tz: string) => {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+    }).formatToParts(new Date(instant));
+    const get = (t: string) => Number(parts.find((p) => p.type === t)!.value);
+    return {
+      utc: Date.UTC(get('year'), get('month') - 1, get('day'), get('hour'), get('minute')),
+      hhmm: `${String(get('hour')).padStart(2, '0')}:${String(get('minute')).padStart(2, '0')}`,
+    };
+  };
+  let instant = wanted;
+  for (let i = 0; i < 2; i++) {
+    instant += wanted - wallClock(instant, sourceTimezone).utc;
+  }
+  return wallClock(instant, timezone).hhmm;
+}
+
+/// "Bookings for March 2027 open tomorrow at 10:00 (Paris time)." The
+/// reminder is sent the day before in the member's own calendar, so
+/// "tomorrow" is theirs. When the member's clock shows another time, theirs
+/// leads and the restaurant's follows. No time known: none is given.
+export function bookingReminderCopy(r: BookingReminderContent): PushCopy {
+  const [y, m] = r.plannedMonth.split('-').map(Number);
+  const month = `${MONTHS[m - 1]} ${y}`;
+  if (!r.opensTime) {
+    return { title: r.restaurantName, body: `Bookings for ${month} open tomorrow.` };
+  }
+  const there = r.opensTime.slice(0, 5);
+  const city = timezoneCity(r.restaurantTimezone);
+  const here = convertLocalTime(r.opensOn, there, r.restaurantTimezone, r.memberTimezone);
+  const when = here === there
+    ? `${there} (${city} time)`
+    : `${here} your time (${there} in ${city})`;
+  return { title: r.restaurantName, body: `Bookings for ${month} open tomorrow at ${when}.` };
 }
 
 function buildPayload(n: NotificationRow, copy: PushCopy): Record<string, unknown> {
@@ -265,6 +346,13 @@ export async function handleRequest(
       copy = friendRequestCopy(await store.friendRequesterName(n.subject_id));
     } else if (type === 'birthday') {
       copy = birthdayCopy();
+    } else if (type === 'booking_window_opening') {
+      const reminder = await store.bookingReminderContent(n.subject_id);
+      if (!reminder) {
+        console.error('send-push: booking reminder not found for notification', { notificationId: n.id });
+        continue;
+      }
+      copy = bookingReminderCopy(reminder);
     } else {
       if (!eventCache.has(n.subject_id)) {
         eventCache.set(n.subject_id, await store.eventContent(n.subject_id));
@@ -383,7 +471,8 @@ function supabaseStore(): PushStore {
     },
     async loadPreferences(userIds) {
       const { data, error } = await admin.from('notification_preferences')
-        .select('user_id, push_friend_requests, push_followed_venue_events').in('user_id', userIds);
+        .select('user_id, push_friend_requests, push_followed_venue_events, push_booking_reminders')
+        .in('user_id', userIds);
       if (error) fail('preferences lookup', error);
       return (data ?? []) as PreferenceRow[];
     },
@@ -426,6 +515,21 @@ function supabaseStore(): PushStore {
         }
       }
       return { eventName: e.name as string, startDate: e.start_date as string, hostName };
+    },
+    async bookingReminderContent(reminderId) {
+      const { data: r, error } = await admin.from('booking_reminders')
+        .select('planned_month, opens_on, opens_time, restaurant_timezone, member_timezone, restaurants(name)')
+        .eq('id', reminderId).maybeSingle();
+      if (error || !r) return null;
+      const restaurant = (r as Record<string, unknown>).restaurants as { name: string } | null;
+      return {
+        restaurantName: restaurant?.name ?? 'Mantelier',
+        plannedMonth: r.planned_month as string,
+        opensOn: r.opens_on as string,
+        opensTime: (r.opens_time as string | null) ?? null,
+        restaurantTimezone: r.restaurant_timezone as string,
+        memberTimezone: r.member_timezone as string,
+      };
     },
     async deleteDevice(token) {
       const { error } = await admin.from('push_devices').delete().eq('token', token);
