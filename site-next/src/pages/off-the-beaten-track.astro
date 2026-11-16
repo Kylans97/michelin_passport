@@ -16,7 +16,7 @@ const links = Object.fromEntries(
   restaurants.filter((r) => CODES.includes(r.code)).map((r) => [r.code, `/restaurants/${r.slug}`]),
 );
 ---
-<Base title="Off the beaten track" description="Plan a journey around the table: tell us who's travelling, where and when, and get a route with the hotels and restaurants worth the trip.">
+<Base title="Off the beaten track" description="Plan a trip around where you want to eat: tell us who's travelling, where and when, and get a route with the hotels and restaurants worth the trip.">
   <div class="otbt">
 <header class="band">
   <div class="gutter"><div class="col inner">
@@ -24,8 +24,8 @@ const links = Object.fromEntries(
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 8.5 13.4 13.4 8.5 15.5 10.6 10.6Z"/></svg>
       <span>Mantelier · Off the beaten track</span>
     </div>
-    <h1>Plan a journey around the table</h1>
-    <p>Tell us who's travelling, where and when, and how you like to travel. We'll come back with a route that pairs the places worth the journey with the hotels and evenings around them.</p>
+    <h1>Plan a trip around where you want to eat</h1>
+    <p>Tell us who’s going, where, when and how you like to travel. We’ll send you a route with the restaurants, hotels and events that fit.</p>
     <span class="proto">Prototype · no real AI yet · the proposal is an example</span>
   </div></div>
 </header>
@@ -111,7 +111,7 @@ const links = Object.fromEntries(
 
         <!-- 5 Table and practicalities -->
         <fieldset data-step="4" hidden>
-          <legend><h2>The table, and the practical things</h2><p class="lead">This is where the trip becomes yours.</p></legend>
+          <legend><h2>The table, and the practical things</h2><p class="lead">What you’d like to eat, and anything we should know.</p></legend>
           <label class="check"><input id="wishlist" type="checkbox" checked> Build around restaurants on my Mantelier wishlist</label>
           <label class="check"><input id="events" type="checkbox" checked> Include one-off events on my dates (four-hands dinners, festivals)</label>
           <div class="field"><label for="diet">Dietary needs and allergies</label><input id="diet" type="text" value="One of us doesn't eat shellfish"></div>
@@ -165,7 +165,7 @@ const links = Object.fromEntries(
 
       <div class="ptitle">
         <p class="eyebrow" id="p-kicker"></p>
-        <h2>Peru, from Lima's tables to the Sacred Valley</h2>
+        <h2>Peru: Lima, the Sacred Valley and Cusco</h2>
         <p id="p-intro"></p>
       </div>
 
@@ -649,13 +649,13 @@ const links = Object.fromEntries(
     const R = (when, name, mark, code) => [when, LINKS[code] ? `<a href="${LINKS[code]}">${name}</a>` : name, mark];
     const plan = [
       { off: 0, stop: 'lima', t: 'Arrive in Lima', p: `Overnight flight from ${esc($('from').value)}; a driver meets you. Three nights by the sea in Barranco.`, items: [H('Hotel B', 'Lima', 1)] },
-      { off: 1, stop: 'lima', t: 'Lima at the table', p: 'Market walk in the morning, then the two meals this trip is built around.', items: [R('Lunch', 'Mayta · Lima', 'The 50 Best #45', 'rest_0141'), R('Dinner', 'Central · Lima', 'The 50 Best Hall of Fame', 'rest_1578')] },
-      { off: 2, stop: 'lima', t: 'Lima, slowly', p: 'A free day along the Malecón, with one more serious dinner.', items: [R('Dinner', 'Kjolle · Lima', 'The 50 Best #7', 'rest_0135')] },
+      { off: 1, stop: 'lima', t: 'Lima at the table', p: 'Market walk in the morning, then the two big meals of the trip.', items: [R('Lunch', 'Mayta · Lima', 'The 50 Best #45', 'rest_0141'), R('Dinner', 'Central · Lima', 'The 50 Best Hall of Fame', 'rest_1578')] },
+      { off: 2, stop: 'lima', t: 'Lima, slowly', p: 'A free day along the Malecón, and one more big dinner.', items: [R('Dinner', 'Kjolle · Lima', 'The 50 Best #7', 'rest_0135')] },
       { off: 3, stop: 'valley', leg: [0], t: 'Into the Sacred Valley', p: 'Three nights low in the valley before the altitude of Cusco.', items: [H('Inkaterra Hacienda Urubamba', 'Sacred Valley', 2)] },
       { off: 4, stop: 'valley', t: 'A day on foot', p: `${ADV[+$('adventure').value]}. A guide sets the pace; nothing above 4,000 m. Lunch at the edge of the Moray terraces.`, items: [R('Lunch', 'Mil · Cusco region', 'The 50 Best #95', 'rest_1381')] },
       { off: 5, stop: 'mp', leg: [1, 2], t: 'Machu Picchu', p: 'Out on the morning train, a guided visit, back to the valley for dinner. Entry tickets are limited: the first thing to book.', items: [] },
       { off: 6, stop: 'cusco', leg: [3], t: 'Cusco', p: 'Three nights in the old town, the highest point of the trip at about 3,400 m.', items: [H('Inkaterra La Casona', 'Cusco', 2)] },
-      { off: 7, stop: 'cusco', t: 'Cusco, on your own time', p: 'San Blas, the Inca walls, a slow afternoon. Kept free on purpose.', items: [] },
+      { off: 7, stop: 'cusco', t: 'Cusco, on your own time', p: 'San Blas, the Inca walls, a slow afternoon. We left this day free.', items: [] },
       { off: 9, stop: 'lima', leg: [4], t: 'Back to Lima', p: 'Two last nights on the coast, at a different hotel.', items: [H('Atemporal by Andean', 'Lima', 1), R('Dinner', 'Mérito · Lima', 'The 50 Best #13', 'rest_0139')] },
       { off: 10, stop: 'lima', t: 'A last lunch, and home', p: `Lunch, then the evening flight to ${esc($('to').value)}.`, items: [R('Lunch', 'Maido · Lima', 'The 50 Best Hall of Fame', 'rest_0134')] },
     ];
@@ -748,7 +748,7 @@ const links = Object.fromEntries(
 
     // summary for WhatsApp and email
     state.summary = [
-      `${state.tripName || 'Peru, from Lima’s tables to the Sacred Valley'}`,
+      `${state.tripName || 'Peru: Lima, the Sacred Valley and Cusco'}`,
       `${fmtY(start)} – ${fmtY(end)} · ${people} ${people === 1 ? 'traveller' : 'travellers'}`,
       '',
       ...plan.map((day, i) => {

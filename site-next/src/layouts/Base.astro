@@ -12,7 +12,7 @@ interface Props {
   noindex?: boolean;
 }
 const { title, description, current, noindex = false } = Astro.props;
-const fullTitle = title ? `${title} — Mantelier` : 'Mantelier — gastronomy worth travelling for';
+const fullTitle = title ? `${title} | Mantelier` : 'Mantelier | Restaurant guides and gastronomy events';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>

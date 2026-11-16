@@ -109,7 +109,7 @@ import '../../styles/account.css';
       const name = built
         ? (hotel ? (built[0] as string) : (built[1] as string))
         : (await venuesById(hotel ? 'hotels_full' : 'restaurants_full', [v.entity_id]))[0]?.name ?? (hotel ? 'Stay' : 'Visit');
-      document.title = `${name} — Mantelier`;
+      document.title = `${name} | Mantelier`;
       $('.band h1').textContent = name;
       $('[data-kind]').textContent = hotel ? 'Stay' : 'Visit';
       const [y, m, d] = v.visited_on.split('-').map(Number);

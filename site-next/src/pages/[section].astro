@@ -8,7 +8,7 @@ export function getStaticPaths() {
   // for its own page once it has content (news.astro, behind-the-pass.astro, guides.astro, events.astro).
   // Inside getStaticPaths because Astro runs it apart from the page body.
   const intros: Record<string, { intro: string }> = {
-    trends: { intro: 'How fine dining is changing, seen from the kitchen and from the table.' },
+    trends: { intro: 'Where fine dining is heading.' },
   };
   return SECTIONS.filter((s) => s.slug in intros).map((s) => ({
     params: { section: s.slug },
@@ -22,7 +22,7 @@ const { label, info } = Astro.props;
 <Base title={label} description={info.intro} current={section}>
   <PageHeader title={label} intro={info.intro} />
   <section class="wrap body">
-    <p class="empty">The first stories are being written.</p>
+    <p class="empty">Nothing here yet.</p>
   </section>
 </Base>
 

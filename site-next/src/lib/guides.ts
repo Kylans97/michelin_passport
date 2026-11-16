@@ -30,7 +30,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'worlds-50-best',
     name: 'The World’s 50 Best Restaurants',
-    intro: 'The latest list we hold, 1 to 100, in its published order.',
+    intro: 'The most recent list, from 1 to 100.',
     grouped: false,
     members: (c) => c.restaurants
       .filter((r) => r.w50bRank !== null)
@@ -39,7 +39,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'gault-millau',
     name: 'Gault&Millau',
-    intro: 'The Gault&Millau scores we hold so far, each restaurant’s latest edition, highest first. Not yet every market or every restaurant.',
+    intro: 'The Gault&Millau scores we have so far, highest first, from each restaurant’s latest edition. Not every country is in yet.',
     grouped: true,
     members: (c) => c.restaurants
       .filter((r) => r.gaultMillau !== null && !r.closed)
@@ -48,7 +48,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'mantelier-selection',
     name: 'Mantelier Selection',
-    intro: 'Our own editorial choice: restaurants we think are worth the journey, chosen one by one. Not an award.',
+    intro: 'Restaurants we pick ourselves, one at a time. Our opinion, not an award.',
     grouped: true,
     members: (c) => c.restaurants.filter((r) => r.inSelection && !r.closed).sort(byName),
   },

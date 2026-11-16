@@ -66,7 +66,7 @@ import '../../styles/account.css';
       case 'venue_invite_accepted': return { title: other(n), text: `Said yes to ${venue}` };
       case 'venue_invite_declined': return { title: other(n), text: `Can't make it to ${venue}` };
       case 'venue_claim_received': return { title: venue, text: `Your claim for ${venue} is being reviewed.` };
-      case 'venue_claim_approved': return { title: venue, text: `Your claim for ${venue} was approved — you can now manage it in the app.` };
+      case 'venue_claim_approved': return { title: venue, text: `Your claim for ${venue} was approved. You can now manage it in the app.` };
       case 'venue_claim_rejected': return { title: venue, text: `Your claim for ${venue} was not approved.` };
       case 'venue_about_approved': case 'venue_photo_approved':
         return { title: venue, text: `Your ${n.type === 'venue_about_approved' ? 'about text' : 'photo'} for ${venue} is now live.` };

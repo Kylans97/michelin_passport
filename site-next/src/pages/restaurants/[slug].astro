@@ -20,7 +20,7 @@ const events = allEvents.filter((e) => e.venues.some((v) => v.href === `/restaur
 const news = mentions.get(r.id) ?? [];
 
 const where = place(r);
-const description = `${r.name}${where ? `, ${where}` : ''}: how MICHELIN, The World’s 50 Best and Gault&Millau see the same kitchen.`;
+const description = `${r.name}${where ? `, ${where}` : ''}: MICHELIN stars, World’s 50 Best ranking and Gault&Millau score.`;
 const listLabel = (l: Restaurant['w50bHistory'][number]) =>
   l.list === 'hall_of_fame' ? 'Hall of Fame' : l.rank !== null ? `#${l.rank}` : 'Listed';
 const hasHistory = r.michelinHistory.length > 0 || r.w50bHistory.length > 0 || r.gaultMillau !== null;

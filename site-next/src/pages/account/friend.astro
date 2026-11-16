@@ -202,7 +202,7 @@ import '../../styles/account.css';
       const m = /^[0-9a-f-]{36}$/i.test(id) ? await memberIdentity(id) : null;
       if (!m) throw new Error('not visible');
       const name = memberName(m);
-      document.title = `${name} — Mantelier`;
+      document.title = `${name} | Mantelier`;
       $('.band h1').textContent = name;
       $('[data-avatar]').replaceWith(avatar(m, 72));
       $('[data-handle]').textContent = m.username ? `@${m.username}` : '';

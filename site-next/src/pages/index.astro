@@ -37,8 +37,8 @@ const featured = catalogue.restaurants
     || (b.stars ?? 0) - (a.stars ?? 0)
     || a.code.localeCompare(b.code))[0];
 ---
-<Base description="News from every guide, interviews from behind the pass, and the one-off evenings worth travelling for.">
-  <h1 class="sr-only">Mantelier: every guide, every table, and the evenings that only happen once</h1>
+<Base description="Guide news, chef interviews and one-off dinners across Europe.">
+  <h1 class="sr-only">Mantelier: restaurant guides, interviews and gastronomy events</h1>
 
   {lead && <FeatureStory article={lead} tone="green" />}
 
@@ -49,7 +49,7 @@ const featured = catalogue.restaurants
         <a class="more" href="/events">All events →</a>
       </div>
       {upcoming.length > 0 && <ul class="events" data-home-events>{upcoming.map((e) => <EventRow event={e} />)}</ul>}
-      <p class="empty" data-events-empty hidden={upcoming.length > 0}>New evenings are added every week.</p>
+      <p class="empty" data-events-empty hidden={upcoming.length > 0}>We add new events every week.</p>
       <div class="cta"><AppCta label="Mark an evening as Going in the app" /></div>
     </div>
 
