@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Pending from '../components/Pending.astro';
+import { SECTIONS } from '../config';
+
+// One index page per section in the navigation. Each gets its own file
+// once its content exists; until then this keeps every link working.
+const INTROS: Record<string, { intro: string; step: number; what: string }> = {
+  news: { intro: 'What changed in the guides, and what it means for the tables worth travelling for.', step: 2, what: 'News articles' },
+  guides: { intro: 'MICHELIN, The World’s 50 Best, Gault&Millau and our own Mantelier Selection, side by side.', step: 3, what: 'Guides and restaurant pages' },
+  'behind-the-pass': { intro: 'Chefs and restaurant managers on the work behind the evening.', step: 2, what: 'Interviews' },
+  events: { intro: 'Four-hands dinners, guest chefs, winemaker nights, galas and festivals across Europe.', step: 4, what: 'Upcoming events' },
+  trends: { intro: 'How fine dining is changing, seen from the kitchen and from the table.', step: 2, what: 'Trend stories' },
+};
+
+export function getStaticPaths() {
+  return SECTIONS.map((s) => ({ params: { section: s.slug }, props: { label: s.label } }));
+}
+
+const { section } = Astro.params;
+const { label } = Astro.props;
+const info = INTROS[section!];
+---
+<Base title={label} description={info.intro} current={section}>
+  <section class="wrap head">
+    <h1 class="display">{label}</h1>
+    <p class="intro">{info.intro}</p>
+  </section>
+  <section class="wrap">
+    <Pending step={info.step} what={info.what} height={260} />
+  </section>
+</Base>
+
+<style>
+  .head { padding-top: 56px; padding-bottom: 28px; }
+  h1 { font-size: clamp(36px, 5vw, 52px); }
+  .intro { color: var(--ink-soft); max-width: 52ch; margin: 12px 0 0; font-size: 17px; }
+</style>

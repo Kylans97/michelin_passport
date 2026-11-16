@@ -8,6 +8,11 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **The new public site, step 1 of 4: its foundation, hidden** (product owner, 2026-11-16: "begin met stap 1, het fundament van de nieuwe site in een eigen map, op een verborgen testadres"). `site-next/` is an Astro 7.4.4 project that builds to plain static HTML, so every page is readable by search engines without a script. This step has the house style (ivory, forest green, the display serif; gold kept for stars and Keys), the navigation (News, Guides, Behind the pass, Events, Trends), the homepage laid out as agreed, one page per section, a 404, and a footer with the off-the-beaten-track compass: no link and no explanation until that part exists. Every block whose content comes later is a dashed placeholder naming its step, so it can't be mistaken for finished content. "In the app" buttons are one component that reads `APP_STORE_URL` in `src/config.ts`: while that is null they are a label, never a dead link. Nothing reads Supabase yet, and nothing in the database changed.
+  - **Hidden:** deployed with `npx wrangler@3 pages deploy dist --project-name mantelier --branch next` to the `next` preview of the existing Pages project, at https://next.mantelier.pages.dev. Every response carries `X-Robots-Tag: noindex, nofollow` (`public/_headers`), every page has a `noindex` meta (`HIDDEN` in `src/config.ts`), and `robots.txt` disallows everything; all three were checked on the live preview. mantelier.app was checked afterwards and still serves `site/`, which is untouched.
+  - **Not done, on purpose:** footer links to Privacy, Terms, Support and For hosts point at the live `site/` pages; they move over at launch, together with `auth/` and `.well-known/`, when the three noindex switches go off. The preview has no password; that is Cloudflare Access, set in the dashboard.
+
 ---
 
 ## v1.5.7 (34) — 2026-11-06

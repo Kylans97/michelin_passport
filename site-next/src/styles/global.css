@@ -1,0 +1,73 @@
+/* Mantelier public site: the app's palette and type, on paper.
+   Ivory page, forest-green ink, gold only for MICHELIN stars and Keys. */
+
+:root {
+  --ivory: #F4F0E7;
+  --paper: #FBF8F1;
+  --green: #16302A;
+  --green-lift: #12291F;
+  --ink-soft: #4D5A54;
+  --taupe: #8A7F6C;
+  --rule: #D6CFBF;
+  --placeholder: #DCD5C4;
+  --gold: #AC8244;
+  --on-green-muted: rgba(244, 240, 231, 0.68);
+  --on-green-accent: #C9B48A;
+
+  --display: "Cormorant Garamond", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --util: "IBM Plex Mono", ui-monospace, monospace;
+
+  --measure: 1120px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--ivory);
+  color: var(--green);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+img { max-width: 100%; display: block; }
+
+.wrap {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.display { font-family: var(--display); font-weight: 500; line-height: 1.12; margin: 0; }
+
+.eyebrow {
+  font-family: var(--body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--taupe);
+  margin: 0;
+}
+
+.util {
+  font-family: var(--util);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }

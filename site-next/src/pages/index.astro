@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import AppCta from '../components/AppCta.astro';
+import Pending from '../components/Pending.astro';
+---
+<Base description="News from every guide, interviews from behind the pass, and the one-off evenings worth travelling for.">
+  <section class="wrap masthead">
+    <p class="eyebrow">Gastronomy worth travelling for</p>
+    <h1 class="display">Every guide, every table, and the evenings that only happen once.</h1>
+  </section>
+
+  <section class="wrap lead" aria-label="Latest stories">
+    <div class="story">
+      <Pending step={2} what="Lead story" height={340} />
+    </div>
+    <div class="guide-news">
+      <p class="eyebrow">Guide news</p>
+      <Pending step={2} what="News per guide" height={300} />
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="every-guide">
+    <div class="compare">
+      <div class="compare-head">
+        <div>
+          <p class="eyebrow" id="every-guide">One restaurant, every guide</p>
+          <p class="display compare-title">How the guides see the same kitchen</p>
+        </div>
+        <AppCta label="Add to wishlist in the app" />
+      </div>
+      <Pending step={3} what="Restaurant pages with every guide" height={120} />
+    </div>
+  </section>
+
+  <section class="wrap behind" aria-labelledby="behind">
+    <div class="section-head">
+      <p class="eyebrow" id="behind">Behind the pass</p>
+      <a href="/behind-the-pass" class="more">All interviews →</a>
+    </div>
+    <div class="grid3">
+      <Pending step={2} what="Chef" />
+      <Pending step={2} what="Restaurant manager" />
+      <Pending step={2} what="Trends" />
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="this-month">
+    <div class="band">
+      <div>
+        <p class="eyebrow band-eyebrow" id="this-month">This month on Mantelier</p>
+        <p class="display band-title">Four-hands dinners, guest chefs and winemaker nights across Europe</p>
+        <p class="band-note">Mark an evening as Going, see which friends join, and keep it in your Passport.</p>
+      </div>
+      <AppCta label="Open in the app" variant="on-green" />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .masthead { padding-top: 56px; padding-bottom: 36px; }
+  .masthead h1 { font-size: clamp(34px, 5.4vw, 56px); max-width: 24ch; margin-top: 14px; }
+
+  .lead { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; }
+  .guide-news { display: flex; flex-direction: column; gap: 14px; }
+
+  .compare {
+    margin-top: 48px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .compare-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+  .compare-title { font-size: 26px; margin-top: 4px; }
+
+  .behind { margin-top: 56px; }
+  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+  .more { font-size: 13px; color: var(--ink-soft); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+
+  .band {
+    margin-top: 56px;
+    background: var(--green);
+    color: var(--ivory);
+    border-radius: 6px;
+    padding: 28px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .band-eyebrow { color: var(--on-green-accent); }
+  .band-title { font-size: clamp(24px, 3vw, 30px); margin-top: 6px; }
+  .band-note { color: var(--on-green-muted); font-size: 14px; margin: 8px 0 0; }
+  .band > :global(.cta) { justify-self: start; }
+
+  @media (max-width: 760px) {
+    .masthead { padding-top: 36px; }
+    .lead, .grid3, .band { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

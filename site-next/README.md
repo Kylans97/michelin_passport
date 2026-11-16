@@ -1,0 +1,33 @@
+# site-next
+
+The new public Mantelier site, hidden until it replaces `site/` at
+mantelier.app on the day the app launches. Astro, built to static HTML.
+
+## Run and build
+
+```
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # into dist/
+```
+
+## Deploy (hidden preview only)
+
+```
+npm run build
+npx wrangler@3 pages deploy dist --project-name mantelier --branch next
+```
+
+This updates https://next.mantelier.pages.dev only. Never deploy this
+folder with `--branch main`: that is mantelier.app, which still serves
+`site/`.
+
+## Launch checklist
+
+1. Move `privacy`, `terms`, `support`, `hosts`, `auth/` and
+   `.well-known/` from `site/` into this site, and point the footer links
+   back to relative paths.
+2. Set `HIDDEN = false` in `src/config.ts`, remove the block in
+   `public/_headers` and the `Disallow` in `public/robots.txt`.
+3. Set `APP_STORE_URL` in `src/config.ts`.
+4. Deploy with `--branch main`.

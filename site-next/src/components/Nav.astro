@@ -1,0 +1,58 @@
+---
+import { SECTIONS } from '../config';
+import AppCta from './AppCta.astro';
+
+interface Props { current?: string; }
+const { current } = Astro.props;
+---
+<header class="nav">
+  <div class="wrap bar">
+    <a class="wordmark" href="/" aria-label="Mantelier, home">MANTELIER</a>
+    <nav aria-label="Sections">
+      <ul>
+        {SECTIONS.map((s) => (
+          <li>
+            <a href={`/${s.slug}`} aria-current={current === s.slug ? 'page' : undefined}>{s.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <div class="app"><AppCta label="Get the app" variant="solid" /></div>
+  </div>
+</header>
+
+<style>
+  .nav { border-bottom: 1px solid var(--rule); }
+  .bar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    min-height: 68px;
+  }
+  .wordmark {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+  }
+  .wordmark:hover { text-decoration: none; }
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  a[aria-current='page'] { color: var(--green); text-decoration: underline; text-underline-offset: 6px; }
+
+  @media (max-width: 760px) {
+    .bar { grid-template-columns: 1fr auto; row-gap: 0; padding-top: 12px; }
+    nav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; scrollbar-width: none; }
+    nav::-webkit-scrollbar { display: none; }
+    ul { justify-content: flex-start; gap: 22px; padding: 12px 0 14px; white-space: nowrap; }
+  }
+</style>

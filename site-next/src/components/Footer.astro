@@ -1,0 +1,45 @@
+---
+import { CONTACT_EMAIL } from '../config';
+import Mark from './Mark.astro';
+---
+<footer class="footer">
+  <div class="wrap row">
+    <div class="left">
+      <Mark size={44} />
+      <p>Independent. Not affiliated with, endorsed by or sponsored by any guide or venue.</p>
+    </div>
+    <ul class="links">
+      <li><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+      <li><a href="https://mantelier.app/privacy">Privacy</a></li>
+      <li><a href="https://mantelier.app/terms">Terms</a></li>
+      <li><a href="https://mantelier.app/support">Support</a></li>
+      <li><a href="https://mantelier.app/hosts">For hosts</a></li>
+    </ul>
+  </div>
+  <div class="wrap base">
+    <span>© {new Date().getFullYear()} Mantelier</span>
+    <!-- A wink, not a section: no link and no explanation until it exists. -->
+    <span class="compass" aria-label="Off the beaten track, coming later">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+        <circle cx="12" cy="12" r="9.5" />
+        <path d="M15.5 8.5 13.4 13.4 8.5 15.5 10.6 10.6Z" />
+      </svg>
+      <span class="util">Off the beaten track · 64°08′N</span>
+    </span>
+  </div>
+</footer>
+
+<style>
+  .footer { border-top: 1px solid var(--rule); margin-top: 72px; font-size: 13px; color: var(--ink-soft); }
+  .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-top: 28px; padding-bottom: 20px; flex-wrap: wrap; }
+  .left { display: flex; gap: 10px; align-items: center; max-width: 420px; }
+  .left :global(svg) { flex-shrink: 0; }
+  .left p { margin: 0; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 0; padding: 0; }
+  .base {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    padding-top: 14px; padding-bottom: 28px; border-top: 1px solid var(--rule); color: var(--taupe); font-size: 12px;
+  }
+  .compass { display: inline-flex; align-items: center; gap: 7px; color: var(--ink-soft); }
+  .compass .util { font-size: 10px; }
+</style>

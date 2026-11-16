@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Not found" description="This page doesn't exist.">
+  <section class="wrap nf">
+    <p class="eyebrow">404</p>
+    <h1 class="display">This table isn't laid.</h1>
+    <p>The page you were looking for doesn't exist. <a href="/">Back to the front page</a>.</p>
+  </section>
+</Base>
+
+<style>
+  .nf { padding-top: 96px; padding-bottom: 48px; }
+  h1 { font-size: clamp(36px, 5vw, 52px); margin-top: 12px; }
+  p:last-child { color: var(--ink-soft); }
+  a { text-decoration: underline; text-underline-offset: 3px; }
+</style>
