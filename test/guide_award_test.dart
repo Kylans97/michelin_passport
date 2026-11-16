@@ -37,6 +37,21 @@ void main() {
       expect(formatGuideAwardValue(scored(98.5)), '98.5');
     });
 
+    test('names a tier the way the guide does', () {
+      final award = GuideAward.fromJson({
+        'guide_code': 'guia_repsol',
+        'edition_year': 2026,
+        'list_name': 'soles',
+        'tier': 3,
+        'guides': {
+          'name': 'Guía Repsol',
+          'measure': 'tier',
+          'tier_labels': {'1': '1 Sol', '2': '2 Soles', '3': '3 Soles'},
+        },
+      });
+      expect(formatGuideAwardValue(award), '3 Soles');
+    });
+
     test('shows nothing it does not hold', () {
       const award = GuideAward(
         guideCode: 'asia_50_best',

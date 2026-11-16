@@ -11,7 +11,7 @@ class GuideAwardRepository {
 
   static const _columns =
       'guide_code, edition_year, list_name, rank, score, tier, '
-      'distinction_label, guides(name, measure, score_max)';
+      'distinction_label, guides(name, measure, score_max, tier_labels)';
 
   /// Every edition this restaurant appears in, newest first, across all
   /// shared guides.
@@ -37,17 +37,33 @@ class GuideAwardRepository {
         )
         .eq('restaurant_id', restaurantId)
         .order('guide_code');
-    return (rows as List).map((row) {
-      final json = row as Map<String, dynamic>;
-      return GuideAward.fromJson({
-        ...json,
-        'guides': {
-          'name': json['guide_name'],
-          'measure': json['measure'],
-          'score_max': json['score_max'],
-        },
-      });
-    }).toList();
+    final list = (rows as List).cast<Map<String, dynamic>>();
+    if (list.isEmpty) return [];
+    // The view carries no tier_labels; read them from guides in one query.
+    final guideRows = await _client
+        .from('guides')
+        .select('guide_code, tier_labels')
+        .inFilter(
+          'guide_code',
+          {for (final r in list) r['guide_code']}.toList(),
+        );
+    final labels = {
+      for (final g in (guideRows as List).cast<Map<String, dynamic>>())
+        g['guide_code'] as String: g['tier_labels'],
+    };
+    return list
+        .map(
+          (json) => GuideAward.fromJson({
+            ...json,
+            'guides': {
+              'name': json['guide_name'],
+              'measure': json['measure'],
+              'score_max': json['score_max'],
+              'tier_labels': labels[json['guide_code']],
+            },
+          }),
+        )
+        .toList();
   }
 
   /// The coverage note per guide edition, for the guides given.

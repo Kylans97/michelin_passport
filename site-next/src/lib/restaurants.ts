@@ -116,7 +116,7 @@ export function loadCatalogue(): Promise<Catalogue> {
         distinction_label: string | null; gault_millau_url: string | null;
       }>('gault_millau_awards', 'select=restaurant_id,guide_year,score,toque_count,distinction_label,gault_millau_url&order=id'),
       selectAll<{ restaurant_id: string }>('editorial_selections', 'select=restaurant_id&removed_on=is.null&order=restaurant_id'),
-      selectAll<{ guide_code: string; name: string; measure: string }>('guides', 'select=guide_code,name,measure&order=guide_code'),
+      selectAll<{ guide_code: string; name: string; measure: string; tier_labels: Record<string, string> | null }>('guides', 'select=guide_code,name,measure,tier_labels&order=guide_code'),
       selectAll<{
         restaurant_id: string | null; guide_code: string; edition_year: number; rank: number | null;
         score: number | null; tier: number | null; distinction_label: string | null;
@@ -171,7 +171,7 @@ export function loadCatalogue(): Promise<Catalogue> {
       const measure = guideBy.get(a.guide_code)?.measure;
       if (measure === 'rank' && a.rank !== null) return `#${a.rank}`;
       if (measure === 'score' && a.score !== null) return String(Number(a.score));
-      if (measure === 'tier' && a.tier !== null) return String(a.tier);
+      if (measure === 'tier' && a.tier !== null) return guideBy.get(a.guide_code)?.tier_labels?.[String(a.tier)] ?? String(a.tier);
       return a.distinction_label;
     };
     const otherBy = new Map<string, Map<string, OtherGuide>>();

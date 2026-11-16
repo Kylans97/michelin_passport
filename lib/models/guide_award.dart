@@ -28,6 +28,9 @@ class GuideAward {
   final double? score;
   final double? scoreMax;
   final int? tier;
+  // guides.tier_labels, e.g. {"3": "3 Soles"}: how the guide names its own
+  // tiers. Display only, never parsed back into a tier.
+  final Map<String, String> tierLabels;
   // A named distinction kept verbatim; display only.
   final String? distinctionLabel;
 
@@ -41,6 +44,7 @@ class GuideAward {
     this.score,
     this.scoreMax,
     this.tier,
+    this.tierLabels = const {},
     this.distinctionLabel,
   });
 
@@ -58,13 +62,20 @@ class GuideAward {
       score: (json['score'] as num?)?.toDouble(),
       scoreMax: (guide['score_max'] as num?)?.toDouble(),
       tier: (json['tier'] as num?)?.toInt(),
+      tierLabels: {
+        for (final e
+            in ((guide['tier_labels'] as Map<String, dynamic>?) ?? const {})
+                .entries)
+          e.key: e.value as String,
+      },
       distinctionLabel: json['distinction_label'] as String?,
     );
   }
 }
 
 /// What a guide's value reads as, in the guide's own measure: "#12" for a
-/// rank, "98.5" for a score, the tier number, or the verbatim distinction.
+/// rank, "98.5" for a score, the guide's own name for a tier ("3 Soles")
+/// or else its number, or the verbatim distinction.
 /// Null when the row carries nothing showable — never a made-up value.
 String? formatGuideAwardValue(GuideAward award) {
   switch (award.measure) {
@@ -78,7 +89,8 @@ String? formatGuideAwardValue(GuideAward award) {
             : score.toString();
       }
     case GuideMeasure.tier:
-      if (award.tier != null) return '${award.tier}';
+      final tier = award.tier;
+      if (tier != null) return award.tierLabels['$tier'] ?? '$tier';
   }
   return award.distinctionLabel;
 }
