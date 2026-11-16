@@ -220,3 +220,21 @@ which.
   - Lamdre
   - Mérito
   - Chao Shang Chao
+
+## 2026-11-17 — Import prepared, not applied
+
+`import_booking_windows_20261117.sql` writes the 37 `proposed` rows: 4 NL, 15
+W50B and 18 three-star. That is 37 windows plus Mirazur's three dated
+releases. It is a prepared data file, not a migration, and it is applied only
+with the product owner's approval.
+
+- **Production, read-only, 2026-11-17:** all 37 `restaurant_code` +
+  `country_code` pairs resolve to exactly one restaurant. None has an active
+  manager or a window, and production has 0 windows in total.
+- **Local stack** (every migration replayed, with fixture restaurants for the
+  37 codes):
+  - First run: 37 windows and 3 releases, all `research`.
+  - Re-run: 0 written and 37 skipped. It is safe to run twice.
+  - With a manager on Odille and a venue window on Eleven Madison Park: 35
+    written and both skipped. Eleven Madison Park's own window is untouched.
+  - With one code unresolvable: the run aborts with nothing written.
