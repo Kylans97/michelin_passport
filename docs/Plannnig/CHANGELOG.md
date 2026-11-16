@@ -40,7 +40,7 @@ The format follows Keep a Changelog.
   - **Later a Pro feature:** `booking_reminders_enabled(user)` is the one server-side switch the job and the app ask; today it is true for everyone. A member can turn the push off under Notifications → Booking reminders; the in-app notification stays.
   - **Privacy by column, not row.** RLS cannot hide a column, so `authenticated` lost table-level SELECT/INSERT/UPDATE on `wishlist` and got them back per column, without `planned_month`. Every reader in the app names its columns and the SECURITY DEFINER reports run as the owner; a test as a friend gets `permission denied` on the month and still reads the row.
   - **Installed builds:** the type follows the v-pattern: this build reads `get_notifications_v6`; v5 and the older unread counts leave `booking_window_opening` out.
-  - **Near-miss:** the month sheet overflowed in the 800×600 test window and its four year chips overflowed narrow phones; it now scrolls and wraps. Caught by its own widget test before any device.
+  - **Near-miss:** the month sheet overflowed in the 800×600 test window and its four year chips overflowed narrow phones; it now scrolls and wraps. Caught by its own widget test before any device. In the simulator the wrapped year chips then each stretched across the whole sheet (a centred container fills whatever width a Wrap offers); they now fit their label, held by a test that fails without the fix.
   - Not done here: the add-to-wishlist sheet on the Wishlist screen saves without asking the month (it stays open for several saves; the month is set from the card). Hotels get no month. A push tap opens Notifications, where the row opens the restaurant.
 ---
 

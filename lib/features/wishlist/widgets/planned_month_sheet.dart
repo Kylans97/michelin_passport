@@ -215,7 +215,6 @@ class _Choice extends StatelessWidget {
       onTap: enabled ? onTap : null,
       borderRadius: BorderRadius.circular(CsRadius.pill),
       child: Container(
-        alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
         decoration: BoxDecoration(
           color: selected ? AppColors.forestGreen : Colors.transparent,
@@ -226,15 +225,22 @@ class _Choice extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(CsRadius.pill),
         ),
-        child: ExcludeSemantics(
-          child: Text(
-            label,
-            style: CsTypography.bodyMedium.copyWith(
-              color: selected
-                  ? AppColors.warmWhite
-                  : enabled
-                  ? AppColors.forestGreen
-                  : AppColors.subtleBorderLight,
+        // Centred in a grid cell, yet only as wide as its label in the
+        // year row: an alignment alone would stretch a year chip across
+        // the sheet.
+        child: Center(
+          widthFactor: 1,
+          heightFactor: 1,
+          child: ExcludeSemantics(
+            child: Text(
+              label,
+              style: CsTypography.bodyMedium.copyWith(
+                color: selected
+                    ? AppColors.warmWhite
+                    : enabled
+                    ? AppColors.forestGreen
+                    : AppColors.subtleBorderLight,
+              ),
             ),
           ),
         ),

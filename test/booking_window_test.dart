@@ -335,6 +335,24 @@ void main() {
       expect((result! as PlannedMonthSet).month, DateTime(2027, 5));
     });
 
+    testWidgets('a year chip is as wide as its label, not the sheet', (
+      tester,
+    ) async {
+      await open(
+        tester,
+        act: () async {
+          final chip = tester.getSize(
+            find.ancestor(
+              of: find.text('2027'),
+              matching: find.byType(InkWell),
+            ),
+          );
+          expect(chip.width, lessThan(200));
+          await tester.tap(find.text('Not sure yet'));
+        },
+      );
+    });
+
     testWidgets('a past month cannot be chosen', (tester) async {
       final result = await open(
         tester,
