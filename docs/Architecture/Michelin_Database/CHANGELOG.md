@@ -6,6 +6,31 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-16 — The 50 Best Restaurants 2026, complete; 2025 No. 94 (QA-194, QA-473–QA-476)
+
+| | |
+|---|---|
+| Applied | 2026-11-16, to production, at the product owner's request ("Ja, pas migratie 20261101390000 en prepared_w50b_2026_import.sql toe op productie"), from `claude/w50b-2026` |
+| Migration | `20261101390000_add_w50b_2026_cities`: city Kasauli (IN). Ledger 151 → 152, local and remote in agreement |
+| Data | `worlds_50_best_2026/prepared_w50b_2026_import.sql`, one transaction: 8 restaurants, 4 `award_history` rows, 102 `worlds_50_best` rows |
+| Evidence | `worlds_50_best_2026/W50B_2026_REPORT.md`, `w50b_2026_matches.csv` (source URL per rank), `w50b_2026_new_restaurants.csv` (source per field), `LOCAL_TEST.md` |
+
+**Source.** The official list only, the50.com (list/1-50 and list/51-100, Best of the Best, previous-list/2025), read 2026-11-16. From 2026 the organisers call it "The 50 Best Restaurants"; same list, same 1–100 shape (QA-475, a label question for the product).
+
+**Matching.** On `restaurant_code` + country, never name. 92 entries matched an existing row: 80 because the row already carries 50 Best ranks in the same city, 12 by comparing the address on 50 Best's own page with ours. No lookup returned a wrong record. Two addresses differ inside 50 Best's own data without changing the match (Ling Long, Lamdre; QA-474).
+
+**Added: 8 restaurants (QA-473, closed).** `rest_4200`–`rest_4207`: Naar (Kasauli), Nelita (São Paulo), Seroja (Singapore, 2★), Eatanic Garden (Seoul, 1★), Mosu (Seoul, 2★), Baan Tepa (Bangkok, 2★), Khufu's (Giza), Fauna (Valle de Guadalupe). Stars only from each one's own MICHELIN page, with the year it shows: 2026, except Baan Tepa at 2027, the Thailand guide its page already shows (the six Thai rows already in production are still at 2026). Nelita is listed without a star and Fauna is Bib Gourmand only: `michelin_stars` NULL, `inclusion_reason = 'worlds_50_best'`, as for Naar and Khufu's. Josun Palace, Amaya and Bruma Wine Resort are not in `hotels`, so `property_name`.
+
+**Rankings.** 2026: 50 `top_50`, 50 `extended_51_100`, and the hall-of-fame row for Maido (`rest_0134`), 2025's No. 1, in the year it entered, as Disfrutar (2025) and Central (2024). 2025: No. 94 Meet the Bund (`rest_2739`), the row held back on 2026-10-28 because the staged record was M on the Bund; the real venue was since added by the MICHELIN China pass and its address equals 50 Best's (QA-194, closed). 2025 is now 100 of 100.
+
+**Checked after the apply**, directly on production: `restaurants` 3629 → 3637, `award_history` 5891 → 5895, `worlds_50_best` 975 → 1077. 2026 holds 50 / 50 / 1 and 2025 100 ranked. The 100 (rank, code, country) triples read back equal `w50b_2026_matches.csv`. `restaurants_full` gives 100 current ranks (2026 is now `max(year)`), 8 hall-of-fame restaurants, Asador Etxebarri at 1, Aponiente at 100; the 8 new rows read back with the CSV's stars, award year, property, point and phone, all `open`.
+
+**Not done (QA-476, open):** no Google Place ID on the 8 new rows. Naar's point rests on one source (its own map link to Amaya). Fauna's point is MICHELIN's pin, 1.2 km from Bruma's own map link, unsettled. Fauna's phone is NULL: three sources, three numbers.
+
+**Effect.** The 17 restaurants ranked in 2025 but not in 2026 no longer show a current rank; their history rows stay. The app's guide and the hidden site take 2026 from the data, with no code change.
+
+---
+
 # 2026-11-05 — Greece and 41 countries: Place IDs, phones and websites (QA-431, QA-464–QA-471)
 
 | | |
