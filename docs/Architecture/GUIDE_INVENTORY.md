@@ -323,6 +323,12 @@ comes closest and is not recommended now.
 
 ## Proposed build order (for the product owner to decide)
 
+> **Status 2026-11-16:** the product owner chose step 1 first, then the La
+> Liste permission request. The shared tables and the three regional lists
+> are prepared, not applied (`supabase/data/enrichment/regional_50_best/
+> REGIONAL_50_BEST_REPORT.md`); the La Liste letter is drafted, not sent
+> (`guide_inventory/LA_LISTE_PERMISSION_REQUEST.md`).
+
 1. **The three regional 50 Best lists** — Asia (2026), North America
    (2026), Latin America (2026, on 1 Dec). Lowest risk: same publisher
    and review process as the list we hold. This is also the moment to
