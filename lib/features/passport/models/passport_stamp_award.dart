@@ -26,6 +26,13 @@ class EventTypeAward extends StampAward {
   const EventTypeAward(this.label);
 }
 
+/// A train's or ship's kind ("TRAIN", "SHIP"), drawn like an event type —
+/// a journey has no award of its own.
+class JourneyKindAward extends StampAward {
+  final String label;
+  const JourneyKindAward(this.label);
+}
+
 /// The award to paint on [item]'s stamp — see [StampAward]'s own doc
 /// comment for the null case.
 StampAward? stampAwardFor(PassportStampItem item) => switch (item) {
@@ -34,4 +41,5 @@ StampAward? stampAwardFor(PassportStampItem item) => switch (item) {
   HotelStampItem(:final keys) =>
     (keys != null && keys > 0) ? KeysAward(keys) : null,
   EventStampItem(:final eventTypeLabel) => EventTypeAward(eventTypeLabel),
+  JourneyStampItem(:final kindLabel) => JourneyKindAward(kindLabel),
 };

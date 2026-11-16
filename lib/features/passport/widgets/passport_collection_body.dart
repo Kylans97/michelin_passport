@@ -8,11 +8,13 @@ import '../../../core/theme/cs_spacing.dart';
 import '../../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../../core/widgets/floating_nav_bar.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../../data/repositories/journey_repository.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../../models/venue_entry.dart';
 import '../../events/event_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
+import '../../journeys/journey_detail_screen.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../models/passport_stamp_item.dart';
 import '../passport_all_visits_screen.dart';
@@ -52,6 +54,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   // window. See _openAllVisits below.
   List<VenueEntry> _entries = [];
   List<EventAttendanceEntry> _eventEntries = [];
+  List<JourneyTravelEntry> _journeyEntries = [];
 
   String _holderName = 'Member';
   String? _avatarUrl;
@@ -124,6 +127,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
         _volumes = volumes;
         _entries = passport.entries;
         _eventEntries = passport.eventEntries;
+        _journeyEntries = passport.journeyEntries;
         _holderName = passport.holderName;
         _avatarUrl = passport.avatarUrl;
         _memberNumber = passport.memberNumber;
@@ -178,7 +182,15 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     RestaurantStampItem(:final restaurant) => _openRestaurant(restaurant),
     HotelStampItem(:final hotel) => _openHotel(hotel),
     EventStampItem(:final entry) => _openEvent(entry.event.id),
+    JourneyStampItem(:final entry) => _openJourney(entry.journey.id),
   };
+
+  void _openJourney(String journeyId) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => JourneyDetailScreen(journeyId: journeyId),
+    ),
+  );
 
   void _openAllVisits(PassportFilterType? filter) => Navigator.push(
     context,
@@ -186,6 +198,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
       builder: (_) => PassportAllVisitsScreen(
         entries: _entries,
         eventEntries: _eventEntries,
+        journeyEntries: _journeyEntries,
         initialFilter: filter,
         onTapItem: _onTapStamp,
       ),

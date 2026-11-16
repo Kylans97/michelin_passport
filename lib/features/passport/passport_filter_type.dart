@@ -13,11 +13,13 @@
 enum PassportFilterType {
   restaurants,
   hotels,
-  events;
+  events,
+  journeys;
 
   String get label => switch (this) {
     PassportFilterType.restaurants => 'Restaurants',
     PassportFilterType.hotels => 'Hotels',
     PassportFilterType.events => 'Events',
+    PassportFilterType.journeys => 'Journeys',
   };
 }

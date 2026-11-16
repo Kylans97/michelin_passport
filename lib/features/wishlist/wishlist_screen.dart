@@ -12,8 +12,11 @@ import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/booking_window.dart';
 import '../../models/event.dart';
+import '../../models/journey.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
+import '../journeys/journey_detail_screen.dart';
+import '../journeys/widgets/journey_card.dart';
 import '../events/events_screen.dart';
 import '../passport/widgets/passport_empty_state.dart';
 import 'event_wishlist_schedule.dart';
@@ -76,6 +79,7 @@ class _WishlistBodyState extends State<WishlistBody> {
   // Restaurant id -> the member's month and when it opens.
   Map<String, WishlistPlan> _plans = const {};
   List<Event>? _events; // null until the first load completes.
+  List<Journey>? _journeys; // trains and ships; null until loaded.
   bool _loading = true; // true only for the very first, blocking load.
   bool _loadError = false;
   bool _refreshing = false; // guards overlapping refresh calls.
@@ -99,18 +103,25 @@ class _WishlistBodyState extends State<WishlistBody> {
       final plansFuture = _repo.loadPlans().catchError(
         (_) => <String, WishlistPlan>{},
       );
+      // Journeys are an enhancement: a failed lookup leaves the tab empty
+      // rather than the whole wishlist in error.
+      final journeysFuture = _repo
+          .getWishlistJourneys(_userId)
+          .catchError((Object _) => const <Journey>[]);
       final venues = await venuesFuture;
       final events = await eventsFuture;
       final plans = await plansFuture;
+      final journeys = await journeysFuture;
       if (!mounted) return;
       setState(() {
         _venues = venues;
         _plans = plans;
         _events = events;
+        _journeys = List.of(journeys);
         _loading = false;
         _loadError = false;
       });
-      _applyDefaultVenueType(venues, events);
+      _applyDefaultVenueType(venues, events, hasJourneys: journeys.isNotEmpty);
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -144,10 +155,18 @@ class _WishlistBodyState extends State<WishlistBody> {
     }
   }
 
-  void _applyDefaultVenueType(List<PassportVenue> venues, List<Event> events) {
+  void _applyDefaultVenueType(
+    List<PassportVenue> venues,
+    List<Event> events, {
+    bool hasJourneys = false,
+  }) {
     if (_defaultApplied) return;
     _defaultApplied = true;
-    final defaultType = defaultWishlistVenueType(venues, events);
+    final defaultType = defaultWishlistVenueType(
+      venues,
+      events,
+      hasJourneys: hasJourneys,
+    );
     if (defaultType != _venueType && mounted) {
       setState(() => _venueType = defaultType);
     }
@@ -211,6 +230,8 @@ class _WishlistBodyState extends State<WishlistBody> {
         WishlistVenueType.restaurants => WishlistAddType.restaurant,
         WishlistVenueType.hotels => WishlistAddType.hotel,
         WishlistVenueType.events => WishlistAddType.event,
+        // Journeys are saved from their own page, not from this sheet.
+        WishlistVenueType.journeys => WishlistAddType.restaurant,
       },
     );
     if (changed && mounted) await _load();
@@ -223,6 +244,7 @@ class _WishlistBodyState extends State<WishlistBody> {
 
   bool _matchesFilter(PassportVenue venue) => switch (_venueType) {
     WishlistVenueType.events => false,
+    WishlistVenueType.journeys => false,
     WishlistVenueType.restaurants => venue is RestaurantVenue,
     WishlistVenueType.hotels => venue is HotelVenue,
   };
@@ -230,6 +252,7 @@ class _WishlistBodyState extends State<WishlistBody> {
   @override
   Widget build(BuildContext context) {
     final isEvents = _venueType == WishlistVenueType.events;
+    final isJourneys = _venueType == WishlistVenueType.journeys;
     final allVenues = _venues ?? [];
     final items = allVenues.where(_matchesFilter).toList();
     final isHotels = _venueType == WishlistVenueType.hotels;
@@ -252,23 +275,27 @@ class _WishlistBodyState extends State<WishlistBody> {
                   CsSpacing.pageHorizontal,
                   0,
                 ),
-                child: Row(
-                  children: [
-                    for (
-                      var i = 0;
-                      i < WishlistVenueType.values.length;
-                      i++
-                    ) ...[
-                      if (i > 0) const SizedBox(width: CsSpacing.sm),
-                      CsFilterChip(
-                        label: WishlistVenueType.values[i].label,
-                        selected: WishlistVenueType.values[i] == _venueType,
-                        onTap: () => setState(
-                          () => _venueType = WishlistVenueType.values[i],
+                // Scrolls sideways: four chips do not fit a narrow phone.
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      for (
+                        var i = 0;
+                        i < WishlistVenueType.values.length;
+                        i++
+                      ) ...[
+                        if (i > 0) const SizedBox(width: CsSpacing.sm),
+                        CsFilterChip(
+                          label: WishlistVenueType.values[i].label,
+                          selected: WishlistVenueType.values[i] == _venueType,
+                          onTap: () => setState(
+                            () => _venueType = WishlistVenueType.values[i],
+                          ),
                         ),
-                      ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
@@ -318,6 +345,8 @@ class _WishlistBodyState extends State<WishlistBody> {
               )
             else if (isEvents)
               ..._eventSlivers(schedule)
+            else if (isJourneys)
+              ..._journeySlivers(_journeys ?? const [])
             else if (items.isEmpty)
               SliverFillRemaining(
                 hasScrollBody: false,
@@ -451,6 +480,50 @@ class _WishlistBodyState extends State<WishlistBody> {
           return dimmed ? Opacity(opacity: 0.7, child: card) : card;
         }, childCount: events.length),
       );
+}
+
+extension on _WishlistBodyState {
+  List<Widget> _journeySlivers(List<Journey> journeys) {
+    if (journeys.isEmpty) {
+      return [
+        const SliverFillRemaining(
+          hasScrollBody: false,
+          child: PassportEmptyState(message: 'No trains or ships saved yet.'),
+        ),
+      ];
+    }
+    return [
+      SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, i) => Padding(
+            padding: EdgeInsets.fromLTRB(
+              CsSpacing.pageHorizontal,
+              0,
+              CsSpacing.pageHorizontal,
+              i == journeys.length - 1
+                  ? floatingNavClearance(context)
+                  : CsSpacing.md,
+            ),
+            child: JourneyCard(
+              journey: journeys[i],
+              onTap: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) =>
+                        JourneyDetailScreen(journeyId: journeys[i].id),
+                  ),
+                );
+                // The heart on the detail page may have removed it.
+                await _load();
+              },
+            ),
+          ),
+          childCount: journeys.length,
+        ),
+      ),
+    ];
+  }
 }
 
 class _ErrorState extends StatelessWidget {
