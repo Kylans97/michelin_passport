@@ -1,10 +1,12 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/event.dart';
 import '../../models/hotel.dart';
+import '../../models/journey.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import 'events_repository.dart' show EventsRepository;
 import 'hotel_repository.dart' show hotelFullColumns;
+import 'journey_repository.dart' show JourneyRepository;
 import 'restaurant_repository.dart' show restaurantFullColumns;
 
 // public.wishlist is polymorphic, same shape as public.visits: entity_type +
@@ -17,6 +19,9 @@ import 'restaurant_repository.dart' show restaurantFullColumns;
 const _restaurantEntity = 'restaurant';
 const _hotelEntity = 'hotel';
 const _eventEntity = 'event';
+// Trains and ships, 20261101500000_add_journeys.sql. Every read in shipped
+// builds filters on entity_type, so older builds never see these rows.
+const _journeyEntity = 'journey';
 
 class WishlistRepository {
   WishlistRepository(this._client);
@@ -176,6 +181,35 @@ class WishlistRepository {
       for (final id in ids)
         if (byId[id] != null) byId[id]!,
     ];
+  }
+
+  // ── Journey API — trains and ships, the same shape as events ──────────
+
+  Future<bool> isJourneyWishlisted({
+    required String userId,
+    required String journeyId,
+  }) => _isWishlisted(
+    userId: userId,
+    entityType: _journeyEntity,
+    entityId: journeyId,
+  );
+
+  Future<void> addJourney({
+    required String userId,
+    required String journeyId,
+  }) => _add(userId: userId, entityType: _journeyEntity, entityId: journeyId);
+
+  Future<void> removeJourney({
+    required String userId,
+    required String journeyId,
+  }) =>
+      _remove(userId: userId, entityType: _journeyEntity, entityId: journeyId);
+
+  /// Every wishlisted journey, added_at-desc; one that is no longer
+  /// published drops out rather than showing as an orphan.
+  Future<List<Journey>> getWishlistJourneys(String userId) async {
+    final ids = await _wishlistedIds(userId, _journeyEntity);
+    return JourneyRepository(_client).loadJourneysByIds(ids);
   }
 
   // ── Combined All/Restaurants/Hotels wishlist ────────────────────────────

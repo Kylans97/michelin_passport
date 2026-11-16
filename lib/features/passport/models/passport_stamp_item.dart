@@ -1,4 +1,5 @@
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../../data/repositories/journey_repository.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../../models/visit.dart';
@@ -129,4 +130,30 @@ class EventStampItem extends PassportStampItem {
   /// concept of its own, matching [PassportEventCard]'s own established
   /// "no awardRow, ever" rule.
   String get eventTypeLabel => entry.event.eventType.label.toUpperCase();
+}
+
+/// One confirmed travel aboard a train or ship (`journey_travels`). Like an
+/// event, a journey has no award: its kind ("TRAIN", "SHIP") stands in the
+/// award row, and it is never "verified" in the venue sense.
+class JourneyStampItem extends PassportStampItem {
+  final JourneyTravelEntry entry;
+
+  const JourneyStampItem(this.entry);
+
+  @override
+  String get id => entry.travel.id;
+  @override
+  String get venueName => entry.journey.name;
+
+  /// Where the member boarded, when they said which route; else empty
+  /// (the stamp omits the segment rather than guessing a place).
+  @override
+  String get cityName => entry.route?.fromPlace ?? '';
+  @override
+  String get countryCode =>
+      entry.route?.fromCountryCode ?? entry.journey.primaryCountryCode ?? '';
+  @override
+  DateTime get date => entry.travel.departedOn;
+
+  String get kindLabel => entry.journey.kind.label.toUpperCase();
 }

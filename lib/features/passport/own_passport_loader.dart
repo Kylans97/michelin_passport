@@ -1,6 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../data/repositories/journey_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/venue_entry.dart';
@@ -19,6 +20,7 @@ class OwnPassport {
   // shows the WHOLE history, not just buildPassportVolumes' 5-year window.
   final List<VenueEntry> entries;
   final List<EventAttendanceEntry> eventEntries;
+  final List<JourneyTravelEntry> journeyEntries;
 
   final String holderName;
   final String? avatarUrl;
@@ -33,6 +35,7 @@ class OwnPassport {
     required this.volumes,
     required this.entries,
     required this.eventEntries,
+    this.journeyEntries = const [],
     required this.holderName,
     required this.avatarUrl,
     required this.memberNumber,
@@ -54,6 +57,15 @@ Future<OwnPassport> loadOwnPassport(SupabaseClient client) async {
     ).loadPassportEventAttendance(uid);
   } catch (_) {
     // Never fails the rest of Passport — same precedent as before.
+  }
+
+  var journeyEntries = <JourneyTravelEntry>[];
+  try {
+    journeyEntries = await JourneyRepository(
+      client,
+    ).loadPassportJourneyTravels(uid);
+  } catch (_) {
+    // Same as events: never fails the rest of Passport.
   }
 
   var name = 'Member';
@@ -87,9 +99,14 @@ Future<OwnPassport> loadOwnPassport(SupabaseClient client) async {
   }
 
   return OwnPassport(
-    volumes: buildPassportVolumes(entries: entries, eventEntries: eventEntries),
+    volumes: buildPassportVolumes(
+      entries: entries,
+      eventEntries: eventEntries,
+      journeyEntries: journeyEntries,
+    ),
     entries: entries,
     eventEntries: eventEntries,
+    journeyEntries: journeyEntries,
     holderName: name,
     avatarUrl: avatarUrl,
     memberNumber: memberNumber,

@@ -7,6 +7,7 @@ import '../../core/widgets/cs_editorial_glyphs.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../data/repositories/journey_repository.dart';
 import '../../models/venue_entry.dart';
 import 'models/passport_stamp_item.dart';
 import 'passport_filter_type.dart';
@@ -32,6 +33,7 @@ const _months = [
 class PassportAllVisitsScreen extends StatefulWidget {
   final List<VenueEntry> entries;
   final List<EventAttendanceEntry> eventEntries;
+  final List<JourneyTravelEntry> journeyEntries;
   final PassportFilterType? initialFilter;
   final void Function(PassportStampItem item) onTapItem;
 
@@ -39,6 +41,7 @@ class PassportAllVisitsScreen extends StatefulWidget {
     super.key,
     required this.entries,
     required this.eventEntries,
+    this.journeyEntries = const [],
     required this.initialFilter,
     required this.onTapItem,
   });
@@ -55,6 +58,7 @@ class _PassportAllVisitsScreenState extends State<PassportAllVisitsScreen> {
       ...buildRestaurantStampItems(widget.entries),
       ...buildHotelStampItems(widget.entries),
       ...buildEventStampItems(widget.eventEntries),
+      ...buildJourneyStampItems(widget.journeyEntries),
     ]..sort((a, b) => b.date.compareTo(a.date));
     final filter = _filter;
     if (filter == null) return items;
@@ -64,6 +68,7 @@ class _PassportAllVisitsScreenState extends State<PassportAllVisitsScreen> {
             PassportFilterType.restaurants => item is RestaurantStampItem,
             PassportFilterType.hotels => item is HotelStampItem,
             PassportFilterType.events => item is EventStampItem,
+            PassportFilterType.journeys => item is JourneyStampItem,
           },
         )
         .toList();
@@ -167,6 +172,7 @@ class _AllVisitsRow extends StatelessWidget {
     RestaurantStampItem() => 'RESTAURANT',
     HotelStampItem() => 'HOTEL',
     EventStampItem(:final entry) => entry.event.eventType.label.toUpperCase(),
+    JourneyStampItem(:final kindLabel) => kindLabel,
   };
 
   @override

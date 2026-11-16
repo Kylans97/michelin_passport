@@ -1,4 +1,5 @@
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../data/repositories/journey_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import 'models/passport_stamp_item.dart';
@@ -50,6 +51,20 @@ List<PassportStampItem> buildEventStampItems(
     for (final entry in entries)
       if (year == null || entry.event.startDate.year == year)
         EventStampItem(entry),
+  ];
+  return _sortOldestFirst(items);
+}
+
+/// The journeys equivalent — one [JourneyStampItem] per confirmed travel
+/// in [year] ("All time" when null), dated by departure.
+List<PassportStampItem> buildJourneyStampItems(
+  List<JourneyTravelEntry> entries, {
+  int? year,
+}) {
+  final items = [
+    for (final entry in entries)
+      if (year == null || entry.travel.departedOn.year == year)
+        JourneyStampItem(entry),
   ];
   return _sortOldestFirst(items);
 }

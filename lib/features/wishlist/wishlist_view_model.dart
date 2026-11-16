@@ -14,12 +14,14 @@ import '../../models/passport_venue.dart';
 enum WishlistVenueType {
   restaurants,
   hotels,
-  events;
+  events,
+  journeys;
 
   String get label => switch (this) {
     WishlistVenueType.restaurants => 'Restaurants',
     WishlistVenueType.hotels => 'Hotels',
     WishlistVenueType.events => 'Events',
+    WishlistVenueType.journeys => 'Journeys',
   };
 }
 

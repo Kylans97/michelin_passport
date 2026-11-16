@@ -210,13 +210,16 @@ void main() {
       final chips = tester
           .widgetList<CsFilterChip>(find.byType(CsFilterChip))
           .toList();
-      expect(chips.length, 3);
+      // Journeys (trains and ships) joined as a fourth tab, 2026-11-16.
+      expect(chips.length, 4);
       expect(chips[0].label, 'Restaurants');
       expect(chips[0].selected, isTrue);
       expect(chips[1].label, 'Hotels');
       expect(chips[1].selected, isFalse);
       expect(chips[2].label, 'Events');
       expect(chips[2].selected, isFalse);
+      expect(chips[3].label, 'Journeys');
+      expect(chips[3].selected, isFalse);
     });
 
     testWidgets('EVENT WISHLIST V1: the Events chip exists as a third, '

@@ -30,6 +30,7 @@ import '../events/events_screen.dart';
 import '../guides/guides_screen.dart';
 import '../guides/widgets/guide_destination_row.dart';
 import '../hotels/hotel_detail_screen.dart';
+import '../journeys/journeys_screen.dart';
 import '../private_chefs/private_chefs_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'discovery_selectors.dart';
@@ -428,6 +429,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
     MaterialPageRoute(builder: (_) => const PrivateChefsScreen()),
   );
 
+  void _openJourneys() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const JourneysScreen()),
+  );
+
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
@@ -479,6 +485,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
               label: 'Private Chefs',
               descriptor: 'Exceptional chefs, selected for private dining.',
               onTap: _openPrivateChefs,
+              surface: CsSurface.dark,
+            ),
+            GuideDestinationRow(
+              label: 'Trains & Ships',
+              descriptor: 'Luxury trains and small ships, worth the journey.',
+              onTap: _openJourneys,
               surface: CsSurface.dark,
             ),
           ],
