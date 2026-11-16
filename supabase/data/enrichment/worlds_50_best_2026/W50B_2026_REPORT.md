@@ -1,6 +1,6 @@
 # The 50 Best Restaurants 2026 — catalogue import (2026-11-16)
 
-Status: **PREPARED — NOTHING APPLIED.** Waits on the product owner's approval.
+Status: **APPLIED to production 2026-11-16** with the product owner's approval; verified there (see the Michelin_Database CHANGELOG).
 
 ## What and why
 
