@@ -1,7 +1,7 @@
 # Booking windows — collection plan
 
 Planned 2026-11-16, alongside `supabase/migrations/20261101400000_add_wishlist_month_and_booking_windows.sql`.
-**Nothing here has been imported.** The Netherlands was researched on 2026-11-16 (`RUN_LOG.md`); staged, awaiting review. This is the plan and the
+**Nothing here has been imported.** Researched on 2026-11-16 and staged for review (`RUN_LOG.md`): the Netherlands (`booking_windows_staging.csv`), The World's 50 Best 2026 (`booking_windows_w50b_2026_staging.csv`) and three MICHELIN stars (`booking_windows_three_star_staging.csv`). This is the plan and the
 staging file. The staging file has extra columns beyond the table below: `has_active_manager`, `result` and `platform_seen` (the platform as seen, when the enum says `other`).
 
 ## Why

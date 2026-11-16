@@ -79,3 +79,144 @@ QA issue):
 Guestplan, which the `platform` enum does not have. Those rows say `other`, and
 `platform_seen` holds the name. Several platform names were inferred from widget
 anchors, not named on the page; the notes say which.
+
+## 2026-11-16 — World's 50 Best 2026 (101) and three MICHELIN stars (131)
+
+Asked by the product owner ("oke laten we hierna dezelfde check doen voor de
+world 50 best restaurants van de nieuwste editie. En als dat klaar is voor alle
+3 michelin restaurants"). The rules are the same as the NL run.
+
+**Scope:**
+- **W50B:** `worlds_50_best` where `year = 2026`, 101 rows: top_50, 51–100 and
+  one hall_of_fame. All 101 are linked to a `restaurant_id` and all are open.
+  File: `booking_windows_w50b_2026_staging.csv`, with the extra column
+  `w50b_rank_2026`.
+- **Three stars:** `michelin_stars = 3`, `status = 'open'`, not ended: 162.
+  **31 were skipped:** 30 are already in the W50B file and 1 (De Librije) is in
+  the NL file. That leaves 131.
+  File: `booking_windows_three_star_staging.csv`.
+- **Managers:** none of the 232 has an active venue manager or an existing
+  window. Re-check before an import.
+
+**Method:** eleven parallel research passes, using the same sources and limits
+as the NL run. The brief added two rules:
+- Pick the timezone from the country's `countries.timezones`, matching the
+  restaurant's city.
+- If the source names a zone that differs from local time, treat the row as
+  ambiguous.
+
+Every `proposed` row was then re-fetched separately: 15 for W50B and 18 for
+three stars. All 33 match the live page word for word. The two PDFs, Hélène
+Darroze at The Connaught and La Pergola, were read directly.
+
+### Coverage
+
+| list | found | of which proposed | not_stated | ambiguous | unreachable |
+|---|---|---|---|---|---|
+| W50B 2026 (101) | 18 | 15 | 69 | 9 | 5 |
+| Three stars (131) | 25 | 18 | 89 | 8 | 9 |
+
+**Proposed, W50B:**
+- Monthly:
+  - Sazenka: on the 1st, the month 2 ahead.
+  - The Jane: on the 1st, the month 3 ahead.
+- Rolling:
+  - DiverXO: 90 days, 00:00.
+  - Florilège: 1 month, 00:00.
+  - Septime: 21 days, 10:00.
+  - Den: 2 months, 12:00, phone only.
+  - Wing: 30 days, 00:00.
+  - Kjolle: 5 months.
+  - Saint Peter: 6 months.
+  - Schloss Schauenstein: 8 months.
+  - Sühring, Enigma, Seroja and Baan Tepa: 60 days each.
+  - Txispa: 90 days.
+
+**Proposed, three stars:**
+- Monthly:
+  - RyuGin: on the 1st at 12:00, the month 2 ahead.
+  - Boury: on the 1st, the month 3 ahead.
+  - Eleven Madison Park: on the 1st, the next month.
+  - Quince: on the 1st, the next month.
+  - Zen: on the 1st at 10:00, the next month.
+  - El Celler de Can Roca: on the 1st at 00:00, the month 11 ahead.
+- Seasonal:
+  - Mirazur: dated releases at 09:00 for April, May and June 2027.
+- Rolling:
+  - Disfrutar: 12 months.
+  - Mizai: 12 months.
+  - Quintessence: 3 months, 09:30 on OMAKASE.
+  - Taïrroir: 30 days.
+  - Zilte: 120 days.
+  - Taian Table: 90 days.
+  - Benu: 30 days, 10:00.
+  - Providence: 2 months.
+  - Somni: 1 month.
+  - Hélène Darroze at The Connaught: 90 days.
+  - La Pergola: 120 days.
+
+**Held at medium:**
+- Vyn: "for stays" may mean the hotel.
+- SingleThread: "9AM PST" year-round is 10:00 local during daylight saving.
+- Tim Raue: "zurzeit"; online booking is offline after a phishing incident.
+- Maaemo: "two months ahead" read as monthly.
+- Geranium: garbled sentence, groups of 2–6 only.
+- Ta Vie: WhatsApp and email only.
+- Osteria Francescana: dated calendar.
+- Villa Crespi: dated list.
+- Dal Pescatore: the year is not printed.
+- L'Osier: the release day is deduced, not stated.
+
+**Rules the schema cannot hold** (left blank and listed for a product
+decision, not forced into a nearby kind):
+- A weekday-of-month release:
+  - Kei: the first Tuesday, at 09:30.
+  - Marcon: the first Tuesday.
+  - Gion Sasaki: the first business day.
+  - Villa Crespi: the first weekday.
+  - Enclos and Kol: the last Friday.
+- A weekly release: Tohru, every Monday.
+- Different windows by channel or group size:
+  - The Table Kevin Fehling
+  - Restaurant Gordon Ramsay
+  - Sorn
+- A time in a named zone that differs from local time in part of the year:
+  - Ikoyi: "12:00 pm (GMT)".
+  - SingleThread: "9AM PST".
+
+**Other ambiguous rows:**
+- Alchemist and Eliane: approximate quarterly releases.
+- Mil: two statements on the same page conflict.
+- La Cime: the Japanese page says 2 months, the English page 1 month.
+- Le Doyenné: the rule sits under the question about booking a room.
+- Maido: "2 meses … el primer día de cada mes", with no example.
+- Haerlin: "drei Monate" next to "folgenden Monat" on the 1st.
+
+**Unreachable:**
+- Blocked by the site:
+  - Four Seasons (Le Cinq, Caprice)
+  - Cheval Blanc (Le 1947, La Vague d'Or, Plénitude)
+  - Épicure
+  - Piazza Duomo
+  - Frantzén
+  - Jade Dragon
+- Timeout: FZN.
+- Self-signed certificate: Kanda, Isshisoden Nakamura.
+- No readable content (rendered by JavaScript): Le Bernardin.
+- No own site found: Harutaka.
+
+Many Tock, OMAKASE, CoverManager and Superb pages returned 403, so some
+`not_stated` rows rest on the restaurant's own site only. Their notes say
+which.
+
+**Catalogue observations** (outside this task):
+- Osteria Francescana's `website_url` (osteria-francescana.net) does not
+  resolve; its site is osteriafrancescana.it.
+- Memories says it will stop operating in February 2027.
+- No own website was found for:
+  - Meet the Bund
+  - Ru Yuan
+  - Fu He Hui
+  - Lamdre
+  - Mérito
+  - Chao Shang Chao
