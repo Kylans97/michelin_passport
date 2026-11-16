@@ -1,4 +1,4 @@
--- PREPARED -- NOT APPLIED.
+-- APPLIED to production 2026-11-16 with the product owner's approval.
 --
 -- The three regional 50 Best lists, written 2026-11-16 (branch
 -- claude/guide-inventory), into the shared guide tables of

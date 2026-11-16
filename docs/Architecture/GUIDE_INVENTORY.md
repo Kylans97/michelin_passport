@@ -325,7 +325,7 @@ comes closest and is not recommended now.
 
 > **Status 2026-11-16:** the product owner chose step 1 first, then the La
 > Liste permission request. The shared tables and the three regional lists
-> are prepared, not applied (`supabase/data/enrichment/regional_50_best/
+> are applied to production (2026-11-16; `supabase/data/enrichment/regional_50_best/
 > REGIONAL_50_BEST_REPORT.md`); the La Liste letter is drafted, not sent
 > (`guide_inventory/LA_LISTE_PERMISSION_REQUEST.md`).
 

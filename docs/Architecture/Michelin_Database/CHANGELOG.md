@@ -6,6 +6,26 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-16 — Regional 50 Best lists in the new shared guide tables (QA-490, QA-491)
+
+| | |
+|---|---|
+| Applied | 2026-11-16, to production, at the product owner's request ("Ja, pas de migratie en de 111 rankings toe op productie"), from `claude/guide-inventory` |
+| Migration | `20261101410000_add_shared_guide_tables.sql`: `guides`, `guide_awards`, `guide_venue_links`, `guide_coverage`, view `guide_awards_current`. Ledger 154/154, local and remote in agreement |
+| Data | `regional_50_best/prepared_regional_50_best_import.sql`, one transaction: 3 guides, 111 `guide_awards`, 111 `guide_venue_links`, 3 `guide_coverage` |
+
+**Source.** the50.com only, read 2026-11-16: Asia's 50 Best 2026 (100 entries), North America's 50 Best 2026 (50), Latin America's 50 Best 2025 (100; the 2026 list follows on 1 December). Matched on code + country, with website, phone or address from the publisher's venue or discovery page, or an existing 50 Best rank on the row; per-entry basis in `regional_50_best_matches.csv`.
+
+**Result.** Asia 51 ranked, 46 not in the catalogue, 3 held back (QA-490: Meet the Bund, Co-, Vea). North America 32 and 18. Latin America 28 and 72. Restaurants not in the catalogue were not added: a regional ranking does not make a restaurant eligible. `worlds_50_best`, `award_history` and `gault_millau_awards` were not touched.
+
+**Checked after the apply:** 51 / 32 / 28 rows; the (guide, rank, code, country) set read back from production is identical to the CSV; 111 links; coverage `partial` for Asia, `complete` for the other two; `guide_awards_current` returns 111; RLS on, four read policies, `anon` may select and may not insert.
+
+**Not done on purpose:** the stale-looking addresses of eight matched restaurants (QA-491) are logged, not corrected. Nothing reads these tables in the app or the site yet.
+
+**Near-miss:** the worktree held neither `20261101390000` (50 Best 2026) nor `20261101400000` (booking windows), both already applied from other branches, so `db push` would have refused. Both files were copied unchanged from their own branches before the push, and the ledger was checked to show `20261101410000` as the only pending migration.
+
+---
+
 # 2026-11-05 — Greece and 41 countries: Place IDs, phones and websites (QA-431, QA-464–QA-471)
 
 | | |

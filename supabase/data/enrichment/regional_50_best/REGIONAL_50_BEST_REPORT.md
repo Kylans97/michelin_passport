@@ -1,7 +1,8 @@
 # Regional 50 Best lists — shared guide tables and first import (2026-11-16)
 
-Status: **PREPARED, NOT APPLIED.** Waiting on the product owner's approval
-to apply the migration and then the data file to production.
+Status: **APPLIED to production 2026-11-16** with the product owner's
+approval; verified there (see the Michelin_Database CHANGELOG). Ledger
+154/154.
 
 Decided by the product owner on 2026-11-16: "Begin met de drie regionale
 50 Best-lijsten (Azië, Noord-Amerika, Latijns-Amerika) en de gedeelde
