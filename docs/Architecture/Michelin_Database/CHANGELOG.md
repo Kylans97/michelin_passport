@@ -6,6 +6,24 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-16 — Guía Repsol 2026, 2 and 3 Soles, in the shared guide tables
+
+| | |
+|---|---|
+| Applied | 2026-11-16, to production, at the product owner's request ("Ja, pas Guía Repsol 2 en 3 Soles (159 restaurants) toe op productie"), from `claude/guide-inventory` |
+| Migration | None. Data SQL only, into the tables of `20261101410000` |
+| Data | `guia_repsol_2026/prepared_guia_repsol_2026_import.sql`, one transaction: 1 guide (`guia_repsol`, tiers "1 Sol / 2 Soles / 3 Soles"), 159 `guide_awards`, 159 `guide_venue_links` keyed on Repsol's ficha id, 1 `guide_coverage` (ES, partial) |
+
+**Source.** guiarepsol.com only, read 2026-11-16: the official 2026 Soles list (46 / 173 / 589, gala 2026-02-16) and each restaurant's ficha (address, coordinates, phone, website). Matched on code + country by phone, website or location across the Spanish catalogue, never name; per-entry basis in `repsol_2026_matches.csv`.
+
+**Result.** 3 Soles: 46 of 46. 2 Soles: 113 of 173; 57 not in the catalogue (listed, not added), 2 held back (La Gaia, Poemas by Hermanos Padrón), 1 not staged (Béns d'Avall, marked closed). 1 Sol not loaded: its fichas were not read before Repsol's bot protection blocked further requests.
+
+**Checked after the apply:** 46 + 113 rows; the (tier, code, country) set read back is identical to the CSV; 159 links; `guide_awards_current` returns 159; the coverage note reads as staged.
+
+**Not checked / near-miss:** Repsol swaps latitude and longitude on 61 fichas; compared swapped back. `supabase migration list --linked` shows `20261101420000`–`20261101450000` on remote and not on this branch: applied by other sessions after this branch's last sync, not by this apply.
+
+---
+
 # 2026-11-16 — Regional 50 Best lists in the new shared guide tables (QA-490, QA-491)
 
 | | |

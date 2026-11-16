@@ -1,4 +1,4 @@
--- PREPARED -- NOT APPLIED. Waiting on the product owner's approval.
+-- APPLIED to production 2026-11-16 with the product owner's approval.
 --
 -- Guía Repsol 2026 (Spain), 2 and 3 Soles, written 2026-11-16 (branch
 -- claude/guide-inventory), into the shared guide tables

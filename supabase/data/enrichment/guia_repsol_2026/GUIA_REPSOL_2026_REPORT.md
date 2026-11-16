@@ -1,7 +1,9 @@
 # Guía Repsol 2026 (Spain) — research and staging (2026-11-16)
 
-Status: **PREPARED, NOT APPLIED.** 2 and 3 Soles are staged and tested
-locally; 1 Sol waits for the rest of its fichas (see "Not finished").
+Status: **2 and 3 Soles APPLIED to production 2026-11-16** with the
+product owner's approval (159 rows, verified identical to the CSV; see the
+Michelin_Database CHANGELOG). 1 Sol waits for the rest of its fichas (see
+"Not finished").
 Asked for by the product owner on 2026-11-16 ("ja ik bedoel Repsol").
 
 ## The guide
