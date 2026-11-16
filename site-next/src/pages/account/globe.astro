@@ -103,7 +103,7 @@ import '../../styles/account.css';
   import { loadPassport, type Stamp } from '../../lib/account/passport';
   import { clampCamera, clusterPins, decodeOutlines, fitCamera, paintGlobe, type Camera, type GlobeCountry } from '../../lib/account/globe';
   import { el, starLabel } from '../../lib/account/catalogue';
-  import { stampDate } from '../../lib/account/stamps';
+  import { formatDateRange } from '../../lib/event-dates';
 
   interface Place { id: string; kind: Stamp['kind']; name: string; city: string; latitude: number; longitude: number; stamps: Stamp[] }
 
@@ -142,7 +142,7 @@ import '../../styles/account.css';
       body.append(el('p', 'saved-name', p.name), el('p', 'saved-meta', describe(p)));
       for (const s of p.stamps.slice().reverse()) {
         const line = el('p', 'saved-meta');
-        const text = `${s.kind === 'event' ? 'Attended' : s.kind === 'hotel' ? 'Stayed' : 'Visited'} ${stampDate(s.date).toLowerCase()}`;
+        const text = `${s.kind === 'event' ? 'Attended' : s.kind === 'hotel' ? 'Stayed' : 'Visited'} ${formatDateRange({ startDate: s.date, endDate: s.date })}`;
         if (s.href) {
           const a = el('a', undefined, text);
           a.href = s.href;

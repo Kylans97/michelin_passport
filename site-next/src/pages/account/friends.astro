@@ -1,0 +1,154 @@
+---
+// Friends, as the app's Friends screen: your friends, requests in and out,
+// finding members, and the people you've blocked. Every change goes
+// through the app's own RPCs, which hold the rules on who may be found and
+// asked.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Friends" description="Your friends on Mantelier." noindex>
+  <PageHeader eyebrow='<a href="/account">Your account</a>' title="Friends" />
+
+  <div class="wrap account-body">
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-tab="friends">Friends</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="requests">Requests<span class="count" data-request-count hidden></span></button>
+      <button type="button" role="tab" aria-selected="false" data-tab="find">Find members</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="blocked">Blocked</button>
+    </div>
+    <p class="notice error" data-error hidden>Something went wrong. Please try again.</p>
+
+    <section data-panel="friends">
+      <p class="empty" data-loading>Loading…</p>
+      <ul class="saved-list people" data-list="friends"></ul>
+      <p class="empty" data-empty="friends" hidden>No friends yet. Find members to add, or accept a request.</p>
+    </section>
+
+    <section data-panel="requests" hidden>
+      <h2 class="eyebrow">Received</h2>
+      <ul class="saved-list people" data-list="incoming"></ul>
+      <p class="empty" data-empty="incoming" hidden>No requests waiting.</p>
+      <h2 class="eyebrow sent">Sent</h2>
+      <ul class="saved-list people" data-list="outgoing"></ul>
+      <p class="empty" data-empty="outgoing" hidden>No requests sent.</p>
+    </section>
+
+    <section data-panel="find" hidden>
+      <form class="form search" data-search>
+        <div class="field">
+          <label for="q">Name or username</label>
+          <input id="q" name="q" type="search" autocomplete="off" minlength="2">
+        </div>
+      </form>
+      <ul class="saved-list people" data-list="results"></ul>
+      <p class="empty" data-empty="results" hidden>No members found. Only members who can be found, or who share a request with you, show up.</p>
+    </section>
+
+    <section data-panel="blocked" hidden>
+      <ul class="saved-list people" data-list="blocked"></ul>
+      <p class="empty" data-empty="blocked" hidden>You haven’t blocked anyone.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .people { max-width: 880px; }
+  .sent { margin-top: 40px; }
+  h2 { margin-bottom: 12px; }
+  .search { max-width: 440px; margin-bottom: 20px; }
+</style>
+
+<script>
+  import { requireSession } from '../../lib/account/client';
+  import { el } from '../../lib/account/catalogue';
+  import { button, memberRow } from '../../lib/account/people';
+  import {
+    acceptRequest, declineRequest, loadBlocked, loadFriends, loadIncoming, loadOutgoing,
+    removeFriendship, searchMembers, sendRequest, unblockMember, type Member,
+  } from '../../lib/account/social';
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const error = $('[data-error]');
+  let incoming: Member[] = [];
+
+  function fill(key: string, members: Member[], actions: (m: Member) => HTMLElement[], link = true) {
+    const list = $(`[data-list="${key}"]`);
+    list.replaceChildren(...members.map((m) => memberRow(m, actions(m), link)));
+    $(`[data-empty="${key}"]`).hidden = members.length > 0;
+  }
+
+  async function refresh() {
+    error.hidden = true;
+    try {
+      const [friends, inc, out, blocked] = await Promise.all([loadFriends(), loadIncoming(), loadOutgoing(), loadBlocked()]);
+      incoming = inc;
+      fill('friends', friends, () => []);
+      fill('incoming', inc, (m) => [
+        button('Decline', async () => { await declineRequest(m.friendshipId!); await refresh(); }),
+        button('Accept', async () => { await acceptRequest(m.friendshipId!); await refresh(); }, false),
+      ]);
+      fill('outgoing', out, (m) => [button('Cancel request', async () => { await removeFriendship(m.friendshipId!); await refresh(); })]);
+      fill('blocked', blocked, (m) => [button('Unblock', async () => { await unblockMember(m.id); await refresh(); })], false);
+      const badge = $('[data-request-count]');
+      badge.textContent = String(inc.length);
+      badge.hidden = inc.length === 0;
+    } catch {
+      error.hidden = false;
+    }
+    $('[data-loading]').hidden = true;
+  }
+
+  /** What a search result offers, by where the two of you stand. */
+  function searchActions(m: Member): HTMLElement[] {
+    switch (m.relationship) {
+      case 'accepted': return [el('span', 'status-label', 'Friends')];
+      case 'pending_sent': return [el('span', 'status-label', 'Request sent')];
+      case 'declined': return [el('span', 'status-label', 'Unavailable')];
+      case 'pending_received': {
+        const request = incoming.find((r) => r.id === m.id);
+        return request ? [button('Accept', async (b) => { await acceptRequest(request.friendshipId!); b.replaceWith(el('span', 'status-label', 'Friends')); await refresh(); }, false)] : [];
+      }
+      default:
+        return [button('Add friend', async (b) => { await sendRequest(m.id); b.replaceWith(el('span', 'status-label', 'Request sent')); await refresh(); }, false)];
+    }
+  }
+
+  let searchTimer = 0;
+  let searchSeq = 0;
+  const input = $<HTMLInputElement>('#q');
+  async function runSearch() {
+    const seq = ++searchSeq;
+    const q = input.value;
+    if (q.trim().length < 2) {
+      $('[data-list="results"]').replaceChildren();
+      $('[data-empty="results"]').hidden = true;
+      return;
+    }
+    try {
+      const results = await searchMembers(q);
+      if (seq !== searchSeq) return;
+      fill('results', results, searchActions);
+    } catch {
+      error.hidden = false;
+    }
+  }
+  input.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = window.setTimeout(runSearch, 250); });
+  $('[data-search]').addEventListener('submit', (e) => { e.preventDefault(); runSearch(); });
+
+  function show(tab: string) {
+    document.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
+    document.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => { p.hidden = p.dataset.panel !== tab; });
+    if (tab === 'find') input.focus();
+    history.replaceState(null, '', tab === 'friends' ? location.pathname : `#${tab}`);
+  }
+  document.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab!)));
+
+  async function main() {
+    await requireSession();
+    const start = location.hash.slice(1);
+    if (['requests', 'find', 'blocked'].includes(start)) show(start);
+    await refresh();
+  }
+  main();
+</script>

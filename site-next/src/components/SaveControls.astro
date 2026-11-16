@@ -1,9 +1,9 @@
 ---
-// "Add to wishlist" and, on an event, Interested / Going: the app's own
-// controls for a signed-in reader, the app's call to action for everyone
-// else. The static page always carries the call to action; a stored
-// session swaps it for the real controls in the browser, so nothing
-// personal is ever in the HTML.
+// "Add to wishlist", on a restaurant "Follow", and on an event Interested /
+// Going: the app's own controls for a signed-in reader, the app's call to
+// action for everyone else. The static page always carries the call to
+// action; a stored session swaps it for the real controls in the browser,
+// so nothing personal is ever in the HTML.
 import AppCta from './AppCta.astro';
 import type { SiteEvent } from '../lib/events';
 
@@ -37,6 +37,7 @@ const { type, id, appLabel, variant = 'outline', event } = Astro.props;
       </div>
     )}
     <button type="button" class="pill" data-wishlist aria-pressed="false">Add to wishlist</button>
+    {type === 'restaurant' && <button type="button" class="pill" data-follow aria-pressed="false">Follow</button>}
     <span class="error" data-save-error hidden>That didn’t save. Please try again.</span>
   </div>
 </div>
@@ -71,6 +72,7 @@ const { type, id, appLabel, variant = 'outline', event } = Astro.props;
   async function wire(box: HTMLElement) {
     const { fullSession } = await import('../lib/account/client');
     const data = await import('../lib/account/data');
+    const social = await import('../lib/account/social');
     const session = await fullSession();
     if (!session) return;
     const userId = session.user.id;
@@ -91,10 +93,19 @@ const { type, id, appLabel, variant = 'outline', event } = Astro.props;
       b.setAttribute('aria-pressed', String(b.dataset.intent === intent));
     });
 
-    const [wishlisted, current] = await Promise.all([
+    const followButton = box.querySelector<HTMLButtonElement>('[data-follow]');
+    const setFollowing = (on: boolean) => {
+      if (!followButton) return;
+      followButton.setAttribute('aria-pressed', String(on));
+      followButton.textContent = on ? 'Following' : 'Follow';
+    };
+
+    const [wishlisted, current, following] = await Promise.all([
       data.isWishlisted(userId, type, id),
       canAttend ? data.myIntent(userId, id) : Promise.resolve(null),
+      followButton ? social.isFollowing(userId, 'restaurant', id) : Promise.resolve(false),
     ]);
+    setFollowing(following);
     setWishlisted(wishlisted);
     intent = current;
     showIntent();
@@ -115,6 +126,13 @@ const { type, id, appLabel, variant = 'outline', event } = Astro.props;
       if (on) await data.removeFromWishlist(userId, type, id);
       else await data.addToWishlist(userId, type, id);
       setWishlisted(!on);
+    }));
+
+    followButton?.addEventListener('click', () => attempt(followButton, async () => {
+      const on = followButton.getAttribute('aria-pressed') === 'true';
+      if (on) await social.unfollow(userId, 'restaurant', id);
+      else await social.follow(userId, 'restaurant', id);
+      setFollowing(!on);
     }));
 
     box.querySelectorAll<HTMLButtonElement>('[data-intent]').forEach((button) => {

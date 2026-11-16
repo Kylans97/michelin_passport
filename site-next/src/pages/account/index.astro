@@ -25,6 +25,24 @@ import '../../styles/account.css';
       </li>
       <li>
         <div>
+          <p class="saved-name"><a href="/account/notifications">Notifications</a> <span class="unread" data-unread hidden></span></p>
+          <p class="saved-meta">Friend requests and new events from places you follow.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="saved-name"><a href="/account/friends">Friends</a></p>
+          <p class="saved-meta">Your friends, requests, and what they share with you.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="saved-name"><a href="/account/following">Following</a></p>
+          <p class="saved-meta">The restaurants, hotels and chefs you follow.</p>
+        </div>
+      </li>
+      <li>
+        <div>
           <p class="saved-name"><a href="/account/wishlist">Wishlist</a></p>
           <p class="saved-meta">The restaurants, hotels and events you saved.</p>
         </div>
@@ -36,18 +54,22 @@ import '../../styles/account.css';
         </div>
       </li>
     </ul>
-    <p class="help signed-as">Signed in as <span data-email></span>. New stamps, trips and friends are in the app.</p>
+    <p class="help signed-as">Signed in as <span data-email></span>. New stamps and trips are in the app.</p>
     <button class="button quiet" type="button" data-sign-out>Sign out</button>
   </div>
 </Base>
 
 <style>
   .signed-as { margin: 28px 0 18px; }
+  .unread { font-family: var(--body); font-size: 11px; background: var(--green); color: var(--ivory); border-radius: 999px; padding: 2px 8px; vertical-align: middle; }
 </style>
 
 <script>
   import { loadName, requireSession, signOut } from '../../lib/account/client';
   import { showMemberInHeader } from '../../lib/account/peek';
+  import { unreadCount } from '../../lib/account/social';
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
 
   async function main() {
     const session = await requireSession();
@@ -56,6 +78,9 @@ import '../../styles/account.css';
     document.querySelector('[data-email]')!.textContent = session.user.email ?? '';
     document.querySelector<HTMLElement>('[data-account-page]')!.hidden = false;
     showMemberInHeader(name);
+    unreadCount().then((n) => {
+      if (n > 0) { $('[data-unread]').textContent = `${n} new`; $('[data-unread]').hidden = false; }
+    }).catch(() => {});
   }
   main();
 

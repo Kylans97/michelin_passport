@@ -1,0 +1,219 @@
+---
+// Another member, as the app's friend profile: who they are and where the
+// two of you stand, and, once you're friends, what they share with you:
+// the visits they made visible to friends, the events they're going to
+// and their wishlist. RLS returns only what they share; a friendship that
+// ends or a block shows nothing. Suggesting a visit together stays in the
+// app.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Member" description="A member of Mantelier." noindex>
+  <PageHeader eyebrow='<a href="/account/friends">Friends</a>' title="Member" />
+
+  <div class="wrap account-body">
+    <p class="empty" data-loading>Loading…</p>
+    <p class="notice error" data-error hidden>This member can’t be shown.</p>
+
+    <div data-profile hidden>
+      <div class="identity">
+        <span data-avatar></span>
+        <div>
+          <p class="handle" data-handle></p>
+          <p class="saved-meta" data-member-no></p>
+        </div>
+      </div>
+      <div class="actions" data-actions></div>
+      <p class="notice ok" data-done hidden></p>
+
+      <div data-shared hidden>
+        <div class="stats">
+          <div><p class="count" data-stamps></p><p class="eyebrow">Stamps</p></div>
+          <div><p class="count" data-countries></p><p class="eyebrow">Countries</p></div>
+          <div><p class="count" data-stars></p><p class="eyebrow">Stars</p></div>
+          <div><p class="count" data-score></p><p class="eyebrow">Average score</p></div>
+        </div>
+
+        <section class="saved-group">
+          <h2 class="eyebrow">Visits</h2>
+          <ul class="saved-list" data-list="visits"></ul>
+          <p class="empty" data-empty="visits" hidden>No visits shared with friends yet.</p>
+        </section>
+        <section class="saved-group">
+          <h2 class="eyebrow">Going</h2>
+          <ul class="saved-list" data-list="going"></ul>
+          <p class="empty" data-empty="going" hidden>Nothing coming up.</p>
+        </section>
+        <section class="saved-group">
+          <h2 class="eyebrow">Wishlist</h2>
+          <ul class="saved-list" data-list="wishlist"></ul>
+          <p class="empty" data-empty="wishlist" hidden>Nothing on their wishlist yet.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .identity { display: flex; align-items: center; gap: 18px; }
+  .handle { font-size: 15px; color: var(--ink-soft); margin: 0; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  [data-done] { margin-top: 16px; max-width: 520px; }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; max-width: 760px; margin: 36px 0 8px; padding: 18px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .count { font-family: var(--display); font-size: 36px; line-height: 1; margin: 0 0 6px; }
+  .saved-group { margin-top: 40px; max-width: 880px; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+
+<script>
+  import { requireSession, supabase } from '../../lib/account/client';
+  import { catalogue, el, starLabel } from '../../lib/account/catalogue';
+  import { eventHasEnded, venuesById } from '../../lib/account/data';
+  import { avatar, button } from '../../lib/account/people';
+  import {
+    acceptRequest, blockMember, declineRequest, loadFriends, loadIncoming, loadOutgoing, memberIdentity, memberName,
+    removeFriendship, sendRequest, type Member,
+  } from '../../lib/account/social';
+  import { formatDateRange } from '../../lib/event-dates';
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const id = new URLSearchParams(location.search).get('id') ?? '';
+
+  function item(name: string, href: string | null, meta: string, gold?: string | null): HTMLLIElement {
+    const li = el('li');
+    const text = el('div');
+    const title = el('p', 'saved-name');
+    if (href) { const a = el('a', undefined, name); a.href = href; title.append(a); } else title.textContent = name;
+    const m = el('p', 'saved-meta');
+    if (gold) m.append(el('span', 'gold', gold), ' ');
+    m.append(meta);
+    text.append(title, m);
+    li.append(text);
+    return li;
+  }
+  const fill = (key: string, items: HTMLLIElement[]) => {
+    $(`[data-list="${key}"]`).replaceChildren(...items);
+    $(`[data-empty="${key}"]`).hidden = items.length > 0;
+  };
+  const done = (text: string) => { $('[data-done]').textContent = text; $('[data-done]').hidden = false; };
+
+  async function actions(m: Member) {
+    const box = $('[data-actions]');
+    box.replaceChildren();
+    const name = memberName(m);
+    const reload = () => setTimeout(() => location.reload(), 600);
+    if (m.relationship === 'accepted') {
+      const f = (await loadFriends()).find((x) => x.id === m.id);
+      if (f) box.append(button('Remove friend', async () => {
+        if (!confirm(`Remove ${name} as a friend? You will no longer be friends. Either of you can send a new request later.`)) return;
+        await removeFriendship(f.friendshipId!); done(`You and ${name} are no longer friends.`); reload();
+      }));
+    } else if (m.relationship === 'pending_received') {
+      const r = (await loadIncoming()).find((x) => x.id === m.id);
+      if (r) box.append(
+        button('Accept', async () => { await acceptRequest(r.friendshipId!); reload(); }, false),
+        button('Decline', async () => { await declineRequest(r.friendshipId!); reload(); }),
+      );
+    } else if (m.relationship === 'pending_sent') {
+      const r = (await loadOutgoing()).find((x) => x.id === m.id);
+      box.append(el('span', 'status-label', 'Request sent'));
+      if (r) box.append(button('Cancel request', async () => { await removeFriendship(r.friendshipId!); reload(); }));
+    } else if (m.relationship === 'declined') {
+      box.append(el('span', 'status-label', 'Unavailable'));
+    } else {
+      box.append(button('Add friend', async (b) => { await sendRequest(m.id); b.replaceWith(el('span', 'status-label', 'Request sent')); }, false));
+    }
+    box.append(button('Block', async () => {
+      if (!confirm(`Block ${name}? You'll no longer see each other's content, and any existing friendship will end.`)) return;
+      await blockMember(m.id); done(`Blocked ${name}. You can unblock them under Friends → Blocked.`); box.replaceChildren();
+    }));
+  }
+
+  /** What a friend shares: visits marked for friends, upcoming Going and
+   *  their wishlist. Plain reads; RLS returns only the shared rows. */
+  async function shared(friendId: string) {
+    const db = supabase();
+    const [visits, going, wishlist] = await Promise.all([
+      db.from('visits').select('id, entity_type, entity_id, visited_on, stars_at_visit, keys_at_visit, rating').eq('user_id', friendId).order('visited_on', { ascending: false }),
+      db.from('event_attendance').select('event_id').eq('user_id', friendId).eq('status', 'going'),
+      db.from('wishlist').select('entity_type, entity_id').eq('user_id', friendId).order('added_at', { ascending: false }),
+    ]);
+    for (const r of [visits, going, wishlist]) if (r.error) throw r.error;
+    const v = (visits.data ?? []) as { id: string; entity_type: string; entity_id: string; visited_on: string; stars_at_visit: number | null; keys_at_visit: number | null; rating: number | null }[];
+    const w = (wishlist.data ?? []) as { entity_type: string; entity_id: string }[];
+    const goingIds = ((going.data ?? []) as { event_id: string }[]).map((g) => g.event_id);
+    const cat = await catalogue([...v.map((x) => x.entity_id), ...w.map((x) => x.entity_id), ...goingIds]);
+    const missing = (type: string) => [...new Set([...v, ...w].filter((x) => x.entity_type === type && !(type === 'hotel' ? cat.h : cat.r)[x.entity_id]).map((x) => x.entity_id))];
+    const [liveR, liveH, events] = await Promise.all([
+      venuesById('restaurants_full', missing('restaurant')),
+      venuesById('hotels_full', missing('hotel')),
+      goingIds.length
+        ? db.from('events').select('id, name, start_date, end_date, end_at, timezone, city, cancelled_at').eq('moderation_status', 'published').in('id', goingIds)
+        : Promise.resolve({ data: [], error: null }),
+    ]);
+    if (events.error) throw events.error;
+    const live = new Map([...liveR, ...liveH].map((x) => [x.id, x]));
+    const venue = (type: string, vid: string) => {
+      if (type === 'hotel' && cat.h[vid]) { const h = cat.h[vid]; return { name: h[0], href: null, place: h[1], country: h[3] }; }
+      if (type === 'restaurant' && cat.r[vid]) { const r = cat.r[vid]; return { name: r[1], href: `/restaurants/${r[0]}`, place: r[2], country: r[4] }; }
+      const x = live.get(vid);
+      return x ? { name: x.name as string, href: null, place: [x.city_name, x.country_name].filter(Boolean).join(', '), country: '' } : null;
+    };
+
+    // FriendProfileStats: stamps per visit, stars at each venue's latest visit.
+    const countries = new Set<string>();
+    const latestStars = new Map<string, number>();
+    const scores = v.map((x) => x.rating).filter((x): x is number => x !== null);
+    for (const x of v) {
+      const ven = venue(x.entity_type, x.entity_id);
+      if (ven?.country) countries.add(ven.country);
+      if (x.entity_type === 'restaurant' && !latestStars.has(x.entity_id)) latestStars.set(x.entity_id, x.stars_at_visit ?? 0);
+    }
+    $('[data-stamps]').textContent = String(v.length);
+    $('[data-countries]').textContent = String(countries.size);
+    $('[data-stars]').textContent = String([...latestStars.values()].reduce((a, b) => a + b, 0));
+    $('[data-score]').textContent = scores.length ? (scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(1) : '—';
+
+    fill('visits', v.flatMap((x) => {
+      const ven = venue(x.entity_type, x.entity_id);
+      if (!ven) return [];
+      const award = x.entity_type === 'hotel' ? (x.keys_at_visit ? `${x.keys_at_visit} Key${x.keys_at_visit > 1 ? 's' : ''}` : null) : starLabel(x.stars_at_visit);
+      const meta = [formatDateRange({ startDate: x.visited_on, endDate: x.visited_on }), ven.place, x.rating !== null ? `${Number(x.rating.toFixed(1))}/10` : null].filter(Boolean).join(' · ');
+      return [item(ven.name, ven.href, meta, award)];
+    }));
+    const upcoming = ((events.data ?? []) as { id: string; name: string; start_date: string; end_date: string; end_at: string | null; timezone: string | null; city: string | null; cancelled_at: string | null }[])
+      .filter((e) => !eventHasEnded({ endAt: e.end_at, endDate: e.end_date, timezone: e.timezone }))
+      .sort((a, b) => a.start_date.localeCompare(b.start_date));
+    fill('going', upcoming.map((e) => item(e.name, cat.e[e.id] ? `/events/${cat.e[e.id][0]}` : null,
+      [e.cancelled_at ? 'Cancelled' : null, cat.e[e.id]?.[2] ?? formatDateRange({ startDate: e.start_date, endDate: e.end_date }), e.city].filter(Boolean).join(' · '))));
+    fill('wishlist', w.flatMap((x) => {
+      if (x.entity_type === 'event') return cat.e[x.entity_id] ? [item(cat.e[x.entity_id][1], `/events/${cat.e[x.entity_id][0]}`, cat.e[x.entity_id][2])] : [];
+      const ven = venue(x.entity_type, x.entity_id);
+      return ven ? [item(ven.name, ven.href, ven.place)] : [];
+    }));
+    $('[data-shared]').hidden = false;
+  }
+
+  async function main() {
+    const session = await requireSession();
+    if (id === session.user.id) { location.replace('/account'); return; }
+    try {
+      const m = /^[0-9a-f-]{36}$/i.test(id) ? await memberIdentity(id) : null;
+      if (!m) throw new Error('not visible');
+      const name = memberName(m);
+      document.title = `${name} — Mantelier`;
+      $('.band h1').textContent = name;
+      $('[data-avatar]').replaceWith(avatar(m, 72));
+      $('[data-handle]').textContent = m.username ? `@${m.username}` : '';
+      $('[data-member-no]').textContent = m.memberNumber ? `Member no. ${m.memberNumber}` : '';
+      $('[data-profile]').hidden = false;
+      await actions(m);
+      if (m.relationship === 'accepted') await shared(m.id);
+    } catch {
+      $('[data-error]').hidden = false;
+    }
+    $('[data-loading]').hidden = true;
+  }
+  main();
+</script>

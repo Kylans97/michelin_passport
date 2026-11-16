@@ -1,0 +1,82 @@
+---
+// The restaurants, hotels and private chefs the member follows, newest
+// first, each to unfollow: the app's follows_* tables, own rows only.
+// Following brings their events into the member's notifications.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Following" description="The places you follow on Mantelier." noindex>
+  <PageHeader eyebrow='<a href="/account">Your account</a>' title="Following" intro="New events from the places you follow reach you in your notifications." />
+
+  <div class="wrap account-body">
+    <p class="empty" data-loading>Loading…</p>
+    <p class="notice error" data-error hidden>Couldn’t load who you follow. Please try again.</p>
+    <p class="empty" data-empty hidden>You don’t follow anyone yet. “Follow” on a restaurant’s page adds it here, and in the app.</p>
+    <section class="saved-group" data-group="restaurant" hidden><h2 class="eyebrow">Restaurants</h2><ul class="saved-list"></ul></section>
+    <section class="saved-group" data-group="hotel" hidden><h2 class="eyebrow">Hotels</h2><ul class="saved-list"></ul></section>
+    <section class="saved-group" data-group="private_chef" hidden><h2 class="eyebrow">Private chefs</h2><ul class="saved-list"></ul></section>
+  </div>
+</Base>
+
+<script>
+  import { requireSession, supabase } from '../../lib/account/client';
+  import { catalogue, el, starLabel } from '../../lib/account/catalogue';
+  import { venuesById } from '../../lib/account/data';
+  import { button } from '../../lib/account/people';
+  import { loadFollowing, unfollow, type FollowKind } from '../../lib/account/social';
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+
+  async function main() {
+    const session = await requireSession();
+    const userId = session.user.id;
+    try {
+      const rows = await loadFollowing(userId);
+      const cat = await catalogue(rows.map((r) => r.id));
+      const ids = (kind: FollowKind) => rows.filter((r) => r.kind === kind).map((r) => r.id);
+      const [liveR, liveH, chefs] = await Promise.all([
+        venuesById('restaurants_full', ids('restaurant').filter((id) => !cat.r[id])),
+        venuesById('hotels_full', ids('hotel').filter((id) => !cat.h[id])),
+        ids('private_chef').length
+          ? supabase().from('private_chefs_full').select('id, display_name, business_name, home_city').in('id', ids('private_chef'))
+          : Promise.resolve({ data: [], error: null }),
+      ]);
+      if (chefs.error) throw chefs.error;
+      const live = new Map([...liveR, ...liveH].map((v) => [v.id as string, v]));
+      const chefById = new Map(((chefs.data ?? []) as { id: string; display_name: string | null; business_name: string | null; home_city: string | null }[]).map((c) => [c.id, c]));
+
+      for (const r of rows) {
+        let name: string | null = null, href: string | null = null, meta = '', gold: string | null = null;
+        if (r.kind === 'restaurant' && cat.r[r.id]) { const x = cat.r[r.id]; name = x[1]; href = `/restaurants/${x[0]}`; meta = x[2]; gold = starLabel(x[3]); }
+        else if (r.kind === 'hotel' && cat.h[r.id]) { const x = cat.h[r.id]; name = x[0]; meta = x[1]; gold = x[2] ? `${x[2]} MICHELIN Key${x[2] > 1 ? 's' : ''} ·` : null; }
+        else if (r.kind === 'private_chef') { const c = chefById.get(r.id); if (c) { name = c.display_name || c.business_name; meta = c.home_city ?? ''; } }
+        else { const v = live.get(r.id); if (v) { name = v.name as string; meta = [v.city_name, v.country_name].filter(Boolean).join(', '); } }
+        if (!name) continue;
+
+        const group = $(`[data-group="${r.kind}"]`);
+        const li = el('li');
+        const text = el('div');
+        const title = el('p', 'saved-name');
+        if (href) { const a = el('a', undefined, name); a.href = href; title.append(a); } else title.textContent = name;
+        const m = el('p', 'saved-meta');
+        if (gold) m.append(el('span', 'gold', gold), ' ');
+        m.append(meta);
+        text.append(title, m);
+        li.append(text, button('Unfollow', async () => {
+          await unfollow(userId, r.kind, r.id);
+          li.remove();
+          if (!group.querySelector('li')) group.hidden = true;
+          $('[data-empty]').hidden = !!document.querySelector('[data-group]:not([hidden])');
+        }));
+        group.querySelector('ul')!.append(li);
+        group.hidden = false;
+      }
+      $('[data-empty]').hidden = !!document.querySelector('[data-group]:not([hidden])');
+    } catch {
+      $('[data-error]').hidden = false;
+    }
+    $('[data-loading]').hidden = true;
+  }
+  main();
+</script>

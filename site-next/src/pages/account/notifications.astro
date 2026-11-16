@@ -1,0 +1,163 @@
+---
+// Notifications, as the app's list (notifications_screen.dart): newest
+// first, fifty at a time, the same wording, a friend request answered in
+// place, all marked read on opening. Invitations to a venue or a trip, and anything about managing a
+// venue, are answered in the app. Below, the phone-push settings the app
+// keeps in notification_preferences.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Notifications" description="Your Mantelier notifications." noindex>
+  <PageHeader eyebrow='<a href="/account">Your account</a>' title="Notifications" />
+
+  <div class="wrap account-body">
+    <div class="top">
+      <p class="empty" data-loading>Loading…</p>
+    </div>
+    <p class="notice error" data-error hidden>Your notifications couldn’t be loaded. Please try again.</p>
+    <ul class="saved-list notices" data-list></ul>
+    <p class="empty" data-empty hidden>Nothing yet. Friend requests, and new events from places you follow, appear here.</p>
+    <button class="button quiet more" type="button" data-more hidden>Show older</button>
+
+    <section class="prefs">
+      <h2 class="eyebrow">On your phone</h2>
+      <p class="help">Get a notification on your phone for these. They stay in this list either way.</p>
+      <label class="toggle"><input type="checkbox" data-pref="push_friend_requests"> <span><b>Friend requests</b><br>When someone sends you a friend request.</span></label>
+      <label class="toggle"><input type="checkbox" data-pref="push_followed_venue_events"> <span><b>Events from venues you follow</b><br>When a restaurant, hotel or chef you follow announces an event.</span></label>
+      <p class="notice error" data-pref-error hidden>Could not update. Please try again.</p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .top { display: flex; justify-content: space-between; align-items: baseline; max-width: 880px; margin-bottom: 8px; }
+  .notices { max-width: 880px; }
+  .notices :global(li.unread .saved-name::before) { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin: 0 8px 3px 0; }
+  .notices :global(.when) { font-size: 12px; color: var(--taupe); margin-top: 2px; }
+  .more { margin-top: 18px; }
+  .prefs { margin-top: 56px; max-width: 560px; }
+  .prefs h2 { margin-bottom: 8px; }
+  .toggle { display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; font-size: 14px; color: var(--ink-soft); cursor: pointer; }
+  .toggle b { color: var(--green); font-weight: 500; }
+  .toggle input { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--green); }
+</style>
+
+<script>
+  import { requireSession } from '../../lib/account/client';
+  import { catalogue, el } from '../../lib/account/catalogue';
+  import { avatar, button } from '../../lib/account/people';
+  import { acceptRequest, avatarUrls, declineRequest, loadNotices, loadPushPrefs, markRead, savePushPrefs, type Notice, type PushPrefs } from '../../lib/account/social';
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const list = $('[data-list]');
+  let offset = 0;
+
+  const other = (n: Notice) => n.other_display_name?.trim() || (n.other_username ? `@${n.other_username}` : 'A member');
+
+  /** The app's wording per type; null for a type this page doesn't show. */
+  function words(n: Notice): { title: string; text: string | null } | null {
+    const venue = n.invite_venue_name ?? n.claim_venue_name ?? n.submission_venue_name ?? 'your venue';
+    switch (n.type) {
+      case 'friend_request_received': return { title: other(n), text: 'Sent you a friend request' };
+      case 'friend_request_accepted': return { title: other(n), text: 'Accepted your friend request' };
+      case 'missing_listing_added': return { title: n.listing_name ?? 'A place you reported', text: `${n.listing_name ?? 'A place you reported'}${n.listing_city ? ` in ${n.listing_city}` : ''} has been added.` };
+      case 'venue_invite_received': return { title: other(n), text: `Suggests going to ${venue}${n.invite_venue_city ? ` in ${n.invite_venue_city}` : ''}` };
+      case 'venue_invite_accepted': return { title: other(n), text: `Said yes to ${venue}` };
+      case 'venue_invite_declined': return { title: other(n), text: `Can't make it to ${venue}` };
+      case 'venue_claim_received': return { title: venue, text: `Your claim for ${venue} is being reviewed.` };
+      case 'venue_claim_approved': return { title: venue, text: `Your claim for ${venue} was approved — you can now manage it in the app.` };
+      case 'venue_claim_rejected': return { title: venue, text: `Your claim for ${venue} was not approved.` };
+      case 'venue_about_approved': case 'venue_photo_approved':
+        return { title: venue, text: `Your ${n.type === 'venue_about_approved' ? 'about text' : 'photo'} for ${venue} is now live.` };
+      case 'venue_about_rejected': case 'venue_photo_rejected':
+        return { title: venue, text: `Your ${n.type === 'venue_about_rejected' ? 'about text' : 'photo'} for ${venue} was not approved.` };
+      case 'event_approved': return { title: n.event_name ?? 'Your event', text: `"${n.event_name ?? 'Your event'}" is now live.` };
+      case 'event_rejected': return { title: n.event_name ?? 'Your event', text: `"${n.event_name ?? 'Your event'}" was not approved.` };
+      case 'followed_venue_event': return { title: n.event_venue_name ?? 'A venue you follow', text: `${n.event_venue_name ?? 'A venue you follow'} announced "${n.event_name}".` };
+      case 'trip_invite_received': return { title: other(n), text: `Invited you to ${n.trip_title ?? 'a trip'}` };
+      case 'trip_invite_accepted': return { title: other(n), text: `Is coming on ${n.trip_title ?? 'your trip'}` };
+      case 'birthday': return { title: 'Happy birthday', text: 'Happy birthday from all of us at Mantelier.' };
+      default: return null;
+    }
+  }
+
+  const when = (iso: string) => new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }).format(new Date(iso));
+
+  async function render(notices: Notice[]) {
+    const urls = await avatarUrls(notices.map((n) => n.other_user_id).filter((x): x is string => !!x));
+    const eventIds = notices.filter((n) => n.type === 'followed_venue_event' || n.type === 'event_approved').map((n) => n.subject_id).filter((x): x is string => !!x);
+    const cat = eventIds.length ? await catalogue(eventIds) : { r: {}, h: {}, e: {} };
+    for (const n of notices) {
+      const w = words(n);
+      if (!w) continue;
+      const li = el('li');
+      if (!n.is_read) li.classList.add('unread');
+      li.classList.add('member-row');
+      const who = el('div', 'who');
+      if (n.other_user_id) who.append(avatar({ avatarUrl: urls.get(n.other_user_id) ?? null, displayName: n.other_display_name, username: n.other_username }));
+      const text = el('div');
+      const title = el('p', 'saved-name');
+      const event = n.subject_id ? cat.e[n.subject_id] : undefined;
+      if (n.other_user_id && n.type.startsWith('friend_request')) { const a = el('a', undefined, w.title); a.href = `/account/friend?id=${n.other_user_id}`; title.append(a); }
+      else if (event) { const a = el('a', undefined, w.title); a.href = `/events/${event[0]}`; title.append(a); }
+      else title.textContent = w.title;
+      text.append(title);
+      if (w.text) text.append(el('p', 'saved-meta', w.text));
+      text.append(el('p', 'when', when(n.created_at)));
+      who.append(text);
+
+      const actions = el('div', 'row-actions');
+      const status = (s: string) => el('span', 'status-label', s);
+      if (n.type === 'friend_request_received') {
+        if (n.friendship_status === 'pending' && n.subject_id) {
+          actions.append(
+            button('Decline', async () => { await declineRequest(n.subject_id!); actions.replaceChildren(status('You declined')); }),
+            button('Accept', async () => { await acceptRequest(n.subject_id!); actions.replaceChildren(status('You accepted')); }, false),
+          );
+        } else if (n.friendship_status === 'accepted') actions.append(status('You accepted'));
+        else if (n.friendship_status === 'declined') actions.append(status('You declined'));
+      } else if ((n.type === 'venue_invite_received' && n.invite_status === 'pending') || (n.type === 'trip_invite_received' && n.trip_member_status === 'pending')) {
+        actions.append(status('Answer in the app'));
+      }
+      li.append(who, actions);
+      list.append(li);
+    }
+  }
+
+  async function page() {
+    const { notices, hasMore } = await loadNotices(offset);
+    offset += notices.length;
+    await render(notices);
+    $('[data-more]').hidden = !hasMore;
+    $('[data-empty]').hidden = list.children.length > 0;
+  }
+
+  async function main() {
+    const session = await requireSession();
+    try {
+      await page();
+      // As the app: opening the list marks everything read, while this
+      // view still shows which ones were new.
+      markRead().catch(() => {});
+    } catch {
+      $('[data-error]').hidden = false;
+    }
+    $('[data-loading]').hidden = true;
+
+    $('[data-more]').addEventListener('click', () => page().catch(() => { $('[data-error]').hidden = false; }));
+
+    const boxes = document.querySelectorAll<HTMLInputElement>('[data-pref]');
+    try {
+      const prefs = await loadPushPrefs(session.user.id);
+      boxes.forEach((b) => { b.checked = prefs[b.dataset.pref as keyof PushPrefs]; });
+    } catch { boxes.forEach((b) => { b.disabled = true; }); }
+    boxes.forEach((b) => b.addEventListener('change', async () => {
+      const prefs = Object.fromEntries([...boxes].map((x) => [x.dataset.pref, x.checked])) as unknown as PushPrefs;
+      $('[data-pref-error]').hidden = true;
+      try { await savePushPrefs(session.user.id, prefs); }
+      catch { b.checked = !b.checked; $('[data-pref-error]').hidden = false; }
+    }));
+  }
+  main();
+</script>

@@ -47,7 +47,9 @@ To test against a local Supabase stack instead of production, put
 then create the local test members and copy a few events with
 `scripts/local-sign-in-test.mjs` (it refuses any non-local URL);
 `scripts/local-passport-test.mjs` then gives the first test member visits,
-a stay, a confirmed event, wines and a photo for the Passport and globe. The
+a stay, a confirmed event, wines and a photo for the Passport and globe;
+`scripts/local-friends-test.mjs` adds friends, a waiting request and a
+followed restaurant. The
 catalogue pages still come from production; wishlist rows hold ids only,
 so they match.
 
