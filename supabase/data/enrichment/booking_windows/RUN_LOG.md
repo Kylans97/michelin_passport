@@ -238,3 +238,28 @@ with the product owner's approval.
   - With a manager on Odille and a venue window on Eleven Madison Park: 35
     written and both skipped. Eleven Madison Park's own window is untouched.
   - With one code unresolvable: the run aborts with nothing written.
+
+## 2026-11-17 — Import applied to production
+
+The product owner approved it in chat: "Yes, apply
+import_booking_windows_20261117.sql to production and confirm the result".
+Applied with `supabase db query --linked -f …` as one transaction.
+
+**Result:** 37 written, 0 skipped. Production now has 37 windows, all
+`research`, every one with a `source_url` and `verified_on` 2026-11-16,
+plus Mirazur's 3 dated releases.
+
+**Spot-check:** `booking_window_opening` for a planned month of May 2027
+gives the dates the sources state:
+
+| restaurant | opens |
+|---|---|
+| DiverXO | 2027-01-31 00:00 |
+| Odille | 2027-02-01 10:00 |
+| Septime | 2027-04-10 10:00 |
+| Sazenka | 2027-03-01 |
+| Eleven Madison Park | 2027-04-01 |
+| Mirazur | 2027-01-04 09:00 |
+| El Celler de Can Roca | 2026-06-01, already open |
+
+**Re-check:** these rows are due again in six months, around 2027-05-16.
