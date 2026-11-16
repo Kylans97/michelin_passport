@@ -1,0 +1,74 @@
+/* The signed-in pages: forms and lists, in the site's own register. */
+
+.account-body { padding-top: 48px; padding-bottom: 80px; }
+.account-narrow { max-width: 440px; }
+
+.form { display: flex; flex-direction: column; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+.field input {
+  font: inherit;
+  font-size: 16px;
+  color: var(--green);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.field input:focus { outline: none; border-color: var(--green); }
+.field input.code { font-family: var(--util); font-size: 22px; letter-spacing: 0.3em; }
+
+.button {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 11px 22px;
+  background: var(--green);
+  color: var(--ivory);
+  border: 1px solid var(--green);
+  align-self: flex-start;
+}
+.button.quiet { background: transparent; color: var(--green); }
+.button:disabled { opacity: 0.55; cursor: default; }
+
+.text-button {
+  font: inherit;
+  font-size: 13px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.notice { font-size: 14px; border-radius: 8px; padding: 12px 14px; margin: 0; }
+.notice.error { background: #F3E3DC; color: #6E2B1A; }
+.notice.ok { background: #E3EBE4; color: var(--green); }
+
+.help { font-size: 13px; color: var(--ink-soft); margin: 0; }
+.help a { text-decoration: underline; text-underline-offset: 3px; }
+
+.lead { font-family: var(--display); font-size: 21px; line-height: 1.4; margin: 0 0 8px; }
+
+.saved-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.saved-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.saved-name { font-family: var(--display); font-size: 22px; line-height: 1.25; margin: 0; }
+.saved-name a { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+.saved-meta { font-size: 13px; color: var(--ink-soft); margin: 2px 0 0; }
+.saved-meta .gold { color: var(--gold); }
+.saved-group + .saved-group { margin-top: 44px; }
+.saved-group h2 { margin-bottom: 12px; }
+.empty { color: var(--ink-soft); font-size: 15px; margin: 0; }
+.saved-group, .account-body > .empty, .account-body > .notice { max-width: 880px; }

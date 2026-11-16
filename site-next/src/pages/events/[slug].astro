@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import AppCta from '../../components/AppCta.astro';
+import SaveControls from '../../components/SaveControls.astro';
 import { formatWhen, loadEvents, place, type LinkRole, type SiteEvent } from '../../lib/events';
 
 export async function getStaticPaths() {
@@ -46,7 +46,7 @@ const description = `${e.type} · ${formatWhen(e)}${where ? ` · ${where}` : ''}
 
     {!e.cancelled && (
       <div class="actions">
-        <AppCta label="Mark as Going in the app" variant="solid" />
+        <SaveControls type="event" id={e.id} appLabel="Mark as Going in the app" variant="solid" event={e} />
         {e.ticketUrl && <a class="link" href={e.ticketUrl} rel="noopener">Tickets →</a>}
         {e.officialUrl && <a class="link" href={e.officialUrl} rel="noopener">Event website →</a>}
       </div>

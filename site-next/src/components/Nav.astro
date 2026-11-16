@@ -17,9 +17,28 @@ const { current } = Astro.props;
         ))}
       </ul>
     </nav>
-    <div class="app"><AppCta label="Get the app" variant="ivory" /></div>
+    <div class="end">
+      <a class="account" href="/account/sign-in" data-account><span class="name" data-name>Sign in</span><span class="initial" data-initial aria-hidden="true"></span></a>
+      <AppCta label="Get the app" variant="ivory" />
+    </div>
   </div>
 </header>
+
+<script>
+  // "Sign in" until a session is stored, then the member's name. Reads
+  // what supabase-js stored without loading it; the account pages check
+  // the session for real.
+  import { peek, showMemberInHeader, signInHref, storedName } from '../lib/account/peek';
+
+  const link = document.querySelector<HTMLAnchorElement>('[data-account]');
+  if (link) {
+    if (peek() === 'signed-in') {
+      showMemberInHeader(storedName());
+    } else if (!location.pathname.startsWith('/account')) {
+      link.href = signInHref();
+    }
+  }
+</script>
 
 <style>
   .nav { background: var(--green); color: var(--ivory); border-bottom: 1px solid var(--on-green-rule); }
@@ -48,10 +67,27 @@ const { current } = Astro.props;
     color: var(--on-green-muted);
   }
   ul a:hover { color: var(--ivory); }
+  .end { display: flex; align-items: center; gap: 18px; }
+  .account { font-size: 13px; color: var(--ivory); white-space: nowrap; }
+  .name { display: block; max-width: 16ch; overflow: hidden; text-overflow: ellipsis; }
+  .initial { display: none; }
   a[aria-current='page'] { color: var(--ivory); text-decoration: underline; text-underline-offset: 6px; }
 
   @media (max-width: 760px) {
     .bar { grid-template-columns: 1fr auto; row-gap: 0; padding-top: 12px; }
+    .end { gap: 12px; }
+    .member .name { display: none; }
+    .member .initial {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid var(--on-green-accent);
+      font-family: var(--display);
+      font-size: 17px;
+    }
+    .member:hover { text-decoration: none; }
     nav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; scrollbar-width: none; }
     nav::-webkit-scrollbar { display: none; }
     ul { justify-content: flex-start; gap: 22px; padding: 12px 0 14px; white-space: nowrap; }

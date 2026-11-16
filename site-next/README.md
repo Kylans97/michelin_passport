@@ -31,6 +31,24 @@ This updates https://next.mantelier.pages.dev only. Never deploy this
 folder with `--branch main`: that is mantelier.app, which still serves
 `site/`.
 
+## Signing in
+
+Members sign in with their Mantelier app account (email and password,
+then the authenticator code where two-step sign-in is on) at
+`/account/sign-in`. Everything signed-in runs in the browser with the
+public anon key, under `/account` and in the wishlist / Interested / Going
+buttons (`src/components/SaveControls.astro`); no page is ever built with
+personal data, and RLS decides every read and write. No sign-up and no
+password reset here: both stay in the app. Code: `src/lib/account/`.
+
+To test against a local Supabase stack instead of production, put
+`PUBLIC_AUTH_SUPABASE_URL` and `PUBLIC_AUTH_SUPABASE_ANON_KEY` (from
+`supabase status`) in `.env.development`, which only `npm run dev` reads,
+then create the local test members and copy a few events with
+`scripts/local-sign-in-test.mjs` (it refuses any non-local URL). The
+catalogue pages still come from production; wishlist rows hold ids only,
+so they match.
+
 ## Launch checklist
 
 1. Move `privacy`, `terms`, `support`, `hosts`, `auth/` and

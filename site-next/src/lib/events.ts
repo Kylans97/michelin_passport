@@ -6,6 +6,9 @@
 import { inList, selectAll } from './supabase';
 import { slugify } from './news';
 import { loadCatalogue } from './restaurants';
+import { formatDateRange, MONTHS_LONG } from './event-dates';
+
+export { formatDateRange };
 
 const TYPE_LABELS: Record<string, string> = {
   festival: 'Festival', dinner: 'Dinner', lunch: 'Lunch', tasting: 'Tasting', gala: 'Gala',
@@ -35,6 +38,8 @@ export interface SiteEvent {
   endDate: string;
   startTime: string | null; // HH:MM, local to the event
   endTime: string | null;
+  /** The exact end, when the event's clock time is known. */
+  endAt: string | null;
   timezone: string | null;
   city: string | null;
   country: string | null;
@@ -51,7 +56,7 @@ export interface SiteEvent {
 
 interface EventRow {
   id: string; name: string | null; description: string | null; event_type: string | null;
-  start_date: string; end_date: string; start_time: string | null; end_time: string | null;
+  start_date: string; end_date: string; start_time: string | null; end_time: string | null; end_at: string | null;
   timezone: string | null; city: string | null; country_code: string | null; venue_name: string | null;
   address: string | null; official_url: string | null; ticket_url: string | null;
   cancelled_at: string | null; admission_type: string | null; admission_note: string | null;
@@ -88,7 +93,7 @@ export function loadEvents(): Promise<SiteEvent[]> {
 
     const rows = await selectAll<EventRow>(
       'events',
-      'select=id,name,description,event_type,start_date,end_date,start_time,end_time,timezone,city,country_code,venue_name,address,official_url,ticket_url,cancelled_at,admission_type,admission_note'
+      'select=id,name,description,event_type,start_date,end_date,start_time,end_time,end_at,timezone,city,country_code,venue_name,address,official_url,ticket_url,cancelled_at,admission_type,admission_note'
         + `&moderation_status=eq.published&end_date=gte.${from}&order=start_date,id`,
     );
     const ids = rows.map((r) => r.id);
@@ -142,6 +147,7 @@ export function loadEvents(): Promise<SiteEvent[]> {
         endDate: r.end_date,
         startTime: r.start_time ? r.start_time.slice(0, 5) : null,
         endTime: r.end_time ? r.end_time.slice(0, 5) : null,
+        endAt: r.end_at,
         timezone: r.timezone,
         city: r.city,
         country: countryName(r.country_code),
@@ -165,20 +171,6 @@ export function loadEvents(): Promise<SiteEvent[]> {
     return events;
   })();
   return cache;
-}
-
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const parts = (d: string) => d.split('-').map(Number) as [number, number, number];
-
-/** formatEventDateRange: "27 Aug 2026", "27–30 Aug 2026", "30 Aug – 2 Sep 2026". */
-export function formatDateRange(e: SiteEvent): string {
-  const [sy, sm, sd] = parts(e.startDate);
-  const [ey, em, ed] = parts(e.endDate);
-  if (sy === ey && sm === em && sd === ed) return `${sd} ${MONTHS[sm - 1]} ${sy}`;
-  if (sy === ey && sm === em) return `${sd}–${ed} ${MONTHS[sm - 1]} ${sy}`;
-  if (sy === ey) return `${sd} ${MONTHS[sm - 1]} – ${ed} ${MONTHS[em - 1]} ${sy}`;
-  return `${sd} ${MONTHS[sm - 1]} ${sy} – ${ed} ${MONTHS[em - 1]} ${ey}`;
 }
 
 /** formatEventDateAndTime: only the precision actually known, never a placeholder. */

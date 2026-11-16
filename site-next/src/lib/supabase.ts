@@ -1,9 +1,11 @@
 // Read-only access to the public catalogue at build time, with the same
 // public anon key the app and site/index.html already ship. Row level
-// security decides what it can see: only published content.
+// security decides what it can see: only published content. The signed-in
+// part of the site (src/lib/account/) uses the same URL and key in the
+// browser.
 
 export const SUPABASE_URL = 'https://wcmxugunvwsrulcpeyrc.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjbXh1Z3VudndzcnVsY3BleXJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTI0MzksImV4cCI6MjA5NjIyODQzOX0.zGpFb-_zhFKL281kYZVcrboSHbcjbLGl_e_lE1GehQg';
+export const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjbXh1Z3VudndzcnVsY3BleXJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTI0MzksImV4cCI6MjA5NjIyODQzOX0.zGpFb-_zhFKL281kYZVcrboSHbcjbLGl_e_lE1GehQg';
 
 /** GET one PostgREST query, e.g. `select('news_articles', 'select=id,title')`.
  *  Throws on any non-200, so a failed read fails the build instead of
