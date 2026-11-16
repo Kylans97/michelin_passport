@@ -71,3 +71,5 @@ img { max-width: 100%; display: block; }
 }
 
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+[hidden] { display: none !important; }

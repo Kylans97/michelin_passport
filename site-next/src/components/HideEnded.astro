@@ -1,0 +1,25 @@
+---
+// Hides any [data-end-date] element whose end date has passed in its own
+// [data-tz] — the event's timezone, never the reader's. Without script the
+// list simply shows what the last build saw, which only ever errs towards
+// showing an event a day or two too long. An emptied month heading and an
+// emptied list's empty-state follow it.
+---
+<script is:inline>
+  (() => {
+    const today = (tz) => {
+      try { return new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(new Date()); }
+      catch { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Amsterdam' }).format(new Date()); }
+    };
+    document.querySelectorAll('[data-end-date]').forEach((el) => {
+      if (el.dataset.endDate < today(el.dataset.tz)) el.hidden = true;
+    });
+    document.querySelectorAll('[data-event-group]').forEach((group) => {
+      if (!group.querySelector('[data-end-date]:not([hidden])')) group.hidden = true;
+    });
+    document.querySelectorAll('[data-events-empty]').forEach((empty) => {
+      const scope = empty.closest('[data-events-scope]');
+      if (scope && !scope.querySelector('[data-end-date]:not([hidden])')) empty.hidden = false;
+    });
+  })();
+</script>

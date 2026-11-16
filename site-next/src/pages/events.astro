@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import EventRow from '../components/EventRow.astro';
+import HideEnded from '../components/HideEnded.astro';
+import AppCta from '../components/AppCta.astro';
+import { loadEvents, monthKey, monthLabel, type SiteEvent } from '../lib/events';
+
+const events = await loadEvents();
+const months = new Map<string, SiteEvent[]>();
+for (const e of events) {
+  if (!months.has(monthKey(e))) months.set(monthKey(e), []);
+  months.get(monthKey(e))!.push(e);
+}
+---
+<Base title="Events" description="Four-hands dinners, guest chefs, winemaker nights, galas and festivals worth travelling for." current="events">
+  <section class="wrap head">
+    <h1 class="display">Events</h1>
+    <p class="intro">Four-hands dinners, guest chefs, winemaker nights, galas and festivals. Each in its own local time.</p>
+    <div class="cta"><AppCta label="Mark an evening as Going in the app" /></div>
+  </section>
+
+  <section class="wrap list" data-events-scope>
+    {[...months.entries()].map(([key, list]) => (
+      <div class="month" data-event-group>
+        <h2 class="display month-title">{monthLabel(key)}</h2>
+        <ul>{list.map((e) => <EventRow event={e} />)}</ul>
+      </div>
+    ))}
+    <p class="empty" data-events-empty hidden={events.length > 0}>No upcoming events right now.</p>
+  </section>
+  <HideEnded />
+</Base>
+
+<style>
+  .head { padding-top: 56px; padding-bottom: 20px; }
+  h1 { font-size: clamp(36px, 5vw, 52px); }
+  .intro { color: var(--ink-soft); max-width: 56ch; margin: 12px 0 0; font-size: 17px; }
+  .cta { margin-top: 18px; }
+  .list > * { max-width: 900px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  .month { margin-top: 32px; }
+  .month-title { font-size: 28px; padding-bottom: 8px; border-bottom: 1px solid var(--green); }
+  .empty { color: var(--ink-soft); margin-top: 32px; }
+</style>

@@ -6,6 +6,9 @@ import ArticleCard from '../components/ArticleCard.astro';
 import { loadArticles } from '../lib/news';
 import GuideScores from '../components/GuideScores.astro';
 import { guideCount, loadCatalogue, place } from '../lib/restaurants';
+import EventRow from '../components/EventRow.astro';
+import HideEnded from '../components/HideEnded.astro';
+import { loadEvents } from '../lib/events';
 
 // The lead is the newest interview (else the newest article); the column
 // beside it lists the rest; Behind the pass shows the interviews that
@@ -19,6 +22,10 @@ const moreInterviews = others.filter((a) => a.section === 'interview').slice(0, 
 // recognise, best World's 50 Best rank breaking a tie. Real data, chosen
 // by rule, so the block changes when the guides do.
 const catalogue = await loadCatalogue();
+
+// The band lists the next events that aren't cancelled. A few spare rows
+// ride along hidden-by-script-if-ended, so a stale build still shows four.
+const upcoming = (await loadEvents()).filter((e) => !e.cancelled).slice(0, 8);
 const featured = catalogue.restaurants
   .filter((r) => !r.closed)
   .sort((a, b) =>
@@ -74,15 +81,27 @@ const featured = catalogue.restaurants
   </section>
 
   <section class="wrap" aria-labelledby="this-month">
-    <div class="band">
-      <div>
-        <p class="eyebrow band-eyebrow" id="this-month">This month on Mantelier</p>
-        <p class="display band-title">Four-hands dinners, guest chefs and winemaker nights across Europe</p>
-        <p class="band-note">Mark an evening as Going, see which friends join, and keep it in your Passport.</p>
+    <div class="band" data-events-scope>
+      <div class="band-head">
+        <div>
+          <p class="eyebrow band-eyebrow" id="this-month">Coming up on Mantelier</p>
+          <p class="display band-title">Four-hands dinners, guest chefs and winemaker nights</p>
+          <p class="band-note">Mark an evening as Going, see which friends join, and keep it in your Passport.</p>
+        </div>
+        <AppCta label="Open in the app" variant="on-green" />
       </div>
-      <AppCta label="Open in the app" variant="on-green" />
+      {upcoming.length > 0 && (
+        <ul class="band-list" data-band-list>{upcoming.map((e) => <EventRow event={e} onGreen />)}</ul>
+      )}
+      <p class="band-empty" data-events-empty hidden={upcoming.length > 0}>New evenings are added every week.</p>
+      <a class="band-more" href="/events">All events →</a>
     </div>
   </section>
+  <HideEnded />
+  <script is:inline>
+    // Four rows at most, after ended ones are hidden.
+    document.querySelectorAll('[data-band-list] > li:not([hidden])').forEach((li, i) => { if (i >= 4) li.hidden = true; });
+  </script>
 </Base>
 
 <style>
@@ -118,18 +137,18 @@ const featured = catalogue.restaurants
     color: var(--ivory);
     border-radius: 6px;
     padding: 28px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 24px;
-    align-items: center;
   }
+  .band-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; margin-bottom: 12px; }
+  .band-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(244, 240, 231, 0.18); }
+  .band-empty { color: var(--on-green-muted); margin: 16px 0 0; }
+  .band-more { display: inline-block; margin-top: 16px; font-size: 13px; color: var(--on-green-accent); }
   .band-eyebrow { color: var(--on-green-accent); }
   .band-title { font-size: clamp(24px, 3vw, 30px); margin-top: 6px; }
   .band-note { color: var(--on-green-muted); font-size: 14px; margin: 8px 0 0; }
-  .band > :global(.cta) { justify-self: start; }
+  .band-head > :global(.cta) { justify-self: start; }
 
   @media (max-width: 760px) {
     .masthead { padding-top: 36px; }
-    .lead, .grid3, .band { grid-template-columns: minmax(0, 1fr); }
+    .lead, .grid3, .band-head { grid-template-columns: minmax(0, 1fr); }
   }
 </style>
