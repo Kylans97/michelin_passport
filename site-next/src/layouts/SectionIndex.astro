@@ -1,0 +1,35 @@
+---
+// A section's own front page: its name, one line on what it holds, and
+// its articles newest first, the first one large.
+import Base from './Base.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import Pending from '../components/Pending.astro';
+import type { NewsArticle } from '../lib/news';
+
+interface Props { slug: string; label: string; intro: string; articles: NewsArticle[]; empty: string; }
+const { slug, label, intro, articles, empty } = Astro.props;
+const [lead, ...rest] = articles;
+---
+<Base title={label} description={intro} current={slug}>
+  <section class="wrap head">
+    <h1 class="display">{label}</h1>
+    <p class="intro">{intro}</p>
+  </section>
+  <section class="wrap">
+    {lead
+      ? <div class="lead"><ArticleCard article={lead} variant="lead" /></div>
+      : <Pending step={0} what={empty} height={260} />}
+    {rest.length > 0 && (
+      <div class="grid">{rest.map((a) => <ArticleCard article={a} />)}</div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .head { padding-top: 56px; padding-bottom: 28px; }
+  h1 { font-size: clamp(36px, 5vw, 52px); }
+  .intro { color: var(--ink-soft); max-width: 52ch; margin: 12px 0 0; font-size: 17px; }
+  .lead { max-width: 760px; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+</style>

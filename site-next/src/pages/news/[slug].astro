@@ -1,0 +1,186 @@
+---
+import Base from '../../layouts/Base.astro';
+import AppCta from '../../components/AppCta.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import NewsImage from '../../components/NewsImage.astro';
+import {
+  blocks, formatNewsDate, groupPhotos, loadArticles, loadLinkedVenues, loadPhotos,
+  readingMinutes, sectionLabel, type NewsArticle,
+} from '../../lib/news';
+
+export async function getStaticPaths() {
+  const articles = await loadArticles();
+  return articles.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+}
+
+interface Props { article: NewsArticle; }
+const { article } = Astro.props;
+
+const body = blocks(article.body);
+const [photos, linked, all] = await Promise.all([
+  loadPhotos(article.id), loadLinkedVenues(article.id), loadArticles(),
+]);
+const photoGroups = groupPhotos(photos, body.length);
+const more = all.filter((a) => a.id !== article.id).slice(0, 3);
+const firstText = body.find((b) => b.kind === 'text')?.text ?? article.title;
+const description = firstText.length > 160 ? `${firstText.slice(0, 157).trimEnd()}…` : firstText;
+const hasLinks = linked.chefs.length + linked.restaurants.length + linked.hotels.length > 0;
+const firstName = (name: string) => name.split(' ')[0];
+---
+<Base title={article.shortTitle} description={description} current={article.section === 'interview' ? 'behind-the-pass' : 'news'}>
+  <article>
+    <header class="wrap head">
+      <p class="eyebrow">{sectionLabel(article.section)} · {formatNewsDate(article.publishedAt)} · {readingMinutes(article.body)} min read</p>
+      <h1 class="display">{article.title}</h1>
+    </header>
+
+    {article.imageUrl && (
+      <div class="wrap hero">
+        <NewsImage
+          src={article.imageUrl}
+          alt=""
+          widths={[720, 1120, 1600, 2240]}
+          sizes="(max-width: 1120px) 100vw, 1120px"
+          focusX={article.focusX}
+          focusY={article.focusY}
+          eager
+        />
+      </div>
+    )}
+
+    <div class="wrap">
+      <div class="body">
+        {Array.from({ length: body.length + 1 }, (_, place) => (
+          <>
+            {place > 0 && (() => {
+              const block = body[place - 1];
+              if (block.kind === 'question') return (
+                <div class="question"><span class="rule" aria-hidden="true" /><p>{block.text}</p></div>
+              );
+              if (block.kind === 'quote') return <blockquote><p>{block.text}</p></blockquote>;
+              return <p class="text">{block.text}</p>;
+            })()}
+            {photoGroups.has(place) && (() => {
+              const group = photoGroups.get(place)!;
+              const small = group.filter((p) => p.isSmall);
+              const large = group.filter((p) => !p.isSmall);
+              const caption = group.find((p) => p.caption)?.caption;
+              return (
+                <figure class="photos">
+                  {large.map((p) => (
+                    <div class="large">
+                      <NewsImage src={p.imageUrl} alt={p.caption ?? ''} widths={[680, 1020, 1360]} sizes="(max-width: 760px) 100vw, 680px" focusX={p.focusX} focusY={p.focusY} />
+                    </div>
+                  ))}
+                  {small.length > 0 && (
+                    <div class="smalls">
+                      {small.map((p) => (
+                        <div class="small">
+                          <NewsImage src={p.imageUrl} alt={p.caption ?? ''} widths={[240, 480]} sizes="(max-width: 760px) 50vw, 170px" focusX={p.focusX} focusY={p.focusY} ratio="1 / 1" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {caption && <figcaption>{caption}</figcaption>}
+                </figure>
+              );
+            })()}
+          </>
+        ))}
+
+        {article.linkUrl && (
+          <p class="outbound"><a href={article.linkUrl} rel="noopener">Read more at the source →</a></p>
+        )}
+
+        {hasLinks && (
+          <section class="linked" aria-labelledby="in-this">
+            <p class="eyebrow" id="in-this">{article.section === 'interview' ? 'In this interview' : 'In this story'}</p>
+            {linked.chefs.map((c) => (
+              <div class="venue">
+                <div>
+                  <p class="display venue-name">{c.name}</p>
+                  <p class="venue-meta">Private chef{c.businessName ? ` · ${c.businessName}` : ''}{c.city ? ` · ${c.city}` : ''}</p>
+                </div>
+                <AppCta label={`Follow ${firstName(c.name)} in the app`} />
+              </div>
+            ))}
+            {linked.restaurants.map((r) => (
+              <div class="venue">
+                <div>
+                  <p class="display venue-name">{r.name}</p>
+                  <p class="venue-meta">Restaurant{r.city ? ` · ${r.city}` : ''}{r.country ? `, ${r.country}` : ''}</p>
+                </div>
+                <AppCta label="Add to wishlist in the app" />
+              </div>
+            ))}
+            {linked.hotels.map((h) => (
+              <div class="venue">
+                <div>
+                  <p class="display venue-name">{h.name}</p>
+                  <p class="venue-meta">Hotel{h.city ? ` · ${h.city}` : ''}{h.country ? `, ${h.country}` : ''}</p>
+                </div>
+                <AppCta label="Add to wishlist in the app" />
+              </div>
+            ))}
+          </section>
+        )}
+      </div>
+    </div>
+  </article>
+
+  {more.length > 0 && (
+    <section class="wrap more" aria-labelledby="more">
+      <p class="eyebrow" id="more">More from Mantelier</p>
+      <div class="grid">
+        {more.map((a) => <ArticleCard article={a} />)}
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .head { padding-top: 56px; padding-bottom: 28px; max-width: 900px; }
+  .head h1 { font-size: clamp(34px, 4.6vw, 52px); margin-top: 14px; }
+
+  .hero { margin-bottom: 40px; }
+  .hero :global(img) { aspect-ratio: 16 / 9; border-radius: 4px; max-height: 640px; }
+
+  .body { max-width: 680px; margin: 0 auto; }
+  .text { font-family: var(--display); font-size: 21px; line-height: 1.6; margin: 0 0 22px; }
+
+  .question { margin: 40px 0 16px; }
+  .question .rule { display: block; width: 24px; height: 1.5px; background: var(--green); margin-bottom: 16px; }
+  .question p { font-family: var(--display); font-style: italic; font-size: 25px; line-height: 1.3; margin: 0; }
+
+  blockquote { margin: 40px 0; padding: 28px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  blockquote p { font-family: var(--display); font-style: italic; font-size: clamp(26px, 3.4vw, 32px); line-height: 1.3; margin: 0; text-align: center; }
+
+  .photos { margin: 36px 0; }
+  .large { margin-bottom: 12px; overflow: hidden; border-radius: 4px; }
+  .smalls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+  .small { overflow: hidden; border-radius: 4px; }
+  figcaption { font-size: 13px; color: var(--taupe); margin-top: 10px; }
+
+  .outbound { margin: 28px 0; font-size: 15px; }
+  .outbound a { text-decoration: underline; text-underline-offset: 3px; }
+
+  .linked { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+  .venue {
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 16px 18px;
+  }
+  .venue-name { font-size: 22px; }
+  .venue-meta { font-size: 13px; color: var(--ink-soft); margin: 2px 0 0; }
+
+  .more { margin-top: 72px; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 16px; }
+
+  @media (max-width: 760px) {
+    .head { padding-top: 36px; }
+    .hero { padding: 0; }
+    .hero :global(img) { border-radius: 0; aspect-ratio: 4 / 3; }
+    .text { font-size: 19px; }
+    .smalls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

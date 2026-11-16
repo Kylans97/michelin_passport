@@ -1,0 +1,13 @@
+---
+import SectionIndex from '../layouts/SectionIndex.astro';
+import { loadArticles } from '../lib/news';
+
+const interviews = (await loadArticles()).filter((a) => a.section === 'interview');
+---
+<SectionIndex
+  slug="behind-the-pass"
+  label="Behind the pass"
+  intro="Chefs and restaurant managers on the work behind the evening."
+  articles={interviews}
+  empty="No interviews published yet"
+/>

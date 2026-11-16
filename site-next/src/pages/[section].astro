@@ -3,23 +3,23 @@ import Base from '../layouts/Base.astro';
 import Pending from '../components/Pending.astro';
 import { SECTIONS } from '../config';
 
-// One index page per section in the navigation. Each gets its own file
-// once its content exists; until then this keeps every link working.
-const INTROS: Record<string, { intro: string; step: number; what: string }> = {
-  news: { intro: 'What changed in the guides, and what it means for the tables worth travelling for.', step: 2, what: 'News articles' },
-  guides: { intro: 'MICHELIN, The World’s 50 Best, Gault&Millau and our own Mantelier Selection, side by side.', step: 3, what: 'Guides and restaurant pages' },
-  'behind-the-pass': { intro: 'Chefs and restaurant managers on the work behind the evening.', step: 2, what: 'Interviews' },
-  events: { intro: 'Four-hands dinners, guest chefs, winemaker nights, galas and festivals across Europe.', step: 4, what: 'Upcoming events' },
-  trends: { intro: 'How fine dining is changing, seen from the kitchen and from the table.', step: 2, what: 'Trend stories' },
-};
-
 export function getStaticPaths() {
-  return SECTIONS.map((s) => ({ params: { section: s.slug }, props: { label: s.label } }));
+  // The sections whose content isn't built yet. A section leaves this list
+  // for its own page once it has content (news.astro, behind-the-pass.astro).
+  // Inside getStaticPaths because Astro runs it apart from the page body.
+  const intros: Record<string, { intro: string; step: number; what: string }> = {
+    guides: { intro: 'MICHELIN, The World’s 50 Best, Gault&Millau and our own Mantelier Selection, side by side.', step: 3, what: 'Guides and restaurant pages' },
+    events: { intro: 'Four-hands dinners, guest chefs, winemaker nights, galas and festivals across Europe.', step: 4, what: 'Upcoming events' },
+    trends: { intro: 'How fine dining is changing, seen from the kitchen and from the table.', step: 0, what: 'No trend stories written yet' },
+  };
+  return SECTIONS.filter((s) => s.slug in intros).map((s) => ({
+    params: { section: s.slug },
+    props: { label: s.label, info: intros[s.slug] },
+  }));
 }
 
 const { section } = Astro.params;
-const { label } = Astro.props;
-const info = INTROS[section!];
+const { label, info } = Astro.props;
 ---
 <Base title={label} description={info.intro} current={section}>
   <section class="wrap head">

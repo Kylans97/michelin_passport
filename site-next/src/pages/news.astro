@@ -1,0 +1,13 @@
+---
+import SectionIndex from '../layouts/SectionIndex.astro';
+import { loadArticles } from '../lib/news';
+
+const articles = await loadArticles();
+---
+<SectionIndex
+  slug="news"
+  label="News"
+  intro="What changed in the guides, interviews from behind the pass, and stories from Mantelier."
+  articles={articles}
+  empty="No articles published yet"
+/>

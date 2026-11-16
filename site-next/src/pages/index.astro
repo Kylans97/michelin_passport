@@ -2,6 +2,16 @@
 import Base from '../layouts/Base.astro';
 import AppCta from '../components/AppCta.astro';
 import Pending from '../components/Pending.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { loadArticles } from '../lib/news';
+
+// The lead is the newest interview (else the newest article); the column
+// beside it lists the rest; Behind the pass shows the interviews that
+// aren't already the lead.
+const articles = await loadArticles();
+const lead = articles.find((a) => a.section === 'interview') ?? articles[0];
+const others = articles.filter((a) => a !== lead);
+const moreInterviews = others.filter((a) => a.section === 'interview').slice(0, 3);
 ---
 <Base description="News from every guide, interviews from behind the pass, and the one-off evenings worth travelling for.">
   <section class="wrap masthead">
@@ -11,11 +21,12 @@ import Pending from '../components/Pending.astro';
 
   <section class="wrap lead" aria-label="Latest stories">
     <div class="story">
-      <Pending step={2} what="Lead story" height={340} />
+      {lead ? <ArticleCard article={lead} variant="lead" /> : <Pending step={0} what="No articles published yet" height={340} />}
     </div>
     <div class="guide-news">
-      <p class="eyebrow">Guide news</p>
-      <Pending step={2} what="News per guide" height={300} />
+      <p class="eyebrow">Latest</p>
+      {others.slice(0, 4).map((a) => <ArticleCard article={a} variant="row" />)}
+      <Pending step={0} what="Guide news · not written yet" height={120} />
     </div>
   </section>
 
@@ -38,9 +49,8 @@ import Pending from '../components/Pending.astro';
       <a href="/behind-the-pass" class="more">All interviews →</a>
     </div>
     <div class="grid3">
-      <Pending step={2} what="Chef" />
-      <Pending step={2} what="Restaurant manager" />
-      <Pending step={2} what="Trends" />
+      {moreInterviews.map((a) => <ArticleCard article={a} />)}
+      {moreInterviews.length < 3 && <Pending step={0} what="Next interview · not written yet" />}
     </div>
   </section>
 

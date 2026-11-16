@@ -1,12 +1,13 @@
 ---
 // A visible placeholder for a block whose content arrives in a later
 // build step. Only ever shown while the site is hidden; it names the step
-// so nobody mistakes it for finished content.
+// so nobody mistakes it for finished content. Step 0 means no step builds
+// it: the content itself still has to be written.
 interface Props { step: number; what: string; height?: number; }
 const { step, what, height = 160 } = Astro.props;
 ---
 <div class="pending" style={`min-height:${height}px`}>
-  <span class="util">Step {step} · {what}</span>
+  <span class="util">{step > 0 ? `Step ${step} · ${what}` : what}</span>
 </div>
 
 <style>

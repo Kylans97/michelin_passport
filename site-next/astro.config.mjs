@@ -7,4 +7,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   build: { format: 'file' },
+  // Photos are fetched from Supabase storage once, at build time, and
+  // served resized from this site: a reader never downloads the original.
+  image: { domains: ['wcmxugunvwsrulcpeyrc.supabase.co'] },
 });
