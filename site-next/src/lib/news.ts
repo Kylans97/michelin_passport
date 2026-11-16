@@ -33,7 +33,7 @@ export type BlockKind = 'text' | 'question' | 'quote';
 export interface NewsBlock { kind: BlockKind; text: string; }
 
 export interface LinkedChef { name: string; businessName: string | null; city: string | null; }
-export interface LinkedVenue { name: string; city: string | null; country: string | null; }
+export interface LinkedVenue { id: string; name: string; city: string | null; country: string | null; }
 export interface LinkedVenues { chefs: LinkedChef[]; restaurants: LinkedVenue[]; hotels: LinkedVenue[]; }
 
 interface ArticleRow {
@@ -158,19 +158,45 @@ export async function loadLinkedVenues(articleId: string): Promise<LinkedVenues>
           'private_chefs_full', `select=display_name,business_name,home_city&id=${inList(chefIds)}`)
       : [],
     restaurantIds.length
-      ? select<{ name: string; city_name: string | null; country_name: string | null }>(
-          'restaurants_full', `select=name,city_name,country_name&id=${inList(restaurantIds)}`)
+      ? select<{ id: string; name: string; city_name: string | null; country_name: string | null }>(
+          'restaurants_full', `select=id,name,city_name,country_name&id=${inList(restaurantIds)}`)
       : [],
     hotelIds.length
-      ? select<{ name: string; city_name: string | null; country_name: string | null }>(
-          'hotels_full', `select=name,city_name,country_name&id=${inList(hotelIds)}`)
+      ? select<{ id: string; name: string; city_name: string | null; country_name: string | null }>(
+          'hotels_full', `select=id,name,city_name,country_name&id=${inList(hotelIds)}`)
       : [],
   ]);
   return {
     chefs: chefs.map((c) => ({ name: c.display_name, businessName: c.business_name, city: c.home_city })),
-    restaurants: restaurants.map((r) => ({ name: r.name, city: r.city_name, country: r.country_name })),
-    hotels: hotels.map((h) => ({ name: h.name, city: h.city_name, country: h.country_name })),
+    restaurants: restaurants.map((r) => ({ id: r.id, name: r.name, city: r.city_name, country: r.country_name })),
+    hotels: hotels.map((h) => ({ id: h.id, name: h.name, city: h.city_name, country: h.country_name })),
   };
+}
+
+/** Every restaurant mentioned in a published article, with those
+ *  articles newest first: "In the news" on a restaurant's page. */
+let mentionsCache: Promise<Map<string, NewsArticle[]>> | null = null;
+
+export function loadRestaurantMentions(): Promise<Map<string, NewsArticle[]>> {
+  mentionsCache ??= buildRestaurantMentions();
+  return mentionsCache;
+}
+
+async function buildRestaurantMentions(): Promise<Map<string, NewsArticle[]>> {
+  const [articles, links] = await Promise.all([
+    loadArticles(),
+    select<{ news_article_id: string; restaurant_id: string }>('news_article_restaurants', 'select=news_article_id,restaurant_id'),
+  ]);
+  const byId = new Map(articles.map((a) => [a.id, a]));
+  const mentions = new Map<string, NewsArticle[]>();
+  for (const link of links) {
+    const article = byId.get(link.news_article_id);
+    if (!article) continue;
+    if (!mentions.has(link.restaurant_id)) mentions.set(link.restaurant_id, []);
+    mentions.get(link.restaurant_id)!.push(article);
+  }
+  for (const list of mentions.values()) list.sort((a, b) => +b.publishedAt - +a.publishedAt);
+  return mentions;
 }
 
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import RestaurantRow from '../../components/RestaurantRow.astro';
+import { GUIDES, byCountry, type Guide } from '../../lib/guides';
+import { loadCatalogue } from '../../lib/restaurants';
+import { slugify } from '../../lib/news';
+
+export function getStaticPaths() {
+  return GUIDES.map((guide) => ({ params: { guide: guide.slug }, props: { guide } }));
+}
+
+interface Props { guide: Guide; }
+const { guide } = Astro.props;
+const catalogue = await loadCatalogue();
+const members = guide.members(catalogue);
+// A ranked list shows a gap in our data as a gap, never closes it up:
+// a missing rank gets its own quiet row.
+const ranked: ({ rank: number; r?: (typeof members)[number] })[] = [];
+if (!guide.grouped && members.length > 0) {
+  const byRank = new Map(members.map((r) => [r.w50bRank!, r]));
+  const last = Math.max(...byRank.keys());
+  for (let rank = 1; rank <= last; rank++) ranked.push({ rank, r: byRank.get(rank) });
+}
+// Long guides (MICHELIN) list their countries here and each country on
+// its own page; short ones open every country in place.
+const split = guide.slug === 'michelin';
+const title = guide.slug === 'worlds-50-best' && catalogue.w50bYear
+  ? `${guide.name} ${catalogue.w50bYear}` : guide.name;
+---
+<Base title={title} description={guide.intro} current="guides">
+  <section class="wrap head">
+    <p class="eyebrow"><a href="/guides">Guides</a> · {members.length} restaurants</p>
+    <h1 class="display">{title}</h1>
+    <p class="intro">{guide.intro}</p>
+  </section>
+
+  <section class="wrap list">
+    {split
+      ? <ul class="countries">{byCountry(members).map(([country, list]) => (
+          <li><a href={`/guides/${guide.slug}/${slugify(country)}`}><span class="display country">{country}</span><span class="count">{list.length}</span></a></li>
+        ))}</ul>
+      : guide.grouped
+      ? byCountry(members).map(([country, list], i) => (
+          <details open={i < 3}>
+            <summary><span class="display country">{country}</span><span class="count">{list.length}</span></summary>
+            <ul>{list.map((r) => <RestaurantRow restaurant={r} />)}</ul>
+          </details>
+        ))
+      : <ul>{ranked.map(({ rank, r }) => r
+          ? <RestaurantRow restaurant={r} lead={`${rank}`} />
+          : <li class="gap"><span class="gap-rank">{rank}</span><span>Not in our data yet</span></li>)}</ul>}
+  </section>
+</Base>
+
+<style>
+  .head { padding-top: 56px; padding-bottom: 28px; }
+  .head a { text-decoration: underline; text-underline-offset: 3px; }
+  h1 { font-size: clamp(36px, 5vw, 52px); margin-top: 12px; }
+  .intro { color: var(--ink-soft); max-width: 56ch; margin: 12px 0 0; font-size: 17px; }
+  .list > * { max-width: 860px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  details { border-top: 1px solid var(--rule); }
+  details:last-child { border-bottom: 1px solid var(--rule); }
+  summary { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 0; cursor: pointer; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; font-size: 18px; color: var(--taupe); margin-left: 12px; }
+  details[open] summary::after { content: '–'; }
+  .country { font-size: 24px; flex: 1; }
+  .count { font-family: var(--util); font-size: 12px; color: var(--taupe); }
+  details ul { padding-bottom: 18px; }
+  .countries { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 28px; }
+  .countries a { display: flex; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .countries .country { font-size: 20px; }
+  @media (max-width: 760px) { .countries { grid-template-columns: minmax(0, 1fr); } }
+  .gap { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 13px; color: var(--taupe); font-style: italic; }
+  .gap-rank { font-family: var(--util); font-style: normal; font-size: 12px; min-width: 2.6em; }
+</style>

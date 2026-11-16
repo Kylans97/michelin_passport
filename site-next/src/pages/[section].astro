@@ -5,10 +5,9 @@ import { SECTIONS } from '../config';
 
 export function getStaticPaths() {
   // The sections whose content isn't built yet. A section leaves this list
-  // for its own page once it has content (news.astro, behind-the-pass.astro).
+  // for its own page once it has content (news.astro, behind-the-pass.astro, guides.astro).
   // Inside getStaticPaths because Astro runs it apart from the page body.
   const intros: Record<string, { intro: string; step: number; what: string }> = {
-    guides: { intro: 'MICHELIN, The World’s 50 Best, Gault&Millau and our own Mantelier Selection, side by side.', step: 3, what: 'Guides and restaurant pages' },
     events: { intro: 'Four-hands dinners, guest chefs, winemaker nights, galas and festivals across Europe.', step: 4, what: 'Upcoming events' },
     trends: { intro: 'How fine dining is changing, seen from the kitchen and from the table.', step: 0, what: 'No trend stories written yet' },
   };

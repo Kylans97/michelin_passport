@@ -7,6 +7,7 @@ import {
   blocks, formatNewsDate, groupPhotos, loadArticles, loadLinkedVenues, loadPhotos,
   readingMinutes, sectionLabel, type NewsArticle,
 } from '../../lib/news';
+import { loadCatalogue } from '../../lib/restaurants';
 
 export async function getStaticPaths() {
   const articles = await loadArticles();
@@ -17,9 +18,13 @@ interface Props { article: NewsArticle; }
 const { article } = Astro.props;
 
 const body = blocks(article.body);
-const [photos, linked, all] = await Promise.all([
-  loadPhotos(article.id), loadLinkedVenues(article.id), loadArticles(),
+const [photos, linked, all, catalogue] = await Promise.all([
+  loadPhotos(article.id), loadLinkedVenues(article.id), loadArticles(), loadCatalogue(),
 ]);
+const restaurantHref = (id: string) => {
+  const r = catalogue.restaurants.find((x) => x.id === id);
+  return r ? `/restaurants/${r.slug}` : null;
+};
 const photoGroups = groupPhotos(photos, body.length);
 const more = all.filter((a) => a.id !== article.id).slice(0, 3);
 const firstText = body.find((b) => b.kind === 'text')?.text ?? article.title;
@@ -107,7 +112,7 @@ const firstName = (name: string) => name.split(' ')[0];
             {linked.restaurants.map((r) => (
               <div class="venue">
                 <div>
-                  <p class="display venue-name">{r.name}</p>
+                  <p class="display venue-name">{restaurantHref(r.id) ? <a href={restaurantHref(r.id)}>{r.name}</a> : r.name}</p>
                   <p class="venue-meta">Restaurant{r.city ? ` · ${r.city}` : ''}{r.country ? `, ${r.country}` : ''}</p>
                 </div>
                 <AppCta label="Add to wishlist in the app" />

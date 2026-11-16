@@ -20,3 +20,15 @@ export async function select<T>(table: string, query: string): Promise<T[]> {
 
 /** `in.(a,b,c)` for a PostgREST filter. */
 export const inList = (ids: string[]) => `in.(${ids.join(',')})`;
+
+/** Every row of a query, read 1000 at a time (PostgREST's page size).
+ *  [query] must carry its own `order=` so pages never overlap or skip. */
+export async function selectAll<T>(table: string, query: string): Promise<T[]> {
+  const pageSize = 1000;
+  const all: T[] = [];
+  for (let offset = 0; ; offset += pageSize) {
+    const page = await select<T>(table, `${query}&limit=${pageSize}&offset=${offset}`);
+    all.push(...page);
+    if (page.length < pageSize) return all;
+  }
+}

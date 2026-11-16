@@ -1,0 +1,47 @@
+---
+import Base from '../../../layouts/Base.astro';
+import RestaurantRow from '../../../components/RestaurantRow.astro';
+import { GUIDES, byCountry } from '../../../lib/guides';
+import { loadCatalogue, type Restaurant } from '../../../lib/restaurants';
+import { slugify } from '../../../lib/news';
+
+// One country of the MICHELIN Guide, three stars first.
+export async function getStaticPaths() {
+  const michelin = GUIDES.find((g) => g.slug === 'michelin')!;
+  const members = michelin.members(await loadCatalogue());
+  return byCountry(members).map(([country, list]) => ({
+    params: { country: slugify(country) },
+    props: { country, list },
+  }));
+}
+
+interface Props { country: string; list: Restaurant[]; }
+const { country, list } = Astro.props;
+const tiers = [3, 2, 1].map((n) => ({ n, list: list.filter((r) => r.stars === n) })).filter((t) => t.list.length > 0);
+---
+<Base title={`MICHELIN Guide · ${country}`} description={`Every restaurant in ${country} holding MICHELIN stars in the current guide.`} current="guides">
+  <section class="wrap head">
+    <p class="eyebrow"><a href="/guides">Guides</a> · <a href="/guides/michelin">MICHELIN Guide</a> · {list.length} restaurants</p>
+    <h1 class="display">{country}</h1>
+  </section>
+  <section class="wrap list">
+    {tiers.map((t) => (
+      <div class="tier">
+        <h2 class="tier-title"><span class="gold">{'★'.repeat(t.n)}</span> {t.n} star{t.n === 1 ? '' : 's'} <span class="count">{t.list.length}</span></h2>
+        <ul>{t.list.map((r) => <RestaurantRow restaurant={r} />)}</ul>
+      </div>
+    ))}
+  </section>
+</Base>
+
+<style>
+  .head { padding-top: 56px; padding-bottom: 20px; }
+  .head a { text-decoration: underline; text-underline-offset: 3px; }
+  h1 { font-size: clamp(36px, 5vw, 52px); margin-top: 12px; }
+  .list > * { max-width: 860px; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  .tier { margin-top: 28px; }
+  .tier-title { font-family: var(--display); font-weight: 500; font-size: 24px; margin: 0 0 6px; }
+  .gold { color: var(--gold); letter-spacing: 0.08em; font-size: 18px; }
+  .count { font-family: var(--util); font-size: 12px; color: var(--taupe); margin-left: 6px; }
+</style>

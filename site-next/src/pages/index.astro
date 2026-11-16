@@ -4,6 +4,8 @@ import AppCta from '../components/AppCta.astro';
 import Pending from '../components/Pending.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { loadArticles } from '../lib/news';
+import GuideScores from '../components/GuideScores.astro';
+import { guideCount, loadCatalogue, place } from '../lib/restaurants';
 
 // The lead is the newest interview (else the newest article); the column
 // beside it lists the rest; Behind the pass shows the interviews that
@@ -12,6 +14,18 @@ const articles = await loadArticles();
 const lead = articles.find((a) => a.section === 'interview') ?? articles[0];
 const others = articles.filter((a) => a !== lead);
 const moreInterviews = others.filter((a) => a.section === 'interview').slice(0, 3);
+
+// "One restaurant, every guide": the open restaurant the most guides
+// recognise, best World's 50 Best rank breaking a tie. Real data, chosen
+// by rule, so the block changes when the guides do.
+const catalogue = await loadCatalogue();
+const featured = catalogue.restaurants
+  .filter((r) => !r.closed)
+  .sort((a, b) =>
+    guideCount(b) - guideCount(a)
+    || (a.w50bRank ?? 999) - (b.w50bRank ?? 999)
+    || (b.stars ?? 0) - (a.stars ?? 0)
+    || a.code.localeCompare(b.code))[0];
 ---
 <Base description="News from every guide, interviews from behind the pass, and the one-off evenings worth travelling for.">
   <section class="wrap masthead">
@@ -35,11 +49,16 @@ const moreInterviews = others.filter((a) => a.section === 'interview').slice(0, 
       <div class="compare-head">
         <div>
           <p class="eyebrow" id="every-guide">One restaurant, every guide</p>
-          <p class="display compare-title">How the guides see the same kitchen</p>
+          {featured
+            ? <p class="display compare-title"><a href={`/restaurants/${featured.slug}`}>{featured.name}</a><span class="compare-place"> · {place(featured)}</span></p>
+            : <p class="display compare-title">How the guides see the same kitchen</p>}
         </div>
         <AppCta label="Add to wishlist in the app" />
       </div>
-      <Pending step={3} what="Restaurant pages with every guide" height={120} />
+      {featured
+        ? <GuideScores restaurant={featured} w50bYear={catalogue.w50bYear} />
+        : <Pending step={0} what="No restaurants yet" height={120} />}
+      <a class="compare-more" href="/guides">Compare every guide →</a>
     </div>
   </section>
 
@@ -85,6 +104,8 @@ const moreInterviews = others.filter((a) => a.section === 'interview').slice(0, 
   }
   .compare-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
   .compare-title { font-size: 26px; margin-top: 4px; }
+  .compare-place { color: var(--ink-soft); font-size: 20px; }
+  .compare-more { font-size: 13px; color: var(--ink-soft); align-self: flex-end; }
 
   .behind { margin-top: 56px; }
   .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }

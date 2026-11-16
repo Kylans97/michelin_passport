@@ -1,0 +1,39 @@
+---
+// One restaurant in a list: name, place, and a compact line of its
+// current recognitions, so every list doubles as a comparison.
+import { gaultMillauText, place, type Restaurant } from '../lib/restaurants';
+
+interface Props { restaurant: Restaurant; lead?: string; }
+const { restaurant: r, lead } = Astro.props;
+const parts: string[] = [];
+if (r.w50bRank !== null) parts.push(`50 Best #${r.w50bRank}`);
+else if (r.w50bHallOfFame) parts.push('50 Best Hall of Fame');
+if (r.gaultMillau) parts.push(`G&M ${gaultMillauText(r.gaultMillau)}`);
+if (r.inSelection) parts.push('Mantelier Selection');
+---
+<li class="row">
+  {lead && <span class="lead">{lead}</span>}
+  <a class="name" href={`/restaurants/${r.slug}`}>
+    <span class="display title">{r.name}</span>
+    <span class="meta">{place(r)}{r.closed ? ' · Closed' : ''}</span>
+  </a>
+  <span class="marks">
+    {r.stars !== null && r.stars > 0 && <span class="gold" aria-label={`${r.stars} MICHELIN stars`}>{'★'.repeat(r.stars)}</span>}
+    {parts.length > 0 && <span class="others">{parts.join(' · ')}</span>}
+  </span>
+</li>
+
+<style>
+  .row { display: flex; align-items: baseline; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .lead { font-family: var(--util); font-size: 12px; color: var(--taupe); min-width: 2.6em; }
+  .name { display: flex; flex-direction: column; flex: 1; min-width: 0; }
+  .title { font-size: 19px; }
+  .meta { font-size: 12px; color: var(--ink-soft); }
+  .marks { display: flex; flex-direction: column; align-items: flex-end; text-align: right; gap: 2px; }
+  .gold { color: var(--gold); letter-spacing: 0.08em; font-size: 14px; }
+  .others { font-size: 12px; color: var(--ink-soft); }
+  @media (max-width: 560px) {
+    .row { flex-wrap: wrap; }
+    .marks { align-items: flex-start; text-align: left; width: 100%; padding-left: 0; }
+  }
+</style>

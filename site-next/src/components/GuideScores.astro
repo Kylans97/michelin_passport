@@ -1,0 +1,62 @@
+---
+// One restaurant, every guide: the four recognitions side by side, each
+// in its own guide's terms. A guide that doesn't list the restaurant shows
+// a dash, never a number we don't have. Gold is for MICHELIN stars only.
+import { gaultMillauText, type Restaurant } from '../lib/restaurants';
+
+interface Props { restaurant: Restaurant; w50bYear: number | null; }
+const { restaurant: r, w50bYear } = Astro.props;
+
+const w50b = r.w50bRank !== null
+  ? { value: `#${r.w50bRank}`, note: w50bYear ? `${w50bYear} list` : 'Current list' }
+  : r.w50bHallOfFame
+    ? { value: 'Hall of Fame', note: 'Out of the ranking' }
+    : { value: '—', note: 'Not ranked' };
+---
+<dl class="scores">
+  <div class="cell">
+    <dt>MICHELIN</dt>
+    {r.stars !== null && r.stars > 0
+      ? <dd class="stars" aria-label={`${r.stars} MICHELIN star${r.stars === 1 ? '' : 's'}`}>{'★'.repeat(r.stars)}</dd>
+      : <dd class="value">—</dd>}
+    <dd class="note">{r.stars !== null && r.stars > 0 ? `${r.stars} star${r.stars === 1 ? '' : 's'}` : 'No star'}</dd>
+  </div>
+  <div class="cell">
+    <dt>The World’s 50 Best</dt>
+    <dd class="value">{w50b.value}</dd>
+    <dd class="note">{w50b.note}</dd>
+  </div>
+  <div class="cell">
+    <dt>Gault&amp;Millau</dt>
+    <dd class="value">{r.gaultMillau ? gaultMillauText(r.gaultMillau) : '—'}</dd>
+    <dd class="note">{r.gaultMillau ? `${r.gaultMillau.year} edition` : 'Not in our data'}</dd>
+  </div>
+  <div class="cell">
+    <dt>Mantelier Selection</dt>
+    <dd class="value">{r.inSelection ? 'Selected' : '—'}</dd>
+    <dd class="note">{r.inSelection ? 'Our own choice' : 'Not selected'}</dd>
+  </div>
+</dl>
+
+<style>
+  .scores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .cell { padding: 18px 12px; text-align: center; }
+  .cell + .cell { border-left: 1px solid var(--rule); }
+  dt { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+  dd { margin: 0; }
+  .value { font-family: var(--display); font-size: 30px; font-weight: 500; line-height: 1.2; margin-top: 8px; }
+  .stars { color: var(--gold); font-size: 24px; letter-spacing: 0.08em; line-height: 1.5; margin-top: 8px; }
+  .note { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+  @media (max-width: 760px) {
+    .scores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cell:nth-child(3) { border-left: none; }
+    .cell:nth-child(n + 3) { border-top: 1px solid var(--rule); }
+  }
+</style>
