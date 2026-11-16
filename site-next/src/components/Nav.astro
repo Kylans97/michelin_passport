@@ -17,12 +17,12 @@ const { current } = Astro.props;
         ))}
       </ul>
     </nav>
-    <div class="app"><AppCta label="Get the app" variant="solid" /></div>
+    <div class="app"><AppCta label="Get the app" variant="ivory" /></div>
   </div>
 </header>
 
 <style>
-  .nav { border-bottom: 1px solid var(--rule); }
+  .nav { background: var(--green); color: var(--ivory); border-bottom: 1px solid var(--on-green-rule); }
   .bar {
     display: grid;
     grid-template-columns: auto 1fr auto;
@@ -45,9 +45,10 @@ const { current } = Astro.props;
     padding: 0;
     list-style: none;
     font-size: 13px;
-    color: var(--ink-soft);
+    color: var(--on-green-muted);
   }
-  a[aria-current='page'] { color: var(--green); text-decoration: underline; text-underline-offset: 6px; }
+  ul a:hover { color: var(--ivory); }
+  a[aria-current='page'] { color: var(--ivory); text-decoration: underline; text-underline-offset: 6px; }
 
   @media (max-width: 760px) {
     .bar { grid-template-columns: 1fr auto; row-gap: 0; padding-top: 12px; }

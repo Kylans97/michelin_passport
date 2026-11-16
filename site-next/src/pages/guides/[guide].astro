@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import RestaurantRow from '../../components/RestaurantRow.astro';
+import PageHeader from '../../components/PageHeader.astro';
 import { GUIDES, byCountry, type Guide } from '../../lib/guides';
 import { loadCatalogue } from '../../lib/restaurants';
 import { slugify } from '../../lib/news';
@@ -28,11 +29,7 @@ const title = guide.slug === 'worlds-50-best' && catalogue.w50bYear
   ? `${guide.name} ${catalogue.w50bYear}` : guide.name;
 ---
 <Base title={title} description={guide.intro} current="guides">
-  <section class="wrap head">
-    <p class="eyebrow"><a href="/guides">Guides</a> · {members.length} restaurants</p>
-    <h1 class="display">{title}</h1>
-    <p class="intro">{guide.intro}</p>
-  </section>
+  <PageHeader eyebrow={`<a href="/guides">Guides</a> · ${members.length} restaurants`} title={title} intro={guide.intro} />
 
   <section class="wrap list">
     {split
@@ -43,21 +40,17 @@ const title = guide.slug === 'worlds-50-best' && catalogue.w50bYear
       ? byCountry(members).map(([country, list], i) => (
           <details open={i < 3}>
             <summary><span class="display country">{country}</span><span class="count">{list.length}</span></summary>
-            <ul>{list.map((r) => <RestaurantRow restaurant={r} />)}</ul>
+            <ul class="two-col">{list.map((r) => <RestaurantRow restaurant={r} />)}</ul>
           </details>
         ))
-      : <ul>{ranked.map(({ rank, r }) => r
+      : <ul class="two-col">{ranked.map(({ rank, r }) => r
           ? <RestaurantRow restaurant={r} lead={`${rank}`} />
           : <li class="gap"><span class="gap-rank">{rank}</span><span>Not in our data yet</span></li>)}</ul>}
   </section>
 </Base>
 
 <style>
-  .head { padding-top: 56px; padding-bottom: 28px; }
-  .head a { text-decoration: underline; text-underline-offset: 3px; }
-  h1 { font-size: clamp(36px, 5vw, 52px); margin-top: 12px; }
-  .intro { color: var(--ink-soft); max-width: 56ch; margin: 12px 0 0; font-size: 17px; }
-  .list > * { max-width: 860px; }
+  .list { padding-top: 40px; }
   ul { list-style: none; margin: 0; padding: 0; }
   details { border-top: 1px solid var(--rule); }
   details:last-child { border-bottom: 1px solid var(--rule); }
@@ -68,7 +61,8 @@ const title = guide.slug === 'worlds-50-best' && catalogue.w50bYear
   .country { font-size: 24px; flex: 1; }
   .count { font-family: var(--util); font-size: 12px; color: var(--taupe); }
   details ul { padding-bottom: 18px; }
-  .countries { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 28px; }
+  .countries { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 28px; }
+  @media (max-width: 1100px) { .countries { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .countries a { display: flex; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--rule); }
   .countries .country { font-size: 20px; }
   @media (max-width: 760px) { .countries { grid-template-columns: minmax(0, 1fr); } }

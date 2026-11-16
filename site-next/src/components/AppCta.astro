@@ -6,7 +6,7 @@ import { APP_STORE_URL } from '../config';
 
 interface Props {
   label: string;
-  variant?: 'outline' | 'solid' | 'on-green';
+  variant?: 'outline' | 'solid' | 'on-green' | 'ivory';
 }
 const { label, variant = 'outline' } = Astro.props;
 const href = APP_STORE_URL;
@@ -31,5 +31,6 @@ const href = APP_STORE_URL;
   .outline { border: 1px solid var(--green); color: var(--green); }
   .solid { background: var(--green); color: var(--ivory); border: 1px solid var(--green); }
   .on-green { border: 1px solid var(--on-green-accent); color: var(--ivory); }
+  .ivory { background: var(--ivory); color: var(--green); border: 1px solid var(--ivory); }
   .pending { cursor: default; }
 </style>

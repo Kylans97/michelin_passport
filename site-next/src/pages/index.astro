@@ -1,31 +1,34 @@
 ---
 import Base from '../layouts/Base.astro';
 import AppCta from '../components/AppCta.astro';
-import Pending from '../components/Pending.astro';
 import ArticleCard from '../components/ArticleCard.astro';
-import { loadArticles } from '../lib/news';
+import FeatureStory from '../components/FeatureStory.astro';
 import GuideScores from '../components/GuideScores.astro';
-import { guideCount, loadCatalogue, place } from '../lib/restaurants';
 import EventRow from '../components/EventRow.astro';
 import HideEnded from '../components/HideEnded.astro';
+import { loadArticles } from '../lib/news';
+import { guideCount, loadCatalogue, place } from '../lib/restaurants';
 import { loadEvents } from '../lib/events';
 
-// The lead is the newest interview (else the newest article); the column
-// beside it lists the rest; Behind the pass shows the interviews that
-// aren't already the lead.
+// Layout B (product owner, 2026-11-16): the lead story as a green panel
+// beside its photo, then what's coming up beside the latest stories, then
+// one restaurant across every guide. A block with nothing to show is left
+// out, never shown as a placeholder.
+
+// The lead is the newest interview (else the newest article).
 const articles = await loadArticles();
 const lead = articles.find((a) => a.section === 'interview') ?? articles[0];
 const others = articles.filter((a) => a !== lead);
 const moreInterviews = others.filter((a) => a.section === 'interview').slice(0, 3);
 
-// "One restaurant, every guide": the open restaurant the most guides
-// recognise, best World's 50 Best rank breaking a tie. Real data, chosen
-// by rule, so the block changes when the guides do.
-const catalogue = await loadCatalogue();
+// The next events that aren't cancelled. Spare rows ride along so that,
+// after HideEnded removes ended ones, a stale build still shows five.
+const upcoming = (await loadEvents()).filter((e) => !e.cancelled).slice(0, 10);
 
-// The band lists the next events that aren't cancelled. A few spare rows
-// ride along hidden-by-script-if-ended, so a stale build still shows four.
-const upcoming = (await loadEvents()).filter((e) => !e.cancelled).slice(0, 8);
+// "One restaurant, every guide": the open restaurant the most guides
+// recognise, best World's 50 Best rank breaking a tie. Chosen by rule, so
+// the block changes when the guides do.
+const catalogue = await loadCatalogue();
 const featured = catalogue.restaurants
   .filter((r) => !r.closed)
   .sort((a, b) =>
@@ -35,120 +38,103 @@ const featured = catalogue.restaurants
     || a.code.localeCompare(b.code))[0];
 ---
 <Base description="News from every guide, interviews from behind the pass, and the one-off evenings worth travelling for.">
-  <section class="wrap masthead">
-    <p class="eyebrow">Gastronomy worth travelling for</p>
-    <h1 class="display">Every guide, every table, and the evenings that only happen once.</h1>
-  </section>
+  <h1 class="sr-only">Mantelier: every guide, every table, and the evenings that only happen once</h1>
 
-  <section class="wrap lead" aria-label="Latest stories">
-    <div class="story">
-      {lead ? <ArticleCard article={lead} variant="lead" /> : <Pending step={0} what="No articles published yet" height={340} />}
+  {lead && <FeatureStory article={lead} tone="green" />}
+
+  <section class="wrap now">
+    <div class="coming" data-events-scope>
+      <div class="head">
+        <p class="eyebrow">Coming up</p>
+        <a class="more" href="/events">All events →</a>
+      </div>
+      {upcoming.length > 0 && <ul class="events" data-home-events>{upcoming.map((e) => <EventRow event={e} />)}</ul>}
+      <p class="empty" data-events-empty hidden={upcoming.length > 0}>New evenings are added every week.</p>
+      <div class="cta"><AppCta label="Mark an evening as Going in the app" /></div>
     </div>
-    <div class="guide-news">
-      <p class="eyebrow">Latest</p>
+
+    <aside class="latest" aria-labelledby="latest">
+      <p class="eyebrow" id="latest">Latest</p>
       {others.slice(0, 4).map((a) => <ArticleCard article={a} variant="row" />)}
-      <Pending step={0} what="Guide news · not written yet" height={120} />
-    </div>
+      <a class="row-link" href="/guides">
+        <span class="eyebrow">Guides</span>
+        <span class="display row-title">Where the guides agree</span>
+      </a>
+    </aside>
   </section>
 
-  <section class="wrap" aria-labelledby="every-guide">
-    <div class="compare">
-      <div class="compare-head">
-        <div>
-          <p class="eyebrow" id="every-guide">One restaurant, every guide</p>
-          {featured
-            ? <p class="display compare-title"><a href={`/restaurants/${featured.slug}`}>{featured.name}</a><span class="compare-place"> · {place(featured)}</span></p>
-            : <p class="display compare-title">How the guides see the same kitchen</p>}
+  {featured && (
+    <section class="wrap" aria-labelledby="every-guide">
+      <div class="compare">
+        <div class="compare-head">
+          <div>
+            <p class="eyebrow" id="every-guide">One restaurant, every guide</p>
+            <p class="display compare-title"><a href={`/restaurants/${featured.slug}`}>{featured.name}</a><span class="compare-place"> · {place(featured)}</span></p>
+          </div>
+          <AppCta label="Add to wishlist in the app" />
         </div>
-        <AppCta label="Add to wishlist in the app" />
+        <GuideScores restaurant={featured} w50bYear={catalogue.w50bYear} />
+        <a class="more right" href="/guides">Compare every guide →</a>
       </div>
-      {featured
-        ? <GuideScores restaurant={featured} w50bYear={catalogue.w50bYear} />
-        : <Pending step={0} what="No restaurants yet" height={120} />}
-      <a class="compare-more" href="/guides">Compare every guide →</a>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <section class="wrap behind" aria-labelledby="behind">
-    <div class="section-head">
-      <p class="eyebrow" id="behind">Behind the pass</p>
-      <a href="/behind-the-pass" class="more">All interviews →</a>
-    </div>
-    <div class="grid3">
-      {moreInterviews.map((a) => <ArticleCard article={a} />)}
-      {moreInterviews.length < 3 && <Pending step={0} what="Next interview · not written yet" />}
-    </div>
-  </section>
-
-  <section class="wrap" aria-labelledby="this-month">
-    <div class="band" data-events-scope>
-      <div class="band-head">
-        <div>
-          <p class="eyebrow band-eyebrow" id="this-month">Coming up on Mantelier</p>
-          <p class="display band-title">Four-hands dinners, guest chefs and winemaker nights</p>
-          <p class="band-note">Mark an evening as Going, see which friends join, and keep it in your Passport.</p>
-        </div>
-        <AppCta label="Open in the app" variant="on-green" />
+  {moreInterviews.length > 0 && (
+    <section class="wrap behind" aria-labelledby="behind">
+      <div class="head">
+        <p class="eyebrow" id="behind">Behind the pass</p>
+        <a href="/behind-the-pass" class="more">All interviews →</a>
       </div>
-      {upcoming.length > 0 && (
-        <ul class="band-list" data-band-list>{upcoming.map((e) => <EventRow event={e} onGreen />)}</ul>
-      )}
-      <p class="band-empty" data-events-empty hidden={upcoming.length > 0}>New evenings are added every week.</p>
-      <a class="band-more" href="/events">All events →</a>
-    </div>
-  </section>
+      <div class="grid3">{moreInterviews.map((a) => <ArticleCard article={a} />)}</div>
+    </section>
+  )}
+
   <HideEnded />
   <script is:inline>
-    // Four rows at most, after ended ones are hidden.
-    document.querySelectorAll('[data-band-list] > li:not([hidden])').forEach((li, i) => { if (i >= 4) li.hidden = true; });
+    // Five rows at most, counted after ended ones are hidden.
+    document.querySelectorAll('[data-home-events] > li:not([hidden])').forEach((li, i) => { if (i >= 5) li.hidden = true; });
   </script>
 </Base>
 
 <style>
-  .masthead { padding-top: 56px; padding-bottom: 36px; }
-  .masthead h1 { font-size: clamp(34px, 5.4vw, 56px); max-width: 24ch; margin-top: 14px; }
+  .now { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 56px; padding-top: 56px; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--green); }
+  .more { font-size: 13px; color: var(--ink-soft); }
+  .right { align-self: flex-end; }
+  .events { list-style: none; margin: 0; padding: 0; }
+  .empty { color: var(--ink-soft); margin: 16px 0 0; }
+  .cta { margin-top: 20px; }
 
-  .lead { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; }
-  .guide-news { display: flex; flex-direction: column; gap: 14px; }
+  .latest { display: flex; flex-direction: column; gap: 14px; }
+  .latest > .eyebrow { padding-bottom: 10px; border-bottom: 1px solid var(--green); }
+  .row-link { display: flex; flex-direction: column; gap: 6px; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+  .row-link:hover { text-decoration: none; }
+  .row-link:hover .row-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .row-title { font-size: 20px; line-height: 1.2; }
 
   .compare {
-    margin-top: 48px;
+    margin-top: 64px;
     background: var(--paper);
     border: 1px solid var(--rule);
     border-radius: 6px;
-    padding: 24px;
+    padding: 28px;
     display: flex;
     flex-direction: column;
     gap: 18px;
   }
   .compare-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
-  .compare-title { font-size: 26px; margin-top: 4px; }
-  .compare-place { color: var(--ink-soft); font-size: 20px; }
-  .compare-more { font-size: 13px; color: var(--ink-soft); align-self: flex-end; }
+  .compare-title { font-size: 30px; margin-top: 4px; }
+  .compare-place { color: var(--ink-soft); font-size: 22px; }
 
-  .behind { margin-top: 56px; }
-  .section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
-  .more { font-size: 13px; color: var(--ink-soft); }
-  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .behind { margin-top: 64px; }
+  .behind .head { margin-bottom: 18px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 
-  .band {
-    margin-top: 56px;
-    background: var(--green);
-    color: var(--ivory);
-    border-radius: 6px;
-    padding: 28px;
+  @media (max-width: 900px) {
+    .now { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 36px; }
   }
-  .band-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; margin-bottom: 12px; }
-  .band-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(244, 240, 231, 0.18); }
-  .band-empty { color: var(--on-green-muted); margin: 16px 0 0; }
-  .band-more { display: inline-block; margin-top: 16px; font-size: 13px; color: var(--on-green-accent); }
-  .band-eyebrow { color: var(--on-green-accent); }
-  .band-title { font-size: clamp(24px, 3vw, 30px); margin-top: 6px; }
-  .band-note { color: var(--on-green-muted); font-size: 14px; margin: 8px 0 0; }
-  .band-head > :global(.cta) { justify-self: start; }
-
   @media (max-width: 760px) {
-    .masthead { padding-top: 36px; }
-    .lead, .grid3, .band-head { grid-template-columns: minmax(0, 1fr); }
+    .grid3 { grid-template-columns: minmax(0, 1fr); }
+    .compare { padding: 20px; }
   }
 </style>

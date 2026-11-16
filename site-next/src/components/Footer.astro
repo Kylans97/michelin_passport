@@ -30,16 +30,17 @@ import Mark from './Mark.astro';
 </footer>
 
 <style>
-  .footer { border-top: 1px solid var(--rule); margin-top: 72px; font-size: 13px; color: var(--ink-soft); }
-  .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-top: 28px; padding-bottom: 20px; flex-wrap: wrap; }
+  .footer { background: var(--green); color: var(--on-green-muted); margin-top: 88px; font-size: 13px; }
+  .footer a:hover { color: var(--ivory); }
+  .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-top: 36px; padding-bottom: 24px; flex-wrap: wrap; }
   .left { display: flex; gap: 10px; align-items: center; max-width: 420px; }
   .left :global(svg) { flex-shrink: 0; }
   .left p { margin: 0; }
   .links { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; margin: 0; padding: 0; }
   .base {
     display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
-    padding-top: 14px; padding-bottom: 28px; border-top: 1px solid var(--rule); color: var(--taupe); font-size: 12px;
+    padding-top: 14px; padding-bottom: 28px; border-top: 1px solid var(--on-green-rule); color: var(--on-green-muted); font-size: 12px;
   }
-  .compass { display: inline-flex; align-items: center; gap: 7px; color: var(--ink-soft); }
+  .compass { display: inline-flex; align-items: center; gap: 7px; color: var(--on-green-accent); }
   .compass .util { font-size: 10px; }
 </style>

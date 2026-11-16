@@ -1,0 +1,61 @@
+---
+// A lead story across the full width: photo on one side, the story's
+// title, opening and a way in on the other. `tone="green"` is the
+// homepage hero (green panel, photo to the screen edge); `tone="paper"`
+// is the lead on a section page.
+import NewsImage from './NewsImage.astro';
+import { blocks, formatNewsDate, readingMinutes, sectionLabel, type NewsArticle } from '../lib/news';
+
+interface Props { article: NewsArticle; tone?: 'green' | 'paper'; }
+const { article, tone = 'paper' } = Astro.props;
+const opening = blocks(article.body).find((b) => b.kind === 'text')?.text ?? '';
+const teaser = opening.length > 220 ? `${opening.slice(0, 217).trimEnd()}…` : opening;
+const href = `/news/${article.slug}`;
+---
+<article class={`feature ${tone}`}>
+  <a class="text" href={href}>
+    <p class="eyebrow kicker">{sectionLabel(article.section)} · {formatNewsDate(article.publishedAt)} · {readingMinutes(article.body)} min read</p>
+    <h2 class="display title">{article.shortTitle}</h2>
+    {teaser && <p class="teaser">{teaser}</p>}
+    <span class="more">Read {article.section === 'interview' ? 'the interview' : 'the story'} →</span>
+  </a>
+  <a class="photo" href={href} tabindex="-1" aria-hidden="true">
+    {article.imageUrl
+      ? <NewsImage src={article.imageUrl} alt="" widths={[720, 1080, 1440]} sizes="(max-width: 760px) 100vw, 50vw" focusX={article.focusX} focusY={article.focusY} eager={tone === 'green'} />
+      : <div class="blank" />}
+  </a>
+</article>
+
+<style>
+  .feature { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .text { display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; }
+  .text:hover { text-decoration: none; }
+  .text:hover .more { text-decoration: underline; text-underline-offset: 4px; }
+  .title { font-size: clamp(34px, 4.2vw, 56px); }
+  .teaser { margin: 0; font-family: var(--display); font-size: 20px; line-height: 1.5; max-width: 34em; }
+  .more { font-size: 13px; font-weight: 500; letter-spacing: 0.02em; margin-top: 6px; }
+  /* The photo fills its half and never sets the block's height: the
+     text side and the min-height below do. */
+  .photo { display: block; overflow: hidden; position: relative; }
+  .photo :global(img) { position: absolute; inset: 0; }
+  .blank { width: 100%; height: 100%; background: var(--placeholder); }
+
+  /* Homepage: green panel left, photo bleeding to the right screen edge. */
+  .green { background: var(--green); color: var(--ivory); min-height: min(70vh, 600px); }
+  .green .text { padding: 56px max(var(--gutter), calc((100vw - var(--measure)) / 2 + var(--gutter))) 64px; padding-right: 48px; }
+  .green .kicker { color: var(--on-green-accent); }
+  .green .teaser { color: var(--on-green-muted); }
+  .green .more { color: var(--ivory); }
+
+  /* Section pages: within the page width, on paper. */
+  .paper { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; min-height: 480px; }
+  .paper .text { padding: 40px; order: 2; }
+  .paper .photo { order: 1; }
+  .paper .teaser { color: var(--ink-soft); font-size: 19px; }
+
+  @media (max-width: 760px) {
+    .feature { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .photo { order: 1 !important; aspect-ratio: 4 / 3; min-height: 0; }
+    .text { order: 2 !important; padding: 28px var(--gutter) 36px !important; }
+  }
+</style>

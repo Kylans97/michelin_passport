@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import RestaurantRow from '../components/RestaurantRow.astro';
+import PageHeader from '../components/PageHeader.astro';
 import { GUIDES } from '../lib/guides';
 import { guideCount, loadCatalogue } from '../lib/restaurants';
 
@@ -18,12 +19,9 @@ const agreed = catalogue.restaurants
     || a.name.localeCompare(b.name));
 ---
 <Base title="Guides" description="MICHELIN, The World’s 50 Best, Gault&Millau and our own Mantelier Selection, side by side." current="guides">
-  <section class="wrap head">
-    <h1 class="display">Guides</h1>
-    <p class="intro">Every guide judges differently. Here they sit side by side: on each restaurant’s page, and in their own lists.</p>
-  </section>
+  <PageHeader eyebrow={`${catalogue.restaurants.length} restaurants`} title="Guides" intro="Every guide judges differently. Here they sit side by side: on each restaurant’s page, and in their own lists." />
 
-  <section class="wrap">
+  <section class="wrap body">
     <ul class="guides">
       {guides.map(({ guide, count }) => (
         <li>
@@ -41,24 +39,22 @@ const agreed = catalogue.restaurants
     <section class="wrap agreed" aria-labelledby="agreed">
       <p class="eyebrow" id="agreed">Where the guides agree</p>
       <p class="display agreed-title">Recognised by three guides or more</p>
-      <ul>{agreed.map((r) => <RestaurantRow restaurant={r} />)}</ul>
+      <ul class="two-col">{agreed.map((r) => <RestaurantRow restaurant={r} />)}</ul>
     </section>
   )}
 </Base>
 
 <style>
-  .head { padding-top: 56px; padding-bottom: 28px; }
-  h1 { font-size: clamp(36px, 5vw, 52px); }
-  .intro { color: var(--ink-soft); max-width: 56ch; margin: 12px 0 0; font-size: 17px; }
+  .body { padding-top: 48px; }
   ul { list-style: none; margin: 0; padding: 0; }
-  .guides { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .guides { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
   .guide { display: flex; flex-direction: column; gap: 8px; height: 100%; padding: 22px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; }
   .guide:hover { text-decoration: none; border-color: var(--ink-soft); }
   .guide-name { font-size: 26px; }
   .guide-intro { font-size: 14px; color: var(--ink-soft); flex: 1; }
   .guide-count { color: var(--taupe); font-size: 11px; }
   .agreed { margin-top: 56px; }
-  .agreed > * { max-width: 860px; }
   .agreed-title { font-size: 28px; margin: 6px 0 12px; }
-  @media (max-width: 760px) { .guides { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 1100px) { .guides { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .guides { grid-template-columns: minmax(0, 1fr); } .body { padding-top: 28px; } }
 </style>
