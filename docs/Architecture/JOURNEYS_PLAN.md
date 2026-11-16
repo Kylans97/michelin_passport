@@ -88,8 +88,9 @@ sign-in.
 1. Migration: operators, journeys, routes, stops, travels,
    `journey_restaurants`, wishlist widening, `journeys_full`. Tests on RLS and
    constraints.
-2. Seed (prepared, applied only on approval): the candidates the product
-   owner picks.
+2. Seed: the candidates the product owner picks. The first slice (9 trains,
+   11 ships) was applied to production with the migration on 2026-11-16, on
+   the product owner's approval.
 3. App: Explore segment, detail screen, wishlist, confirm-travel + Passport
    stamp. Shown in the simulator.
 4. CHANGELOG entries.

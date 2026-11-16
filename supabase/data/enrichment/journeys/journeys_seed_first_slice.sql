@@ -1,5 +1,7 @@
 -- Journeys, first slice: the recommended set the product owner approved on
--- 2026-11-16 (9 trains, 11 ships). PREPARED, NOT APPLIED to production.
+-- 2026-11-16 (9 trains, 11 ships). Applied to production on 2026-11-16,
+-- on the product owner's approval in chat. Do not run it again: the
+-- operator and journey codes are unique, so a second run fails.
 -- Needs migration 20261101500000_add_journeys.sql first.
 --
 -- Every value comes from trains_candidates.csv / ships_candidates.csv in this
