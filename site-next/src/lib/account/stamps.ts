@@ -222,9 +222,5 @@ export function stampSvg(s: Stamp, variant: Variant, ink: number): string {
     : variant === 'oval' ? oval(s, color)
     : variant === 'octagon' ? octagon(s, color)
     : postmark(s, color, uid);
-  return `<svg class="stamp-ink" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true"><g filter="url(#stamp-grain)">${body}</g></svg>`;
+  return `<svg class="stamp-ink" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">${body}</svg>`;
 }
-
-/** The worn-ink filter every stamp shares, defined once per page: a
- *  sparse noise eats some of the ink, as paintStampInk's dstOut dots do. */
-export const STAMP_FILTER = `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="stamp-grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/><feColorMatrix in="n" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -9 6.4" result="mask"/><feComposite in="SourceGraphic" in2="mask" operator="in"/></filter></svg>`;

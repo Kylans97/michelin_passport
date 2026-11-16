@@ -1,97 +1,183 @@
 ---
-// The member's Passport, to look at: the data page, then every stamp,
+// The member's Passport, to look at, as the app's booklet
+// (lib/features/passport/widgets/): the leather cover, the data page, then
+// the stamp pages, three stamps a page and every year on a fresh page,
 // newest year first. No stamp is made here; recording a visit or
 // confirming you were at an event happens in the app.
 import Base from '../../layouts/Base.astro';
-import PageHeader from '../../components/PageHeader.astro';
+import Mark from '../../components/Mark.astro';
 import '../../styles/account.css';
 ---
 <Base title="Passport" description="Your Mantelier Passport." noindex>
-  <PageHeader eyebrow='<a href="/account">Your account</a>' title="Passport" />
+  <link slot="head" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=IBM+Plex+Sans:wght@600&display=swap">
+
+  <section class="stage passport">
+    <div class="wrap head">
+      <p class="eyebrow kicker"><a href="/account">Your account</a></p>
+      <h1 class="display">Passport</h1>
+      <p class="sub">Your collection of remarkable places.</p>
+    </div>
+
+    <p class="wrap status" data-loading>Opening your Passport…</p>
+    <p class="wrap status" data-error hidden>Your Passport couldn’t be loaded. Please try again.</p>
+
+    <div class="booklet" data-booklet hidden>
+      <article class="page cover" aria-label="Passport cover">
+        <span class="stitch" aria-hidden="true"></span>
+        <div class="cover-face">
+          <Mark size={64} color="#AC8244" />
+          <p class="cover-name">MANTELIER</p>
+          <p class="cover-sub">Passeport gastronomique</p>
+        </div>
+        <p class="cover-no" data-cover-no></p>
+      </article>
+
+      <article class="page data" aria-label="Passport data page">
+        <div class="data-head">
+          <p class="small-caps">Passeport gastronomique</p>
+          <Mark size={22} color="#23473D" />
+        </div>
+        <div class="holder">
+          <div class="photo" data-initials aria-hidden="true"></div>
+          <div class="fields">
+            <p class="small-caps">Holder · Titulaire</p>
+            <p class="field" data-holder></p>
+            <p class="small-caps">Member no.</p>
+            <p class="field" data-member></p>
+            <p class="small-caps">Valid</p>
+            <p class="field" data-valid></p>
+          </div>
+        </div>
+        <div class="counts">
+          <div><p class="count" data-entries></p><p class="small-caps">Entries</p></div>
+          <div><p class="count" data-countries></p><p class="small-caps">Countries</p></div>
+          <div><p class="count" data-stars></p><p class="small-caps">Stars</p></div>
+        </div>
+        <p class="small-caps">Countries visited</p>
+        <p class="chips" data-codes></p>
+        <p class="mrz" data-mrz aria-hidden="true"></p>
+      </article>
+    </div>
+
+    <p class="wrap hint" data-hint hidden></p>
+  </section>
 
   <div class="wrap account-body">
-    <p class="empty" data-loading>Opening your Passport…</p>
-    <p class="notice error" data-error hidden>Your Passport couldn’t be loaded. Please try again.</p>
-
-    <section class="data-page" data-page hidden aria-label="Passport data page">
-      <p class="booklet">Passeport gastronomique</p>
-      <div class="fields">
-        <div><p class="label">Holder · Titulaire</p><p class="value" data-holder></p></div>
-        <div><p class="label">Member no.</p><p class="value" data-member></p></div>
-        <div><p class="label">Valid</p><p class="value" data-valid></p></div>
-      </div>
-      <div class="counts">
-        <div><p class="count" data-entries></p><p class="label">Entries</p></div>
-        <div><p class="count" data-countries></p><p class="label">Countries</p></div>
-        <div><p class="count" data-stars></p><p class="label">Stars</p></div>
-      </div>
-      <p class="label">Countries visited</p>
-      <p class="codes" data-codes></p>
-      <p class="mrz" data-mrz aria-hidden="true"></p>
-    </section>
-
-    <p class="empty" data-empty hidden>No stamps yet. Record a visit in the Mantelier app and its stamp appears here.</p>
-    <div data-years></div>
-
-    <p class="help after" data-after hidden>New stamps come from the app: record a visit or stay, or confirm you were at an event. <a href="/account/globe">See them on your globe →</a></p>
+    <p class="help">New stamps come from the app: record a visit or stay, or confirm you were at an event. <a href="/account/globe">See your places on the globe →</a></p>
   </div>
 </Base>
 
-<style>
-  .data-page {
-    max-width: 640px;
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 10px;
-    padding: 28px 30px 22px;
-    box-shadow: 0 1px 0 rgba(22, 48, 42, 0.04), 0 12px 32px -18px rgba(22, 48, 42, 0.35);
-  }
-  .booklet { font-family: var(--util); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--taupe); margin: 0 0 18px; }
-  .label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin: 0; }
-  .fields { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
-  .value { font-family: var(--display); font-size: 21px; margin: 4px 0 0; overflow-wrap: anywhere; }
-  .counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); margin-bottom: 16px; }
-  .count { font-family: var(--display); font-size: 40px; line-height: 1; margin: 0 0 6px; }
-  .codes { font-family: var(--util); font-size: 13px; letter-spacing: 0.12em; margin: 6px 0 18px; word-spacing: 0.4em; }
-  .mrz { font-family: var(--util); font-size: 12px; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0; overflow-wrap: anywhere; white-space: pre-line; }
+<style is:global>
+  .passport.stage { background: var(--green); color: var(--ivory); padding-bottom: 40px; overflow: hidden; }
+  .passport .head { padding-top: 48px; padding-bottom: 32px; }
+  .passport .kicker { color: var(--on-green-accent); margin-bottom: 12px; }
+  .passport .kicker a { text-decoration: underline; text-underline-offset: 3px; }
+  .passport h1 { font-size: clamp(40px, 5.6vw, 68px); }
+  .passport .sub { color: var(--on-green-muted); margin: 10px 0 0; }
+  .passport .status { color: var(--on-green-muted); }
+  .passport .hint { color: var(--on-green-muted); font-size: 12px; margin: 18px auto 0; }
 
-  :global(.year) { margin-top: 56px; }
-  :global(.year h2) { font-family: var(--util); font-size: 12px; letter-spacing: 0.22em; color: var(--taupe); font-weight: 400; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
-  :global(.stamps) {
-    --stamp-scale: 1;
+  /* The booklet: pages side by side on a wide screen, swiped one at a time on a phone. */
+  .passport .booklet {
+    --page-w: 340px;
+    --page-h: 516px;
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 22px;
-    padding: 18px 4px;
-    background: var(--paper);
-    border-radius: 8px;
+    justify-content: center;
+    gap: 28px;
   }
-  :global(.stamp) { display: block; mix-blend-mode: multiply; opacity: 0.9; transition: opacity 0.15s; }
-  :global(a.stamp:hover) { opacity: 1; text-decoration: none; }
-  :global(.stamp svg) { display: block; width: 100%; height: auto; }
+  .passport .booklet[hidden] { display: none; }
+  .passport .page {
+    position: relative;
+    flex: none;
+    width: var(--page-w);
+    height: var(--page-h);
+    border-radius: 4px 14px 14px 4px;
+    overflow: hidden;
+    color: #20261F;
+    background: #F7F2E9;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  }
+  /* The spine: a faint recess along the left edge. */
+  .passport .page::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 14px;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    pointer-events: none;
+  }
 
-  .after { margin-top: 40px; }
-  .after a { text-decoration: underline; text-underline-offset: 3px; }
+  .passport .cover { background: radial-gradient(120% 90% at 30% 15%, #6B4226, #3A2214 70%, #1C110A); border: 1px solid #1C110A; }
+  .passport .stitch { position: absolute; inset: 12px; border: 1.5px dashed rgba(172, 130, 68, 0.7); border-radius: 4px 10px 10px 4px; }
+  .passport .cover-face { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .passport .cover-name { font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: 0.32em; color: #AC8244; margin: 14px 0 0; padding-left: 0.32em; }
+  .passport .cover-sub { font-family: var(--display); font-style: italic; font-size: 13px; color: #AC8244; margin: 0; }
+  .passport .cover-no { position: absolute; right: 26px; bottom: 22px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; color: #C7A46B; margin: 0; }
+
+  .passport .data {
+    padding: 22px 20px;
+    background-color: #F7F2E9;
+    background-image: repeating-linear-gradient(45deg, rgba(172, 130, 68, 0.07) 0 1px, transparent 1px 10px);
+  }
+  .passport .small-caps { font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6B6355; margin: 0; }
+  .passport .data-head { display: flex; justify-content: space-between; align-items: center; }
+  .passport .holder { display: flex; gap: 16px; margin-top: 18px; }
+  .passport .photo { flex: none; width: 92px; height: 116px; border-radius: 3px; background: #23473D; color: #F4F0E7; display: grid; place-items: center; font-family: var(--display); font-size: 30px; letter-spacing: 0.04em; }
+  .passport .fields .small-caps { margin-top: 10px; }
+  .passport .fields .small-caps:first-child { margin-top: 2px; }
+  .passport .field { font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1.25; margin: 2px 0 0; color: #20261F; font-variant-numeric: lining-nums; overflow-wrap: anywhere; }
+  .passport .counts { display: grid; grid-template-columns: repeat(3, 1fr); margin: 20px 0 18px; border-top: 1px solid rgba(32, 38, 31, 0.12); border-bottom: 1px solid rgba(32, 38, 31, 0.12); padding: 14px 0; text-align: center; }
+  .passport .counts > div + div { border-left: 1px solid rgba(32, 38, 31, 0.12); }
+  .passport .count { font-family: var(--display); font-weight: 600; font-size: 38px; line-height: 1; color: #23473D; margin: 0 0 6px; font-variant-numeric: lining-nums tabular-nums; }
+  .passport .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 0; min-height: 26px; }
+  .passport .chips span { border: 1px solid #23473D; border-radius: 3px; padding: 2px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; color: #23473D; }
+  .passport .mrz { position: absolute; left: 20px; right: 20px; bottom: 18px; margin: 0; padding-top: 12px; border-top: 1px dashed rgba(32, 38, 31, 0.3); font-family: var(--util); font-size: 11px; letter-spacing: 0.18em; line-height: 1.8; color: #6B6355; white-space: pre; overflow: hidden; }
+
+  /* A stamp page: concentric guilloché rings from just below the bottom edge. */
+  .passport .stamp-page {
+    background-color: #F7F2E9;
+    background-image: repeating-radial-gradient(circle at 50% calc(100% + 24px), transparent 0 7px, rgba(172, 130, 68, 0.09) 7px 8px);
+  }
+  .passport .page-head { position: absolute; top: 16px; left: 24px; right: 24px; display: flex; justify-content: space-between; align-items: baseline; }
+  .passport .page-head .label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: #6B6355; margin: 0; }
+  .passport .page-head .number { font-family: var(--display); font-style: italic; font-size: 15px; color: #6B6355; margin: 0; }
+  .passport .year-corner { position: absolute; left: 24px; bottom: 14px; margin: 0; pointer-events: none; }
+  .passport .year-corner b { display: block; font-family: var(--display); font-weight: 600; font-size: 26px; line-height: 1; color: #23473D; font-variant-numeric: lining-nums; }
+  .passport .year-corner span { font-size: 8.5px; font-weight: 600; letter-spacing: 0.1em; color: #6B6355; }
+  .passport .field-area { position: absolute; left: 0; right: 0; top: 52px; bottom: 0; }
+  .passport .stamp { position: absolute; display: block; mix-blend-mode: multiply; opacity: 0.9; }
+  .passport a.stamp:hover { opacity: 1; text-decoration: none; }
+  .passport .stamp svg { display: block; }
 
   @media (max-width: 760px) {
-    .data-page { padding: 22px 18px 18px; }
-    .fields { grid-template-columns: 1fr 1fr; }
-    .fields > div:first-child { grid-column: 1 / -1; }
-    .count { font-size: 32px; }
-    :global(.stamps) { --stamp-scale: 0.7; gap: 4px 8px; justify-content: center; }
+    .passport .booklet {
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+    }
+    .passport .booklet::-webkit-scrollbar { display: none; }
+    .passport .page { scroll-snap-align: center; }
   }
 </style>
 
 <script>
   import { requireSession } from '../../lib/account/client';
   import { loadPassport, type Stamp } from '../../lib/account/passport';
-  import { pickInk, pickJitter, pickRotation, pickVariant, STAMP_FILTER, STAMP_SIZE, stampDate, stampSvg, type Variant } from '../../lib/account/stamps';
+  import { paginate, placeStamps } from '../../lib/account/booklet';
+  import { stampDate, stampSvg } from '../../lib/account/stamps';
 
   const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
   const pad = (n: number) => String(n).padStart(2, '0');
 
-  /** As the data page's machine-readable line: P<MNT<SURNAME<<GIVEN. */
+  /** The data page's machine-readable lines: P<MNT<SURNAME<<GIVEN. */
   function mrz(name: string, member: number | null, entries: number, countries: number, stars: number): string {
     const parts = name.trim().split(/\s+/).filter(Boolean);
     const surname = parts.length ? parts[parts.length - 1] : '';
@@ -107,55 +193,61 @@ import '../../styles/account.css';
     return `${s.name}${s.city ? `, ${s.city}` : ''}, ${stampDate(s.date).toLowerCase()}${award}`;
   }
 
+  function stampPage(stamps: Stamp[], year: number, number: number): HTMLElement {
+    const page = document.createElement('article');
+    page.className = 'page stamp-page';
+    page.setAttribute('aria-label', `Passport page ${number}, ${year}`);
+    page.innerHTML = `<div class="page-head"><p class="label">ENTRIES · VISAS</p><p class="number">p. ${pad(number)}</p></div>`
+      + `<p class="year-corner" aria-hidden="true"><b>${year}</b><span>YEAR OF ENTRY</span></p>`;
+    const area = document.createElement('div');
+    area.className = 'field-area';
+    page.append(area);
+    // Placed once the page is in the document, against its real size.
+    requestAnimationFrame(() => {
+      for (const p of placeStamps(stamps, area.clientWidth, area.clientHeight)) {
+        const el = document.createElement(p.stamp.href ? 'a' : 'div');
+        el.className = 'stamp';
+        if (el instanceof HTMLAnchorElement && p.stamp.href) el.href = p.stamp.href;
+        el.setAttribute('aria-label', label(p.stamp));
+        el.style.left = `${p.x - p.width / 2}px`;
+        el.style.top = `${p.y - p.height / 2}px`;
+        el.style.transform = `rotate(${p.rotation.toFixed(2)}deg)`;
+        el.innerHTML = stampSvg(p.stamp, p.variant, p.ink);
+        area.append(el);
+      }
+    });
+    return page;
+  }
+
   async function main() {
     const session = await requireSession();
     try {
       const p = await loadPassport(session.user.id);
-      document.body.insertAdjacentHTML('beforeend', STAMP_FILTER);
+      const initials = p.name.split(/\s+/).filter(Boolean).map((w) => [...w][0]).join('').slice(0, 2).toUpperCase();
+      $('[data-initials]').textContent = initials || '—';
+      $('[data-cover-no]').textContent = p.memberNumber === null ? 'NO. —' : `NO. ${p.memberNumber}`;
       $('[data-holder]').textContent = p.name || '—';
       $('[data-member]').textContent = p.memberNumber === null ? '—' : String(p.memberNumber);
       $('[data-valid]').textContent = p.firstYear ? `${p.firstYear} – present` : 'present';
-      $('[data-entries]').textContent = String(p.stamps.length);
-      $('[data-countries]').textContent = String(p.countryCodes.length);
-      $('[data-stars]').textContent = String(p.stars);
-      $('[data-codes]').textContent = p.countryCodes.length ? p.countryCodes.join(' ') : '—';
-      $('[data-mrz]').textContent = mrz(p.name, p.memberNumber, p.stamps.length, p.countryCodes.length, p.stars);
-      $('[data-page]').hidden = false;
-
-      // Newest year first; within a year oldest first, the order they were pressed.
-      const years = [...new Set(p.stamps.map((s) => s.date.slice(0, 4)))].sort().reverse();
-      const container = $('[data-years]');
-      for (const year of years) {
-        const section = document.createElement('section');
-        section.className = 'year';
-        const heading = document.createElement('h2');
-        heading.textContent = year;
-        const grid = document.createElement('div');
-        grid.className = 'stamps';
-        let prevVariant: Variant | undefined;
-        let prevInk: number | undefined;
-        for (const s of p.stamps.filter((x) => x.date.startsWith(year))) {
-          // No two neighbours share a design or an ink, as on a page in the app.
-          const variant = pickVariant(s.id, prevVariant);
-          const ink = pickInk(s.id, prevInk);
-          prevVariant = variant;
-          prevInk = ink;
-          const [w] = STAMP_SIZE[variant];
-          const [jx, jy] = pickJitter(s.id);
-          const el = document.createElement(s.href ? 'a' : 'div');
-          el.className = 'stamp';
-          if (el instanceof HTMLAnchorElement && s.href) el.href = s.href;
-          el.setAttribute('aria-label', label(s));
-          el.style.width = `calc(${w}px * var(--stamp-scale))`;
-          el.style.transform = `translate(${jx.toFixed(1)}px, ${jy.toFixed(1)}px) rotate(${pickRotation(s.id).toFixed(2)}deg)`;
-          el.innerHTML = stampSvg(s, variant, ink);
-          grid.append(el);
-        }
-        section.append(heading, grid);
-        container.append(section);
+      $('[data-entries]').textContent = pad(p.stamps.length);
+      $('[data-countries]').textContent = pad(p.countryCodes.length);
+      $('[data-stars]').textContent = pad(p.stars);
+      const chips = $('[data-codes]');
+      for (const code of p.countryCodes) {
+        const chip = document.createElement('span');
+        chip.textContent = code;
+        chips.append(chip);
       }
-      $('[data-empty]').hidden = p.stamps.length > 0;
-      $('[data-after]').hidden = p.stamps.length === 0;
+      if (!p.countryCodes.length) chips.textContent = '—';
+      $('[data-mrz]').textContent = mrz(p.name, p.memberNumber, p.stamps.length, p.countryCodes.length, p.stars);
+
+      const booklet = $('[data-booklet]');
+      booklet.hidden = false;
+      paginate(p.stamps).forEach((page, i) => booklet.append(stampPage(page.stamps, page.year, i + 2)));
+      $('[data-hint]').textContent = p.stamps.length
+        ? 'Turn the pages; tap a stamp to open that visit.'
+        : 'No stamps yet. Record a visit in the Mantelier app and its stamp appears here.';
+      $('[data-hint]').hidden = false;
     } catch {
       $('[data-error]').hidden = false;
     }
