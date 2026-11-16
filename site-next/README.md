@@ -45,7 +45,9 @@ To test against a local Supabase stack instead of production, put
 `PUBLIC_AUTH_SUPABASE_URL` and `PUBLIC_AUTH_SUPABASE_ANON_KEY` (from
 `supabase status`) in `.env.development`, which only `npm run dev` reads,
 then create the local test members and copy a few events with
-`scripts/local-sign-in-test.mjs` (it refuses any non-local URL). The
+`scripts/local-sign-in-test.mjs` (it refuses any non-local URL);
+`scripts/local-passport-test.mjs` then gives the first test member visits,
+a stay, a confirmed event, wines and a photo for the Passport and globe. The
 catalogue pages still come from production; wishlist rows hold ids only,
 so they match.
 

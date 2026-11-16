@@ -1,0 +1,306 @@
+---
+// The member's globe, to look at: every restaurant, hotel and event in
+// their Passport as a pin, each place once however often they went, and
+// the countries they've been to lit. Drag to spin, scroll or pinch to
+// zoom, as My Map in the app. Nothing is added here.
+import Base from '../../layouts/Base.astro';
+import '../../styles/account.css';
+---
+<Base title="Your globe" description="Your Mantelier globe." noindex>
+  <section class="stage" aria-label="Your globe">
+    <div class="wrap head">
+      <p class="eyebrow kicker"><a href="/account/passport">Passport</a></p>
+      <h1 class="display">Your globe</h1>
+      <p class="sub" data-summary>Loading…</p>
+    </div>
+    <div class="canvas-box" data-box>
+      <canvas data-canvas aria-hidden="true"></canvas>
+      <div class="pins" data-pins></div>
+      <div class="card" data-card hidden>
+        <button class="close" type="button" data-close aria-label="Close">×</button>
+        <div data-card-body></div>
+      </div>
+    </div>
+    <p class="hint wrap">Drag to turn the globe; scroll or pinch to zoom.</p>
+  </section>
+
+  <div class="wrap account-body">
+    <p class="notice error" data-error hidden>Your globe couldn’t be loaded. Please try again.</p>
+    <h2 class="eyebrow">Every place</h2>
+    <ul class="saved-list places" data-list></ul>
+    <p class="empty" data-empty hidden>No places yet. Record a visit in the Mantelier app and it appears on your globe.</p>
+  </div>
+</Base>
+
+<style>
+  .stage { background: var(--green); color: var(--ivory); padding-bottom: 18px; }
+  .head { padding-top: 48px; }
+  .kicker { color: var(--on-green-accent); margin-bottom: 12px; }
+  .kicker a { text-decoration: underline; text-underline-offset: 3px; }
+  h1 { font-size: clamp(40px, 5.6vw, 68px); }
+  .sub { color: var(--on-green-muted); margin: 10px 0 0; }
+  .canvas-box { position: relative; height: min(72vh, 760px); min-height: 380px; touch-action: none; cursor: grab; user-select: none; }
+  .canvas-box:active { cursor: grabbing; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .pins { position: absolute; inset: 0; pointer-events: none; }
+  .pins :global(button) {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin: -15px 0 0 -15px;
+    border-radius: 50%;
+    border: 2px solid var(--ivory);
+    background: var(--green);
+    color: var(--ivory);
+    display: grid;
+    place-items: center;
+    padding: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.38);
+    font: 500 12px var(--body);
+  }
+  .pins :global(svg) { width: 15px; height: 15px; }
+  .card {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    width: min(360px, calc(100% - 32px));
+    background: var(--paper);
+    color: var(--green);
+    border-radius: 10px;
+    padding: 16px 18px;
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.5);
+    cursor: auto;
+  }
+  .close { position: absolute; top: 6px; right: 10px; border: 0; background: none; font-size: 22px; color: var(--ink-soft); cursor: pointer; }
+  .card :global(.saved-name) { padding-right: 20px; }
+  .card :global(.saved-name + .saved-meta) { margin-bottom: 6px; }
+  .card :global(.saved-meta + .saved-name) { margin-top: 14px; }
+  .card { max-height: 60%; overflow-y: auto; }
+  .card :global(.saved-meta a) { text-decoration: underline; text-underline-offset: 3px; }
+  .hint { color: var(--on-green-muted); font-size: 12px; margin: 0; }
+  .places { max-width: 880px; }
+  h2 { margin-bottom: 12px; }
+</style>
+
+<script>
+  import { requireSession } from '../../lib/account/client';
+  import { loadPassport, type Stamp } from '../../lib/account/passport';
+  import { clampCamera, clusterPins, decodeOutlines, fitCamera, paintGlobe, type Camera, type GlobeCountry } from '../../lib/account/globe';
+  import { el, starLabel } from '../../lib/account/catalogue';
+  import { stampDate } from '../../lib/account/stamps';
+
+  interface Place { id: string; kind: Stamp['kind']; name: string; city: string; latitude: number; longitude: number; stamps: Stamp[] }
+
+  const ICONS: Record<Stamp['kind'], string> = {
+    restaurant: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 2h1.6v7.2a1.6 1.6 0 0 0 1.4-1.6V2h1.6v5.6A3.2 3.2 0 0 1 9.4 10.7V22H7.6V10.7A3.2 3.2 0 0 1 5.4 7.6V2H7v5.6c0 .7.3 1.3.8 1.5zM16.5 2c1.9 0 3.1 2.6 3.1 6.2 0 2.3-1 3.7-2.3 4.1V22h-1.8z"/></svg>',
+    hotel: '<svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7.5 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM12 11h10v2.4h-1.4V17h-2.2v-3.6h-1.6V16h-2.2v-2.6H12z"/></svg>',
+    event: '<svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7 2h2v2h6V2h2v2h3v18H4V4h3zm-1 8v10h12V10zm2 2h3v3H8z"/></svg>',
+  };
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const box = $('[data-box]');
+  const canvas = $<HTMLCanvasElement>('[data-canvas]');
+  const pinLayer = $('[data-pins]');
+  const card = $('[data-card]');
+
+  let countries: GlobeCountry[] = [];
+  let places: Place[] = [];
+  let visited = new Set<string>();
+  let camera: Camera = { latitude: 30, longitude: 10, zoom: 1 };
+  let idle = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let frame = 0;
+  let clusters: ReturnType<typeof clusterPins<Place>> = [];
+
+  function describe(p: Place): string {
+    const first = p.stamps[0];
+    const award = first.kind === 'restaurant' ? starLabel(first.stars) : first.kind === 'hotel' && first.keys ? `${first.keys} Key${first.keys > 1 ? 's' : ''}` : first.eventType;
+    return [award, p.city].filter(Boolean).join(' · ');
+  }
+
+  /** The card for one place, or for several that sit too close to separate. */
+  function openCard(group: Place[]) {
+    const body = $('[data-card-body]');
+    body.replaceChildren();
+    for (const p of group) {
+      body.append(el('p', 'saved-name', p.name), el('p', 'saved-meta', describe(p)));
+      for (const s of p.stamps.slice().reverse()) {
+        const line = el('p', 'saved-meta');
+        const text = `${s.kind === 'event' ? 'Attended' : s.kind === 'hotel' ? 'Stayed' : 'Visited'} ${stampDate(s.date).toLowerCase()}`;
+        if (s.href) {
+          const a = el('a', undefined, text);
+          a.href = s.href;
+          line.append(a);
+        } else {
+          line.textContent = text;
+        }
+        body.append(line);
+      }
+    }
+    card.hidden = false;
+  }
+
+  function flyTo(target: Camera, then?: () => void) {
+    idle = false;
+    const from = camera;
+    const dLon = ((((target.longitude - from.longitude + 180) % 360) + 360) % 360) - 180;
+    const t0 = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / 650);
+      const e = t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
+      camera = clampCamera({
+        latitude: from.latitude + (target.latitude - from.latitude) * e,
+        longitude: from.longitude + dLon * e,
+        zoom: Math.exp(Math.log(from.zoom) + (Math.log(target.zoom) - Math.log(from.zoom)) * e),
+      });
+      draw();
+      if (t < 1) requestAnimationFrame(step);
+      else then?.();
+    };
+    requestAnimationFrame(step);
+  }
+
+  function draw() {
+    const w = box.clientWidth, h = box.clientHeight, dpr = window.devicePixelRatio || 1;
+    if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+    }
+    const ctx = canvas.getContext('2d')!;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const projection = paintGlobe(ctx, w, h, camera, countries, visited);
+    clusters = clusterPins(places, projection, (p) => p.latitude, (p) => p.longitude);
+    pinLayer.replaceChildren();
+    for (const c of clusters) {
+      const b = el('button');
+      b.type = 'button';
+      b.style.left = `${c.x}px`;
+      b.style.top = `${c.y}px`;
+      b.style.opacity = String(c.opacity);
+      if (c.opacity < 0.5) b.style.pointerEvents = 'none';
+      if (c.members.length === 1) {
+        const p = c.members[0];
+        b.innerHTML = ICONS[p.kind];
+        b.setAttribute('aria-label', p.name);
+        b.addEventListener('click', () => flyTo(clampCamera({ latitude: p.latitude, longitude: p.longitude, zoom: Math.max(camera.zoom, 4) }), () => openCard([p])));
+      } else {
+        b.textContent = String(c.members.length);
+        b.setAttribute('aria-label', `${c.members.length} places`);
+        // Fly in until the pins separate; ones that never will (the same
+        // street) open together, as the app's cluster sheet.
+        const members = c.members;
+        b.addEventListener('click', () => flyTo(fitCamera(members.map((m) => [m.latitude, m.longitude]), camera, 12), () => {
+          if (clusters.some((k) => k.members.length > 1 && members.every((m) => k.members.includes(m)))) openCard(members);
+        }));
+      }
+      pinLayer.append(b);
+    }
+  }
+
+  function spin() {
+    if (idle) {
+      camera = clampCamera({ ...camera, longitude: camera.longitude + 0.06 });
+      draw();
+    }
+    frame = requestAnimationFrame(spin);
+  }
+
+  // Drag to spin, two fingers or the wheel to zoom; any touch stops the idle spin.
+  const pointers = new Map<number, { x: number; y: number }>();
+  let pinchStart = 0, zoomStart = 1;
+  box.addEventListener('pointerdown', (e) => {
+    idle = false; // a pin is redrawn every frame while spinning, so stop first
+    if ((e.target as HTMLElement).closest('button, [data-card]')) return;
+    card.hidden = true;
+    box.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinchStart = Math.hypot(a.x - b.x, a.y - b.y);
+      zoomStart = camera.zoom;
+    }
+  });
+  box.addEventListener('pointermove', (e) => {
+    const prev = pointers.get(e.pointerId);
+    if (!prev) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      camera = clampCamera({ ...camera, zoom: zoomStart * Math.hypot(a.x - b.x, a.y - b.y) / Math.max(pinchStart, 1) });
+    } else {
+      const radius = Math.min(box.clientWidth, box.clientHeight) * 0.42 * camera.zoom;
+      const perPx = 180 / Math.PI / radius;
+      camera = clampCamera({ ...camera, longitude: camera.longitude - (e.clientX - prev.x) * perPx, latitude: camera.latitude + (e.clientY - prev.y) * perPx });
+    }
+    draw();
+  });
+  const release = (e: PointerEvent) => pointers.delete(e.pointerId);
+  box.addEventListener('pointerup', release);
+  box.addEventListener('pointercancel', release);
+  box.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    idle = false;
+    camera = clampCamera({ ...camera, zoom: camera.zoom * Math.exp(-e.deltaY * 0.0015) });
+    draw();
+  }, { passive: false });
+  $('[data-close]').addEventListener('click', () => { card.hidden = true; });
+  new ResizeObserver(() => draw()).observe(box);
+
+  async function main() {
+    const session = await requireSession();
+    try {
+      const [passport, outlines] = await Promise.all([
+        loadPassport(session.user.id),
+        fetch('/account/globe/countries.bin').then((r) => {
+          if (!r.ok) throw new Error(`outlines: ${r.status}`);
+          return r.arrayBuffer();
+        }),
+      ]);
+      countries = decodeOutlines(outlines);
+      // One pin per place, however many stamps it has (PassportFilterResult.of).
+      const byPlace = new Map<string, Place>();
+      for (const s of passport.stamps) {
+        if (s.latitude === null || s.longitude === null) continue;
+        const p = byPlace.get(s.placeId) ?? { id: s.placeId, kind: s.kind, name: s.name, city: s.city, latitude: s.latitude, longitude: s.longitude, stamps: [] };
+        p.stamps.push(s);
+        byPlace.set(s.placeId, p);
+      }
+      places = [...byPlace.values()];
+      visited = new Set(passport.countryCodes);
+      const n = places.length, c = passport.countryCodes.length;
+      $('[data-summary]').textContent = n ? `${n} place${n === 1 ? '' : 's'} in ${c} countr${c === 1 ? 'y' : 'ies'}` : 'Nothing on your globe yet';
+      camera = fitCamera(places.map((p) => [p.latitude, p.longitude]), camera);
+      if (camera.zoom > 1.2) idle = false;
+
+      const list = $('[data-list]');
+      for (const p of places.slice().sort((a, b) => a.name.localeCompare(b.name))) {
+        const li = el('li');
+        const text = el('div');
+        const name = el('p', 'saved-name');
+        const button = el('button', 'text-button', p.name);
+        button.type = 'button';
+        button.style.fontFamily = 'var(--display)';
+        button.style.fontSize = '22px';
+        button.style.color = 'var(--green)';
+        button.addEventListener('click', () => {
+          box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          flyTo(clampCamera({ latitude: p.latitude, longitude: p.longitude, zoom: Math.max(camera.zoom, 4) }), () => openCard([p]));
+        });
+        name.append(button);
+        text.append(name, el('p', 'saved-meta', `${describe(p)} · ${p.stamps.length} stamp${p.stamps.length === 1 ? '' : 's'}`));
+        li.append(text);
+        list.append(li);
+      }
+      $('[data-empty]').hidden = places.length > 0;
+    } catch {
+      $('[data-error]').hidden = false;
+      $('[data-summary]').textContent = '';
+    }
+    draw();
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(spin);
+  }
+  main();
+</script>

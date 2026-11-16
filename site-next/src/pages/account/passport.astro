@@ -1,0 +1,165 @@
+---
+// The member's Passport, to look at: the data page, then every stamp,
+// newest year first. No stamp is made here; recording a visit or
+// confirming you were at an event happens in the app.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Passport" description="Your Mantelier Passport." noindex>
+  <PageHeader eyebrow='<a href="/account">Your account</a>' title="Passport" />
+
+  <div class="wrap account-body">
+    <p class="empty" data-loading>Opening your Passport…</p>
+    <p class="notice error" data-error hidden>Your Passport couldn’t be loaded. Please try again.</p>
+
+    <section class="data-page" data-page hidden aria-label="Passport data page">
+      <p class="booklet">Passeport gastronomique</p>
+      <div class="fields">
+        <div><p class="label">Holder · Titulaire</p><p class="value" data-holder></p></div>
+        <div><p class="label">Member no.</p><p class="value" data-member></p></div>
+        <div><p class="label">Valid</p><p class="value" data-valid></p></div>
+      </div>
+      <div class="counts">
+        <div><p class="count" data-entries></p><p class="label">Entries</p></div>
+        <div><p class="count" data-countries></p><p class="label">Countries</p></div>
+        <div><p class="count" data-stars></p><p class="label">Stars</p></div>
+      </div>
+      <p class="label">Countries visited</p>
+      <p class="codes" data-codes></p>
+      <p class="mrz" data-mrz aria-hidden="true"></p>
+    </section>
+
+    <p class="empty" data-empty hidden>No stamps yet. Record a visit in the Mantelier app and its stamp appears here.</p>
+    <div data-years></div>
+
+    <p class="help after" data-after hidden>New stamps come from the app: record a visit or stay, or confirm you were at an event. <a href="/account/globe">See them on your globe →</a></p>
+  </div>
+</Base>
+
+<style>
+  .data-page {
+    max-width: 640px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 28px 30px 22px;
+    box-shadow: 0 1px 0 rgba(22, 48, 42, 0.04), 0 12px 32px -18px rgba(22, 48, 42, 0.35);
+  }
+  .booklet { font-family: var(--util); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--taupe); margin: 0 0 18px; }
+  .label { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin: 0; }
+  .fields { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid var(--rule); }
+  .value { font-family: var(--display); font-size: 21px; margin: 4px 0 0; overflow-wrap: anywhere; }
+  .counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; padding: 18px 0; border-bottom: 1px solid var(--rule); margin-bottom: 16px; }
+  .count { font-family: var(--display); font-size: 40px; line-height: 1; margin: 0 0 6px; }
+  .codes { font-family: var(--util); font-size: 13px; letter-spacing: 0.12em; margin: 6px 0 18px; word-spacing: 0.4em; }
+  .mrz { font-family: var(--util); font-size: 12px; letter-spacing: 0.08em; color: var(--ink-soft); margin: 0; overflow-wrap: anywhere; white-space: pre-line; }
+
+  :global(.year) { margin-top: 56px; }
+  :global(.year h2) { font-family: var(--util); font-size: 12px; letter-spacing: 0.22em; color: var(--taupe); font-weight: 400; margin: 0 0 8px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
+  :global(.stamps) {
+    --stamp-scale: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 22px;
+    padding: 18px 4px;
+    background: var(--paper);
+    border-radius: 8px;
+  }
+  :global(.stamp) { display: block; mix-blend-mode: multiply; opacity: 0.9; transition: opacity 0.15s; }
+  :global(a.stamp:hover) { opacity: 1; text-decoration: none; }
+  :global(.stamp svg) { display: block; width: 100%; height: auto; }
+
+  .after { margin-top: 40px; }
+  .after a { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 760px) {
+    .data-page { padding: 22px 18px 18px; }
+    .fields { grid-template-columns: 1fr 1fr; }
+    .fields > div:first-child { grid-column: 1 / -1; }
+    .count { font-size: 32px; }
+    :global(.stamps) { --stamp-scale: 0.7; gap: 4px 8px; justify-content: center; }
+  }
+</style>
+
+<script>
+  import { requireSession } from '../../lib/account/client';
+  import { loadPassport, type Stamp } from '../../lib/account/passport';
+  import { pickInk, pickJitter, pickRotation, pickVariant, STAMP_FILTER, STAMP_SIZE, stampDate, stampSvg, type Variant } from '../../lib/account/stamps';
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const pad = (n: number) => String(n).padStart(2, '0');
+
+  /** As the data page's machine-readable line: P<MNT<SURNAME<<GIVEN. */
+  function mrz(name: string, member: number | null, entries: number, countries: number, stars: number): string {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    const surname = parts.length ? parts[parts.length - 1] : '';
+    const given = parts.length > 1 ? parts.slice(0, -1).join('<') : '';
+    return `P<MNT<${surname.toUpperCase()}<<${given.toUpperCase()}`.replace(/ /g, '<')
+      + `\n${member ?? '<<<<<<'}<${pad(entries)}E<${pad(countries)}C<${pad(stars)}S<<<<<<<<`;
+  }
+
+  function label(s: Stamp): string {
+    const award = s.kind === 'restaurant' && s.stars ? `, ${s.stars} MICHELIN star${s.stars > 1 ? 's' : ''}`
+      : s.kind === 'hotel' && s.keys ? `, ${s.keys} MICHELIN Key${s.keys > 1 ? 's' : ''}`
+      : s.eventType ? `, ${s.eventType}` : '';
+    return `${s.name}${s.city ? `, ${s.city}` : ''}, ${stampDate(s.date).toLowerCase()}${award}`;
+  }
+
+  async function main() {
+    const session = await requireSession();
+    try {
+      const p = await loadPassport(session.user.id);
+      document.body.insertAdjacentHTML('beforeend', STAMP_FILTER);
+      $('[data-holder]').textContent = p.name || '—';
+      $('[data-member]').textContent = p.memberNumber === null ? '—' : String(p.memberNumber);
+      $('[data-valid]').textContent = p.firstYear ? `${p.firstYear} – present` : 'present';
+      $('[data-entries]').textContent = String(p.stamps.length);
+      $('[data-countries]').textContent = String(p.countryCodes.length);
+      $('[data-stars]').textContent = String(p.stars);
+      $('[data-codes]').textContent = p.countryCodes.length ? p.countryCodes.join(' ') : '—';
+      $('[data-mrz]').textContent = mrz(p.name, p.memberNumber, p.stamps.length, p.countryCodes.length, p.stars);
+      $('[data-page]').hidden = false;
+
+      // Newest year first; within a year oldest first, the order they were pressed.
+      const years = [...new Set(p.stamps.map((s) => s.date.slice(0, 4)))].sort().reverse();
+      const container = $('[data-years]');
+      for (const year of years) {
+        const section = document.createElement('section');
+        section.className = 'year';
+        const heading = document.createElement('h2');
+        heading.textContent = year;
+        const grid = document.createElement('div');
+        grid.className = 'stamps';
+        let prevVariant: Variant | undefined;
+        let prevInk: number | undefined;
+        for (const s of p.stamps.filter((x) => x.date.startsWith(year))) {
+          // No two neighbours share a design or an ink, as on a page in the app.
+          const variant = pickVariant(s.id, prevVariant);
+          const ink = pickInk(s.id, prevInk);
+          prevVariant = variant;
+          prevInk = ink;
+          const [w] = STAMP_SIZE[variant];
+          const [jx, jy] = pickJitter(s.id);
+          const el = document.createElement(s.href ? 'a' : 'div');
+          el.className = 'stamp';
+          if (el instanceof HTMLAnchorElement && s.href) el.href = s.href;
+          el.setAttribute('aria-label', label(s));
+          el.style.width = `calc(${w}px * var(--stamp-scale))`;
+          el.style.transform = `translate(${jx.toFixed(1)}px, ${jy.toFixed(1)}px) rotate(${pickRotation(s.id).toFixed(2)}deg)`;
+          el.innerHTML = stampSvg(s, variant, ink);
+          grid.append(el);
+        }
+        section.append(heading, grid);
+        container.append(section);
+      }
+      $('[data-empty]').hidden = p.stamps.length > 0;
+      $('[data-after]').hidden = p.stamps.length === 0;
+    } catch {
+      $('[data-error]').hidden = false;
+    }
+    $('[data-loading]').hidden = true;
+  }
+  main();
+</script>

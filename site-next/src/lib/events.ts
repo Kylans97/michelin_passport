@@ -6,14 +6,10 @@
 import { inList, selectAll } from './supabase';
 import { slugify } from './news';
 import { loadCatalogue } from './restaurants';
-import { formatDateRange, MONTHS_LONG } from './event-dates';
+import { formatDateRange, MONTHS_LONG, TYPE_LABELS } from './event-dates';
 
 export { formatDateRange };
 
-const TYPE_LABELS: Record<string, string> = {
-  festival: 'Festival', dinner: 'Dinner', lunch: 'Lunch', tasting: 'Tasting', gala: 'Gala',
-  brunch: 'Brunch', party: 'Party', market: 'Market', experience: 'Experience',
-};
 const ADMISSION_LABELS: Record<string, string> = {
   free: 'Free entry', paid: 'Ticketed', mixed: 'Free entry, optional ticket', unknown: 'Admission not confirmed',
 };

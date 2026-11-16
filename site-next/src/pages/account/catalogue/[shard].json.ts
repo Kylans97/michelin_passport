@@ -5,18 +5,18 @@
 // than the build is looked up live (src/lib/account/data.ts).
 //
 // Split into 16 files by the id's first hex digit, so a member's page
-// loads only the parts holding what they saved (all of it would be about
-// 260 kB compressed).
+// loads only the parts holding what they saved or visited (all of it would
+// be about 300 kB compressed).
 import type { APIRoute, GetStaticPaths } from 'astro';
 import { loadCatalogue, place } from '../../../lib/restaurants';
 import { formatWhen, loadEvents, place as eventPlace } from '../../../lib/events';
 import { selectAll } from '../../../lib/supabase';
 
 export interface AccountCatalogue {
-  /** id → [page slug, name, place, current MICHELIN stars or null] */
-  r: Record<string, [string, string, string, number | null]>;
-  /** id → [name, place, MICHELIN Keys or null]. Hotels have no pages yet. */
-  h: Record<string, [string, string, number | null]>;
+  /** id → [page slug, name, place, current MICHELIN stars or null, country code, latitude, longitude, city] */
+  r: Record<string, [string, string, string, number | null, string, number | null, number | null, string]>;
+  /** id → [name, place, MICHELIN Keys or null, country code, latitude, longitude, city]. Hotels have no pages yet. */
+  h: Record<string, [string, string, number | null, string, number | null, number | null, string]>;
   /** id → [page slug, name, when, place, cancelled] */
   e: Record<string, [string, string, string, string, boolean]>;
 }
@@ -30,12 +30,12 @@ function loadAll(): Promise<AccountCatalogue> {
     const [{ restaurants }, events, hotels] = await Promise.all([
       loadCatalogue(),
       loadEvents(),
-      selectAll<{ id: string; name: string; city_name: string | null; country_name: string | null; michelin_keys: number | null }>(
-        'hotels_full', 'select=id,name,city_name,country_name,michelin_keys&order=id'),
+      selectAll<{ id: string; name: string; city_name: string | null; country_name: string | null; country_code: string; michelin_keys: number | null; latitude: number | null; longitude: number | null }>(
+        'hotels_full', 'select=id,name,city_name,country_name,country_code,michelin_keys,latitude,longitude&order=id'),
     ]);
     const out: AccountCatalogue = { r: {}, h: {}, e: {} };
-    for (const r of restaurants) out.r[r.id] = [r.slug, r.name, place(r), r.stars];
-    for (const h of hotels) out.h[h.id] = [h.name, [h.city_name, h.country_name].filter(Boolean).join(', '), h.michelin_keys];
+    for (const r of restaurants) out.r[r.id] = [r.slug, r.name, place(r), r.stars, r.countryCode ?? '', r.latitude, r.longitude, r.city ?? ''];
+    for (const h of hotels) out.h[h.id] = [h.name, [h.city_name, h.country_name].filter(Boolean).join(', '), h.michelin_keys, h.country_code, h.latitude, h.longitude, h.city_name ?? ''];
     for (const e of events) out.e[e.id] = [e.slug, e.name, formatWhen(e), eventPlace(e), e.cancelled];
     return out;
   })();

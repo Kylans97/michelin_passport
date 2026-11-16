@@ -78,7 +78,7 @@ for (const m of TEST_MEMBERS) {
 // Events: copied as published, from production's public read only.
 const ids = process.argv.slice(2);
 if (ids.length) {
-  const cols = 'id,name,description,event_type,start_date,end_date,start_time,end_time,start_at,end_at,timezone,city,country_code,venue_name,address,official_url,ticket_url,cancelled_at,admission_type,moderation_status';
+  const cols = 'id,name,description,event_type,start_date,end_date,start_time,end_time,start_at,end_at,timezone,city,country_code,latitude,longitude,venue_name,address,official_url,ticket_url,cancelled_at,admission_type,moderation_status';
   const res = await fetch(`${PROD_URL}/rest/v1/events?select=${cols}&moderation_status=eq.published&id=in.(${ids.join(',')})`, {
     headers: { apikey: PROD_ANON_KEY, Authorization: `Bearer ${PROD_ANON_KEY}` },
   });

@@ -1,0 +1,183 @@
+---
+// One visit or stay from the Passport, to look at: the date, the award as
+// it was then, the member's ratings, notes, wines and photos, as the app's
+// VisitDetailScreen / StayDetailScreen show them. Editing, deleting,
+// adding photos and changing who sees it stay in the app. The visit's id
+// comes in the query string; RLS returns it only to its owner.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Visit" description="A visit in your Mantelier Passport." noindex>
+  <PageHeader eyebrow='<a href="/account/passport">Passport</a>' title="Visit" />
+
+  <div class="wrap account-body">
+    <p class="empty" data-loading>Loading…</p>
+    <p class="notice error" data-error hidden>This visit couldn’t be found in your Passport.</p>
+
+    <article class="visit" data-visit hidden>
+      <p class="eyebrow" data-kind></p>
+      <p class="when" data-when></p>
+      <p class="award" data-award hidden></p>
+      <p class="venue-link" data-venue-link hidden></p>
+
+      <section data-ratings hidden>
+        <h2 class="eyebrow">Ratings</h2>
+        <p class="overall" data-overall hidden></p>
+        <dl class="ratings"></dl>
+      </section>
+
+      <section data-details hidden>
+        <h2 class="eyebrow">Details</h2>
+        <dl class="details"></dl>
+      </section>
+
+      <section data-notes-section hidden>
+        <h2 class="eyebrow">Notes</h2>
+        <p class="notes" data-notes></p>
+      </section>
+
+      <section data-wines-section hidden>
+        <h2 class="eyebrow">Wines</h2>
+        <ul class="wines"></ul>
+      </section>
+
+      <section data-photos-section hidden>
+        <h2 class="eyebrow">Photos</h2>
+        <div class="photos"></div>
+      </section>
+
+      <p class="help foot" data-visibility></p>
+    </article>
+  </div>
+</Base>
+
+<style>
+  .visit { max-width: 760px; }
+  .when { font-family: var(--display); font-size: 30px; margin: 8px 0 0; }
+  .award { color: var(--gold); margin: 6px 0 0; font-size: 15px; }
+  .venue-link { margin: 10px 0 0; font-size: 14px; }
+  .venue-link :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+  section { margin-top: 36px; }
+  h2 { margin-bottom: 12px; }
+  .overall { font-family: var(--display); font-size: 40px; line-height: 1; margin: 0 0 14px; }
+  .overall :global(span) { font-family: var(--body); font-size: 14px; color: var(--ink-soft); margin-left: 4px; }
+  dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px 24px; margin: 0; }
+  dl :global(dt) { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+  dl :global(dd) { margin: 4px 0 0; font-family: var(--display); font-size: 21px; }
+  .notes { font-family: var(--display); font-size: 20px; line-height: 1.55; white-space: pre-line; margin: 0; }
+  .wines { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  .wines :global(li) { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .wines :global(.wine) { font-family: var(--display); font-size: 20px; margin: 0; }
+  .wines :global(.wine-meta) { font-size: 13px; color: var(--ink-soft); margin: 2px 0 0; }
+  .photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .photos :global(a) { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 6px; background: var(--placeholder); }
+  .photos :global(img) { width: 100%; height: 100%; object-fit: cover; }
+  .foot { margin-top: 36px; }
+</style>
+
+<script>
+  import { requireSession } from '../../lib/account/client';
+  import { loadVisit } from '../../lib/account/visits';
+  import { catalogue, el } from '../../lib/account/catalogue';
+  import { MONTHS_LONG } from '../../lib/event-dates';
+  import { venuesById } from '../../lib/account/data';
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const MENU: Record<string, string> = { tasting_menu: 'Tasting menu', a_la_carte: 'À la carte', both: 'Both' };
+  const SIZE: Record<string, string> = { glass: 'Glass', half: 'Half', bottle: 'Bottle', magnum: 'Magnum', other: 'Other' };
+
+  function fill(list: HTMLElement, rows: [string, string | null][]) {
+    for (const [label, value] of rows) {
+      if (!value) continue;
+      const box = el('div');
+      box.append(el('dt', undefined, label), el('dd', undefined, value));
+      list.append(box);
+    }
+    return list.children.length > 0;
+  }
+
+  async function main() {
+    const session = await requireSession();
+    const id = new URLSearchParams(location.search).get('id') ?? '';
+    try {
+      const v = await loadVisit(session.user.id, id);
+      if (!v) throw new Error('not found');
+      const cat = await catalogue([v.entity_id]);
+      const hotel = v.entity_type === 'hotel';
+      const built = hotel ? cat.h[v.entity_id] : cat.r[v.entity_id];
+      const name = built
+        ? (hotel ? (built[0] as string) : (built[1] as string))
+        : (await venuesById(hotel ? 'hotels_full' : 'restaurants_full', [v.entity_id]))[0]?.name ?? (hotel ? 'Stay' : 'Visit');
+      document.title = `${name} — Mantelier`;
+      $('.band h1').textContent = name;
+      $('[data-kind]').textContent = hotel ? 'Stay' : 'Visit';
+      const [y, m, d] = v.visited_on.split('-').map(Number);
+      $('[data-when]').textContent = `${d} ${MONTHS_LONG[m - 1]} ${y}`;
+
+      const award = hotel ? v.keys_at_visit : v.stars_at_visit;
+      if (award && award > 0) {
+        $('[data-award]').textContent = hotel
+          ? `${award} MICHELIN Key${award > 1 ? 's' : ''} at the time of this stay`
+          : `${'★'.repeat(award)} at the time of this visit`;
+        $('[data-award]').hidden = false;
+      }
+      if (!hotel && built) {
+        const a = el('a', undefined, `${name} on Mantelier →`);
+        a.href = `/restaurants/${built[0]}`;
+        $('[data-venue-link]').append(a);
+        $('[data-venue-link]').hidden = false;
+      }
+
+      const rated: [string, string | null][] = (hotel
+        ? [['Service', v.service_rating], ['Room', v.room_rating], ['Experience', v.experience_rating], ['Value', v.value_rating]]
+        : [['Food', v.food_rating], ['Service', v.service_rating], ['Wine', v.wine_rating], ['Atmosphere', v.atmosphere_rating], ['Value', v.value_rating]]
+      ).map(([label, value]) => [label as string, value === null ? null : `${value}/10`]);
+      const hasRatings = fill($('.ratings'), rated);
+      if (v.rating !== null) {
+        $('[data-overall]').innerHTML = '';
+        $('[data-overall]').append(String(Number(v.rating.toFixed(2))), el('span', undefined, 'overall, of 10'));
+        $('[data-overall]').hidden = false;
+      }
+      $('[data-ratings]').hidden = !hasRatings && v.rating === null;
+
+      const price = v.price_paid !== null ? `${new Intl.NumberFormat('en', { maximumFractionDigits: 2 }).format(v.price_paid)}${v.currency ? ` ${v.currency}` : ''}` : null;
+      $('[data-details]').hidden = !fill($('.details'), [['Menu', v.menu_type ? MENU[v.menu_type] ?? null : null], ['Paid', price]]);
+
+      if (v.notes?.trim()) {
+        $('[data-notes]').textContent = v.notes.trim();
+        $('[data-notes-section]').hidden = false;
+      }
+
+      for (const w of v.wines) {
+        const li = el('li');
+        li.append(el('p', 'wine', [w.producer, w.wine_name].filter(Boolean).join(', ')));
+        const meta = [w.non_vintage ? 'NV' : w.vintage ? String(w.vintage) : null, w.bottle_size ? SIZE[w.bottle_size] : null].filter(Boolean).join(' · ');
+        if (meta) li.append(el('p', 'wine-meta', meta));
+        $('.wines').append(li);
+      }
+      $('[data-wines-section]').hidden = v.wines.length === 0;
+
+      for (const p of v.photos) {
+        const a = el('a');
+        a.href = p.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        const img = el('img');
+        img.src = p.url;
+        img.alt = p.caption ?? `Photo from ${name}`;
+        img.loading = 'lazy';
+        a.append(img);
+        $('.photos').append(a);
+      }
+      $('[data-photos-section]').hidden = v.photos.length === 0;
+
+      $('[data-visibility]').textContent = `${v.visibility === 'friends' ? 'Visible to your friends.' : 'Only you can see this.'} To edit it, add photos or change who sees it, open it in the Mantelier app.`;
+      $('[data-visit]').hidden = false;
+    } catch {
+      $('[data-error]').hidden = false;
+    }
+    $('[data-loading]').hidden = true;
+  }
+  main();
+</script>

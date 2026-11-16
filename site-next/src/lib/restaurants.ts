@@ -24,6 +24,9 @@ export interface Restaurant {
   country: string | null;
   countryCode: string | null;
   address: string | null;
+  /** The verified location, for the signed-in member's globe. */
+  latitude: number | null;
+  longitude: number | null;
   cuisine: string | null;
   websiteUrl: string | null;
   michelinUrl: string | null;
@@ -77,6 +80,7 @@ interface RestaurantRow {
   is_expired: boolean | null; hotel_name: string | null; property_name: string | null;
   city_name: string | null; region: string | null; country_name: string | null;
   worlds_50_best_rank: number | null; is_hall_of_fame: boolean | null; cuisine_names: string | null;
+  latitude: number | null; longitude: number | null;
 }
 
 let cache: Promise<Catalogue> | null = null;
@@ -86,7 +90,7 @@ export function loadCatalogue(): Promise<Catalogue> {
     const [rows, michelin, w50b, gm, selection] = await Promise.all([
       selectAll<RestaurantRow>(
         'restaurants_full',
-        'select=id,restaurant_code,name,michelin_stars,country_code,address,website_url,michelin_url,worlds_50_best_url,status,is_expired,hotel_name,property_name,city_name,region,country_name,worlds_50_best_rank,is_hall_of_fame,cuisine_names&order=restaurant_code',
+        'select=id,restaurant_code,name,michelin_stars,country_code,address,website_url,michelin_url,worlds_50_best_url,status,is_expired,hotel_name,property_name,city_name,region,country_name,worlds_50_best_rank,is_hall_of_fame,cuisine_names,latitude,longitude&order=restaurant_code',
       ),
       selectAll<{ entity_id: string; guide_year: number; award_value: number | null }>(
         'award_history',
@@ -145,6 +149,8 @@ export function loadCatalogue(): Promise<Catalogue> {
         country: r.country_name,
         countryCode: r.country_code,
         address: r.address,
+        latitude: r.latitude,
+        longitude: r.longitude,
         cuisine: r.cuisine_names,
         websiteUrl: httpUrl(r.website_url),
         michelinUrl: httpUrl(r.michelin_url),

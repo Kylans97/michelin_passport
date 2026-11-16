@@ -1,7 +1,13 @@
-// Event dates as the app writes them (event_date_format.dart). No imports,
-// so the signed-in pages can use it in the browser too.
+// Event dates and types as the app writes them (event_date_format.dart,
+// EventType.label). No imports, so the signed-in pages can use it in the
+// browser too.
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const TYPE_LABELS: Record<string, string> = {
+  festival: 'Festival', dinner: 'Dinner', lunch: 'Lunch', tasting: 'Tasting', gala: 'Gala',
+  brunch: 'Brunch', party: 'Party', market: 'Market', experience: 'Experience',
+};
+
+export const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 export const MONTHS_LONG = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const parts = (d: string) => d.split('-').map(Number) as [number, number, number];
 
