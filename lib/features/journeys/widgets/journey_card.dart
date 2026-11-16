@@ -3,15 +3,13 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../models/journey.dart';
-import '../../explore/widgets/explore_discovery_cards.dart'
-    show mantelierSelectionLabel;
 
 /// One train or ship in the Trains & Ships collection. Typographic on
 /// purpose: photos of a journey come from its operator (the venue-supplied
 /// content rule), and until an operator supplies them the card shows the
 /// name, operator and where it runs — never a scraped image, never a
-/// placeholder pretending to be one. No badge beyond the Selection line,
-/// and that line is forest green, never gold.
+/// placeholder pretending to be one. No badge at all: journeys are not in
+/// the Mantelier Selection, and nothing here is gold.
 class JourneyCard extends StatelessWidget {
   final Journey journey;
   final VoidCallback onTap;
@@ -83,15 +81,6 @@ class JourneyCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: CsTypography.body.copyWith(
                       color: AppColors.textPrimary,
-                    ),
-                  ),
-                ],
-                if (journey.isSelected) ...[
-                  const SizedBox(height: CsSpacing.md),
-                  Text(
-                    mantelierSelectionLabel.toUpperCase(),
-                    style: CsTypography.eyebrow.copyWith(
-                      color: AppColors.forestGreen,
                     ),
                   ),
                 ],

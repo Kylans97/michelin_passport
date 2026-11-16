@@ -4,8 +4,6 @@ import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/editorial_back_button.dart';
 import '../../../models/journey.dart';
-import '../../explore/widgets/explore_discovery_cards.dart'
-    show mantelierSelectionLabel;
 
 /// The top of a journey's detail page. A fourth hero, deliberately its own
 /// widget beside VenueDetailHero, PrivateChefHero and EventDetailHero
@@ -89,16 +87,6 @@ class JourneyDetailHero extends StatelessWidget {
                         where,
                         style: CsTypography.body.copyWith(
                           color: AppColors.secondaryOnDark,
-                        ),
-                      ),
-                    ],
-                    if (journey.isSelected) ...[
-                      const SizedBox(height: CsSpacing.base),
-                      // Editorial judgement, not an award: muted, never gold.
-                      Text(
-                        mantelierSelectionLabel.toUpperCase(),
-                        style: CsTypography.eyebrow.copyWith(
-                          color: AppColors.ivory,
                         ),
                       ),
                     ],

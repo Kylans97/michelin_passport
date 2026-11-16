@@ -9,7 +9,7 @@ const journeyFullColumns =
     'first_departure_on, summary, cabins_text, guest_capacity, dining_text, '
     'official_url, primary_country_code, regions_text, country_name, '
     'flag_emoji, operator_code, operator_name, operator_website_url, '
-    'is_selected, route_count, route_country_codes';
+    'route_count, route_country_codes';
 
 const _routeColumns =
     'id, route_code, name, from_place, from_country_code, to_place, nights, '

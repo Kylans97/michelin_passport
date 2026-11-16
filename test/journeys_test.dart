@@ -46,7 +46,6 @@ Map<String, dynamic> _row({
   'operator_code': 'op_001',
   'operator_name': 'Belmond',
   'operator_website_url': 'https://www.belmond.com/',
-  'is_selected': true,
   'route_count': 1,
   'route_country_codes': ['PE'],
 };
@@ -83,7 +82,6 @@ void main() {
       expect(j.kind, JourneyKind.train);
       expect(j.journeyCode, 'train_002');
       expect(j.operatorName, 'Belmond');
-      expect(j.isSelected, isTrue);
       expect(j.routeCountryCodes, ['PE']);
       expect(j.status, JourneyStatus.operating);
     });
@@ -253,7 +251,7 @@ void main() {
     });
   });
 
-  testWidgets('the card shows the Selection in green, nothing in gold', (
+  testWidgets('the card has no Selection line and nothing in gold', (
     tester,
   ) async {
     await tester.pumpWidget(
@@ -265,7 +263,7 @@ void main() {
     );
     expect(find.text('Belmond Andean Explorer'), findsOneWidget);
     expect(find.text('TRAIN · BELMOND'), findsOneWidget);
-    expect(find.text('MANTELIER SELECTION'), findsOneWidget);
+    expect(find.text('MANTELIER SELECTION'), findsNothing);
     for (final text in tester.widgetList<Text>(find.byType(Text))) {
       expect(text.style?.color, isNot(AppColors.gold));
     }

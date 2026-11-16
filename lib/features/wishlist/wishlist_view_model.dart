@@ -31,17 +31,21 @@ enum WishlistVenueType {
 /// wishlist has no restaurants at all: then Hotels wins if any exist,
 /// else Events, if any exist — the same "don't land on an empty tab for
 /// no reason" rule this function already applied to Restaurants/Hotels,
-/// simply extended one tier further for the new third tab. A pure
+/// simply extended one tier further for the new third tab, and one more
+/// for Journeys: a wishlist holding only trains and ships opens on
+/// Journeys rather than an empty Restaurants tab. A pure
 /// function (no Supabase dependency) so it's directly unit-testable —
 /// mirrors eventMatchesTrip's own reasoning for staying pure.
 WishlistVenueType defaultWishlistVenueType(
   List<PassportVenue> venues,
-  List<Event> events,
-) {
+  List<Event> events, {
+  bool hasJourneys = false,
+}) {
   final hasRestaurants = venues.any((v) => v is RestaurantVenue);
   if (hasRestaurants) return WishlistVenueType.restaurants;
   final hasHotels = venues.any((v) => v is HotelVenue);
   if (hasHotels) return WishlistVenueType.hotels;
   if (events.isNotEmpty) return WishlistVenueType.events;
+  if (hasJourneys) return WishlistVenueType.journeys;
   return WishlistVenueType.restaurants;
 }

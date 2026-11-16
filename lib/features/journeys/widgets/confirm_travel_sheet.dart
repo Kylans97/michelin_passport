@@ -118,6 +118,8 @@ class _ConfirmTravelSheetState extends State<_ConfirmTravelSheet> {
               DropdownButton<JourneyRoute?>(
                 isExpanded: true,
                 value: _route,
+                // The ivory of the sheet, not Material's default menu tint.
+                dropdownColor: AppColors.ivory,
                 style: value,
                 underline: const Divider(
                   height: 1,

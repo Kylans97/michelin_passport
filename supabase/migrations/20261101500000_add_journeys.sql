@@ -9,10 +9,10 @@
 -- hotels, restaurants or hotel_restaurants. Every relationship is a join
 -- table or a plain FK to a lookup table.
 --
--- Recognition is editorial only. MICHELIN gives no stars or Keys to trains
--- or ships, so there is no michelin_* column here and nothing is gold.
--- Membership is journey_selections, shown as "Mantelier Selection" (the
--- brand stays out of every identifier).
+-- No recognition is shown. MICHELIN gives no stars or Keys to trains or
+-- ships, so there is no michelin_* column here and nothing is gold, and
+-- journeys are not in the Mantelier Selection (product owner, 2026-11-16:
+-- "die treinen en ships zijn niet mantelier selection").
 --
 -- Passport stamps come only from journey_travels, a member's explicit
 -- confirmation that they travelled, never from a wishlist entry or a plan.
@@ -174,28 +174,7 @@ create table public.journey_route_stops (
 );
 
 -- ============================================================
--- 4. journey_selections — editorial membership history
--- ============================================================
---
--- Mirrors editorial_selections for restaurants: one row per time a
--- journey enters the Selection; leaving sets removed_on, so the Passport
--- can still say it was in the Selection when the member travelled.
-create table public.journey_selections (
-  id           uuid primary key default gen_random_uuid(),
-  journey_id   uuid not null references public.journeys(id) on delete cascade,
-  selected_on  date not null,
-  removed_on   date,
-  created_at   timestamptz not null default now(),
-  constraint journey_selections_dates_valid
-    check (removed_on is null or removed_on >= selected_on)
-);
-
-create unique index journey_selections_one_current_idx
-  on public.journey_selections (journey_id)
-  where removed_on is null;
-
--- ============================================================
--- 5. journey_restaurants — dining partnerships with catalogue restaurants
+-- 4. journey_restaurants — dining partnerships with catalogue restaurants
 -- ============================================================
 --
 -- A named chef partnership whose restaurant is in the catalogue (Heinz
@@ -215,7 +194,7 @@ create index journey_restaurants_restaurant_idx
   on public.journey_restaurants (restaurant_id);
 
 -- ============================================================
--- 6. journey_travels — confirmed travel, the only source of a stamp
+-- 5. journey_travels — confirmed travel, the only source of a stamp
 -- ============================================================
 --
 -- Mirrors event_confirmed_attendance: created only by the member's own
@@ -253,7 +232,7 @@ create index journey_travels_journey_idx
   on public.journey_travels (journey_id);
 
 -- ============================================================
--- 7. wishlist — journeys become a fourth entity_type
+-- 6. wishlist — journeys become a fourth entity_type
 -- ============================================================
 --
 -- Every wishlist read in shipped builds filters on entity_type
@@ -264,11 +243,10 @@ alter table public.wishlist add constraint wishlist_entity_type_check
   check (entity_type in ('hotel', 'restaurant', 'event', 'journey'));
 
 -- ============================================================
--- 8. journeys_full — what the app and site read
+-- 7. journeys_full — what the app and site read
 -- ============================================================
 --
--- Published journeys only, with the operator, the current Selection flag,
--- the route count and every country a route touches. security_invoker, so
+-- Published journeys only, with the operator, the route count and every country a route touches. security_invoker, so
 -- the reader's own RLS applies.
 create view public.journeys_full
   with (security_invoker = true)
@@ -294,10 +272,6 @@ select
   o.operator_code,
   o.name as operator_name,
   o.website_url as operator_website_url,
-  exists (
-    select 1 from public.journey_selections s
-    where s.journey_id = j.id and s.removed_on is null
-  ) as is_selected,
   (select count(*) from public.journey_routes r where r.journey_id = j.id)::int
     as route_count,
   coalesce((
@@ -312,11 +286,11 @@ left join public.countries c on c.country_code = j.primary_country_code
 where j.publication_status = 'published';
 
 -- ============================================================
--- 9. ROW LEVEL SECURITY
+-- 8. ROW LEVEL SECURITY
 -- ============================================================
 --
--- Catalogue tables (operators, journeys, routes, stops, selections,
--- restaurant links): world-readable, no client write; only service_role
+-- Catalogue tables (operators, journeys, routes, stops, restaurant
+-- links): world-readable, no client write; only service_role
 -- writes. A draft journey and everything under it stays hidden.
 -- The project's default privileges grant ALL on every new table to anon and
 -- authenticated (20260918130000); the grant is narrowed to select so these
@@ -325,17 +299,14 @@ alter table public.journey_operators   enable row level security;
 alter table public.journeys            enable row level security;
 alter table public.journey_routes      enable row level security;
 alter table public.journey_route_stops enable row level security;
-alter table public.journey_selections  enable row level security;
 alter table public.journey_restaurants enable row level security;
 alter table public.journey_travels     enable row level security;
 
 revoke all on public.journey_operators, public.journeys, public.journey_routes,
-  public.journey_route_stops, public.journey_selections,
-  public.journey_restaurants
+  public.journey_route_stops, public.journey_restaurants
   from anon, authenticated;
 grant select on public.journey_operators, public.journeys, public.journey_routes,
-  public.journey_route_stops, public.journey_selections,
-  public.journey_restaurants
+  public.journey_route_stops, public.journey_restaurants
   to anon, authenticated;
 grant select on public.journeys_full to anon, authenticated;
 
@@ -360,13 +331,6 @@ create policy journey_route_stops_public_read on public.journey_route_stops
     select 1 from public.journey_routes r
     join public.journeys j on j.id = r.journey_id
     where r.id = route_id and j.publication_status = 'published'
-  ));
-
-create policy journey_selections_public_read on public.journey_selections
-  for select to anon, authenticated
-  using (exists (
-    select 1 from public.journeys j
-    where j.id = journey_id and j.publication_status = 'published'
   ));
 
 create policy journey_restaurants_public_read on public.journey_restaurants
@@ -410,8 +374,8 @@ create policy journey_travels_delete on public.journey_travels
   using (user_id = auth.uid());
 
 comment on table public.journeys is
-  'Luxury trains and small ships. Editorial catalogue (Selection), never '
-  'gold, never in hotels. Plan: docs/Architecture/JOURNEYS_PLAN.md.';
+  'Luxury trains and small ships. Not in the Selection, never gold, '
+  'never in hotels. Plan: docs/Architecture/JOURNEYS_PLAN.md.';
 comment on table public.journey_travels is
   'A member''s confirmed travel aboard a journey. The only source of a '
   'journey Passport stamp; a wishlist entry or a plan never creates one.';

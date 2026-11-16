@@ -215,10 +215,6 @@ from (values
        nights, duration_text, season_text, display_order)
 join public.journeys j on j.journey_code = v.journey_code;
 
--- Every journey enters the Selection on the day it was decided.
-insert into public.journey_selections (journey_id, selected_on)
-select id, date '2026-11-16' from public.journeys;
-
 -- Dining partnerships, by restaurant code plus country, never by name.
 -- Refuses to finish if a code is missing or sits in another country.
 do $$

@@ -37,7 +37,6 @@ Two points touch settled decisions without breaking them; both are listed in
 | **`journeys`** | One row per train or ship. `journey_code` (`train_001`, `ship_001`), `kind` (`train` / `ship`), `ship_type` (`river`, `expedition`, `sailing_yacht`, `motor_yacht`, `yacht`; NULL for trains), name, `operator_id`, `primary_country_code` (for the card and for code + country dedupe), `status` (`operating` / `announced` / `retired`), `first_departure_on` (announced only), `cabins_text`, `guest_capacity`, `dining_text`, `official_url`, `publication_status` (`draft` / `published`). Descriptive text is a starting value; the operator's own text takes over later (venue-supplied content rule). |
 | **`journey_routes`** | One row per route: `route_code`, from/to place (text) and country, `nights`, `season_text`, `departure_pattern_text` — exactly as the operator publishes it, never inferred. |
 | **`journey_route_stops`** | Ordered stops (place text, country, optional lat/lng) so a route can be drawn on the trip map and the globe. |
-| **`journey_selections`** | Editorial membership history (`selected_on`, `removed_on`), mirroring `editorial_selections` for restaurants. Shown as "Mantelier Selection", never gold. A retired train stays, like a restaurant that loses its stars. |
 | **`journey_restaurants`** | Named dining partnerships that point at a catalogue restaurant (e.g. a chef's starred restaurant) with `role = 'dining_partner'`. A chef with no catalogue restaurant stays in `dining_text` only. |
 | **`journey_travels`** | The Passport record: a member confirms they travelled — `journey_id`, optional `route_id`, `departed_on`, `arrived_on`, rating 1–10, comment, `visibility` (`private` default / `friends`), `source` (`manual` / `trip_completion`). Mirrors `event_confirmed_attendance`. **Only this table creates a stamp.** A wishlist entry or a trip plan never does. |
 | `wishlist.entity_type` | Widened with `'journey'`. Shipped builds filter every wishlist read by `entity_type`, so an old build ignores journey rows rather than crashing on them (checked in `wishlist_repository.dart`). |
@@ -51,7 +50,7 @@ when `visibility = 'friends'`, the same policy shape as `visits`. The first
 slice needs no `SECURITY DEFINER` function; any later one gets its own
 `revoke execute … from public, anon` in the same migration.
 
-Views: `journeys_full` (operator name, current Selection flag, route count,
+Views: `journeys_full` (operator name, route count,
 countries covered) — the app reads the view, as for restaurants and hotels.
 
 ## 3. Identity
@@ -66,7 +65,7 @@ countries covered) — the app reads the view, as for restaurants and hotels.
 
 - **Explore**: a "Trains & Ships" segment beside Collections and Private
   Chefs, with one Filters affordance (train / ship, region). Calm cards:
-  name, operator, from → to, nights. No badges beyond the Selection label.
+  name, operator, from → to, nights. No badges.
 - **Search**: journeys appear with operator and route as disambiguation.
 - **Detail page**: a new `JourneyDetailScreen` with its own
   `JourneyDetailHero`. The three existing heroes stay separate; a fourth,
@@ -86,7 +85,7 @@ sign-in.
 
 ## 6. Proposed first slice
 
-1. Migration: operators, journeys, routes, stops, selections, travels,
+1. Migration: operators, journeys, routes, stops, travels,
    `journey_restaurants`, wishlist widening, `journeys_full`. Tests on RLS and
    constraints.
 2. Seed (prepared, applied only on approval): the candidates the product
@@ -104,6 +103,10 @@ operator claims and photos, Off the beaten track (Peru) using these rows.
 2. Selection label: every journey is in the catalogue by editorial choice;
    show it as "Mantelier Selection" (never gold)? This widens the Selection
    beyond restaurants, which the Selection migration calls its own decision.
+   **Reversed 2026-11-16 by the product owner** ("die treinen en ships zijn
+   niet mantelier selection"): journeys are not in the Selection, carry no
+   label, and `journey_selections` was dropped from the unapplied migration.
+   A retired train still stays, like a restaurant that loses its stars.
 3. A fourth, separate hero widget (`JourneyDetailHero`) — consistent with
    "do not unify", but it is a new hero.
 4. No photos until operators supply them (content rule), or an exception.

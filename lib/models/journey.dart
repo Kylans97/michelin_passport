@@ -53,7 +53,6 @@ class Journey {
   final String? regionsText;
   final String operatorCode;
   final String operatorName;
-  final bool isSelected;
   final int routeCount;
   final List<String> routeCountryCodes;
 
@@ -77,7 +76,6 @@ class Journey {
     this.countryName,
     this.flagEmoji,
     this.regionsText,
-    this.isSelected = false,
     this.routeCount = 0,
     this.routeCountryCodes = const [],
   });
@@ -104,7 +102,6 @@ class Journey {
     regionsText: map['regions_text'] as String?,
     operatorCode: map['operator_code'] as String,
     operatorName: map['operator_name'] as String,
-    isSelected: map['is_selected'] as bool? ?? false,
     routeCount: (map['route_count'] as num?)?.toInt() ?? 0,
     routeCountryCodes: [
       for (final code in (map['route_country_codes'] as List?) ?? const [])

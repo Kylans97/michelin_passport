@@ -80,10 +80,10 @@ void main() {
 
     test('mixed wishlist prefers Restaurants', () {
       expect(
-        defaultWishlistVenueType([
-          HotelVenue(_hotel()),
-          RestaurantVenue(_restaurant()),
-        ], [_event()]),
+        defaultWishlistVenueType(
+          [HotelVenue(_hotel()), RestaurantVenue(_restaurant())],
+          [_event()],
+        ),
         WishlistVenueType.restaurants,
       );
     });
@@ -92,6 +92,20 @@ void main() {
       expect(
         defaultWishlistVenueType([HotelVenue(_hotel())], [_event()]),
         WishlistVenueType.hotels,
+      );
+    });
+
+    test('only journeys opens on Journeys', () {
+      expect(
+        defaultWishlistVenueType([], [], hasJourneys: true),
+        WishlistVenueType.journeys,
+      );
+    });
+
+    test('events still win over journeys', () {
+      expect(
+        defaultWishlistVenueType([], [_event()], hasJourneys: true),
+        WishlistVenueType.events,
       );
     });
 

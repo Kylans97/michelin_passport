@@ -109,7 +109,7 @@ class _WishlistBodyState extends State<WishlistBody> {
         _loading = false;
         _loadError = false;
       });
-      _applyDefaultVenueType(venues, events);
+      _applyDefaultVenueType(venues, events, hasJourneys: journeys.isNotEmpty);
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -121,10 +121,18 @@ class _WishlistBodyState extends State<WishlistBody> {
     }
   }
 
-  void _applyDefaultVenueType(List<PassportVenue> venues, List<Event> events) {
+  void _applyDefaultVenueType(
+    List<PassportVenue> venues,
+    List<Event> events, {
+    bool hasJourneys = false,
+  }) {
     if (_defaultApplied) return;
     _defaultApplied = true;
-    final defaultType = defaultWishlistVenueType(venues, events);
+    final defaultType = defaultWishlistVenueType(
+      venues,
+      events,
+      hasJourneys: hasJourneys,
+    );
     if (defaultType != _venueType && mounted) {
       setState(() => _venueType = defaultType);
     }
