@@ -100,10 +100,16 @@ class AwardHistoryRepository {
         .select('id')
         .eq('restaurant_id', restaurantId)
         .limit(1);
+    final guideAwardsFuture = _client
+        .from('guide_awards')
+        .select('id')
+        .eq('restaurant_id', restaurantId)
+        .limit(1);
     final results = await Future.wait([
       michelinFuture,
       worlds50BestFuture,
       gaultMillauFuture,
+      guideAwardsFuture,
     ]);
     return results.any((rows) => (rows as List).isNotEmpty);
   }

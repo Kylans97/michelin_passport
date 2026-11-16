@@ -6,6 +6,44 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-16 — Guía Repsol 2026, 2 and 3 Soles, in the shared guide tables
+
+| | |
+|---|---|
+| Applied | 2026-11-16, to production, at the product owner's request ("Ja, pas Guía Repsol 2 en 3 Soles (159 restaurants) toe op productie"), from `claude/guide-inventory` |
+| Migration | None. Data SQL only, into the tables of `20261101410000` |
+| Data | `guia_repsol_2026/prepared_guia_repsol_2026_import.sql`, one transaction: 1 guide (`guia_repsol`, tiers "1 Sol / 2 Soles / 3 Soles"), 159 `guide_awards`, 159 `guide_venue_links` keyed on Repsol's ficha id, 1 `guide_coverage` (ES, partial) |
+
+**Source.** guiarepsol.com only, read 2026-11-16: the official 2026 Soles list (46 / 173 / 589, gala 2026-02-16) and each restaurant's ficha (address, coordinates, phone, website). Matched on code + country by phone, website or location across the Spanish catalogue, never name; per-entry basis in `repsol_2026_matches.csv`.
+
+**Result.** 3 Soles: 46 of 46. 2 Soles: 113 of 173; 57 not in the catalogue (listed, not added), 2 held back (La Gaia, Poemas by Hermanos Padrón), 1 not staged (Béns d'Avall, marked closed). 1 Sol not loaded: its fichas were not read before Repsol's bot protection blocked further requests.
+
+**Checked after the apply:** 46 + 113 rows; the (tier, code, country) set read back is identical to the CSV; 159 links; `guide_awards_current` returns 159; the coverage note reads as staged.
+
+**Not checked / near-miss:** Repsol swaps latitude and longitude on 61 fichas; compared swapped back. `supabase migration list --linked` shows `20261101420000`–`20261101450000` on remote and not on this branch: applied by other sessions after this branch's last sync, not by this apply.
+
+---
+
+# 2026-11-16 — Regional 50 Best lists in the new shared guide tables (QA-490, QA-491)
+
+| | |
+|---|---|
+| Applied | 2026-11-16, to production, at the product owner's request ("Ja, pas de migratie en de 111 rankings toe op productie"), from `claude/guide-inventory` |
+| Migration | `20261101410000_add_shared_guide_tables.sql`: `guides`, `guide_awards`, `guide_venue_links`, `guide_coverage`, view `guide_awards_current`. Ledger 154/154, local and remote in agreement |
+| Data | `regional_50_best/prepared_regional_50_best_import.sql`, one transaction: 3 guides, 111 `guide_awards`, 111 `guide_venue_links`, 3 `guide_coverage` |
+
+**Source.** the50.com only, read 2026-11-16: Asia's 50 Best 2026 (100 entries), North America's 50 Best 2026 (50), Latin America's 50 Best 2025 (100; the 2026 list follows on 1 December). Matched on code + country, with website, phone or address from the publisher's venue or discovery page, or an existing 50 Best rank on the row; per-entry basis in `regional_50_best_matches.csv`.
+
+**Result.** Asia 51 ranked, 46 not in the catalogue, 3 held back (QA-490: Meet the Bund, Co-, Vea). North America 32 and 18. Latin America 28 and 72. Restaurants not in the catalogue were not added: a regional ranking does not make a restaurant eligible. `worlds_50_best`, `award_history` and `gault_millau_awards` were not touched.
+
+**Checked after the apply:** 51 / 32 / 28 rows; the (guide, rank, code, country) set read back from production is identical to the CSV; 111 links; coverage `partial` for Asia, `complete` for the other two; `guide_awards_current` returns 111; RLS on, four read policies, `anon` may select and may not insert.
+
+**Not done on purpose:** the stale-looking addresses of eight matched restaurants (QA-491) are logged, not corrected. Nothing reads these tables in the app or the site yet.
+
+**Near-miss:** the worktree held neither `20261101390000` (50 Best 2026) nor `20261101400000` (booking windows), both already applied from other branches, so `db push` would have refused. Both files were copied unchanged from their own branches before the push, and the ledger was checked to show `20261101410000` as the only pending migration.
+
+---
+
 # 2026-11-16 — An event's "website" was a PDF (QA-495)
 
 | | |

@@ -1,0 +1,17 @@
+category,tier,name,city,state_or_province,country,parent_hotel,new_for_2026,official_source_url
+hotel,five_star,The Chateau at Nemacolin,Farmington,Pennsylvania,US,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,Mii amo,Sedona,,US,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,"The Ritz-Carlton Orlando, Grande Lakes",Orlando,,US,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,The St. Regis Atlanta,Atlanta,,US,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,Yacht Club at The Boca Raton,,,US,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+restaurant,five_star,Atlas Buckhead,Atlanta,,US,The St. Regis Atlanta,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+restaurant,five_star,Aurelia at Castle Hill,Newport,Rhode Island,US,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+restaurant,five_star,Flybridge,Boca Raton,,US,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,four_star,The Charleston Place,Charleston,,US,,unknown,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,"Capella Shanghai, Jian Ye Li",,,CN,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,Mandarin Oriental Qianmen,Beijing,,CN,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,Regent Hong Kong,,,HK,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,Capella at Galaxy Macau,,,MO,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,Paiza Grand,Macau,,MO,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,Palazzo Versace Macau,,,MO,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html
+hotel,five_star,The St. Regis Macao,,,MO,,yes,https://www.prnewswire.com/ae/news-releases/forbes-travel-guide-reveals-2026-star-awards-302682723.html

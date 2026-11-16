@@ -6,13 +6,16 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../core/widgets/star_row.dart';
 import '../../data/repositories/award_history_repository.dart';
+import '../../data/repositories/guide_award_repository.dart';
 import '../../data/repositories/restaurant_gault_millau_repository.dart';
 import '../../models/award_transition.dart';
 import '../../models/gault_millau_award.dart';
+import '../../models/guide_award.dart';
 import '../../models/restaurant.dart';
 import 'award_history/michelin_history_view_model.dart';
 import 'award_history/worlds_50_best_history_view_model.dart';
 import 'widgets/gault_millau_history_section.dart';
+import 'widgets/guide_award_history_section.dart';
 import 'widgets/michelin_award_timeline.dart';
 import 'widgets/worlds_50_best_history_section.dart';
 
@@ -45,6 +48,7 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
   late final _gaultMillauRepo = RestaurantGaultMillauRepository(
     Supabase.instance.client,
   );
+  late final _guideAwardRepo = GuideAwardRepository(Supabase.instance.client);
 
   bool _loading = true;
   bool _loadError = false;
@@ -55,6 +59,11 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
     hallOfFameYear: null,
   );
   List<GaultMillauAward> _gaultMillau = [];
+  // Shared-table guides (the regional 50 Best lists), grouped per guide in
+  // first-seen order, each newest edition first, with each guide's latest
+  // coverage note.
+  Map<String, List<GuideAward>> _guideAwards = {};
+  Map<String, GuideCoverage> _guideCoverage = {};
 
   @override
   void initState() {
@@ -81,11 +90,35 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
       final michelinHistory = await michelinFuture;
       final worlds50BestHistory = await worlds50BestFuture;
       final gaultMillau = await gaultMillauFuture;
+      // A failure here must not hide the three established guides above.
+      var guideAwards = <GuideAward>[];
+      var coverage = <GuideCoverage>[];
+      try {
+        guideAwards = await _guideAwardRepo.loadForRestaurant(
+          widget.restaurant.id,
+        );
+        coverage = await _guideAwardRepo.loadCoverage(
+          guideAwards.map((a) => a.guideCode),
+        );
+      } catch (_) {}
+      final grouped = <String, List<GuideAward>>{};
+      for (final award in guideAwards) {
+        grouped.putIfAbsent(award.guideCode, () => []).add(award);
+      }
+      final latestCoverage = <String, GuideCoverage>{};
+      for (final c in coverage) {
+        final seen = latestCoverage[c.guideCode];
+        if (seen == null || c.editionYear > seen.editionYear) {
+          latestCoverage[c.guideCode] = c;
+        }
+      }
       if (!mounted) return;
       setState(() {
         _michelinTransitions = detectAwardTransitions(michelinHistory);
         _worlds50Best = Worlds50BestHistorySummary.of(worlds50BestHistory);
         _gaultMillau = gaultMillau;
+        _guideAwards = grouped;
+        _guideCoverage = latestCoverage;
         _loading = false;
       });
     } catch (_) {
@@ -106,8 +139,13 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
         _worlds50Best.topFiftyYears.isNotEmpty ||
         _worlds50Best.extendedYears.isNotEmpty;
     final hasGaultMillau = _gaultMillau.isNotEmpty;
+    final hasGuideAwards = _guideAwards.isNotEmpty;
     final hasAnything =
-        hasMichelin || hasWorlds50Best || hasHallOfFame || hasGaultMillau;
+        hasMichelin ||
+        hasWorlds50Best ||
+        hasHallOfFame ||
+        hasGaultMillau ||
+        hasGuideAwards;
 
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
@@ -237,6 +275,18 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
                               ),
                               const SizedBox(height: CsSpacing.md),
                               GaultMillauHistorySection(awards: _gaultMillau),
+                            ],
+                            for (final entry in _guideAwards.entries) ...[
+                              if (hasMichelin ||
+                                  hasWorlds50Best ||
+                                  hasHallOfFame ||
+                                  hasGaultMillau ||
+                                  entry.key != _guideAwards.keys.first)
+                                const SizedBox(height: CsSpacing.xxl),
+                              GuideAwardHistorySection(
+                                awards: entry.value,
+                                coverage: _guideCoverage[entry.key],
+                              ),
                             ],
                           ],
                         ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_detail_hero.dart';
 import '../../../models/gault_millau_award.dart';
+import '../../../models/guide_award.dart';
 import '../../../models/published_venue_photo.dart';
 import '../../guides/widgets/guide_gault_millau_mark.dart';
 import '../../../models/restaurant.dart';
@@ -50,6 +51,12 @@ class RestaurantHero extends StatelessWidget {
   /// absent, never "no award".
   final GaultMillauAward? gaultMillauAward;
 
+  /// The restaurant's current rows in the shared guide tables (today the
+  /// regional 50 Best lists), loaded separately by RestaurantDetailScreen
+  /// from guide_awards_current. One ivory badge each, after World's 50
+  /// Best; never gold.
+  final List<GuideAward> guideAwards;
+
   const RestaurantHero({
     super.key,
     required this.restaurant,
@@ -64,6 +71,7 @@ class RestaurantHero extends StatelessWidget {
     this.isPreview = false,
     this.onPhotosSeen,
     this.gaultMillauAward,
+    this.guideAwards = const [],
   });
 
   @override
@@ -90,6 +98,12 @@ class RestaurantHero extends StatelessWidget {
           icon: Icons.emoji_events_rounded,
           label: "World's 50 Best · #${restaurant.worlds50BestRank}",
         ),
+      for (final award in guideAwards)
+        if (formatGuideAwardValue(award) case final value?)
+          VenueHeroBadge(
+            icon: Icons.emoji_events_outlined,
+            label: '${award.guideName} · $value',
+          ),
       if (gaultMillauText != null)
         VenueHeroBadge(
           icon: Icons.auto_stories_rounded,

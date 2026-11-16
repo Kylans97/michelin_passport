@@ -26,6 +26,7 @@ import '../../core/widgets/venue_utility_actions.dart';
 import '../profile/widgets/owner_preview_marker.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/restaurant_gault_millau_repository.dart';
+import '../../data/repositories/guide_award_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
@@ -41,6 +42,7 @@ import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
 import '../../models/gault_millau_award.dart';
+import '../../models/guide_award.dart';
 import '../../models/passport_venue.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
@@ -149,6 +151,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _gaultMillauRepo = RestaurantGaultMillauRepository(
     Supabase.instance.client,
   );
+  late final _guideAwardRepo = GuideAwardRepository(Supabase.instance.client);
   late final _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
@@ -191,6 +194,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // utility action. Same "starts hidden, only set on success" shape as
   // _hasAwardHistory: null means nothing to show, never "no award".
   GaultMillauAward? _gaultMillauAward;
+
+  // Current rows from the shared guide tables (the regional 50 Best lists),
+  // from guide_awards_current. Starts empty and stays empty on a failed
+  // lookup: no badge, never "no award".
+  List<GuideAward> _guideAwards = const [];
 
   // Events V2 Step 8B — starts empty (section hidden) rather than showing
   // a loading/empty state, same "not yet resolved = hidden" convention as
@@ -257,6 +265,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     _loadPersonalState();
     _checkAwardHistory();
     _loadGaultMillau();
+    _loadGuideAwards();
     _loadHostedEvents();
     if (widget.aboutTextOverride != null) {
       _aboutText = widget.aboutTextOverride;
@@ -385,6 +394,18 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       setState(() => _gaultMillauAward = awards.first);
     } catch (_) {
       // Leave the badge and action hidden on a failed lookup.
+    }
+  }
+
+  Future<void> _loadGuideAwards() async {
+    try {
+      final awards = await _guideAwardRepo.loadCurrentForRestaurant(
+        widget.restaurant.id,
+      );
+      if (!mounted || awards.isEmpty) return;
+      setState(() => _guideAwards = awards);
+    } catch (_) {
+      // Leave the badges hidden on a failed lookup.
     }
   }
 
@@ -847,6 +868,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
             followBusy: _followBusy,
             onTapFollow: _toggleFollow,
             gaultMillauAward: _gaultMillauAward,
+            guideAwards: _guideAwards,
           ),
           SliverToBoxAdapter(
             child: Padding(

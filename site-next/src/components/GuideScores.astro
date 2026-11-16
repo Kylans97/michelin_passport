@@ -2,10 +2,13 @@
 // One restaurant, every guide: the four recognitions side by side, each
 // in its own guide's terms. A guide that doesn't list the restaurant shows
 // a dash, never a number we don't have. Gold is for MICHELIN stars only.
+// Below them, any other guide that currently lists the restaurant (the
+// regional 50 Best lists), each with its own note on what we hold.
 import { gaultMillauText, type Restaurant } from '../lib/restaurants';
 
 interface Props { restaurant: Restaurant; w50bYear: number | null; }
 const { restaurant: r, w50bYear } = Astro.props;
+const others = r.otherGuides.filter((g) => g.current !== null);
 
 const w50b = r.w50bRank !== null
   ? { value: `#${r.w50bRank}`, note: w50bYear ? `${w50bYear} list` : 'Current list' }
@@ -37,6 +40,18 @@ const w50b = r.w50bRank !== null
     <dd class="note">{r.inSelection ? 'Our own choice' : 'Not selected'}</dd>
   </div>
 </dl>
+{others.length > 0 && (
+  <ul class="others">
+    {others.map((g) => (
+      <li>
+        <span class="other-name">{g.name}</span>
+        <span class="other-value">{g.current!.value}</span>
+        <span class="other-year">{g.current!.year} list</span>
+        {g.coverageNote && <span class="other-note">{g.coverageNote}</span>}
+      </li>
+    ))}
+  </ul>
+)}
 
 <style>
   .scores {
@@ -53,6 +68,20 @@ const w50b = r.w50bRank !== null
   .value { font-family: var(--display); font-size: 30px; font-weight: 500; line-height: 1.2; margin-top: 8px; }
   .stars { color: var(--gold); font-size: 24px; letter-spacing: 0.08em; line-height: 1.5; margin-top: 8px; }
   .note { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+  .others { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid var(--rule); }
+  .others li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    column-gap: 16px;
+    align-items: baseline;
+    padding: 12px;
+  }
+  .others li + li { border-top: 1px solid var(--rule); }
+  .other-name { font-size: 14px; }
+  .other-value { font-family: var(--display); font-size: 22px; font-weight: 500; }
+  .other-year { font-size: 12px; color: var(--ink-soft); }
+  .other-note { grid-column: 1 / -1; font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
 
   @media (max-width: 760px) {
     .scores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
