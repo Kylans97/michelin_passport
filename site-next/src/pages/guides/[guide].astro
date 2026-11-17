@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import RestaurantRow from '../../components/RestaurantRow.astro';
 import PageHeader from '../../components/PageHeader.astro';
-import { GUIDES, byCountry, type Guide } from '../../lib/guides';
+import { GUIDES, byCountry, guideEdition, type Guide } from '../../lib/guides';
 import { loadCatalogue } from '../../lib/restaurants';
 import { slugify } from '../../lib/news';
 
@@ -17,19 +17,23 @@ const members = guide.members(catalogue);
 // A ranked list shows a gap in our data as a gap, never closes it up:
 // a missing rank gets its own quiet row.
 const ranked: ({ rank: number; r?: (typeof members)[number] })[] = [];
-if (!guide.grouped && members.length > 0) {
-  const byRank = new Map(members.map((r) => [r.w50bRank!, r]));
+const rankOf = guide.rankOf ?? ((r: (typeof members)[number]) => r.w50bRank);
+const isRanked = !guide.grouped && (guide.slug === 'worlds-50-best' || !!guide.rankOf);
+if (isRanked && members.length > 0) {
+  const byRank = new Map(members.map((r) => [rankOf(r)!, r]));
   const last = Math.max(...byRank.keys());
   for (let rank = 1; rank <= last; rank++) ranked.push({ rank, r: byRank.get(rank) });
 }
 // Long guides (MICHELIN) list their countries here and each country on
 // its own page; short ones open every country in place.
 const split = guide.slug === 'michelin';
-const title = guide.slug === 'worlds-50-best' && catalogue.w50bYear
-  ? `${guide.name} ${catalogue.w50bYear}` : guide.name;
+const edition = guideEdition(guide, catalogue);
+const year = guide.slug === 'worlds-50-best' ? catalogue.w50bYear : edition.year;
+const title = year ? `${guide.name} ${year}` : guide.name;
 ---
 <Base title={title} description={guide.intro} current="guides">
   <PageHeader eyebrow={`<a href="/guides">Guides</a> · ${members.length} restaurants`} title={title} intro={guide.intro} />
+  {edition.note && <p class="wrap coverage">{edition.note}</p>}
 
   <section class="wrap list">
     {split
@@ -43,6 +47,8 @@ const title = guide.slug === 'worlds-50-best' && catalogue.w50bYear
             <ul class="two-col">{list.map((r) => <RestaurantRow restaurant={r} />)}</ul>
           </details>
         ))
+      : !isRanked
+      ? <ul class="two-col">{members.map((r) => <RestaurantRow restaurant={r} lead={guide.leadOf?.(r) ?? undefined} />)}</ul>
       : <ul class="two-col">{ranked.map(({ rank, r }) => r
           ? <RestaurantRow restaurant={r} lead={`${rank}`} />
           : <li class="gap"><span class="gap-rank">{rank}</span><span>Not in our data yet</span></li>)}</ul>}
@@ -51,6 +57,7 @@ const title = guide.slug === 'worlds-50-best' && catalogue.w50bYear
 
 <style>
   .list { padding-top: 40px; }
+  .coverage { margin-top: 14px; font-size: 13px; color: var(--taupe); max-width: 820px; }
   ul { list-style: none; margin: 0; padding: 0; }
   details { border-top: 1px solid var(--rule); }
   details:last-child { border-bottom: 1px solid var(--rule); }

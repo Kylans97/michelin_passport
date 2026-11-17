@@ -8,6 +8,13 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **The regional 50 Best lists and Guía Repsol as guides, app and hidden site** (product owner, 2026-11-17: "die nieuwe repsol guide ... en die 50 best van verschillende werelddelen. Die wil ik ook op de nieuwe website kunnen vinden en in de app"). Until now these showed only as a line on a restaurant's page; there was no way to browse a list.
+  - **App:** Guides gains Asia, Latin America and North America under The World's 50 Best, and a Guía Repsol family with Restaurants. One new screen, `SharedGuideRestaurantScreen`, reads any guide from the shared tables (`guide_awards_current`, `guides.tier_labels`, `guide_coverage`) by `guide_code`, with the same search and country filter as the other guide lists. Ranked lists sort by rank, Repsol by Soles then name; each card reads "#1 · 2026" or "3 Soles · 2026". The coverage note shows above the list, so a partial list never reads as the whole guide.
+  - **Hidden site:** `/guides/asia-50-best`, `/guides/latin-america-50-best`, `/guides/north-america-50-best` and `/guides/guia-repsol`, with the edition year in the title and the coverage note under the intro. The guides index lists all eight.
+  - Guía Repsol's coverage note is stored per country (ES), the regional notes guide-wide; both the app and the site now take the guide-wide note first, else the single country note. Before, the site only read guide-wide notes, so Repsol's would never have shown.
+  - Checked: `flutter analyze` clean, `flutter test` all 2,895 pass (new tests for the ordering and for a restaurant missing from the resolved rows); the site builds with 159 / 51 / 28 / 32 restaurants on the four pages, matching production. Seen in the simulator against production: Guía Repsol opens on the 3 Soles, Asia on The Chairman #1. Not checked: the site pages at phone width.
+
 ---
 
 ## v1.6.0 (35) — 2026-11-17

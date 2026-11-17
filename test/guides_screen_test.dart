@@ -56,7 +56,7 @@ void main() {
               return decoration is BoxDecoration &&
                   decoration.color == AppColors.ivory;
             });
-        expect(ivoryBlocks.length, 4);
+        expect(ivoryBlocks.length, 5);
       },
     );
 
@@ -93,7 +93,7 @@ void main() {
       // 'Restaurants' appears four times total (Mantelier Selection,
       // Michelin, World's 50 Best, Gault&Millau) — confirming the
       // Gault&Millau destination is actually present, not just its title.
-      expect(find.text('Restaurants'), findsNWidgets(4));
+      expect(find.text('Restaurants'), findsNWidgets(5));
     });
 
     testWidgets('renders the Mantelier Selection first, above the external '
@@ -157,6 +157,16 @@ void main() {
         ),
       );
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('lists the regional 50 Best lists and Guía Repsol', (
+      tester,
+    ) async {
+      await tester.pumpWidget(_wrap(const GuidesScreen()));
+      expect(find.text('Asia'), findsOneWidget);
+      expect(find.text('Latin America'), findsOneWidget);
+      expect(find.text('North America'), findsOneWidget);
+      expect(find.text('GUÍA REPSOL'), findsOneWidget);
     });
   });
 }

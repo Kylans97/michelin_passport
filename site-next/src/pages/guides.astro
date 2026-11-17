@@ -2,11 +2,14 @@
 import Base from '../layouts/Base.astro';
 import RestaurantRow from '../components/RestaurantRow.astro';
 import PageHeader from '../components/PageHeader.astro';
-import { GUIDES } from '../lib/guides';
+import { GUIDES, guideEdition } from '../lib/guides';
 import { guideCount, loadCatalogue } from '../lib/restaurants';
 
 const catalogue = await loadCatalogue();
-const guides = GUIDES.map((g) => ({ guide: g, count: g.members(catalogue).length }));
+const guides = GUIDES.map((g) => {
+  const year = g.slug === 'worlds-50-best' ? catalogue.w50bYear : guideEdition(g, catalogue).year;
+  return { guide: g, count: g.members(catalogue).length, label: year ? `${g.name} ${year}` : g.name };
+});
 
 // Where the guides agree: open restaurants recognised by three or more of
 // them, best World's 50 Best rank first, then most stars.
@@ -18,15 +21,15 @@ const agreed = catalogue.restaurants
     || (b.stars ?? 0) - (a.stars ?? 0)
     || a.name.localeCompare(b.name));
 ---
-<Base title="Guides" description="Compare MICHELIN, The World’s 50 Best, Gault&Millau and the Mantelier Selection." current="guides">
+<Base title="Guides" description="Compare MICHELIN, The World’s 50 Best and its regional lists, Gault&Millau, Guía Repsol and the Mantelier Selection." current="guides">
   <PageHeader eyebrow={`${catalogue.restaurants.length} restaurants`} title="Guides" intro="Each guide judges in its own way. Compare them on any restaurant’s page, or browse each guide’s list." />
 
   <section class="wrap body">
     <ul class="guides">
-      {guides.map(({ guide, count }) => (
+      {guides.map(({ guide, count, label }) => (
         <li>
           <a href={`/guides/${guide.slug}`} class="guide">
-            <span class="display guide-name">{guide.slug === 'worlds-50-best' && catalogue.w50bYear ? `${guide.name} ${catalogue.w50bYear}` : guide.name}</span>
+            <span class="display guide-name">{label}</span>
             <span class="guide-intro">{guide.intro}</span>
             <span class="util guide-count">{count} restaurants →</span>
           </a>

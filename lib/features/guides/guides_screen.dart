@@ -9,6 +9,7 @@ import 'gault_millau_restaurant_guide_screen.dart';
 import 'michelin_hotel_guide_screen.dart';
 import 'michelin_restaurant_guide_screen.dart';
 import 'selection_restaurant_guide_screen.dart';
+import 'shared_guide_restaurant_screen.dart';
 import 'widgets/guide_destination_row.dart';
 import 'widgets/guide_family_section.dart';
 
@@ -139,6 +140,20 @@ class _GuidesBody extends StatelessWidget {
                 descriptor: "The world's most remarkable stays.",
                 onTap: () => _open(context, const FiftyBestHotelGuideScreen()),
               ),
+              for (final region in _regionalFiftyBest)
+                GuideDestinationRow(
+                  label: region.label,
+                  descriptor: region.descriptor,
+                  onTap: () => _open(
+                    context,
+                    SharedGuideRestaurantScreen(
+                      guideCode: region.guideCode,
+                      source: "THE WORLD'S 50 BEST",
+                      title: region.label,
+                      subtitle: region.descriptor,
+                    ),
+                  ),
+                ),
             ],
           ),
           const SizedBox(height: CsSpacing.section),
@@ -154,11 +169,50 @@ class _GuidesBody extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(height: CsSpacing.section),
+          GuideFamilySection(
+            title: 'GUÍA REPSOL',
+            destinations: [
+              GuideDestinationRow(
+                label: 'Restaurants',
+                descriptor: 'Restaurants in Spain awarded Repsol Soles.',
+                onTap: () => _open(
+                  context,
+                  const SharedGuideRestaurantScreen(
+                    guideCode: 'guia_repsol',
+                    source: 'GUÍA REPSOL',
+                    title: 'Restaurants',
+                    subtitle: 'Restaurants in Spain awarded Repsol Soles.',
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
+
+/// The regional lists from the shared guide tables (guides.guide_code),
+/// shown under The World's 50 Best: the same organisation, a region each.
+const _regionalFiftyBest = [
+  (
+    guideCode: 'asia_50_best',
+    label: 'Asia',
+    descriptor: "Asia's 50 Best Restaurants.",
+  ),
+  (
+    guideCode: 'latin_america_50_best',
+    label: 'Latin America',
+    descriptor: "Latin America's 50 Best Restaurants.",
+  ),
+  (
+    guideCode: 'north_america_50_best',
+    label: 'North America',
+    descriptor: "North America's 50 Best Restaurants.",
+  ),
+];
 
 // ── Editorial header ────────────────────────────────────────────────────
 

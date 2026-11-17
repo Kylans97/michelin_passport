@@ -21,8 +21,9 @@ export interface OtherGuide {
   name: string;
   /** Every edition this restaurant appears in, newest first. */
   history: { year: number; value: string }[];
-  /** The guide's latest edition, when this restaurant is in it. */
-  current: { year: number; value: string } | null;
+  /** The guide's latest edition, when this restaurant is in it, with the
+   *  raw rank or tier for ordering a guide's own list. */
+  current: { year: number; value: string; rank: number | null; tier: number | null } | null;
   /** The guide's own coverage note for its latest edition: what we hold. */
   coverageNote: string | null;
 }
@@ -125,8 +126,8 @@ export function loadCatalogue(): Promise<Catalogue> {
         restaurant_id: string | null; guide_code: string; edition_year: number; rank: number | null;
         score: number | null; tier: number | null; distinction_label: string | null;
       }>('guide_awards', 'select=restaurant_id,guide_code,edition_year,rank,score,tier,distinction_label&restaurant_id=not.is.null&order=id'),
-      selectAll<{ guide_code: string; edition_year: number; note: string }>(
-        'guide_coverage', 'select=guide_code,edition_year,note&country_code=is.null&order=id',
+      selectAll<{ guide_code: string; edition_year: number; note: string; country_code: string | null }>(
+        'guide_coverage', 'select=guide_code,edition_year,note,country_code&order=id',
       ),
     ]);
 
@@ -169,8 +170,16 @@ export function loadCatalogue(): Promise<Catalogue> {
     for (const a of guideAwards) {
       latestEdition.set(a.guide_code, Math.max(latestEdition.get(a.guide_code) ?? a.edition_year, a.edition_year));
     }
+    // A guide-wide note for the latest edition, else its single country
+    // note (Guía Repsol covers Spain only).
     const noteBy = new Map<string, string>();
-    for (const c of coverage) if (c.edition_year === latestEdition.get(c.guide_code)) noteBy.set(c.guide_code, c.note);
+    const latestNotes = coverage.filter((c) => c.edition_year === latestEdition.get(c.guide_code));
+    for (const code of new Set(latestNotes.map((c) => c.guide_code))) {
+      const notes = latestNotes.filter((c) => c.guide_code === code);
+      const wide = notes.find((c) => c.country_code === null);
+      if (wide) noteBy.set(code, wide.note);
+      else if (notes.length === 1) noteBy.set(code, notes[0].note);
+    }
     const valueOf = (a: (typeof guideAwards)[number]): string | null => {
       const measure = guideBy.get(a.guide_code)?.measure;
       if (measure === 'rank' && a.rank !== null) return `#${a.rank}`;
@@ -193,7 +202,7 @@ export function loadCatalogue(): Promise<Catalogue> {
       }
       const og = forRestaurant.get(a.guide_code)!;
       og.history.push({ year: a.edition_year, value });
-      if (a.edition_year === latestEdition.get(a.guide_code)) og.current = { year: a.edition_year, value };
+      if (a.edition_year === latestEdition.get(a.guide_code)) og.current = { year: a.edition_year, value, rank: a.rank, tier: a.tier };
     }
     for (const m of otherBy.values()) for (const og of m.values()) og.history.sort((x, y) => y.year - x.year);
 
