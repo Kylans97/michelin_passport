@@ -111,6 +111,18 @@ The format follows Keep a Changelog.
     in Spectral and Hanken Grotesk through `CsFonts`. Their serif name
     sizes went down about 9%, as the type change did for the others: the
     cartouche from 24/19/15 to 22/17/14, for example.
+  - **Checked on a device:** `flutter analyze` clean and `flutter test`
+    all 2,948 pass. Checked in the iOS simulator (iPhone 18 Pro Max,
+    2026-11-20) on a real account with four stamps. Page 2 shows all four
+    in their own cells with no overlap: oval, octagon, arch and shield, the
+    shield in green ink for a train. The year corner is clear. Page 3
+    holds only the next-stamp placeholder, in the top-left cell. Not
+    checked on a device: the stamp ceremony, because it would need logging
+    a real visit on that account; any screen under 440 pt wide, since no
+    simulator at 320 pt exists, so that width is covered by tests and a
+    rendered page only; and the cartouche and lozenge, which this account
+    has no stamp drawn in. Those two were checked in renders of the real
+    painters.
 - **No wine on a hotel stay** (product owner, 2026-11-19: "dat je wijn kan
   toevoegen bij hotel review ... dat is gek"). "What we drank" is now
   restaurant-only, like the Wine rating already was: the add-a-stay form no
