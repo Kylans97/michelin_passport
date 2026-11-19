@@ -7,6 +7,7 @@ import '../map/visited_map_screen.dart';
 import '../rankings/widgets/personal_rankings_tab.dart';
 import '../trips/planned_trips_screen.dart' show TripsBody;
 import '../wishlist/wishlist_screen.dart' show WishlistBody;
+import 'widgets/cellar_body.dart';
 import 'widgets/passport_collection_body.dart';
 
 /// Passport Unified Experience V1 — one continuous personal space with
@@ -46,6 +47,7 @@ import 'widgets/passport_collection_body.dart';
 /// copy of this class's own logic.
 class PassportScreen extends StatefulWidget {
   final Widget? passportBody;
+  final Widget? cellarBody;
   final Widget? wishlistBody;
   final Widget? rankingBody;
   final Widget? tripsBody;
@@ -53,6 +55,7 @@ class PassportScreen extends StatefulWidget {
   const PassportScreen({
     super.key,
     this.passportBody,
+    this.cellarBody,
     this.wishlistBody,
     this.rankingBody,
     this.tripsBody,
@@ -62,7 +65,7 @@ class PassportScreen extends StatefulWidget {
   State<PassportScreen> createState() => _PassportScreenState();
 }
 
-enum PassportSubsection { passport, wishlist, ranking, trips }
+enum PassportSubsection { passport, cellar, wishlist, ranking, trips }
 
 class _PassportScreenState extends State<PassportScreen> {
   PassportSubsection _subsection = PassportSubsection.passport;
@@ -83,6 +86,7 @@ class _PassportScreenState extends State<PassportScreen> {
   Widget _buildBody(PassportSubsection subsection) => switch (subsection) {
     PassportSubsection.passport =>
       widget.passportBody ?? const PassportCollectionBody(),
+    PassportSubsection.cellar => widget.cellarBody ?? const CellarBody(),
     PassportSubsection.wishlist => widget.wishlistBody ?? const WishlistBody(),
     PassportSubsection.ranking =>
       widget.rankingBody ??
@@ -262,6 +266,7 @@ class _PassportLocalTabBar extends StatelessWidget {
 
   static const _labels = {
     PassportSubsection.passport: 'Passport',
+    PassportSubsection.cellar: 'Cellar',
     PassportSubsection.wishlist: 'Wishlist',
     PassportSubsection.ranking: 'Ranking',
     PassportSubsection.trips: 'Trips',
