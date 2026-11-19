@@ -115,12 +115,16 @@ The format follows Keep a Changelog.
     restaurant and hotel tiles and the Explore rails at 320 pt (the
     narrowest iPhone on iOS 15) at 1.0×, 1.35× and 2.0× text, with the
     longest real event, restaurant and hotel names in the catalogue.
+- The Explore section titles ("WORTH THE JOURNEY", "MANTELIER'S
+  LATEST", "STAY A LITTLE LONGER") now scale down to fit instead of
+  ending in "…". At 320 pt the longest needs 295 pt of the 280 available.
+  Two of the three were already cut off there with Cormorant.
 - Checked for the type change: `flutter analyze` clean, `flutter test`
-  all 2,919 pass with the real fonts loaded. In the simulator (iPhone 17
-  and 17e, iOS 27) the bundled fonts render on the sign-in screen. Not
-  checked: any signed-in screen on a device (both simulators were signed
-  out), and Dynamic Type sizes on a device; the 320 pt and large-text
-  checks are widget tests, not screenshots. Nine sizes set from a variable
+  all 2,919 pass with the real fonts loaded. Seen in the simulator, signed
+  in (iPhone 17, iOS 27): Explore, an event page, a restaurant page with
+  three stars and one without, the Passport cover, data page and a stamp
+  page, and a news interview. Not checked: Dynamic Type sizes on a
+  device, and a 320 pt phone other than in widget tests. Nine sizes set from a variable
   were left as they are (the stamp painters fit their own text, the
   passport field and avatar initials were adjusted by hand), and 102
   one-line and 31 two-line text spots were not each looked at.

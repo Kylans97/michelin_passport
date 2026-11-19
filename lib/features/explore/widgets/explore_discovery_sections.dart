@@ -41,12 +41,18 @@ class _DiscoverySectionHeader extends StatelessWidget {
       Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          // Scales down rather than truncating: at 320pt (iOS 15's
+          // narrowest iPhones) "WORTH THE JOURNEY" needs 295pt of the 280
+          // available, and a cut-off title reads worse than one 5% smaller.
           Expanded(
-            child: CsSectionTitle(
-              title,
-              color: AppColors.textOnDark,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: CsSectionTitle(
+                title,
+                color: AppColors.textOnDark,
+                maxLines: 1,
+              ),
             ),
           ),
           if (trailing != null) Flexible(child: trailing!),
