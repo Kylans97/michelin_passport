@@ -31,6 +31,7 @@ import '../guides/guides_screen.dart';
 import '../guides/widgets/guide_destination_row.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../journeys/journeys_screen.dart';
+import '../vineyards/vineyards_screen.dart';
 import '../private_chefs/private_chefs_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'discovery_selectors.dart';
@@ -434,6 +435,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
     MaterialPageRoute(builder: (_) => const JourneysScreen()),
   );
 
+  void _openVineyards() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const VineyardsScreen()),
+  );
+
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
@@ -491,6 +497,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
               label: 'Trains & Ships',
               descriptor: 'Luxury trains and small ships, worth the journey.',
               onTap: _openJourneys,
+              surface: CsSurface.dark,
+            ),
+            GuideDestinationRow(
+              label: 'Wine Estates',
+              descriptor: "The World's 50 Best Vineyards, estate by estate.",
+              onTap: _openVineyards,
               surface: CsSurface.dark,
             ),
           ],

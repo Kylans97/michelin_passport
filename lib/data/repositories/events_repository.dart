@@ -432,7 +432,21 @@ class EventsRepository {
         now: now,
       );
 
-  // Shared shape behind all three loadHostedEventsFor* methods — exactly
+  /// The upcoming events a wine estate takes part in (`event_vineyards`,
+  /// 20261101550000). An estate is only ever a participant, never a host
+  /// or venue (the table holds both flags false), so every link counts.
+  Future<List<Event>> loadEventsForVineyard(
+    String vineyardId, {
+    DateTime? now,
+  }) => _loadHostedEvents(
+    table: 'event_vineyards',
+    entityColumn: 'vineyard_id',
+    entityId: vineyardId,
+    hostsOnly: false,
+    now: now,
+  );
+
+  // Shared shape behind all the loadHostedEventsFor* methods — exactly
   // 2 queries (the relationship-id fetch, then one batched Event fetch),
   // mirroring loadLinkedVenues' own established two-query pattern,
   // reversed. No N+1 regardless of how many Events an entity hosts.
@@ -440,13 +454,15 @@ class EventsRepository {
     required String table,
     required String entityColumn,
     required String entityId,
+    bool hostsOnly = true,
     DateTime? now,
   }) async {
-    final relRows = await _client
+    var relQuery = _client
         .from(table)
         .select('event_id')
-        .eq(entityColumn, entityId)
-        .eq('is_host', true);
+        .eq(entityColumn, entityId);
+    if (hostsOnly) relQuery = relQuery.eq('is_host', true);
+    final relRows = await relQuery;
     final eventIds = [
       for (final row in relRows as List) row['event_id'] as String,
     ];

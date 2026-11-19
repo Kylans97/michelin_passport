@@ -1,23 +1,95 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/visit_wine.dart';
 
+const _legacyWineColumns =
+    'id, producer, wine_name, vintage, non_vintage, bottle_size';
+
+// The picked estate comes along with the wine (20261101550000), with its
+// country's name, so a cellar can be grouped without a second query.
+const _wineColumns =
+    '$_legacyWineColumns, vineyard_id, '
+    'vineyards(id, vineyard_code, name, region, city, country_code, '
+    'countries(name))';
+
+/// One wine in a member's cellar, with the day of the visit it was on.
+class CellarWine {
+  final VisitWine wine;
+  final String visitId;
+  final DateTime? visitedOn;
+
+  const CellarWine({required this.wine, required this.visitId, this.visitedOn});
+}
+
+CellarWine _cellarWine(Map<String, dynamic> row) => CellarWine(
+  wine: VisitWine.fromJson(row),
+  visitId: row['visit_id'] as String,
+  visitedOn: switch (row['visits']) {
+    {'visited_on': final String day} => DateTime.tryParse(day),
+    _ => null,
+  },
+);
+
 /// The wines on a visit or stay (`visit_wines`, 20261101330000). RLS makes a
 /// wine exactly as visible as its visit, so nothing is filtered here.
+///
+/// Reads ask for the estate link first and fall back to the columns every
+/// database has, so this build keeps showing wines before the vineyards
+/// migration is applied.
 class VisitWineRepository {
   VisitWineRepository(this._client);
 
   final SupabaseClient _client;
 
+  Future<List<Map<String, dynamic>>> _withFallback(
+    Future<List<dynamic>> Function(String columns) query,
+  ) async {
+    try {
+      return (await query(_wineColumns)).cast<Map<String, dynamic>>();
+    } on PostgrestException {
+      return (await query(_legacyWineColumns)).cast<Map<String, dynamic>>();
+    }
+  }
+
   Future<List<VisitWine>> loadForVisit(String visitId) async {
+    final rows = await _withFallback(
+      (columns) => _client
+          .from('visit_wines')
+          .select(columns)
+          .eq('visit_id', visitId)
+          .order('display_order', ascending: true)
+          .order('created_at', ascending: true),
+    );
+    return [for (final row in rows) VisitWine.fromJson(row)];
+  }
+
+  /// Every wine the member has logged, newest first, for the Passport's
+  /// Cellar. Only the member's own: the cellar is personal.
+  Future<List<CellarWine>> loadCellar(String userId) async {
+    final rows = await _withFallback(
+      (columns) => _client
+          .from('visit_wines')
+          .select('$columns, visit_id, visits(visited_on)')
+          .eq('user_id', userId)
+          .order('created_at', ascending: false)
+          .limit(1000),
+    );
+    return [for (final row in rows) _cellarWine(row)];
+  }
+
+  /// The member's own wines from one estate, for "In your Passport" on the
+  /// estate's page.
+  Future<List<CellarWine>> loadForVineyard({
+    required String userId,
+    required String vineyardId,
+  }) async {
     final rows = await _client
         .from('visit_wines')
-        .select('id, producer, wine_name, vintage, non_vintage, bottle_size')
-        .eq('visit_id', visitId)
-        .order('display_order', ascending: true)
-        .order('created_at', ascending: true);
+        .select('$_wineColumns, visit_id, visits(visited_on)')
+        .eq('user_id', userId)
+        .eq('vineyard_id', vineyardId)
+        .order('created_at', ascending: false);
     return [
-      for (final row in rows as List)
-        VisitWine.fromJson(row as Map<String, dynamic>),
+      for (final row in rows as List) _cellarWine(row as Map<String, dynamic>),
     ];
   }
 
@@ -35,13 +107,21 @@ class VisitWineRepository {
           'visit_id': visitId,
           'display_order': displayOrder,
         })
-        .select('id, producer, wine_name, vintage, non_vintage, bottle_size')
+        .select('id')
         .single();
-    return VisitWine.fromJson(row);
+    return wine.copyWith(id: row['id'] as String);
   }
 
-  Future<void> update(String wineId, VisitWine wine) =>
-      _client.from('visit_wines').update(wine.toRow()).eq('id', wineId);
+  /// [wasLinked]: the wine had an estate before, so a cleared link is
+  /// written as null rather than left out.
+  Future<void> update(
+    String wineId,
+    VisitWine wine, {
+    bool wasLinked = false,
+  }) => _client
+      .from('visit_wines')
+      .update(wine.toRow(withVineyard: wasLinked))
+      .eq('id', wineId);
 
   Future<void> delete(String wineId) =>
       _client.from('visit_wines').delete().eq('id', wineId);
