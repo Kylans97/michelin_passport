@@ -478,13 +478,16 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
         }
       }
       // Same rule for wines: a failure is reported, the visit stays saved.
+      // Restaurant visits only: wines staged before switching to Hotel
+      // are dropped rather than saved onto a stay.
       var wineFailures = 0;
-      for (var i = 0; i < _stagedWines.length; i++) {
+      final winesToSave = _type == _VenueType.restaurant ? _stagedWines : const <VisitWine>[];
+      for (var i = 0; i < winesToSave.length; i++) {
         try {
           await _wineRepo.add(
             userId: widget.userId,
             visitId: saved.id,
-            wine: _stagedWines[i],
+            wine: winesToSave[i],
             displayOrder: i,
           );
         } catch (_) {
@@ -1139,19 +1142,23 @@ class _Step2 extends StatelessWidget {
           Container(height: 1, color: AppColors.hairlineOnPaper),
           const SizedBox(height: 20),
           if (showPhotos) ...[
-            Align(
-              alignment: Alignment.centerLeft,
-              child: _FieldLabel('WHAT WE DRANK'),
-            ),
-            if (stagedWines.isNotEmpty) ...[
-              const SizedBox(height: 4),
-              WineList(wines: stagedWines, onTapWine: onEditWine),
+            // Restaurant-only, like the Wine rating: a hotel stay is not
+            // a meal, so "What we drank" has no place there.
+            if (venue is RestaurantVenue) ...[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: _FieldLabel('WHAT WE DRANK'),
+              ),
+              if (stagedWines.isNotEmpty) ...[
+                const SizedBox(height: 4),
+                WineList(wines: stagedWines, onTapWine: onEditWine),
+              ],
+              Align(
+                alignment: Alignment.centerLeft,
+                child: AddWineButton(onTap: onAddWine),
+              ),
+              const SizedBox(height: 12),
             ],
-            Align(
-              alignment: Alignment.centerLeft,
-              child: AddWineButton(onTap: onAddWine),
-            ),
-            const SizedBox(height: 12),
             Align(
               alignment: Alignment.centerLeft,
               child: _FieldLabel('PHOTOS'),

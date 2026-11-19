@@ -41,6 +41,18 @@ The format follows Keep a Changelog.
     `flutter analyze` clean, `flutter test` all 2,909 pass. Not re-checked
     on a device. The migration is still not applied.
 
+### Changed
+- **No wine on a hotel stay** (product owner, 2026-11-19: "dat je wijn kan
+  toevoegen bij hotel review ... dat is gek"). "What we drank" is now
+  restaurant-only, like the Wine rating already was: the add-a-stay form no
+  longer shows it, wines staged before switching the form from Restaurant to
+  Hotel are not saved onto the stay, and the stay detail page no longer
+  shows the section. Production had no wine on any hotel stay (checked
+  2026-11-19: the one logged wine is on a restaurant visit), so nothing
+  already saved is hidden by this. The `visit_wines` table is unchanged.
+  `flutter analyze` clean and `flutter test` all 2,909 pass; there is no
+  widget test for the add-a-stay form, and it was not checked on a device.
+
 ---
 
 ## v1.6.0 (35) — 2026-11-17
