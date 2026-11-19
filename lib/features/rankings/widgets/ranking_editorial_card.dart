@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/photo_framing.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// PASSPORT — RANKING UI REDESIGN V1 (Color Hierarchy Correction pass):
 /// the shared horizontal, editorial ranking row built once and reused by
@@ -213,8 +213,8 @@ class _CardContent extends StatelessWidget {
         children: [
           // Final Score Typography Correction: both the score and the
           // visit count now read as one compact metadata line at
-          // CsTypography.metadata's own size (14px, Inter — not the serif
-          // used for [title], since Cormorant Garamond's period glyph
+          // CsTypography.metadata's own size (sans, not the serif used for
+          // [title] — when that serif was Cormorant Garamond, its period glyph
           // reads too close to a comma at this size, "10.0" misreading as
           // "10,0"). The score is still the slightly heavier of the two
           // (w700 vs. the visit count's regular weight) — that's the only
@@ -305,9 +305,9 @@ class _RankBadge extends StatelessWidget {
     alignment: Alignment.center,
     child: Text(
       '$rank',
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: AppColors.ivory,
-        fontSize: 12,
+        fontSize: 12.5,
         fontWeight: FontWeight.w700,
       ),
     ),

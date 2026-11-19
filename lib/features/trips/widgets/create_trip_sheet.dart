@@ -508,7 +508,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                   'Destination ${i + 1}',
                   style: CsTypography.placeTitle.copyWith(
                     color: AppColors.textOnDark,
-                    fontSize: 18,
+                    fontSize: 16.5,
                   ),
                 ),
               ),
@@ -884,7 +884,7 @@ class _DateHalf extends StatelessWidget {
               label,
               style: CsTypography.eyebrow.copyWith(
                 color: AppColors.secondaryOnDark,
-                fontSize: 10.5,
+                fontSize: 11,
               ),
             ),
             const SizedBox(height: 2),
@@ -994,7 +994,7 @@ class _SelectedVenueRow extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: CsTypography.placeTitle.copyWith(
                 color: AppColors.textOnDark,
-                fontSize: 18,
+                fontSize: 16.5,
               ),
             ),
             const SizedBox(height: 2),

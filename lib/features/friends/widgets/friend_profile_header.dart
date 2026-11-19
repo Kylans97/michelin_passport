@@ -89,7 +89,7 @@ class FriendProfileHeaderTop extends StatelessWidget {
             Text(
               name,
               textAlign: TextAlign.center,
-              style: CsTypography.editorialTitle(size: 34).copyWith(
+              style: CsTypography.editorialTitle(size: 31).copyWith(
                 color: AppColors.textOnDark,
               ),
             ),

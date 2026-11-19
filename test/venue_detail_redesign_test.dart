@@ -1581,14 +1581,26 @@ void main() {
       );
 
       testWidgets(
-        '$noun @ 390px/1.6x text scale: deliberate stacked fallback, no '
+        '$noun @ 320px/2.0x text scale: deliberate stacked fallback, no '
         'overflow, date never lands under only "(Your latest $noun)"',
         (tester) async {
           await tester.pumpWidget(
             _wrap(
-              VenueScoreHeader(noun: noun, date: DateTime(2026, 8, 16)),
-              width: 390,
-              textScale: 1.6,
+              // _wrap's width only sets MediaQuery's reported size, not
+              // the layout width, so the header is boxed to the phone
+              // width explicitly. Measured with the real bundled fonts
+              // (test/flutter_test_config.dart), the pair fits on one
+              // line at 390px/1.6x, so the fallback is exercised at the
+              // narrowest supported phone and a larger text size.
+              SizedBox(
+                width: 320,
+                child: VenueScoreHeader(
+                  noun: noun,
+                  date: DateTime(2026, 8, 16),
+                ),
+              ),
+              width: 320,
+              textScale: 2.0,
             ),
           );
           expect(tester.takeException(), isNull);

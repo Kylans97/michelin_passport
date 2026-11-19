@@ -158,7 +158,7 @@ class _MetaRow extends StatelessWidget {
           children: [
             Text(
               text,
-              style: CsTypography.body.copyWith(color: color, fontSize: 14),
+              style: CsTypography.body.copyWith(color: color, fontSize: 14.5),
             ),
             if (secondaryText != null) ...[
               const SizedBox(height: 2),
@@ -166,7 +166,7 @@ class _MetaRow extends StatelessWidget {
                 secondaryText!,
                 style: CsTypography.metadata.copyWith(
                   color: AppColors.taupe,
-                  fontSize: 12.5,
+                  fontSize: 13,
                 ),
               ),
             ],

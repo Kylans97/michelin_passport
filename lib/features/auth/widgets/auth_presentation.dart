@@ -48,7 +48,7 @@ class AuthBrandHeader extends StatelessWidget {
           style: CsTypography.screenTitle.copyWith(
             color: AppColors.textOnDark,
             letterSpacing: 1.0,
-            fontSize: compact ? 26 : 32,
+            fontSize: compact ? 23.5 : 29,
           ),
         ),
         const SizedBox(height: CsSpacing.sm),

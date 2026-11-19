@@ -119,7 +119,7 @@ class GuideVenueCard extends StatelessWidget {
                           ? Text(
                               title,
                               style: CsTypography.placeTitle.copyWith(
-                                fontSize: 17,
+                                fontSize: 15.5,
                                 color: AppColors.forestGreen,
                               ),
                             )
@@ -129,7 +129,7 @@ class GuideVenueCard extends StatelessWidget {
                                   TextSpan(
                                     text: title,
                                     style: CsTypography.placeTitle.copyWith(
-                                      fontSize: 17,
+                                      fontSize: 15.5,
                                       color: AppColors.forestGreen,
                                     ),
                                   ),

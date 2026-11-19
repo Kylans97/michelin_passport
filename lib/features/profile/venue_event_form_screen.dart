@@ -381,7 +381,7 @@ class _VenueEventFormScreenState extends State<VenueEventFormScreen> {
       appBar: AppBar(
         title: Text(
           _isEditing ? 'Edit event' : 'New event',
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,

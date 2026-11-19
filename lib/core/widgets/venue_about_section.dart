@@ -50,10 +50,7 @@ class VenueAboutSection extends StatelessWidget {
         const SizedBox(height: CsSpacing.md),
         Text(
           copy,
-          style: CsTypography.body.copyWith(
-            color: AppColors.forestGreen,
-            height: 1.6,
-          ),
+          style: CsTypography.reading.copyWith(color: AppColors.forestGreen),
         ),
       ],
     );

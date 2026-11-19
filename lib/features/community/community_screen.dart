@@ -509,7 +509,7 @@ class _HottestPlacesRestaurantCard extends StatelessWidget {
                       'RESTAURANT',
                       style: CsTypography.eyebrow.copyWith(
                         color: AppColors.secondaryOnDark,
-                        fontSize: 10,
+                        fontSize: 11,
                       ),
                     ),
                     const SizedBox(height: 4),

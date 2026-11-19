@@ -72,7 +72,7 @@ class HotelWorlds50BestHistorySection extends StatelessWidget {
             'ALSO LISTED, 51–100',
             style: CsTypography.eyebrow.copyWith(
               color: AppColors.secondaryOnDark,
-              fontSize: 10.5,
+              fontSize: 11,
             ),
           ),
           const SizedBox(height: 10),

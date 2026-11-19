@@ -36,7 +36,7 @@ class PrivateChefEducationRow extends StatelessWidget {
             Text(
               education.institution,
               style: CsTypography.placeTitle.copyWith(
-                fontSize: 17,
+                fontSize: 15.5,
                 color: AppColors.forestGreen,
               ),
             ),

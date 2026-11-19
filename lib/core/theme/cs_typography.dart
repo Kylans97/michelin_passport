@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import 'cs_fonts.dart';
 
-/// Mantelier's redesigned type system (Step 1 foundation) — Cormorant
-/// Garamond for editorial/display roles, Inter for functional interface
-/// roles, per the brand brief. Purely additive: [AppTypography] (Playfair
-/// Display + Inter) is untouched and keeps serving every current screen —
-/// this is a SEPARATE, not-yet-adopted role set for screens to migrate
-/// onto deliberately, one at a time. Kept as its own class rather than
-/// changing [AppTypography] in place because the two use materially
-/// different serif families under overlapping role names ("display",
-/// "heading") — reusing the same names with a swapped font would silently
-/// reskin every screen currently reading [AppTypography] the moment this
-/// file's roles line up with those names, which is exactly the
-/// unintentional-visual-change this foundation pass must avoid.
+/// Mantelier's type system — Spectral for editorial/display roles and
+/// reading text, Hanken Grotesk for functional interface roles (the
+/// "Salon" direction, chosen by the product owner on 2026-11-19; it
+/// replaced Cormorant Garamond + Inter). Both families are bundled — see
+/// [CsFonts].
+///
+/// Sizes are not the old ones carried over. Spectral is ~12% wider per
+/// point than Cormorant Garamond but has a much larger x-height (45% of
+/// the body vs. 38.6%), so serif roles sit ~9% smaller and still read
+/// larger. Hanken Grotesk is ~6% narrower per point than Inter with a
+/// smaller x-height (49% vs. 55%), so small interface roles sit half a
+/// point larger and still take less width. Measured on the fonts' own
+/// advance widths over the production catalogue's names, 2026-11-18.
 ///
 /// Every role here defaults to [AppColors.charcoal] (readable on the warm
 /// light surfaces) — call `.copyWith(color: AppColors.textOnDark)` (or
@@ -21,208 +22,186 @@ import '../constants/app_colors.dart';
 /// [AppTypography] itself defaults to `textPrimary` and expects the same
 /// override for on-dark use.
 ///
-/// `google_fonts` (already a dependency, ^6.2.1) bundles Cormorant
-/// Garamond — no new package, no local font files.
+/// Spectral's default figures are already lining (same height, aligned to
+/// the capitals), so no role needs the `lnum` feature Cormorant did.
 class CsTypography {
   CsTypography._();
 
-  /// Forces lining figures (digits aligned to cap-height, all the same
-  /// height, no descenders) on every Cormorant Garamond role below.
-  /// Without this, a title like "THE WORLD'S 50 BEST" renders its "50"
-  /// visibly lower/smaller than the surrounding capitals — the font falls
-  /// back to oldstyle figures (designed to blend into lowercase text,
-  /// varying height/baseline) in this weight as served by google_fonts,
-  /// even though the family's own default is documented as lining. A
-  /// no-op for any title with no digits in it, so this is safe to apply
-  /// everywhere Cormorant Garamond is used, not just call sites that
-  /// happen to contain a number today.
-  static const _liningFigures = [FontFeature.enable('lnum')];
-
-  /// DISPLAY HERO — Cormorant Garamond, Semibold, 40 / 42.
-  static TextStyle get displayHero => GoogleFonts.cormorantGaramond(
+  /// DISPLAY HERO — Spectral Light, 36 / 40.
+  static TextStyle get displayHero => CsFonts.serif(
     color: AppColors.charcoal,
-    fontSize: 40,
-    fontWeight: FontWeight.w600,
-    height: 42 / 40,
-    fontFeatures: _liningFigures,
+    fontSize: 36,
+    fontWeight: FontWeight.w300,
+    height: 40 / 36,
   );
 
-  /// SCREEN TITLE — Cormorant Garamond, Semibold, 32 / 36.
-  static TextStyle get screenTitle => GoogleFonts.cormorantGaramond(
-    color: AppColors.charcoal,
-    fontSize: 32,
-    fontWeight: FontWeight.w600,
-    height: 36 / 32,
-    fontFeatures: _liningFigures,
-  );
-
-  /// SECTION TITLE — Cormorant Garamond, Semibold, 28 / 32.
-  static TextStyle get sectionTitle => GoogleFonts.cormorantGaramond(
-    color: AppColors.charcoal,
-    fontSize: 28,
-    fontWeight: FontWeight.w600,
-    height: 32 / 28,
-    fontFeatures: _liningFigures,
-  );
-
-  /// PLACE TITLE — Cormorant Garamond, Semibold, 22 / 26. A restaurant/
-  /// hotel/event name at card or detail-hero scale.
-  static TextStyle get placeTitle => GoogleFonts.cormorantGaramond(
-    color: AppColors.charcoal,
-    fontSize: 22,
-    fontWeight: FontWeight.w600,
-    height: 26 / 22,
-    fontFeatures: _liningFigures,
-  );
-
-  /// LARGE METRIC — Cormorant Garamond, Semibold, 28 / 32. A serif numeral
-  /// treatment for scores/ratings/counts — same size as [sectionTitle] but
-  /// a distinct semantic role (a metric, not a heading), matching
-  /// [AppTypography.score]'s existing "numerals read as a considered
-  /// detail" intent.
-  static TextStyle get largeMetric => GoogleFonts.cormorantGaramond(
-    color: AppColors.charcoal,
-    fontSize: 28,
-    fontWeight: FontWeight.w600,
-    height: 32 / 28,
-    fontFeatures: _liningFigures,
-  );
-
-  /// BODY — Inter, Regular, 16 / 24.
-  static TextStyle get body => GoogleFonts.inter(
-    color: AppColors.charcoal,
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    height: 24 / 16,
-  );
-
-  /// BODY MEDIUM — Inter, Medium, 16 / 24.
-  static TextStyle get bodyMedium => GoogleFonts.inter(
-    color: AppColors.charcoal,
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    height: 24 / 16,
-  );
-
-  /// METADATA — Inter, Regular, 14 / 20. Dates, counts, city/country
-  /// lines — the same job [AppTypography.metadata] does today.
-  static TextStyle get metadata => GoogleFonts.inter(
-    color: AppColors.taupe,
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    height: 20 / 14,
-  );
-
-  /// NAVIGATION — Inter, Medium, 12 / 16. Bottom-nav labels (see the
-  /// brief's future nav direction) and similar compact wayfinding text.
-  static TextStyle get navigation => GoogleFonts.inter(
-    color: AppColors.charcoal,
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
-    height: 16 / 12,
-  );
-
-  /// EYEBROW — Inter, Medium, 12, uppercase, letter-spacing ~1.8. Callers
-  /// pass already-uppercased text (matching how [AppTypography.
-  /// sectionHeading]'s call sites — 'INFORMATION', 'ACTIONS' — already
-  /// work): [TextStyle] has no built-in text-transform, so this is a
-  /// styling contract, not automatic casing.
-  static TextStyle get eyebrow => GoogleFonts.inter(
-    color: AppColors.taupe,
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
-    letterSpacing: 1.8,
-  );
-
-  /// SMALL LABEL — Inter, Medium, 12 / 16. Tags, badges, compact chips —
-  /// the same job [AppTypography.label] does today.
-  static TextStyle get smallLabel => GoogleFonts.inter(
-    color: AppColors.charcoal,
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
-    height: 16 / 12,
-  );
-
-  /// STAMP STAT VALUE — Cormorant Garamond, Semibold, 30, no fixed line
-  /// height (the Passport stamp-page stats row's own three big serif
-  /// numerals — Places/Countries/Stars — sized between [screenTitle] (32)
-  /// and [sectionTitle]/[largeMetric] (28), a role neither of those two
-  /// existing sizes covers).
-  static TextStyle get stampStatValue => GoogleFonts.cormorantGaramond(
+  /// SCREEN TITLE — Spectral Light, 30 / 34.
+  static TextStyle get screenTitle => CsFonts.serif(
     color: AppColors.charcoal,
     fontSize: 30,
-    fontWeight: FontWeight.w600,
-    fontFeatures: _liningFigures,
+    fontWeight: FontWeight.w300,
+    height: 34 / 30,
   );
 
-  // ── Editorial redesign (magazine pass) ──────────────────────────────
-  // The brief's scale is explicitly a RANGE per role ("Display: Cormorant
-  // 46–56", "Titel: 22–42"), not one fixed size — different screens in
-  // this pass call for different sizes within the same role ("Tonight"
-  // at 56, "Passport"/"Events" headers at 46; an InvitationCard title at
-  // 42, a place-card title much smaller). Factory methods (a size
-  // parameter with a sensible default), not fixed getters like every
-  // role above, so one call site can ask for "a display line, but at
-  // this screen's own size" instead of every screen needing its own
-  // bespoke TextStyle. Defaults to [AppColors.charcoal]/ink, same as
-  // every role above — override with `.copyWith(color: ...)` for
+  /// SECTION TITLE — Spectral Regular, 26 / 30.
+  static TextStyle get sectionTitle => CsFonts.serif(
+    color: AppColors.charcoal,
+    fontSize: 26,
+    fontWeight: FontWeight.w400,
+    height: 30 / 26,
+  );
+
+  /// PLACE TITLE — Spectral Regular, 20 / 26. A restaurant/hotel/event
+  /// name at card or detail-hero scale.
+  static TextStyle get placeTitle => CsFonts.serif(
+    color: AppColors.charcoal,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    height: 26 / 20,
+  );
+
+  /// LARGE METRIC — Spectral Light, 27 / 30. A serif numeral treatment for
+  /// scores/ratings/counts — a distinct semantic role from [sectionTitle]
+  /// (a metric, not a heading), matching [AppTypography.score]'s "numerals
+  /// read as a considered detail" intent.
+  static TextStyle get largeMetric => CsFonts.serif(
+    color: AppColors.charcoal,
+    fontSize: 27,
+    fontWeight: FontWeight.w300,
+    height: 30 / 27,
+  );
+
+  /// BODY — Hanken Grotesk, Regular, 16 / 24.
+  static TextStyle get body => CsFonts.sans(
+    color: AppColors.charcoal,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    height: 24 / 16,
+  );
+
+  /// BODY MEDIUM — Hanken Grotesk, Medium, 16 / 24.
+  static TextStyle get bodyMedium => CsFonts.sans(
+    color: AppColors.charcoal,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    height: 24 / 16,
+  );
+
+  /// READING — Spectral, Regular, 16.5 / 26. Running text someone reads
+  /// rather than scans: a venue's about text, an event's description, a
+  /// news article's body. Kept separate from [body], which stays the sans
+  /// interface role.
+  static TextStyle get reading => CsFonts.serif(
+    color: AppColors.charcoal,
+    fontSize: 16.5,
+    fontWeight: FontWeight.w400,
+    height: 26 / 16.5,
+  );
+
+  /// METADATA — Hanken Grotesk, Regular, 14.5 / 21. Dates, counts,
+  /// city/country lines — the same job [AppTypography.metadata] does.
+  static TextStyle get metadata => CsFonts.sans(
+    color: AppColors.taupe,
+    fontSize: 14.5,
+    fontWeight: FontWeight.w400,
+    height: 21 / 14.5,
+  );
+
+  /// NAVIGATION — Hanken Grotesk, Medium, 12.5 / 16. Bottom-nav labels and
+  /// similar compact wayfinding text.
+  static TextStyle get navigation => CsFonts.sans(
+    color: AppColors.charcoal,
+    fontSize: 12.5,
+    fontWeight: FontWeight.w500,
+    height: 16 / 12.5,
+  );
+
+  /// EYEBROW — Hanken Grotesk, SemiBold, 12, uppercase, letter-spacing
+  /// 0.12em. Callers pass already-uppercased text (matching how
+  /// [AppTypography.sectionHeading]'s call sites — 'INFORMATION',
+  /// 'ACTIONS' — already work): [TextStyle] has no built-in
+  /// text-transform, so this is a styling contract, not automatic casing.
+  static TextStyle get eyebrow => CsFonts.sans(
+    color: AppColors.taupe,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 12 * 0.12,
+  );
+
+  /// SMALL LABEL — Hanken Grotesk, Medium, 12.5 / 16. Tags, badges,
+  /// compact chips — the same job [AppTypography.label] does.
+  static TextStyle get smallLabel => CsFonts.sans(
+    color: AppColors.charcoal,
+    fontSize: 12.5,
+    fontWeight: FontWeight.w500,
+    height: 16 / 12.5,
+  );
+
+  /// STAMP STAT VALUE — Spectral Light, 28, no fixed line height (the
+  /// Passport stamp-page stats row's own three big serif numerals —
+  /// Places/Countries/Stars).
+  static TextStyle get stampStatValue => CsFonts.serif(
+    color: AppColors.charcoal,
+    fontSize: 28,
+    fontWeight: FontWeight.w300,
+  );
+
+  // ── Editorial roles ─────────────────────────────────────────────────
+  // Factory methods (a size parameter with a sensible default), not fixed
+  // getters like every role above, so one call site can ask for "a display
+  // line, but at this screen's own size" instead of every screen needing
+  // its own bespoke TextStyle. Defaults to [AppColors.charcoal]/ink, same
+  // as every role above — override with `.copyWith(color: ...)` for
   // text-on-green exactly like the rest of this class.
 
-  /// EDITORIAL DISPLAY — Cormorant Garamond, [italic], 46–56, line-height
-  /// 0.9–1.0. Screen titles ("Tonight", "Events", "Passport",
-  /// "Community").
-  static TextStyle editorialDisplay({double size = 48, bool italic = true}) =>
-      GoogleFonts.cormorantGaramond(
+  /// EDITORIAL DISPLAY — Spectral, Light (or Italic), 42–51, line-height
+  /// 1.0. Screen titles ("Tonight", "Events", "Passport", "Community").
+  static TextStyle editorialDisplay({double size = 44, bool italic = true}) =>
+      CsFonts.serif(
         color: AppColors.charcoal,
         fontSize: size,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w300,
         fontStyle: italic ? FontStyle.italic : FontStyle.normal,
-        height: 0.95,
-        fontFeatures: _liningFigures,
+        height: 1.0,
       );
 
-  /// EDITORIAL TITLE — Cormorant Garamond, Semibold, 22–42. Event/venue
+  /// EDITORIAL TITLE — Spectral, Regular (or Italic), 20–38. Event/venue
   /// names at whatever scale the surrounding layout calls for (a list
   /// row vs. an InvitationCard's own large title).
-  static TextStyle editorialTitle({double size = 28, bool italic = false}) =>
-      GoogleFonts.cormorantGaramond(
+  static TextStyle editorialTitle({double size = 26, bool italic = false}) =>
+      CsFonts.serif(
         color: AppColors.charcoal,
         fontSize: size,
-        fontWeight: FontWeight.w600,
-        fontStyle: italic ? FontStyle.italic : FontStyle.normal,
-        height: 1.15,
-        fontFeatures: _liningFigures,
-      );
-
-  /// EDITORIAL LEAD — Cormorant Garamond, Italic, 16–23. A quote-like
-  /// lead line/tagline ("Culinary happenings worth planning a trip
-  /// around.").
-  static TextStyle editorialLead({double size = 18}) =>
-      GoogleFonts.cormorantGaramond(
-        color: AppColors.taupe,
-        fontSize: size,
-        fontStyle: FontStyle.italic,
         fontWeight: FontWeight.w400,
-        height: 1.3,
+        fontStyle: italic ? FontStyle.italic : FontStyle.normal,
+        height: 1.2,
       );
 
-  /// EDITORIAL BODY — Inter, Regular, 14 / 1.5. The redesign's own body
-  /// copy size — distinct from [body] (16/1.5): the brief calls for a
-  /// smaller 13–14 range throughout, matching the more compact,
-  /// typography-led density this pass wants.
-  static TextStyle get editorialBody => GoogleFonts.inter(
+  /// EDITORIAL LEAD — Spectral, Italic, 15–21. A quote-like lead line or
+  /// tagline ("Culinary happenings worth planning a trip around.").
+  static TextStyle editorialLead({double size = 17}) => CsFonts.serif(
+    color: AppColors.taupe,
+    fontSize: size,
+    fontStyle: FontStyle.italic,
+    fontWeight: FontWeight.w400,
+    height: 1.45,
+  );
+
+  /// EDITORIAL BODY — Hanken Grotesk, Regular, 14.5 / 1.5. The compact
+  /// body copy size of the editorial screens — distinct from [body]
+  /// (16/1.5).
+  static TextStyle get editorialBody => CsFonts.sans(
     color: AppColors.charcoal,
-    fontSize: 14,
+    fontSize: 14.5,
     fontWeight: FontWeight.w400,
     height: 1.5,
   );
 
-  /// EDITORIAL LABEL — Inter, Medium, 10.5, uppercase, letter-spacing
-  /// ~0.12em (computed per [size] — the brief specifies letter-spacing in
-  /// em, not a fixed px value the way [eyebrow] does). Callers pass
+  /// EDITORIAL LABEL — Hanken Grotesk, Medium, 11.5, uppercase,
+  /// letter-spacing ~0.12em (computed per [size]). Callers pass
   /// already-uppercased text, same contract as [eyebrow].
-  static TextStyle editorialLabel({double size = 10.5, double em = 0.12}) =>
-      GoogleFonts.inter(
+  static TextStyle editorialLabel({double size = 11.5, double em = 0.12}) =>
+      CsFonts.sans(
         color: AppColors.taupe,
         fontSize: size,
         fontWeight: FontWeight.w500,

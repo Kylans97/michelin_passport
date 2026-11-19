@@ -1,10 +1,10 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../models/passport_stamp_award.dart';
 import '../utils/passport_stamp_style.dart' show StampVariant;
 import '../utils/passport_stamp_text_fit.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Each variant's own fixed footprint — the exact sizes from the September
 /// 2026 stamp redesign brief (all 5 designs got physically bigger than the
@@ -254,7 +254,7 @@ void _drawAward(
       final painter = TextPainter(
         text: TextSpan(
           text: label,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: ink,
             fontSize: eventFontSize,
             fontWeight: FontWeight.w600,
@@ -464,7 +464,7 @@ class RoundSealPainter extends CustomPainter {
       const dotGap = 12 * math.pi / 180;
       final halfSweep = math.pi - 2 * dotGap;
 
-      final arcStyle = GoogleFonts.inter(
+      final arcStyle = CsFonts.sans(
         color: ink,
         fontSize: 10.5,
         letterSpacing: 2.4,
@@ -498,7 +498,7 @@ class RoundSealPainter extends CustomPainter {
 
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
-        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+        styleFor: (fontSize) => CsFonts.serif(
           color: ink,
           fontSize: fontSize,
           fontWeight: FontWeight.w600,
@@ -562,7 +562,7 @@ class DoubleFramePainter extends CustomPainter {
           data.cityName.toUpperCase(),
           data.countryCode.toUpperCase(),
         ].where((s) => s.isNotEmpty).join(' · '),
-        GoogleFonts.inter(
+        CsFonts.sans(
           color: ink,
           fontSize: 8.5,
           letterSpacing: 1.2,
@@ -573,7 +573,7 @@ class DoubleFramePainter extends CustomPainter {
 
       final namePainter = fitStampNameBalanced(
         text: data.venueName.toUpperCase(),
-        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+        styleFor: (fontSize) => CsFonts.serif(
           color: ink,
           fontSize: fontSize,
           fontWeight: FontWeight.w600,
@@ -587,9 +587,9 @@ class DoubleFramePainter extends CustomPainter {
 
       final datePainter = _plainText(
         _fullDateLabel(data.date),
-        GoogleFonts.cormorantGaramond(
+        CsFonts.serif(
           color: ink,
-          fontSize: 13,
+          fontSize: 12,
           fontStyle: FontStyle.italic,
           fontWeight: FontWeight.w600,
         ),
@@ -675,7 +675,7 @@ class OvalPainter extends CustomPainter {
           data.cityName.toUpperCase(),
           data.countryCode.toUpperCase(),
         ].where((s) => s.isNotEmpty).join(' · '),
-        GoogleFonts.inter(
+        CsFonts.sans(
           color: ink,
           fontSize: 8.5,
           letterSpacing: 1.2,
@@ -686,7 +686,7 @@ class OvalPainter extends CustomPainter {
 
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
-        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+        styleFor: (fontSize) => CsFonts.serif(
           color: ink,
           fontSize: fontSize,
           fontStyle: FontStyle.italic,
@@ -700,9 +700,9 @@ class OvalPainter extends CustomPainter {
 
       final datePainter = _plainText(
         _fullDateLabel(data.date),
-        GoogleFonts.cormorantGaramond(
+        CsFonts.serif(
           color: ink,
-          fontSize: 11,
+          fontSize: 10,
           fontStyle: FontStyle.italic,
           fontWeight: FontWeight.w600,
         ),
@@ -787,7 +787,7 @@ class OctagonPainter extends CustomPainter {
 
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
-        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+        styleFor: (fontSize) => CsFonts.serif(
           color: ink,
           fontSize: fontSize,
           fontWeight: FontWeight.w600,
@@ -800,7 +800,7 @@ class OctagonPainter extends CustomPainter {
 
       final cityPainter = _plainText(
         data.cityName.toUpperCase(),
-        GoogleFonts.inter(
+        CsFonts.sans(
           color: ink,
           fontSize: 9,
           letterSpacing: 1.2,
@@ -812,7 +812,7 @@ class OctagonPainter extends CustomPainter {
       final dateLabel = _fullDateLabel(data.date);
       final datePainter = _plainText(
         dateLabel,
-        GoogleFonts.inter(
+        CsFonts.sans(
           color: AppColors.background,
           fontSize: 10,
           fontWeight: FontWeight.w600,
@@ -909,7 +909,7 @@ class PostmarkPainter extends CustomPainter {
           ..strokeWidth = 1.5,
       );
 
-      final cityStyle = GoogleFonts.inter(
+      final cityStyle = CsFonts.sans(
         color: ink,
         fontSize: 8,
         letterSpacing: 1.6,
@@ -935,15 +935,15 @@ class PostmarkPainter extends CustomPainter {
 
       final dayPainter = _plainText(
         '${data.date.day}',
-        GoogleFonts.cormorantGaramond(
+        CsFonts.serif(
           color: ink,
-          fontSize: 26,
+          fontSize: 23.5,
           fontWeight: FontWeight.w600,
         ),
       );
       final monthYearPainter = _plainText(
         '${_months[data.date.month - 1]} ${data.date.year}',
-        GoogleFonts.inter(color: ink, fontSize: 9, fontWeight: FontWeight.w600),
+        CsFonts.sans(color: ink, fontSize: 9, fontWeight: FontWeight.w600),
       );
       dayPainter.paint(
         canvas,
@@ -976,7 +976,7 @@ class PostmarkPainter extends CustomPainter {
 
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
-        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+        styleFor: (fontSize) => CsFonts.serif(
           color: ink,
           fontSize: fontSize,
           fontStyle: FontStyle.italic,
@@ -1068,7 +1068,7 @@ class VerifiedVenueStampPainter extends CustomPainter {
       final textRadius = (_ringOuterRadius + _ringInnerRadius) / 2;
       const dotGap = 10 * math.pi / 180;
       final halfSweep = math.pi - 2 * dotGap;
-      final arcStyle = GoogleFonts.inter(
+      final arcStyle = CsFonts.sans(
         color: ink,
         fontSize: 8.5,
         letterSpacing: 1.4,
@@ -1118,7 +1118,7 @@ class VerifiedVenueStampPainter extends CustomPainter {
       final npMaxWidth = npInner.width - 16;
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
-        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+        styleFor: (fontSize) => CsFonts.serif(
           color: ink,
           fontSize: fontSize,
           fontWeight: FontWeight.w600,

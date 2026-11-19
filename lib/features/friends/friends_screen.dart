@@ -117,7 +117,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
           'Remove ${friend.label}?',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         content: Text(
@@ -355,7 +355,7 @@ class _FriendsTab extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: CsTypography.placeTitle.copyWith(
                     color: AppColors.forestGreen,
-                    fontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
                 const SizedBox(height: CsSpacing.sm),

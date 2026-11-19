@@ -114,7 +114,7 @@ class TripTextAction extends StatelessWidget {
                     label,
                     style: CsTypography.bodyMedium.copyWith(
                       color: color,
-                      fontSize: 14,
+                      fontSize: 14.5,
                     ),
                   ),
                 ],
@@ -142,7 +142,7 @@ class TripEmptyLine extends StatelessWidget {
 
 /// The deep-green confirmation dialog every destructive Trips action uses
 /// (delete trip, remove a venue, delete a plan) — one shape, serif title,
-/// Inter body, the destructive action in the app's editorial brick red.
+/// Hanken Grotesk body, the destructive action in the app's editorial brick red.
 Future<bool> showTripConfirmDialog(
   BuildContext context, {
   required String title,
@@ -175,7 +175,7 @@ Future<bool> showTripConfirmDialog(
             'Cancel',
             style: CsTypography.bodyMedium.copyWith(
               color: AppColors.secondaryOnDark,
-              fontSize: 14,
+              fontSize: 14.5,
             ),
           ),
         ),
@@ -185,7 +185,7 @@ Future<bool> showTripConfirmDialog(
             confirmLabel,
             style: CsTypography.bodyMedium.copyWith(
               color: AppColors.error,
-              fontSize: 14,
+              fontSize: 14.5,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -232,7 +232,7 @@ class TripSheetAction<T> {
 
 /// The quiet action sheet behind Trips' "…" and long-press menus — the
 /// shared [CsContentSheet] shell on the green
-/// surface, Inter labels, the destructive row in brick red. Returns the
+/// surface, Hanken Grotesk labels, the destructive row in brick red. Returns the
 /// chosen [TripSheetAction.value], or null if dismissed.
 Future<T?> showTripActionSheet<T>(
   BuildContext context, {

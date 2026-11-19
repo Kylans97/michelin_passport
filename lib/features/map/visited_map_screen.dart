@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
@@ -21,6 +20,7 @@ import 'widgets/map_cluster_sheet.dart';
 import 'widgets/venue_preview_sheet.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/screen_usage.dart';
+import '../../core/theme/cs_fonts.dart';
 
 /// "My Map": every restaurant the user has visited, every hotel they've
 /// stayed at, and (Events V2 Step 5) every Event they have a CONFIRMED
@@ -421,9 +421,9 @@ class _MapMessage extends StatelessWidget {
               Flexible(
                 child: Text(
                   message,
-                  style: GoogleFonts.inter(
+                  style: CsFonts.sans(
                     color: AppColors.textSecondary,
-                    fontSize: 13,
+                    fontSize: 13.5,
                   ),
                 ),
               ),
@@ -433,7 +433,7 @@ class _MapMessage extends StatelessWidget {
                   onPressed: onAction,
                   child: Text(
                     actionLabel!,
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.forestGreen,
                       fontWeight: FontWeight.w600,
                     ),

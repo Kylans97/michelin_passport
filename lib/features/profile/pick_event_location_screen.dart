@@ -39,7 +39,7 @@ class _PickEventLocationScreenState extends State<PickEventLocationScreen> {
       appBar: AppBar(
         title: Text(
           'Set the location',
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,
@@ -122,7 +122,7 @@ class _MapAttribution extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = CsTypography.metadata.copyWith(
       color: AppColors.taupe,
-      fontSize: 11,
+      fontSize: 11.5,
     );
     Widget link(String label, Uri uri) => GestureDetector(
       onTap: () => launchUrl(uri, mode: LaunchMode.externalApplication),

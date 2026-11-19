@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The outlined "Add photos" / "Add more photos" button shared by
 /// VisitPhotosSection (post-save) and StagedPhotoPicker (pre-save).
@@ -47,9 +47,9 @@ class AddPhotosButton extends StatelessWidget {
             : Icon(Icons.add_photo_alternate_outlined, size: 18, color: tint),
         label: Text(
           label,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             fontWeight: FontWeight.w600,
-            fontSize: 14,
+            fontSize: 14.5,
             color: tint,
           ),
         ),

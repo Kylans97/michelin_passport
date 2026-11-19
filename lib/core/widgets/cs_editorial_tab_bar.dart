@@ -124,7 +124,7 @@ class _TabItem extends StatelessWidget {
                 Text(
                   destination.label.toUpperCase(),
                   style: CsTypography.editorialLabel(
-                    size: 10,
+                    size: 11,
                   ).copyWith(color: labelColor),
                 ),
               ],

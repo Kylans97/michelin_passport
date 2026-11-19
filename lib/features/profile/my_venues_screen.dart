@@ -66,7 +66,7 @@ class _MyVenuesScreenState extends State<MyVenuesScreen> {
       appBar: AppBar(
         title: Text(
           'My venues',
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,

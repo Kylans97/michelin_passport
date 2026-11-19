@@ -1,12 +1,12 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../models/passport_stamp_item.dart';
 import '../passport_booklet_data.dart';
 import '../passport_filter_type.dart';
 import 'passport_cover.dart';
 import 'passport_open_book_pager.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The whole booklet UI, generic over WHOSE data it shows: closed cover →
 /// 3D open → data page → stamp pages, all self-contained state (open/
@@ -515,9 +515,9 @@ class PassportOpenBookFrame extends StatelessWidget {
                     ),
                     Text(
                       'Close',
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.textOnDark,
-                        fontSize: 13,
+                        fontSize: 13.5,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -531,11 +531,11 @@ class PassportOpenBookFrame extends StatelessWidget {
                 // more per-year volume to distinguish it from.
                 'PASSPORT',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.secondaryOnDark,
-                  fontSize: 11,
+                  fontSize: 11.5,
                   fontWeight: FontWeight.w600,
-                  letterSpacing: 11 * 0.12,
+                  letterSpacing: 11.5 * 0.12,
                 ),
               ),
             ),

@@ -288,7 +288,7 @@ class _PassportStamp extends StatelessWidget {
                     overflow: TextOverflow.clip,
                     style: CsTypography.eyebrow.copyWith(
                       color: AppColors.textOnDark.withValues(alpha: 0.12),
-                      fontSize: 7,
+                      fontSize: 11,
                       letterSpacing: 1.0,
                       height: 1.3,
                     ),

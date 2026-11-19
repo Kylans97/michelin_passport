@@ -11,10 +11,10 @@
 // isCancelled first and leave these out.
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../../../models/event.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The labels [event] carries, in a fixed order: Sold out, then Expected.
 /// Empty for a cancelled event and for an ordinary one.
@@ -37,9 +37,9 @@ class EventStatusBadge extends StatelessWidget {
     ),
     child: Text(
       label,
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: AppColors.textSecondary,
-        fontSize: 9.5,
+        fontSize: 11,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.5,
       ),

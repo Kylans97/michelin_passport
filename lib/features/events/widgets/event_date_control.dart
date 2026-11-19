@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../models/event_discovery_filters.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 const _monthNamesShort = [
   'Jan',
@@ -144,11 +144,11 @@ class EventDateControl extends StatelessWidget {
                     label,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: active
                           ? AppColors.brandGreen
                           : AppColors.textSecondary,
-                      fontSize: 13,
+                      fontSize: 13.5,
                       fontWeight: active ? FontWeight.w600 : FontWeight.w500,
                     ),
                   ),
@@ -318,9 +318,9 @@ class _Tile extends StatelessWidget {
     onTap: onTap,
     title: Text(
       label,
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: selected ? AppColors.brandGreen : AppColors.textPrimary,
-        fontSize: 14.5,
+        fontSize: 15,
         fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
       ),
     ),

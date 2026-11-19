@@ -221,7 +221,7 @@ class _VenueBookingWindowScreenState extends State<VenueBookingWindowScreen> {
           'Booking window',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,

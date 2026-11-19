@@ -152,7 +152,7 @@ class _CommonBar extends StatelessWidget {
                   TextSpan(
                     style: CsTypography.editorialBody.copyWith(
                       color: AppColors.secondaryOnDark,
-                      fontSize: 13,
+                      fontSize: 13.5,
                     ),
                     children: [
                       TextSpan(
@@ -229,7 +229,7 @@ class _MapBar extends StatelessWidget {
                     TextSpan(
                       style: CsTypography.editorialBody.copyWith(
                         color: AppColors.secondaryOnDark,
-                        fontSize: 13,
+                        fontSize: 13.5,
                       ),
                       children: [
                         if (countries > 0) ...[

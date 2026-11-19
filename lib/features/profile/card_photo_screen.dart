@@ -136,7 +136,7 @@ class _CardPhotoScreenState extends State<CardPhotoScreen> {
           'Card photo',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,
@@ -263,7 +263,7 @@ class _CardPhotoScreenState extends State<CardPhotoScreen> {
                       'Cover',
                       style: CsTypography.metadata.copyWith(
                         color: AppColors.taupe,
-                        fontSize: 11,
+                        fontSize: 11.5,
                       ),
                     )
                   : null,

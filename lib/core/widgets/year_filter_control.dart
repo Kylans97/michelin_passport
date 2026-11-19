@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_surface_context.dart';
+import '../theme/cs_fonts.dart';
 
 /// Compact "All time ▾" / "2025 ▾" trigger that opens a bottom-sheet list
 /// (All time, then years descending) on tap. Replaces the old persistent
@@ -79,9 +79,9 @@ class YearFilterControl extends StatelessWidget {
             children: [
               Text(
                 label,
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: textColor,
-                  fontSize: 13,
+                  fontSize: 13.5,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -175,9 +175,9 @@ class _YearTile extends StatelessWidget {
     onTap: onTap,
     title: Text(
       label,
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: selected ? AppColors.gold : AppColors.textPrimary,
-        fontSize: 14.5,
+        fontSize: 15,
         fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
       ),
     ),

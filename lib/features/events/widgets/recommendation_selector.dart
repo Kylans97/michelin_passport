@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The optional "Would you recommend this event?" Yes/No control —
 /// Events V2 Step 4.1, shown inside [AttendanceDetailsSheet] between the
@@ -37,9 +37,9 @@ class RecommendationSelector extends StatelessWidget {
       children: [
         Text(
           'Would you recommend this event?',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textPrimary,
-            fontSize: 13.5,
+            fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -113,9 +113,9 @@ class _RecommendationChoice extends StatelessWidget {
           ],
           Text(
             label,
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: selected ? AppColors.forestGreen : AppColors.textSecondary,
-              fontSize: 13.5,
+              fontSize: 14,
               fontWeight: FontWeight.w600,
             ),
           ),

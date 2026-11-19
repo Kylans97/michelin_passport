@@ -105,7 +105,7 @@ class _PlannedMonthSheetState extends State<PlannedMonthSheet> {
                 widget.restaurantName,
                 style: CsTypography.placeTitle.copyWith(
                   color: AppColors.forestGreen,
-                  fontSize: 24,
+                  fontSize: 22,
                 ),
               ),
               const SizedBox(height: CsSpacing.sm),

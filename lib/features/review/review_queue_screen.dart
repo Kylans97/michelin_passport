@@ -138,7 +138,7 @@ class _ReviewQueueScreenState extends State<ReviewQueueScreen> {
           'Review',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,
@@ -359,7 +359,7 @@ class _TopicFilter extends StatelessWidget {
               label,
               style: CsTypography.metadata.copyWith(
                 color: AppColors.textPrimary,
-                fontSize: 13,
+                fontSize: 13.5,
                 fontWeight: FontWeight.w600,
               ),
             ),

@@ -92,7 +92,7 @@ class _FriendProfileTogetherTabState extends State<FriendProfileTogetherTab> {
             children: [
               Text(
                 'Where you’d both go',
-                style: CsTypography.editorialTitle(size: 20, italic: true).copyWith(
+                style: CsTypography.editorialTitle(size: 18, italic: true).copyWith(
                   color: AppColors.textOnDark,
                 ),
               ),
@@ -247,7 +247,7 @@ class _SharedRow extends StatelessWidget {
                           venue.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: CsTypography.editorialTitle(size: 19).copyWith(
+                          style: CsTypography.editorialTitle(size: 17.5).copyWith(
                             color: AppColors.textOnDark,
                           ),
                         ),
@@ -258,7 +258,7 @@ class _SharedRow extends StatelessWidget {
                           countryCode: venue.countryCode,
                           style: CsTypography.editorialBody.copyWith(
                             color: AppColors.secondaryOnDark,
-                            fontSize: 12,
+                            fontSize: 12.5,
                           ),
                         ),
                       ],
@@ -344,7 +344,7 @@ class _DimmedRow extends StatelessWidget {
                           venue.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: CsTypography.editorialTitle(size: 18).copyWith(
+                          style: CsTypography.editorialTitle(size: 16.5).copyWith(
                             color: AppColors.secondaryOnDark,
                           ),
                         ),
@@ -354,7 +354,7 @@ class _DimmedRow extends StatelessWidget {
                           countryCode: venue.countryCode,
                           style: CsTypography.editorialBody.copyWith(
                             color: AppColors.secondaryOnDark.withValues(alpha: 0.7),
-                            fontSize: 12,
+                            fontSize: 12.5,
                           ),
                         ),
                       ],

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_editorial_glyphs.dart' show CsCountryLabel;
@@ -26,14 +25,8 @@ import '../models/passport_stamp_item.dart';
 import '../utils/passport_stamp_style.dart';
 import 'passport_stamp.dart';
 import 'venue_picker_parts.dart';
+import '../../../core/theme/cs_fonts.dart';
 
-// Cormorant Garamond falls back to oldstyle figures (varying height/
-// baseline) unless this feature is explicitly enabled — the same fix
-// already applied in passport_data_page.dart/passport_cover.dart/
-// passport_page.dart, confirmed necessary here too by this round's own
-// preview harness screenshot (the date row and score picker both showed
-// visibly uneven digits before this was added).
-const _liningFigures = [FontFeature.enable('lnum')];
 
 /// The Passport booklet's "add a visit" flow — two steps inside ONE
 /// persistent bottom sheet (not two separate `showModalBottomSheet` calls
@@ -654,11 +647,11 @@ class _TopRow extends StatelessWidget {
           child: Text(
             stepLabel,
             textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: onGreen ? AppColors.secondaryOnDark : AppColors.textSecondary,
-              fontSize: 10.5,
+              fontSize: 11,
               fontWeight: FontWeight.w600,
-              letterSpacing: 10.5 * 0.14,
+              letterSpacing: 11 * 0.14,
             ),
           ),
         ),
@@ -684,9 +677,9 @@ class _SheetTextButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 4),
         child: Text(
           label,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: onGreen ? AppColors.textOnDark : AppColors.forestGreen,
-            fontSize: 13,
+            fontSize: 13.5,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -747,9 +740,9 @@ class _Step1 extends StatelessWidget {
         children: [
           Text(
             'Where did you go?',
-            style: GoogleFonts.cormorantGaramond(
+            style: CsFonts.serif(
               color: AppColors.textOnDark,
-              fontSize: 36,
+              fontSize: 33,
               fontWeight: FontWeight.w600,
               height: 1.05,
             ),
@@ -774,7 +767,7 @@ class _Step1 extends StatelessWidget {
           TextField(
             controller: searchCtrl,
             onChanged: onQueryChanged,
-            style: GoogleFonts.inter(color: AppColors.textOnDark, fontSize: 15),
+            style: CsFonts.sans(color: AppColors.textOnDark, fontSize: 15),
             cursorColor: AppColors.textOnDark,
             decoration: InputDecoration(
               isDense: true,
@@ -783,10 +776,10 @@ class _Step1 extends StatelessWidget {
               // unreadable. This field is an underline on green, unfilled.
               filled: false,
               hintText: 'Search by name or city',
-              hintStyle: GoogleFonts.cormorantGaramond(
+              hintStyle: CsFonts.serif(
                 color: AppColors.secondaryOnDark,
                 fontStyle: FontStyle.italic,
-                fontSize: 16,
+                fontSize: 14.5,
               ),
               enabledBorder: const UnderlineInputBorder(
                 borderSide: BorderSide(color: AppColors.hairlineOnGreen),
@@ -821,7 +814,7 @@ class _Step1 extends StatelessWidget {
               Center(
                 child: Text(
                   'Nothing here yet — search above.',
-                  style: GoogleFonts.inter(color: AppColors.secondaryOnDark, fontSize: 13),
+                  style: CsFonts.sans(color: AppColors.secondaryOnDark, fontSize: 13.5),
                 ),
               ),
             ],
@@ -858,7 +851,7 @@ class _SearchResultsSection extends StatelessWidget {
         child: Center(
           child: Text(
             'No matches.',
-            style: GoogleFonts.inter(color: AppColors.secondaryOnDark, fontSize: 13),
+            style: CsFonts.sans(color: AppColors.secondaryOnDark, fontSize: 13.5),
           ),
         ),
       );
@@ -881,11 +874,11 @@ class _SectionLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: GoogleFonts.inter(
+    style: CsFonts.sans(
       color: AppColors.secondaryOnDark,
-      fontSize: 10.5,
+      fontSize: 11,
       fontWeight: FontWeight.w600,
-      letterSpacing: 10.5 * 0.1,
+      letterSpacing: 11 * 0.1,
     ),
   );
 }
@@ -1041,9 +1034,9 @@ class _Step2 extends StatelessWidget {
           Text(
             _venueName(venue),
             textAlign: TextAlign.center,
-            style: GoogleFonts.cormorantGaramond(
+            style: CsFonts.serif(
               color: AppColors.forestGreen,
-              fontSize: 32,
+              fontSize: 29,
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -1051,7 +1044,7 @@ class _Step2 extends StatelessWidget {
           CsCountryLabel(
             cityName: cityName,
             countryCode: venue.countryCode,
-            style: GoogleFonts.inter(color: AppColors.textSecondary, fontSize: 13),
+            style: CsFonts.sans(color: AppColors.textSecondary, fontSize: 13.5),
           ),
           const SizedBox(height: 24),
           Align(
@@ -1123,7 +1116,7 @@ class _Step2 extends StatelessWidget {
             controller: notesCtrl,
             maxLines: 3,
             minLines: 1,
-            style: GoogleFonts.inter(color: AppColors.textPrimary, fontSize: 14),
+            style: CsFonts.sans(color: AppColors.textPrimary, fontSize: 14.5),
             decoration: InputDecoration(
               isDense: true,
               // Unfilled, like the search field: the theme's fill would
@@ -1132,10 +1125,10 @@ class _Step2 extends StatelessWidget {
               contentPadding: const EdgeInsets.symmetric(vertical: 12),
               border: InputBorder.none,
               hintText: 'Add a note about your experience…',
-              hintStyle: GoogleFonts.cormorantGaramond(
+              hintStyle: CsFonts.serif(
                 color: AppColors.textSecondary,
                 fontStyle: FontStyle.italic,
-                fontSize: 15,
+                fontSize: 13.5,
               ),
             ),
           ),
@@ -1176,7 +1169,7 @@ class _Step2 extends StatelessWidget {
             Text(
               error!,
               textAlign: TextAlign.center,
-              style: GoogleFonts.inter(color: AppColors.error, fontSize: 13),
+              style: CsFonts.sans(color: AppColors.error, fontSize: 13.5),
             ),
             const SizedBox(height: 12),
           ],
@@ -1190,7 +1183,7 @@ class _Step2 extends StatelessWidget {
                 foregroundColor: AppColors.textOnDark,
                 disabledBackgroundColor: AppColors.forestGreen.withValues(alpha: 0.5),
                 shape: const StadiumBorder(),
-                textStyle: GoogleFonts.inter(fontSize: 15, fontWeight: FontWeight.w600),
+                textStyle: CsFonts.sans(fontSize: 15, fontWeight: FontWeight.w600),
               ),
               child: saving
                   ? const SizedBox(
@@ -1219,9 +1212,9 @@ class _OverallRow extends StatelessWidget {
       Expanded(
         child: Text(
           'Overall',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textPrimary,
-            fontSize: 13.5,
+            fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -1230,11 +1223,11 @@ class _OverallRow extends StatelessWidget {
         overall == null
             ? 'The average of your scores'
             : '${formatOverall(overall!)}/10',
-        style: GoogleFonts.inter(
+        style: CsFonts.sans(
           color: overall == null
               ? AppColors.textSecondary
               : AppColors.forestGreen,
-          fontSize: 12.5,
+          fontSize: 13,
           fontWeight: FontWeight.w600,
         ),
       ),
@@ -1249,11 +1242,11 @@ class _FieldLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: GoogleFonts.inter(
+    style: CsFonts.sans(
       color: AppColors.textSecondary,
-      fontSize: 9,
+      fontSize: 11,
       fontWeight: FontWeight.w600,
-      letterSpacing: 9 * 0.12,
+      letterSpacing: 11 * 0.12,
     ),
   );
 }
@@ -1273,11 +1266,10 @@ class _DateTapRow extends StatelessWidget {
         children: [
           Text(
             '${date.day} ${months[date.month - 1]} ${date.year}',
-            style: GoogleFonts.cormorantGaramond(
+            style: CsFonts.serif(
               color: AppColors.textPrimary,
-              fontSize: 20,
+              fontSize: 18,
               fontWeight: FontWeight.w600,
-              fontFeatures: _liningFigures,
             ),
           ),
           const SizedBox(width: 8),

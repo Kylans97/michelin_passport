@@ -466,7 +466,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       appBar: AppBar(
         title: Text(
           'Manage venue',
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,
@@ -653,7 +653,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
           children: [
             Text(
               widget.venue.name,
-              style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 22),
+              style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
             ),
             const SizedBox(height: 2),
             Text(
@@ -741,7 +741,7 @@ class _SectionRow extends StatelessWidget {
                         title,
                         style: CsTypography.placeTitle.copyWith(
                           color: AppColors.forestGreen,
-                          fontSize: 19,
+                          fontSize: 17.5,
                         ),
                       ),
                       const SizedBox(height: 2),

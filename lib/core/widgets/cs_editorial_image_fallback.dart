@@ -4,7 +4,7 @@ import '../theme/cs_typography.dart';
 
 /// The magazine pass's photo-fallback: a typographic tile, not the "M"
 /// monogram [CsImagePlaceholder] shows. A green-800 field, a 1px accent-700
-/// border, the venue's own initials in Cormorant italic gold-300, and an
+/// border, the venue's own initials in Spectral italic gold-300, and an
 /// optional type label beneath — every visited/discoverable place reads as
 /// itself even without a photo, rather than falling back to the brand
 /// mark. Corners max 2pt (this pass replaces rounded cards with hairlines
@@ -72,7 +72,7 @@ class CsEditorialImageFallback extends StatelessWidget {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final shortestSide = _shortestFiniteSide(constraints) ?? 64;
-          final initialsSize = (shortestSide * 0.34).clamp(14.0, 40.0);
+          final initialsSize = (shortestSide * 0.31).clamp(13.0, 36.0);
           return Center(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -90,7 +90,7 @@ class CsEditorialImageFallback extends StatelessWidget {
                     typeLabel!.toUpperCase(),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: CsTypography.editorialLabel(size: 9).copyWith(
+                    style: CsTypography.editorialLabel(size: 11).copyWith(
                       color: AppColors.gold300,
                     ),
                   ),

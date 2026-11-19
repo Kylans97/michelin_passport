@@ -96,7 +96,7 @@ class _ReviewEventScreenState extends State<ReviewEventScreen> {
       appBar: AppBar(
         title: Text(
           _item.kind.label,
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,

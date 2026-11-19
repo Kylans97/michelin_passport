@@ -56,14 +56,14 @@ class VenueScoreHeader extends StatelessWidget {
           text: '  (Your latest $noun)',
           style: CsTypography.metadata.copyWith(
             color: AppColors.taupe,
-            fontSize: 12,
+            fontSize: 12.5,
           ),
         ),
       ],
     );
     final rightStyle = CsTypography.metadata.copyWith(
       color: AppColors.taupe,
-      fontSize: 11,
+      fontSize: 11.5,
     );
     final rightText = '$verb ${formatVenueVisitDate(date)}';
 
@@ -182,7 +182,7 @@ class _VenueOverallScoreState extends State<VenueOverallScore> {
             formatOverall(overall),
             style: CsTypography.largeMetric.copyWith(
               color: AppColors.forestGreen,
-              fontSize: 32,
+              fontSize: 29,
             ),
           ),
           const SizedBox(width: CsSpacing.sm),
@@ -252,7 +252,7 @@ class _ScoreBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = CsTypography.metadata.copyWith(
       color: AppColors.forestGreen,
-      fontSize: 13,
+      fontSize: 13.5,
     );
     return Row(
       children: [

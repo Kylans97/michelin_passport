@@ -112,7 +112,7 @@ class _VenueGalleryPickerScreenState extends State<VenueGalleryPickerScreen> {
       appBar: AppBar(
         title: Text(
           _multiSelect ? 'Choose photos' : 'Choose a photo',
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,
@@ -225,7 +225,7 @@ class _Thumbnail extends StatelessWidget {
                 style: CsTypography.metadata.copyWith(
                   color: AppColors.warmWhite,
                   fontWeight: FontWeight.w700,
-                  fontSize: 11,
+                  fontSize: 11.5,
                 ),
               ),
             ),

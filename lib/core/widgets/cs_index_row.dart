@@ -72,7 +72,7 @@ class CsIndexRow extends StatelessWidget {
                     child: Text(
                       '${toLowerRoman(index)}.',
                       style: CsTypography.editorialTitle(
-                        size: 18,
+                        size: 16.5,
                         italic: true,
                       ).copyWith(color: AppColors.gold600),
                     ),
@@ -86,7 +86,7 @@ class CsIndexRow extends StatelessWidget {
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: CsTypography.editorialTitle(
-                            size: 24,
+                            size: 22,
                           ).copyWith(color: titleColor),
                         ),
                         const SizedBox(height: 2),

@@ -237,7 +237,7 @@ class _PickerRow extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: CsTypography.placeTitle.copyWith(
                       color: AppColors.textOnDark,
-                      fontSize: 18,
+                      fontSize: 16.5,
                     ),
                   ),
                   const SizedBox(height: 2),
@@ -247,7 +247,7 @@ class _PickerRow extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: CsTypography.metadata.copyWith(
                       color: AppColors.secondaryOnDark,
-                      fontSize: 13,
+                      fontSize: 13.5,
                     ),
                   ),
                   if (row.awardRow != null) ...[

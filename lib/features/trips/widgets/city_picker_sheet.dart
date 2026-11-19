@@ -175,7 +175,7 @@ class _CityRow extends StatelessWidget {
             title,
             style: CsTypography.placeTitle.copyWith(
               color: AppColors.textOnDark,
-              fontSize: 18,
+              fontSize: 16.5,
             ),
           ),
           if (subtitle != null && subtitle!.isNotEmpty)
@@ -183,7 +183,7 @@ class _CityRow extends StatelessWidget {
               subtitle!,
               style: CsTypography.metadata.copyWith(
                 color: AppColors.secondaryOnDark,
-                fontSize: 13,
+                fontSize: 13.5,
               ),
             ),
         ],

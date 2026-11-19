@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
@@ -10,6 +12,19 @@ import 'core/widgets/app_network_image.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
+
+  // The bundled fonts' SIL Open Font License texts (see pubspec.yaml's
+  // fonts section) — the licence requires them to accompany the fonts.
+  LicenseRegistry.addLicense(() async* {
+    for (final (family, file) in const [
+      ('Spectral', 'OFL-Spectral.txt'),
+      ('Hanken Grotesk', 'OFL-HankenGrotesk.txt'),
+    ]) {
+      yield LicenseEntryWithLineBreaks([
+        family,
+      ], await rootBundle.loadString('assets/fonts/$file'));
+    }
+  });
 
   // Loads the bundled IANA database once at startup — every Event-local
   // time conversion (lib/core/utils/event_time.dart) depends on this

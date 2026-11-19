@@ -163,7 +163,7 @@ class _ClaimVenueScreenState extends State<ClaimVenueScreen> {
           'Claim your venue',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,

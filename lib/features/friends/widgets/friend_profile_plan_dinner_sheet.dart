@@ -251,13 +251,13 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
                           TextField(
                             controller: _noteCtrl,
                             maxLines: 3,
-                            style: CsTypography.editorialTitle(size: 16, italic: true).copyWith(
+                            style: CsTypography.editorialTitle(size: 14.5, italic: true).copyWith(
                               color: AppColors.textPrimary,
                             ),
                             decoration: InputDecoration(
                               hintText: 'Add a note… (optional)',
                               hintStyle: CsTypography.editorialTitle(
-                                size: 16,
+                                size: 14.5,
                                 italic: true,
                               ).copyWith(color: AppColors.taupe),
                               border: InputBorder.none,
@@ -355,7 +355,7 @@ class _InvitationPreview extends StatelessWidget {
             textAlign: TextAlign.center,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: CsTypography.editorialTitle(size: 38).copyWith(
+            style: CsTypography.editorialTitle(size: 34.5).copyWith(
               color: AppColors.forestGreen,
             ),
           ),

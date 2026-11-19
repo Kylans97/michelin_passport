@@ -286,7 +286,7 @@ class _StampPlaceholder extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: CsTypography.eyebrow.copyWith(
                   color: AppColors.mutedBrassOnLight,
-                  fontSize: 10,
+                  fontSize: 11,
                 ),
               ),
             ],

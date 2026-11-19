@@ -85,7 +85,7 @@ class _LocalTabItem extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: CsTypography.navigation.copyWith(
-                  fontSize: 13,
+                  fontSize: 13.5,
                   letterSpacing: 0,
                   color: active ? AppColors.ivory : AppColors.secondaryOnDark,
                   fontWeight: active ? FontWeight.w600 : FontWeight.w500,

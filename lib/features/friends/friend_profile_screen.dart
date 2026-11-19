@@ -326,7 +326,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
           'Remove friend?',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         content: Text(
@@ -371,7 +371,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
           'Block $name?',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         content: Text(

@@ -264,7 +264,7 @@ class _WhyMantelierCard extends StatelessWidget {
               Text(
                 article.shortTitle,
                 style: CsTypography.placeTitle.copyWith(
-                  fontSize: 22,
+                  fontSize: 20,
                   color: AppColors.ivory,
                 ),
               ),
@@ -372,7 +372,7 @@ class _InterviewCard extends StatelessWidget {
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
-                        fontSize: 17,
+                        fontSize: 15.5,
                         color: AppColors.ivory,
                       ),
                     ),
@@ -453,7 +453,7 @@ class _NewsArticleCard extends StatelessWidget {
                     Text(
                       article.shortTitle,
                       style: CsTypography.placeTitle.copyWith(
-                        fontSize: 17,
+                        fontSize: 15.5,
                         color: AppColors.forestGreen,
                       ),
                     ),

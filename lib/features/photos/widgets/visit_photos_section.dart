@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../data/repositories/photo_repository.dart';
@@ -9,6 +8,7 @@ import '../photo_viewer_screen.dart';
 import '../staged_photo.dart';
 import 'add_photos_button.dart';
 import 'visit_photo_grid.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The whole "Photos" section for a single visit/stay: grid, empty state,
 /// add/upload, delete. Self-contained and reused unchanged by both
@@ -95,7 +95,7 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textPrimary,
           ),
         ),
@@ -158,16 +158,16 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
         backgroundColor: AppColors.card,
         title: Text(
           'Delete photo?',
-          style: GoogleFonts.playfairDisplay(
+          style: CsFonts.serif(
             color: AppColors.textPrimary,
             fontSize: 18,
           ),
         ),
         content: Text(
           'This photo will be permanently removed.',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 14,
+            fontSize: 14.5,
           ),
         ),
         actions: [
@@ -175,14 +175,14 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Cancel',
-              style: GoogleFonts.inter(color: AppColors.textSecondary),
+              style: CsFonts.sans(color: AppColors.textSecondary),
             ),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             child: Text(
               'Delete',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.error,
                 fontWeight: FontWeight.w600,
               ),
@@ -251,9 +251,9 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
             Expanded(
               child: Text(
                 'Could not load photos.',
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textSecondary,
-                  fontSize: 13,
+                  fontSize: 13.5,
                 ),
               ),
             ),
@@ -261,7 +261,7 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
               onPressed: _load,
               child: Text(
                 'Retry',
-                style: GoogleFonts.inter(color: AppColors.gold),
+                style: CsFonts.sans(color: AppColors.gold),
               ),
             ),
           ],
@@ -287,9 +287,9 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
               const SizedBox(height: 10),
               Text(
                 'No photos from this ${widget.noun} yet.',
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textSecondary,
-                  fontSize: 13,
+                  fontSize: 13.5,
                 ),
               ),
             ],
@@ -307,9 +307,9 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
             const SizedBox(height: 10),
             Text(
               'No photos from this ${widget.noun} yet.',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.textSecondary,
-                fontSize: 13,
+                fontSize: 13.5,
               ),
             ),
             const SizedBox(height: 16),

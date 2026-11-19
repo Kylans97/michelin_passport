@@ -37,12 +37,12 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('wordmark uses the Cormorant Garamond family, never '
+    testWidgets('wordmark uses the bundled Spectral family, never '
         'Playfair Display', (tester) async {
       await tester.pumpWidget(_wrap(const AuthBrandHeader(tagline: 'Tagline')));
       final wordmark = tester.widget<Text>(find.text('MANTELIER'));
       final family = wordmark.style?.fontFamily ?? '';
-      expect(family, contains('CormorantGaramond'));
+      expect(family, 'Spectral');
       expect(family, isNot(contains('PlayfairDisplay')));
     });
 

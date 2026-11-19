@@ -40,7 +40,7 @@ class WineRow extends StatelessWidget {
                 child: Text(
                   wine.yearLabel ?? '',
                   style: CsTypography.placeTitle.copyWith(
-                    fontSize: 19,
+                    fontSize: 17.5,
                     color: AppColors.forestGreen,
                   ),
                 ),
@@ -52,7 +52,7 @@ class WineRow extends StatelessWidget {
                   Text(
                     wine.title,
                     style: CsTypography.placeTitle.copyWith(
-                      fontSize: 17,
+                      fontSize: 15.5,
                       color: AppColors.forestGreen,
                     ),
                   ),
@@ -498,7 +498,7 @@ class _WineSheetState extends State<WineSheet> {
               Text(
                 _editing ? 'Edit wine' : 'Add a wine',
                 style: CsTypography.placeTitle.copyWith(
-                  fontSize: 22,
+                  fontSize: 20,
                   color: AppColors.forestGreen,
                 ),
               ),

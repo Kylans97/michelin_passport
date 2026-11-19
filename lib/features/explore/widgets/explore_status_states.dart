@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// "No restaurants found" / "No hotels found" / "No places found" —
 /// message is the only thing that varies by venue type.
@@ -19,7 +19,7 @@ class ExploreEmptyState extends StatelessWidget {
           size: 40,
         ),
         const SizedBox(height: 12),
-        Text(message, style: GoogleFonts.inter(color: AppColors.textSecondary)),
+        Text(message, style: CsFonts.sans(color: AppColors.textSecondary)),
       ],
     ),
   );
@@ -45,11 +45,11 @@ class ExploreErrorState extends StatelessWidget {
           size: 40,
         ),
         const SizedBox(height: 12),
-        Text(message, style: GoogleFonts.inter(color: AppColors.textSecondary)),
+        Text(message, style: CsFonts.sans(color: AppColors.textSecondary)),
         const SizedBox(height: 12),
         TextButton(
           onPressed: onRetry,
-          child: Text('Retry', style: GoogleFonts.inter(color: AppColors.gold)),
+          child: Text('Retry', style: CsFonts.sans(color: AppColors.gold)),
         ),
       ],
     ),

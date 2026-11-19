@@ -91,7 +91,7 @@ class FriendWishlistTile extends StatelessWidget {
                           ? Text(
                               v.name,
                               style: CsTypography.placeTitle.copyWith(
-                                fontSize: 17,
+                                fontSize: 15.5,
                                 color: AppColors.forestGreen,
                               ),
                             )
@@ -101,7 +101,7 @@ class FriendWishlistTile extends StatelessWidget {
                                   TextSpan(
                                     text: v.name,
                                     style: CsTypography.placeTitle.copyWith(
-                                      fontSize: 17,
+                                      fontSize: 15.5,
                                       color: AppColors.forestGreen,
                                     ),
                                   ),

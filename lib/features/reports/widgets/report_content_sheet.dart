@@ -108,7 +108,7 @@ class _ReportSheetState extends State<_ReportSheet> {
           'Report',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         const SizedBox(height: CsSpacing.xs),

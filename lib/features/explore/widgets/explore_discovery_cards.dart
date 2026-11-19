@@ -178,7 +178,7 @@ class _FreeEntryBadge extends StatelessWidget {
       'FREE ENTRY',
       style: CsTypography.eyebrow.copyWith(
         color: AppColors.deepGreen,
-        fontSize: 9.5,
+        fontSize: 11,
         letterSpacing: 0.6,
       ),
     ),
@@ -200,7 +200,7 @@ class _CancelledBadge extends StatelessWidget {
       'CANCELLED',
       style: CsTypography.eyebrow.copyWith(
         color: AppColors.error,
-        fontSize: 9.5,
+        fontSize: 11,
         letterSpacing: 0.6,
       ),
     ),
@@ -522,7 +522,7 @@ class ExploreFreshFindCard extends StatelessWidget {
                       _typeTag,
                       style: CsTypography.eyebrow.copyWith(
                         color: AppColors.mutedBrassOnLight,
-                        fontSize: 10.5,
+                        fontSize: 11,
                       ),
                     ),
                     const SizedBox(height: 4),

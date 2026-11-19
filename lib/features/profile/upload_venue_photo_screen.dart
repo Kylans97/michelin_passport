@@ -210,7 +210,7 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
       appBar: AppBar(
         title: Text(
           'Add photos',
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,
@@ -261,7 +261,7 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+              style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
             ),
             const SizedBox(height: CsSpacing.sm),
             Text(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../constants/app_colors.dart';
 import '../../data/repositories/friendship_repository.dart';
+import '../theme/cs_fonts.dart';
 
 class VisitLogResult {
   final double? rating;
@@ -111,7 +111,7 @@ class _RatingSheetState extends State<_RatingSheet> {
           const SizedBox(height: 20),
           Text(
             'Log your visit',
-            style: GoogleFonts.playfairDisplay(
+            style: CsFonts.serif(
               color: AppColors.textPrimary,
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -120,7 +120,7 @@ class _RatingSheetState extends State<_RatingSheet> {
           const SizedBox(height: 4),
           Text(
             widget.restaurantName,
-            style: GoogleFonts.inter(color: AppColors.gold, fontSize: 13),
+            style: CsFonts.sans(color: AppColors.gold, fontSize: 13.5),
           ),
           const SizedBox(height: 24),
 
@@ -129,9 +129,9 @@ class _RatingSheetState extends State<_RatingSheet> {
             children: [
               Text(
                 'Personal rating',
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textSecondary,
-                  fontSize: 12,
+                  fontSize: 12.5,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -139,7 +139,7 @@ class _RatingSheetState extends State<_RatingSheet> {
               if (!_skipRating)
                 Text(
                   _rating.toStringAsFixed(1),
-                  style: GoogleFonts.playfairDisplay(
+                  style: CsFonts.serif(
                     color: AppColors.gold,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
@@ -170,16 +170,16 @@ class _RatingSheetState extends State<_RatingSheet> {
               children: [
                 Text(
                   '0',
-                  style: GoogleFonts.inter(
+                  style: CsFonts.sans(
                     color: AppColors.textSecondary,
-                    fontSize: 11,
+                    fontSize: 11.5,
                   ),
                 ),
                 Text(
                   '10',
-                  style: GoogleFonts.inter(
+                  style: CsFonts.sans(
                     color: AppColors.textSecondary,
-                    fontSize: 11,
+                    fontSize: 11.5,
                   ),
                 ),
               ],
@@ -190,9 +190,9 @@ class _RatingSheetState extends State<_RatingSheet> {
             onTap: () => setState(() => _skipRating = !_skipRating),
             child: Text(
               _skipRating ? 'Add a rating' : 'Skip rating',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.textSecondary,
-                fontSize: 12,
+                fontSize: 12.5,
                 decoration: TextDecoration.underline,
               ),
             ),
@@ -203,9 +203,9 @@ class _RatingSheetState extends State<_RatingSheet> {
           if (_friends.isNotEmpty) ...[
             Text(
               'Who did you dine with?',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.textSecondary,
-                fontSize: 12,
+                fontSize: 12.5,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -242,11 +242,11 @@ class _RatingSheetState extends State<_RatingSheet> {
                     ),
                     child: Text(
                       name,
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: selected
                             ? AppColors.gold
                             : AppColors.textSecondary,
-                        fontSize: 12,
+                        fontSize: 12.5,
                         fontWeight: selected
                             ? FontWeight.w600
                             : FontWeight.w400,
@@ -262,9 +262,9 @@ class _RatingSheetState extends State<_RatingSheet> {
           // Notes field
           TextField(
             controller: _notesCtrl,
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: AppColors.textPrimary,
-              fontSize: 14,
+              fontSize: 14.5,
             ),
             maxLines: 2,
             decoration: const InputDecoration(
@@ -288,7 +288,7 @@ class _RatingSheetState extends State<_RatingSheet> {
               ),
               child: Text(
                 'Save visit',
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   fontWeight: FontWeight.w700,
                   fontSize: 15,
                 ),

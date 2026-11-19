@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/sheet_dismiss_handle.dart';
 import '../../../data/repositories/planned_trips_repository.dart';
@@ -10,6 +9,7 @@ import '../../restaurants/widgets/detail_section.dart';
 import '../../visits/widgets/date_card.dart';
 import '../../visits/widgets/save_button.dart';
 import '../trips_for_planning.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Opens the "Plan visit"/"Plan stay" bottom sheet for [venue]. Creates a
 /// new `planned_venues` row on save, unless [existingPlan] is given, in
@@ -207,7 +207,7 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                   const SizedBox(height: 8),
                   Text(
                     venue.name,
-                    style: GoogleFonts.playfairDisplay(
+                    style: CsFonts.serif(
                       color: AppColors.textPrimary,
                       fontSize: 25,
                       fontWeight: FontWeight.w700,
@@ -217,9 +217,9 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                   const SizedBox(height: 5),
                   Text(
                     location,
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.textSecondary,
-                      fontSize: 14,
+                      fontSize: 14.5,
                     ),
                   ),
                   const SizedBox(height: 32),
@@ -270,9 +270,9 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                                     'standalone plan.'
                               : 'No upcoming trip in this country — this '
                                     'will be a standalone plan.',
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textSecondary,
-                            fontSize: 13,
+                            fontSize: 13.5,
                           ),
                         );
                       }
@@ -305,18 +305,18 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                   const SizedBox(height: 12),
                   TextField(
                     controller: _notesCtrl,
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.textPrimary,
-                      fontSize: 14,
+                      fontSize: 14.5,
                       height: 1.5,
                     ),
                     maxLines: 3,
                     minLines: 2,
                     decoration: InputDecoration(
                       hintText: 'Anything to remember for this plan…',
-                      hintStyle: GoogleFonts.inter(
+                      hintStyle: CsFonts.sans(
                         color: AppColors.textSecondary,
-                        fontSize: 14,
+                        fontSize: 14.5,
                         height: 1.5,
                       ),
                     ),
@@ -340,9 +340,9 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                                 Expanded(
                                   child: Text(
                                     _error!,
-                                    style: GoogleFonts.inter(
+                                    style: CsFonts.sans(
                                       color: AppColors.error,
-                                      fontSize: 13,
+                                      fontSize: 13.5,
                                     ),
                                   ),
                                 ),
@@ -436,18 +436,18 @@ class _TripOption extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.textPrimary,
-                      fontSize: 14,
+                      fontSize: 14.5,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 2),
                   Text(
                     subtitle,
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.textSecondary,
-                      fontSize: 12,
+                      fontSize: 12.5,
                     ),
                   ),
                 ],

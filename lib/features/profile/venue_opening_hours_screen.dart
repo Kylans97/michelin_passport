@@ -260,7 +260,7 @@ class _VenueOpeningHoursScreenState extends State<VenueOpeningHoursScreen> {
           'Opening hours',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,

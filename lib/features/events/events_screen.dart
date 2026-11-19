@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
@@ -45,6 +44,7 @@ import 'widgets/event_date_control.dart';
 import 'widgets/event_filter_sheet.dart';
 import 'widgets/event_location_control.dart';
 import '../../core/analytics/screen_usage.dart';
+import '../../core/theme/cs_fonts.dart';
 
 /// Culinary Events discovery — standalone events, multi-venue events,
 /// festivals, tastings.
@@ -602,9 +602,9 @@ class _EventsScreenState extends State<EventsScreen> {
                               _query = v;
                               _reload();
                             },
-                            style: GoogleFonts.inter(
+                            style: CsFonts.sans(
                               color: AppColors.textPrimary,
-                              fontSize: 14,
+                              fontSize: 14.5,
                             ),
                             decoration: const InputDecoration(
                               hintText: 'Search events, cities…',
@@ -797,11 +797,11 @@ class _EventsFiltersButton extends StatelessWidget {
                 const SizedBox(width: 6),
                 Text(
                   active ? 'Filters · $activeCount' : 'Filters',
-                  style: GoogleFonts.inter(
+                  style: CsFonts.sans(
                     color: active
                         ? AppColors.brandGreen
                         : AppColors.textSecondary,
-                    fontSize: 13,
+                    fontSize: 13.5,
                     fontWeight: active ? FontWeight.w600 : FontWeight.w500,
                   ),
                 ),
@@ -834,7 +834,7 @@ class _NoEventsState extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           'No events found',
-          style: GoogleFonts.playfairDisplay(
+          style: CsFonts.serif(
             color: AppColors.textSecondary,
             fontSize: 18,
           ),
@@ -842,9 +842,9 @@ class _NoEventsState extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'Try a different date range or country.',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 13,
+            fontSize: 13.5,
           ),
         ),
       ],
@@ -881,7 +881,7 @@ class _NoFilterResultsState extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           'Nothing matches right now',
-          style: GoogleFonts.playfairDisplay(
+          style: CsFonts.serif(
             color: AppColors.textSecondary,
             fontSize: 18,
           ),
@@ -890,9 +890,9 @@ class _NoFilterResultsState extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           'Try adjusting your search, location, date or filters.',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 13,
+            fontSize: 13.5,
           ),
           textAlign: TextAlign.center,
         ),
@@ -909,9 +909,9 @@ class _NoFilterResultsState extends StatelessWidget {
               showReportMissingListingSheet(context, initialQuery: searchTerm),
           child: Text(
             'Report a missing event',
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: AppColors.textSecondary,
-              fontSize: 13,
+              fontSize: 13.5,
             ),
           ),
         ),
@@ -951,7 +951,7 @@ class _DiscoveryFailureState extends StatelessWidget {
         const SizedBox(height: 16),
         Text(
           message,
-          style: GoogleFonts.playfairDisplay(
+          style: CsFonts.serif(
             color: AppColors.textSecondary,
             fontSize: 16,
           ),

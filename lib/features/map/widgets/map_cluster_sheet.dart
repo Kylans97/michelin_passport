@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../models/map_pin.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Lists the places behind a merged globe marker that can never be pulled
 /// apart by zooming — a hotel and its restaurant at one address, say.
@@ -68,7 +68,7 @@ Future<void> showMapClusterSheet(
                         children: [
                           Text(
                             pin.title,
-                            style: GoogleFonts.playfairDisplay(
+                            style: CsFonts.serif(
                               color: AppColors.textPrimary,
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
@@ -78,9 +78,9 @@ Future<void> showMapClusterSheet(
                             const SizedBox(height: 3),
                             Text(
                               pin.subtitle,
-                              style: GoogleFonts.inter(
+                              style: CsFonts.sans(
                                 color: AppColors.textSecondary,
-                                fontSize: 13,
+                                fontSize: 13.5,
                               ),
                             ),
                           ],

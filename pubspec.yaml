@@ -32,7 +32,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.8
-  google_fonts: ^6.2.1
   supabase_flutter: ^2.8.0
   flutter_svg: ^2.0.0
   url_launcher: ^6.3.0
@@ -123,7 +122,40 @@ flutter:
     # My Map's globe outlines (Natural Earth 1:50m, public domain) — built
     # by scripts/build_globe_outlines.py.
     - assets/globe/countries.bin
+    # The SIL Open Font License texts for the bundled fonts below — the
+    # licence requires them to travel with the font files, and main.dart
+    # registers them with Flutter's LicenseRegistry.
+    - assets/fonts/OFL-Spectral.txt
+    - assets/fonts/OFL-HankenGrotesk.txt
     - .env
+
+  # Mantelier's two typefaces, bundled rather than fetched at runtime so
+  # text never falls back to a system face on first launch or offline.
+  # The files are byte-for-byte the static instances google_fonts 6.3.3
+  # would download (sha256 checked against its manifest on 2026-11-19).
+  # Spectral (Production Type) carries display, titles and reading text;
+  # Hanken Grotesk carries interface text. Only these weights exist —
+  # CsFonts maps any other requested weight onto the nearest one.
+  fonts:
+    - family: Spectral
+      fonts:
+        - asset: assets/fonts/Spectral-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Spectral-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Spectral-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Spectral-Medium.ttf
+          weight: 500
+    - family: HankenGrotesk
+      fonts:
+        - asset: assets/fonts/HankenGrotesk-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/HankenGrotesk-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/HankenGrotesk-SemiBold.ttf
+          weight: 600
 
   # To add assets to your application, add an assets section, like this:
   # assets:

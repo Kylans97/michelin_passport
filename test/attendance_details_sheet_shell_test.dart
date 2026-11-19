@@ -20,7 +20,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:michelin_passport/core/theme/cs_fonts.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/features/events/widgets/recommendation_selector.dart';
@@ -43,17 +43,17 @@ Widget _sheetContent({bool? wouldRecommend}) => Container(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Club Leroy at Parkheuvel", style: GoogleFonts.playfairDisplay()),
+        Text("Club Leroy at Parkheuvel", style: CsFonts.serif()),
         const SizedBox(height: CsSpacing.lg),
         RatingMeter(label: 'Your rating', value: null, onChanged: (_) {}),
         const SizedBox(height: CsSpacing.lg),
         RecommendationSelector(value: wouldRecommend, onChanged: (_) {}),
         const SizedBox(height: CsSpacing.lg),
-        Text('Photos', style: GoogleFonts.inter()),
+        Text('Photos', style: CsFonts.sans()),
         const SizedBox(height: 8),
         const _PhotosPlaceholder(),
         const SizedBox(height: CsSpacing.lg),
-        Text('Notes', style: GoogleFonts.inter()),
+        Text('Notes', style: CsFonts.sans()),
         const SizedBox(height: 8),
         TextField(
           maxLines: 3,

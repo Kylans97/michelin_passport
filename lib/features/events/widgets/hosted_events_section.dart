@@ -122,7 +122,7 @@ class _HostedEventRow extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         event.admissionType.label,
-                        style: CsTypography.metadata.copyWith(fontSize: 12.5),
+                        style: CsTypography.metadata.copyWith(fontSize: 13),
                       ),
                     ],
                   ],

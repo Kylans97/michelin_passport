@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../models/venue_country.dart';
 import 'country_picker_sheet.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_surface_context.dart';
+import '../theme/cs_fonts.dart';
 
 /// Compact "Country ▾" / "Netherlands ▾" trigger that opens the existing
 /// searchable country picker sheet on tap — replaces a persistent
@@ -125,9 +125,9 @@ class CountryFilterControl extends StatelessWidget {
                   label,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.inter(
+                  style: CsFonts.sans(
                     color: textColor,
-                    fontSize: 13,
+                    fontSize: 13.5,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

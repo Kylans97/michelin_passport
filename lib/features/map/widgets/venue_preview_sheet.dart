@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/star_row.dart';
@@ -8,6 +7,7 @@ import '../../passport/passport_view_model.dart' show PassportVenueStats;
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 const _monthNames = [
   'January',
@@ -69,7 +69,7 @@ class _VenuePreviewSheet extends StatelessWidget {
             children: [
               Text(
                 venue.name,
-                style: GoogleFonts.playfairDisplay(
+                style: CsFonts.serif(
                   color: AppColors.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -78,9 +78,9 @@ class _VenuePreviewSheet extends StatelessWidget {
               const SizedBox(height: 6),
               Text(
                 _locationLine(venue),
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textSecondary,
-                  fontSize: 13,
+                  fontSize: 13.5,
                 ),
               ),
               const SizedBox(height: 14),
@@ -91,9 +91,9 @@ class _VenuePreviewSheet extends StatelessWidget {
                 isHotel
                     ? '${stats.visitCount} ${stats.visitCount == 1 ? 'stay' : 'stays'} · latest ${_formatDate(stats.latestVisit)}'
                     : '${stats.visitCount} ${stats.visitCount == 1 ? 'visit' : 'visits'} · latest ${_formatDate(stats.latestVisit)}',
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textSecondary,
-                  fontSize: 13,
+                  fontSize: 13.5,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -136,7 +136,7 @@ class _VenuePreviewSheet extends StatelessWidget {
                   },
                   child: Text(
                     isHotel ? 'View hotel' : 'View restaurant',
-                    style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                    style: CsFonts.sans(fontWeight: FontWeight.w600),
                   ),
                 ),
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../models/visit.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The optional menu-type choice on a restaurant visit: tasting menu, à la
 /// carte, or both. Tap a selected chip again to clear it.
@@ -91,11 +91,11 @@ class _MenuTypeChip extends StatelessWidget {
             ),
             Text(
               label,
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: selected
                     ? AppColors.forestGreen
                     : AppColors.textSecondary,
-                fontSize: 13,
+                fontSize: 13.5,
                 fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
               ),
             ),

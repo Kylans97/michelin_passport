@@ -115,7 +115,7 @@ class _ClaimVenueDetailsScreenState extends State<ClaimVenueDetailsScreen> {
           'Claim your venue',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,
@@ -138,7 +138,7 @@ class _ClaimVenueDetailsScreenState extends State<ClaimVenueDetailsScreen> {
             const SizedBox(height: CsSpacing.md),
             Text(
               'Request sent',
-              style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+              style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
             ),
             const SizedBox(height: CsSpacing.sm),
             Text(
@@ -177,7 +177,7 @@ class _ClaimVenueDetailsScreenState extends State<ClaimVenueDetailsScreen> {
             widget.venueName,
             style: CsTypography.placeTitle.copyWith(
               color: AppColors.forestGreen,
-              fontSize: 22,
+              fontSize: 20,
             ),
           ),
           if (widget.venueCity != null) ...[

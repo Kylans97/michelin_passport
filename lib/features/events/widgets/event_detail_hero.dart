@@ -224,7 +224,7 @@ class EventDetailHero extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             style: CsTypography.displayHero.copyWith(
                               color: AppColors.textOnDark,
-                              fontSize: 30,
+                              fontSize: 27.5,
                               height: 1.1,
                             ),
                           ),
@@ -239,7 +239,7 @@ class EventDetailHero extends StatelessWidget {
                               color: AppColors.textOnDark.withValues(
                                 alpha: 0.85,
                               ),
-                              fontSize: 14,
+                              fontSize: 14.5,
                             ),
                           ),
                         ],
