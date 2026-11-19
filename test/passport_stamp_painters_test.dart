@@ -1,6 +1,6 @@
-// Renders every one of the 5 stamp variants in every one of the 3 inks
-// (15 combinations total) — the "preview/screenshot test for all 5
-// variants in all 3 inks" the ink-stamp redesign spec asks for.
+// Renders every one of the 8 stamp variants in every one of the 3 inks
+// (24 combinations total) — the "preview/screenshot test for every
+// variant in all 3 inks" the ink-stamp redesign spec asks for.
 //
 // Deliberately NOT a `matchesGoldenFile` pixel-diff suite: this repo has
 // no prior golden-image test of any kind, and Cormorant Garamond/Inter
@@ -8,7 +8,7 @@
 // harness (which doesn't exist here yet either), golden PNGs captured in
 // one environment are liable to mismatch in another purely from font
 // substitution, which would make this suite flaky for reasons that have
-// nothing to do with a real regression. What IS asserted, for all 15
+// nothing to do with a real regression. What IS asserted, for all 24
 // combinations, and additionally with a real long name ("8½ Otto e Mezzo
 // Bombana") to specifically exercise every variant's own text-fitting
 // path: it renders with no thrown exception (a painter indexing past a

@@ -17,6 +17,11 @@ import 'stamp_ceremony_scope.dart';
 /// what that previous stamp was, which only the page-level layout, not
 /// one stamp in isolation, has visibility into.
 ///
+/// [scale] shrinks the whole design uniformly — painted at its own design
+/// size, then fitted into a box [scale] times that size — so a page can
+/// fit 4 stamps into its cells (see passport_page.dart's
+/// `stampPlacementIn`) without any painter needing to know about it.
+///
 /// Inside a [StampCeremonyScope] naming this stamp, the ceremony owns the
 /// entrance instead (and its own haptic): [isNew]'s short animation is
 /// skipped, and the stamp stays off the page until the ceremony presses it.
@@ -25,6 +30,9 @@ class PassportStampWidget extends StatefulWidget {
   final StampVariant variant;
   final StampInk ink;
   final double rotationDegrees;
+
+  /// Never above 1; 1 renders the design at its own size.
+  final double scale;
   final String semanticLabel;
   final bool isNew;
   final VoidCallback onTap;
@@ -35,6 +43,7 @@ class PassportStampWidget extends StatefulWidget {
     required this.variant,
     required this.ink,
     required this.rotationDegrees,
+    this.scale = 1,
     required this.semanticLabel,
     required this.isNew,
     required this.onTap,
@@ -50,12 +59,14 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
     vsync: this,
     duration: const Duration(milliseconds: 220),
   );
-  late final Animation<double> _scale = Tween(begin: 1.35, end: 1.0).animate(
-    CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-  );
-  late final Animation<double> _opacity = Tween(begin: 0.0, end: 0.9).animate(
-    CurvedAnimation(parent: _controller, curve: Curves.easeOut),
-  );
+  late final Animation<double> _scale = Tween(
+    begin: 1.35,
+    end: 1.0,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
+  late final Animation<double> _opacity = Tween(
+    begin: 0.0,
+    end: 0.9,
+  ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeOut));
 
   StampCeremonyScope? get _ceremony {
     final scope = StampCeremonyScope.maybeOf(context);
@@ -83,7 +94,9 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
   Widget build(BuildContext context) {
     final item = widget.item;
     final verified = item.verified;
-    final size = verified ? verifiedStampSize : stampVariantSize(widget.variant);
+    final designSize = verified
+        ? verifiedStampSize
+        : stampVariantSize(widget.variant);
     final data = StampPaintData(
       seedId: item.id,
       cityName: item.cityName,
@@ -114,7 +127,10 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
               )
             : Opacity(
                 opacity: widget.isNew ? _opacity.value : 0.9,
-                child: Transform.scale(scale: widget.isNew ? _scale.value : 1, child: child),
+                child: Transform.scale(
+                  scale: widget.isNew ? _scale.value : 1,
+                  child: child,
+                ),
               ),
         child: Transform.rotate(
           angle: widget.rotationDegrees * math.pi / 180,
@@ -124,34 +140,45 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
               onTap: widget.onTap,
               customBorder: const CircleBorder(),
               child: ExcludeSemantics(
+                // The ceremony's key sits on the scaled box, so the stamper
+                // is sized to what is actually on the page.
                 child: SizedBox.fromSize(
                   key: ceremony?.target.key,
-                  size: size,
-                  child: Stack(
-                    // Non-positioned children of a loose (the default)
-                    // Stack get LOOSENED constraints — a plain CustomPaint
-                    // with no size/child of its own then lays out at
-                    // Size.zero instead of filling this SizedBox, which
-                    // fed the painters a zero-size canvas: deflate()ing it
-                    // produced negative rects, and a maxWidth derived from
-                    // that (DoubleFrame/Oval/Postmark, whose name-box
-                    // width comes FROM the received canvas size, unlike
-                    // RoundSeal/Octagon's own hardcoded constants) hit a
-                    // negative `TextPainter.layout(maxWidth: ...)` —
-                    // caught only by actually running the widget tests,
-                    // not by analyze. `expand` forces every non-positioned
-                    // child (just the CustomPaint layer here) to fill this
-                    // exact [size] again, matching the pre-Stack behavior.
-                    fit: StackFit.expand,
-                    children: [
-                      RepaintBoundary(child: CustomPaint(painter: painter)),
-                      if (verified && item.venueArtworkApproved && item.venueArtworkUrl != null)
-                        _VenueArtwork(
-                          url: item.venueArtworkUrl!,
-                          tint: widget.ink.color,
-                          rect: VerifiedVenueStampPainter.artworkRect(size),
-                        ),
-                    ],
+                  size: designSize * widget.scale,
+                  child: FittedBox(
+                    child: SizedBox.fromSize(
+                      size: designSize,
+                      child: Stack(
+                        // Non-positioned children of a loose (the default)
+                        // Stack get LOOSENED constraints — a plain CustomPaint
+                        // with no size/child of its own then lays out at
+                        // Size.zero instead of filling this SizedBox, which
+                        // fed the painters a zero-size canvas: deflate()ing it
+                        // produced negative rects, and a maxWidth derived from
+                        // that (DoubleFrame/Oval/Postmark, whose name-box
+                        // width comes FROM the received canvas size, unlike
+                        // RoundSeal/Octagon's own hardcoded constants) hit a
+                        // negative `TextPainter.layout(maxWidth: ...)` —
+                        // caught only by actually running the widget tests,
+                        // not by analyze. `expand` forces every non-positioned
+                        // child (just the CustomPaint layer here) to fill this
+                        // exact [size] again, matching the pre-Stack behavior.
+                        fit: StackFit.expand,
+                        children: [
+                          RepaintBoundary(child: CustomPaint(painter: painter)),
+                          if (verified &&
+                              item.venueArtworkApproved &&
+                              item.venueArtworkUrl != null)
+                            _VenueArtwork(
+                              url: item.venueArtworkUrl!,
+                              tint: widget.ink.color,
+                              rect: VerifiedVenueStampPainter.artworkRect(
+                                designSize,
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -183,7 +210,11 @@ class _VenueArtwork extends StatelessWidget {
   final Color tint;
   final Rect rect;
 
-  const _VenueArtwork({required this.url, required this.tint, required this.rect});
+  const _VenueArtwork({
+    required this.url,
+    required this.tint,
+    required this.rect,
+  });
 
   @override
   Widget build(BuildContext context) {

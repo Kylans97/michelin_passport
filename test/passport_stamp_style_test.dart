@@ -30,21 +30,53 @@ void main() {
       }
     });
 
-    test('never returns the avoided variant when it would otherwise collide', () {
-      // Find an id whose natural (no-avoid) pick is roundSeal, then confirm
-      // asking it to avoid roundSeal returns something else.
-      final id = StampVariant.values
-          .map((v) => 'probe-$v')
-          .firstWhere((probe) => pickStampVariant(probe) == StampVariant.roundSeal);
+    test(
+      'never returns the avoided variant when it would otherwise collide',
+      () {
+        // Find an id whose natural (no-avoid) pick is roundSeal, then confirm
+        // asking it to avoid roundSeal returns something else.
+        final id = List.generate(200, (i) => 'probe-$i').firstWhere(
+          (probe) => pickStampVariant(probe) == StampVariant.roundSeal,
+        );
+        expect(
+          pickStampVariant(id, avoid: StampVariant.roundSeal),
+          isNot(StampVariant.roundSeal),
+        );
+      },
+    );
+
+    test(
+      'with no avoid, is unaffected by the avoid parameter being absent',
+      () {
+        const id = 'visit-42';
+        expect(pickStampVariant(id), pickStampVariant(id, avoid: null));
+      },
+    );
+
+    test('deals all 8 designs, and nothing else, across many visits', () {
+      final dealt = {
+        for (var i = 0; i < 2000; i++) pickStampVariant('visit-$i'),
+      };
+      expect(StampVariant.values, hasLength(8));
+      expect(dealt, StampVariant.values.toSet());
+    });
+
+    test('the wave-lined postmark is gone for good', () {
       expect(
-        pickStampVariant(id, avoid: StampVariant.roundSeal),
-        isNot(StampVariant.roundSeal),
+        StampVariant.values.map((v) => v.name),
+        isNot(contains('postmark')),
       );
     });
 
-    test('with no avoid, is unaffected by the avoid parameter being absent', () {
-      const id = 'visit-42';
-      expect(pickStampVariant(id), pickStampVariant(id, avoid: null));
+    test('a visit keeps its design: the deal is a fixed hash, not random', () {
+      // Pinned values: if these move, every stamp in every Passport
+      // changes design — only acceptable as a deliberate re-deal, like
+      // the November 2026 one (postmark out, four designs in).
+      expect(pickStampVariant('visit-1'), pickStampVariant('visit-1'));
+      expect(
+        StampVariant.values[stampStableHash('visit-1:variant') % 8],
+        pickStampVariant('visit-1'),
+      );
     });
   });
 

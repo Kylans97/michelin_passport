@@ -42,6 +42,32 @@ The format follows Keep a Changelog.
     on a device. The migration is still not applied.
 
 ### Changed
+- **Passport stamps: the wave stamp is gone, four new designs, four
+  stamps per page** (product owner, 2026-11-19: "die met die 3 golven ...
+  moet weg", "makkelijk 4 stempels op 1 pagina zonder dat ze overlappen",
+  "nog 4 stempeldesigns bovenop die 4 die blijven"):
+  - **Designs:** the postmark (a circle with three wavy cancellation
+    lines) is removed. Four new ones join round seal, double frame, oval
+    and octagon: a cartouche with concave corners, a round-topped arch,
+    a heater shield with a ruled chief, and a lozenge crossed by a
+    banderole. They were shown as renders of the real painters first and
+    approved by the product owner before they went in. Gold ink is
+    unchanged, which the product owner chose for now.
+  - **Which stamp gets which design:** nothing stores it. It is
+    `hash(visit id) % number of designs`, so going from five designs to
+    eight re-deals every stamp once, deterministically. No stamp can land
+    on the removed design. The product owner chose this one-time re-deal
+    over pinning existing stamps to their old design.
+  - **Four per page, never overlapping:** the free placement (a greedy
+    8-direction search plus pairwise relaxation) is replaced by a 2×2
+    grid. Each stamp owns one cell and is scaled down, uniformly, until
+    its rotated footprint fits the cell; the jitter only uses the room
+    that is left over. The bottom-left cell stops short of the year
+    corner. Tests check every design, the verified stamp and the
+    next-stamp placeholder at every rotation and jitter, on screens from
+    262 to 562 pt wide (320 pt included), plus a rendered 320 pt page.
+    On the smallest phones the stamps are drawn at about half their
+    design size.
 - **No wine on a hotel stay** (product owner, 2026-11-19: "dat je wijn kan
   toevoegen bij hotel review ... dat is gek"). "What we drank" is now
   restaurant-only, like the Wine rating already was: the add-a-stay form no
@@ -52,6 +78,13 @@ The format follows Keep a Changelog.
   already saved is hidden by this. The `visit_wines` table is unchanged.
   `flutter analyze` clean and `flutter test` all 2,909 pass; there is no
   widget test for the add-a-stay form, and it was not checked on a device.
+
+### Fixed
+- **A stamp placement crash at 320 pt, caught before it shipped:** when
+  a stamp's scale is set by one axis, the room left on that axis is zero
+  only up to rounding, and a value like `-7e-15` made `clamp()` throw.
+  Every page on a 320 pt screen rendered as an error box in the preview.
+  The leftover is now floored at zero, and the 320 pt page test covers it.
 
 ---
 

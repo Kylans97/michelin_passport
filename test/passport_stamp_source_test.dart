@@ -40,16 +40,30 @@ List<PassportStampItem> _items(int count) => [
 ];
 
 void main() {
-  group('paginateStamps', () {
-    test('1 visit: a single page with 1 filled slot, 1 next slot, 2 blanks', () {
-      final pages = paginateStamps(_items(1));
-      expect(pages, hasLength(1));
-      expect(pages[0], hasLength(4));
-      expect(pages[0][0], isA<FilledStampSlot>());
-      expect(pages[0][1], isA<NextStampSlot>());
-      expect(pages[0][2], isA<BlankStampSlot>());
-      expect(pages[0][3], isA<BlankStampSlot>());
+  group('buildYearGroupedStampPages', () {
+    test('holds 4 stamps per page (November 2026: back from 3)', () {
+      final pages = buildYearGroupedStampPages(_items(9));
+      expect(pages.map((p) => p.slots.length), [4, 4, 4]);
+      expect(pages[0].slots.whereType<FilledStampSlot>(), hasLength(4));
+      expect(pages[1].slots.whereType<FilledStampSlot>(), hasLength(4));
+      expect(pages[2].slots[0], isA<FilledStampSlot>());
+      expect(pages[2].slots[1], isA<NextStampSlot>());
     });
+  });
+
+  group('paginateStamps', () {
+    test(
+      '1 visit: a single page with 1 filled slot, 1 next slot, 2 blanks',
+      () {
+        final pages = paginateStamps(_items(1));
+        expect(pages, hasLength(1));
+        expect(pages[0], hasLength(4));
+        expect(pages[0][0], isA<FilledStampSlot>());
+        expect(pages[0][1], isA<NextStampSlot>());
+        expect(pages[0][2], isA<BlankStampSlot>());
+        expect(pages[0][3], isA<BlankStampSlot>());
+      },
+    );
 
     test(
       '4 visits: a full first page, PLUS a second page holding only the '
@@ -67,15 +81,18 @@ void main() {
       },
     );
 
-    test('5 visits: a full first page, then 1 filled + next slot + 2 blanks', () {
-      final pages = paginateStamps(_items(5));
-      expect(pages, hasLength(2));
-      expect(pages[0].every((s) => s is FilledStampSlot), isTrue);
-      expect(pages[1][0], isA<FilledStampSlot>());
-      expect(pages[1][1], isA<NextStampSlot>());
-      expect(pages[1][2], isA<BlankStampSlot>());
-      expect(pages[1][3], isA<BlankStampSlot>());
-    });
+    test(
+      '5 visits: a full first page, then 1 filled + next slot + 2 blanks',
+      () {
+        final pages = paginateStamps(_items(5));
+        expect(pages, hasLength(2));
+        expect(pages[0].every((s) => s is FilledStampSlot), isTrue);
+        expect(pages[1][0], isA<FilledStampSlot>());
+        expect(pages[1][1], isA<NextStampSlot>());
+        expect(pages[1][2], isA<BlankStampSlot>());
+        expect(pages[1][3], isA<BlankStampSlot>());
+      },
+    );
 
     test('13 visits: 3 full pages, then 1 filled + next slot + 2 blanks', () {
       final pages = paginateStamps(_items(13));
@@ -89,16 +106,19 @@ void main() {
       expect(pages[3][3], isA<BlankStampSlot>());
     });
 
-    test('every real item appears exactly once, in order, across all pages', () {
-      final items = _items(13);
-      final pages = paginateStamps(items);
-      final flattened = [
-        for (final page in pages)
-          for (final slot in page)
-            if (slot is FilledStampSlot) slot.item,
-      ];
-      expect(flattened.map((i) => i.id), items.map((i) => i.id));
-    });
+    test(
+      'every real item appears exactly once, in order, across all pages',
+      () {
+        final items = _items(13);
+        final pages = paginateStamps(items);
+        final flattened = [
+          for (final page in pages)
+            for (final slot in page)
+              if (slot is FilledStampSlot) slot.item,
+        ];
+        expect(flattened.map((i) => i.id), items.map((i) => i.id));
+      },
+    );
 
     test('exactly one NextStampSlot exists across the whole collection', () {
       for (final count in [1, 4, 5, 8, 12, 13]) {
@@ -114,56 +134,53 @@ void main() {
   });
 
   group('buildRestaurantStampItems ordering', () {
-    test(
-      'sorts oldest visit first, not newest — the last page must be where '
-      'the *next* stamp naturally continues from — and produces one item '
-      'per VISIT, not one per venue, even for a single repeatedly-visited '
-      'restaurant',
-      () {
-        const restaurant = Restaurant(
-          id: 'r1',
-          restaurantCode: 'r1',
-          name: 'Flore',
-          michelinStars: 2,
-          inclusionReason: 'michelin_star',
-          cityName: 'Amsterdam',
-          countryCode: 'NL',
-          countryName: 'Netherlands',
-          flagEmoji: '🇳🇱',
-          address: '1 Prinsengracht',
-        );
-        final entry = VenueEntry(
-          venue: const RestaurantVenue(restaurant),
-          visits: [
-            Visit(
-              id: 'newest',
-              userId: 'u1',
-              entityType: 'restaurant',
-              entityId: 'r1',
-              visitedOn: DateTime(2026, 6, 1),
-            ),
-            Visit(
-              id: 'oldest',
-              userId: 'u1',
-              entityType: 'restaurant',
-              entityId: 'r1',
-              visitedOn: DateTime(2026, 1, 1),
-            ),
-            Visit(
-              id: 'middle',
-              userId: 'u1',
-              entityType: 'restaurant',
-              entityId: 'r1',
-              visitedOn: DateTime(2026, 3, 1),
-            ),
-          ],
-        );
+    test('sorts oldest visit first, not newest — the last page must be where '
+        'the *next* stamp naturally continues from — and produces one item '
+        'per VISIT, not one per venue, even for a single repeatedly-visited '
+        'restaurant', () {
+      const restaurant = Restaurant(
+        id: 'r1',
+        restaurantCode: 'r1',
+        name: 'Flore',
+        michelinStars: 2,
+        inclusionReason: 'michelin_star',
+        cityName: 'Amsterdam',
+        countryCode: 'NL',
+        countryName: 'Netherlands',
+        flagEmoji: '🇳🇱',
+        address: '1 Prinsengracht',
+      );
+      final entry = VenueEntry(
+        venue: const RestaurantVenue(restaurant),
+        visits: [
+          Visit(
+            id: 'newest',
+            userId: 'u1',
+            entityType: 'restaurant',
+            entityId: 'r1',
+            visitedOn: DateTime(2026, 6, 1),
+          ),
+          Visit(
+            id: 'oldest',
+            userId: 'u1',
+            entityType: 'restaurant',
+            entityId: 'r1',
+            visitedOn: DateTime(2026, 1, 1),
+          ),
+          Visit(
+            id: 'middle',
+            userId: 'u1',
+            entityType: 'restaurant',
+            entityId: 'r1',
+            visitedOn: DateTime(2026, 3, 1),
+          ),
+        ],
+      );
 
-        final items = buildRestaurantStampItems([entry]);
+      final items = buildRestaurantStampItems([entry]);
 
-        expect(items, hasLength(3));
-        expect(items.map((i) => i.id), ['oldest', 'middle', 'newest']);
-      },
-    );
+      expect(items, hasLength(3));
+      expect(items.map((i) => i.id), ['oldest', 'middle', 'newest']);
+    });
   });
 }

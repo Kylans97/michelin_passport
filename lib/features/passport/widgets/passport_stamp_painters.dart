@@ -6,11 +6,11 @@ import '../models/passport_stamp_award.dart';
 import '../utils/passport_stamp_style.dart' show StampVariant;
 import '../utils/passport_stamp_text_fit.dart';
 
-/// Each variant's own fixed footprint — the exact sizes from the September
-/// 2026 stamp redesign brief (all 5 designs got physically bigger than the
-/// original round). Used both to size the [CustomPaint] each painter below
-/// is wrapped in and, by the page layout, to keep a jittered stamp from
-/// falling off the page or covering its header — see passport_page.dart.
+/// Each variant's own fixed design footprint — the September 2026
+/// redesign's sizes for the first four, more compact ones for the four
+/// added in November 2026. Used to size the [CustomPaint] each painter
+/// below is wrapped in, and by the page layout to work out how far a
+/// stamp must be scaled to fit its own cell — see passport_page.dart.
 Size stampVariantSize(StampVariant variant) => switch (variant) {
   StampVariant.roundSeal => const Size(
     RoundSealPainter.diameter,
@@ -25,9 +25,15 @@ Size stampVariantSize(StampVariant variant) => switch (variant) {
     OctagonPainter.diameter,
     OctagonPainter.diameter,
   ),
-  StampVariant.postmark => const Size(
-    PostmarkPainter.width,
-    PostmarkPainter.height,
+  StampVariant.cartouche => const Size(
+    CartouchePainter.width,
+    CartouchePainter.height,
+  ),
+  StampVariant.arch => const Size(ArchPainter.width, ArchPainter.height),
+  StampVariant.shield => const Size(ShieldPainter.width, ShieldPainter.height),
+  StampVariant.lozenge => const Size(
+    LozengePainter.width,
+    LozengePainter.height,
   ),
 };
 
@@ -35,7 +41,7 @@ Size stampVariantSize(StampVariant variant) => switch (variant) {
 /// overlapping 184pt nameplate + the 40pt seal poking past the ring's
 /// right edge) — see [VerifiedVenueStampPainter]. Used instead of
 /// [stampVariantSize] whenever [PassportStampItem.verified] is true,
-/// regardless of which of the 5 ordinary variants would otherwise have
+/// regardless of which of the 8 ordinary variants would otherwise have
 /// been picked for that visit.
 const verifiedStampSize = Size(210, 220);
 
@@ -46,10 +52,13 @@ CustomPainter stampPainterFor(StampVariant variant, StampPaintData data) =>
       StampVariant.doubleFrame => DoubleFramePainter(data),
       StampVariant.oval => OvalPainter(data),
       StampVariant.octagon => OctagonPainter(data),
-      StampVariant.postmark => PostmarkPainter(data),
+      StampVariant.cartouche => CartouchePainter(data),
+      StampVariant.arch => ArchPainter(data),
+      StampVariant.shield => ShieldPainter(data),
+      StampVariant.lozenge => LozengePainter(data),
     };
 
-/// Everything one of the 5 stamp painters (or [VerifiedVenueStampPainter])
+/// Everything one of the 8 stamp painters (or [VerifiedVenueStampPainter])
 /// needs to draw itself — bundled so each painter class takes one
 /// constructor argument instead of eight. Value-equal (see [==]/
 /// [hashCode]) so each painter's `shouldRepaint` can compare by value
@@ -114,8 +123,7 @@ const _months = [
 ];
 
 /// "12 MAR 2026" — the shared date-slot format every design uses (see the
-/// brief's own SLOTS section), except the postmark's own day-big/month-
-/// year-below split treatment. Month names are the same fixed English
+/// brief's own SLOTS section). Month names are the same fixed English
 /// abbreviations this file already used before this redesign — "de maand
 /// in de locale van de gebruiker" is NOT implemented: this app has no
 /// localization infrastructure at all yet (no `flutter_localizations`, no
@@ -156,9 +164,10 @@ void paintStampInk(
 void _paintInkGrain(Canvas canvas, Rect bounds, String seedId) {
   final random = math.Random(seedId.hashCode);
   final paint = Paint()..blendMode = BlendMode.dstOut;
-  final dotCount = ((bounds.width * bounds.height) * 0.02)
-      .round()
-      .clamp(50, 220);
+  final dotCount = ((bounds.width * bounds.height) * 0.02).round().clamp(
+    50,
+    220,
+  );
   for (var i = 0; i < dotCount; i++) {
     final dx = bounds.left + random.nextDouble() * bounds.width;
     final dy = bounds.top + random.nextDouble() * bounds.height;
@@ -196,7 +205,7 @@ void drawIconGlyph(
   painter.paint(canvas, center - Offset(painter.width / 2, painter.height / 2));
 }
 
-/// The distinction/award slot shared by all 5 variants (plus the verified
+/// The distinction/award slot shared by all 8 variants (plus the verified
 /// stamp's own nameplate): Michelin stars, Keys, or (for an event stamp,
 /// a pragmatic extension the brief's own restaurant/hotel-focused test
 /// matrix doesn't cover but this app's event stamps still need) the event
@@ -318,7 +327,12 @@ TextPainter _plainText(String text, TextStyle style, {double? maxWidth}) {
   return painter;
 }
 
-void _paintCentered(Canvas canvas, TextPainter painter, double centerX, double top) {
+void _paintCentered(
+  Canvas canvas,
+  TextPainter painter,
+  double centerX,
+  double top,
+) {
   painter.paint(canvas, Offset(centerX - painter.width / 2, top));
 }
 
@@ -327,10 +341,10 @@ void _paintCentered(Canvas canvas, TextPainter painter, double centerX, double t
 /// truncate with an ellipsis once the label doesn't fit [maxArcLength] at
 /// [style].
 String _fitPlainArcText(String text, TextStyle style, double maxArcLength) {
-  double width(String t) =>
-      (TextPainter(text: TextSpan(text: t, style: style), textDirection: TextDirection.ltr)
-            ..layout())
-          .width;
+  double width(String t) => (TextPainter(
+    text: TextSpan(text: t, style: style),
+    textDirection: TextDirection.ltr,
+  )..layout()).width;
   if (width(text) <= maxArcLength) return text;
   var truncated = text;
   while (truncated.isNotEmpty) {
@@ -513,7 +527,12 @@ class RoundSealPainter extends CustomPainter {
         if (data.award != null)
           (
             height: 15,
-            paint: (top) => _drawAward(canvas, Offset(center.dx, top + 7.5), data.award, ink),
+            paint: (top) => _drawAward(
+              canvas,
+              Offset(center.dx, top + 7.5),
+              data.award,
+              ink,
+            ),
           ),
         (
           height: namePainter.height,
@@ -607,7 +626,8 @@ class DoubleFramePainter extends CustomPainter {
         if (data.award != null)
           (
             height: 15,
-            paint: (top) => _drawAward(canvas, Offset(centerX, top + 7.5), data.award, ink),
+            paint: (top) =>
+                _drawAward(canvas, Offset(centerX, top + 7.5), data.award, ink),
           ),
         (
           height: 1,
@@ -720,7 +740,8 @@ class OvalPainter extends CustomPainter {
         if (data.award != null)
           (
             height: 14,
-            paint: (top) => _drawAward(canvas, Offset(centerX, top + 7), data.award, ink),
+            paint: (top) =>
+                _drawAward(canvas, Offset(centerX, top + 7), data.award, ink),
           ),
         (
           height: datePainter.height,
@@ -827,7 +848,8 @@ class OctagonPainter extends CustomPainter {
         if (data.award != null)
           (
             height: 14,
-            paint: (top) => _drawAward(canvas, Offset(centerX, top + 7), data.award, ink),
+            paint: (top) =>
+                _drawAward(canvas, Offset(centerX, top + 7), data.award, ink),
           ),
         (
           height: namePainter.height,
@@ -864,116 +886,94 @@ class OctagonPainter extends CustomPainter {
       oldDelegate.data != data;
 }
 
-// ── 5. Postmark ──────────────────────────────────────────────────────────
+// ── 5. Cartouche ─────────────────────────────────────────────────────────
 
-void _drawWavyLines(Canvas canvas, Rect area, int count, Paint paint) {
-  final spacing = area.height / (count + 1);
-  for (var i = 1; i <= count; i++) {
-    final y = area.top + spacing * i;
-    final path = Path()..moveTo(area.left, y);
-    const amplitude = 3.6;
-    const periods = 2.6;
-    const steps = 36;
-    for (var s = 1; s <= steps; s++) {
-      final t = s / steps;
-      final x = area.left + area.width * t;
-      final yy = y + amplitude * math.sin(t * periods * 2 * math.pi);
-      path.lineTo(x, yy);
-    }
-    canvas.drawPath(path, paint);
-  }
-}
+/// [rect] with each corner cut by an inward quarter-circle of [notch] —
+/// the classic engraved-cartouche frame.
+Path _cartouchePath(Rect rect, double notch) => Path()
+  ..moveTo(rect.left + notch, rect.top)
+  ..lineTo(rect.right - notch, rect.top)
+  ..arcToPoint(
+    Offset(rect.right, rect.top + notch),
+    radius: Radius.circular(notch),
+    clockwise: false,
+  )
+  ..lineTo(rect.right, rect.bottom - notch)
+  ..arcToPoint(
+    Offset(rect.right - notch, rect.bottom),
+    radius: Radius.circular(notch),
+    clockwise: false,
+  )
+  ..lineTo(rect.left + notch, rect.bottom)
+  ..arcToPoint(
+    Offset(rect.left, rect.bottom - notch),
+    radius: Radius.circular(notch),
+    clockwise: false,
+  )
+  ..lineTo(rect.left, rect.top + notch)
+  ..arcToPoint(
+    Offset(rect.left + notch, rect.top),
+    radius: Radius.circular(notch),
+    clockwise: false,
+  )
+  ..close();
 
-/// A 252×128 postmark: a 108pt circle on the left with the city on an arc
-/// and the day/month-year in its centre, and exactly 3 wavy cancellation
-/// lines to its right with the venue name (italic) and the distinction row
-/// set over them, centered as a group.
-class PostmarkPainter extends CustomPainter {
+/// A 172×124 cartouche: a heavy and a hairline frame, both with concave
+/// (inward-cut) corners, a tiny diamond in each corner notch, then city,
+/// the venue name (italic serif), distinction and the date flanked by two
+/// short rules — all centered as one group.
+class CartouchePainter extends CustomPainter {
   final StampPaintData data;
-  const PostmarkPainter(this.data);
+  const CartouchePainter(this.data);
 
-  static const width = 252.0;
-  static const height = 128.0;
+  static const width = 172.0;
+  static const height = 124.0;
 
   @override
   void paint(Canvas canvas, Size size) {
     paintStampInk(canvas, size, data.ink, data.seedId, (canvas, ink) {
-      const circleRadius = 54.0;
-      final circleCenter = Offset(circleRadius + 6, size.height / 2);
-      canvas.drawCircle(
-        circleCenter,
-        circleRadius,
-        Paint()
-          ..color = ink
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 1.5,
-      );
+      final outer = (Offset.zero & size).deflate(3);
+      final inner = outer.deflate(5);
+      final stroke = Paint()
+        ..color = ink
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2;
+      canvas.drawPath(_cartouchePath(outer, 16), stroke);
+      canvas.drawPath(_cartouchePath(inner, 11), stroke..strokeWidth = 0.8);
 
-      final cityStyle = GoogleFonts.inter(
-        color: ink,
-        fontSize: 8,
-        letterSpacing: 1.6,
-        fontWeight: FontWeight.w500,
-      );
-      const gapRadians = 40 * math.pi / 180;
-      final sweep = math.pi - gapRadians;
-      final startAngle = math.pi + gapRadians / 2;
-      final cityText = _fitPlainArcText(
-        data.cityName.toUpperCase(),
-        cityStyle,
-        (circleRadius - 12) * sweep,
-      );
-      _drawCenteredArcText(
-        canvas,
-        text: cityText,
-        style: cityStyle,
-        center: circleCenter,
-        radius: circleRadius - 12,
-        sweepStart: startAngle,
-        sweep: sweep,
-      );
+      final fill = Paint()..color = ink;
+      for (final corner in [
+        inner.topLeft,
+        inner.topRight,
+        inner.bottomLeft,
+        inner.bottomRight,
+      ]) {
+        canvas.save();
+        canvas.translate(corner.dx, corner.dy);
+        canvas.rotate(math.pi / 4);
+        canvas.drawRect(
+          Rect.fromCenter(center: Offset.zero, width: 3.2, height: 3.2),
+          fill,
+        );
+        canvas.restore();
+      }
 
-      final dayPainter = _plainText(
-        '${data.date.day}',
-        GoogleFonts.cormorantGaramond(
+      final centerX = inner.center.dx;
+      final maxWidth = inner.width - 30;
+
+      final cityPainter = _plainText(
+        [
+          data.cityName.toUpperCase(),
+          data.countryCode.toUpperCase(),
+        ].where((s) => s.isNotEmpty).join(' · '),
+        GoogleFonts.inter(
           color: ink,
-          fontSize: 26,
-          fontWeight: FontWeight.w600,
+          fontSize: 8,
+          letterSpacing: 1.6,
+          fontWeight: FontWeight.w500,
         ),
+        maxWidth: maxWidth,
       );
-      final monthYearPainter = _plainText(
-        '${_months[data.date.month - 1]} ${data.date.year}',
-        GoogleFonts.inter(color: ink, fontSize: 9, fontWeight: FontWeight.w600),
-      );
-      dayPainter.paint(
-        canvas,
-        circleCenter -
-            Offset(dayPainter.width / 2, dayPainter.height / 2 + monthYearPainter.height / 2),
-      );
-      monthYearPainter.paint(
-        canvas,
-        Offset(
-          circleCenter.dx - monthYearPainter.width / 2,
-          circleCenter.dy + dayPainter.height / 2 - monthYearPainter.height / 2,
-        ),
-      );
-
-      final rightArea = Rect.fromLTRB(
-        circleCenter.dx + circleRadius + 12,
-        10,
-        size.width - 8,
-        size.height - 10,
-      );
-      _drawWavyLines(
-        canvas,
-        rightArea,
-        3,
-        Paint()
-          ..color = ink
-          ..style = PaintingStyle.stroke
-          ..strokeWidth = 1.2,
-      );
-
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
         styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
@@ -982,30 +982,482 @@ class PostmarkPainter extends CustomPainter {
           fontStyle: FontStyle.italic,
           fontWeight: FontWeight.w600,
         ),
-        maxWidth: rightArea.width - 4,
+        maxWidth: maxWidth,
         sizeL: 24,
         sizeM: 19,
-        sizeS: 16,
+        sizeS: 15,
+      );
+      final datePainter = _plainText(
+        _fullDateLabel(data.date),
+        GoogleFonts.inter(
+          color: ink,
+          fontSize: 8,
+          letterSpacing: 1.6,
+          fontWeight: FontWeight.w600,
+        ),
       );
 
       final pieces = <_StackPiece>[
         (
+          height: cityPainter.height,
+          paint: (top) => _paintCentered(canvas, cityPainter, centerX, top),
+        ),
+        (
           height: namePainter.height,
-          paint: (top) => _paintCentered(canvas, namePainter, rightArea.center.dx, top),
+          paint: (top) => _paintCentered(canvas, namePainter, centerX, top),
         ),
         if (data.award != null)
           (
             height: 14,
-            paint: (top) =>
-                _drawAward(canvas, Offset(rightArea.center.dx, top + 7), data.award, ink),
+            paint: (top) => _drawAward(
+              canvas,
+              Offset(centerX, top + 7),
+              data.award,
+              ink,
+              starFontSize: 13,
+              iconSize: 12,
+            ),
           ),
+        (
+          height: datePainter.height,
+          paint: (top) {
+            _paintCentered(canvas, datePainter, centerX, top);
+            final y = top + datePainter.height / 2;
+            final half = datePainter.width / 2;
+            final rule = Paint()
+              ..color = ink
+              ..strokeWidth = 0.8;
+            canvas.drawLine(
+              Offset(centerX - half - 18, y),
+              Offset(centerX - half - 6, y),
+              rule,
+            );
+            canvas.drawLine(
+              Offset(centerX + half + 6, y),
+              Offset(centerX + half + 18, y),
+              rule,
+            );
+          },
+        ),
       ];
-      _paintCenteredStack(canvas, pieces, rightArea.center.dy, 6);
+      _paintCenteredStack(canvas, pieces, inner.center.dy, 6);
     });
   }
 
   @override
-  bool shouldRepaint(covariant PostmarkPainter oldDelegate) =>
+  bool shouldRepaint(covariant CartouchePainter oldDelegate) =>
+      oldDelegate.data != data;
+}
+
+// ── 6. Arch ──────────────────────────────────────────────────────────────
+
+/// A round-topped arch filling [rect]: straight sides, a flat base, and a
+/// semicircle as wide as [rect] across the top.
+Path _archPath(Rect rect) {
+  final radius = rect.width / 2;
+  return Path()
+    ..moveTo(rect.left, rect.bottom)
+    ..lineTo(rect.left, rect.top + radius)
+    ..arcToPoint(
+      Offset(rect.right, rect.top + radius),
+      radius: Radius.circular(radius),
+    )
+    ..lineTo(rect.right, rect.bottom)
+    ..close();
+}
+
+/// A 136×172 arch, like a club's doorway: a heavy and a hairline arch, the
+/// city on an arc under the crown, then distinction, venue name and — on
+/// a ruled sill across the base — the date.
+class ArchPainter extends CustomPainter {
+  final StampPaintData data;
+  const ArchPainter(this.data);
+
+  static const width = 136.0;
+  static const height = 172.0;
+  static const _nameMaxWidth = 100.0;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintStampInk(canvas, size, data.ink, data.seedId, (canvas, ink) {
+      final outer = (Offset.zero & size).deflate(3);
+      final inner = outer.deflate(6);
+      final stroke = Paint()
+        ..color = ink
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2;
+      canvas.drawPath(_archPath(outer), stroke);
+      canvas.drawPath(_archPath(inner), stroke..strokeWidth = 0.8);
+
+      final centerX = size.width / 2;
+      final crownCenter = Offset(centerX, inner.top + inner.width / 2);
+      final cityStyle = GoogleFonts.inter(
+        color: ink,
+        fontSize: 8,
+        letterSpacing: 1.8,
+        fontWeight: FontWeight.w500,
+      );
+      final cityRadius = inner.width / 2 - 12;
+      const citySweep = math.pi * 0.62;
+      _drawCenteredArcText(
+        canvas,
+        text: _fitPlainArcText(
+          data.cityName.toUpperCase(),
+          cityStyle,
+          cityRadius * citySweep,
+        ),
+        style: cityStyle,
+        center: crownCenter,
+        radius: cityRadius,
+        sweepStart: 1.5 * math.pi - citySweep / 2,
+        sweep: citySweep,
+      );
+
+      // The sill: a ruled band across the base holding the date.
+      const sillHeight = 24.0;
+      final sillTop = inner.bottom - sillHeight;
+      canvas.drawLine(
+        Offset(inner.left, sillTop),
+        Offset(inner.right, sillTop),
+        Paint()
+          ..color = ink
+          ..strokeWidth = 0.8,
+      );
+      final datePainter = _plainText(
+        _fullDateLabel(data.date),
+        GoogleFonts.cormorantGaramond(
+          color: ink,
+          fontSize: 13,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w600,
+        ),
+        maxWidth: inner.width - 8,
+      );
+      _paintCentered(
+        canvas,
+        datePainter,
+        centerX,
+        sillTop + (sillHeight - datePainter.height) / 2,
+      );
+
+      final namePainter = fitStampNameBalanced(
+        text: data.venueName,
+        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+          color: ink,
+          fontSize: fontSize,
+          fontWeight: FontWeight.w600,
+        ),
+        maxWidth: _nameMaxWidth,
+        sizeL: 21,
+        sizeM: 17,
+        sizeS: 14,
+      );
+      final pieces = <_StackPiece>[
+        if (data.award != null)
+          (
+            height: 14,
+            paint: (top) => _drawAward(
+              canvas,
+              Offset(centerX, top + 7),
+              data.award,
+              ink,
+              starFontSize: 13,
+              iconSize: 12,
+            ),
+          ),
+        (
+          height: namePainter.height,
+          paint: (top) => _paintCentered(canvas, namePainter, centerX, top),
+        ),
+      ];
+      // Centered in the room between the city arc and the sill.
+      final roomTop = crownCenter.dy - cityRadius + 18;
+      _paintCenteredStack(canvas, pieces, (roomTop + sillTop) / 2 + 6, 6);
+    });
+  }
+
+  @override
+  bool shouldRepaint(covariant ArchPainter oldDelegate) =>
+      oldDelegate.data != data;
+}
+
+// ── 7. Shield ────────────────────────────────────────────────────────────
+
+/// A heater shield filling [rect]: a flat top, straight sides down to
+/// 52% of the height, then two curves meeting in a point at the base.
+Path _shieldPath(Rect rect) {
+  final shoulder = rect.top + rect.height * 0.52;
+  final tip = Offset(rect.center.dx, rect.bottom);
+  return Path()
+    ..moveTo(rect.left, rect.top)
+    ..lineTo(rect.right, rect.top)
+    ..lineTo(rect.right, shoulder)
+    ..quadraticBezierTo(
+      rect.right,
+      rect.bottom - rect.height * 0.14,
+      tip.dx,
+      tip.dy,
+    )
+    ..quadraticBezierTo(
+      rect.left,
+      rect.bottom - rect.height * 0.14,
+      rect.left,
+      shoulder,
+    )
+    ..close();
+}
+
+/// A 144×168 shield: a heavy and a hairline outline, a ruled chief across
+/// the top holding city and country, then the venue name, distinction and
+/// — narrowing toward the point — the date.
+class ShieldPainter extends CustomPainter {
+  final StampPaintData data;
+  const ShieldPainter(this.data);
+
+  static const width = 144.0;
+  static const height = 168.0;
+  static const _nameMaxWidth = 108.0;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintStampInk(canvas, size, data.ink, data.seedId, (canvas, ink) {
+      final outer = (Offset.zero & size).deflate(3);
+      final inner = Rect.fromLTRB(
+        outer.left + 6,
+        outer.top + 6,
+        outer.right - 6,
+        outer.bottom - 9,
+      );
+      final stroke = Paint()
+        ..color = ink
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2;
+      canvas.drawPath(_shieldPath(outer), stroke);
+      canvas.drawPath(_shieldPath(inner), stroke..strokeWidth = 0.8);
+
+      final centerX = size.width / 2;
+
+      // The chief: a ruled band across the top of the shield.
+      const chiefHeight = 24.0;
+      final chiefBottom = inner.top + chiefHeight;
+      canvas.drawLine(
+        Offset(inner.left, chiefBottom),
+        Offset(inner.right, chiefBottom),
+        Paint()
+          ..color = ink
+          ..strokeWidth = 0.8,
+      );
+      final cityPainter = _plainText(
+        [
+          data.cityName.toUpperCase(),
+          data.countryCode.toUpperCase(),
+        ].where((s) => s.isNotEmpty).join(' · '),
+        GoogleFonts.inter(
+          color: ink,
+          fontSize: 8,
+          letterSpacing: 1.4,
+          fontWeight: FontWeight.w500,
+        ),
+        maxWidth: inner.width - 12,
+      );
+      _paintCentered(
+        canvas,
+        cityPainter,
+        centerX,
+        inner.top + (chiefHeight - cityPainter.height) / 2,
+      );
+
+      final namePainter = fitStampNameBalanced(
+        text: data.venueName,
+        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+          color: ink,
+          fontSize: fontSize,
+          fontWeight: FontWeight.w600,
+        ),
+        maxWidth: _nameMaxWidth,
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 14,
+      );
+      final datePainter = _plainText(
+        _fullDateLabel(data.date),
+        GoogleFonts.inter(
+          color: ink,
+          fontSize: 7.5,
+          letterSpacing: 1.2,
+          fontWeight: FontWeight.w600,
+        ),
+      );
+      final pieces = <_StackPiece>[
+        (
+          height: namePainter.height,
+          paint: (top) => _paintCentered(canvas, namePainter, centerX, top),
+        ),
+        if (data.award != null)
+          (
+            height: 14,
+            paint: (top) => _drawAward(
+              canvas,
+              Offset(centerX, top + 7),
+              data.award,
+              ink,
+              starFontSize: 13,
+              iconSize: 12,
+            ),
+          ),
+        (
+          height: datePainter.height,
+          paint: (top) => _paintCentered(canvas, datePainter, centerX, top),
+        ),
+      ];
+      _paintCenteredStack(
+        canvas,
+        pieces,
+        chiefBottom + (inner.bottom - chiefBottom) * 0.40,
+        7,
+      );
+    });
+  }
+
+  @override
+  bool shouldRepaint(covariant ShieldPainter oldDelegate) =>
+      oldDelegate.data != data;
+}
+
+// ── 8. Lozenge ───────────────────────────────────────────────────────────
+
+Path _lozengePath(Rect rect) => Path()
+  ..moveTo(rect.center.dx, rect.top)
+  ..lineTo(rect.right, rect.center.dy)
+  ..lineTo(rect.center.dx, rect.bottom)
+  ..lineTo(rect.left, rect.center.dy)
+  ..close();
+
+/// A 184×148 lozenge: a heavy and a hairline diamond, crossed by a
+/// double-ruled banderole carrying the venue name and the date; the city
+/// sits in the upper point, the distinction in the lower one. The diamond
+/// stops at the banderole's edges rather than running behind the name.
+class LozengePainter extends CustomPainter {
+  final StampPaintData data;
+  const LozengePainter(this.data);
+
+  static const width = 184.0;
+  static const height = 148.0;
+  static const _bandHeight = 50.0;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintStampInk(canvas, size, data.ink, data.seedId, (canvas, ink) {
+      final outer = (Offset.zero & size).deflate(3);
+      final inner = outer.deflate(8);
+      final center = size.center(Offset.zero);
+      final band = Rect.fromCenter(
+        center: center,
+        width: size.width - 4,
+        height: _bandHeight,
+      );
+
+      canvas.save();
+      canvas.clipPath(
+        Path()
+          ..fillType = PathFillType.evenOdd
+          ..addRect(Offset.zero & size)
+          ..addRect(band),
+      );
+      final stroke = Paint()
+        ..color = ink
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 2;
+      canvas.drawPath(_lozengePath(outer), stroke);
+      canvas.drawPath(_lozengePath(inner), stroke..strokeWidth = 0.8);
+      canvas.restore();
+
+      final rule = Paint()
+        ..color = ink
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.4;
+      canvas.drawRect(band, rule);
+      canvas.drawRect(band.deflate(3), rule..strokeWidth = 0.6);
+
+      final namePainter = fitStampNameBalanced(
+        text: data.venueName,
+        styleFor: (fontSize) => GoogleFonts.cormorantGaramond(
+          color: ink,
+          fontSize: fontSize,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w600,
+          height: 1.0,
+        ),
+        maxWidth: band.width - 20,
+        sizeL: 21,
+        sizeM: 17,
+        sizeS: 13,
+      );
+      final datePainter = _plainText(
+        _fullDateLabel(data.date),
+        GoogleFonts.inter(
+          color: ink,
+          fontSize: 7,
+          letterSpacing: 1.4,
+          fontWeight: FontWeight.w600,
+        ),
+      );
+      _paintCenteredStack(
+        canvas,
+        [
+          (
+            height: namePainter.height,
+            paint: (top) => _paintCentered(canvas, namePainter, center.dx, top),
+          ),
+          (
+            height: datePainter.height,
+            paint: (top) => _paintCentered(canvas, datePainter, center.dx, top),
+          ),
+        ],
+        center.dy,
+        2,
+      );
+
+      // The upper point: how wide the diamond is halfway up it bounds
+      // the city label.
+      final pointDepth = band.top - inner.top;
+      final cityY = inner.top + pointDepth * 0.62;
+      final cityPainter = _plainText(
+        data.cityName.toUpperCase(),
+        GoogleFonts.inter(
+          color: ink,
+          fontSize: 7.5,
+          letterSpacing: 1.4,
+          fontWeight: FontWeight.w500,
+        ),
+        maxWidth: inner.width * (cityY - inner.top) / (inner.height / 2) - 10,
+      );
+      _paintCentered(
+        canvas,
+        cityPainter,
+        center.dx,
+        cityY - cityPainter.height / 2,
+      );
+
+      final awardY = band.bottom + (inner.bottom - band.bottom) * 0.40;
+      if (data.award != null) {
+        _drawAward(
+          canvas,
+          Offset(center.dx, awardY),
+          data.award,
+          ink,
+          starFontSize: 12,
+          iconSize: 11,
+          eventFontSize: 8,
+        );
+      } else {
+        canvas.drawCircle(Offset(center.dx, awardY), 1.8, Paint()..color = ink);
+      }
+    });
+  }
+
+  @override
+  bool shouldRepaint(covariant LozengePainter oldDelegate) =>
       oldDelegate.data != data;
 }
 
@@ -1131,14 +1583,21 @@ class VerifiedVenueStampPainter extends CustomPainter {
       final pieces = <_StackPiece>[
         (
           height: namePainter.height,
-          paint: (top) => _paintCentered(canvas, namePainter, npInner.center.dx, top),
+          paint: (top) =>
+              _paintCentered(canvas, namePainter, npInner.center.dx, top),
         ),
         if (data.award != null)
           (
             height: 13,
-            paint: (top) =>
-                _drawAward(canvas, Offset(npInner.center.dx, top + 6.5), data.award, ink,
-                    starFontSize: 12, iconSize: 12, eventFontSize: 9),
+            paint: (top) => _drawAward(
+              canvas,
+              Offset(npInner.center.dx, top + 6.5),
+              data.award,
+              ink,
+              starFontSize: 12,
+              iconSize: 12,
+              eventFontSize: 9,
+            ),
           ),
       ];
       _paintCenteredStack(canvas, pieces, npInner.center.dy, 4);
@@ -1163,7 +1622,13 @@ class VerifiedVenueStampPainter extends CustomPainter {
         ..style = PaintingStyle.stroke
         ..strokeWidth = 3,
     );
-    drawIconGlyph(canvas, sealCenter, Icons.check_rounded, 18, AppColors.background);
+    drawIconGlyph(
+      canvas,
+      sealCenter,
+      Icons.check_rounded,
+      18,
+      AppColors.background,
+    );
   }
 
   @override

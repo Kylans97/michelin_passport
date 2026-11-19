@@ -1,9 +1,27 @@
 import 'dart:ui' show Color, Offset;
 import '../../../core/constants/app_colors.dart';
 
-/// The 5 ink-stamp designs a Passport stamp can be rendered as — see
+/// The 8 ink-stamp designs a Passport stamp can be rendered as — see
 /// passport_stamp_painters.dart for the actual vector drawing of each.
-enum StampVariant { roundSeal, doubleFrame, oval, octagon, postmark }
+///
+/// Nothing stores a stamp's design: it is [pickStampVariant]'s hash of the
+/// visit id over however many values this enum has. Adding or removing a
+/// value therefore re-deals every stamp's design once, deterministically
+/// — which is how the wave-lined postmark was retired in November 2026
+/// (no stamp can ever resolve to a design that no longer exists) and how
+/// cartouche, arch, shield and lozenge joined. Decided by the product
+/// owner: a one-time re-deal, rather than pinning existing stamps to
+/// their old design.
+enum StampVariant {
+  roundSeal,
+  doubleFrame,
+  oval,
+  octagon,
+  cartouche,
+  arch,
+  shield,
+  lozenge,
+}
 
 /// The 3 inks a stamp can be printed in — each backed directly by one of
 /// [AppColors]' own stamp-ink tokens, so those three constants stay the
@@ -39,9 +57,10 @@ int stampStableHash(String input) {
 
 /// [stampStableHash] mapped to [0, 1) — the common building block every
 /// picker below derives its own range from.
-double _unitFraction(String salted) => (stampStableHash(salted) % 10000) / 10000;
+double _unitFraction(String salted) =>
+    (stampStableHash(salted) % 10000) / 10000;
 
-/// The stamp variant for [id] — `hash(id) % 5`, deterministic. When
+/// The stamp variant for [id] — `hash(id) % 8`, deterministic. When
 /// [avoid] is given and would be picked, advances to the next variant in
 /// enum order instead (wrapping), satisfying "avoid two identical
 /// variants next to each other on the same page" without a second,
@@ -73,7 +92,7 @@ StampInk pickStampInk(String id, {StampInk? avoid}) {
 /// Deterministic rotation in degrees, uniformly within [-7, 6] — a stamp
 /// pressed slightly askew, never dead straight, never upside down. Range
 /// tightened from the original [-12, 8] by the September 2026 stamp
-/// redesign brief — the 5 designs are physically larger now (see
+/// redesign brief — the designs are physically larger now (see
 /// passport_stamp_painters.dart), and a wide rotation on a bigger stamp
 /// pushes its corners much further, which needs a smaller allowance to
 /// keep the same "slightly askew, not falling off the page" read.

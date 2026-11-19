@@ -15,7 +15,7 @@ StampNameTier stampNameTierFor(String name) {
 }
 
 /// A venue name laid out per the brief's shared fitting rule, used by all
-/// 5 stamp variants: never on an arc, a straight text box up to 2 lines,
+/// 8 stamp variants: never on an arc, a straight text box up to 2 lines,
 /// "gebalanceerd afgebroken" (balanced line-break — both lines as close in
 /// width as possible, not a greedy first-line-fills-first wrap), sized
 /// from [stampNameTierFor] via [sizeL]/[sizeM]/[sizeS]. If the name still
