@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/utils/venue_lifecycle.dart';
@@ -10,6 +9,7 @@ import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/analytics/impressions.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 // A discovery card, not a database row: a photo-ready thumbnail leads,
 // with the award context folded into the text content rather than a
@@ -129,7 +129,7 @@ class RestaurantTile extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTypography.metadata.copyWith(
-                              fontSize: 11,
+                              fontSize: 11.5,
                             ),
                           ),
                         ),
@@ -151,9 +151,9 @@ class RestaurantTile extends StatelessWidget {
                             "#${restaurant.worlds50BestRank} · World's 50 Best",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.inter(
+                            style: CsFonts.sans(
                               color: AppColors.gold,
-                              fontSize: 11,
+                              fontSize: 11.5,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

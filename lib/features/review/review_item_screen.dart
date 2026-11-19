@@ -294,7 +294,7 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
           _item.kind.label,
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,
@@ -702,7 +702,7 @@ class _RejectWithNoteDialogState extends State<RejectWithNoteDialog> {
         widget.title,
         style: CsTypography.placeTitle.copyWith(
           color: AppColors.forestGreen,
-          fontSize: 20,
+          fontSize: 18,
         ),
       ),
       content: Column(

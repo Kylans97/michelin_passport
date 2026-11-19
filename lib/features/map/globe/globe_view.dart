@@ -3,7 +3,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../core/constants/app_colors.dart';
 import '../models/map_pin.dart';
@@ -11,6 +10,7 @@ import '../widgets/venue_pin.dart';
 import 'globe_camera.dart';
 import 'globe_outlines.dart';
 import 'globe_painter.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Drives a [GlobeView] from outside — the globe's counterpart to
 /// flutter_map's MapController. Calls made before the view is attached are
@@ -439,7 +439,7 @@ class GlobeClusterPin extends StatelessWidget {
       ),
       child: Text(
         count > 99 ? '99+' : '$count',
-        style: GoogleFonts.inter(
+        style: CsFonts.sans(
           color: AppColors.ivory,
           fontSize: count > 99 ? 11 : 13,
           fontWeight: FontWeight.w600,

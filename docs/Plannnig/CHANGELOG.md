@@ -42,6 +42,45 @@ The format follows Keep a Changelog.
     on a device. The migration is still not applied.
 
 ### Changed
+- **New typefaces: Spectral and Hanken Grotesk** (product owner,
+  2026-11-19, choosing direction A "Salon" from the type study: "oke ik ben
+  het ook wel eens met het veranderen van de fonts naar Salon dus die optie
+  A"). Spectral replaces Cormorant Garamond and Playfair Display for
+  titles, names, numbers and long reading text; Hanken Grotesk replaces
+  Inter for interface text. The goals were legibility and a more refined
+  look; gold is untouched and still only marks MICHELIN stars and Keys.
+  - **Bundled, not fetched.** Seven font files (Spectral 300/400/400
+    italic/500, Hanken Grotesk 400/500/600, 688 KB) live in `assets/fonts/`
+    with their SIL Open Font License texts, registered with
+    `LicenseRegistry` in `main.dart`. They are byte for byte the files
+    google_fonts would have downloaded (sha256 checked against its
+    manifest). `google_fonts` is removed: until now the app downloaded
+    about 2.6 MB of fonts at runtime and showed a system font until they
+    arrived, or for good when offline.
+  - **One place for families and weights:** `lib/core/theme/cs_fonts.dart`.
+    `CsTypography` and `AppTypography` read from it, and all 214 direct
+    `GoogleFonts` calls (passport stamps included) now go through
+    `CsFonts.serif`/`CsFonts.sans`. Requested weights snap to the nearest
+    bundled one, so nothing renders as a synthesized bold. A style without
+    a line height gets 1.21, the line box the layouts were built for;
+    Spectral's own is 1.52 and would have made every serif line ~25%
+    taller.
+  - **Sizes were converted, not copied.** Spectral is ~12% wider per point
+    than Cormorant, so serif sizes went down by ~9% (a card title from 22
+    to 20, the venue hero from 30 to 27.5) and still read larger: its
+    x-height is 45% of the size against 38.6%. Hanken Grotesk is ~6%
+    narrower than Inter but with a smaller x-height, so interface sizes
+    from 11 to 15 went up half a point and anything below 11 now starts at
+    11. The passport booklet pages and stamps keep their small print, since
+    it is part of a fixed book layout, and get only the half point.
+    Letter-spacing written as a multiple of the old size follows the new
+    one.
+  - **Reading text is serif.** A new `CsTypography.reading` role (Spectral
+    16.5/26) sets venue and event "About" texts and news article bodies.
+  - Obsolete: the `lnum` lining-figure workarounds for Cormorant on the
+    passport pages and in the add-a-visit flow (Spectral's figures are
+    lining by default). The passport's machine-readable line moved from
+    Roboto Mono to the system monospace (Menlo on iOS).
 - **Passport stamps: the wave stamp is gone, four new designs, four
   stamps per page** (product owner, 2026-11-19: "die met die 3 golven ...
   moet weg", "makkelijk 4 stempels op 1 pagina zonder dat ze overlappen",
@@ -68,6 +107,10 @@ The format follows Keep a Changelog.
     262 to 562 pt wide (320 pt included), plus a rendered 320 pt page.
     On the smallest phones the stamps are drawn at about half their
     design size.
+  - **Built on the new typefaces:** the four new painters set their text
+    in Spectral and Hanken Grotesk through `CsFonts`. Their serif name
+    sizes went down about 9%, as the type change did for the others: the
+    cartouche from 24/19/15 to 22/17/14, for example.
 - **No wine on a hotel stay** (product owner, 2026-11-19: "dat je wijn kan
   toevoegen bij hotel review ... dat is gek"). "What we drank" is now
   restaurant-only, like the Wine rating already was: the add-a-stay form no
@@ -80,6 +123,40 @@ The format follows Keep a Changelog.
   widget test for the add-a-stay form, and it was not checked on a device.
 
 ### Fixed
+- **Tests measured text in a font no user sees.** `flutter test` sets
+  every family in its own "FlutterTest" font, where each glyph is one em
+  wide, and the runtime-fetched fonts never loaded in tests. So every width
+  and overflow check in the suite measured text about 1.6× too wide. The
+  new `test/flutter_test_config.dart` loads the real bundled fonts before
+  each test file. It reads them with `dart:ui`, because initialising a test
+  binding there would stub all HTTP and break the live-view tests that
+  query production on purpose. Measuring the real fonts caught three real
+  layout problems in this change, all fixed:
+  - the Explore restaurant and hotel rails overflowed at 1.6× and 2.0×
+    text, so their text-scaled height grew by 4;
+  - the score header's stacked-fallback test had only ever stacked
+    because the test font was so wide. Its `width` set the reported screen
+    size, not the layout width, so it now boxes the header to 320 pt at
+    2.0× text;
+  - the passport data page masthead overflowed until the booklet pages
+    were exempted from the 11 pt minimum.
+  - A new `test/typography_narrow_phone_test.dart` renders the event card,
+    restaurant and hotel tiles and the Explore rails at 320 pt (the
+    narrowest iPhone on iOS 15) at 1.0×, 1.35× and 2.0× text, with the
+    longest real event, restaurant and hotel names in the catalogue.
+- The Explore section titles ("WORTH THE JOURNEY", "MANTELIER'S
+  LATEST", "STAY A LITTLE LONGER") now scale down to fit instead of
+  ending in "…". At 320 pt the longest needs 295 pt of the 280 available.
+  Two of the three were already cut off there with Cormorant.
+- Checked for the type change: `flutter analyze` clean, `flutter test`
+  all 2,919 pass with the real fonts loaded. Seen in the simulator, signed
+  in (iPhone 17, iOS 27): Explore, an event page, a restaurant page with
+  three stars and one without, the Passport cover, data page and a stamp
+  page, and a news interview. Not checked: Dynamic Type sizes on a
+  device, and a 320 pt phone other than in widget tests. Nine sizes set from a variable
+  were left as they are (the stamp painters fit their own text, the
+  passport field and avatar initials were adjusted by hand), and 102
+  one-line and 31 two-line text spots were not each looked at.
 - **A stamp placement crash at 320 pt, caught before it shipped:** when
   a stamp's scale is set by one axis, the room left on that axis is zero
   only up to rounding, and a value like `-7e-15` made `clamp()` throw.

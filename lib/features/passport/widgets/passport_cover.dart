@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_masthead_logo.dart';
 import '../passport_booklet_data.dart';
 import 'passport_page_dots.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The closed cover of the one continuous [PassportVolume] — no more
 /// per-year covers, so [depth] is always 0 in practice now (see
@@ -147,19 +147,19 @@ class PassportCoverFace extends StatelessWidget {
                       const SizedBox(height: 18),
                       Text(
                         'MANTELIER',
-                        style: GoogleFonts.cormorantGaramond(
+                        style: CsFonts.serif(
                           color: AppColors.gold,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
-                          letterSpacing: 20 * 0.32,
+                          letterSpacing: 18 * 0.32,
                         ),
                       ),
                       const SizedBox(height: 6),
                       Text(
                         'Passeport gastronomique',
-                        style: GoogleFonts.cormorantGaramond(
+                        style: CsFonts.serif(
                           color: foil,
-                          fontSize: 13,
+                          fontSize: 12,
                           fontStyle: FontStyle.italic,
                         ),
                       ),
@@ -180,11 +180,11 @@ class PassportCoverFace extends StatelessWidget {
                     children: [
                       Text(
                         memberNumber == null ? 'NO. —' : 'NO. $memberNumber',
-                        style: GoogleFonts.inter(
+                        style: CsFonts.sans(
                           color: foil,
-                          fontSize: 10.5,
+                          fontSize: 11,
                           fontWeight: FontWeight.w600,
-                          letterSpacing: 10.5 * 0.14,
+                          letterSpacing: 11 * 0.14,
                         ),
                       ),
                     ],
@@ -348,11 +348,11 @@ class PassportBackCoverFace extends StatelessWidget {
                   children: [
                     Text(
                       'PROPERTY OF THE HOLDER',
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.goldLight,
-                        fontSize: 9,
+                        fontSize: 9.5,
                         fontWeight: FontWeight.w600,
-                        letterSpacing: 9 * 0.12,
+                        letterSpacing: 9.5 * 0.12,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -360,20 +360,20 @@ class PassportBackCoverFace extends StatelessWidget {
                       memberNumber == null
                           ? '$holderName · No. —'
                           : '$holderName · No. $memberNumber',
-                      style: GoogleFonts.cormorantGaramond(
+                      style: CsFonts.serif(
                         color: AppColors.gold,
-                        fontSize: 17,
+                        fontSize: 15.5,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
                     const SizedBox(height: 10),
                     Text(
                       'MANTELIER',
-                      style: GoogleFonts.cormorantGaramond(
+                      style: CsFonts.serif(
                         color: AppColors.gold,
-                        fontSize: 13,
+                        fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        letterSpacing: 13 * 0.32,
+                        letterSpacing: 12 * 0.32,
                       ),
                     ),
                   ],
@@ -527,9 +527,9 @@ class PassportCoverStackState extends State<PassportCoverStack> {
         const SizedBox(height: 16),
         Text(
           'Tap to open',
-          style: GoogleFonts.cormorantGaramond(
+          style: CsFonts.serif(
             color: AppColors.secondaryOnDark,
-            fontSize: 14,
+            fontSize: 12.5,
             fontStyle: FontStyle.italic,
           ),
         ),

@@ -1,21 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_masthead_logo.dart';
 import '../passport_booklet_data.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../../core/theme/cs_fonts.dart';
 
-// Cormorant Garamond falls back to oldstyle figures (varying
-// height/baseline, designed to blend into lowercase text) unless this
-// feature is explicitly enabled — confirmed in this round's own preview
-// harness screenshot, where MEMBER NO. and the ENTRIES/COUNTRIES/STARS
-// numerals rendered with visibly uneven digit heights. Same fix
-// CsTypography's own `_liningFigures` already applies to every one of its
-// Cormorant roles; this page hardcodes its own literal spec sizes rather
-// than reusing those roles (see PassportStampStatsRow's own precedent for
-// why), so the font feature has to be repeated here, top-level so every
-// private widget class below can use it.
-const _liningFigures = [FontFeature.enable('lnum')];
 
 /// The Passport booklet's first page — a bound passenger-data spread, not
 /// a stamp page: photo, holder fields, the ENTRIES/COUNTRIES/STARS trio,
@@ -108,11 +97,11 @@ class PassportDataPage extends StatelessWidget {
                       children: [
                         Text(
                           'PASSEPORT GASTRONOMIQUE',
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textSecondary,
-                            fontSize: 9,
+                            fontSize: 9.5,
                             fontWeight: FontWeight.w600,
-                            letterSpacing: 9 * 0.12,
+                            letterSpacing: 9.5 * 0.12,
                           ),
                         ),
                         CsMastheadLogo(size: 18, tint: AppColors.forestGreen),
@@ -134,7 +123,7 @@ class PassportDataPage extends StatelessWidget {
                               _Field(
                                 label: 'HOLDER · TITULAIRE',
                                 value: holderName,
-                                valueSize: 22,
+                                valueSize: 20,
                               ),
                               const SizedBox(height: 10),
                               _Field(
@@ -189,20 +178,20 @@ class PassportDataPage extends StatelessWidget {
                     const SizedBox(height: 18),
                     Text(
                       'COUNTRIES VISITED',
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.textSecondary,
-                        fontSize: 9,
+                        fontSize: 9.5,
                         fontWeight: FontWeight.w600,
-                        letterSpacing: 9 * 0.12,
+                        letterSpacing: 9.5 * 0.12,
                       ),
                     ),
                     const SizedBox(height: 10),
                     if (volume.countryCodes.isEmpty)
                       Text(
                         '—',
-                        style: GoogleFonts.inter(
+                        style: CsFonts.sans(
                           color: AppColors.textSecondary,
-                          fontSize: 12,
+                          fontSize: 12.5,
                         ),
                       )
                     else
@@ -268,7 +257,7 @@ class _Field extends StatelessWidget {
   final String label;
   final String value;
   final double valueSize;
-  const _Field({required this.label, required this.value, this.valueSize = 17});
+  const _Field({required this.label, required this.value, this.valueSize = 15.5});
 
   @override
   Widget build(BuildContext context) => Column(
@@ -276,11 +265,11 @@ class _Field extends StatelessWidget {
     children: [
       Text(
         label,
-        style: GoogleFonts.inter(
+        style: CsFonts.sans(
           color: AppColors.textSecondary,
-          fontSize: 8.5,
+          fontSize: 9,
           fontWeight: FontWeight.w600,
-          letterSpacing: 8.5 * 0.1,
+          letterSpacing: 9 * 0.1,
         ),
       ),
       const SizedBox(height: 2),
@@ -288,11 +277,10 @@ class _Field extends StatelessWidget {
         value,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
-        style: GoogleFonts.cormorantGaramond(
+        style: CsFonts.serif(
           color: AppColors.textPrimary,
           fontSize: valueSize,
           fontWeight: FontWeight.w600,
-          fontFeatures: _liningFigures,
         ),
       ),
     ],
@@ -309,22 +297,21 @@ class _StatColumn extends StatelessWidget {
     children: [
       Text(
         value.toString().padLeft(2, '0'),
-        style: GoogleFonts.cormorantGaramond(
+        style: CsFonts.serif(
           color: AppColors.forestGreen,
-          fontSize: 44,
+          fontSize: 40,
           fontWeight: FontWeight.w600,
           height: 1,
-          fontFeatures: _liningFigures,
         ),
       ),
       const SizedBox(height: 2),
       Text(
         label,
-        style: GoogleFonts.inter(
+        style: CsFonts.sans(
           color: AppColors.textSecondary,
-          fontSize: 9,
+          fontSize: 9.5,
           fontWeight: FontWeight.w600,
-          letterSpacing: 9 * 0.1,
+          letterSpacing: 9.5 * 0.1,
         ),
       ),
     ],
@@ -344,11 +331,11 @@ class _CountryChip extends StatelessWidget {
     ),
     child: Text(
       code.toUpperCase(),
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: AppColors.forestGreen,
-        fontSize: 12,
+        fontSize: 12.5,
         fontWeight: FontWeight.w600,
-        letterSpacing: 12 * 0.12,
+        letterSpacing: 12.5 * 0.12,
       ),
     ),
   );
@@ -389,9 +376,9 @@ class _PassportIdPhoto extends StatelessWidget {
           ? Center(
               child: Text(
                 _initials,
-                style: GoogleFonts.cormorantGaramond(
+                style: CsFonts.serif(
                   color: AppColors.textOnDark,
-                  fontSize: 30,
+                  fontSize: 27.5,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -402,9 +389,9 @@ class _PassportIdPhoto extends StatelessWidget {
               errorBuilder: (context, error, stackTrace) => Center(
                 child: Text(
                   _initials,
-                  style: GoogleFonts.cormorantGaramond(
+                  style: CsFonts.serif(
                     color: AppColors.textOnDark,
-                    fontSize: 30,
+                    fontSize: 27.5,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -452,7 +439,11 @@ class _MrzLine extends StatelessWidget {
     text,
     maxLines: 1,
     overflow: TextOverflow.ellipsis,
-    style: GoogleFonts.robotoMono(
+    // The machine-readable line stays monospaced: the platform's own
+    // monospace (Menlo on iOS) rather than a bundled face for one line.
+    style: TextStyle(
+      fontFamily: 'Menlo',
+      fontFamilyFallback: const ['Courier', 'monospace'],
       color: AppColors.textSecondary,
       fontSize: 11,
       letterSpacing: 11 * 0.18,

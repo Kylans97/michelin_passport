@@ -146,7 +146,7 @@ class _CsTextFieldState extends State<CsTextField> {
               ),
               errorStyle: CsTypography.metadata.copyWith(
                 color: AppColors.error,
-                fontSize: 12,
+                fontSize: 12.5,
               ),
               errorMaxLines: 2,
               suffixIcon: widget.obscureText && widget.showVisibilityToggle

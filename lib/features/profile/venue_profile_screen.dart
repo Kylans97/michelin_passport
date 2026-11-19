@@ -139,7 +139,7 @@ class _VenueProfileScreenState extends State<VenueProfileScreen> {
           'Profile',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,

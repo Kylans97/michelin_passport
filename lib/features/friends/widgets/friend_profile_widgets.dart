@@ -3,7 +3,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/app_network_image.dart';
 
-/// Photo, or an initial in Cormorant — this screen's own small identity
+/// Photo, or an initial in Spectral — this screen's own small identity
 /// component (distinct from [FriendsStack]'s multi-avatar stack).
 /// [fallbackBackground]/[fallbackTextColor] are exposed rather than fixed
 /// because the header needs two different fallback treatments side by
@@ -84,7 +84,7 @@ class _InitialGlyph extends StatelessWidget {
     child: Text(
       text,
       style: CsTypography.editorialTitle(
-        size: size * 0.4,
+        size: size * 0.36,
         italic: italic,
       ).copyWith(color: color),
     ),
@@ -92,7 +92,7 @@ class _InitialGlyph extends StatelessWidget {
 }
 
 /// A photo, or a dark-green fallback tile with a 1px gold border and the
-/// venue's own initial in Cormorant italic ivory (never gold — that would
+/// venue's own initial in Spectral italic ivory (never gold — that would
 /// be gold TEXT, which this redesign forbids; the border is ornament, the
 /// initial is text) — this screen's own photo fallback, never the old "M"
 /// placeholder.
@@ -147,7 +147,7 @@ class _TileInitial extends StatelessWidget {
     return Center(
       child: Text(
         initial,
-        style: CsTypography.editorialTitle(size: 24, italic: true).copyWith(
+        style: CsTypography.editorialTitle(size: 22, italic: true).copyWith(
           color: AppColors.textOnDark,
         ),
       ),
@@ -193,7 +193,7 @@ class RoundVenueThumbnail extends StatelessWidget {
                 child: Text(
                   initial,
                   style: CsTypography.editorialTitle(
-                    size: size * 0.42,
+                    size: size * 0.38,
                     italic: true,
                   ).copyWith(color: AppColors.textOnDark),
                 ),
@@ -203,7 +203,7 @@ class RoundVenueThumbnail extends StatelessWidget {
               child: Text(
                 initial,
                 style: CsTypography.editorialTitle(
-                  size: size * 0.42,
+                  size: size * 0.38,
                   italic: true,
                 ).copyWith(color: AppColors.textOnDark),
               ),

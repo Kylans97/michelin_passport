@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/cs_surface_context.dart';
@@ -7,6 +6,7 @@ import '../../../core/widgets/cs_primary_button.dart';
 import '../../../models/event.dart';
 import '../../../models/event_discovery_filters.dart';
 import '../../../models/event_tag.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Events V2 Discovery Taxonomy Phase C Correction Pass §10 — the
 /// advanced Filters sheet now covers ONLY Social/Type/Theme. Location
@@ -154,9 +154,9 @@ class _EventFilterSheetState extends State<_EventFilterSheet> {
                         onPressed: _clearAll,
                         child: Text(
                           'Clear all',
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textSecondary,
-                            fontSize: 13,
+                            fontSize: 13.5,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -289,7 +289,7 @@ class _EmptyGroupNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     text,
-    style: GoogleFonts.inter(color: AppColors.textSecondary, fontSize: 13),
+    style: CsFonts.sans(color: AppColors.textSecondary, fontSize: 13.5),
   );
 }
 
@@ -359,11 +359,11 @@ class _Option extends StatelessWidget {
                 label,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: selected
                       ? AppColors.brandGreen
                       : AppColors.textSecondary,
-                  fontSize: 13,
+                  fontSize: 13.5,
                   fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
                 ),
               ),

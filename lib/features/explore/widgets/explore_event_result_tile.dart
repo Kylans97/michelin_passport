@@ -106,7 +106,7 @@ class ExploreEventResultTile extends StatelessWidget {
                       location,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: AppTypography.metadata.copyWith(fontSize: 11),
+                      style: AppTypography.metadata.copyWith(fontSize: 11.5),
                     ),
                   ],
                   if (eventStatusLabels(event).isNotEmpty) ...[

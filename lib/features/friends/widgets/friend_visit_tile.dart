@@ -132,7 +132,7 @@ class FriendVisitTile extends StatelessWidget {
                                 ? Text(
                                     v.name,
                                     style: CsTypography.placeTitle.copyWith(
-                                      fontSize: 17,
+                                      fontSize: 15.5,
                                       color: AppColors.forestGreen,
                                     ),
                                   )
@@ -143,7 +143,7 @@ class FriendVisitTile extends StatelessWidget {
                                           text: v.name,
                                           style: CsTypography.placeTitle
                                               .copyWith(
-                                                fontSize: 17,
+                                                fontSize: 15.5,
                                                 color: AppColors.forestGreen,
                                               ),
                                         ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show OverflowBoxFit;
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_editorial_glyphs.dart' show CsCountryLabel;
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/passport_venue.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Pieces shared by the green venue pickers — Passport's add-visit flow
 /// and Wishlist's add sheet — so both look and behave the same.
@@ -45,9 +45,9 @@ class VenueTypeChip extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: selected ? AppColors.forestGreen : AppColors.textOnDark,
-            fontSize: 13,
+            fontSize: 13.5,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -123,9 +123,9 @@ class PickerRow extends StatelessWidget {
                     title,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.cormorantGaramond(
+                    style: CsFonts.serif(
                       color: AppColors.textOnDark,
-                      fontSize: 17,
+                      fontSize: 15.5,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -193,9 +193,9 @@ class VenuePickerRow extends StatelessWidget {
             child: CsCountryLabel(
               cityName: cityName,
               countryCode: venue.countryCode,
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.secondaryOnDark,
-                fontSize: 12,
+                fontSize: 12.5,
               ),
             ),
           ),

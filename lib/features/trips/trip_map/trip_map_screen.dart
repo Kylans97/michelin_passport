@@ -245,7 +245,7 @@ class _TripMapScreenState extends State<TripMapScreen> {
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
                         color: AppColors.textOnDark,
-                        fontSize: 22,
+                        fontSize: 20,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -445,7 +445,7 @@ const double _labelMaxWidth = 130;
 
 TextStyle get _labelStyle => CsTypography.metadata.copyWith(
   color: AppColors.forestGreen,
-  fontSize: 11,
+  fontSize: 11.5,
   fontWeight: FontWeight.w600,
   height: 1.2,
   // Set, so the Text cannot inherit spacing the theme adds and come out
@@ -631,7 +631,7 @@ class _ClusterMarker extends StatelessWidget {
               '$count',
               style: CsTypography.metadata.copyWith(
                 color: AppColors.ivory,
-                fontSize: 12,
+                fontSize: 12.5,
               ),
             ),
           ),
@@ -727,7 +727,7 @@ class _SelectionCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
                         color: AppColors.textPrimary,
-                        fontSize: 20,
+                        fontSize: 18,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -824,7 +824,7 @@ class _LegChip extends StatelessWidget {
           label,
           style: CsTypography.metadata.copyWith(
             color: selected ? AppColors.deepGreen : AppColors.secondaryOnDark,
-            fontSize: 13,
+            fontSize: 13.5,
           ),
         ),
       ),
@@ -859,7 +859,7 @@ class _MapAttribution extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = CsTypography.metadata.copyWith(
       color: AppColors.taupe,
-      fontSize: 11,
+      fontSize: 11.5,
     );
     Widget link(String label, Uri uri) => GestureDetector(
       onTap: () => launchUrl(uri, mode: LaunchMode.externalApplication),

@@ -78,7 +78,7 @@ class _MemberInsightsScreenState extends State<MemberInsightsScreen> {
           'Insights',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,
@@ -199,7 +199,7 @@ class _MemberInsightsScreenState extends State<MemberInsightsScreen> {
           'NEW IN 30 DAYS',
           style: CsTypography.eyebrow.copyWith(
             color: AppColors.taupe,
-            fontSize: 10,
+            fontSize: 11,
           ),
         ),
       ],

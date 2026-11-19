@@ -52,7 +52,7 @@ class CsTheme {
         systemOverlayStyle: SystemUiOverlayStyle.light,
         titleTextStyle: CsTypography.screenTitle.copyWith(
           color: AppColors.textOnDark,
-          fontSize: 20,
+          fontSize: 18,
         ),
         iconTheme: const IconThemeData(color: AppColors.textOnDark),
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import 'app_typography.dart';
+import 'cs_fonts.dart';
 
 class AppTheme {
   AppTheme._();
@@ -47,9 +47,9 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surface,
-        hintStyle: GoogleFonts.inter(
+        hintStyle: CsFonts.sans(
           color: AppColors.textSecondary,
-          fontSize: 14,
+          fontSize: 14.5,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -78,9 +78,9 @@ class AppTheme {
         backgroundColor: AppColors.surface,
         selectedColor: AppColors.goldMuted,
         side: const BorderSide(color: AppColors.cardBorder, width: 0.5),
-        labelStyle: GoogleFonts.inter(
+        labelStyle: CsFonts.sans(
           color: AppColors.textSecondary,
-          fontSize: 13,
+          fontSize: 13.5,
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
@@ -95,13 +95,13 @@ class AppTheme {
       headlineLarge: AppTypography.display,
       headlineMedium: AppTypography.editorialHeading.copyWith(fontSize: 24),
       headlineSmall: AppTypography.editorialHeading,
-      titleLarge: GoogleFonts.inter(
+      titleLarge: CsFonts.sans(
         color: AppColors.textPrimary,
         fontSize: 18,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.1,
       ),
-      titleMedium: GoogleFonts.inter(
+      titleMedium: CsFonts.sans(
         color: AppColors.textPrimary,
         fontSize: 16,
         fontWeight: FontWeight.w500,
@@ -110,14 +110,14 @@ class AppTheme {
       bodyLarge: AppTypography.body.copyWith(fontSize: 16, height: 1.6),
       bodyMedium: AppTypography.body,
       bodySmall: AppTypography.metadata,
-      labelLarge: GoogleFonts.inter(
+      labelLarge: CsFonts.sans(
         color: AppColors.textPrimary,
-        fontSize: 14,
+        fontSize: 14.5,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.5,
       ),
       labelMedium: AppTypography.label,
-      labelSmall: AppTypography.label.copyWith(fontSize: 10.5),
+      labelSmall: AppTypography.label.copyWith(fontSize: 11),
     );
   }
 }

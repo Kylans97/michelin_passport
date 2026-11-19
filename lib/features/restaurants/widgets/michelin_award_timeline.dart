@@ -108,7 +108,7 @@ class _TimelineRow extends StatelessWidget {
                     label,
                     style: CsTypography.body.copyWith(
                       color: AppColors.textOnDark,
-                      fontSize: 13.5,
+                      fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

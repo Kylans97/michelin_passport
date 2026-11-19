@@ -245,7 +245,7 @@ class _PickerRow extends StatelessWidget {
                       venue.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: CsTypography.editorialTitle(size: 17).copyWith(
+                      style: CsTypography.editorialTitle(size: 15.5).copyWith(
                         color: AppColors.textPrimary,
                       ),
                     ),
@@ -258,7 +258,7 @@ class _PickerRow extends StatelessWidget {
                             countryCode: venue.countryCode,
                             style: CsTypography.editorialBody.copyWith(
                               color: AppColors.taupe,
-                              fontSize: 12,
+                              fontSize: 12.5,
                             ),
                           ),
                         ),

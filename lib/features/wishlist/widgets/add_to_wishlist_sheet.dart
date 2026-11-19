@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
@@ -16,6 +15,7 @@ import '../../hotels/hotel_detail_screen.dart';
 import '../../passport/widgets/venue_picker_parts.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Searches restaurants or hotels.
 typedef VenueSearch = Future<List<PassportVenue>> Function(String query);
@@ -345,8 +345,8 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                                 horizontal: 4,
                               ),
                               minimumSize: Size.zero,
-                              textStyle: GoogleFonts.inter(
-                                fontSize: 13,
+                              textStyle: CsFonts.sans(
+                                fontSize: 13.5,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -358,11 +358,11 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                         child: Text(
                           'ADD TO WISHLIST',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.secondaryOnDark,
-                            fontSize: 10.5,
+                            fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            letterSpacing: 10.5 * 0.14,
+                            letterSpacing: 11 * 0.14,
                           ),
                         ),
                       ),
@@ -378,9 +378,9 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                       children: [
                         Text(
                           'Where would you like to go?',
-                          style: GoogleFonts.cormorantGaramond(
+                          style: CsFonts.serif(
                             color: AppColors.textOnDark,
-                            fontSize: 34,
+                            fontSize: 31,
                             fontWeight: FontWeight.w600,
                             height: 1.05,
                           ),
@@ -412,7 +412,7 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                           controller: _searchCtrl,
                           onChanged: _onQueryChanged,
                           autofocus: true,
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textOnDark,
                             fontSize: 15,
                           ),
@@ -423,10 +423,10 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                             // ivory text on an ivory box on this green.
                             filled: false,
                             hintText: 'Search by name or city',
-                            hintStyle: GoogleFonts.cormorantGaramond(
+                            hintStyle: CsFonts.serif(
                               color: AppColors.secondaryOnDark,
                               fontStyle: FontStyle.italic,
-                              fontSize: 16,
+                              fontSize: 14.5,
                             ),
                             enabledBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(
@@ -444,9 +444,9 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                           const SizedBox(height: 12),
                           Text(
                             _error!,
-                            style: GoogleFonts.inter(
+                            style: CsFonts.sans(
                               color: AppColors.textOnDark,
-                              fontSize: 13,
+                              fontSize: 13.5,
                             ),
                           ),
                         ],
@@ -475,9 +475,9 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
               WishlistAddType.hotel => 'Search for a hotel to save.',
               WishlistAddType.event => 'Search for an upcoming event to save.',
             },
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: AppColors.secondaryOnDark,
-              fontSize: 13,
+              fontSize: 13.5,
             ),
           ),
         ),
@@ -504,9 +504,9 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
         child: Center(
           child: Text(
             'No matches.',
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: AppColors.secondaryOnDark,
-              fontSize: 13,
+              fontSize: 13.5,
             ),
           ),
         ),
@@ -536,9 +536,9 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
               ].join(' · '),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.secondaryOnDark,
-                fontSize: 12,
+                fontSize: 12.5,
               ),
             ),
             trailing: _heart(e.id, onTap: () => _toggleEvent(e)),

@@ -12,7 +12,7 @@ import 'explore_discovery_cards.dart';
 
 /// A section heading shared by all three discovery sections: an eyebrow-
 /// weight editorial title plus a short, restrained one-line subtitle — the
-/// same "large Cormorant title, small Inter subtitle on secondaryOnDark"
+/// same "large Spectral title, small Hanken Grotesk subtitle on secondaryOnDark"
 /// pairing Explore's own header and Passport's header both already use.
 /// Copy only (no data), so it's safe even when the section beneath it is
 /// momentarily empty while loading.
@@ -41,12 +41,18 @@ class _DiscoverySectionHeader extends StatelessWidget {
       Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          // Scales down rather than truncating: at 320pt (iOS 15's
+          // narrowest iPhones) "WORTH THE JOURNEY" needs 295pt of the 280
+          // available, and a cut-off title reads worse than one 5% smaller.
           Expanded(
-            child: CsSectionTitle(
-              title,
-              color: AppColors.textOnDark,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              alignment: Alignment.centerLeft,
+              child: CsSectionTitle(
+                title,
+                color: AppColors.textOnDark,
+                maxLines: 1,
+              ),
             ),
           ),
           if (trailing != null) Flexible(child: trailing!),
@@ -230,11 +236,13 @@ class FreshFindsSection extends StatelessWidget {
 // what does, so a card fits a 2-line title and every other line at any text
 // scale, with no empty band under the text at the normal one. They were a
 // fixed 340 and 176, sized for 1.6x, which left a third of every card blank.
+// The scaled parts grew by 4 with the 2026-11-19 type change (metadata went
+// from 14/20 to 14.5/21), caught overflowing at 1.6x and 2.0x.
 double _restaurantRailHeight(BuildContext context) =>
-    186 + MediaQuery.textScalerOf(context).scale(86);
+    186 + MediaQuery.textScalerOf(context).scale(90);
 
 double _hotelRailHeight(BuildContext context) =>
-    36 + MediaQuery.textScalerOf(context).scale(76);
+    36 + MediaQuery.textScalerOf(context).scale(80);
 
 /// The restaurant discovery section — a horizontally-scrolling row of
 /// [ExploreDiscoveryRestaurantCard]s. [restaurants] is expected to already

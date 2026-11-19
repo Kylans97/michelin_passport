@@ -7,7 +7,7 @@ import '../../../core/theme/cs_typography.dart';
 /// One destination in a [GuideFamilySection]'s editorial index — a whole
 /// tappable row, not just an arrow. Deliberately not a Material
 /// [ListTile]: no default leading/trailing slots, no dense-list feel — a
-/// large editorial [label] (Cormorant, the same weight a venue name reads
+/// large editorial [label] (Spectral, the same weight a venue name reads
 /// at elsewhere in the app) with a short [descriptor] beneath it, and a
 /// plain arrow — not the chevron used everywhere else in this app's
 /// settings-style rows — as a deliberately different, more "table of
@@ -94,7 +94,7 @@ class GuideDestinationRow extends StatelessWidget {
                   // without going anywhere near faint).
                   style: CsTypography.metadata.copyWith(
                     color: subtleColor,
-                    fontSize: 13,
+                    fontSize: 13.5,
                   ),
                 ),
               ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/photo_limits.dart';
@@ -9,6 +8,7 @@ import '../../photos/photo_viewer_screen.dart';
 import '../../photos/staged_photo.dart';
 import '../../photos/widgets/add_photos_button.dart';
 import '../../photos/widgets/visit_photo_grid.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The "Photos" block inside AttendanceDetailsSheet — Events V2 Step 4's
 /// photo hardening pass. Deliberately the closest possible mirror of
@@ -99,7 +99,7 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.inter(color: AppColors.textOnDark),
+          style: CsFonts.sans(color: AppColors.textOnDark),
         ),
         backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
@@ -187,16 +187,16 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
       builder: (context) => AlertDialog(
         title: Text(
           'Delete photo?',
-          style: GoogleFonts.playfairDisplay(
+          style: CsFonts.serif(
             color: AppColors.textPrimary,
             fontSize: 18,
           ),
         ),
         content: Text(
           'This photo will be permanently removed.',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 14,
+            fontSize: 14.5,
           ),
         ),
         actions: [
@@ -204,14 +204,14 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Cancel',
-              style: GoogleFonts.inter(color: AppColors.textSecondary),
+              style: CsFonts.sans(color: AppColors.textSecondary),
             ),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             child: Text(
               'Delete',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.error,
                 fontWeight: FontWeight.w600,
               ),
@@ -279,9 +279,9 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
           Expanded(
             child: Text(
               'Could not load photos.',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.textSecondary,
-                fontSize: 13,
+                fontSize: 13.5,
               ),
             ),
           ),
@@ -289,7 +289,7 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
             onPressed: _load,
             child: Text(
               'Retry',
-              style: GoogleFonts.inter(color: AppColors.forestGreen),
+              style: CsFonts.sans(color: AppColors.forestGreen),
             ),
           ),
         ],
@@ -329,9 +329,9 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
           const SizedBox(height: 6),
           Text(
             'Maximum $maxEventAttendancePhotos photos',
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: AppColors.textSecondary,
-              fontSize: 12,
+              fontSize: 12.5,
             ),
           ),
         ],

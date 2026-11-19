@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../models/venue_country.dart';
 import '../constants/app_colors.dart';
+import '../theme/cs_fonts.dart';
 
 /// A searchable country picker bottom sheet, shared by trip creation and
 /// Events' country filter rather than duplicated per call site. Pass
@@ -90,15 +90,15 @@ class _CountryPickerSheetState extends State<_CountryPickerSheet> {
                   child: TextField(
                     autofocus: true,
                     onChanged: (v) => setState(() => _query = v),
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.textPrimary,
-                      fontSize: 14,
+                      fontSize: 14.5,
                     ),
                     decoration: InputDecoration(
                       hintText: 'Search countries…',
-                      hintStyle: GoogleFonts.inter(
+                      hintStyle: CsFonts.sans(
                         color: AppColors.textSecondary,
-                        fontSize: 14,
+                        fontSize: 14.5,
                       ),
                       prefixIcon: const Icon(Icons.search_rounded),
                     ),
@@ -119,9 +119,9 @@ class _CountryPickerSheetState extends State<_CountryPickerSheet> {
                           ),
                           title: Text(
                             'All countries',
-                            style: GoogleFonts.inter(
+                            style: CsFonts.sans(
                               color: AppColors.textPrimary,
-                              fontSize: 14.5,
+                              fontSize: 15,
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -136,9 +136,9 @@ class _CountryPickerSheetState extends State<_CountryPickerSheet> {
                         ),
                         title: Text(
                           country.name,
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textPrimary,
-                            fontSize: 14.5,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

@@ -95,7 +95,7 @@ class _MemberCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: CsTypography.placeTitle.copyWith(
                 color: AppColors.forestGreen,
-                fontSize: 16,
+                fontSize: 14.5,
                 height: 1.15,
               ),
             ),
@@ -135,7 +135,7 @@ class TeamPortrait extends StatelessWidget {
         _initials,
         style: CsTypography.placeTitle.copyWith(
           color: AppColors.mutedBrassOnLight,
-          fontSize: 22,
+          fontSize: 20,
         ),
       ),
     );
@@ -227,7 +227,7 @@ class VenueTeamMemberSheet extends StatelessWidget {
             member.name,
             style: CsTypography.placeTitle.copyWith(
               color: AppColors.forestGreen,
-              fontSize: 24,
+              fontSize: 22,
             ),
           ),
           if (bio != null && bio.isNotEmpty) ...[

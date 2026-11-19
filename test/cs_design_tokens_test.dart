@@ -137,134 +137,123 @@ void main() {
       }
     }
 
-    // testWidgets, not a plain test(): CsTypography roles call
-    // GoogleFonts.*, which kicks off an async runtime font-fetch this
-    // sandbox has no network for. That fetch runs detached from these
-    // assertions (the returned TextStyle's metadata is available
-    // synchronously either way) but a plain test() attributes its later
-    // rejection as a failure of whatever test happened to be running when
-    // it lands; testWidgets' zone handling (already relied on by every
-    // other GoogleFonts-backed widget test in this suite) absorbs it
-    // instead.
-    testWidgets('displayHero — Cormorant Garamond Semibold 40/42', (
-      tester,
-    ) async {
+    test('displayHero — Spectral Light 36/40', () {
       expectRole(
         CsTypography.displayHero,
-        fontFamily: 'CormorantGaramond',
-        fontSize: 40,
-        fontWeight: FontWeight.w600,
-        height: 42 / 40,
+        fontFamily: 'Spectral',
+        fontSize: 36,
+        fontWeight: FontWeight.w300,
+        height: 40 / 36,
       );
     });
 
-    testWidgets('screenTitle — Cormorant Garamond Semibold 32/36', (
-      tester,
-    ) async {
+    test('screenTitle — Spectral Light 30/34', () {
       expectRole(
         CsTypography.screenTitle,
-        fontFamily: 'CormorantGaramond',
-        fontSize: 32,
-        fontWeight: FontWeight.w600,
-        height: 36 / 32,
+        fontFamily: 'Spectral',
+        fontSize: 30,
+        fontWeight: FontWeight.w300,
+        height: 34 / 30,
       );
     });
 
-    testWidgets('sectionTitle — Cormorant Garamond Semibold 28/32', (
-      tester,
-    ) async {
+    test('sectionTitle — Spectral Regular 26/30', () {
       expectRole(
         CsTypography.sectionTitle,
-        fontFamily: 'CormorantGaramond',
-        fontSize: 28,
-        fontWeight: FontWeight.w600,
-        height: 32 / 28,
+        fontFamily: 'Spectral',
+        fontSize: 26,
+        fontWeight: FontWeight.w400,
+        height: 30 / 26,
       );
     });
 
-    testWidgets('placeTitle — Cormorant Garamond Semibold 22/26', (
-      tester,
-    ) async {
+    test('placeTitle — Spectral Regular 20/26', () {
       expectRole(
         CsTypography.placeTitle,
-        fontFamily: 'CormorantGaramond',
-        fontSize: 22,
-        fontWeight: FontWeight.w600,
-        height: 26 / 22,
+        fontFamily: 'Spectral',
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+        height: 26 / 20,
       );
     });
 
-    testWidgets('largeMetric — Cormorant Garamond Semibold 28/32', (
-      tester,
-    ) async {
+    test('largeMetric — Spectral Light 27/30', () {
       expectRole(
         CsTypography.largeMetric,
-        fontFamily: 'CormorantGaramond',
-        fontSize: 28,
-        fontWeight: FontWeight.w600,
-        height: 32 / 28,
+        fontFamily: 'Spectral',
+        fontSize: 27,
+        fontWeight: FontWeight.w300,
+        height: 30 / 27,
       );
     });
 
-    testWidgets('body — Inter Regular 16/24', (tester) async {
+    test('reading — Spectral Regular 16.5/26', () {
+      expectRole(
+        CsTypography.reading,
+        fontFamily: 'Spectral',
+        fontSize: 16.5,
+        fontWeight: FontWeight.w400,
+        height: 26 / 16.5,
+      );
+    });
+
+    test('body — Hanken Grotesk Regular 16/24', () {
       expectRole(
         CsTypography.body,
-        fontFamily: 'Inter',
+        fontFamily: 'HankenGrotesk',
         fontSize: 16,
         fontWeight: FontWeight.w400,
         height: 24 / 16,
       );
     });
 
-    testWidgets('bodyMedium — Inter Medium 16/24', (tester) async {
+    test('bodyMedium — Hanken Grotesk Medium 16/24', () {
       expectRole(
         CsTypography.bodyMedium,
-        fontFamily: 'Inter',
+        fontFamily: 'HankenGrotesk',
         fontSize: 16,
         fontWeight: FontWeight.w500,
         height: 24 / 16,
       );
     });
 
-    testWidgets('metadata — Inter Regular 14/20', (tester) async {
+    test('metadata — Hanken Grotesk Regular 14.5/21', () {
       expectRole(
         CsTypography.metadata,
-        fontFamily: 'Inter',
-        fontSize: 14,
+        fontFamily: 'HankenGrotesk',
+        fontSize: 14.5,
         fontWeight: FontWeight.w400,
-        height: 20 / 14,
+        height: 21 / 14.5,
       );
     });
 
-    testWidgets('navigation — Inter Medium 12/16', (tester) async {
+    test('navigation — Hanken Grotesk Medium 12.5/16', () {
       expectRole(
         CsTypography.navigation,
-        fontFamily: 'Inter',
-        fontSize: 12,
+        fontFamily: 'HankenGrotesk',
+        fontSize: 12.5,
         fontWeight: FontWeight.w500,
-        height: 16 / 12,
+        height: 16 / 12.5,
       );
     });
 
-    testWidgets('eyebrow — Inter Medium 12, letter-spacing 1.8', (
-      tester,
-    ) async {
+    test('eyebrow — Hanken Grotesk SemiBold 12, letter-spacing 0.12em', () {
       expectRole(
         CsTypography.eyebrow,
-        fontFamily: 'Inter',
+        fontFamily: 'HankenGrotesk',
         fontSize: 12,
-        fontWeight: FontWeight.w500,
-        letterSpacing: 1.8,
+        fontWeight: FontWeight.w600,
+        letterSpacing: 12 * 0.12,
       );
     });
 
-    testWidgets('smallLabel — Inter Medium 12/16', (tester) async {
+    test('smallLabel — Hanken Grotesk Medium 12.5/16', () {
       expectRole(
         CsTypography.smallLabel,
-        fontFamily: 'Inter',
-        fontSize: 12,
+        fontFamily: 'HankenGrotesk',
+        fontSize: 12.5,
         fontWeight: FontWeight.w500,
-        height: 16 / 12,
+        height: 16 / 12.5,
       );
     });
   });

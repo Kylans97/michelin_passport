@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_masthead_logo.dart';
 import '../passport_filter_type.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The booklet's final page, right after the last stamp page — a way out
 /// of the ink-stamp metaphor into a flat, searchable list of every visit:
@@ -70,11 +70,11 @@ class PassportBackCoverPage extends StatelessWidget {
                   const SizedBox(height: 20),
                   Text(
                     'BROWSE BY TYPE',
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.textSecondary,
-                      fontSize: 9,
+                      fontSize: 9.5,
                       fontWeight: FontWeight.w600,
-                      letterSpacing: 9 * 0.12,
+                      letterSpacing: 9.5 * 0.12,
                     ),
                   ),
                   const SizedBox(height: 14),
@@ -91,9 +91,9 @@ class PassportBackCoverPage extends StatelessWidget {
                   Text(
                     'Thank you for exploring your\ngastronomic journey with Mantelier',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.cormorantGaramond(
+                    style: CsFonts.serif(
                       color: AppColors.textSecondary,
-                      fontSize: 14,
+                      fontSize: 12.5,
                       fontStyle: FontStyle.italic,
                       height: 1.4,
                     ),
@@ -146,9 +146,9 @@ class _ViewAllLink extends StatelessWidget {
               children: [
                 Text(
                   'View all visits',
-                  style: GoogleFonts.cormorantGaramond(
+                  style: CsFonts.serif(
                     color: AppColors.forestGreen,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                     decoration: TextDecoration.underline,
                     decorationColor: AppColors.forestGreen,
@@ -192,9 +192,9 @@ class _FilterChip extends StatelessWidget {
             ),
             child: Text(
               type.label,
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.forestGreen,
-                fontSize: 12,
+                fontSize: 12.5,
                 fontWeight: FontWeight.w600,
               ),
             ),

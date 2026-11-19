@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// A compact "2025 ▾" trigger that opens a bottom-sheet list of years (no
 /// "All time" option) on tap — the Guides-specific counterpart of
@@ -63,9 +63,9 @@ class GuideYearSelector extends StatelessWidget {
           children: [
             Text(
               '$selectedYear',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.forestGreen,
-                fontSize: 13,
+                fontSize: 13.5,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -163,9 +163,9 @@ class _GuideYearTile extends StatelessWidget {
     onTap: onTap,
     title: Text(
       '$year',
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: selected ? AppColors.forestGreen : AppColors.textPrimary,
-        fontSize: 14.5,
+        fontSize: 15,
         fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
       ),
     ),

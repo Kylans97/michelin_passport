@@ -336,7 +336,7 @@ class _TripMembersSheetState extends State<_TripMembersSheet> {
                   icon: const Icon(Icons.person_add_alt_1_outlined, size: 18),
                   label: Text(
                     'Invite a friend',
-                    style: CsTypography.bodyMedium.copyWith(fontSize: 14),
+                    style: CsTypography.bodyMedium.copyWith(fontSize: 14.5),
                   ),
                   style: TextButton.styleFrom(
                     foregroundColor: AppColors.forestGreen,

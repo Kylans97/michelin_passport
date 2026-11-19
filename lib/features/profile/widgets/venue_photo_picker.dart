@@ -150,7 +150,7 @@ Future<void> _showPermissionDeniedDialog(BuildContext context) {
     builder: (dialogContext) => AlertDialog(
       title: Text(
         'Photo access needed',
-        style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
+        style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 16.5),
       ),
       content: Text(
         'To add a photo, allow Mantelier to access your photo library in Settings.',

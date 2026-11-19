@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
@@ -22,6 +21,7 @@ import '../../hotels/hotel_detail_screen.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/analytics/impressions.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Community Rankings: what members score highest, across restaurants,
 /// hotels and events — unrelated to "My Rankings" and its own data source.
@@ -532,7 +532,7 @@ class _RankingsMessage extends StatelessWidget {
           const SizedBox(height: 12),
           Text(
             message,
-            style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
+            style: CsFonts.sans(color: AppColors.secondaryOnDark),
           ),
           if (onRetry != null)
             TextButton(
@@ -618,7 +618,7 @@ class _RankRow extends StatelessWidget {
                 child: Text(
                   '$rank',
                   style: CsTypography.editorialTitle(
-                    size: 24,
+                    size: 22,
                   ).copyWith(color: AppColors.ivory),
                 ),
               ),
@@ -652,7 +652,7 @@ class _RankRow extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
                         color: AppColors.ivory,
-                        fontSize: 18,
+                        fontSize: 16.5,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -688,7 +688,7 @@ class _RankRow extends StatelessWidget {
                   Text(
                     score,
                     style: CsTypography.editorialTitle(
-                      size: 22,
+                      size: 20,
                     ).copyWith(color: AppColors.ivory),
                   ),
                   Text(members, style: meta.copyWith(fontSize: 11)),

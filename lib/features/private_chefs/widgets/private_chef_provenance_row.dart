@@ -81,7 +81,7 @@ class PrivateChefProvenanceRow extends StatelessWidget {
                       TextSpan(
                         text: history.displayName,
                         style: CsTypography.placeTitle.copyWith(
-                          fontSize: 17,
+                          fontSize: 15.5,
                           color: AppColors.forestGreen,
                         ),
                       ),
@@ -97,7 +97,7 @@ class PrivateChefProvenanceRow extends StatelessWidget {
                 Text(
                   history.displayName,
                   style: CsTypography.placeTitle.copyWith(
-                    fontSize: 17,
+                    fontSize: 15.5,
                     color: AppColors.forestGreen,
                   ),
                 ),

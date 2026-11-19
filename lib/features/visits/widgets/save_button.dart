@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The deep-green primary-action save button shared by Add Visit, Add Stay
 /// and Plan Visit — [label] is the only thing that differs ("Save visit" vs
@@ -60,7 +60,7 @@ class SaveButton extends StatelessWidget {
               : Text(
                   label,
                   key: const ValueKey('label'),
-                  style: GoogleFonts.inter(
+                  style: CsFonts.sans(
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
                     letterSpacing: 0.2,

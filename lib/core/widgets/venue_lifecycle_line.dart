@@ -40,7 +40,7 @@ class VenueLifecycleLine extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: AppTypography.metadata.copyWith(
-              fontSize: 11,
+              fontSize: 11.5,
               color: color,
               fontWeight: FontWeight.w600,
             ),

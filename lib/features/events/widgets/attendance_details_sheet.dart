@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../visits/widgets/rating_meter.dart';
 import 'attendance_photos_section.dart';
 import 'recommendation_selector.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// What the sheet collected, or null if the user backed out without
 /// saving. Purely an edit of an ALREADY-confirmed attendance row (see this
@@ -136,7 +136,7 @@ class _AttendanceDetailsSheetState extends State<_AttendanceDetailsSheet> {
                 widget.eventName,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.playfairDisplay(
+                style: CsFonts.serif(
                   color: AppColors.textPrimary,
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
@@ -156,9 +156,9 @@ class _AttendanceDetailsSheetState extends State<_AttendanceDetailsSheet> {
               const SizedBox(height: CsSpacing.lg),
               Text(
                 'Photos',
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textPrimary,
-                  fontSize: 13.5,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -174,9 +174,9 @@ class _AttendanceDetailsSheetState extends State<_AttendanceDetailsSheet> {
               const SizedBox(height: CsSpacing.lg),
               Text(
                 'Notes',
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textPrimary,
-                  fontSize: 13.5,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -185,10 +185,10 @@ class _AttendanceDetailsSheetState extends State<_AttendanceDetailsSheet> {
                 controller: _commentCtrl,
                 maxLines: 3,
                 maxLength: 280,
-                style: GoogleFonts.inter(color: AppColors.textPrimary),
+                style: CsFonts.sans(color: AppColors.textPrimary),
                 decoration: InputDecoration(
                   hintText: 'A short note for yourself (optional)',
-                  hintStyle: GoogleFonts.inter(color: AppColors.textSecondary),
+                  hintStyle: CsFonts.sans(color: AppColors.textSecondary),
                   filled: true,
                   fillColor: AppColors.surface,
                   border: OutlineInputBorder(
@@ -221,7 +221,7 @@ class _AttendanceDetailsSheetState extends State<_AttendanceDetailsSheet> {
                   },
                   child: Text(
                     'Save',
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: AppColors.textOnDark,
                       fontWeight: FontWeight.w600,
                     ),

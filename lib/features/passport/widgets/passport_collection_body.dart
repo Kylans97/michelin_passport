@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/constants/app_colors.dart';
@@ -24,6 +23,7 @@ import '../own_passport_loader.dart';
 import '../stamp_ceremony.dart';
 import 'add_visit_flow.dart';
 import 'passport_booklet_view.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Passport's default "Passport" subsection content: loads the CURRENT
 /// user's own visits/stays/events/identity, then hands them to
@@ -284,9 +284,9 @@ class _ErrorState extends StatelessWidget {
       const SizedBox(height: CsSpacing.base),
       Text(
         'Could not load data',
-        style: GoogleFonts.inter(
+        style: CsFonts.sans(
           color: AppColors.secondaryOnDark,
-          fontSize: 14,
+          fontSize: 14.5,
         ),
       ),
       const SizedBox(height: CsSpacing.md),

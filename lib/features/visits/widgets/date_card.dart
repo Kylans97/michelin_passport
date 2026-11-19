@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../restaurants/widgets/detail_section.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 const _monthNames = [
   'Jan',
@@ -83,7 +83,7 @@ class DateCard extends StatelessWidget {
                       child: Text(
                         _formatDate(date),
                         key: ValueKey(date),
-                        style: GoogleFonts.inter(
+                        style: CsFonts.sans(
                           color: AppColors.textPrimary,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

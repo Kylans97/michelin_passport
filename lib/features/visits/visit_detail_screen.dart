@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
@@ -14,6 +13,7 @@ import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
 import 'widgets/visit_wines.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import '../../core/theme/cs_fonts.dart';
 
 const _monthNames = [
   'January',
@@ -82,7 +82,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.inter(color: AppColors.textPrimary),
+          style: CsFonts.sans(color: AppColors.textPrimary),
         ),
         backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
@@ -158,7 +158,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         backgroundColor: AppColors.card,
         title: Text(
           'Delete this visit?',
-          style: GoogleFonts.playfairDisplay(
+          style: CsFonts.serif(
             color: AppColors.textPrimary,
             fontSize: 18,
           ),
@@ -170,9 +170,9 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
           '• notes\n'
           '• photos linked to this visit\n\n'
           'Other visits to this restaurant will NOT be affected.',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 14,
+            fontSize: 14.5,
             height: 1.5,
           ),
         ),
@@ -181,14 +181,14 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Cancel',
-              style: GoogleFonts.inter(color: AppColors.textSecondary),
+              style: CsFonts.sans(color: AppColors.textSecondary),
             ),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             child: Text(
               'Delete visit',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.error,
                 fontWeight: FontWeight.w600,
               ),
@@ -274,7 +274,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                         const SizedBox(width: 10),
                         Text(
                           'Edit visit',
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textPrimary,
                           ),
                         ),
@@ -297,7 +297,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                           visit.visibility == VisitVisibility.friends
                               ? 'Make private'
                               : 'Make visible to friends',
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textPrimary,
                           ),
                         ),
@@ -316,7 +316,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                         const SizedBox(width: 10),
                         Text(
                           'Delete visit',
-                          style: GoogleFonts.inter(color: AppColors.error),
+                          style: CsFonts.sans(color: AppColors.error),
                         ),
                       ],
                     ),
@@ -375,7 +375,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                         : 'Private',
                     style: CsTypography.metadata.copyWith(
                       color: AppColors.taupe,
-                      fontSize: 12,
+                      fontSize: 12.5,
                     ),
                   ),
                 ],

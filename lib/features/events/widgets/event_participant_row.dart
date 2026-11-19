@@ -157,7 +157,7 @@ class EventParticipantRow extends StatelessWidget {
                                   overflow: TextOverflow.ellipsis,
                                   style: CsTypography.metadata.copyWith(
                                     color: AppColors.taupe,
-                                    fontSize: 12.5,
+                                    fontSize: 13,
                                   ),
                                 ),
                               ),

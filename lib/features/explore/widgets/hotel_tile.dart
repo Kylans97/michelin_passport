@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/utils/venue_lifecycle.dart';
@@ -10,6 +9,7 @@ import '../../../models/hotel.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/analytics/impressions.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 // A discovery card, not a database row — mirrors RestaurantTile's
 // photo-ready thumbnail + folded-in award treatment.
@@ -123,9 +123,9 @@ class HotelTile extends StatelessWidget {
                             "#${hotel.worlds50BestRank} · World's 50 Best",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.inter(
+                            style: CsFonts.sans(
                               color: AppColors.gold,
-                              fontSize: 11,
+                              fontSize: 11.5,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -151,7 +151,7 @@ class HotelTile extends StatelessWidget {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             style: AppTypography.metadata.copyWith(
-                              fontSize: 11,
+                              fontSize: 11.5,
                             ),
                           ),
                         ),

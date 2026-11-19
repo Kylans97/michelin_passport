@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
@@ -14,6 +13,7 @@ import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../../core/analytics/analytics_properties.dart';
+import '../../core/theme/cs_fonts.dart';
 
 const _monthNames = [
   'January',
@@ -80,7 +80,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.inter(color: AppColors.textPrimary),
+          style: CsFonts.sans(color: AppColors.textPrimary),
         ),
         backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
@@ -157,7 +157,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
         backgroundColor: AppColors.card,
         title: Text(
           'Delete this stay?',
-          style: GoogleFonts.playfairDisplay(
+          style: CsFonts.serif(
             color: AppColors.textPrimary,
             fontSize: 18,
           ),
@@ -169,9 +169,9 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
           '• notes\n'
           '• photos linked to this stay\n\n'
           'Other stays at this hotel will NOT be affected.',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 14,
+            fontSize: 14.5,
             height: 1.5,
           ),
         ),
@@ -180,14 +180,14 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Cancel',
-              style: GoogleFonts.inter(color: AppColors.textSecondary),
+              style: CsFonts.sans(color: AppColors.textSecondary),
             ),
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             child: Text(
               'Delete stay',
-              style: GoogleFonts.inter(
+              style: CsFonts.sans(
                 color: AppColors.error,
                 fontWeight: FontWeight.w600,
               ),
@@ -272,7 +272,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                         const SizedBox(width: 10),
                         Text(
                           'Edit stay',
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textPrimary,
                           ),
                         ),
@@ -295,7 +295,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                           stay.visibility == VisitVisibility.friends
                               ? 'Make private'
                               : 'Make visible to friends',
-                          style: GoogleFonts.inter(
+                          style: CsFonts.sans(
                             color: AppColors.textPrimary,
                           ),
                         ),
@@ -314,7 +314,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                         const SizedBox(width: 10),
                         Text(
                           'Delete stay',
-                          style: GoogleFonts.inter(color: AppColors.error),
+                          style: CsFonts.sans(color: AppColors.error),
                         ),
                       ],
                     ),
@@ -375,7 +375,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                         : 'Private',
                     style: CsTypography.metadata.copyWith(
                       color: AppColors.taupe,
-                      fontSize: 12,
+                      fontSize: 12.5,
                     ),
                   ),
                 ],

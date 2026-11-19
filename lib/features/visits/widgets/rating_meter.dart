@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// A compact 1-10 rating control: a slim deep-green fill-meter with a
 /// large, comfortable tap target per segment, plus an explicit "Not rated"
@@ -35,9 +35,9 @@ class RatingMeter extends StatelessWidget {
             Expanded(
               child: Text(
                 label,
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textPrimary,
-                  fontSize: 13.5,
+                  fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -47,11 +47,11 @@ class RatingMeter extends StatelessWidget {
               child: Text(
                 value == null ? 'Not rated' : '$value/10',
                 key: ValueKey(value),
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: value == null
                       ? AppColors.textSecondary
                       : AppColors.forestGreen,
-                  fontSize: 12.5,
+                  fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -147,9 +147,9 @@ class _NotRatedPill extends StatelessWidget {
       ),
       child: Text(
         '—',
-        style: GoogleFonts.inter(
+        style: CsFonts.sans(
           color: selected ? AppColors.forestGreen : AppColors.textSecondary,
-          fontSize: 14,
+          fontSize: 14.5,
           fontWeight: FontWeight.w600,
         ),
       ),

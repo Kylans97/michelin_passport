@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/analytics/analytics_event.dart';
@@ -45,6 +44,7 @@ import 'widgets/event_friends_interested_section.dart';
 import 'widgets/event_intent_controls.dart';
 import 'widgets/event_meta_section.dart';
 import '../../core/widgets/app_network_image.dart';
+import '../../core/theme/cs_fonts.dart';
 
 // Smaller than CsImagePlaceholder's own 0.4 default: a hero is a much
 // larger, wider area than a card thumbnail, so the same relative scale
@@ -389,7 +389,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.inter(color: AppColors.textOnDark),
+          style: CsFonts.sans(color: AppColors.textOnDark),
         ),
         backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
@@ -462,7 +462,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         SnackBar(
           content: Text(
             'Could not update. Please try again.',
-            style: GoogleFonts.inter(color: AppColors.textOnDark),
+            style: CsFonts.sans(color: AppColors.textOnDark),
           ),
           backgroundColor: AppColors.error,
           duration: const Duration(seconds: 2),
@@ -767,7 +767,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       SnackBar(
         content: Text(
           'Could not update. Please try again.',
-          style: GoogleFonts.inter(color: AppColors.textOnDark),
+          style: CsFonts.sans(color: AppColors.textOnDark),
         ),
         backgroundColor: AppColors.error,
         duration: const Duration(seconds: 2),

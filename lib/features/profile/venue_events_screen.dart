@@ -122,7 +122,7 @@ class _VenueEventsScreenState extends State<VenueEventsScreen> {
       appBar: AppBar(
         title: Text(
           'Events',
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 20),
+          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen, fontSize: 18),
         ),
         backgroundColor: AppColors.warmWhite,
         surfaceTintColor: Colors.transparent,

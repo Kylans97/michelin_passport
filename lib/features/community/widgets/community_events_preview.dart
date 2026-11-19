@@ -143,7 +143,7 @@ class _EventPreviewRow extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: CsTypography.placeTitle.copyWith(
                           color: AppColors.textOnDark,
-                          fontSize: 18,
+                          fontSize: 16.5,
                         ),
                       ),
                       const SizedBox(height: 4),
@@ -161,7 +161,7 @@ class _EventPreviewRow extends StatelessWidget {
                           status,
                           style: CsTypography.metadata.copyWith(
                             color: AppColors.secondaryOnDark,
-                            fontSize: 11,
+                            fontSize: 11.5,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.5,
                           ),

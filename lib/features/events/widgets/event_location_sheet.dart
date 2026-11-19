@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/theme/cs_surface_context.dart';
@@ -9,6 +8,7 @@ import '../../../models/geo_coordinate.dart';
 import '../../../models/venue_country.dart';
 import '../current_location_provider.dart';
 import '../location_settings_opener.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Events V2 Near Me Phase N2.3 — what [showEventLocationSheet] resolves
 /// to on a genuine selection. `null` (the sheet dismissed without picking
@@ -268,15 +268,15 @@ class _EventLocationSheetState extends State<_EventLocationSheet> {
                     child: TextField(
                       autofocus: false,
                       onChanged: (v) => setState(() => _query = v),
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.textPrimary,
-                        fontSize: 14,
+                        fontSize: 14.5,
                       ),
                       decoration: InputDecoration(
                         hintText: 'Search countries…',
-                        hintStyle: GoogleFonts.inter(
+                        hintStyle: CsFonts.sans(
                           color: AppColors.textSecondary,
-                          fontSize: 14,
+                          fontSize: 14.5,
                         ),
                         prefixIcon: const Icon(Icons.search_rounded),
                       ),
@@ -299,11 +299,11 @@ class _EventLocationSheetState extends State<_EventLocationSheet> {
                           ),
                           title: Text(
                             country.name,
-                            style: GoogleFonts.inter(
+                            style: CsFonts.sans(
                               color: selected
                                   ? AppColors.brandGreen
                                   : AppColors.textPrimary,
-                              fontSize: 14.5,
+                              fontSize: 15,
                               fontWeight: selected
                                   ? FontWeight.w700
                                   : FontWeight.w500,
@@ -370,9 +370,9 @@ class _NearMeTile extends StatelessWidget {
             ),
       title: Text(
         'Near me',
-        style: GoogleFonts.inter(
+        style: CsFonts.sans(
           color: selected ? AppColors.brandGreen : AppColors.textPrimary,
-          fontSize: 14.5,
+          fontSize: 15,
           fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
         ),
       ),
@@ -440,9 +440,9 @@ class _NearMeFailure extends StatelessWidget {
       children: [
         Text(
           message,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 12.5,
+            fontSize: 13,
           ),
         ),
         const SizedBox(height: 8),
@@ -461,9 +461,9 @@ class _NearMeFailure extends StatelessWidget {
           const SizedBox(height: 6),
           Text(
             "Couldn't open Settings.",
-            style: GoogleFonts.inter(
+            style: CsFonts.sans(
               color: AppColors.textSecondary,
-              fontSize: 11.5,
+              fontSize: 12,
             ),
           ),
         ],
@@ -494,9 +494,9 @@ class _LocationTile extends StatelessWidget {
     ),
     title: Text(
       label,
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: selected ? AppColors.brandGreen : AppColors.textPrimary,
-        fontSize: 14.5,
+        fontSize: 15,
         fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
       ),
     ),

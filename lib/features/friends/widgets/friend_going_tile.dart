@@ -64,7 +64,7 @@ class FriendGoingTile extends StatelessWidget {
                       Text(
                         event.name,
                         style: CsTypography.placeTitle.copyWith(
-                          fontSize: 17,
+                          fontSize: 15.5,
                           color: AppColors.forestGreen,
                         ),
                       ),

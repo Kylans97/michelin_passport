@@ -458,7 +458,7 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                           color: AppColors.textOnDark.withValues(
                             alpha: isClosed ? 0.7 : 1,
                           ),
-                          fontSize: 30,
+                          fontSize: 27.5,
                           height: 1.1,
                         ),
                       ),

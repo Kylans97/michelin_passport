@@ -137,7 +137,7 @@ class _Initials extends StatelessWidget {
     initials,
     style: CsTypography.placeTitle.copyWith(
       color: AppColors.ivory,
-      fontSize: size * 0.32,
+      fontSize: size * 0.29,
     ),
   );
 }

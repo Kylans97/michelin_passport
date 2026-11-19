@@ -276,7 +276,7 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                         overflow: TextOverflow.ellipsis,
                         style: CsTypography.displayHero.copyWith(
                           color: AppColors.textOnDark,
-                          fontSize: 30,
+                          fontSize: 27.5,
                           height: 1.1,
                         ),
                       ),

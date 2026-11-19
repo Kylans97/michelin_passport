@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../models/visit_photo.dart';
 import '../../core/widgets/app_network_image.dart';
+import '../../core/theme/cs_fonts.dart';
 
 /// Fullscreen, swipeable photo viewer. MVP scope only: no likes, comments,
 /// captions editing, or delete-from-here — delete stays on the grid (long
@@ -45,7 +45,7 @@ class _PhotoViewerScreenState extends State<PhotoViewerScreen> {
         foregroundColor: Colors.white,
         title: Text(
           '${_index + 1} / ${widget.photos.length}',
-          style: GoogleFonts.inter(color: Colors.white, fontSize: 14),
+          style: CsFonts.sans(color: Colors.white, fontSize: 14.5),
         ),
       ),
       body: PageView.builder(

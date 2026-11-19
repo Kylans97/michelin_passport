@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../models/explore_filters.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The top-level venue-type segmented selector — compact, full-width,
 /// equal segments. [types] defaults to all three ("All / Restaurants /
@@ -73,9 +73,9 @@ class _Segment extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: selected ? AppColors.gold : AppColors.textSecondary,
-            fontSize: 13,
+            fontSize: 13.5,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
           ),
         ),

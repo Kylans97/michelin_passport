@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/cs_image_placeholder.dart';
@@ -8,6 +7,7 @@ import '../../../models/event_relevance_reason.dart';
 import '../event_date_format.dart';
 import '../../../core/widgets/app_network_image.dart';
 import 'event_status_badges.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// One event in the discovery list — an atmospheric banner image (fixed
 /// 16:9, BoxFit.cover) across the top when [Event.imageUrl] is populated,
@@ -92,9 +92,9 @@ class EventCard extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       location,
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.textSecondary,
-                        fontSize: 12,
+                        fontSize: 12.5,
                       ),
                     ),
                     if (eventStatusLabels(event).isNotEmpty) ...[
@@ -172,9 +172,9 @@ class _RelevanceReasonRow extends StatelessWidget {
           reason.label,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.brandGreen,
-            fontSize: 12,
+            fontSize: 12.5,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -196,9 +196,9 @@ class _FreeEntryBadge extends StatelessWidget {
     ),
     child: Text(
       'FREE ENTRY',
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: AppColors.brandGreen,
-        fontSize: 9.5,
+        fontSize: 11,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.5,
       ),
@@ -219,9 +219,9 @@ class _CancelledBadge extends StatelessWidget {
     ),
     child: Text(
       'CANCELLED',
-      style: GoogleFonts.inter(
+      style: CsFonts.sans(
         color: AppColors.error,
-        fontSize: 9.5,
+        fontSize: 11,
         fontWeight: FontWeight.w700,
         letterSpacing: 0.5,
       ),

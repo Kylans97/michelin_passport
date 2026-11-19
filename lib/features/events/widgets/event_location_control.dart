@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../models/event_location_context.dart';
 import '../../../models/event_near_me_location.dart';
@@ -7,6 +6,7 @@ import '../../../models/venue_country.dart';
 import '../current_location_provider.dart';
 import '../location_settings_opener.dart';
 import 'event_location_sheet.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// Events V2 Near Me Phase N2.3 — the closed-control trigger for the
 /// Events-only [showEventLocationSheet]. Replaces the shared
@@ -110,11 +110,11 @@ class EventLocationControl extends StatelessWidget {
                     label,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.inter(
+                    style: CsFonts.sans(
                       color: active
                           ? AppColors.brandGreen
                           : AppColors.textPrimary,
-                      fontSize: 13,
+                      fontSize: 13.5,
                       fontWeight: active ? FontWeight.w600 : FontWeight.w500,
                     ),
                   ),

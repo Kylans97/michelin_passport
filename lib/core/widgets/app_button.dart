@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import '../theme/app_spacing.dart';
+import '../theme/cs_fonts.dart';
 
 /// The filled call-to-action button for a screen's one genuinely primary
 /// action ("Add Stay", "Mark as visited"'s equivalent). Deliberately
@@ -30,7 +30,7 @@ class PrimaryButton extends StatelessWidget {
       icon: Icon(icon, size: 16),
       label: Text(
         label,
-        style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 13),
+        style: CsFonts.sans(fontWeight: FontWeight.w600, fontSize: 13.5),
       ),
       style: FilledButton.styleFrom(
         backgroundColor: AppColors.brandGreen,
@@ -68,7 +68,7 @@ class SecondaryButton extends StatelessWidget {
       label: Text(
         label,
         overflow: TextOverflow.ellipsis,
-        style: GoogleFonts.inter(fontSize: 12.5, fontWeight: FontWeight.w500),
+        style: CsFonts.sans(fontSize: 13, fontWeight: FontWeight.w500),
       ),
       style: OutlinedButton.styleFrom(
         foregroundColor: AppColors.textSecondary,

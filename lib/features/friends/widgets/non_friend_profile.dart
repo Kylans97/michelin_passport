@@ -103,7 +103,7 @@ class NonFriendProfile extends StatelessWidget {
                     _name,
                     textAlign: TextAlign.center,
                     style: CsTypography.editorialTitle(
-                      size: 34,
+                      size: 31,
                     ).copyWith(color: AppColors.textOnDark),
                   ),
                   if (identity.username case final username?) ...[
@@ -128,7 +128,7 @@ class NonFriendProfile extends StatelessWidget {
                       invitation.$1,
                       textAlign: TextAlign.center,
                       style: CsTypography.editorialTitle(
-                        size: 24,
+                        size: 22,
                         italic: true,
                       ).copyWith(color: AppColors.textOnDark),
                     ),

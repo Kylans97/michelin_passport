@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../models/passport_stamp_item.dart';
@@ -9,6 +8,7 @@ import '../utils/passport_stamp_semantics.dart';
 import '../utils/passport_stamp_style.dart';
 import 'passport_stamp.dart';
 import 'passport_stamp_painters.dart' show stampVariantSize, verifiedStampSize;
+import '../../../core/theme/cs_fonts.dart';
 
 /// Gap kept between neighbouring cells of [stampGridCells], and between a
 /// cell and the edge of the stamp field.
@@ -270,20 +270,19 @@ class _YearCorner extends StatelessWidget {
       children: [
         Text(
           '$year',
-          style: GoogleFonts.cormorantGaramond(
+          style: CsFonts.serif(
             color: AppColors.forestGreen,
-            fontSize: 26,
+            fontSize: 23.5,
             fontWeight: FontWeight.w600,
-            fontFeatures: const [FontFeature.enable('lnum')],
           ),
         ),
         Text(
           'YEAR OF ENTRY',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 8.5,
+            fontSize: 9,
             fontWeight: FontWeight.w600,
-            letterSpacing: 8.5 * 0.1,
+            letterSpacing: 9 * 0.1,
           ),
         ),
       ],
@@ -312,9 +311,9 @@ class _PageHeader extends StatelessWidget {
           label,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
-            fontSize: 11,
+            fontSize: 11.5,
             fontWeight: FontWeight.w600,
             letterSpacing: 1.6,
           ),
@@ -323,9 +322,9 @@ class _PageHeader extends StatelessWidget {
       const SizedBox(width: CsSpacing.sm),
       Text(
         'p. ${pageNumber.toString().padLeft(2, '0')}',
-        style: GoogleFonts.cormorantGaramond(
+        style: CsFonts.serif(
           color: AppColors.textPrimary,
-          fontSize: 15,
+          fontSize: 13.5,
           fontStyle: FontStyle.italic,
         ),
       ),
@@ -509,9 +508,9 @@ class _NextStampPlaceholder extends StatelessWidget {
                       child: Text(
                         'Add your next stamp',
                         textAlign: TextAlign.center,
-                        style: GoogleFonts.cormorantGaramond(
+                        style: CsFonts.serif(
                           color: AppColors.textSecondary,
-                          fontSize: 13,
+                          fontSize: 12,
                           fontStyle: FontStyle.italic,
                           height: 1.2,
                         ),

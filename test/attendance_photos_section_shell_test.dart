@@ -16,7 +16,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:michelin_passport/core/theme/cs_fonts.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/constants/photo_limits.dart';
 import 'package:michelin_passport/features/photos/widgets/add_photos_button.dart';
@@ -64,7 +64,7 @@ Widget _sectionContent({required int photoCount, bool uploading = false}) {
         const SizedBox(height: 6),
         Text(
           'Maximum $maxEventAttendancePhotos photos',
-          style: GoogleFonts.inter(
+          style: CsFonts.sans(
             color: AppColors.textSecondary,
             fontSize: 12,
           ),

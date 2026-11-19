@@ -201,7 +201,7 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
                       Text(
                         article.title,
                         style: CsTypography.placeTitle.copyWith(
-                          fontSize: 26,
+                          fontSize: 23.5,
                           color: AppColors.forestGreen,
                         ),
                       ),
@@ -340,7 +340,7 @@ class _PhotoBandHeader extends SliverPersistentHeaderDelegate {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: CsTypography.placeTitle.copyWith(
-                      fontSize: 18,
+                      fontSize: 16.5,
                       color: AppColors.ivory,
                     ),
                   ),
@@ -391,7 +391,7 @@ class _NewsBlockView extends StatelessWidget {
               Text(
                 block.text,
                 style: CsTypography.editorialTitle(
-                  size: 21,
+                  size: 19,
                   italic: true,
                 ).copyWith(color: AppColors.forestGreen, height: 1.3),
               ),
@@ -410,7 +410,7 @@ class _NewsBlockView extends StatelessWidget {
           child: Text(
             block.text,
             style: CsTypography.editorialDisplay(
-              size: 26,
+              size: 23.5,
             ).copyWith(color: AppColors.forestGreen, height: 1.25),
           ),
         );
@@ -421,11 +421,10 @@ class _NewsBlockView extends StatelessWidget {
             block.text,
             style: isLead
                 ? CsTypography.editorialLead(
-                    size: 19,
+                    size: 17.5,
                   ).copyWith(color: AppColors.forestGreen, height: 1.45)
-                : CsTypography.body.copyWith(
+                : CsTypography.reading.copyWith(
                     color: AppColors.textPrimary,
-                    height: 1.5,
                   ),
           ),
         );

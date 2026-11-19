@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The "Visible to friends" control shown on visit/stay creation (and, on
 /// [VisitDetailScreen]/[StayDetailScreen], editing) — Social Foundation
@@ -9,7 +9,7 @@ import '../../../core/theme/cs_spacing.dart';
 /// wrapping the whole section) so it reads as secondary to actually
 /// recording the visit, per the task brief. Uses this screen's own
 /// existing light-card visual language (AppColors.surface/textPrimary/
-/// textSecondary/gold, GoogleFonts.inter) rather than the newer dark
+/// textSecondary/gold, CsFonts.sans) rather than the newer dark
 /// editorial CsTypography roles — this sheet doesn't use that system
 /// anywhere else yet, and CsTypography's roles default to a color tuned
 /// for the dark canvas, not this screen's ivory one. CsSpacing is still
@@ -55,18 +55,18 @@ class VisitPrivacyToggle extends StatelessWidget {
                   children: [
                     Text(
                       'Visible to friends',
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.textPrimary,
-                        fontSize: 14,
+                        fontSize: 14.5,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     const SizedBox(height: 3),
                     Text(
                       'Friends can see this visit, your rating, wines and photos.',
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.textSecondary,
-                        fontSize: 12.5,
+                        fontSize: 13,
                         height: 1.4,
                       ),
                     ),

@@ -199,7 +199,7 @@ class _ReportMissingListingSheetState
             "Report a missing listing",
             style: CsTypography.placeTitle.copyWith(
               color: AppColors.forestGreen,
-              fontSize: 20,
+              fontSize: 18,
             ),
           ),
           const SizedBox(height: CsSpacing.xs),

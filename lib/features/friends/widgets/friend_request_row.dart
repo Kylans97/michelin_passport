@@ -41,7 +41,9 @@ class FriendRequestRow extends StatelessWidget {
 
   // Measured with the real Inter files (2026-10-28): the inline pair is
   // 145px at 1.0x text, so 56 keeps a 320px phone inline at normal text,
-  // as it was before this widget, while anything tighter stacks.
+  // as it was before this widget, while anything tighter stacks. Hanken
+  // Grotesk, which replaced Inter on 2026-11-19, is ~6% narrower per
+  // point, so the threshold only got safer.
   static const double _minNameWidth = 56;
 
   @override

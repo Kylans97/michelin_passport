@@ -14,7 +14,7 @@ import 'guide_venue_card.dart';
 /// needs to create that separation on its own.
 ///
 /// The family name reads as a genuine masthead — [CsTypography.sectionTitle]
-/// (Cormorant Garamond), not the eyebrow-weight metadata treatment Step 1
+/// (Spectral), not the eyebrow-weight metadata treatment Step 1
 /// used — with a [GuideVenueCardDivider] hairline between each destination:
 /// physical-device review of Step 1 found the family name and its
 /// destinations competing rather than reading as two distinct levels, and

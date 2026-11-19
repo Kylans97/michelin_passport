@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../events/event_date_format.dart';
 import '../../events/event_detail_screen.dart';
 import '../models/map_pin.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// The bottom sheet shown when an Event pin is tapped — Events V2 Step 5
 /// §9. Deliberately its own small component rather than folding Event into
@@ -66,7 +66,7 @@ class _EventMapPreviewSheet extends StatelessWidget {
               ],
               Text(
                 event.name,
-                style: GoogleFonts.playfairDisplay(
+                style: CsFonts.serif(
                   color: AppColors.textPrimary,
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -75,17 +75,17 @@ class _EventMapPreviewSheet extends StatelessWidget {
               const SizedBox(height: 6),
               Text(
                 pin.subtitle,
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textSecondary,
-                  fontSize: 13,
+                  fontSize: 13.5,
                 ),
               ),
               const SizedBox(height: 6),
               Text(
                 formatEventDateRange(event),
-                style: GoogleFonts.inter(
+                style: CsFonts.sans(
                   color: AppColors.textSecondary,
-                  fontSize: 13,
+                  fontSize: 13.5,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -102,9 +102,9 @@ class _EventMapPreviewSheet extends StatelessWidget {
                     const SizedBox(width: 4),
                     Text(
                       '$rating/5',
-                      style: GoogleFonts.inter(
+                      style: CsFonts.sans(
                         color: AppColors.textPrimary,
-                        fontSize: 13,
+                        fontSize: 13.5,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -138,7 +138,7 @@ class _EventMapPreviewSheet extends StatelessWidget {
                   },
                   child: Text(
                     'View event',
-                    style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                    style: CsFonts.sans(fontWeight: FontWeight.w600),
                   ),
                 ),
               ),

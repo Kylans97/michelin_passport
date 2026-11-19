@@ -235,7 +235,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           'Notifications',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,
@@ -271,7 +271,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       'Nothing yet',
                       style: CsTypography.placeTitle.copyWith(
                         color: AppColors.forestGreen,
-                        fontSize: 18,
+                        fontSize: 16.5,
                       ),
                     ),
                     const SizedBox(height: CsSpacing.xs),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../models/ranking_venue_type.dart';
+import '../../../core/theme/cs_fonts.dart';
 
 /// "Restaurants / Hotels" segmented selector for My Rankings — deliberately
 /// two options only (no "All"): a restaurant ranking and a hotel ranking
@@ -84,9 +84,9 @@ class _Segment extends StatelessWidget {
         ),
         child: Text(
           label,
-          style: GoogleFonts.cormorantGaramond(
+          style: CsFonts.serif(
             color: selected ? AppColors.deepGreen : AppColors.textOnDark,
-            fontSize: 15,
+            fontSize: 13.5,
             fontWeight: FontWeight.w600,
           ),
         ),

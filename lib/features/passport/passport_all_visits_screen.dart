@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -12,6 +11,7 @@ import '../../models/venue_entry.dart';
 import 'models/passport_stamp_item.dart';
 import 'passport_filter_type.dart';
 import 'passport_stamp_source.dart';
+import '../../core/theme/cs_fonts.dart';
 
 const _months = [
   'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
@@ -133,9 +133,9 @@ class _PassportAllVisitsScreenState extends State<PassportAllVisitsScreen> {
                   ? Center(
                       child: Text(
                         'No visits yet',
-                        style: GoogleFonts.inter(
+                        style: CsFonts.sans(
                           color: AppColors.secondaryOnDark,
-                          fontSize: 14,
+                          fontSize: 14.5,
                         ),
                       ),
                     )
@@ -215,7 +215,7 @@ class _AllVisitsRow extends StatelessWidget {
                           item.venueName,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: CsTypography.editorialTitle(size: 20).copyWith(
+                          style: CsTypography.editorialTitle(size: 18).copyWith(
                             color: AppColors.textOnDark,
                           ),
                         ),
@@ -230,7 +230,7 @@ class _AllVisitsRow extends StatelessWidget {
                       countryCode: item.countryCode,
                       style: CsTypography.editorialBody.copyWith(
                         color: AppColors.secondaryOnDark,
-                        fontSize: 12,
+                        fontSize: 12.5,
                       ),
                     ),
                   ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../models/cuisine_family.dart';
 import '../constants/app_colors.dart';
+import '../theme/cs_fonts.dart';
 
 /// Explore's cuisine filter: one compact "All cuisines ▾" trigger beside
 /// CountryFilterControl, never a permanent chip row. It opens a sheet of
@@ -70,9 +70,9 @@ class CuisineFilterControl extends StatelessWidget {
                   labelFor(selected, families),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: GoogleFonts.inter(
+                  style: CsFonts.sans(
                     color: AppColors.textOnDark,
-                    fontSize: 13,
+                    fontSize: 13.5,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -116,9 +116,9 @@ class _CuisinePickerSheetState extends State<CuisinePickerSheet> {
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
     final maxHeight = (mediaQuery.size.height - mediaQuery.padding.top) * 0.9;
-    final rowStyle = GoogleFonts.inter(
+    final rowStyle = CsFonts.sans(
       color: AppColors.textPrimary,
-      fontSize: 14.5,
+      fontSize: 15,
       fontWeight: FontWeight.w500,
     );
 
@@ -151,7 +151,7 @@ class _CuisinePickerSheetState extends State<CuisinePickerSheet> {
                     Expanded(
                       child: Text(
                         'Cuisine',
-                        style: GoogleFonts.inter(
+                        style: CsFonts.sans(
                           color: AppColors.textPrimary,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,

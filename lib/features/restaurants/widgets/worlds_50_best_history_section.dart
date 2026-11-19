@@ -72,7 +72,7 @@ class Worlds50BestHistorySection extends StatelessWidget {
             'ALSO LISTED, 51–100',
             style: CsTypography.eyebrow.copyWith(
               color: AppColors.secondaryOnDark,
-              fontSize: 10.5,
+              fontSize: 11,
             ),
           ),
           const SizedBox(height: 10),
@@ -158,7 +158,7 @@ class HallOfFameBadge extends StatelessWidget {
                   : 'Induction year unavailable',
               style: CsTypography.metadata.copyWith(
                 color: AppColors.secondaryOnDark,
-                fontSize: 13.5,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),

@@ -126,7 +126,7 @@ class _VenueContactScreenState extends State<VenueContactScreen> {
           _hasPhone ? 'Website and phone' : 'Website',
           style: CsTypography.placeTitle.copyWith(
             color: AppColors.forestGreen,
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: AppColors.warmWhite,
