@@ -29,7 +29,11 @@ The format follows Keep a Changelog.
     - An unlinked wine never sends `vineyard_id`.
     - Estate lookups on events and in the wine sheet fail quietly to empty.
     - The Explore row appears only once at least one estate can be read, so before the migration and the reviewed data are applied it simply isn't there.
-  - **Data:** `supabase/data/enrichment/worlds_50_best_vineyards/`, a staging CSV taken from worldsbestvineyards.com with source URLs, for review. Nothing is in Supabase.
+  - **Data, for review, nothing in Supabase:** `supabase/data/enrichment/worlds_50_best_vineyards/`. The 2026 edition (announced 18 November 2026) comes from the official list. worldsbestvineyards.com now redirects to the50.com/vineyards, which is where the data was read.
+    - Every row has its source URLs. There are 22 verified rows, 22 partial and 6 held back; ranks 51–100 sit in a separate file and are unverified.
+    - Location comes only from the estates' own sites, and nothing was geocoded.
+    - Open issues are logged as QA-520..QA-529 in `qa_issues.csv`. Four estates sit behind age gates that were not clicked through, one gives no location, one prints conflicting street numbers, and several give no coordinates or street address.
+    - The names and regions for ranks 1–50 were re-checked against the official list page after staging.
   - **Checked:**
     - `flutter analyze` is clean, and all 2,966 tests in `flutter test` pass. New tests are in `test/vineyards_test.dart`; the Passport shell test now covers five tabs at 320–430 px.
     - The migration was replayed on a scratch PostgreSQL 17 on top of a minimal prelude (countries, profiles, visits, events, `is_admin`/`is_friend` stubs) and `20261101330000`. PostGIS was not available there, so `location` was stubbed as `point`. Fifteen checks passed:
