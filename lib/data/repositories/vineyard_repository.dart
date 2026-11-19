@@ -41,6 +41,13 @@ class VineyardRepository {
     ]);
   }
 
+  /// Whether any estate is readable — false before the vineyards migration
+  /// and its reviewed data are applied.
+  Future<bool> hasAny() async {
+    final rows = await _client.from('vineyards').select('id').limit(1);
+    return (rows as List).isNotEmpty;
+  }
+
   Future<Vineyard?> getById(String id) async {
     final row = await _client
         .from('vineyards_full')
