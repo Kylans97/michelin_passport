@@ -15,6 +15,31 @@ The format follows Keep a Changelog.
   - Guía Repsol's coverage note is stored per country (ES), the regional notes guide-wide; both the app and the site now take the guide-wide note first, else the single country note. Before, the site only read guide-wide notes, so Repsol's would never have shown.
   - **Repsol's coverage note shortened in production, 2026-11-17** (product owner: "haal die laatste zin bij Repsol: Restaurants with 1 sol follow maar weg"): one row in `guide_coverage` updated by `supabase/data/enrichment/guia_repsol_2026/prepared_guia_repsol_2026_coverage_note.sql`, which refuses unless exactly the old text matches. Read back after: the note ends at "113 of 173 with two."
   - Checked: `flutter analyze` clean, `flutter test` all 2,895 pass (new tests for the ordering and for a restaurant missing from the resolved rows); the site builds with 159 / 51 / 28 / 32 restaurants on the four pages, matching production. Seen in the simulator against production: Guía Repsol opens on the 3 Soles, Asia on The Chairman #1. Not checked: the site pages at phone width.
+- **"Sold out" and "Expected" labels on events** (product owner, 2026-11-05):
+  - **Where they show:** event cards (Events, the Explore result tile, the
+    Explore discovery card, the Community preview) and the event detail page.
+    One shared definition lives in `event_status_badges.dart`. A cancelled
+    event shows only CANCELLED.
+  - **Sold out** reads the existing `events.availability_status`
+    (`sold_out`), which no build had shown until now. It needs no migration.
+  - **Expected** reads the new `events.announcement_status`: an event known
+    from a secondary source that the venue has not announced yet.
+  - **Migration `20261101510000_add_event_announcement_status.sql`**,
+    prepared and not applied (first prepared on 2026-11-05 as
+    `20261101320000`; renamed on 2026-11-19 to follow the highest migration):
+    - adds `announcement_status` (`official`/`expected`, default `official`)
+      and `expected_source_url`, with a check that an expected event has a
+      source;
+    - extends the host-edit column lock to both columns.
+
+    It was tested on scratch PostgreSQL 16 against a minimal `events` table,
+    not the full stack.
+  - **Rollout:** this build reads both columns safely when they are absent.
+    A build without this change shows an expected event with no label, so
+    no event may be set to `expected` until this build has shipped.
+  - Brought onto main on 2026-11-19 from `claude/event-expected-soldout`:
+    `flutter analyze` clean, `flutter test` all 2,909 pass. Not re-checked
+    on a device. The migration is still not applied.
 
 ---
 
@@ -222,28 +247,6 @@ from the Supabase platform triggers under Fixed.
   `claude/michelin-europe9-2026` with plain `supabase db push --linked`. The
   ledger went from 143 to 144, and local and remote agree. The catalogue data
   that goes with it is in `supabase/data/enrichment/michelin_europe9_2026/`.
-- **"Sold out" and "Expected" labels on events** (product owner, 2026-11-05):
-  - **Where they show:** event cards (Events, the Explore result tile, the
-    Explore discovery card, the Community preview) and the event detail page.
-    One shared definition lives in `event_status_badges.dart`. A cancelled
-    event shows only CANCELLED.
-  - **Sold out** reads the existing `events.availability_status`
-    (`sold_out`), which no build had shown until now. It needs no migration.
-  - **Expected** reads the new `events.announcement_status`: an event known
-    from a secondary source that the venue has not announced yet.
-  - **Migration `20261101320000_add_event_announcement_status.sql`**,
-    prepared and not applied:
-    - adds `announcement_status` (`official`/`expected`, default `official`)
-      and `expected_source_url`, with a check that an expected event has a
-      source;
-    - extends the host-edit column lock to both columns.
-
-    It was tested on scratch PostgreSQL 16 against a minimal `events` table,
-    not the full stack.
-  - **Rollout:** this build reads both columns safely when they are absent.
-    A build without this change shows an expected event with no label, so
-    no event may be set to `expected` until this build has shipped.
-
 - Contact data on production, 2026-11-05: Greece (QA-431) and the 41-country
   world round, by `APPLY_2026-11-05.md`. 386 Place IDs, 465 phones and 327
   websites, written only into empty fields. Data SQL, no migration, so the

@@ -106,7 +106,7 @@ enum EventAvailability {
 }
 
 /// The permitted values of `events.announcement_status` (see
-/// supabase/migrations/20261101320000_add_event_announcement_status.sql).
+/// supabase/migrations/20261101510000_add_event_announcement_status.sql).
 /// [expected] is an event we know of from a secondary source that the
 /// venue or organiser has not announced itself yet; it is shown with an
 /// "Expected" label until they do. A database without the column yet

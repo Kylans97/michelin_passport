@@ -11,12 +11,13 @@
 -- events.availability_status already allows 'sold_out'
 -- (20260819140000_events_v2_host_venue_moderation.sql); the app now shows it.
 --
--- Filename timestamp is a sequence number only: after 20261101300000 (the
--- highest on main when written) and after 20261101310000_add_bh_ky_mu_countries
--- (prepared on branch claude/overnight-world-events, not applied). If either
--- ordering no longer holds when this is applied, rename this file to follow
--- the highest migration; it has not been applied anywhere.
---
+-- Filename timestamp is a sequence number only. First prepared as
+-- 20261101320000 on 2026-11-05 and never applied anywhere; renamed on
+-- 2026-11-19, when it was brought onto main, to follow the highest migration
+-- there (20261101500000_add_journeys), since eighteen migrations had been
+-- applied after the original number in the meantime. The host-edit lock body
+-- below was re-checked against 20261018130000, still its latest definition.
+
 -- Additive only. Every existing row becomes 'official' through the default,
 -- which is what it already was. An app build that predates this column ignores
 -- it and would show an expected event WITHOUT its label: do not set any event

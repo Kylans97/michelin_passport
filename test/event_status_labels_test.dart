@@ -1,5 +1,5 @@
 // Sold out (events.availability_status) and Expected
-// (events.announcement_status, 20261101320000): parsing, the labels each
+// (events.announcement_status, 20261101510000): parsing, the labels each
 // card shows, and the detail rows. Cancelled outranks both.
 
 import 'package:flutter/material.dart';
