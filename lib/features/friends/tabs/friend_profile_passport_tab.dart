@@ -56,6 +56,7 @@ class FriendProfilePassportTab extends StatelessWidget {
       ),
       EventStampItem() => null, // never reached — no event stamps in this booklet
       JourneyStampItem() => null, // never reached — no journey stamps either
+      VineyardStampItem() => null, // nor estate stamps
     };
     if (fv != null) openVisitDetail(context, fv);
   }

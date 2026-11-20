@@ -1,5 +1,6 @@
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/journey_repository.dart';
+import '../../models/vineyard_visit.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import 'models/passport_stamp_item.dart';
@@ -65,6 +66,19 @@ List<PassportStampItem> buildJourneyStampItems(
     for (final entry in entries)
       if (year == null || entry.travel.departedOn.year == year)
         JourneyStampItem(entry),
+  ];
+  return _sortOldestFirst(items);
+}
+
+/// The estates equivalent — one [VineyardStampItem] per estate visit.
+List<PassportStampItem> buildVineyardStampItems(
+  List<VineyardVisitEntry> entries, {
+  int? year,
+}) {
+  final items = [
+    for (final entry in entries)
+      if (year == null || entry.visit.visitedOn.year == year)
+        VineyardStampItem(entry),
   ];
   return _sortOldestFirst(items);
 }

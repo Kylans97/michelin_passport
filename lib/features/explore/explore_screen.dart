@@ -19,13 +19,16 @@ import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/editorial_selection_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/journey_repository.dart';
 import '../../data/repositories/vineyard_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../models/cuisine_family.dart';
 import '../../models/event.dart';
 import '../../models/hotel.dart';
+import '../../models/journey.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
+import '../../models/vineyard.dart';
 import '../events/event_detail_screen.dart';
 import '../events/events_screen.dart';
 import '../guides/guides_screen.dart';
@@ -261,9 +264,78 @@ class _ExploreScreenState extends State<ExploreScreen> {
   // "All" (run concurrently, awaited in turn) — never one query per
   // result, never N+1. Query text and country are independent filters on
   // every one of the three catalogue searches.
+  // Wine estates and trains and ships are small catalogues: read once, on
+  // first search, and filtered on the device (the Wishlist's add sheet
+  // does the same). A failure, or the tables not readable yet, leaves
+  // them out of "All" rather than failing the search.
+  Future<List<Vineyard>>? _vineyardCatalogue;
+  Future<List<Journey>>? _journeyCatalogue;
+  List<Vineyard> _vineyardsLoaded = const [];
+  List<Journey> _journeysLoaded = const [];
+
+  Future<List<Vineyard>> _vineyards() =>
+      _vineyardCatalogue ??= VineyardRepository(Supabase.instance.client)
+          .getAll()
+          .then((all) {
+            _vineyardsLoaded = all;
+            return all;
+          })
+          .catchError((Object _) {
+            _vineyardCatalogue = null; // try again on the next search
+            return const <Vineyard>[];
+          });
+
+  Future<List<Journey>> _journeys() =>
+      _journeyCatalogue ??= JourneyRepository(Supabase.instance.client)
+          .getPublishedJourneys()
+          .then((all) {
+            _journeysLoaded = all;
+            return all;
+          })
+          .catchError((Object _) {
+            _journeyCatalogue = null;
+            return const <Journey>[];
+          });
+
+  Future<List<Vineyard>> _matchingVineyards(String query) async =>
+      filterExploreVineyards(
+        await _vineyards(),
+        query: query,
+        countryCode: _country?.code,
+      );
+
+  Future<List<Journey>> _matchingJourneys(
+    String query, {
+    JourneyKind? kind,
+  }) async => filterExploreJourneys(
+    await _journeys(),
+    query: query,
+    kind: kind,
+    countryCode: _country?.code,
+  );
+
   Future<ExploreSearchResults> _fetchSearchResults() async {
     final query = _query;
     switch (_searchType) {
+      case ExploreSearchType.estates:
+        return ExploreSearchResults(
+          restaurants: const [],
+          hotels: const [],
+          events: const [],
+          vineyards: await _matchingVineyards(query),
+        );
+      case ExploreSearchType.trains || ExploreSearchType.ships:
+        return ExploreSearchResults(
+          restaurants: const [],
+          hotels: const [],
+          events: const [],
+          journeys: await _matchingJourneys(
+            query,
+            kind: _searchType == ExploreSearchType.trains
+                ? JourneyKind.train
+                : JourneyKind.ship,
+          ),
+        );
       case ExploreSearchType.restaurants:
         final restaurants = await _restaurantRepo.search(
           query,
@@ -313,10 +385,14 @@ class _ExploreScreenState extends State<ExploreScreen> {
           query: query,
           countryCode: _country?.code,
         );
+        final vineyardsFuture = _matchingVineyards(query);
+        final journeysFuture = _matchingJourneys(query);
         return ExploreSearchResults(
           restaurants: await restaurantsFuture,
           hotels: await hotelsFuture,
           events: await eventsFuture,
+          vineyards: await vineyardsFuture,
+          journeys: await journeysFuture,
         );
     }
   }
@@ -652,6 +728,17 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     ExploreSearchType.restaurants => restaurantCountries,
                     ExploreSearchType.hotels => hotelCountries,
                     ExploreSearchType.events => eventCountries,
+                    ExploreSearchType.estates => vineyardCountries(
+                      _vineyardsLoaded,
+                    ),
+                    ExploreSearchType.trains => journeyCountries(
+                      _journeysLoaded,
+                      JourneyKind.train,
+                    ),
+                    ExploreSearchType.ships => journeyCountries(
+                      _journeysLoaded,
+                      JourneyKind.ship,
+                    ),
                     ExploreSearchType.all => mergeVenueCountries([
                       restaurantCountries,
                       hotelCountries,

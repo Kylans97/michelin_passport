@@ -1,5 +1,6 @@
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/journey_repository.dart';
+import '../../../models/vineyard_visit.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../../models/visit.dart';
@@ -156,4 +157,27 @@ class JourneyStampItem extends PassportStampItem {
   DateTime get date => entry.travel.departedOn;
 
   String get kindLabel => entry.journey.kind.label.toUpperCase();
+}
+
+/// One visit to a wine estate (`vineyard_visits`). Like a journey, an
+/// estate has no award on its stamp: "WINE ESTATE" stands in the award
+/// row. The World's 50 Best Vineyards rank is never drawn there — it is
+/// not a MICHELIN distinction and the stamp keeps gold for those.
+class VineyardStampItem extends PassportStampItem {
+  final VineyardVisitEntry entry;
+
+  const VineyardStampItem(this.entry);
+
+  static const kindLabel = 'WINE ESTATE';
+
+  @override
+  String get id => entry.visit.id;
+  @override
+  String get venueName => entry.vineyard.name;
+  @override
+  String get cityName => entry.vineyard.city ?? '';
+  @override
+  String get countryCode => entry.vineyard.countryCode;
+  @override
+  DateTime get date => entry.visit.visitedOn;
 }

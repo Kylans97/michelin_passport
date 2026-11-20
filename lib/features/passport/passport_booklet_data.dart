@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/journey_repository.dart';
 import '../../models/venue_entry.dart';
+import '../../models/vineyard_visit.dart';
 import 'models/passport_stamp_item.dart';
 import 'passport_stamp_source.dart';
 
@@ -88,16 +89,19 @@ List<PassportVolume> buildPassportVolumes({
   required List<VenueEntry> entries,
   required List<EventAttendanceEntry> eventEntries,
   List<JourneyTravelEntry> journeyEntries = const [],
+  List<VineyardVisitEntry> vineyardEntries = const [],
 }) {
   final restaurantItems = buildRestaurantStampItems(entries);
   final hotelItems = buildHotelStampItems(entries);
   final eventItems = buildEventStampItems(eventEntries);
   final journeyItems = buildJourneyStampItems(journeyEntries);
+  final vineyardItems = buildVineyardStampItems(vineyardEntries);
   final allItems = [
     ...restaurantItems,
     ...hotelItems,
     ...eventItems,
     ...journeyItems,
+    ...vineyardItems,
   ]..sort((a, b) => a.date.compareTo(b.date));
 
   if (allItems.isEmpty) return [];

@@ -6,15 +6,20 @@ import '../../core/analytics/analytics_properties.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/theme/cs_surface_context.dart';
+import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/vineyard_repository.dart';
 import '../../data/repositories/visit_wine_repository.dart';
+import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
 import '../../models/vineyard.dart';
+import '../../models/vineyard_visit.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
 import '../visits/widgets/visit_wines.dart';
+import 'log_estate_visit.dart';
 import 'widgets/vineyard_detail_hero.dart';
 
 /// A wine estate's own page: hero, its World's 50 Best Vineyards rank, the
@@ -36,9 +41,13 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
   late final _repo = VineyardRepository(_client);
   late final _wineRepo = VisitWineRepository(_client);
   late final _eventsRepo = EventsRepository(_client);
+  late final _wishlistRepo = WishlistRepository(_client);
 
   Vineyard? _vineyard;
   List<CellarWine> _myWines = const [];
+  List<VineyardVisit> _myVisits = const [];
+  bool _wishlisted = false;
+  bool _wishlistBusy = false;
   List<Event> _events = const [];
   bool _loading = true;
   bool _error = false;
@@ -69,10 +78,24 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
           : await _eventsRepo
                 .loadEventsForVineyard(vineyard.id)
                 .catchError((Object _) => const <Event>[]);
+      // Both read tables the estates-wishlist migration adds; before it is
+      // applied they fail, and the page shows no visits and an empty heart.
+      final myVisits = (vineyard == null || uid == null)
+          ? const <VineyardVisit>[]
+          : await _repo
+                .getMyVisits(userId: uid, vineyardId: vineyard.id)
+                .catchError((Object _) => const <VineyardVisit>[]);
+      final wishlisted = (vineyard == null || uid == null)
+          ? false
+          : await _wishlistRepo
+                .isVineyardWishlisted(userId: uid, vineyardId: vineyard.id)
+                .catchError((Object _) => false);
       if (!mounted) return;
       setState(() {
         _vineyard = vineyard;
         _myWines = myWines;
+        _myVisits = myVisits;
+        _wishlisted = wishlisted;
         _events = events;
         _loading = false;
         _error = vineyard == null;
@@ -84,6 +107,75 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
         _error = true;
       });
     }
+  }
+
+  void _snack(String message, {bool isError = false}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
+        ),
+        backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  // Optimistic, reverted if the write fails — the same shape as the
+  // journey, restaurant and event wishlist toggles.
+  Future<void> _toggleWishlist() async {
+    final vineyard = _vineyard;
+    final uid = _client.auth.currentUser?.id;
+    if (vineyard == null) return;
+    if (uid == null) {
+      _snack('Sign in to save to your wishlist.', isError: true);
+      return;
+    }
+    if (_wishlistBusy) return;
+    final was = _wishlisted;
+    setState(() {
+      _wishlisted = !was;
+      _wishlistBusy = true;
+    });
+    try {
+      if (was) {
+        await _wishlistRepo.removeVineyard(
+          userId: uid,
+          vineyardId: vineyard.id,
+        );
+      } else {
+        await _wishlistRepo.addVineyard(userId: uid, vineyardId: vineyard.id);
+      }
+      if (!mounted) return;
+      setState(() => _wishlistBusy = false);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _wishlisted = was;
+        _wishlistBusy = false;
+      });
+      _snack('Could not update. Please try again.', isError: true);
+    }
+  }
+
+  Future<void> _logVisit() async {
+    final vineyard = _vineyard;
+    if (vineyard == null) return;
+    final saved = await logEstateVisit(context, vineyard: vineyard);
+    if (saved == null || !mounted) return;
+    setState(() => _myVisits = [saved, ..._myVisits]);
+  }
+
+  String _visitLine(VineyardVisit visit) {
+    final date = MaterialLocalizations.of(
+      context,
+    ).formatMediumDate(visit.visitedOn);
+    final did = [
+      for (final a in VineyardActivity.values)
+        if (visit.activities.contains(a)) a.label.toLowerCase(),
+    ];
+    return did.isEmpty ? date : '$date · ${did.join(', ')}';
   }
 
   void _openEvent(Event event) => Navigator.push(
@@ -141,7 +233,11 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
     return ListView(
       padding: EdgeInsets.zero,
       children: [
-        VineyardDetailHero(vineyard: vineyard),
+        VineyardDetailHero(
+          vineyard: vineyard,
+          wishlisted: _wishlisted,
+          onToggleWishlist: _toggleWishlist,
+        ),
         Padding(
           padding: const EdgeInsets.fromLTRB(
             CsSpacing.pageHorizontal,
@@ -166,8 +262,33 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
                   style: CsTypography.metadata.copyWith(color: AppColors.taupe),
                 ),
               ],
+              _sectionTitle('IN YOUR PASSPORT'),
+              if (_myVisits.isEmpty)
+                Text(
+                  'Visited the estate? Add it to your Passport.',
+                  style: CsTypography.body.copyWith(
+                    color: AppColors.textPrimary,
+                  ),
+                )
+              else
+                for (final visit in _myVisits)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: CsSpacing.xs),
+                    child: Text(
+                      _visitLine(visit),
+                      style: CsTypography.body.copyWith(
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                  ),
+              const SizedBox(height: CsSpacing.base),
+              CsPrimaryButton(
+                label: 'I visited this estate',
+                surface: CsSurface.light,
+                onTap: _logVisit,
+              ),
               if (_myWines.isNotEmpty) ...[
-                _sectionTitle('IN YOUR PASSPORT'),
+                const SizedBox(height: CsSpacing.lg),
                 _MyWinesCard(wines: _myWines),
               ],
               if (_events.isNotEmpty) ...[

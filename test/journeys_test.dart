@@ -220,8 +220,8 @@ void main() {
     test('the award row is the kind, never stars or Keys', () {
       final item = buildJourneyStampItems([_entry()]).single;
       final award = stampAwardFor(item);
-      expect(award, isA<JourneyKindAward>());
-      expect((award as JourneyKindAward).label, 'TRAIN');
+      expect(award, isA<KindLabelAward>());
+      expect((award as KindLabelAward).label, 'TRAIN');
     });
 
     test('year filter uses the departure year', () {

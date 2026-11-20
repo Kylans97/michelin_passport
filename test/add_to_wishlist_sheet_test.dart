@@ -3,8 +3,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/features/wishlist/widgets/add_to_wishlist_sheet.dart';
 import 'package:michelin_passport/models/event.dart';
 import 'package:michelin_passport/models/hotel.dart';
+import 'package:michelin_passport/models/journey.dart';
 import 'package:michelin_passport/models/passport_venue.dart';
 import 'package:michelin_passport/models/restaurant.dart';
+import 'package:michelin_passport/models/vineyard.dart';
 
 PassportVenue _restaurant(String id, String name) => RestaurantVenue(
   Restaurant.fromJson({'id': id, 'name': name, 'city_name': 'Zwolle'}),
@@ -25,6 +27,24 @@ Event _event(String id, String name) => Event.fromJson({
   'event_type': 'dinner',
   'created_at': '2026-10-01T10:00:00Z',
 });
+
+const _estate = Vineyard(
+  id: 'v1',
+  vineyardCode: 'vine_0001',
+  name: 'Château Smith Haut Lafitte',
+  countryCode: 'FR',
+  city: 'Martillac',
+);
+
+Journey _journey(String id, String name, JourneyKind kind) => Journey(
+  id: id,
+  journeyCode: id,
+  slug: id,
+  kind: kind,
+  name: name,
+  operatorCode: 'op',
+  operatorName: 'Belmond',
+);
 
 void main() {
   late List<String> added;
@@ -94,6 +114,15 @@ void main() {
                       if (failWrites) throw Exception('offline');
                       removed.add(idOf(v));
                     },
+                    loadVineyards: () async => [_estate],
+                    loadJourneys: () async => [
+                      _journey('t1', 'Royal Scotsman', JourneyKind.train),
+                      _journey('s1', 'Royal Clipper', JourneyKind.ship),
+                    ],
+                    addVineyard: (id) async => added.add(id),
+                    removeVineyard: (id) async => removed.add(id),
+                    addJourney: (id) async => added.add(id),
+                    removeJourney: (id) async => removed.add(id),
                   );
                 },
                 child: const Text('open'),
@@ -196,5 +225,37 @@ void main() {
     await search(tester, 'Four');
     expect(eventQueries, ['Four']);
     expect(restaurantQueries, isEmpty);
+  });
+
+  testWidgets('the Wine estate chip finds an estate on the device and the '
+      'heart saves it', (tester) async {
+    await pumpOpener(tester);
+    await tester.tap(find.text('Wine estate'));
+    await tester.pumpAndSettle();
+    await search(tester, 'chateau smith');
+    expect(find.text('Château Smith Haut Lafitte'), findsOneWidget);
+    expect(restaurantQueries, isEmpty);
+
+    await tester.tap(find.byTooltip('Save to wishlist'));
+    await tester.pumpAndSettle();
+    expect(added, ['v1']);
+  });
+
+  testWidgets('the Train chip shows trains only, the Ship chip ships only', (
+    tester,
+  ) async {
+    await pumpOpener(tester, startWith: WishlistAddType.train);
+    await search(tester, 'Royal');
+    expect(find.text('Royal Scotsman'), findsOneWidget);
+    expect(find.text('Royal Clipper'), findsNothing);
+
+    await tester.tap(find.text('Ship'));
+    await tester.pumpAndSettle();
+    expect(find.text('Royal Clipper'), findsOneWidget);
+    expect(find.text('Royal Scotsman'), findsNothing);
+
+    await tester.tap(find.byTooltip('Save to wishlist'));
+    await tester.pumpAndSettle();
+    expect(added, ['s1']);
   });
 }

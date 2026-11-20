@@ -5,15 +5,21 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../data/repositories/events_repository.dart';
 import '../../../data/repositories/hotel_repository.dart';
+import '../../../data/repositories/journey_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
+import '../../../data/repositories/vineyard_repository.dart';
 import '../../../data/repositories/wishlist_repository.dart';
 import '../../../models/event.dart';
+import '../../../models/journey.dart';
 import '../../../models/passport_venue.dart';
+import '../../../models/vineyard.dart';
 import '../../events/event_date_format.dart';
 import '../../events/event_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
+import '../../journeys/journey_detail_screen.dart';
 import '../../passport/widgets/venue_picker_parts.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import '../../vineyards/vineyard_detail_screen.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/theme/cs_fonts.dart';
 
@@ -30,7 +36,23 @@ typedef WishlistWrite = Future<void> Function(PassportVenue venue);
 typedef EventWishlistWrite = Future<void> Function(Event event);
 
 /// Which kind of place the sheet is searching.
-enum WishlistAddType { restaurant, hotel, event }
+enum WishlistAddType { restaurant, hotel, event, estate, train, ship }
+
+/// Loads a whole small catalogue (wine estates, trains and ships) once;
+/// the sheet filters it on the device.
+typedef CatalogueLoad<T> = Future<List<T>> Function();
+
+/// Adds or removes one wine estate or journey by id.
+typedef IdWishlistWrite = Future<void> Function(String id);
+
+/// Whether a train or ship matches what was typed: its name or its
+/// operator, accents folded the way the estate search folds them.
+bool journeyMatchesQuery(Journey journey, String typed) {
+  final q = foldForSearch(typed.trim());
+  if (q.length < 2) return false;
+  return foldForSearch(journey.name).contains(q) ||
+      foldForSearch(journey.operatorName).contains(q);
+}
 
 /// Wishlist → "+ Add": find a restaurant or hotel and save it without
 /// leaving the Wishlist (asked for by a tester, 2026-10-31). The same
@@ -55,6 +77,12 @@ Future<bool> showAddToWishlistSheet(
   WishlistWrite? remove,
   EventWishlistWrite? addEvent,
   EventWishlistWrite? removeEvent,
+  CatalogueLoad<Vineyard>? loadVineyards,
+  CatalogueLoad<Journey>? loadJourneys,
+  IdWishlistWrite? addVineyard,
+  IdWishlistWrite? removeVineyard,
+  IdWishlistWrite? addJourney,
+  IdWishlistWrite? removeJourney,
 }) async {
   final changed = await showModalBottomSheet<bool>(
     context: context,
@@ -71,6 +99,12 @@ Future<bool> showAddToWishlistSheet(
       remove: remove,
       addEvent: addEvent,
       removeEvent: removeEvent,
+      loadVineyards: loadVineyards,
+      loadJourneys: loadJourneys,
+      addVineyard: addVineyard,
+      removeVineyard: removeVineyard,
+      addJourney: addJourney,
+      removeJourney: removeJourney,
     ),
   );
   return changed ?? false;
@@ -88,6 +122,12 @@ class AddToWishlistSheet extends StatefulWidget {
   final WishlistWrite? remove;
   final EventWishlistWrite? addEvent;
   final EventWishlistWrite? removeEvent;
+  final CatalogueLoad<Vineyard>? loadVineyards;
+  final CatalogueLoad<Journey>? loadJourneys;
+  final IdWishlistWrite? addVineyard;
+  final IdWishlistWrite? removeVineyard;
+  final IdWishlistWrite? addJourney;
+  final IdWishlistWrite? removeJourney;
 
   const AddToWishlistSheet({
     super.key,
@@ -101,6 +141,12 @@ class AddToWishlistSheet extends StatefulWidget {
     this.remove,
     this.addEvent,
     this.removeEvent,
+    this.loadVineyards,
+    this.loadJourneys,
+    this.addVineyard,
+    this.removeVineyard,
+    this.addJourney,
+    this.removeJourney,
   });
 
   @override
@@ -119,6 +165,11 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
   bool _searching = false;
   List<PassportVenue> _results = [];
   List<Event> _eventResults = [];
+  List<Vineyard> _vineyardResults = [];
+  List<Journey> _journeyResults = [];
+  // The estates and journeys catalogues, read once on first use.
+  List<Vineyard>? _allVineyards;
+  List<Journey>? _allJourneys;
   String? _error;
 
   late final VenueSearch _searchRestaurants =
@@ -172,6 +223,25 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       widget.removeEvent ??
       (e) => _repo.removeEvent(userId: widget.userId, eventId: e.id);
 
+  late final CatalogueLoad<Vineyard> _loadVineyards =
+      widget.loadVineyards ??
+      () => VineyardRepository(Supabase.instance.client).getAll();
+  late final CatalogueLoad<Journey> _loadJourneys =
+      widget.loadJourneys ??
+      () => JourneyRepository(Supabase.instance.client).getPublishedJourneys();
+  late final IdWishlistWrite _addVineyard =
+      widget.addVineyard ??
+      (id) => _repo.addVineyard(userId: widget.userId, vineyardId: id);
+  late final IdWishlistWrite _removeVineyard =
+      widget.removeVineyard ??
+      (id) => _repo.removeVineyard(userId: widget.userId, vineyardId: id);
+  late final IdWishlistWrite _addJourney =
+      widget.addJourney ??
+      (id) => _repo.addJourney(userId: widget.userId, journeyId: id);
+  late final IdWishlistWrite _removeJourney =
+      widget.removeJourney ??
+      (id) => _repo.removeJourney(userId: widget.userId, journeyId: id);
+
   @override
   void dispose() {
     _debounce?.cancel();
@@ -187,6 +257,8 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       setState(() {
         _results = [];
         _eventResults = [];
+        _vineyardResults = [];
+        _journeyResults = [];
       });
       return;
     }
@@ -202,15 +274,33 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       final venues = switch (type) {
         WishlistAddType.restaurant => await _searchRestaurants(query),
         WishlistAddType.hotel => await _searchHotels(query),
-        WishlistAddType.event => const <PassportVenue>[],
+        _ => const <PassportVenue>[],
       };
       final events = type == WishlistAddType.event
           ? await _searchEvents(query)
           : const <Event>[];
+      var vineyards = const <Vineyard>[];
+      if (type == WishlistAddType.estate) {
+        final all = _allVineyards ??= await _loadVineyards();
+        vineyards = matchingVineyards(all, query, limit: 20);
+      }
+      var journeys = const <Journey>[];
+      if (type == WishlistAddType.train || type == WishlistAddType.ship) {
+        final all = _allJourneys ??= await _loadJourneys();
+        final kind = type == WishlistAddType.train
+            ? JourneyKind.train
+            : JourneyKind.ship;
+        journeys = [
+          for (final j in all)
+            if (j.kind == kind && journeyMatchesQuery(j, query)) j,
+        ];
+      }
       if (!mounted || query != _query || type != _type) return;
       setState(() {
         _results = venues;
         _eventResults = events;
+        _vineyardResults = vineyards;
+        _journeyResults = journeys;
         _searching = false;
       });
     } catch (_) {
@@ -225,6 +315,8 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       _type = type;
       _results = [];
       _eventResults = [];
+      _vineyardResults = [];
+      _journeyResults = [];
     });
     if (_query.length >= 2) _runSearch();
   }
@@ -257,6 +349,20 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
         eventId: event.id,
         openSource: AnalyticsOpenSource.wishlist,
       ),
+    ),
+  );
+
+  void _openVineyard(Vineyard vineyard) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => VineyardDetailScreen(vineyardId: vineyard.id),
+    ),
+  );
+
+  void _openJourney(Journey journey) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => JourneyDetailScreen(journeyId: journey.id),
     ),
   );
 
@@ -405,6 +511,21 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                               selected: _type == WishlistAddType.event,
                               onTap: () => _setType(WishlistAddType.event),
                             ),
+                            VenueTypeChip(
+                              label: 'Wine estate',
+                              selected: _type == WishlistAddType.estate,
+                              onTap: () => _setType(WishlistAddType.estate),
+                            ),
+                            VenueTypeChip(
+                              label: 'Train',
+                              selected: _type == WishlistAddType.train,
+                              onTap: () => _setType(WishlistAddType.train),
+                            ),
+                            VenueTypeChip(
+                              label: 'Ship',
+                              selected: _type == WishlistAddType.ship,
+                              onTap: () => _setType(WishlistAddType.ship),
+                            ),
                           ],
                         ),
                         const SizedBox(height: 20),
@@ -474,6 +595,9 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
               WishlistAddType.restaurant => 'Search for a restaurant to save.',
               WishlistAddType.hotel => 'Search for a hotel to save.',
               WishlistAddType.event => 'Search for an upcoming event to save.',
+              WishlistAddType.estate => 'Search for a wine estate to save.',
+              WishlistAddType.train => 'Search for a train to save.',
+              WishlistAddType.ship => 'Search for a ship to save.',
             },
             style: CsFonts.sans(
               color: AppColors.secondaryOnDark,
@@ -498,7 +622,10 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
         ),
       );
     }
-    if (_results.isEmpty && _eventResults.isEmpty) {
+    if (_results.isEmpty &&
+        _eventResults.isEmpty &&
+        _vineyardResults.isEmpty &&
+        _journeyResults.isEmpty) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 24),
         child: Center(
@@ -542,6 +669,32 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
               ),
             ),
             trailing: _heart(e.id, onTap: () => _toggleEvent(e)),
+          ),
+        for (final v in _vineyardResults)
+          VineyardPickerRow(
+            vineyard: v,
+            onTap: () => _openVineyard(v),
+            trailing: _heart(
+              v.id,
+              onTap: () => _toggleId(
+                v.id,
+                add: () => _addVineyard(v.id),
+                remove: () => _removeVineyard(v.id),
+              ),
+            ),
+          ),
+        for (final j in _journeyResults)
+          JourneyPickerRow(
+            journey: j,
+            onTap: () => _openJourney(j),
+            trailing: _heart(
+              j.id,
+              onTap: () => _toggleId(
+                j.id,
+                add: () => _addJourney(j.id),
+                remove: () => _removeJourney(j.id),
+              ),
+            ),
           ),
       ],
     );

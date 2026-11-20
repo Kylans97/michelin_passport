@@ -43,7 +43,7 @@ String stampSemanticLabel(PassportStampItem item, {String? countryName}) {
     KeysAward(:final count) =>
       count == 1 ? '1 MICHELIN Key' : '$count MICHELIN Keys',
     EventTypeAward(:final label) => label.toLowerCase(),
-    JourneyKindAward(:final label) => label.toLowerCase(),
+    KindLabelAward(:final label) => label.toLowerCase(),
   };
   final country = (countryName != null && countryName.isNotEmpty)
       ? countryName

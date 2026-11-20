@@ -10,11 +10,13 @@ import '../../../data/repositories/photo_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
 import '../../../data/repositories/visit_wine_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
+import '../../../data/repositories/vineyard_repository.dart';
 import '../../../data/repositories/wishlist_repository.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/save_outcome.dart';
 import '../../../models/visit.dart';
 import '../../../models/visit_wine.dart';
+import '../../../models/vineyard.dart';
 import '../../photos/staged_photo.dart';
 import '../../photos/widgets/staged_photo_picker.dart';
 import '../../visits/widgets/menu_type_selector.dart';
@@ -63,14 +65,21 @@ import '../../../core/theme/cs_fonts.dart';
 /// changes", and leaves photos to Visit/Stay Detail, where they already
 /// live. Added 2026-10-31 — until then a visit could only be deleted and
 /// logged again.
+///
+/// [onEstatePicked] adds a third chip, "Wine estate", to step 1. An estate
+/// visit is not a `visits` row (it is `vineyard_visits`, with its own
+/// sheet), so picking one closes this sheet and hands the estate to the
+/// caller, which opens the estate visit sheet. Added 2026-11-20.
 Future<SavedVisit?> showAddVisitFlow(
   BuildContext context, {
   required String userId,
   PassportVenue? initialVenue,
   Visit? existingVisit,
-}) {
+  ValueChanged<Vineyard>? onEstatePicked,
+}) async {
   assert(existingVisit == null || initialVenue != null);
-  return showModalBottomSheet<SavedVisit>(
+  Vineyard? pickedEstate;
+  final saved = await showModalBottomSheet<SavedVisit>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
@@ -78,11 +87,16 @@ Future<SavedVisit?> showAddVisitFlow(
       userId: userId,
       initialVenue: initialVenue,
       existingVisit: existingVisit,
+      onEstatePicked: onEstatePicked == null
+          ? null
+          : (vineyard) => pickedEstate = vineyard,
     ),
   );
+  if (pickedEstate != null) onEstatePicked?.call(pickedEstate!);
+  return saved;
 }
 
-enum _VenueType { restaurant, hotel }
+enum _VenueType { restaurant, hotel, estate }
 
 String _venueId(PassportVenue v) => switch (v) {
   RestaurantVenue(:final restaurant) => restaurant.id,
@@ -98,10 +112,12 @@ class _AddVisitSheet extends StatefulWidget {
   final String userId;
   final PassportVenue? initialVenue;
   final Visit? existingVisit;
+  final ValueChanged<Vineyard>? onEstatePicked;
   const _AddVisitSheet({
     required this.userId,
     this.initialVenue,
     this.existingVisit,
+    this.onEstatePicked,
   });
 
   @override
@@ -129,6 +145,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   List<PassportVenue> _searchResults = [];
   List<PassportVenue>? _wishlist; // null = still loading
   List<PassportVenue>? _eventVenues; // null = still loading
+  // Wine estates: the catalogue is small, so it is read once and filtered
+  // on the device, the way the producer suggestion already works.
+  List<Vineyard>? _allVineyards; // null = not loaded yet
+  List<Vineyard> _wishlistVineyards = const [];
 
   PassportVenue? _selectedVenue;
   DateTime _visitedOn = DateTime.now();
@@ -265,6 +285,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   Future<void> _runSearch() async {
     final query = _query;
     if (query.length < 2 || !mounted) return;
+    if (_type == _VenueType.estate) return; // filtered on the device
     setState(() => _searching = true);
     try {
       final List<PassportVenue> results = _type == _VenueType.restaurant
@@ -287,7 +308,34 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
       _type = type;
       _searchResults = [];
     });
+    if (type == _VenueType.estate) {
+      _loadVineyards();
+      return;
+    }
     if (_query.length >= 2) _runSearch();
+  }
+
+  Future<void> _loadVineyards() async {
+    if (_allVineyards != null) return;
+    final client = Supabase.instance.client;
+    try {
+      final all = await VineyardRepository(client).getAll();
+      final wishlisted = await _wishlistRepo
+          .getWishlistVineyards(widget.userId)
+          .catchError((Object _) => const <Vineyard>[]);
+      if (!mounted) return;
+      setState(() {
+        _allVineyards = all;
+        _wishlistVineyards = wishlisted;
+      });
+    } catch (_) {
+      if (mounted) setState(() => _allVineyards = const []);
+    }
+  }
+
+  void _selectEstate(Vineyard vineyard) {
+    widget.onEstatePicked?.call(vineyard);
+    Navigator.pop(context);
   }
 
   void _selectVenue(PassportVenue venue) {
@@ -582,6 +630,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                                 wishlist: _wishlist,
                                 eventVenues: _eventVenues,
                                 onSelect: _selectVenue,
+                                showEstates: widget.onEstatePicked != null,
+                                allVineyards: _allVineyards,
+                                wishlistVineyards: _wishlistVineyards,
+                                onSelectEstate: _selectEstate,
                               )
                             : _Step2(
                                 venue: _selectedVenue!,
@@ -703,6 +755,10 @@ class _Step1 extends StatelessWidget {
   final List<PassportVenue>? wishlist;
   final List<PassportVenue>? eventVenues;
   final ValueChanged<PassportVenue> onSelect;
+  final bool showEstates;
+  final List<Vineyard>? allVineyards;
+  final List<Vineyard> wishlistVineyards;
+  final ValueChanged<Vineyard> onSelectEstate;
 
   const _Step1({
     required this.type,
@@ -715,6 +771,10 @@ class _Step1 extends StatelessWidget {
     required this.wishlist,
     required this.eventVenues,
     required this.onSelect,
+    required this.showEstates,
+    required this.allVineyards,
+    required this.wishlistVineyards,
+    required this.onSelectEstate,
   });
 
   bool _matchesType(PassportVenue v) =>
@@ -750,19 +810,28 @@ class _Step1 extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 18),
-          Row(
+          // A Wrap, not a Row: three chips can run out of width on a
+          // narrow phone at a large text size.
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
             children: [
               VenueTypeChip(
                 label: 'Restaurant',
                 selected: type == _VenueType.restaurant,
                 onTap: () => onTypeChanged(_VenueType.restaurant),
               ),
-              const SizedBox(width: 10),
               VenueTypeChip(
                 label: 'Hotel',
                 selected: type == _VenueType.hotel,
                 onTap: () => onTypeChanged(_VenueType.hotel),
               ),
+              if (showEstates)
+                VenueTypeChip(
+                  label: 'Wine estate',
+                  selected: type == _VenueType.estate,
+                  onTap: () => onTypeChanged(_VenueType.estate),
+                ),
             ],
           ),
           const SizedBox(height: 20),
@@ -792,7 +861,14 @@ class _Step1 extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 8),
-          if (isSearching)
+          if (type == _VenueType.estate)
+            _EstateResults(
+              all: allVineyards,
+              wishlisted: wishlistVineyards,
+              query: query,
+              onSelect: onSelectEstate,
+            )
+          else if (isSearching)
             _SearchResultsSection(searching: searching, results: results, onSelect: onSelect)
           else ...[
             if (wishlistForType.isNotEmpty) ...[
@@ -863,6 +939,66 @@ class _SearchResultsSection extends StatelessWidget {
         const SizedBox(height: 8),
         PickerRowList(children: [
           for (final v in results) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
+        ]),
+      ],
+    );
+  }
+}
+
+/// Step 1 with "Wine estate" chosen: the wishlisted estates first, then
+/// every estate whose name matches what was typed.
+class _EstateResults extends StatelessWidget {
+  final List<Vineyard>? all;
+  final List<Vineyard> wishlisted;
+  final String query;
+  final ValueChanged<Vineyard> onSelect;
+  const _EstateResults({
+    required this.all,
+    required this.wishlisted,
+    required this.query,
+    required this.onSelect,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final vineyards = all;
+    if (vineyards == null) {
+      return const Padding(
+        padding: EdgeInsets.symmetric(vertical: 24),
+        child: Center(
+          child: SizedBox(
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(color: AppColors.textOnDark, strokeWidth: 1.5),
+          ),
+        ),
+      );
+    }
+    final searching = query.length >= 2;
+    final shown = searching
+        ? matchingVineyards(vineyards, query, limit: 20)
+        : wishlisted;
+    if (shown.isEmpty) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 32),
+        child: Center(
+          child: Text(
+            searching ? 'No matches.' : 'Search for the estate above.',
+            style: CsFonts.sans(color: AppColors.secondaryOnDark, fontSize: 13.5),
+          ),
+        ),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: 16),
+        if (!searching) ...[
+          const _SectionLabel('FROM YOUR WISHLIST'),
+          const SizedBox(height: 8),
+        ],
+        PickerRowList(children: [
+          for (final v in shown) VineyardPickerRow(vineyard: v, onTap: () => onSelect(v)),
         ]),
       ],
     );

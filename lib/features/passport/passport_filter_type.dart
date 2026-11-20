@@ -14,12 +14,14 @@ enum PassportFilterType {
   restaurants,
   hotels,
   events,
-  journeys;
+  journeys,
+  estates;
 
   String get label => switch (this) {
     PassportFilterType.restaurants => 'Restaurants',
     PassportFilterType.hotels => 'Hotels',
     PassportFilterType.events => 'Events',
     PassportFilterType.journeys => 'Journeys',
+    PassportFilterType.estates => 'Wine estates',
   };
 }

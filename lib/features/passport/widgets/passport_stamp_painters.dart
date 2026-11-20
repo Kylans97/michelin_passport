@@ -98,7 +98,7 @@ class StampPaintData {
     (StarsAward a, StarsAward b) => a.count == b.count,
     (KeysAward a, KeysAward b) => a.count == b.count,
     (EventTypeAward a, EventTypeAward b) => a.label == b.label,
-    (JourneyKindAward a, JourneyKindAward b) => a.label == b.label,
+    (KindLabelAward a, KindLabelAward b) => a.label == b.label,
     _ => false,
   };
 
@@ -259,7 +259,7 @@ void _drawAward(
         );
         x += iconSize + 2.0;
       }
-    case EventTypeAward(:final label) || JourneyKindAward(:final label):
+    case EventTypeAward(:final label) || KindLabelAward(:final label):
       final painter = TextPainter(
         text: TextSpan(
           text: label,

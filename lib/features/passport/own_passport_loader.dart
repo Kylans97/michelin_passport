@@ -4,7 +4,9 @@ import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/journey_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/visited_repository.dart';
+import '../../data/repositories/vineyard_repository.dart';
 import '../../models/venue_entry.dart';
+import '../../models/vineyard_visit.dart';
 import 'passport_booklet_data.dart';
 
 /// Everything the CURRENT user's own booklet renders, loaded in one pass.
@@ -21,6 +23,7 @@ class OwnPassport {
   final List<VenueEntry> entries;
   final List<EventAttendanceEntry> eventEntries;
   final List<JourneyTravelEntry> journeyEntries;
+  final List<VineyardVisitEntry> vineyardEntries;
 
   final String holderName;
   final String? avatarUrl;
@@ -36,6 +39,7 @@ class OwnPassport {
     required this.entries,
     required this.eventEntries,
     this.journeyEntries = const [],
+    this.vineyardEntries = const [],
     required this.holderName,
     required this.avatarUrl,
     required this.memberNumber,
@@ -67,6 +71,15 @@ Future<OwnPassport> loadOwnPassport(SupabaseClient client) async {
   } catch (_) {
     // Same as events: never fails the rest of Passport.
   }
+
+  // Before the estates migration is applied the table does not exist; the
+  // Passport then simply has no estate stamps, as with journeys above.
+  var vineyardEntries = <VineyardVisitEntry>[];
+  try {
+    vineyardEntries = await VineyardRepository(
+      client,
+    ).loadPassportVineyardVisits(uid);
+  } catch (_) {}
 
   var name = 'Member';
   String? avatarUrl;
@@ -103,10 +116,12 @@ Future<OwnPassport> loadOwnPassport(SupabaseClient client) async {
       entries: entries,
       eventEntries: eventEntries,
       journeyEntries: journeyEntries,
+      vineyardEntries: vineyardEntries,
     ),
     entries: entries,
     eventEntries: eventEntries,
     journeyEntries: journeyEntries,
+    vineyardEntries: vineyardEntries,
     holderName: name,
     avatarUrl: avatarUrl,
     memberNumber: memberNumber,

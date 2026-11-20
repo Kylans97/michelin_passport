@@ -5,9 +5,7 @@ import '../../core/analytics/impressions.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
-import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
-import '../../core/widgets/cs_section_title.dart';
 import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/booking_window.dart';
@@ -15,8 +13,6 @@ import '../../models/event.dart';
 import '../../models/journey.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
-import '../journeys/journey_detail_screen.dart';
-import '../journeys/widgets/journey_card.dart';
 import '../events/events_screen.dart';
 import '../passport/widgets/passport_empty_state.dart';
 import 'event_wishlist_schedule.dart';
@@ -26,38 +22,34 @@ import 'widgets/add_to_wishlist_sheet.dart';
 import 'widgets/event_wishlist_empty_state.dart';
 import 'widgets/wishlist_venue_cards.dart';
 import 'wishlist_view_model.dart';
+import '../../models/vineyard.dart';
+import '../events/event_detail_screen.dart';
+import '../hotels/hotel_detail_screen.dart';
+import '../journeys/journey_detail_screen.dart';
+import '../journeys/widgets/journey_card.dart';
+import '../restaurants/restaurant_detail_screen.dart';
+import '../vineyards/vineyard_detail_screen.dart';
+import '../vineyards/widgets/vineyard_card.dart';
+import 'widgets/wishlist_place_card.dart';
+import 'widgets/wishlist_view_selector.dart';
 
-/// My Wishlist: restaurants, hotels and (EVENT WISHLIST V1) events the
-/// user wants to go to someday — distinct from Planned Visits/Stays
-/// ("I intend to go around this date") and, for Events specifically,
-/// distinct from Going/Interested (see event_wishlist_schedule.dart's own
-/// header comment — saving to Wishlist is a separate user action from
-/// either). No All category (see [defaultWishlistVenueType] for the
-/// default-selection rule). Restaurants/Hotels go through the shared
-/// [PassportVenue] abstraction Explore/Passport use; Events are a
-/// different canonical entity and are held/rendered separately (see
-/// [_events] alongside [_venues]).
+/// My Wishlist: everything the member wants to go to someday —
+/// restaurants, hotels, events, wine estates, trains and ships — distinct
+/// from Planned Visits/Stays ("I intend to go around this date") and, for
+/// Events, from Going/Interested (event_wishlist_schedule.dart).
 ///
-/// Passport Unified Experience V1: re-homed from a pushed, independently
-/// scaffolded screen into one of [PassportScreen]'s four local
-/// subsections — no back button, no separate title (the shared Passport
-/// header above this body covers that), reached via the persistent
-/// Passport/Wishlist/Ranking/Trips tab bar rather than
-/// `Navigator.push`/pop. The previous "Trips" quick-link at the top of the
-/// list was removed then — Trips is a sibling tab one tap away on the
-/// shared bar, so the in-body shortcut was redundant; it has not been
-/// reintroduced.
+/// "Wishlist, calmer" (product owner, 2026-11-20, option A with option B
+/// as its first entry): the chip row and the large "YOUR WISHLIST" title
+/// are gone — the Wishlist tab above already says where you are. One quiet
+/// line ("Restaurants 18 ▾") opens a sheet listing each saved kind with
+/// its count; its first entry, "Everything, by place", groups all of it by
+/// region, with trains and ships together at the end. The + sits on the
+/// same line.
 ///
-/// PASSPORT — WISHLIST UI POLISH V1: the content itself now follows the
-/// same deep-green-environment/ivory-object grammar Passport's own
-/// collection and Ranking's cards were finalized on, replacing the
-/// previous large ivory content sheet with compact list rows. Saved
-/// venues render as [WishlistRestaurantCard]/[WishlistHotelCard] — ivory
-/// cards in the same family as Passport's collection cards — floating
-/// individually on the persistent deep-green canvas, with visible
-/// breathing room between them rather than one continuous surface.
-/// Removing a card updates the in-memory list immediately (no full
-/// reload/loading flash) and reverts if the server call fails.
+/// Lives inside [PassportScreen] as one of its local subsections — no back
+/// button, no own title. Saved venues render as [WishlistRestaurantCard]/
+/// [WishlistHotelCard]; removing one updates the list at once and reverts
+/// if the server call fails.
 class WishlistBody extends StatefulWidget {
   const WishlistBody({super.key});
 
@@ -70,21 +62,26 @@ class _WishlistBodyState extends State<WishlistBody> {
     Supabase.instance.client,
   );
 
-  // Wishlist has no "All" category (unlike Explore/Passport) — Restaurants/
-  // Hotels/Events (EVENT WISHLIST V1 adds the third).
-  WishlistVenueType _venueType = WishlistVenueType.restaurants;
-  bool _defaultApplied = false;
+  WishlistView _view = WishlistView.everything;
 
   List<PassportVenue>? _venues; // null until the first load completes.
   // Restaurant id -> the member's month and when it opens.
   Map<String, WishlistPlan> _plans = const {};
   List<Event>? _events; // null until the first load completes.
-  List<Journey>? _journeys; // trains and ships; null until loaded.
+  List<Journey> _journeys = const []; // trains and ships
+  List<Vineyard> _vineyards = const []; // wine estates
   bool _loading = true; // true only for the very first, blocking load.
   bool _loadError = false;
   bool _refreshing = false; // guards overlapping refresh calls.
 
   String get _userId => Supabase.instance.client.auth.currentUser?.id ?? '';
+
+  WishlistContents get _contents => WishlistContents(
+    venues: _venues ?? const [],
+    events: _events ?? const [],
+    vineyards: _vineyards,
+    journeys: _journeys,
+  );
 
   @override
   void initState() {
@@ -98,30 +95,33 @@ class _WishlistBodyState extends State<WishlistBody> {
     try {
       final venuesFuture = _repo.loadWishlistVenues(_userId);
       final eventsFuture = _repo.getWishlistEvents(_userId);
-      // Plans are an extra: a failure leaves the cards without them rather
-      // than failing the whole wishlist.
       final plansFuture = _repo.loadPlans().catchError(
         (_) => <String, WishlistPlan>{},
       );
-      // Journeys are an enhancement: a failed lookup leaves the tab empty
-      // rather than the whole wishlist in error.
+      // Journeys and estates are enhancements: a failure (or, for
+      // estates, the migration not yet applied) leaves them out rather
+      // than putting the whole Wishlist in error.
       final journeysFuture = _repo
           .getWishlistJourneys(_userId)
           .catchError((Object _) => const <Journey>[]);
+      final vineyardsFuture = _repo
+          .getWishlistVineyards(_userId)
+          .catchError((Object _) => const <Vineyard>[]);
       final venues = await venuesFuture;
       final events = await eventsFuture;
       final plans = await plansFuture;
       final journeys = await journeysFuture;
+      final vineyards = await vineyardsFuture;
       if (!mounted) return;
       setState(() {
         _venues = venues;
         _plans = plans;
         _events = events;
         _journeys = List.of(journeys);
+        _vineyards = List.of(vineyards);
         _loading = false;
         _loadError = false;
       });
-      _applyDefaultVenueType(venues, events, hasJourneys: journeys.isNotEmpty);
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -155,28 +155,6 @@ class _WishlistBodyState extends State<WishlistBody> {
     }
   }
 
-  void _applyDefaultVenueType(
-    List<PassportVenue> venues,
-    List<Event> events, {
-    bool hasJourneys = false,
-  }) {
-    if (_defaultApplied) return;
-    _defaultApplied = true;
-    final defaultType = defaultWishlistVenueType(
-      venues,
-      events,
-      hasJourneys: hasJourneys,
-    );
-    if (defaultType != _venueType && mounted) {
-      setState(() => _venueType = defaultType);
-    }
-  }
-
-  // Removes [venue] from the visible list immediately — no full reload, no
-  // loading flash — and persists via the same WishlistRepository every
-  // other wishlist entry point in the app already uses. Reverts (re-inserts
-  // at its original position) if the server call fails, mirroring
-  // PassportCollectionBody's own optimistic-toggle-then-revert pattern.
   Future<void> _remove(PassportVenue venue) async {
     final venues = _venues;
     if (venues == null) return;
@@ -196,10 +174,6 @@ class _WishlistBodyState extends State<WishlistBody> {
     }
   }
 
-  // Mirrors [_remove] exactly — optimistic removal from [_events],
-  // reverted if the server call fails. Never deletes the Event itself,
-  // never touches Going/Interested/Attendance (Wishlist and event social
-  // status are separate concepts — see this feature's own spec).
   Future<void> _removeEvent(Event event) async {
     final events = _events;
     if (events == null) return;
@@ -225,16 +199,29 @@ class _WishlistBodyState extends State<WishlistBody> {
             HotelVenue(:final hotel) => hotel.id,
           },
         for (final e in _events ?? const <Event>[]) e.id,
+        for (final v in _vineyards) v.id,
+        for (final j in _journeys) j.id,
       },
-      startWith: switch (_venueType) {
-        WishlistVenueType.restaurants => WishlistAddType.restaurant,
-        WishlistVenueType.hotels => WishlistAddType.hotel,
-        WishlistVenueType.events => WishlistAddType.event,
-        // Journeys are saved from their own page, not from this sheet.
-        WishlistVenueType.journeys => WishlistAddType.restaurant,
+      startWith: switch (_view) {
+        WishlistView.everything ||
+        WishlistView.restaurants => WishlistAddType.restaurant,
+        WishlistView.hotels => WishlistAddType.hotel,
+        WishlistView.events => WishlistAddType.event,
+        WishlistView.estates => WishlistAddType.estate,
+        WishlistView.trains => WishlistAddType.train,
+        WishlistView.ships => WishlistAddType.ship,
       },
     );
     if (changed && mounted) await _load();
+  }
+
+  Future<void> _openSelector() async {
+    final picked = await showWishlistViewSheet(
+      context,
+      contents: _contents,
+      current: _view,
+    );
+    if (picked != null && mounted) setState(() => _view = picked);
   }
 
   void _openExploreEvents() => Navigator.push(
@@ -242,23 +229,26 @@ class _WishlistBodyState extends State<WishlistBody> {
     MaterialPageRoute(builder: (_) => const EventsScreen()),
   );
 
-  bool _matchesFilter(PassportVenue venue) => switch (_venueType) {
-    WishlistVenueType.events => false,
-    WishlistVenueType.journeys => false,
-    WishlistVenueType.restaurants => venue is RestaurantVenue,
-    WishlistVenueType.hotels => venue is HotelVenue,
-  };
+  // Opens a saved thing's own page, then reloads: its heart may have
+  // taken it off the wishlist.
+  Future<void> _openTarget(Object target) async {
+    final Widget page = switch (target) {
+      RestaurantVenue(:final restaurant) => RestaurantDetailScreen(
+        restaurant: restaurant,
+      ),
+      HotelVenue(:final hotel) => HotelDetailScreen(hotel: hotel),
+      Event(:final id) => EventDetailScreen(eventId: id),
+      Vineyard(:final id) => VineyardDetailScreen(vineyardId: id),
+      Journey(:final id) => JourneyDetailScreen(journeyId: id),
+      _ => throw ArgumentError.value(target, 'target'),
+    };
+    await Navigator.push(context, MaterialPageRoute(builder: (_) => page));
+    await _load();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final isEvents = _venueType == WishlistVenueType.events;
-    final isJourneys = _venueType == WishlistVenueType.journeys;
-    final allVenues = _venues ?? [];
-    final items = allVenues.where(_matchesFilter).toList();
-    final isHotels = _venueType == WishlistVenueType.hotels;
-    final events = _events ?? [];
-    final schedule = scheduleEventWishlist(events);
-
+    final contents = _contents;
     return ColoredBox(
       color: AppColors.deepGreen,
       child: RefreshIndicator(
@@ -271,52 +261,24 @@ class _WishlistBodyState extends State<WishlistBody> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
                   CsSpacing.pageHorizontal,
-                  CsSpacing.md,
-                  CsSpacing.pageHorizontal,
-                  0,
-                ),
-                // Scrolls sideways: four chips do not fit a narrow phone.
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      for (
-                        var i = 0;
-                        i < WishlistVenueType.values.length;
-                        i++
-                      ) ...[
-                        if (i > 0) const SizedBox(width: CsSpacing.sm),
-                        CsFilterChip(
-                          label: WishlistVenueType.values[i].label,
-                          selected: WishlistVenueType.values[i] == _venueType,
-                          onTap: () => setState(
-                            () => _venueType = WishlistVenueType.values[i],
-                          ),
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.xl,
-                  CsSpacing.pageHorizontal,
+                  CsSpacing.xs,
+                  CsSpacing.pageHorizontal - CsSpacing.sm,
                   CsSpacing.md,
                 ),
                 child: Row(
                   children: [
-                    const Expanded(
-                      child: CsSectionTitle(
-                        'YOUR WISHLIST',
-                        color: AppColors.textOnDark,
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: WishlistViewSelector(
+                          view: _view,
+                          count: _loading || _loadError
+                              ? null
+                              : contents.countOf(_view),
+                          onTap: _loading || _loadError ? null : _openSelector,
+                        ),
                       ),
                     ),
-                    // Save a restaurant, hotel or event without leaving
-                    // Wishlist.
                     if (!_loading && !_loadError)
                       IconButton(
                         onPressed: _openAdd,
@@ -343,74 +305,141 @@ class _WishlistBodyState extends State<WishlistBody> {
                 hasScrollBody: false,
                 child: _ErrorState(onRetry: _load),
               )
-            else if (isEvents)
-              ..._eventSlivers(schedule)
-            else if (isJourneys)
-              ..._journeySlivers(_journeys ?? const [])
-            else if (items.isEmpty)
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: PassportEmptyState(
-                  message: isHotels
-                      ? 'No hotels saved yet.'
-                      : 'No restaurants saved yet.',
-                ),
-              )
             else
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  // Per-item padding (not a shared SliverPadding) — the
-                  // same pattern PassportCollectionBody's own collection
-                  // list uses: visible deep-green breathing room between
-                  // each floating ivory card, with the last card getting
-                  // extra bottom clearance for the floating nav pill rather
-                  // than sitting under it.
-                  (context, i) {
-                    final item = items[i];
-                    final (type, id) = switch (item) {
-                      RestaurantVenue(:final restaurant) => (
-                        AnalyticsEntityType.restaurant,
-                        restaurant.id,
-                      ),
-                      HotelVenue(:final hotel) => (
-                        AnalyticsEntityType.hotel,
-                        hotel.id,
-                      ),
-                    };
-                    trackImpression(type, id, ImpressionSurface.wishlist);
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        CsSpacing.pageHorizontal,
-                        0,
-                        CsSpacing.pageHorizontal,
-                        i == items.length - 1
-                            ? floatingNavClearance(context)
-                            : CsSpacing.md,
-                      ),
-                      child: switch (item) {
-                        RestaurantVenue(:final restaurant) =>
-                          WishlistRestaurantCard(
-                            restaurant: restaurant,
-                            onRemove: () => _remove(item),
-                            plan: _plans[restaurant.id],
-                            onEditPlan: _userId.isEmpty
-                                ? null
-                                : () => _editPlan(restaurant),
-                          ),
-                        HotelVenue(:final hotel) => WishlistHotelCard(
-                          hotel: hotel,
-                          onRemove: () => _remove(item),
-                        ),
-                      },
-                    );
-                  },
-                  childCount: items.length,
-                ),
-              ),
+              ..._viewSlivers(contents),
           ],
         ),
       ),
     );
+  }
+
+  List<Widget> _viewSlivers(WishlistContents contents) => switch (_view) {
+    WishlistView.everything => _placeSlivers(contents),
+    WishlistView.restaurants => _venueSlivers(
+      contents.restaurants,
+      empty: 'No restaurants saved yet.',
+    ),
+    WishlistView.hotels => _venueSlivers(
+      contents.hotels,
+      empty: 'No hotels saved yet.',
+    ),
+    WishlistView.events => _eventSlivers(
+      scheduleEventWishlist(contents.events),
+    ),
+    WishlistView.estates => _cardSlivers([
+      for (final v in contents.vineyards)
+        VineyardCard(vineyard: v, onTap: () => _openTarget(v)),
+    ], empty: 'No wine estates saved yet.'),
+    WishlistView.trains => _cardSlivers([
+      for (final j in contents.trains)
+        JourneyCard(journey: j, onTap: () => _openTarget(j)),
+    ], empty: 'No trains saved yet.'),
+    WishlistView.ships => _cardSlivers([
+      for (final j in contents.ships)
+        JourneyCard(journey: j, onTap: () => _openTarget(j)),
+    ], empty: 'No ships saved yet.'),
+  };
+
+  List<Widget> _placeSlivers(WishlistContents contents) {
+    final groups = groupWishlistByPlace(contents);
+    if (groups.isEmpty) {
+      return const [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: PassportEmptyState(
+            message: 'Nothing saved yet. Tap + to add a place.',
+          ),
+        ),
+      ];
+    }
+    return _cardSlivers([
+      for (final group in groups)
+        WishlistPlaceCard(group: group, onTapItem: _openTarget),
+    ], empty: '');
+  }
+
+  List<Widget> _venueSlivers(
+    List<PassportVenue> items, {
+    required String empty,
+  }) {
+    if (items.isEmpty) {
+      return [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: PassportEmptyState(message: empty),
+        ),
+      ];
+    }
+    return [
+      SliverList(
+        delegate: SliverChildBuilderDelegate((context, i) {
+          final item = items[i];
+          final (type, id) = switch (item) {
+            RestaurantVenue(:final restaurant) => (
+              AnalyticsEntityType.restaurant,
+              restaurant.id,
+            ),
+            HotelVenue(:final hotel) => (AnalyticsEntityType.hotel, hotel.id),
+          };
+          trackImpression(type, id, ImpressionSurface.wishlist);
+          return Padding(
+            padding: EdgeInsets.fromLTRB(
+              CsSpacing.pageHorizontal,
+              0,
+              CsSpacing.pageHorizontal,
+              i == items.length - 1
+                  ? floatingNavClearance(context)
+                  : CsSpacing.md,
+            ),
+            child: switch (item) {
+              RestaurantVenue(:final restaurant) => WishlistRestaurantCard(
+                restaurant: restaurant,
+                onRemove: () => _remove(item),
+                plan: _plans[restaurant.id],
+                onEditPlan: _userId.isEmpty
+                    ? null
+                    : () => _editPlan(restaurant),
+              ),
+              HotelVenue(:final hotel) => WishlistHotelCard(
+                hotel: hotel,
+                onRemove: () => _remove(item),
+              ),
+            },
+          );
+        }, childCount: items.length),
+      ),
+    ];
+  }
+
+  /// A plain list of cards with the page gutter and the floating nav's
+  /// clearance after the last one.
+  List<Widget> _cardSlivers(List<Widget> cards, {required String empty}) {
+    if (cards.isEmpty) {
+      return [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: PassportEmptyState(message: empty),
+        ),
+      ];
+    }
+    return [
+      SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, i) => Padding(
+            padding: EdgeInsets.fromLTRB(
+              CsSpacing.pageHorizontal,
+              0,
+              CsSpacing.pageHorizontal,
+              i == cards.length - 1
+                  ? floatingNavClearance(context)
+                  : CsSpacing.md,
+            ),
+            child: cards[i],
+          ),
+          childCount: cards.length,
+        ),
+      ),
+    ];
   }
 
   // EVENT WISHLIST V1 — UPCOMING (nearest first) then, only when non-empty,
@@ -480,50 +509,6 @@ class _WishlistBodyState extends State<WishlistBody> {
           return dimmed ? Opacity(opacity: 0.7, child: card) : card;
         }, childCount: events.length),
       );
-}
-
-extension on _WishlistBodyState {
-  List<Widget> _journeySlivers(List<Journey> journeys) {
-    if (journeys.isEmpty) {
-      return [
-        const SliverFillRemaining(
-          hasScrollBody: false,
-          child: PassportEmptyState(message: 'No trains or ships saved yet.'),
-        ),
-      ];
-    }
-    return [
-      SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, i) => Padding(
-            padding: EdgeInsets.fromLTRB(
-              CsSpacing.pageHorizontal,
-              0,
-              CsSpacing.pageHorizontal,
-              i == journeys.length - 1
-                  ? floatingNavClearance(context)
-                  : CsSpacing.md,
-            ),
-            child: JourneyCard(
-              journey: journeys[i],
-              onTap: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) =>
-                        JourneyDetailScreen(journeyId: journeys[i].id),
-                  ),
-                );
-                // The heart on the detail page may have removed it.
-                await _load();
-              },
-            ),
-          ),
-          childCount: journeys.length,
-        ),
-      ),
-    ];
-  }
 }
 
 class _ErrorState extends StatelessWidget {
