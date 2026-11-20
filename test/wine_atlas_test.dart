@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/features/map/globe/globe_region_layer.dart';
 import 'package:michelin_passport/features/map/wine/wine_region_sheet.dart';
 import 'package:michelin_passport/models/wine_atlas.dart';
 
@@ -150,6 +151,79 @@ void main() {
       appellations: const [],
     );
     expect(atlas.globeRegions.map((r) => r.name), ['Burgundy']);
+  });
+
+  group('outlines (20261101590000)', () {
+    Map<String, dynamic> row(Object? outline) => {
+      'id': 'r1',
+      'region_code': 'wr_0003',
+      'name': 'Champagne',
+      'country_code': 'FR',
+      'latitude': 49.05,
+      'longitude': 4.0,
+      'summary': 'Bubbles.',
+      'outline': outline,
+    };
+
+    test('polygons of rings of [lng, lat] read as (lng, lat)', () {
+      final region = WineRegion.fromMap(
+        row([
+          [
+            [
+              [3.9, 48.9],
+              [4.2, 48.9],
+              [4.2, 49.3],
+              [3.9, 48.9],
+            ],
+          ],
+        ]),
+      );
+      expect(region.outline.single.single.first, (3.9, 48.9));
+    });
+
+    test('no column, null or a malformed value reads as no outline', () {
+      expect(WineRegion.fromMap(row(null)).outline, isEmpty);
+      expect(WineRegion.fromMap(row('nope')).outline, isEmpty);
+      expect(
+        WineRegion.fromMap(
+          row([
+            [
+              ['x', 1],
+            ],
+          ]),
+        ).outline,
+        isEmpty,
+      );
+    });
+
+    test('a region flies in on its outline\'s corners, else its point', () {
+      const point = GlobeRegion(
+        id: 'r1',
+        label: 'Champagne',
+        latitude: 49.05,
+        longitude: 4.0,
+        radiusKm: 50,
+      );
+      expect(point.extent, [(49.05, 4.0)]);
+      const shaped = GlobeRegion(
+        id: 'r1',
+        label: 'Champagne',
+        latitude: 49.05,
+        longitude: 4.0,
+        radiusKm: 50,
+        outline: [
+          [
+            [(3.9, 48.9), (4.2, 48.9), (4.2, 49.3), (3.9, 48.9)],
+          ],
+        ],
+      );
+      expect(shaped.extent, [
+        (48.9, 3.9),
+        (48.9, 4.2),
+        (49.3, 3.9),
+        (49.3, 4.2),
+      ]);
+    });
   });
 
   test('taste words read the 1–5 scale', () {

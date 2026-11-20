@@ -24,7 +24,7 @@ class WineAtlasRepository {
   /// the migration is applied the tables don't exist; that is an error the
   /// caller turns into "no wine layer".
   Future<WineAtlas> load() async {
-    final regions = _client.from('wine_regions').select(_regionColumns);
+    final regions = _loadRegions();
     final grapes = _client.from('grapes').select(_grapeColumns);
     final links = _client
         .from('wine_region_grapes')
@@ -35,22 +35,36 @@ class WineAtlasRepository {
     final results = await Future.wait([regions, grapes, links, appellations]);
     return WineAtlas(
       regions: [
-        for (final row in results[0] as List)
+        for (final row in results[0])
           WineRegion.fromMap(row as Map<String, dynamic>),
       ]..sort((a, b) => a.name.compareTo(b.name)),
       grapes: [
-        for (final row in results[1] as List)
+        for (final row in results[1])
           Grape.fromMap(row as Map<String, dynamic>),
       ]..sort((a, b) => a.name.compareTo(b.name)),
       regionGrapes: [
-        for (final row in results[2] as List)
+        for (final row in results[2])
           RegionGrape.fromMap(row as Map<String, dynamic>),
       ],
       appellations: [
-        for (final row in results[3] as List)
+        for (final row in results[3])
           WineAppellation.fromMap(row as Map<String, dynamic>),
       ],
     );
+  }
+
+  /// The regions with their outlines (20261101590000). Until that
+  /// migration is applied the column doesn't exist (42703): the regions
+  /// then load without it and draw as patches around their point.
+  Future<List<dynamic>> _loadRegions() async {
+    try {
+      return await _client
+          .from('wine_regions')
+          .select('$_regionColumns, outline');
+    } on PostgrestException catch (e) {
+      if (e.code != '42703') rethrow;
+      return await _client.from('wine_regions').select(_regionColumns);
+    }
   }
 
   /// How many of [userId]'s logged wines come from each region — through

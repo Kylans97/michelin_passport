@@ -138,6 +138,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
         latitude: region.latitude,
         longitude: region.longitude,
         radiusKm: region.radiusKm,
+        outline: region.outline,
         marked: (_myWineCounts[region.id] ?? 0) > 0,
       ),
   ];
@@ -177,7 +178,10 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     final shown = region.parentId == null
         ? region
         : (_atlas.region(region.parentId!) ?? region);
-    await _globeController.flyToPoint(shown.latitude, shown.longitude);
+    final globeRegion = _globeRegions.where((r) => r.id == shown.id);
+    if (globeRegion.isNotEmpty) {
+      await _globeController.flyToRegion(globeRegion.first);
+    }
     if (mounted) await _openRegion(region);
   }
 

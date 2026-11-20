@@ -32,7 +32,7 @@ class GlobeController {
   /// (latitude tilted no further than ±40°, so the globe stays upright),
   /// whole globe in view. Auto-rotation, if enabled, carries on from here.
   /// Turns the globe to [latitude]/[longitude], zoomed in to at least
-  /// [zoom] — how a wine-list search shows the region it found.
+  /// [zoom] — how wine mode opens on Europe.
   Future<void> flyToPoint(
     double latitude,
     double longitude, {
@@ -48,6 +48,14 @@ class GlobeController {
         zoom: math.max(camera.zoom, zoom),
       ),
     );
+  }
+
+  /// Flies in on the whole of [region] — how a wine-list search shows the
+  /// region it found.
+  Future<void> flyToRegion(GlobeRegion region) async {
+    final state = _state;
+    if (state == null) return;
+    await state._flyTo(state._regionCamera(region));
   }
 
   void showWholeGlobeAround(List<(double, double)> points) {
@@ -121,6 +129,8 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
   static const _resumeAfter = Duration(seconds: 12);
   static const _resumeMaxZoom = 1.3;
   static const _flyToPinMinZoom = 4.0;
+  // How close a tapped region is shown: Champagne's 120 km fills the view.
+  static const _regionMaxZoom = 24.0;
 
   final _camera = ValueNotifier(const GlobeCamera(latitude: 30, longitude: 5));
   GlobeOutlines? _outlines;
@@ -320,15 +330,20 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
   }
 
   Future<void> _tapRegion(GlobeRegion region) async {
-    final camera = _camera.value;
-    await _flyTo(
-      camera.copyWith(
-        latitude: region.latitude,
-        longitude: region.longitude,
-        zoom: math.max(camera.zoom, 3.0),
-      ),
-    );
+    await _flyTo(_regionCamera(region));
     if (mounted) widget.onRegionTap?.call(region);
+  }
+
+  /// Flies in until the whole region fills the globe's view, never out:
+  /// a region tapped while zoomed in further stays as close.
+  GlobeCamera _regionCamera(GlobeRegion region) {
+    final camera = _camera.value;
+    final fit = fitGlobeCamera(
+      region.extent,
+      fallback: camera,
+      singlePointZoom: _regionMaxZoom,
+    );
+    return fit.copyWith(zoom: math.max(fit.zoom, math.min(camera.zoom, 24)));
   }
 
   Future<void> _tapCluster(List<MapPin> members, Size size) async {

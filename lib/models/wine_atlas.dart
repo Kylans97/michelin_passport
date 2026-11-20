@@ -25,6 +25,13 @@ class WineRegion {
   final String? pairing;
   final String? labelNote;
 
+  /// The region's shape (20261101590000): polygons, each a list of rings
+  /// (outer first, then holes), each ring (longitude, latitude) pairs —
+  /// the union of the municipalities in its official specification. Empty
+  /// when there is no outline yet; the globe then draws a patch around
+  /// [latitude]/[longitude].
+  final List<List<List<(double, double)>>> outline;
+
   const WineRegion({
     required this.id,
     required this.code,
@@ -42,6 +49,7 @@ class WineRegion {
     this.redTannin,
     this.pairing,
     this.labelNote,
+    this.outline = const [],
   });
 
   factory WineRegion.fromMap(Map<String, dynamic> map) => WineRegion(
@@ -61,6 +69,7 @@ class WineRegion {
     redTannin: (map['red_tannin'] as num?)?.toInt(),
     pairing: map['pairing'] as String?,
     labelNote: map['label_note'] as String?,
+    outline: _outline(map['outline']),
   );
 
   bool get hasRedProfile =>
@@ -312,6 +321,29 @@ class WineAtlas {
       return byScore != 0 ? byScore : a.$2.compareTo(b.$2);
     });
     return [for (final s in scored.take(limit)) s.$3];
+  }
+}
+
+/// Reads the stored polygons; anything malformed reads as no outline
+/// rather than a broken shape.
+List<List<List<(double, double)>>> _outline(Object? value) {
+  if (value is! List) return const [];
+  try {
+    return [
+      for (final polygon in value)
+        [
+          for (final ring in polygon as List)
+            [
+              for (final point in ring as List)
+                (
+                  ((point as List)[0] as num).toDouble(),
+                  (point[1] as num).toDouble(),
+                ),
+            ],
+        ],
+    ];
+  } catch (_) {
+    return const [];
   }
 }
 
