@@ -9,6 +9,7 @@ import 'gault_millau_restaurant_guide_screen.dart';
 import 'michelin_hotel_guide_screen.dart';
 import 'michelin_restaurant_guide_screen.dart';
 import 'selection_restaurant_guide_screen.dart';
+import '../vineyards/vineyards_screen.dart';
 import 'shared_guide_restaurant_screen.dart';
 import 'widgets/guide_destination_row.dart';
 import 'widgets/guide_family_section.dart';
@@ -139,6 +140,14 @@ class _GuidesBody extends StatelessWidget {
                 label: 'Hotels',
                 descriptor: "The world's most remarkable stays.",
                 onTap: () => _open(context, const FiftyBestHotelGuideScreen()),
+              ),
+              // The estates came from The World's 50 Best Vineyards, so
+              // they live here rather than as their own row on Explore
+              // (product owner, 2026-11-20).
+              GuideDestinationRow(
+                label: 'Vineyards',
+                descriptor: "The World's 50 Best Vineyards, estate by estate.",
+                onTap: () => _open(context, const VineyardsScreen()),
               ),
               for (final region in _regionalFiftyBest)
                 GuideDestinationRow(

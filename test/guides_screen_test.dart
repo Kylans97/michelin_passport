@@ -168,5 +168,20 @@ void main() {
       expect(find.text('North America'), findsOneWidget);
       expect(find.text('GUÍA REPSOL'), findsOneWidget);
     });
+
+    testWidgets('Vineyards sits under The World\'s 50 Best, after Hotels', (
+      tester,
+    ) async {
+      await tester.pumpWidget(_wrap(const GuidesScreen()));
+      expect(find.text('Vineyards'), findsOneWidget);
+      expect(
+        tester.getTopLeft(find.text('Vineyards')).dy,
+        greaterThan(tester.getTopLeft(find.text("THE WORLD'S 50 BEST")).dy),
+      );
+      expect(
+        tester.getTopLeft(find.text('Vineyards')).dy,
+        lessThan(tester.getTopLeft(find.text('Asia')).dy),
+      );
+    });
   });
 }

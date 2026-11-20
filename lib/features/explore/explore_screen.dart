@@ -35,7 +35,6 @@ import '../guides/guides_screen.dart';
 import '../guides/widgets/guide_destination_row.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../journeys/journeys_screen.dart';
-import '../vineyards/vineyards_screen.dart';
 import '../private_chefs/private_chefs_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'discovery_selectors.dart';
@@ -131,11 +130,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
       .getFreshFindCandidates();
   late final Future<List<Hotel>> _freshHotelsFuture = _hotelRepo
       .getFreshFindCandidates();
-  // Wine Estates shows only once estates exist: a database without the
-  // vineyards migration, or without reviewed estates, shows no row at all.
-  late final Future<bool> _hasVineyardsFuture = VineyardRepository(
-    Supabase.instance.client,
-  ).hasAny().catchError((Object _) => false);
   // The Selection, newest first. A failure leaves the section out rather
   // than failing Explore, like every other discovery section.
   late final Future<List<SelectionEntry>> _selectionFuture = _selectionRepo
@@ -517,11 +511,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
     MaterialPageRoute(builder: (_) => const JourneysScreen()),
   );
 
-  void _openVineyards() => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => const VineyardsScreen()),
-  );
-
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
@@ -581,18 +570,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
               onTap: _openJourneys,
               surface: CsSurface.dark,
             ),
-            FutureBuilder<bool>(
-              future: _hasVineyardsFuture,
-              builder: (context, snap) => snap.data == true
-                  ? GuideDestinationRow(
-                      label: 'Wine Estates',
-                      descriptor:
-                          "The World's 50 Best Vineyards, estate by estate.",
-                      onTap: _openVineyards,
-                      surface: CsSurface.dark,
-                    )
-                  : const SizedBox.shrink(),
-            ),
+            // Wine Estates moved into Collections, under The World's 50
+            // Best as Vineyards (product owner, 2026-11-20): every estate
+            // comes from that list. Explore search still finds them.
           ],
         ),
       ),
