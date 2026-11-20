@@ -190,6 +190,58 @@ class JourneyRoute {
   }
 }
 
+/// One stop of a route (`public.journey_route_stops`), in [stopOrder].
+/// Stops come only from the operator's own itinerary
+/// (supabase/data/enrichment/journeys/journey_route_stops_20261120.csv);
+/// a route the operator's pages did not settle has none.
+class JourneyRouteStop {
+  final String routeId;
+  final int stopOrder;
+  final String place;
+  final String countryCode;
+  final double? latitude;
+  final double? longitude;
+
+  const JourneyRouteStop({
+    required this.routeId,
+    required this.stopOrder,
+    required this.place,
+    required this.countryCode,
+    this.latitude,
+    this.longitude,
+  });
+
+  factory JourneyRouteStop.fromMap(Map<String, dynamic> map) =>
+      JourneyRouteStop(
+        routeId: map['route_id'] as String,
+        stopOrder: (map['stop_order'] as num).toInt(),
+        place: map['place'] as String,
+        countryCode: (map['country_code'] as String).trim(),
+        latitude: (map['latitude'] as num?)?.toDouble(),
+        longitude: (map['longitude'] as num?)?.toDouble(),
+      );
+
+  bool get hasCoordinates => latitude != null && longitude != null;
+}
+
+/// The stops of each route that can be drawn: two or more, every one with
+/// coordinates, in order. A route with a stop missing its coordinates is
+/// left out whole rather than drawn with a gap that would misplace it.
+Map<String, List<JourneyRouteStop>> drawableRouteStops(
+  Iterable<JourneyRouteStop> stops,
+) {
+  final byRoute = <String, List<JourneyRouteStop>>{};
+  for (final stop in stops) {
+    byRoute.putIfAbsent(stop.routeId, () => []).add(stop);
+  }
+  return {
+    for (final entry in byRoute.entries)
+      if (entry.value.length >= 2 && entry.value.every((s) => s.hasCoordinates))
+        entry.key: entry.value
+          ..sort((a, b) => a.stopOrder.compareTo(b.stopOrder)),
+  };
+}
+
 enum JourneyTravelVisibility {
   private,
   friends;

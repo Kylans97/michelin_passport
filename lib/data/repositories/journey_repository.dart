@@ -104,6 +104,20 @@ class JourneyRepository {
     return [for (final row in rows as List) JourneyRoute.fromMap(row)];
   }
 
+  /// The stops of [routeIds], one query for all of them, ordered within
+  /// each route. Routes without stops are simply absent.
+  Future<List<JourneyRouteStop>> getRouteStops(List<String> routeIds) async {
+    if (routeIds.isEmpty) return [];
+    final rows = await _client
+        .from('journey_route_stops')
+        .select(
+          'route_id, stop_order, place, country_code, latitude, longitude',
+        )
+        .inFilter('route_id', routeIds)
+        .order('stop_order');
+    return [for (final row in rows as List) JourneyRouteStop.fromMap(row)];
+  }
+
   /// Catalogue restaurants linked as dining partners — id and name only;
   /// the detail screen loads the full restaurant when one is tapped.
   Future<List<({String id, String name})>> getDiningPartners(
