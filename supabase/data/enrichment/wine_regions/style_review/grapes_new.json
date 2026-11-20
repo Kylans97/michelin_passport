@@ -1,0 +1,633 @@
+[
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0018"
+    },
+    "field": "tastes",
+    "current": [
+      "Ripe pear",
+      "Pineapple",
+      "Elderflower"
+    ],
+    "proposed": [
+      "Tropical fruit",
+      "Citrus",
+      "Hazelnut"
+    ],
+    "verdict": "replaced",
+    "sources": [
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/solaris-the-cold-climate-safety-net.html",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html",
+      "https://www.winegrowers.info/varieties/vine-varieties/Solaris.htm",
+      "https://www.gbvg.uk/grape/solaris",
+      "https://en.wikipedia.org/wiki/Solaris_(grape)",
+      "https://www.meininger.de/wein/rebsorten/Solaris"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0018"
+    },
+    "field": "body",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winegrowers.info/varieties/vine-varieties/Solaris.htm",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/solaris-the-cold-climate-safety-net.html"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0019"
+    },
+    "field": "summary",
+    "current": "A disease-resistant grape with Riesling among its parents: fresh and fruity, in a lighter Riesling style.",
+    "proposed": "A disease-resistant white from Freiburg with Riesling in its family tree: fruity and fairly full, Riesling-like but with softer acidity.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=17127",
+      "https://agriculture.public.lu/dam-assets/innovation-forschung-projekte/piwi3/piwi-factsheet-johanniter-23-25-en.pdf",
+      "https://de.wikipedia.org/wiki/Johanniter_(Rebsorte)",
+      "https://www.wein-abc.de/weinlexikon/johanniter/",
+      "https://www.winegrowers.info/varieties/vine-varieties/Johanniter.htm",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0019"
+    },
+    "field": "tastes",
+    "current": [
+      "Green apple",
+      "Lemon",
+      "Peach"
+    ],
+    "proposed": [
+      "Green apple",
+      "Citrus",
+      "Pear"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winegrowers.info/varieties/vine-varieties/Johanniter.htm",
+      "https://www.grandcruwijnen.nl/en/wines/druif/johanniter",
+      "https://www.viniou.com/grape-varieties/967_johanniter",
+      "https://www.meininger.de/en/wine/awarded-wines/2013-johanniter-trocken"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0019"
+    },
+    "field": "body",
+    "current": 2,
+    "proposed": 3,
+    "verdict": "adjusted",
+    "sources": [
+      "https://de.wikipedia.org/wiki/Johanniter_(Rebsorte)",
+      "https://www.wein-abc.de/weinlexikon/johanniter/",
+      "https://www.winegrowers.info/varieties/vine-varieties/Johanniter.htm",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0019"
+    },
+    "field": "acidity",
+    "current": 4,
+    "proposed": 3,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.wein-abc.de/weinlexikon/johanniter/",
+      "https://www.winegrowers.info/varieties/vine-varieties/Johanniter.htm",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0019"
+    },
+    "field": "similar",
+    "current": {
+      "grape_code": "gr_0008",
+      "note": "the parent: more intense"
+    },
+    "proposed": {
+      "grape_code": "gr_0008",
+      "note": "in its family tree: crisper, with more acidity"
+    },
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=17127",
+      "https://agriculture.public.lu/dam-assets/innovation-forschung-projekte/piwi3/piwi-factsheet-johanniter-23-25-en.pdf",
+      "https://www.wein-abc.de/weinlexikon/johanniter/",
+      "https://www.winegrowers.info/varieties/vine-varieties/Johanniter.htm"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0020"
+    },
+    "field": "summary",
+    "current": "A newer disease-resistant grape with a pink skin: fresh, with a little more body than most.",
+    "proposed": "A disease-resistant white bred in Freiburg, with pink-skinned berries: often fresh and Sauvignon-like, sometimes rounder and fuller.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=22629",
+      "https://de.wikipedia.org/wiki/Souvignier_gris",
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "https://www.agrar.steiermark.at/cms/dokumente/11305331_13888112/bddc2115/2023-02%20Souvignier%20gris%20-%20optimaler%20Lesezeitpunkt.pdf",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html",
+      "https://srv-clst-301-data66.zhaw.ch/bitstream/11475/24113/2/2021_Schumacher_Souvignier-gris-Resultate.pdf"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0020"
+    },
+    "field": "tastes",
+    "current": [
+      "Pear",
+      "Grapefruit",
+      "Melon"
+    ],
+    "proposed": [
+      "Grapefruit",
+      "Pear",
+      "Stone fruit"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.agrar.steiermark.at/cms/dokumente/11305331_13888112/bddc2115/2023-02%20Souvignier%20gris%20-%20optimaler%20Lesezeitpunkt.pdf",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html",
+      "https://www.falstaff.com/en/wines/weingut-lanz-2018-souvignier-gris",
+      "https://www.rewe.de/shop/p/zukunftsweine-souvignier-gris-weisswein-trocken-0-75l/7318505"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0021"
+    },
+    "field": "summary",
+    "current": "The most widely planted disease-resistant red in northern Europe: deep in colour, with soft tannins.",
+    "proposed": "One of the first disease-resistant grapes planted widely, bred in Germany in 1967: deep in colour and full, with noticeable tannin.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "https://www.deutscheweine.de/rebsorte/92/regent",
+      "https://de.wikipedia.org/wiki/Regent_(Rebsorte)",
+      "https://en.wikipedia.org/wiki/Regent_(grape)",
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=4572"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0021"
+    },
+    "field": "tastes",
+    "current": [
+      "Cherry",
+      "Blackcurrant",
+      "Plum"
+    ],
+    "proposed": [
+      "Cherry",
+      "Blackcurrant"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.deutscheweine.de/rebsorte/92/regent",
+      "https://en.wikipedia.org/wiki/Regent_(grape)"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0021"
+    },
+    "field": "body",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.deutscheweine.de/rebsorte/92/regent",
+      "https://de.wikipedia.org/wiki/Regent_(Rebsorte)"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0021"
+    },
+    "field": "tannin",
+    "current": 2,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.deutscheweine.de/rebsorte/92/regent",
+      "https://de.wikipedia.org/wiki/Regent_(Rebsorte)",
+      "https://en.wikipedia.org/wiki/Regent_(grape)"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0022"
+    },
+    "field": "summary",
+    "current": "A gentle, low-acid white related to Pinot Blanc and Chardonnay, at home in Alsace and Luxembourg: round and mild.",
+    "proposed": "A gentle, low-acid white, a full sibling of Chardonnay, often blended with Pinot Blanc and at home in Alsace and Luxembourg: round and mild.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=792",
+      "https://en.wikipedia.org/wiki/Auxerrois_blanc",
+      "https://www.kobrandwineandspirits.com/grape_glossary/auxerrois/",
+      "https://www.viniou.com/grape-varieties/75_auxerrois"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0022"
+    },
+    "field": "tastes",
+    "current": [
+      "Melon",
+      "Yellow apple",
+      "Honey"
+    ],
+    "proposed": [
+      "Pear",
+      "Apple",
+      "Honey"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.viniou.com/grape-varieties/75_auxerrois",
+      "https://www.kobrandwineandspirits.com/grape_glossary/auxerrois/",
+      "https://vinovoss.com/grapes/auxerrois/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0023"
+    },
+    "field": "acidity",
+    "current": 3,
+    "proposed": 2,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.deutscheweine.de/rebsorte/104/m%C3%BCller-thurgau",
+      "https://en.wikipedia.org/wiki/M%C3%BCller-Thurgau",
+      "https://www.enotria.com/wine/grapes/muller-thurgau/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0024"
+    },
+    "field": "tastes",
+    "current": [
+      "Pear",
+      "Lemon",
+      "Honey"
+    ],
+    "proposed": [
+      "Pear",
+      "Lemon",
+      "Almond"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.deutscheweine.de/rebsorte/100/grauburgunder",
+      "https://winefolly.com/grapes/pinot-gris/",
+      "https://en.wikipedia.org/wiki/Pinot_gris"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0025"
+    },
+    "field": "summary",
+    "current": "A disease-resistant grape with Cabernet Sauvignon as a parent: dark, and a little herbal.",
+    "proposed": "A disease-resistant red bred in Freiburg from Cabernet Sauvignon and Solaris: deep in colour, herbal and spicy, with firm tannins.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=20005",
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "https://de.wikipedia.org/wiki/Cabernet_Cortis",
+      "https://www.winegrowers.info/varieties/vine-varieties/Cabernet%20Cortis.htm"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0025"
+    },
+    "field": "tastes",
+    "current": [
+      "Blackcurrant",
+      "Blackberry",
+      "Bell pepper"
+    ],
+    "proposed": [
+      "Blackcurrant",
+      "Herbs",
+      "Spice"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://de.wikipedia.org/wiki/Cabernet_Cortis",
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "https://www.winegrowers.info/varieties/vine-varieties/Cabernet%20Cortis.htm",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0025"
+    },
+    "field": "body",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://de.wikipedia.org/wiki/Cabernet_Cortis",
+      "https://www.winegrowers.info/varieties/vine-varieties/Cabernet%20Cortis.htm",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0025"
+    },
+    "field": "tannin",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://de.wikipedia.org/wiki/Cabernet_Cortis",
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "https://www.winegrowers.info/varieties/vine-varieties/Cabernet%20Cortis.htm"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0026"
+    },
+    "field": "summary",
+    "current": "A disease-resistant grape bred to taste like Pinot Noir: light, with red fruit.",
+    "proposed": "A disease-resistant red sold as a Pinot Noir type, though DNA points to Cabernet Sauvignon and Regent as parents: soft, with dark fruit.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=19994",
+      "https://de.wikipedia.org/wiki/Pinotin",
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html",
+      "https://agriculture.public.lu/dam-assets/innovation-forschung-projekte/piwi3/piwi-factsheet-pinotin-23-25-en.pdf"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0026"
+    },
+    "field": "tastes",
+    "current": [
+      "Red cherry",
+      "Raspberry"
+    ],
+    "proposed": [
+      "Dark berries"
+    ],
+    "verdict": "replaced",
+    "sources": [
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html",
+      "https://de.wikipedia.org/wiki/Pinotin",
+      "https://www.falstaff.com/en/wines/weinbau-dr-lindicke-2024-pinotin-1"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0026"
+    },
+    "field": "similar",
+    "current": {
+      "grape_code": "gr_0001",
+      "note": "the original: more delicate"
+    },
+    "proposed": {
+      "grape_code": "gr_0001",
+      "note": "the style it was bred to echo: paler, more delicate"
+    },
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=19994",
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0027"
+    },
+    "field": "summary",
+    "current": "A disease-resistant white with a Sauvignon Blanc-like freshness.",
+    "proposed": "A disease-resistant white bred from Cabernet Sauvignon, with aromas often likened to Sauvignon Blanc.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vivc.de/index.php?r=passport%2Fview&id=22355",
+      "https://en.wikipedia.org/wiki/Cabernet_blanc",
+      "https://de.wikipedia.org/wiki/Cabernet_Blanc",
+      "https://www.winegrowers.info/varieties/vine-varieties/Cabernet%20Blanc.htm",
+      "https://www.reussir.fr/vigne/le-cabernet-blanc-best-seller"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0027"
+    },
+    "field": "tastes",
+    "current": [
+      "Gooseberry",
+      "Grapefruit",
+      "Cut grass"
+    ],
+    "proposed": [
+      "Gooseberry",
+      "Blackcurrant",
+      "Green herbs"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winegrowers.info/varieties/vine-varieties/Cabernet%20Blanc.htm",
+      "http://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/piwis-the-most-promising-varieties.html",
+      "https://www.reussir.fr/vigne/le-cabernet-blanc-best-seller",
+      "https://media.kwastwijnkopers.nl/brochures/2056_weingut-schwarzbock-cabernet-blanc.pdf"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0027"
+    },
+    "field": "acidity",
+    "current": 4,
+    "proposed": 3,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.reussir.fr/vigne/le-cabernet-blanc-best-seller",
+      "https://www.dlr-rnh.rlp.de/Internet/global/themen.nsf/(Web_DLR_RNH_Aktuell_All_XP)/1591D09871C68FC3C1258D8B003492F9/$FILE/Text_Piwi-Pedia_Online.pdf",
+      "https://www.winegrowers.info/varieties/vine-varieties/Cabernet%20Blanc.htm"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0028"
+    },
+    "field": "summary",
+    "current": "California's own story, though the grape came from Croatia: ripe, jammy and spicy, often high in alcohol.",
+    "proposed": "California's own story, though DNA ties it to Croatia's Tribidrag and Italy's Primitivo: ripe, jammy and spicy, often high in alcohol.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/zinfandel/",
+      "https://en.wikipedia.org/wiki/Zinfandel",
+      "https://www.coravin.com/blogs/community/zinfandel-wine-guide"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0028"
+    },
+    "field": "tastes",
+    "current": [
+      "Blackberry",
+      "Black pepper",
+      "Raisin"
+    ],
+    "proposed": [
+      "Blackberry",
+      "Raspberry",
+      "Black pepper"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/zinfandel/",
+      "https://en.wikipedia.org/wiki/Zinfandel",
+      "https://www.coravin.com/blogs/community/zinfandel-wine-guide"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0028"
+    },
+    "field": "similar",
+    "current": {
+      "grape_code": "gr_0005",
+      "note": "just as dark and peppery"
+    },
+    "proposed": {
+      "grape_code": "gr_0005",
+      "note": "another ripe, peppery red"
+    },
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/syrah/",
+      "https://en.wikipedia.org/wiki/Zinfandel",
+      "https://www.coravin.com/blogs/community/zinfandel-wine-guide"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0029"
+    },
+    "field": "similar",
+    "current": {
+      "grape_code": "gr_0004",
+      "note": "just as plush, a little softer"
+    },
+    "proposed": {
+      "grape_code": "gr_0004",
+      "note": "plummy and velvety too"
+    },
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/merlot/",
+      "https://www.decanter.com/wine/grape-varieties/malbec/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0030"
+    },
+    "field": "tastes",
+    "current": [
+      "Red plum",
+      "Bell pepper",
+      "Paprika"
+    ],
+    "proposed": [
+      "Red berries",
+      "Bell pepper",
+      "Spice"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/carmenere/",
+      "https://en.wikipedia.org/wiki/Carm%C3%A9n%C3%A8re",
+      "https://www.decanter.com/wine/grape-varieties/carmenere/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0031"
+    },
+    "field": "tastes",
+    "current": [
+      "Rose",
+      "Peach",
+      "Lemon zest"
+    ],
+    "proposed": [
+      "Flowers",
+      "Peach",
+      "Citrus zest"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/torrontes/",
+      "https://www.enotria.com/wine/grapes/torrontes",
+      "https://en.wikipedia.org/wiki/Torront%C3%A9s"
+    ]
+  }
+]
