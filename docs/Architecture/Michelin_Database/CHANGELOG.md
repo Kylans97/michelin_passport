@@ -6,6 +6,39 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-20 — Seed restaurant coordinates (QA-530–QA-533) — PREPARED, NOT APPLIED
+
+| | |
+|---|---|
+| Applied | **Not applied.** Prepared 2026-11-20 on `claude/trip-map-positions`; awaiting the product owner's approval |
+| Migration | None. Data SQL only |
+| Data file | `trip_map_location_audit/prepared_seed_location_corrections.sql`, one transaction. It moves `location` for 101 restaurants (88 NL, 13 in ES, FR, GB, IT, PE, SE, US); no other column changes. Evidence: `seed_coordinates_staged.csv`, `README.md`, `research/` |
+
+**Why.** On 2026-11-20 the product owner reported that trip-map pins don't always land in the right place. The app-side cause was places at one address hiding each other (fixed in the app; see `docs/Plannnig/CHANGELOG.md`). The data-side cause is the original seed restaurants, `rest_0001`–`rest_0143`. Their coordinates are rounded to at most 4 decimals and sit a median 752 m from the venue: 45 are more than 1 km off, and `rest_0050` is 9.2 km off.
+
+**Source.**
+- Each venue's current address was confirmed by its own website plus the MICHELIN Guide, or World's 50 Best where MICHELIN has no guide.
+- Each confirmed address was then geocoded to one building:
+  - in NL, the BAG address point (PDOK Locatieserver), on exact postcode and house number with the street name checked;
+  - elsewhere, the OpenStreetMap object with the same house number and postcode.
+- 27 Dutch rows were verified at their stored address without research. 26 had the BAG point plus an OSM venue of the same name within 150 m; `rest_0055` matched on BAG street, number and postcode alone.
+- Never matched on name: every row is keyed on its code, its country and its current name.
+
+**Guards.** Each code must still carry the expected name and country. A point moves only while the row still holds the old point, within 5 m. A row at neither the old nor the new point aborts the transaction, and so does any count other than 101 rows ending at the new point.
+
+**Dry run.** Read-only against production, 2026-11-20: all 101 codes still match on name and country, all 101 still hold the old point, and none is at the new point yet.
+
+**Also settles.** The Vyn half of QA-403: `rest_0142`'s new point is 44 m from MICHELIN's pin.
+
+**Still open.**
+- QA-531: 18 rows held back, each with its reason.
+- QA-532: the stored addresses are mostly wrong too, and this file leaves the `address` column alone.
+- QA-533: moves, announced moves, a closure and a rename found during the research.
+
+**Near-miss.** The first automated pass trusted the stored address and found 33 Dutch rows "conflicting" with an OSM venue of the same name. Those conflicts were stale addresses, not stale OSM: De Librije's stored Broerenkerkplein is its former location. Resolving them by picking either side would have put a pin back in the wrong place. Researching the current address first is what fixed them.
+
+---
+
 # 2026-11-16 — Guía Repsol 2026, 2 and 3 Soles, in the shared guide tables
 
 | | |

@@ -149,3 +149,15 @@ more than 1 km.
 - **Before applying,** each correction needs a QA id from `qa_issues.csv`
   and a Michelin_Database changelog entry. Guard each update on the old
   point, as earlier coordinate corrections did.
+
+## Prepared update (not applied)
+
+`prepared_seed_location_corrections.sql` moves `location` for the 101
+confirmed rows (QA-530). It is one guarded transaction:
+- each code must still have the expected name and country;
+- a point moves only while the row still holds the old point (within 5 m);
+- the transaction aborts unless exactly 101 rows end at the new point.
+
+A read-only dry run on 2026-11-20 found all 101 rows still at their old
+point. The Michelin_Database changelog entry is written and marked
+PREPARED, NOT APPLIED; update it with the apply date when the file is run.
