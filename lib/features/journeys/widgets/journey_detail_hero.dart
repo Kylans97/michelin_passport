@@ -43,7 +43,11 @@ class JourneyDetailHero extends StatelessWidget {
       child: Stack(
         children: [
           Positioned.fill(
-            child: CsHeaderDrawing(drawing: drawing, belowToolbar: true),
+            child: CsHeaderDrawing(
+              drawing: drawing,
+              belowToolbar: true,
+              bottomInset: CsHeaderDrawing.heroTextBand,
+            ),
           ),
           // Bottom-weighted vignette so the name stays legible over the
           // drawing — the same treatment VenueDetailHero gives a photo.

@@ -918,6 +918,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     final drawing = CsHeaderDrawing(
       drawing: HeaderDrawing.event(event.id, event.eventType),
       belowToolbar: true,
+      bottomInset: CsHeaderDrawing.heroTextBand,
     );
     final backgroundImage = hasImage
         ? AppNetworkImage(

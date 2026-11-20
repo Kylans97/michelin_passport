@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -268,6 +269,17 @@ class CsHeaderDrawing extends StatelessWidget {
   /// Cords and chains still run up to the top edge. Cards leave it false.
   final bool belowToolbar;
 
+  /// For a detail-page hero: the height of the text over the bottom of the
+  /// hero (eyebrow, name, award chips). The scene is fitted above it, so
+  /// its subject isn't hidden behind the title (product owner, 2026-11-20:
+  /// the drawing sometimes sits relatively low); see [heroTextBand]. 0 for
+  /// cards and thumbnails.
+  final double bottomInset;
+
+  /// The text band every detail hero passes as [bottomInset]: about a
+  /// name on one or two lines plus an eyebrow or a row of awards.
+  static const double heroTextBand = 120;
+
   const CsHeaderDrawing({
     super.key,
     required this.drawing,
@@ -276,6 +288,7 @@ class CsHeaderDrawing extends StatelessWidget {
     this.borderRadius = BorderRadius.zero,
     this.muted = false,
     this.belowToolbar = false,
+    this.bottomInset = 0,
   });
 
   @override
@@ -300,6 +313,7 @@ class CsHeaderDrawing extends StatelessWidget {
                 drawing.resolve(),
                 muted: muted,
                 topInset: topInset,
+                bottomInset: bottomInset,
               ),
             );
           },
@@ -322,7 +336,18 @@ class HeaderDrawingPainter extends CustomPainter {
   /// vignette, rather than on the lamps.
   final double topInset;
 
-  HeaderDrawingPainter(this.variant, {this.muted = false, this.topInset = 0});
+  /// Height at the bottom where the hero's own text sits (eyebrow, name,
+  /// award chips). The scene is fitted into the band between [topInset]
+  /// and that text, so its subject is not hidden behind the title; only
+  /// the ground plane runs on under the text. 0 for cards and thumbnails.
+  final double bottomInset;
+
+  HeaderDrawingPainter(
+    this.variant, {
+    this.muted = false,
+    this.topInset = 0,
+    this.bottomInset = 0,
+  });
 
   static const double _lineWidth = 1.2;
   static const Color _ink = AppColors.textOnDark;
@@ -348,14 +373,31 @@ class HeaderDrawingPainter extends CustomPainter {
 
     final top = topInset.clamp(0.0, size.height / 2);
     final area = Size(size.width, size.height - top);
-    final scale = math.max(
+    var scale = math.max(
       area.width / _designWidth,
       area.height / _designHeight,
     );
-    canvas.translate(
-      (area.width - _designWidth * scale) / 2,
-      top > 0 ? top : (area.height - _designHeight * scale) / 2,
-    );
+    final bottom = bottomInset.clamp(0.0, area.height / 2);
+    var fadeSides = false;
+    if (bottom > 0) {
+      // Fit the scene into the band above the text, letting its lowest
+      // part (the ground) run a little way under the title.
+      final band = area.height - bottom * _textOverlap;
+      final fitted = band / _designHeight;
+      if (fitted < scale) {
+        scale = fitted;
+        fadeSides = true;
+      }
+    }
+    final dx = (area.width - _designWidth * scale) / 2;
+    final dy = top > 0 ? top : (area.height - _designHeight * scale) / 2;
+    if (fadeSides) {
+      // Narrower than the hero now: paint the scene in its own layer and
+      // fade its left and right edges into the background, so its planes
+      // don't end in a hard box.
+      canvas.saveLayer(rect, Paint());
+    }
+    canvas.translate(dx, dy);
     canvas.scale(scale);
 
     final fill = Paint()..style = PaintingStyle.fill;
@@ -428,12 +470,51 @@ class HeaderDrawingPainter extends CustomPainter {
       }
     }
     canvas.restore();
+    if (fadeSides) {
+      final sceneRect = Rect.fromLTWH(0, 0, _designWidth, _designHeight);
+      canvas.drawRect(
+        sceneRect.inflate(1),
+        Paint()
+          ..blendMode = BlendMode.dstIn
+          ..shader = ui.Gradient.linear(
+            sceneRect.centerLeft,
+            sceneRect.centerRight,
+            const [
+              Color(0x00000000),
+              Color(0xFF000000),
+              Color(0xFF000000),
+              Color(0x00000000),
+            ],
+            const [0, 0.2, 0.8, 1],
+          ),
+      );
+      // And its foot, where the ground plane would otherwise stop short
+      // under the title.
+      canvas.drawRect(
+        sceneRect.inflate(1),
+        Paint()
+          ..blendMode = BlendMode.dstIn
+          ..shader = ui.Gradient.linear(
+            sceneRect.topCenter,
+            sceneRect.bottomCenter,
+            const [Color(0xFF000000), Color(0xFF000000), Color(0x00000000)],
+            const [0, 0.82, 1],
+          ),
+      );
+      canvas.restore(); // the scene's layer
+    }
     canvas.restore();
   }
 
+  /// How much of the text band the scene's ground may run under.
+  static const double _textOverlap = 0.3;
+
   @override
   bool shouldRepaint(HeaderDrawingPainter old) =>
-      old.variant != variant || old.muted != muted || old.topInset != topInset;
+      old.variant != variant ||
+      old.muted != muted ||
+      old.topInset != topInset ||
+      old.bottomInset != bottomInset;
 }
 
 // ---------------------------------------------------------------------------
