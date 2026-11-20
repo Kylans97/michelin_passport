@@ -3,7 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/cs_header_drawing.dart';
 import 'package:michelin_passport/data/repositories/event_confirmed_attendance_repository.dart';
 import 'package:michelin_passport/features/passport/widgets/passport_event_card.dart';
 import 'package:michelin_passport/models/event.dart';
@@ -189,7 +189,7 @@ void main() {
       expect(networkImage.url, 'https://example.com/event.jpg');
     });
 
-    testWidgets('falls back to the branded placeholder when neither an '
+    testWidgets('falls back to the line drawing when neither an '
         'attendance photo nor an official Event image exists', (tester) async {
       await tester.pumpWidget(
         _wrap(
@@ -201,7 +201,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byType(CsImagePlaceholder), findsOneWidget);
+      expect(find.byType(CsHeaderDrawing), findsOneWidget);
     });
 
     testWidgets('an empty-string coverPhotoUrl is treated as absent, not '

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/private_chef.dart';
 import '../private_chef_descriptors.dart';
 import '../../../core/widgets/framed_image.dart';
@@ -76,7 +76,11 @@ class PrivateChefDiscoveryCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _ChefCoverPhoto(imageUrl: coverImageUrl, framing: coverFraming),
+              _ChefCoverPhoto(
+                imageUrl: coverImageUrl,
+                framing: coverFraming,
+                drawing: HeaderDrawing.privateChef(chef.id),
+              ),
               const SizedBox(height: CsSpacing.md),
               Text(
                 chef.displayName,
@@ -111,15 +115,19 @@ class PrivateChefDiscoveryCard extends StatelessWidget {
 /// The large portrait cover image — near-full content width, a fixed
 /// editorial aspect ratio (never distorted/stretched), [CsRadius.card]
 /// corners matching this app's established "editorial, not bubbly" card
-/// radius (not a new arbitrary value), and the same branded
-/// [CsImagePlaceholder] fallback used everywhere else in this app on
-/// missing/failed images — at full card size, never a small circular
+/// radius (not a new arbitrary value), and the chef's line drawing
+/// ([CsHeaderDrawing]) on a missing/failed image — at full card size, never a small circular
 /// avatar (Step 2C §10).
 class _ChefCoverPhoto extends StatelessWidget {
   final String? imageUrl;
   final PhotoFraming framing;
+  final HeaderDrawing drawing;
 
-  const _ChefCoverPhoto({required this.imageUrl, required this.framing});
+  const _ChefCoverPhoto({
+    required this.imageUrl,
+    required this.framing,
+    required this.drawing,
+  });
 
   // Portrait, editorial — significantly taller than the 16:9/1:1 shapes
   // used for venue/event photography elsewhere in this app, matching the
@@ -144,7 +152,7 @@ class _ChefCoverPhoto extends StatelessWidget {
     if (url.isEmpty) {
       return AspectRatio(
         aspectRatio: _aspectRatio,
-        child: CsImagePlaceholder(borderRadius: radius, logoScale: 0.28),
+        child: CsHeaderDrawing(drawing: drawing, borderRadius: radius),
       );
     }
     return AspectRatio(
@@ -159,7 +167,7 @@ class _ChefCoverPhoto extends StatelessWidget {
             fit: BoxFit.cover,
             alignment: alignment,
             errorBuilder: (_, _, _) =>
-                CsImagePlaceholder(borderRadius: radius, logoScale: 0.28),
+                CsHeaderDrawing(drawing: drawing, borderRadius: radius),
           ),
         ),
       ),

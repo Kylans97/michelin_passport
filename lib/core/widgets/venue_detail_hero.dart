@@ -14,6 +14,7 @@ import 'framed_image.dart';
 import 'follow_toggle_button.dart';
 import 'hero_photo_chevron.dart';
 import 'app_network_image.dart';
+import 'cs_header_drawing.dart';
 
 /// The current-generation hero for Restaurant/Hotel Detail (UI Consistency
 /// Step 1) — a fresh, Cs-token-based primitive, deliberately NOT a
@@ -109,6 +110,11 @@ class VenueDetailHero extends StatefulWidget {
   /// title, which is the entire visible hero surface today.
   final bool isClosed;
 
+  /// The line drawing shown when there is no photo, or the photo fails to
+  /// load — `HeaderDrawing.restaurant(id)`/`.hotel(id)`. Null keeps the
+  /// plain gradient (every call site that predates the drawings).
+  final HeaderDrawing? drawing;
+
   /// Called once, when the hero goes away, with the ids of the [photos]
   /// that were on screen during this visit — the first one always, then
   /// every one swiped to. Never called in a preview or without [photos].
@@ -138,6 +144,7 @@ class VenueDetailHero extends StatefulWidget {
     this.followBusy = false,
     this.onTapFollow,
     this.isClosed = false,
+    this.drawing,
     this.onPhotosSeen,
   });
 
@@ -221,6 +228,15 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
     );
   }
 
+  /// No photo, or a photo that failed to load: the venue's line drawing
+  /// when the screen passed one, else the gradient. Loading keeps the
+  /// plain gradient, so a photo never appears to replace a picture.
+  Widget _noPhoto(bool isClosed) {
+    final drawing = widget.drawing;
+    if (drawing == null) return _FallbackGradient(isClosed: isClosed);
+    return CsHeaderDrawing(drawing: drawing, muted: isClosed);
+  }
+
   // One variant size for the shown photo and the precached next one, so
   // the precache fills the cache entry the page then reads — measured from
   // the screen, since the hero spans it at [VenueDetailHero.expandedHeight].
@@ -238,6 +254,9 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
   Widget build(BuildContext context) {
     final imageUrls = widget.imageUrls;
     final hasPhoto = imageUrls.isNotEmpty;
+    // A drawing needs the photo's lighter vignette too: the no-photo
+    // vignette fades to solid green and would hide its lower half.
+    final hasBackdrop = hasPhoto || widget.drawing != null;
     final isGallery = imageUrls.length > 1;
     final title = widget.title;
     final isClosed = widget.isClosed;
@@ -310,8 +329,7 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                     loadingBuilder: (_, child, progress) => progress == null
                         ? child
                         : _FallbackGradient(isClosed: isClosed),
-                    errorBuilder: (_, _, _) =>
-                        _FallbackGradient(isClosed: isClosed),
+                    errorBuilder: (_, _, _) => _noPhoto(isClosed),
                   ),
                 ),
               )
@@ -331,12 +349,11 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                   // A failed load falls back to the exact same gradient the
                   // no-photo state uses — never a broken-image icon, and
                   // never a different treatment than "no photo yet".
-                  errorBuilder: (_, _, _) =>
-                      _FallbackGradient(isClosed: isClosed),
+                  errorBuilder: (_, _, _) => _noPhoto(isClosed),
                 ),
               )
             else
-              _FallbackGradient(isClosed: isClosed),
+              _noPhoto(isClosed),
             // Bottom-weighted vignette so the title/badges stay legible
             // regardless of whether there's a photo underneath.
             DecoratedBox(
@@ -346,8 +363,12 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    AppColors.deepGreen.withValues(alpha: hasPhoto ? 0.55 : 0),
-                    AppColors.deepGreen.withValues(alpha: hasPhoto ? 0.9 : 1),
+                    AppColors.deepGreen.withValues(
+                      alpha: hasBackdrop ? 0.55 : 0,
+                    ),
+                    AppColors.deepGreen.withValues(
+                      alpha: hasBackdrop ? 0.9 : 1,
+                    ),
                   ],
                   stops: const [0.0, 0.55, 1.0],
                 ),

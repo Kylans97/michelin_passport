@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/widgets/cs_header_drawing.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
@@ -206,6 +207,7 @@ class _MichelinRestaurantGuideScreenState
                       return GuideVenueCard(
                         title: restaurant.name,
                         imageUrl: restaurant.cardImageUrl,
+                        drawing: HeaderDrawing.restaurant(restaurant.id),
                         imageFraming: restaurant.cardFraming,
                         inlineRecognition: StarRow(count: stars, size: 12),
                         cityName: restaurant.cityName,

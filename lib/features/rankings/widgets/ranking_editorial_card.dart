@@ -3,6 +3,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/photo_framing.dart';
 import '../../../core/theme/cs_fonts.dart';
 
@@ -43,9 +44,13 @@ class RankingEditorialCard extends StatelessWidget {
   final int? rank;
   final String? imageUrl;
   final PhotoFraming imageFraming;
+
+  /// Shown in place of a missing photo — see [VenueThumbnail.drawing].
+  final HeaderDrawing? drawing;
   final String title;
   final String subtitle;
   final Widget? recognition;
+
   /// Null when there is no score to show (an unrated visit) — the line
   /// then holds [visitText] alone, never a fabricated number.
   final String? scoreText;
@@ -57,6 +62,7 @@ class RankingEditorialCard extends StatelessWidget {
     this.rank,
     required this.imageUrl,
     this.imageFraming = PhotoFraming.center,
+    this.drawing,
     required this.title,
     required this.subtitle,
     this.recognition,
@@ -138,6 +144,7 @@ class RankingEditorialCard extends StatelessWidget {
                       rank: rank,
                       imageUrl: imageUrl,
                       framing: imageFraming,
+                      drawing: drawing,
                     ),
                   ),
                 ],
@@ -257,10 +264,12 @@ class _RankedImage extends StatelessWidget {
   final int? rank;
   final String? imageUrl;
   final PhotoFraming framing;
+  final HeaderDrawing? drawing;
   const _RankedImage({
     required this.rank,
     required this.imageUrl,
     required this.framing,
+    this.drawing,
   });
 
   static const _leftCorners = BorderRadius.only(
@@ -275,6 +284,7 @@ class _RankedImage extends StatelessWidget {
       VenueThumbnail(
         imageUrl: imageUrl,
         framing: framing,
+        drawing: drawing,
         width: double.infinity,
         height: double.infinity,
         borderRadius: _leftCorners,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/app_spacing.dart';
+import 'cs_header_drawing.dart';
 import 'cs_image_placeholder.dart';
 import '../../models/photo_framing.dart';
 import 'framed_image.dart';
@@ -34,6 +35,11 @@ class VenueThumbnail extends StatelessWidget {
   /// framing existed.
   final PhotoFraming framing;
 
+  /// The venue's line drawing, shown instead of the monogram when there is
+  /// no photo or it fails to load — `HeaderDrawing.restaurant(id)`/
+  /// `.hotel(id)`. Null keeps the monogram (lists that don't pass one).
+  final HeaderDrawing? drawing;
+
   const VenueThumbnail({
     super.key,
     required this.imageUrl,
@@ -42,6 +48,7 @@ class VenueThumbnail extends StatelessWidget {
     this.height,
     this.borderRadius,
     this.framing = PhotoFraming.center,
+    this.drawing,
   });
 
   // ~15% larger than CsImagePlaceholder's own 0.40 default (0.40 × 1.15).
@@ -56,12 +63,7 @@ class VenueThumbnail extends StatelessWidget {
     final h = height ?? size;
     final radius = borderRadius ?? BorderRadius.circular(AppRadii.sm);
     if (imageUrl == null || imageUrl!.isEmpty) {
-      return CsImagePlaceholder(
-        width: w,
-        height: h,
-        borderRadius: radius,
-        logoScale: _logoScale,
-      );
+      return _fallback(w, h, radius);
     }
     return ClipRRect(
       borderRadius: radius,
@@ -75,15 +77,28 @@ class VenueThumbnail extends StatelessWidget {
             zoom: framing.zoom,
             fit: BoxFit.cover,
             alignment: alignment,
-            errorBuilder: (_, _, _) => CsImagePlaceholder(
-              width: w,
-              height: h,
-              borderRadius: radius,
-              logoScale: _logoScale,
-            ),
+            errorBuilder: (_, _, _) => _fallback(w, h, radius),
           ),
         ),
       ),
+    );
+  }
+
+  Widget _fallback(double w, double h, BorderRadius radius) {
+    final drawing = this.drawing;
+    if (drawing != null) {
+      return CsHeaderDrawing(
+        drawing: drawing,
+        width: w,
+        height: h,
+        borderRadius: radius,
+      );
+    }
+    return CsImagePlaceholder(
+      width: w,
+      height: h,
+      borderRadius: radius,
+      logoScale: _logoScale,
     );
   }
 }

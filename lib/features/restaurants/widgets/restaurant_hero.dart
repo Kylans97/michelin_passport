@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_detail_hero.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/gault_millau_award.dart';
 import '../../../models/guide_award.dart';
 import '../../../models/published_venue_photo.dart';
@@ -138,6 +139,7 @@ class RestaurantHero extends StatelessWidget {
       followBusy: followBusy,
       onTapFollow: onTapFollow,
       isClosed: restaurant.isPermanentlyClosed,
+      drawing: HeaderDrawing.restaurant(restaurant.id),
     );
   }
 }

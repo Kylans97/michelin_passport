@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/widgets/cs_place_card.dart';
 import '../../../models/event.dart';
 import '../../events/event_date_format.dart';
@@ -42,7 +42,10 @@ class EventWishlistCard extends StatelessWidget {
     ].join(', ');
 
     return CsPlaceCard(
-      image: _EventCardImage(imageUrl: event.imageUrl),
+      image: _EventCardImage(
+        imageUrl: event.imageUrl,
+        drawing: HeaderDrawing.event(event.id, event.eventType),
+      ),
       title: event.name,
       subtitle: location,
       awardRow: Text(
@@ -67,19 +70,21 @@ class EventWishlistCard extends StatelessWidget {
 }
 
 /// The card's image slot — a real photo when [imageUrl] is set and loads
-/// successfully, otherwise the branded [CsImagePlaceholder] — mirrors
+/// successfully, otherwise the event type's line drawing
+/// ([CsHeaderDrawing]) — mirrors
 /// `EventCard`'s/`CommunityEventsPreview`'s own identical, independently
 /// duplicated "event thumbnail" pattern (see either's own doc comment for
 /// why each keeps its own small copy rather than sharing one).
 class _EventCardImage extends StatelessWidget {
   final String? imageUrl;
-  const _EventCardImage({required this.imageUrl});
+  final HeaderDrawing drawing;
+  const _EventCardImage({required this.imageUrl, required this.drawing});
 
   @override
   Widget build(BuildContext context) {
     const radius = BorderRadius.all(Radius.circular(CsRadius.medium));
     if (imageUrl == null || imageUrl!.isEmpty) {
-      return const CsImagePlaceholder(borderRadius: radius);
+      return CsHeaderDrawing(drawing: drawing, borderRadius: radius);
     }
     return ClipRRect(
       borderRadius: radius,
@@ -87,7 +92,7 @@ class _EventCardImage extends StatelessWidget {
         imageUrl!,
         fit: BoxFit.cover,
         errorBuilder: (_, _, _) =>
-            const CsImagePlaceholder(borderRadius: radius),
+            CsHeaderDrawing(drawing: drawing, borderRadius: radius),
       ),
     );
   }

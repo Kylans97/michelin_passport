@@ -3,6 +3,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/photo_framing.dart';
 
 /// One result in a Guide catalogue's browsing list — a compact editorial
@@ -50,6 +51,9 @@ class GuideVenueCard extends StatelessWidget {
   /// The manager's framing of that cover — Restaurant/Hotel.coverFraming.
   final PhotoFraming imageFraming;
 
+  /// Shown in place of a missing photo — see [VenueThumbnail.drawing].
+  final HeaderDrawing? drawing;
+
   final VoidCallback onTap;
 
   const GuideVenueCard({
@@ -63,6 +67,7 @@ class GuideVenueCard extends StatelessWidget {
     this.recognitionSemanticLabel,
     this.imageUrl,
     this.imageFraming = PhotoFraming.center,
+    this.drawing,
     required this.onTap,
   });
 
@@ -103,6 +108,7 @@ class GuideVenueCard extends StatelessWidget {
                 VenueThumbnail(
                   imageUrl: imageUrl,
                   framing: imageFraming,
+                  drawing: drawing,
                   size: 52,
                 ),
                 const SizedBox(width: CsSpacing.md),

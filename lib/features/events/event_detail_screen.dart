@@ -9,7 +9,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/utils/event_time.dart';
-import '../../core/widgets/cs_image_placeholder.dart';
+import '../../core/widgets/cs_header_drawing.dart';
 import '../../core/widgets/linked_venue_row.dart';
 import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/venue_about_section.dart';
@@ -45,11 +45,6 @@ import 'widgets/event_intent_controls.dart';
 import 'widgets/event_meta_section.dart';
 import '../../core/widgets/app_network_image.dart';
 import '../../core/theme/cs_fonts.dart';
-
-// Smaller than CsImagePlaceholder's own 0.4 default: a hero is a much
-// larger, wider area than a card thumbnail, so the same relative scale
-// would make the monogram feel oversized.
-const double _heroLogoScale = 0.22;
 
 // EVENT WISHLIST V1 — matches RestaurantDetailScreen's/HotelDetailScreen's
 // own sign-in-required copy convention exactly, worded for the Event
@@ -899,14 +894,18 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           );
 
     final hasImage = event.imageUrl != null && event.imageUrl!.isNotEmpty;
+    // No photo, or one that fails to load: the event type's line drawing,
+    // seeded by the event's id (CsHeaderDrawing).
+    final drawing = CsHeaderDrawing(
+      drawing: HeaderDrawing.event(event.id, event.eventType),
+    );
     final backgroundImage = hasImage
         ? AppNetworkImage(
             event.imageUrl!,
             fit: BoxFit.cover,
-            errorBuilder: (_, _, _) =>
-                const CsImagePlaceholder(logoScale: _heroLogoScale),
+            errorBuilder: (_, _, _) => drawing,
           )
-        : const CsImagePlaceholder(logoScale: _heroLogoScale);
+        : drawing;
     // Editorial Hero + Essentials/Actions polish pass: the one piece of
     // Event identity the hero carries again — a subtle editorial eyebrow,
     // never the generic "EVENT" fallback (EventType.other renders no

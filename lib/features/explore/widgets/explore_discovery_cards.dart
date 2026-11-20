@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../models/event.dart';
@@ -71,7 +71,10 @@ class ExploreFeaturedEventCard extends StatelessWidget {
             children: [
               AspectRatio(
                 aspectRatio: 16 / 9,
-                child: _DiscoveryImage(imageUrl: event.imageUrl),
+                child: _DiscoveryImage(
+                  imageUrl: event.imageUrl,
+                  drawing: HeaderDrawing.event(event.id, event.eventType),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(CsSpacing.cardPadding),
@@ -130,25 +133,24 @@ class ExploreFeaturedEventCard extends StatelessWidget {
 
 // Shared image slot for every discovery card in this file (event, "Worth
 // the Journey", "Stay a Little Longer", Fresh Finds) — a real photo via
-// Image.network when [imageUrl] is populated, the branded
-// [CsImagePlaceholder] otherwise or on a failed load, same fallback
-// pattern as VenueThumbnail. Not VenueThumbnail itself: these cards each
+// Image.network when [imageUrl] is populated, the place's line drawing
+// ([CsHeaderDrawing]) otherwise or on a failed load. Not VenueThumbnail itself: these cards each
 // have their own AspectRatio/fixed-size frame rather than VenueThumbnail's
 // own fixed square/rect shape.
 class _DiscoveryImage extends StatelessWidget {
   final String? imageUrl;
-  final double logoScale;
+  final HeaderDrawing drawing;
   final PhotoFraming framing;
   const _DiscoveryImage({
     required this.imageUrl,
-    this.logoScale = 0.3,
+    required this.drawing,
     this.framing = PhotoFraming.center,
   });
 
   @override
   Widget build(BuildContext context) {
     if (imageUrl == null || imageUrl!.isEmpty) {
-      return CsImagePlaceholder(logoScale: logoScale);
+      return CsHeaderDrawing(drawing: drawing);
     }
     return FramedImage(
       framing: framing,
@@ -157,7 +159,7 @@ class _DiscoveryImage extends StatelessWidget {
         zoom: framing.zoom,
         fit: BoxFit.cover,
         alignment: alignment,
-        errorBuilder: (_, _, _) => CsImagePlaceholder(logoScale: logoScale),
+        errorBuilder: (_, _, _) => CsHeaderDrawing(drawing: drawing),
       ),
     );
   }
@@ -266,8 +268,8 @@ class ExploreDiscoveryRestaurantCard extends StatelessWidget {
                 aspectRatio: 4 / 3,
                 child: _DiscoveryImage(
                   imageUrl: restaurant.cardImageUrl,
+                  drawing: HeaderDrawing.restaurant(restaurant.id),
                   framing: restaurant.cardFraming,
-                  logoScale: 0.32,
                 ),
               ),
               Padding(
@@ -379,8 +381,8 @@ class ExploreDiscoveryHotelCard extends StatelessWidget {
                   height: 72,
                   child: _DiscoveryImage(
                     imageUrl: hotel.cardImageUrl,
+                    drawing: HeaderDrawing.hotel(hotel.id),
                     framing: hotel.cardFraming,
-                    logoScale: 0.34,
                   ),
                 ),
               ),
@@ -509,8 +511,18 @@ class ExploreFreshFindCard extends StatelessWidget {
                 aspectRatio: 4 / 3,
                 child: _DiscoveryImage(
                   imageUrl: item.cardImageUrl,
+                  drawing: switch (item) {
+                    FreshFindRestaurant(:final restaurant) =>
+                      HeaderDrawing.restaurant(restaurant.id),
+                    FreshFindHotel(:final hotel) => HeaderDrawing.hotel(
+                      hotel.id,
+                    ),
+                    FreshFindEvent(:final event) => HeaderDrawing.event(
+                      event.id,
+                      event.eventType,
+                    ),
+                  },
                   framing: item.cardFraming,
-                  logoScale: 0.32,
                 ),
               ),
               Padding(

@@ -3,7 +3,7 @@ import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/widgets/cs_place_card.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../events/event_date_format.dart';
@@ -51,10 +51,18 @@ class PassportEventCard extends StatelessWidget {
       return AppNetworkImage(
         eventImageUrl,
         fit: BoxFit.cover,
-        errorBuilder: (_, _, _) => CsImagePlaceholder(borderRadius: radius),
+        errorBuilder: (_, _, _) => _drawing(radius),
       );
     }
-    return CsImagePlaceholder(borderRadius: radius);
+    return _drawing(radius);
+  }
+
+  Widget _drawing(BorderRadius radius) {
+    final event = entry.event;
+    return CsHeaderDrawing(
+      drawing: HeaderDrawing.event(event.id, event.eventType),
+      borderRadius: radius,
+    );
   }
 
   @override

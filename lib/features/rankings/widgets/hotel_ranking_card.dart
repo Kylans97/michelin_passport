@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../models/hotel.dart';
 import '../../../models/ranking_entry.dart';
@@ -41,6 +42,7 @@ class HotelRankingCard extends StatelessWidget {
     return RankingEditorialCard(
       rank: rank,
       imageUrl: hotel.cardImageUrl,
+      drawing: HeaderDrawing.hotel(hotel.id),
       imageFraming: hotel.cardFraming,
       title: hotel.name,
       subtitle: _locationLabel(hotel),

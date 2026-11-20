@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/event.dart';
 import '../../../models/event_relevance_reason.dart';
 import '../event_date_format.dart';
@@ -61,7 +61,10 @@ class EventCard extends StatelessWidget {
             children: [
               AspectRatio(
                 aspectRatio: 16 / 9,
-                child: _EventImage(imageUrl: event.imageUrl),
+                child: _EventImage(
+                  imageUrl: event.imageUrl,
+                  drawing: HeaderDrawing.event(event.id, event.eventType),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(14),
@@ -121,22 +124,23 @@ class EventCard extends StatelessWidget {
 }
 
 /// The card's banner slot — a real photo when [imageUrl] is set and loads
-/// successfully, otherwise the branded [CsImagePlaceholder] in every other
-/// case (null, empty, or a failed load via [errorBuilder]) — never a
-/// broken-image icon or blank space.
+/// successfully, otherwise the event type's line drawing
+/// ([CsHeaderDrawing]) in every other case (null, empty, or a failed load
+/// via [errorBuilder]) — never a broken-image icon or blank space.
 class _EventImage extends StatelessWidget {
   final String? imageUrl;
-  const _EventImage({required this.imageUrl});
+  final HeaderDrawing drawing;
+  const _EventImage({required this.imageUrl, required this.drawing});
 
   @override
   Widget build(BuildContext context) {
     if (imageUrl == null || imageUrl!.isEmpty) {
-      return const CsImagePlaceholder();
+      return CsHeaderDrawing(drawing: drawing);
     }
     return AppNetworkImage(
       imageUrl!,
       fit: BoxFit.cover,
-      errorBuilder: (_, _, _) => const CsImagePlaceholder(),
+      errorBuilder: (_, _, _) => CsHeaderDrawing(drawing: drawing),
     );
   }
 }

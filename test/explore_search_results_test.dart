@@ -12,7 +12,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
-import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/cs_header_drawing.dart';
 import 'package:michelin_passport/features/explore/models/explore_search_results.dart';
 import 'package:michelin_passport/features/explore/models/explore_search_type.dart';
 import 'package:michelin_passport/features/explore/widgets/explore_event_result_tile.dart';
@@ -241,7 +241,7 @@ void main() {
 
     testWidgets(
       'a restaurant/hotel with a cover photo renders it via Image.network, '
-      'not the branded placeholder — the Flore-shaped state once a venue '
+      'not the line drawing — the Flore-shaped state once a venue '
       'has a published photo',
       (tester) async {
         await tester.pumpWidget(
@@ -266,7 +266,7 @@ void main() {
             ),
           ),
         );
-        expect(find.byType(CsImagePlaceholder), findsNothing);
+        expect(find.byType(CsHeaderDrawing), findsNothing);
         expect(find.byType(Image), findsNWidgets(2));
       },
     );
@@ -289,7 +289,7 @@ void main() {
           ),
         );
         expect(find.byType(Image), findsNothing);
-        expect(find.byType(CsImagePlaceholder), findsNWidgets(2));
+        expect(find.byType(CsHeaderDrawing), findsNWidgets(2));
       },
     );
 

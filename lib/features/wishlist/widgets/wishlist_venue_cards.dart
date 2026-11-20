@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -59,6 +60,7 @@ class WishlistRestaurantCard extends StatelessWidget {
     image: VenueThumbnail(
       imageUrl: restaurant.cardImageUrl,
       framing: restaurant.cardFraming,
+      drawing: HeaderDrawing.restaurant(restaurant.id),
       width: 96,
       height: 96,
       borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),
@@ -112,7 +114,9 @@ class WishlistPlanFooter extends StatelessWidget {
     final status = plan?.statusLine(now);
     return Semantics(
       button: true,
-      label: plan == null ? 'Set when you would like to go' : 'Change the month',
+      label: plan == null
+          ? 'Set when you would like to go'
+          : 'Change the month',
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(CsRadius.small),
@@ -183,6 +187,7 @@ class WishlistHotelCard extends StatelessWidget {
     image: VenueThumbnail(
       imageUrl: hotel.cardImageUrl,
       framing: hotel.cardFraming,
+      drawing: HeaderDrawing.hotel(hotel.id),
       width: 96,
       height: 96,
       borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),

@@ -9,6 +9,7 @@ import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/cs_header_drawing.dart';
 import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/events_repository.dart';
@@ -549,6 +550,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
             followBusy: _followBusy,
             onTapFollow: _toggleFollow,
             isPreview: widget.isPreview,
+            drawing: HeaderDrawing.privateChef(chef.id),
           ),
           SliverToBoxAdapter(
             child: ColoredBox(

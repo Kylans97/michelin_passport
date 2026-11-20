@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../models/ranking_entry.dart';
 import '../../../models/restaurant.dart';
@@ -44,6 +45,7 @@ class PersonalRankingCard extends StatelessWidget {
     return RankingEditorialCard(
       rank: rank,
       imageUrl: restaurant.cardImageUrl,
+      drawing: HeaderDrawing.restaurant(restaurant.id),
       imageFraming: restaurant.cardFraming,
       title: restaurant.name,
       subtitle: _locationLabel(restaurant),

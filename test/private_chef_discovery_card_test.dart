@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
-import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/cs_header_drawing.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_discovery_card.dart';
 import 'package:michelin_passport/models/private_chef.dart';
 
@@ -152,7 +152,7 @@ void main() {
     );
 
     testWidgets(
-      'no cover photo -> large branded placeholder, not a small circular '
+      'no cover photo -> large line drawing, not a small circular '
       'avatar',
       (tester) async {
         await tester.pumpWidget(
@@ -165,9 +165,9 @@ void main() {
             ),
           ),
         );
-        expect(find.byType(CsImagePlaceholder), findsOneWidget);
+        expect(find.byType(CsHeaderDrawing), findsOneWidget);
         expect(find.byType(ClipOval), findsNothing);
-        final size = tester.getSize(find.byType(CsImagePlaceholder));
+        final size = tester.getSize(find.byType(CsHeaderDrawing));
         expect(size.width, greaterThan(120));
       },
     );
@@ -184,7 +184,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byType(CsImagePlaceholder), findsOneWidget);
+      expect(find.byType(CsHeaderDrawing), findsOneWidget);
     });
 
     testWidgets('a real cover photo url renders via Image.network, not the '
@@ -201,7 +201,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byType(CsImagePlaceholder), findsNothing);
+      expect(find.byType(CsHeaderDrawing), findsNothing);
       final image = tester.widget<Image>(find.byType(Image));
       expect(image.fit, BoxFit.cover);
     });

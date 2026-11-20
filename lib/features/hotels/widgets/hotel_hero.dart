@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/venue_detail_hero.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/hotel.dart';
 import '../../../models/published_venue_photo.dart';
 
@@ -88,6 +89,7 @@ class HotelHero extends StatelessWidget {
       followBusy: followBusy,
       onTapFollow: onTapFollow,
       isClosed: hotel.isPermanentlyClosed,
+      drawing: HeaderDrawing.hotel(hotel.id),
     );
   }
 }

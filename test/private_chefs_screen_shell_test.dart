@@ -23,7 +23,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
-import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/cs_header_drawing.dart';
 import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
 import 'package:michelin_passport/features/private_chefs/private_chef_grouping.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_discovery_card.dart';
@@ -288,7 +288,7 @@ void main() {
       expect(find.text('Chef B'), findsOneWidget);
       expect(find.byType(PrivateChefDiscoveryCard), findsNWidgets(2));
       expect(find.byType(ClipOval), findsNothing);
-      expect(find.byType(CsImagePlaceholder), findsNWidgets(2));
+      expect(find.byType(CsHeaderDrawing), findsNWidgets(2));
     });
 
     testWidgets('multiple country groups render vertically, each under '

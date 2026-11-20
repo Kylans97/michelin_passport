@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/widgets/cs_header_drawing.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
@@ -259,6 +260,7 @@ class _FiftyBestRestaurantGuideScreenState
                     return GuideVenueCard(
                       title: entry.restaurant.name,
                       imageUrl: entry.restaurant.cardImageUrl,
+                      drawing: HeaderDrawing.restaurant(entry.restaurant.id),
                       imageFraming: entry.restaurant.cardFraming,
                       metadataLine: Text(
                         '#${entry.rank} · ${entry.year}',
