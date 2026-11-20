@@ -8,6 +8,7 @@ import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/journey_repository.dart';
 import '../../models/venue_entry.dart';
+import '../../models/vineyard_visit.dart';
 import 'models/passport_stamp_item.dart';
 import 'passport_filter_type.dart';
 import 'passport_stamp_source.dart';
@@ -34,6 +35,7 @@ class PassportAllVisitsScreen extends StatefulWidget {
   final List<VenueEntry> entries;
   final List<EventAttendanceEntry> eventEntries;
   final List<JourneyTravelEntry> journeyEntries;
+  final List<VineyardVisitEntry> vineyardEntries;
   final PassportFilterType? initialFilter;
   final void Function(PassportStampItem item) onTapItem;
 
@@ -42,6 +44,7 @@ class PassportAllVisitsScreen extends StatefulWidget {
     required this.entries,
     required this.eventEntries,
     this.journeyEntries = const [],
+    this.vineyardEntries = const [],
     required this.initialFilter,
     required this.onTapItem,
   });
@@ -59,6 +62,7 @@ class _PassportAllVisitsScreenState extends State<PassportAllVisitsScreen> {
       ...buildHotelStampItems(widget.entries),
       ...buildEventStampItems(widget.eventEntries),
       ...buildJourneyStampItems(widget.journeyEntries),
+      ...buildVineyardStampItems(widget.vineyardEntries),
     ]..sort((a, b) => b.date.compareTo(a.date));
     final filter = _filter;
     if (filter == null) return items;
@@ -69,6 +73,7 @@ class _PassportAllVisitsScreenState extends State<PassportAllVisitsScreen> {
             PassportFilterType.hotels => item is HotelStampItem,
             PassportFilterType.events => item is EventStampItem,
             PassportFilterType.journeys => item is JourneyStampItem,
+            PassportFilterType.estates => item is VineyardStampItem,
           },
         )
         .toList();
@@ -173,6 +178,7 @@ class _AllVisitsRow extends StatelessWidget {
     HotelStampItem() => 'HOTEL',
     EventStampItem(:final entry) => entry.event.eventType.label.toUpperCase(),
     JourneyStampItem(:final kindLabel) => kindLabel,
+    VineyardStampItem() => VineyardStampItem.kindLabel,
   };
 
   @override

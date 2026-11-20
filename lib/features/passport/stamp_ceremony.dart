@@ -7,6 +7,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../models/event_confirmed_attendance.dart';
 import '../../models/journey.dart';
 import '../../models/visit.dart';
+import '../../models/vineyard_visit.dart';
 import 'own_passport_loader.dart';
 import 'passport_booklet_data.dart';
 import 'passport_stamp_source.dart';
@@ -24,13 +25,15 @@ import 'widgets/stamp_ceremony_stamper.dart';
 /// by the type, not re-checked at every call site.
 class EarnedStamp {
   /// The id [PassportStampItem.id] carries for this stamp — a `visits`,
-  /// `event_confirmed_attendance` or `journey_travels` uuid.
+  /// `event_confirmed_attendance`, `journey_travels` or `vineyard_visits`
+  /// uuid.
   final String id;
 
   EarnedStamp.visit(Visit visit) : id = visit.id;
   EarnedStamp.attendance(EventConfirmedAttendance attendance)
     : id = attendance.id;
   EarnedStamp.travel(JourneyTravel travel) : id = travel.id;
+  EarnedStamp.estateVisit(VineyardVisit visit) : id = visit.id;
 }
 
 /// Book-keeping for "once per stamp", across every flow in this app

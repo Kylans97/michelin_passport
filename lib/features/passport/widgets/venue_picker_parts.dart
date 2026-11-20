@@ -4,8 +4,11 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_editorial_glyphs.dart' show CsCountryLabel;
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/star_row.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../models/journey.dart';
 import '../../../models/passport_venue.dart';
+import '../../../models/vineyard.dart';
 import '../../../core/theme/cs_fonts.dart';
 
 /// Pieces shared by the green venue pickers — Passport's add-visit flow
@@ -203,4 +206,75 @@ class VenuePickerRow extends StatelessWidget {
       ),
     );
   }
+}
+
+/// A wine estate as a [PickerRow]: its line drawing, name, and where it
+/// is. No award row — the World's 50 Best Vineyards rank is not a MICHELIN
+/// distinction.
+class VineyardPickerRow extends StatelessWidget {
+  final Vineyard vineyard;
+  final VoidCallback onTap;
+  final Widget? trailing;
+  const VineyardPickerRow({
+    super.key,
+    required this.vineyard,
+    required this.onTap,
+    this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) => PickerRow(
+    onTap: onTap,
+    trailing: trailing,
+    title: vineyard.name,
+    thumbnail: VenueThumbnail(
+      imageUrl: null,
+      drawing: HeaderDrawing.vineyard(vineyard.id),
+      size: 52,
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+    ),
+    detail: Text(
+      vineyard.cardPlaceLabel,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: CsFonts.sans(color: AppColors.secondaryOnDark, fontSize: 12.5),
+    ),
+  );
+}
+
+/// A train or ship as a [PickerRow]: its line drawing, name, and its kind
+/// with the operator.
+class JourneyPickerRow extends StatelessWidget {
+  final Journey journey;
+  final VoidCallback onTap;
+  final Widget? trailing;
+  const JourneyPickerRow({
+    super.key,
+    required this.journey,
+    required this.onTap,
+    this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) => PickerRow(
+    onTap: onTap,
+    trailing: trailing,
+    title: journey.name,
+    thumbnail: VenueThumbnail(
+      imageUrl: null,
+      drawing: HeaderDrawing.journey(
+        journey.id,
+        journey.kind,
+        shipType: journey.shipType,
+      ),
+      size: 52,
+      borderRadius: const BorderRadius.all(Radius.circular(4)),
+    ),
+    detail: Text(
+      '${journey.kindLabel} · ${journey.operatorName}',
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      style: CsFonts.sans(color: AppColors.secondaryOnDark, fontSize: 12.5),
+    ),
+  );
 }

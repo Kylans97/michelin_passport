@@ -495,7 +495,11 @@ class _NoPhotoBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final drawing = this.drawing;
     if (drawing != null) {
-      return CsHeaderDrawing(drawing: drawing, belowToolbar: true);
+      return CsHeaderDrawing(
+        drawing: drawing,
+        belowToolbar: true,
+        bottomInset: CsHeaderDrawing.heroTextBand,
+      );
     }
     return const DecoratedBox(
       decoration: BoxDecoration(

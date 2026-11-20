@@ -5,10 +5,12 @@ import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../core/widgets/floating_nav_bar.dart';
 import '../../../models/event.dart';
+import '../../../models/journey.dart';
 import '../../reports/widgets/report_missing_listing_sheet.dart';
 import '../models/explore_search_results.dart';
 import '../widgets/hotel_tile.dart';
 import '../widgets/restaurant_tile.dart';
+import 'catalogue_tiles.dart';
 import 'explore_event_result_tile.dart';
 
 /// Search mode's result list — RESTAURANTS / HOTELS / EVENTS as clearly
@@ -80,10 +82,35 @@ class ExploreSearchResultsView extends StatelessWidget {
                 ),
             ],
           ),
+        if (results.vineyards.isNotEmpty)
+          _ResultSection(
+            label: 'WINE ESTATES',
+            count: results.vineyards.length,
+            children: [
+              for (final vineyard in results.vineyards)
+                VineyardTile(vineyard: vineyard),
+            ],
+          ),
+        if (results.journeys.isNotEmpty)
+          _ResultSection(
+            label: _journeysLabel(results.journeys),
+            count: results.journeys.length,
+            children: [
+              for (final journey in results.journeys)
+                JourneyTile(journey: journey),
+            ],
+          ),
         SizedBox(height: floatingNavClearance(context)),
       ],
     );
   }
+}
+
+String _journeysLabel(List<Journey> journeys) {
+  final trains = journeys.where((j) => j.kind == JourneyKind.train).length;
+  if (trains == journeys.length) return 'TRAINS';
+  if (trains == 0) return 'SHIPS';
+  return 'TRAINS & SHIPS';
 }
 
 class _ResultSection extends StatelessWidget {

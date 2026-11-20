@@ -3,11 +3,13 @@ import '../../models/booking_window.dart';
 import '../../models/event.dart';
 import '../../models/hotel.dart';
 import '../../models/journey.dart';
+import '../../models/vineyard.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import 'events_repository.dart' show EventsRepository;
 import 'hotel_repository.dart' show hotelFullColumns;
 import 'journey_repository.dart' show JourneyRepository;
+import 'vineyard_repository.dart' show VineyardRepository;
 import 'restaurant_repository.dart' show restaurantFullColumns;
 
 // public.wishlist is polymorphic, same shape as public.visits: entity_type +
@@ -23,6 +25,10 @@ const _eventEntity = 'event';
 // Trains and ships, 20261101500000_add_journeys.sql. Every read in shipped
 // builds filters on entity_type, so older builds never see these rows.
 const _journeyEntity = 'journey';
+
+// Wine estates, 20261101570000_add_vineyard_wishlist_and_visits.sql. Shipped
+// builds ignore these rows for the same reason as journeys.
+const _vineyardEntity = 'vineyard';
 
 class WishlistRepository {
   WishlistRepository(this._client);
@@ -240,6 +246,37 @@ class WishlistRepository {
   Future<List<Journey>> getWishlistJourneys(String userId) async {
     final ids = await _wishlistedIds(userId, _journeyEntity);
     return JourneyRepository(_client).loadJourneysByIds(ids);
+  }
+
+  // ── Vineyard API — wine estates, the same shape as journeys ───────────
+
+  Future<bool> isVineyardWishlisted({
+    required String userId,
+    required String vineyardId,
+  }) => _isWishlisted(
+    userId: userId,
+    entityType: _vineyardEntity,
+    entityId: vineyardId,
+  );
+
+  Future<void> addVineyard({
+    required String userId,
+    required String vineyardId,
+  }) => _add(userId: userId, entityType: _vineyardEntity, entityId: vineyardId);
+
+  Future<void> removeVineyard({
+    required String userId,
+    required String vineyardId,
+  }) => _remove(
+    userId: userId,
+    entityType: _vineyardEntity,
+    entityId: vineyardId,
+  );
+
+  /// Every wishlisted estate, added_at-desc.
+  Future<List<Vineyard>> getWishlistVineyards(String userId) async {
+    final ids = await _wishlistedIds(userId, _vineyardEntity);
+    return VineyardRepository(_client).loadByIds(ids);
   }
 
   // ── Combined All/Restaurants/Hotels wishlist ────────────────────────────

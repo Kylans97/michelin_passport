@@ -14,12 +14,20 @@ enum ExploreSearchType {
   all,
   restaurants,
   hotels,
-  events;
+  events,
+  // Added 2026-11-20 ("filter for vineyards, ships, and trains in
+  // explore"): small catalogues, searched on the device.
+  estates,
+  trains,
+  ships;
 
   String get label => switch (this) {
     ExploreSearchType.all => 'All',
     ExploreSearchType.restaurants => 'Restaurants',
     ExploreSearchType.hotels => 'Hotels',
     ExploreSearchType.events => 'Events',
+    ExploreSearchType.estates => 'Wine estates',
+    ExploreSearchType.trains => 'Trains',
+    ExploreSearchType.ships => 'Ships',
   };
 }

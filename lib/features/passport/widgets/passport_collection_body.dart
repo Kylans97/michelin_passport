@@ -11,10 +11,14 @@ import '../../../data/repositories/journey_repository.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../../models/venue_entry.dart';
+import '../../../models/vineyard.dart';
+import '../../../models/vineyard_visit.dart';
 import '../../events/event_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../journeys/journey_detail_screen.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import '../../vineyards/log_estate_visit.dart';
+import '../../vineyards/vineyard_detail_screen.dart';
 import '../models/passport_stamp_item.dart';
 import '../passport_all_visits_screen.dart';
 import '../passport_booklet_data.dart';
@@ -55,6 +59,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   List<VenueEntry> _entries = [];
   List<EventAttendanceEntry> _eventEntries = [];
   List<JourneyTravelEntry> _journeyEntries = [];
+  List<VineyardVisitEntry> _vineyardEntries = [];
 
   String _holderName = 'Member';
   String? _avatarUrl;
@@ -128,6 +133,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
         _entries = passport.entries;
         _eventEntries = passport.eventEntries;
         _journeyEntries = passport.journeyEntries;
+        _vineyardEntries = passport.vineyardEntries;
         _holderName = passport.holderName;
         _avatarUrl = passport.avatarUrl;
         _memberNumber = passport.memberNumber;
@@ -183,7 +189,15 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     HotelStampItem(:final hotel) => _openHotel(hotel),
     EventStampItem(:final entry) => _openEvent(entry.event.id),
     JourneyStampItem(:final entry) => _openJourney(entry.journey.id),
+    VineyardStampItem(:final entry) => _openVineyard(entry.vineyard),
   };
+
+  void _openVineyard(Vineyard vineyard) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => VineyardDetailScreen(vineyardId: vineyard.id),
+    ),
+  );
 
   void _openJourney(String journeyId) => Navigator.push(
     context,
@@ -199,6 +213,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
         entries: _entries,
         eventEntries: _eventEntries,
         journeyEntries: _journeyEntries,
+        vineyardEntries: _vineyardEntries,
         initialFilter: filter,
         onTapItem: _onTapStamp,
       ),
@@ -207,8 +222,21 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
 
   Future<void> _addVisit() async {
     final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    final saved = await showAddVisitFlow(context, userId: uid);
-    if (saved == null || !mounted) return;
+    Vineyard? estate;
+    final saved = await showAddVisitFlow(
+      context,
+      userId: uid,
+      onEstatePicked: (vineyard) => estate = vineyard,
+    );
+    if (!mounted) return;
+    final pickedEstate = estate;
+    if (pickedEstate != null) {
+      // An estate visit has its own sheet and presses its own stamp.
+      final visit = await logEstateVisit(context, vineyard: pickedEstate);
+      if (visit != null && mounted) _load();
+      return;
+    }
+    if (saved == null) return;
     // The ceremony first, then the reload. Neither resets `_isOpen`/
     // `_openVolumeIndex`/`_bookPageIndex` (those live inside
     // PassportBookletView's own State, untouched by this widget's

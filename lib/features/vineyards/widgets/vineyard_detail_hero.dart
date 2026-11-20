@@ -15,8 +15,15 @@ import '../../../models/vineyard.dart';
 /// where it is.
 class VineyardDetailHero extends StatelessWidget {
   final Vineyard vineyard;
+  final bool wishlisted;
+  final VoidCallback onToggleWishlist;
 
-  const VineyardDetailHero({super.key, required this.vineyard});
+  const VineyardDetailHero({
+    super.key,
+    required this.vineyard,
+    required this.wishlisted,
+    required this.onToggleWishlist,
+  });
 
   // Below the status bar: the hero's own height, like VenueDetailHero's.
   static const double _minHeight = 300;
@@ -38,7 +45,11 @@ class VineyardDetailHero extends StatelessWidget {
       child: Stack(
         children: [
           Positioned.fill(
-            child: CsHeaderDrawing(drawing: drawing, belowToolbar: true),
+            child: CsHeaderDrawing(
+              drawing: drawing,
+              belowToolbar: true,
+              bottomInset: CsHeaderDrawing.heroTextBand,
+            ),
           ),
           // Bottom-weighted vignette so the name stays legible over the
           // drawing — the same treatment VenueDetailHero gives a photo.
@@ -75,7 +86,24 @@ class VineyardDetailHero extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const EditorialBackButton(color: AppColors.ivory),
+                    Row(
+                      children: [
+                        const EditorialBackButton(color: AppColors.ivory),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: onToggleWishlist,
+                          tooltip: wishlisted
+                              ? 'Remove from wishlist'
+                              : 'Add to wishlist',
+                          icon: Icon(
+                            wishlisted
+                                ? Icons.favorite_rounded
+                                : Icons.favorite_border_rounded,
+                            color: AppColors.ivory,
+                          ),
+                        ),
+                      ],
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                         horizontal: CsSpacing.pageHorizontal - CsSpacing.base,

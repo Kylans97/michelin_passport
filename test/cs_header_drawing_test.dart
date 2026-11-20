@@ -1,3 +1,4 @@
+import 'dart:ui' show PictureRecorder;
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/widgets/cs_header_drawing.dart';
@@ -264,5 +265,33 @@ void main() {
     );
     expect(find.byType(CsHeaderDrawing), findsOneWidget);
     expect(find.byType(CsImagePlaceholder), findsOneWidget);
+  });
+
+  test('a hero text band repaints, and every scene paints with it', () {
+    final variant = const HeaderDrawing.restaurant('r1').resolve();
+    expect(
+      HeaderDrawingPainter(
+        variant,
+        topInset: 115,
+      ).shouldRepaint(
+        HeaderDrawingPainter(variant, topInset: 115, bottomInset: 120),
+      ),
+      isTrue,
+    );
+    for (var i = 0; i < 30; i++) {
+      for (final drawing in [
+        HeaderDrawing.restaurant('r$i'),
+        HeaderDrawing.vineyard('v$i'),
+        HeaderDrawing.journey('j$i', JourneyKind.ship),
+      ]) {
+        final recorder = PictureRecorder();
+        HeaderDrawingPainter(
+          drawing.resolve(),
+          topInset: 115,
+          bottomInset: CsHeaderDrawing.heroTextBand,
+        ).paint(Canvas(recorder), const Size(402, 361));
+        recorder.endRecording();
+      }
+    }
   });
 }

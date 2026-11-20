@@ -238,6 +238,7 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
       drawing: drawing,
       muted: isClosed,
       belowToolbar: true,
+      bottomInset: CsHeaderDrawing.heroTextBand,
     );
   }
 

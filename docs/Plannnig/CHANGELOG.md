@@ -8,6 +8,34 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **A calmer Wishlist, with wine estates, trains and ships** (product owner, 2026-11-20, from the "Wishlist, calmer" canvas, https://claude.ai/artifact/9Z5VnN2hMZ44UfNXm7QzZC: "Build A, with B (Everything, by place) as the first item in the selector").
+  - The chip row and the large "YOUR WISHLIST" title are gone; the Wishlist tab above already says where you are. One line, "Restaurants 18 ▾", opens a sheet listing each kind with its count: Everything by place, Restaurants, Hotels, Events, Wine estates, Trains, Ships. A kind with nothing saved stays out of the sheet. The + sits on the same line.
+  - **Everything, by place** (the default): one card per region (else town), within its country, listing everything saved there with a kind icon. Places with the most saved come first. Trains and ships close the list together as "On the move", since they cross borders. Grouping uses the stored region, town and country only; nothing is matched by name.
+  - The per-kind lists keep their cards, including the planned month on restaurants. Wine estates use `VineyardCard`; trains and ships use `JourneyCard`, now split by kind instead of one "Journeys" list.
+  - **+ Add** gains Wine estate, Train and Ship chips. These small catalogues are read once and searched on the device.
+  - **Wine estates can be saved** from the estate page (a heart in `VineyardDetailHero`, like the journey hero) and from + Add. Wishlist rows use the new `entity_type = 'vineyard'`.
+- **Estate visits in the Passport.** "I visited this estate" on the estate page, and a Wine estate chip on the Passport's "Where did you go?", open a short sheet: the date (never in the future), what you did (tasting, cellar tour, lunch, walk in the vines, stayed the night), a note and friends visibility. Saving presses a stamp with "WINE ESTATE" where an award would be. The World's 50 Best Vineyards rank is never drawn on a stamp, so gold stays MICHELIN-only. The estate page lists your visits under In your Passport, and the Passport's browse-by-type has a Wine estates filter.
+  - Wines tasted at the estate are not part of this change: `visit_wines.visit_id` points at `visits`, and shipped builds read an estate's `visit_wines` rows expecting a visit id. Linking them is a separate change.
+  - `JourneyKindAward` is renamed `KindLabelAward`, since estates use it too.
+- **Wine estates move from Explore into Collections**, as Vineyards under The World's 50 Best, after Hotels (product owner, 2026-11-20). Every estate in the catalogue comes from that list. The Explore row and its `hasAny()` check are gone. Vineyards is always listed in Collections, since the estates are live in production. Explore search still finds estates.
+- **Hero drawings sit above the title** (product owner, 2026-11-20: "the drawing in the large hero sometimes sits relatively low"). In the restaurant, hotel, private chef, event, wine estate and journey heroes the scene filled everything below the toolbar, so its subject (the pass, the table, the house on the hill) fell behind the name and awards. `CsHeaderDrawing` takes a `bottomInset`, and the heroes pass `heroTextBand` (120 pt). The scene is then fitted into the band between the toolbar and the text, and its ground may run 30% of the way under the title. Fitted narrower than the hero, it is painted in its own layer with its sides and foot faded into the background, so its planes don't end in a hard box. Cards and thumbnails are unchanged. Checked in the simulator on Venta Moncalvillo: the pass and its dishes now sit above the stars.
+- **Polish after the simulator check** (product owner, 2026-11-20).
+  - Estates and journeys in Explore search are now the same ivory cards as restaurant and hotel results (`VineyardTile`, `JourneyTile`), not green picker rows.
+  - Estates show "🇪🇸  Laguardia, Spain" instead of "Laguardia · ES", with their 50 Best Vineyards rank in claret, never gold. The add sheets' estate rows use the same label (`Vineyard.cardPlaceLabel`).
+  - On "Everything, by place", a place known only from an event now shows its country name ("Lech am Arlberg · Austria"), looked up once from `countries`. Events carry only a code.
+  - Checked in the simulator.
+- **Explore search filters for Wine estates, Trains and Ships**, after Events in the chip row. "All" now also returns matching estates and journeys. Estates match on name, region and town ("Bordeaux" finds the Bordeaux estates). Trains and ships match on name, operator and where they run. The country filter for these kinds lists the catalogue's own countries.
+- **Migration `20261101570000_add_vineyard_wishlist_and_visits.sql`, applied to production on 2026-11-20** (product owner: "first the polish and then the database change"). Before the push, `supabase migration list --linked` showed 162/162 in agreement and the dry run listed only this file. After it, the ledger is 163/163. Checked on production: anon has no SELECT on `vineyard_visits`, RLS is on with four policies, and the wishlist check lists `'vineyard'`. No rows were written to test it. It adds `'vineyard'` to `wishlist.entity_type` and creates `vineyard_visits`: RLS on, owner writes, an accepted friend reads a `friends` row, anon nothing; no function, so no grant to revoke.
+  - **Why `vineyard_visits` is its own table and not a third `visits.entity_type`:** every shipped build reads `visits` as hotel-else-restaurant (`visited_repository.dart`), so a vineyard row would be misread as a restaurant by 1.6.0 and 1.6.1. That is the call trains and ships made with `journey_travels`.
+  - Shipped builds read the wishlist filtered by `entity_type`, so they ignore vineyard rows.
+
+### Checked
+- `flutter analyze` is clean and `flutter test` passes all 2,997 tests. New tests cover the selector and by-place grouping, the add sheet's estate, train and ship chips, estate visit rows and stamps, and the Explore filters.
+- The migration was replayed with all 162 earlier ones on a scratch `supabase start` stack, and applied cleanly. On that stack: anon has no SELECT on `vineyard_visits`, RLS is on with its four policies, the wishlist check lists `'vineyard'`, and an unknown activity is refused (23514).
+- `test/wishlist_default_venue_type_test.dart` is removed, with the default-kind rule it tested: the Wishlist now opens on Everything. The shell test now mirrors the selector line.
+- **Not checked on a device or in the simulator.**
+
 ---
 
 ## v1.6.1 (36) — 2026-11-20

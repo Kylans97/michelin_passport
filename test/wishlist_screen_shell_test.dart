@@ -3,7 +3,7 @@
 // against Supabase.instance.client eagerly in initState — same
 // established limitation as every other Supabase-eager screen in this
 // app — so this mirrors the exact widget tree WishlistBody's build()
-// produces rather than pumping the real widget. [WishlistVenueType] itself
+// produces rather than pumping the real widget. [WishlistView] itself
 // has no Supabase dependency, so it (and the real EventWishlistCard/
 // EventWishlistEmptyState widgets) are used directly here rather than
 // re-mirrored.
@@ -18,6 +18,11 @@
 // wishlist_trips_entry_test.dart from the earlier Passport Unified
 // Experience V1 pass) — Trips remains a sibling tab on the shared bar.
 //
+// "Wishlist, calmer" (2026-11-20): the chip row and the "YOUR WISHLIST"
+// title gave way to one selector line, WishlistViewSelector, with the +
+// beside it; the selector's rows and the by-place view are covered in
+// wishlist_view_model_test.dart.
+//
 // EVENT WISHLIST V1 adds the third Events tab — see event_wishlist_card_
 // test.dart/event_wishlist_empty_state_test.dart for that tab's own
 // content widgets' direct coverage, and event_wishlist_schedule_test.dart
@@ -29,38 +34,41 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
-import 'package:michelin_passport/core/widgets/cs_filter_chip.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
-import 'package:michelin_passport/core/widgets/cs_section_title.dart';
 import 'package:michelin_passport/features/wishlist/widgets/event_wishlist_card.dart';
 import 'package:michelin_passport/features/wishlist/widgets/event_wishlist_empty_state.dart';
+import 'package:michelin_passport/features/wishlist/widgets/wishlist_view_selector.dart';
 import 'package:michelin_passport/features/wishlist/wishlist_view_model.dart';
 import 'package:michelin_passport/models/event.dart';
 
-// Mirrors WishlistBody's own top padding — filter chips only, no
-// title/subtitle (those live once in the shared Passport header now).
-Widget _filterRow({required WishlistVenueType selected}) => Padding(
+// Mirrors WishlistBody's own top row — the selector line and the +, no
+// title/subtitle (those live once in the shared Passport header).
+Widget _filterRow({required WishlistView selected}) => Padding(
   padding: const EdgeInsets.fromLTRB(
     CsSpacing.pageHorizontal,
+    CsSpacing.xs,
+    CsSpacing.pageHorizontal - CsSpacing.sm,
     CsSpacing.md,
-    CsSpacing.pageHorizontal,
-    0,
   ),
   child: Row(
     children: [
-      for (var i = 0; i < WishlistVenueType.values.length; i++) ...[
-        if (i > 0) const SizedBox(width: CsSpacing.sm),
-        CsFilterChip(
-          label: WishlistVenueType.values[i].label,
-          selected: WishlistVenueType.values[i] == selected,
-          onTap: () {},
+      Expanded(
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: WishlistViewSelector(view: selected, count: 3, onTap: () {}),
         ),
-      ],
+      ),
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(Icons.add_rounded, size: 26),
+        color: AppColors.textOnDark,
+        tooltip: 'Add to wishlist',
+      ),
     ],
   ),
 );
 
-Widget _shell({required WishlistVenueType selected, required Widget body}) =>
+Widget _shell({required WishlistView selected, required Widget body}) =>
     MaterialApp(
       home: Scaffold(
         backgroundColor: AppColors.deepGreen,
@@ -69,21 +77,6 @@ Widget _shell({required WishlistVenueType selected, required Widget body}) =>
           child: Column(
             children: [
               _filterRow(selected: selected),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.xl,
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.md,
-                ),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: CsSectionTitle(
-                    'YOUR WISHLIST',
-                    color: AppColors.textOnDark,
-                  ),
-                ),
-              ),
               Expanded(child: body),
             ],
           ),
@@ -177,7 +170,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.restaurants,
+          selected: WishlistView.restaurants,
           body: _loadingState(),
         ),
       );
@@ -193,47 +186,32 @@ void main() {
         ),
         findsNothing,
       );
-      expect(find.text('YOUR WISHLIST'), findsOneWidget);
-      final title = tester.widget<Text>(find.text('YOUR WISHLIST'));
-      expect(title.style?.color, AppColors.textOnDark);
+      // The large title is gone: the Wishlist tab already says where you
+      // are (product owner, 2026-11-20).
+      expect(find.text('YOUR WISHLIST'), findsNothing);
+      final label = tester.widget<Text>(find.text('Restaurants'));
+      expect(label.style?.color, AppColors.textOnDark);
     });
 
-    testWidgets('Restaurants/Hotels/Events selector: selected chip is '
-        'deep-green-on-ivory, unselected is ivory-on-forest-green — never '
-        'gold', (tester) async {
+    testWidgets('one selector line instead of a chip row: the current '
+        'view, its count, and an Add button beside it', (tester) async {
       await tester.pumpWidget(
-        _shell(
-          selected: WishlistVenueType.restaurants,
-          body: _loadingState(),
-        ),
+        _shell(selected: WishlistView.restaurants, body: _loadingState()),
       );
-      final chips = tester
-          .widgetList<CsFilterChip>(find.byType(CsFilterChip))
-          .toList();
-      // Journeys (trains and ships) joined as a fourth tab, 2026-11-16.
-      expect(chips.length, 4);
-      expect(chips[0].label, 'Restaurants');
-      expect(chips[0].selected, isTrue);
-      expect(chips[1].label, 'Hotels');
-      expect(chips[1].selected, isFalse);
-      expect(chips[2].label, 'Events');
-      expect(chips[2].selected, isFalse);
-      expect(chips[3].label, 'Journeys');
-      expect(chips[3].selected, isFalse);
+      expect(find.byType(WishlistViewSelector), findsOneWidget);
+      expect(find.text('Restaurants'), findsOneWidget);
+      expect(find.text('3'), findsOneWidget);
+      expect(find.byTooltip('Add to wishlist'), findsOneWidget);
+      expect(find.text('Hotels'), findsNothing);
     });
 
-    testWidgets('EVENT WISHLIST V1: the Events chip exists as a third, '
-        'equal-weight tab — fits alongside Restaurants/Hotels without a '
-        'fourth "All" category', (tester) async {
+    testWidgets('the selector names Events when Events is showing', (
+      tester,
+    ) async {
       await tester.pumpWidget(
-        _shell(selected: WishlistVenueType.events, body: _loadingState()),
+        _shell(selected: WishlistView.events, body: _loadingState()),
       );
       expect(find.text('Events'), findsOneWidget);
-      expect(find.text('All'), findsNothing);
-      final chips = tester
-          .widgetList<CsFilterChip>(find.byType(CsFilterChip))
-          .toList();
-      expect(chips.singleWhere((c) => c.label == 'Events').selected, isTrue);
     });
 
     testWidgets('no redundant Trips shortcut anywhere in the body', (
@@ -241,7 +219,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.restaurants,
+          selected: WishlistView.restaurants,
           body: _loadingState(),
         ),
       );
@@ -251,11 +229,11 @@ void main() {
   });
 
   group('WishlistBody states — Restaurants/Hotels', () {
-    testWidgets('loading renders on the deep-green canvas, "YOUR '
-        'WISHLIST" stays', (tester) async {
+    testWidgets('loading renders on the deep-green canvas, the selector '
+        'line stays', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.restaurants,
+          selected: WishlistView.restaurants,
           body: _loadingState(),
         ),
       );
@@ -264,7 +242,7 @@ void main() {
         find.byType(CircularProgressIndicator),
       );
       expect(indicator.color, AppColors.textOnDark);
-      expect(find.text('YOUR WISHLIST'), findsOneWidget);
+      expect(find.byType(WishlistViewSelector), findsOneWidget);
     });
 
     testWidgets('error state shows restrained copy and a working retry, '
@@ -272,7 +250,7 @@ void main() {
       var retried = false;
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.restaurants,
+          selected: WishlistView.restaurants,
           body: _errorState(() => retried = true),
         ),
       );
@@ -287,7 +265,7 @@ void main() {
         'via the canonical Passport empty-state shape', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.restaurants,
+          selected: WishlistView.restaurants,
           body: _emptyState(isHotels: false),
         ),
       );
@@ -298,7 +276,7 @@ void main() {
     testWidgets('hotels empty state shows hotel-specific copy', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.hotels,
+          selected: WishlistView.hotels,
           body: _emptyState(isHotels: true),
         ),
       );
@@ -308,7 +286,7 @@ void main() {
     testWidgets('empty state never renders gold', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.restaurants,
+          selected: WishlistView.restaurants,
           body: _emptyState(isHotels: false),
         ),
       );
@@ -323,7 +301,7 @@ void main() {
         'the tab itself stays visible/selectable', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.events,
+          selected: WishlistView.events,
           body: const EventWishlistEmptyState(),
         ),
       );
@@ -336,7 +314,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.events,
+          selected: WishlistView.events,
           body: Column(
             children: [
               _eventSectionHeader('UPCOMING'),
@@ -353,7 +331,7 @@ void main() {
     testWidgets('multiple saved events all render', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.events,
+          selected: WishlistView.events,
           body: Column(
             children: [
               _eventSectionHeader('UPCOMING'),
@@ -377,7 +355,7 @@ void main() {
         'a past saved event stays reachable', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.events,
+          selected: WishlistView.events,
           body: Column(
             children: [
               _eventSectionHeader('UPCOMING'),
@@ -404,7 +382,7 @@ void main() {
         'events', (tester) async {
       await tester.pumpWidget(
         _shell(
-          selected: WishlistVenueType.events,
+          selected: WishlistView.events,
           body: Column(
             children: [
               _eventSectionHeader('UPCOMING'),

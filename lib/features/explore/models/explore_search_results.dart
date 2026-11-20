@@ -1,6 +1,8 @@
 import '../../../models/event.dart';
 import '../../../models/hotel.dart';
+import '../../../models/journey.dart';
 import '../../../models/restaurant.dart';
+import '../../../models/vineyard.dart';
 
 /// Explore's Search-mode result set — three independently-fetched, already
 /// filtered lists, kept as their own typed collections rather than forced
@@ -13,11 +15,18 @@ class ExploreSearchResults {
   final List<Restaurant> restaurants;
   final List<Hotel> hotels;
   final List<Event> events;
+  final List<Vineyard> vineyards;
+
+  /// Trains and ships together; the Trains and Ships filters each fill it
+  /// with their own kind only.
+  final List<Journey> journeys;
 
   const ExploreSearchResults({
     required this.restaurants,
     required this.hotels,
     required this.events,
+    this.vineyards = const [],
+    this.journeys = const [],
   });
 
   static const empty = ExploreSearchResults(
@@ -26,7 +35,17 @@ class ExploreSearchResults {
     events: [],
   );
 
-  bool get isEmpty => restaurants.isEmpty && hotels.isEmpty && events.isEmpty;
+  bool get isEmpty =>
+      restaurants.isEmpty &&
+      hotels.isEmpty &&
+      events.isEmpty &&
+      vineyards.isEmpty &&
+      journeys.isEmpty;
 
-  int get totalCount => restaurants.length + hotels.length + events.length;
+  int get totalCount =>
+      restaurants.length +
+      hotels.length +
+      events.length +
+      vineyards.length +
+      journeys.length;
 }
