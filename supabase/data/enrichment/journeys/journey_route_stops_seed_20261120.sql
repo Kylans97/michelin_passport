@@ -2,9 +2,10 @@
 -- journey_route_stops_20261120.csv (same folder, which carries the source
 -- URL, coordinate source and verification note of every row).
 --
--- Written 2026-11-20. NOT APPLIED. Prepared for the product owner's
--- approval. Needs journey_route_stops_countries_prereq.sql first (RO, BG,
--- BA). The 13 routes held back are listed in
+-- Written 2026-11-20 and loaded into production that day on the product
+-- owner's approval, after migration
+-- 20261101610000_add_ro_bg_ba_countries.sql (RO, BG, BA), which it needs.
+-- Production afterwards: 132 stops on 25 routes, all with coordinates. The 13 routes held back are listed in
 -- journey_route_stops_HELD_BACK.md and get no rows.
 --
 -- Stops come only from each operator's own published itinerary; the

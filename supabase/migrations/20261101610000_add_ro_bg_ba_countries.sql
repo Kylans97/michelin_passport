@@ -1,12 +1,14 @@
 -- Countries Romania (RO), Bulgaria (BG) and Bosnia and Herzegovina (BA):
--- prerequisite for journey_route_stops_seed_20261120.sql, whose stops in
+-- prerequisite for
+-- supabase/data/enrichment/journeys/journey_route_stops_seed_20261120.sql,
+-- whose stops in
 -- Bucharest, Sinaia, Brașov, Sofia, Plovdiv, Sarajevo and Mostar
 -- reference countries(country_code). No cities rows are needed.
 --
--- Written 2026-11-20. NOT APPLIED. Prepared for the product owner's
--- approval; on approval it becomes a migration named after the highest
--- one at that moment (filename = sequence number), the way
--- 20261101600000_add_et_country.sql added ET.
+-- Written 2026-11-20 and applied that day on the product owner's
+-- approval ("Yes, apply the countries prerequisite and the route stops
+-- to production"). Filename is a sequence number: the next after
+-- 20261101600000_add_et_country.sql.
 --
 -- None of the three exists in production (read 2026-11-20 with a select
 -- on countries). ON CONFLICT DO NOTHING keeps this safe if one is added

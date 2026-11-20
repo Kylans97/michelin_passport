@@ -37,12 +37,13 @@ Guide before any of that text is shown.
 Shiki-shima (JR East returned 403), Rocky Mountaineer GoldLeaf, Al Andalus,
 Royal Canadian Pacific, Desert Express, Golden Eagle Trans-Siberian.
 
-## Route stops (2026-11-20, staged, not applied)
+## Route stops (2026-11-20, loaded into production)
 
 Ordered stops with coordinates for 25 of the 38 routes, so a route can be
 drawn on the journey page: `journey_route_stops_20261120.csv` (source URL,
 coordinate source and note per row), `journey_route_stops_seed_20261120.sql`
-to insert them, and `journey_route_stops_countries_prereq.sql`, which must
+to insert them, and `supabase/migrations/20261101610000_add_ro_bg_ba_countries.sql`, which must
 run first (adds RO, BG, BA). The 13 routes held back and the rows flagged
-for review are in `journey_route_stops_HELD_BACK.md`. Both SQL files were
-run against a scratch Postgres only, never production.
+for review are in `journey_route_stops_HELD_BACK.md`. Both were run on a scratch Postgres
+first, then applied to production on 2026-11-20 on the product owner's
+approval.

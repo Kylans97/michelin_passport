@@ -1,7 +1,8 @@
 # Journey route stops: held back and flagged (2026-11-20)
 
 Companion to `journey_route_stops_20261120.csv` and
-`journey_route_stops_seed_20261120.sql`. Nothing here is applied.
+`journey_route_stops_seed_20261120.sql`, both loaded into production
+2026-11-20. Held-back routes have no rows.
 25 of 38 routes have stops; 13 are held back. Stops were read from each
 operator's own pages on 2026-11-20; coordinates from Wikipedia (station
 article where the operator names a station, else the town) or
@@ -48,7 +49,7 @@ OpenStreetMap, as each row's `coord_source` says.
 ## Prerequisite
 
 Romania, Bulgaria and Bosnia and Herzegovina are not in `countries`;
-`journey_route_stops_countries_prereq.sql` adds them and must run first.
+`supabase/migrations/20261101610000_add_ro_bg_ba_countries.sql` adds them and must run first.
 
 ## Ships with no routes yet (list only)
 

@@ -8,6 +8,14 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Route stops for trains and ships, loaded into production 2026-11-20** (product owner, looking at the journey page mockups: "if we do the route visualization then we do need to have the route, not just show a line"; then "Yes, apply the countries prerequisite and the route stops to production"). 132 ordered stops with coordinates on 25 of the 38 routes, in the existing `journey_route_stops` table (public read was already in place; no schema change). Stops come only from each operator's own itinerary, coordinates from the named station or, where the operator names none, the town; every row's source URL, coordinate source and note is in `supabase/data/enrichment/journeys/journey_route_stops_20261120.csv`, loaded by `journey_route_stops_seed_20261120.sql`, which matches on `route_code` and refuses to run if a code does not resolve or a route already has stops. The app does not read the stops yet; drawing them on the journey page is the next step.
+- **Migration `20261101610000_add_ro_bg_ba_countries.sql`, applied to production 2026-11-20.** Adds Romania, Bulgaria and Bosnia and Herzegovina to `countries`, which stops in Bucharest, Sinaia, Brașov, Sofia, Plovdiv, Sarajevo and Mostar need. No function created. Dry run listed only this migration; ledger 167/167 afterwards; the three rows read back.
+
+### Fixed
+- **Near-misses held back, not drawn** (`supabase/data/enrichment/journeys/journey_route_stops_HELD_BACK.md`). 13 routes have no stops because the operator's own pages disagree with each other or with our route row: the Orient Express Portofino and Amalfi Coast trains end at Santa Margherita Ligure and Pompeii; four Royal Scotsman and three Britannic Explorer routes have maps and day texts naming different stations; Tiger Express never names where the train ends; Napoléon's pages skip and repeat days. The Corinthian's Marseille to Rome route matches no voyage on sale (the only one sailed in July 2026), so that route row itself looks stale; logged, not changed. The stops file was first written against a `countries` table that lacked RO, BG and BA, which the scratch run caught as a foreign key failure before anything reached production.
+- **Lines between stops are straight.** The stops are real, the track geometry is not stored, so a two-stop route (most Venice Simplon-Orient-Express routes, Mizukaze) can only ever draw as one arc.
+
 ---
 
 ## v1.7.0 (37) — 2026-11-20
