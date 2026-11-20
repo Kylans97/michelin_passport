@@ -1,0 +1,527 @@
+[
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0002"
+    },
+    "field": "summary",
+    "current": "The chameleon: lean and steely in a cool climate, round and buttery when ripened in the sun and aged in oak.",
+    "proposed": "The chameleon: lean and steely in a cool climate, riper and fuller in warm ones; oak and winemaking can make it round and buttery.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/chardonnay-the-ultimate-grape-guide/",
+      "https://www.winecompanion.com.au/resources/varieties/chardonnay",
+      "https://www.winespectator.com/articles/chardonnay-57804",
+      "https://winefolly.com/grapes/chardonnay/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0002"
+    },
+    "field": "aged_note",
+    "current": null,
+    "proposed": "honey, mushroom",
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/chardonnay/",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/chardonnay-the-ultimate-grape-guide/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0003"
+    },
+    "field": "summary",
+    "current": "Small, thick-skinned berries that give dark colour, firm tannins and a long life.",
+    "proposed": "Thick-skinned, giving deep colour, firm tannins and a long life; it gives Bordeaux blends their backbone.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winespectator.com/articles/cabernet-sauvignon-57803",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/cabernet-sauvignon-the-ultimate-grape-guide/",
+      "https://www.winecompanion.com.au/resources/varieties/cabernet-sauvignon",
+      "https://www.decanterchina.com/en/columns/fongyee-walkers-wine-study-guide/how-to-distinguish-cabernet-sauvignon-and-syrah-shiraz-in-blind-tasting"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0003"
+    },
+    "field": "aged_note",
+    "current": "tobacco, leather",
+    "proposed": "tobacco",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/cabernet-sauvignon-the-ultimate-grape-guide/",
+      "https://www.winespectator.com/articles/cabernet-sauvignon-57803",
+      "https://www.winecompanion.com.au/resources/varieties/cabernet-sauvignon"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0003"
+    },
+    "field": "acidity",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/cabernet-sauvignon/",
+      "https://www.decanterchina.com/en/columns/fongyee-walkers-wine-study-guide/how-to-distinguish-cabernet-sauvignon-and-syrah-shiraz-in-blind-tasting"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0004"
+    },
+    "field": "summary",
+    "current": "Softer than Cabernet, with plush fruit; the backbone of Bordeaux's right bank.",
+    "proposed": "Softer than Cabernet, with plush fruit; the leading grape of Bordeaux's right bank.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winespectator.com/articles/merlot-57809",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/merlot-the-ultimate-grape-guide/",
+      "https://www.winecompanion.com.au/resources/varieties/merlot"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0004"
+    },
+    "field": "tastes",
+    "current": [
+      "Plum",
+      "Black cherry",
+      "Chocolate"
+    ],
+    "proposed": [
+      "Plum",
+      "Cherry",
+      "Chocolate"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/merlot/",
+      "https://www.winecompanion.com.au/resources/varieties/merlot",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/merlot-the-ultimate-grape-guide/",
+      "https://www.winespectator.com/articles/merlot-57809"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0004"
+    },
+    "field": "tannin",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/merlot/",
+      "https://www.winecompanion.com.au/resources/varieties/merlot"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0005"
+    },
+    "field": "summary",
+    "current": "Dark and spicy: black pepper in the cool northern Rhône, riper and jammier as Shiraz in warm places.",
+    "proposed": "Dark-fruited and spicy: leaner and more savoury in the northern Rhône, riper and bolder as Shiraz in warm places like Australia.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.winespectator.com/articles/syrah-57816",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/syrah-shiraz-the-ultimate-grape-guide/",
+      "https://winefolly.com/grapes/syrah/",
+      "https://www.winecompanion.com.au/resources/varieties/shiraz"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0006"
+    },
+    "field": "summary",
+    "current": "Loves heat; gives ripe, warm reds with soft tannins, usually in a blend.",
+    "proposed": "Loves heat; gives ripe, full, high-alcohol reds, most often in a blend, as in the southern Rhône.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winespectator.com/articles/grenache-57807",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide/",
+      "https://www.winecompanion.com.au/resources/varieties/grenache",
+      "https://winefolly.com/grapes/grenache/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0006"
+    },
+    "field": "acidity",
+    "current": 2,
+    "proposed": 3,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/grenache/",
+      "https://www.winecompanion.com.au/resources/varieties/grenache",
+      "https://www.winespectator.com/articles/grenache-57807"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0006"
+    },
+    "field": "tannin",
+    "current": 2,
+    "proposed": 3,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/grenache/",
+      "https://www.winecompanion.com.au/resources/varieties/grenache",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0007"
+    },
+    "field": "summary",
+    "current": "Spain's great red grape: medium-bodied, and it takes well to oak.",
+    "proposed": "Spain's flagship red grape: medium- to full-bodied, with firm tannins, and it takes well to oak.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/tempranillo-the-ultimate-grape-guide/",
+      "https://www.winecompanion.com.au/resources/varieties/tempranillo",
+      "https://www.winespectator.com/articles/tempranillo-57817",
+      "https://winefolly.com/grapes/tempranillo/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0007"
+    },
+    "field": "tastes",
+    "current": [
+      "Cherry",
+      "Dried fig",
+      "Leather",
+      "Vanilla, with oak"
+    ],
+    "proposed": [
+      "Cherry",
+      "Plum",
+      "Dried fig",
+      "Vanilla, with oak"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/tempranillo/",
+      "https://www.winecompanion.com.au/resources/varieties/tempranillo",
+      "https://www.winespectator.com/articles/tempranillo-57817",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/tempranillo-the-ultimate-grape-guide/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0007"
+    },
+    "field": "aged_note",
+    "current": null,
+    "proposed": "leather, spice",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/tempranillo-the-ultimate-grape-guide/",
+      "https://www.winecompanion.com.au/resources/varieties/tempranillo",
+      "https://winefolly.com/grapes/tempranillo/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0007"
+    },
+    "field": "body",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/tempranillo/",
+      "https://www.winespectator.com/articles/tempranillo-57817"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0007"
+    },
+    "field": "acidity",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/tempranillo/",
+      "https://www.winespectator.com/articles/tempranillo-57817",
+      "https://www.winecompanion.com.au/resources/varieties/tempranillo"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0007"
+    },
+    "field": "tannin",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/tempranillo/",
+      "https://www.winespectator.com/articles/tempranillo-57817",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/tempranillo-the-ultimate-grape-guide/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0008"
+    },
+    "field": "summary",
+    "current": "Aromatic and high in acidity, at home on steep, cool slopes; from bone-dry to lusciously sweet.",
+    "proposed": "Aromatic and high in acidity, at home in cool climates; made in every style from bone-dry to lusciously sweet.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winespectator.com/articles/riesling-57813",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/riesling-the-ultimate-grape-guide/",
+      "https://winefolly.com/grapes/riesling/",
+      "https://www.winecompanion.com.au/resources/varieties/riesling"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0008"
+    },
+    "field": "aged_note",
+    "current": "petrol, honey",
+    "proposed": "petrol, toast",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winespectator.com/articles/riesling-57813",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/riesling-the-ultimate-grape-guide/",
+      "https://www.winecompanion.com.au/resources/varieties/riesling"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0010"
+    },
+    "field": "summary",
+    "current": "Italy's most planted red: bright, savoury and fresh, made for food.",
+    "proposed": "Italy's most planted red, at the heart of Tuscany's wines: cherry-fruited and savoury, with high acidity and firm tannins.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winespectator.com/articles/sangiovese-57814",
+      "https://winefolly.com/grapes/sangiovese/",
+      "https://www.winecompanion.com.au/resources/varieties/italian-reds",
+      "https://vinepair.com/articles/complete-sangiovese-wine-guide/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0010"
+    },
+    "field": "tastes",
+    "current": [
+      "Sour cherry",
+      "Tomato leaf",
+      "Dried herbs"
+    ],
+    "proposed": [
+      "Sour cherry",
+      "Tomato",
+      "Herbs"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://vinepair.com/articles/complete-sangiovese-wine-guide/",
+      "https://winefolly.com/deep-dive/guide-to-sangiovese-wine/",
+      "https://www.winespectator.com/articles/sangiovese-57814"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0011"
+    },
+    "field": "summary",
+    "current": "Crisp and green, with high acidity: flinty in the Loire, tropical in New Zealand.",
+    "proposed": "Crisp, green and high in acidity: flinty and mineral in the Loire, pungently fruity in New Zealand.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/sauvignon-blanc-the-ultimate-grape-guide/",
+      "https://winefolly.com/grapes/sauvignon-blanc/",
+      "https://www.thewinesociety.com/discover/explore/regional-guides/loire-wine-guide/",
+      "https://www.winespectator.com/articles/sauvignon-blanc-57815"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0011"
+    },
+    "field": "tastes",
+    "current": [
+      "Gooseberry",
+      "Grapefruit",
+      "Cut grass"
+    ],
+    "proposed": [
+      "Gooseberry",
+      "Passion fruit",
+      "Cut grass"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/sauvignon-blanc/",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/sauvignon-blanc-the-ultimate-grape-guide/",
+      "https://www.winespectator.com/articles/sauvignon-blanc-57815",
+      "https://www.thewinesociety.com/discover/explore/regional-guides/loire-wine-guide/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0011"
+    },
+    "field": "similar",
+    "current": {
+      "grape_code": "gr_0008",
+      "note": "even more aromatic"
+    },
+    "proposed": {
+      "grape_code": "gr_0008",
+      "note": "just as crisp, from bone-dry to sweet"
+    },
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/riesling/",
+      "https://www.winespectator.com/articles/riesling-57813"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0012"
+    },
+    "field": "tastes",
+    "current": [
+      "Quince",
+      "Apple",
+      "Honey"
+    ],
+    "proposed": [
+      "Yellow apple",
+      "Pear",
+      "Honey"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/chenin-blanc/",
+      "https://www.winespectator.com/articles/chenin-blanc-57805",
+      "https://www.winecompanion.com.au/resources/varieties/chenin-blanc"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0015"
+    },
+    "field": "summary",
+    "current": "Portugal's leading grape: dark, floral and structured, the heart of port and of dry Douro reds.",
+    "proposed": "Portugal's best-known red grape: dark, floral and firmly structured, a key grape in port and in dry Douro reds.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winecompanion.com.au/resources/varieties/touriga-nacional",
+      "https://www.systembolaget.se/vin/druvans-varld/druvsorter/touriga-nacional/",
+      "https://winefolly.com/deep-dive/exploring-touriga-nacional-wine/"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0015"
+    },
+    "field": "acidity",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/touriga-nacional/",
+      "https://www.winecompanion.com.au/resources/varieties/touriga-nacional"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0016"
+    },
+    "field": "summary",
+    "current": "A cousin of Pinot Noir grown mostly in Champagne, where it adds fruit and roundness.",
+    "proposed": "A mutation of Pinot Noir, best known in Champagne, where it adds fruit and roundness to the blend.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.winetraveler.com/grape/pinot-meunier/",
+      "https://www.winecompanion.com.au/resources/varieties/pinot-noir",
+      "https://en.wikipedia.org/wiki/Pinot_Meunier",
+      "https://www.cellartours.com/blog/france/the-third-variety-pinot-meunier"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0016"
+    },
+    "field": "tastes",
+    "current": [
+      "Red apple",
+      "Red berries"
+    ],
+    "proposed": [
+      "Cherry",
+      "Red berries",
+      "Mushroom"
+    ],
+    "verdict": "replaced",
+    "sources": [
+      "https://winefolly.com/grapes/pinot-meunier/",
+      "https://www.winetraveler.com/grape/pinot-meunier/",
+      "https://www.cellartours.com/blog/france/the-third-variety-pinot-meunier"
+    ]
+  },
+  {
+    "table": "grapes",
+    "key": {
+      "grape_code": "gr_0017"
+    },
+    "field": "acidity",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/deep-dive/mourvedre-wine/",
+      "https://www.winecompanion.com.au/resources/varieties/mourvedre"
+    ]
+  }
+]

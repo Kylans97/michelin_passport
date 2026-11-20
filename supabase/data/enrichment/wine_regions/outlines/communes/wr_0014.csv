@@ -1,0 +1,13 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0014,NL_GM0935,Maastricht,Maastricht,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_GM0938,Meerssen,Meerssen,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_GM0965,Simpelveld,Simpelveld,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_GM0986,Voerendaal,Voerendaal,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_GM0981,Vaals,Vaals,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_GM1729,Gulpen-Wittem,Gulpen-Wittem,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_GM1903,Eijsden-Margraten,Eijsden-Margraten,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_GM0994,Valkenburg aan de Geul,Valkenburg aan de Geul,,yes: see notes,https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf
+wr_0014,NL_WK195401,Wijk 01 Nuth (Beekdaelen),Wijk 01 Nuth (Beekdaelen),,yes: see notes,https://api.pdok.nl/cbs/wijken-en-buurten-2024/ogc/v1/collections/wijken
+wr_0014,NL_WK195402,Wijk 02 Wijnandsrade (Beekdaelen),Wijk 02 Wijnandsrade (Beekdaelen),,yes: see notes,https://api.pdok.nl/cbs/wijken-en-buurten-2024/ogc/v1/collections/wijken
+wr_0014,NL_WK195403,Wijk 03 Hulsberg (Beekdaelen),Wijk 03 Hulsberg (Beekdaelen),,yes: see notes,https://api.pdok.nl/cbs/wijken-en-buurten-2024/ogc/v1/collections/wijken
+wr_0014,NL_WK195404,Wijk 04 Schimmert (Beekdaelen),Wijk 04 Schimmert (Beekdaelen),,yes: see notes,https://api.pdok.nl/cbs/wijken-en-buurten-2024/ogc/v1/collections/wijken

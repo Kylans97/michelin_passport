@@ -10,6 +10,7 @@ import '../widgets/venue_pin.dart';
 import 'globe_camera.dart';
 import 'globe_outlines.dart';
 import 'globe_painter.dart';
+import 'globe_region_layer.dart';
 import '../../../core/theme/cs_fonts.dart';
 
 /// Drives a [GlobeView] from outside — the globe's counterpart to
@@ -30,6 +31,33 @@ class GlobeController {
   /// Places the globe without animating: centred on the [points]' middle
   /// (latitude tilted no further than ±40°, so the globe stays upright),
   /// whole globe in view. Auto-rotation, if enabled, carries on from here.
+  /// Turns the globe to [latitude]/[longitude], zoomed in to at least
+  /// [zoom] — how wine mode opens on Europe.
+  Future<void> flyToPoint(
+    double latitude,
+    double longitude, {
+    double zoom = 3,
+  }) async {
+    final state = _state;
+    if (state == null) return;
+    final camera = state._camera.value;
+    await state._flyTo(
+      camera.copyWith(
+        latitude: latitude,
+        longitude: longitude,
+        zoom: math.max(camera.zoom, zoom),
+      ),
+    );
+  }
+
+  /// Flies in on the whole of [region] — how a wine-list search shows the
+  /// region it found.
+  Future<void> flyToRegion(GlobeRegion region) async {
+    final state = _state;
+    if (state == null) return;
+    await state._flyTo(state._regionCamera(region));
+  }
+
   void showWholeGlobeAround(List<(double, double)> points) {
     final state = _state;
     if (state == null) return;
@@ -53,6 +81,10 @@ class GlobeController {
 ///
 /// Everything drawn comes from the bundled [GlobeOutlines] and the pins'
 /// own coordinates: no tiles, no network, no location permission.
+/// How far a cluster of the member's places is zoomed to tell them apart:
+/// the globe's limit before wine regions raised it to 1000.
+const double globePlacesMaxZoom = 60;
+
 class GlobeView extends StatefulWidget {
   final GlobeController controller;
   final List<MapPin> pins;
@@ -66,6 +98,12 @@ class GlobeView extends StatefulWidget {
   /// Defaults to [GlobeOutlines.load]; injectable for tests.
   final Future<GlobeOutlines>? outlines;
 
+  /// The wine layer: regions drawn as soft patches with their names
+  /// (product owner, 2026-11-20). Empty for My Map.
+  final List<GlobeRegion> regions;
+  final String? selectedRegionId;
+  final ValueChanged<GlobeRegion>? onRegionTap;
+
   const GlobeView({
     super.key,
     required this.controller,
@@ -75,6 +113,9 @@ class GlobeView extends StatefulWidget {
     required this.onClusterTap,
     this.autoRotate = true,
     this.outlines,
+    this.regions = const [],
+    this.selectedRegionId,
+    this.onRegionTap,
   });
 
   @override
@@ -92,6 +133,9 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
   static const _resumeAfter = Duration(seconds: 12);
   static const _resumeMaxZoom = 1.3;
   static const _flyToPinMinZoom = 4.0;
+  // How close a tapped region is shown: the Douro's 100 km fills about
+  // half the view at 40; Vijlen's 3 km needs the globe's full 1000.
+  static const _regionMaxZoom = GlobeCamera.maxZoom;
 
   final _camera = ValueNotifier(const GlobeCamera(latitude: 30, longitude: 5));
   GlobeOutlines? _outlines;
@@ -290,13 +334,32 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
     if (mounted) widget.onPinTap(pin);
   }
 
+  Future<void> _tapRegion(GlobeRegion region) async {
+    await _flyTo(_regionCamera(region));
+    if (mounted) widget.onRegionTap?.call(region);
+  }
+
+  /// Flies in until the whole region fills the globe's view, never out:
+  /// a region tapped while zoomed in further stays as close.
+  GlobeCamera _regionCamera(GlobeRegion region) {
+    final camera = _camera.value;
+    final fit = fitGlobeCamera(
+      region.extent,
+      fallback: camera,
+      singlePointZoom: _regionMaxZoom,
+    );
+    return fit.copyWith(
+      zoom: math.max(fit.zoom, math.min(camera.zoom, _regionMaxZoom)),
+    );
+  }
+
   Future<void> _tapCluster(List<MapPin> members, Size size) async {
     final camera = _camera.value;
     final points = [for (final p in members) (p.latitude, p.longitude)];
     final fitted = fitGlobeCamera(
       points,
       fallback: camera,
-      singlePointZoom: GlobeCamera.maxZoom,
+      singlePointZoom: globePlacesMaxZoom,
     );
     final separate =
         clusterOnGlobe(
@@ -357,6 +420,16 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
                     valueListenable: _camera,
                     builder: (context, camera, _) => Stack(
                       children: [
+                        if (widget.regions.isNotEmpty)
+                          Positioned.fill(
+                            child: GlobeRegionLayer(
+                              regions: widget.regions,
+                              camera: camera,
+                              size: size,
+                              selectedId: widget.selectedRegionId,
+                              onTap: _tapRegion,
+                            ),
+                          ),
                         for (final cluster in clusterOnGlobe(
                           widget.pins,
                           projection: GlobeProjection(camera, size),

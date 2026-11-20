@@ -106,7 +106,7 @@ void main() {
       final c = const GlobeCamera(
         latitude: 0,
         longitude: 0,
-      ).copyWith(latitude: 95, longitude: 190, zoom: 100);
+      ).copyWith(latitude: 95, longitude: 190, zoom: 5000);
       expect(c.latitude, GlobeCamera.maxLatitude);
       expect(c.longitude, closeTo(-170, 1e-9));
       expect(c.zoom, GlobeCamera.maxZoom);
@@ -204,7 +204,7 @@ void main() {
     });
 
     test('separates them once zoomed in far enough', () {
-      expect(clusters(GlobeCamera.maxZoom), hasLength(2));
+      expect(clusters(globePlacesMaxZoom), hasLength(2));
     });
   });
 

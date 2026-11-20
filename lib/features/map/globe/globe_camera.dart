@@ -7,7 +7,10 @@ import 'dart:ui' show Offset, Size;
 /// clustering stay unit-testable without pumping a widget.
 class GlobeCamera {
   static const double minZoom = 1;
-  static const double maxZoom = 60;
+  // Far enough in for a wine region a few km across (Vijlen, about 3 km,
+  // is ~80 pt wide at 1000); the coastlines are 1:50m and read coarse
+  // long before that, but there is no coast in South Limburg.
+  static const double maxZoom = 1000;
 
   /// Latitude is kept off the poles so a drag never flips the globe over.
   static const double maxLatitude = 80;

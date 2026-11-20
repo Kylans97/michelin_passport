@@ -1,0 +1,34 @@
+# Domein De Wijngaardsberg (Ulestraten): verified record
+
+Researched 2026-11-20. Primary source: the estate's own website (dewijngaardsberg.nl), fetched as raw HTML.
+Official sources: RVO (BOB Mergelland), PDOK Locatieserver and BAG (Kadaster).
+Raw copies are in `raw/wb.html`, `raw/wb_*.html`, `raw/bob_Mergelland.pdf` (+ `.txt`), `raw/pdok_Wijngaardsberg_2_6235ND.json`, `raw/pdok_Sint_Catharinastraat_57_6235BC.json`, `raw/bag_0938010000007499.json`, `raw/bag_0938010000006865.json`.
+
+| Field | Value | Source |
+|---|---|---|
+| Estate name (as the estate writes it) | **Domein De Wijngaardsberg**. The homepage and footer write "Domein De Wijngaardsberg"; the menu and contact pages write "Domein de Wijngaardsberg". The homepage `<title>` has a typo, "Domein De Wijngaar**s**berg", which also appears in the site's SEO description. Don't copy it | https://dewijngaardsberg.nl/ ; https://dewijngaardsberg.nl/contact/ |
+| Address the estate publishes | The estate publishes two addresses. **Visiting address ("BEZOEKADRES"): Wijngaardsberg 2, 6235 ND Ulestraten.** Postal address ("POSTADRES"): Sint Catharinastraat 57, 6235 BC Ulestraten. **This is not a cellar door.** The estate takes no visitors (see below). Status per BAG: **Wijngaardsberg 2** is in use with function "industriefunctie, woonfunctie" (677 m²), meaning a working building combined with a dwelling. It is the estate's own published visiting address, and the estate's Google Maps marker sits on it. **Sint Catharinastraat 57** has function "woonfunctie" only (244 m²), meaning a **private residence**, used here as a postal address. **Record only Wijngaardsberg 2. Do not publish the postal address in the app** | https://dewijngaardsberg.nl/ (footer) ; https://dewijngaardsberg.nl/contact/ ; BAG via https://api.pdok.nl/kadaster/bag/ogc/v2/collections/verblijfsobject/items?identificatie=0938010000007499 and ...=0938010000006865 |
+| Town | **Ulestraten** (municipality Meerssen, province Limburg) | Estate footer. Municipality and province from the BAG record |
+| Website | **https://dewijngaardsberg.nl** | Canonical URL in the estate's own HTML. `wijngaardsberg.nl` (without "de") is a parked domain (`raw/site_wijngaardsberg.nl.html`) |
+| Instagram | **@domeindewijngaardsberg**: https://www.instagram.com/domeindewijngaardsberg/ . It is a real instagram.com link in the footer of every page of the estate's site. I did not open the profile | https://dewijngaardsberg.nl/ (footer) |
+| Open to visitors | **No.** "Wij bieden geen rondleidingen en proeverijen aan. Particuliere verkoop uitsluitend op afspraak." (no tours or tastings; private sales by appointment only). Contact is by mobile phone or email | https://dewijngaardsberg.nl/ ; https://dewijngaardsberg.nl/contact/ |
+| Grape varieties grown (as the site says) | **Pinot Noir, Chardonnay, Pinot Gris** ("we kiezen voor prachtige, klassieke rassen als pinot noir, chardonnay en pinot gris"). The range also includes a single-variety **Auxerrois**, but the site never says in so many words that it grows Auxerrois. Add it only if the estate confirms. The LH dessert wine is Chardonnay; the Brut is Chardonnay and Pinot Noir; the Blanc de Blancs is 100% Chardonnay | https://dewijngaardsberg.nl/wijngaarden/ ; https://dewijngaardsberg.nl/wijnen/ |
+| Protected wine name (BOB) | **BOB Mergelland, for the still wines only.** The estate says: "Onze stille wijnen maken we volgens de vereisten van de Beschermde Oorsprongsbenaming Mergelland." Its sparkling wines are bottled in Germany (Ahr), so they carry **BGA Limburg** instead. Mergelland is on RVO's list of 9 Dutch BOB wine names, and its dossier names the municipality of Meerssen inside the zone | Estate: https://dewijngaardsberg.nl/wijnen/ ; RVO: https://www.rvo.nl/onderwerpen/landbouwproducten-verwerken-verhandelen-produceren/kwaliteitsaanduidingen/wijn ; Dossier: https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf |
+| Coordinates | **50.89564835, 5.77491344** (WGS84, BAG address point of the visiting address) | PDOK Locatieserver, exact match "Wijngaardsberg 2, 6235ND Ulestraten", nummeraanduiding **0938200000031690**, adresseerbaar object 0938010000007499: https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?q=Wijngaardsberg%202%206235ND&fq=type:adres |
+| Coordinates: independent check | The estate's own site (footer link and contact-page embed) points to the Google Maps place "Domein de Wijngaardsberg", with a marker at **50.8955986, 5.7749738** (`!3d…!4d…` in the URL). That is **about 7 m** from the BAG point. The two sources agree. I did not geocode anything myself | https://dewijngaardsberg.nl/ ; https://dewijngaardsberg.nl/contact/ |
+
+## Recognition (re-checked 2026-11-20)
+- **Rijks (1★, Amsterdam), wine list July 2026: re-confirmed.** I downloaded the PDF again (HTTP 200, Last-Modified 22 Jul 2026), and its text is identical to the earlier copy. It names "Domein de Wijngaardsberg" on the Dutch estates map, and lists "Domein de Wijngaardsberg, Maastricht, Limburg" with **Chardonnay 2022 at €95** and **Pinot Noir 2022 at €110**. https://www.rijksrestaurant.nl/wp-content/uploads/2026/07/RIJKS_WINEMENU_2026-1.pdf
+- DutchNews.nl, Dec 2025 (from candidates.md). I did not re-open it on this pass.
+
+## Other facts seen on the estate's site (context)
+- Vines replanted on the Wijngaardsberg in 2002; the estate has grown to 3.3 ha. The site says a deed from 968 names vineyards on this hill, which it calls "het oudste bewijs van wijnbouw in Nederland". That is the estate's own claim and I did not check it. Source: /geschiedenis/
+- Winemaker named on the site: Jules Nijst ("wijnboer"). Hand harvest. Chardonnay is aged in French barriques for more than a year. The sparkling wines are bottled and disgorged by a colleague in the Ahr valley after 24 months. Source: /, /vinificatie/
+- Contact: mobile +31 (0)6 29554699. The email address is Cloudflare-obfuscated in the HTML and I did not decode it.
+
+## Things to watch
+- **It is not visitable.** In the app, show this estate as *not open to visitors*. The pin is the estate's own published visiting address with a matching map marker, but a pin must not imply a cellar door. Sales are by appointment only.
+- **Privacy.** The postal address (Sint Catharinastraat 57) is a dwelling-only BAG object, which almost certainly means a private home. Leave it out. Wijngaardsberg 2 also has a residential function. The estate chose to publish it as its visiting address, but keep it at pin level and don't build "directions to the door" copy around it.
+- **Town.** Rijks prints "Maastricht". The estate is in **Ulestraten** (municipality Meerssen). Use the estate's town.
+- **BOB applies only to the still wines.** The Brut and Blanc de Blancs are BGA Limburg. Don't tag the whole estate's range as BOB Mergelland.
+- **Watch the name spelling.** "Wijngaar**s**berg" (missing d) appears in the site's own `<title>`.

@@ -1,0 +1,898 @@
+[
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0001"
+    },
+    "field": "summary",
+    "current": "A long, narrow strip of slopes where almost everything is one grape: Pinot Noir for red, Chardonnay for white. The village on the label tells you more than the grape does.",
+    "proposed": "Vineyards stretching some 230 km from Chablis down to the Mâconnais, where almost everything is one of two grapes: Chardonnay for white, Pinot Noir for red. The place on the label tells you more than the grape does.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.bourgogne-wines.com/wine-and-terroir/locating-the-bourgogne-region/locating-the-bourgogne-region,3202,14763.html",
+      "https://winefolly.com/review/guide-to-burgundy-wine-with-maps/",
+      "https://winefolly.com/grapes/pinot-noir/",
+      "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0001"
+    },
+    "field": "pairing",
+    "current": "Duck, mushrooms, poultry, soft cheeses.",
+    "proposed": "Duck, poultry, mushroom dishes, mild soft cheeses.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/pinot-noir/",
+      "https://matchingfoodandwine.com/articles/-the-best-pairings-with-red-burgundy",
+      "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57664.pdf"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0001"
+    },
+    "field": "label_note",
+    "current": "From everyday to rare: Bourgogne, then a village name, Premier Cru, Grand Cru.",
+    "proposed": "From everyday to rare: regional wines such as Bourgogne, then a village name, Premier Cru, Grand Cru.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bourgogne-wines.com/wine-and-terroir/decoding-the-aocs/bourgogne-wines-decoding-the-aocs,2467,9263.html",
+      "https://www.guildsomm.com/p/publicstudyguide",
+      "https://winefolly.com/review/guide-to-burgundy-wine-with-maps/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0001",
+      "grape_code": "gr_0001"
+    },
+    "field": "display_order",
+    "current": 1,
+    "proposed": 2,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html",
+      "https://www.sevenfifty.com/tc/bourgognes"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0001",
+      "grape_code": "gr_0002"
+    },
+    "field": "display_order",
+    "current": 2,
+    "proposed": 1,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html",
+      "https://www.sevenfifty.com/tc/bourgognes"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0004"
+    },
+    "field": "note",
+    "current": "fresh, fruity, good value",
+    "proposed": "fresh, fruity",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57689.pdf",
+      "https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0002"
+    },
+    "field": "summary",
+    "current": "Red blends of Cabernet Sauvignon and Merlot from either side of the Gironde: Cabernet leads on the left bank, Merlot on the right. Also the sweet whites of Sauternes.",
+    "proposed": "Mostly red blends of Merlot and Cabernet Sauvignon from both sides of the Gironde and its rivers, the Garonne and Dordogne: Cabernet leads on the left bank, Merlot on the right. Also dry whites and sweet Sauternes.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank",
+      "https://wineanorak.com/?p=1283",
+      "https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf",
+      "https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0002",
+      "grape_code": "gr_0003"
+    },
+    "field": "display_order",
+    "current": 1,
+    "proposed": 2,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf",
+      "https://wineanorak.com/?p=1283"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0002",
+      "grape_code": "gr_0004"
+    },
+    "field": "display_order",
+    "current": 2,
+    "proposed": 1,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf",
+      "https://wineanorak.com/?p=1283"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0002",
+      "grape_code": "gr_0013"
+    },
+    "field": "local_note",
+    "current": "in the blend, adds lift",
+    "proposed": "in the blend, adds freshness",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bordeaux.com/en/grape-varieties/cabernet-franc",
+      "https://www.thedrinksbusiness.com/2024/01/the-monocepage-wines-of-bordeaux-part-iii-cabernet-franc/",
+      "https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/saint-emilion/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0002",
+      "grape_code": "gr_0011"
+    },
+    "field": "link",
+    "current": null,
+    "proposed": "add",
+    "verdict": "add",
+    "sources": [
+      "https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf",
+      "https://wineanorak.com/?p=1283",
+      "https://winefolly.com/deep-dive/what-grape-varieties-make-up-a-bordeaux-blend/"
+    ],
+    "local_note": "dry whites, with Sémillon",
+    "display_order": 4
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0014"
+    },
+    "field": "note",
+    "current": "red and white, smoky",
+    "proposed": "red and dry white, mostly red",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/",
+      "https://bordeaux.guides.winefolly.com/regions/pessac-leognan"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0003"
+    },
+    "field": "label_note",
+    "current": "Brut is dry, Extra Brut drier still. Blanc de Blancs is Chardonnay only, Blanc de Noirs black grapes only. Non-vintage is the house style; a vintage comes from one good year.",
+    "proposed": "Brut is dry, Extra Brut drier still. Blanc de Blancs is white grapes only, nearly always Chardonnay; Blanc de Noirs is black grapes only. Non-vintage blends years into the house style; a vintage comes from one good year.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.champagne.fr/system/files/2022-10/How%20to%20read%20a%20Champagne%20label.pdf",
+      "https://www.champagne.fr/en/champagne-tasting/type-of-champagne/blanc-de-blancs",
+      "https://www.champagne.fr/en/champagne-tasting/choosing-your-champagne/blanc-de-noirs",
+      "https://www.champagne.fr/en/champagne-tasting/choosing-your-champagne/vintage-champagne",
+      "https://www.champagne.fr/en/champagne-tasting/type-of-champagne/non-vintage-brut",
+      "https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0003",
+      "grape_code": "gr_0002"
+    },
+    "field": "display_order",
+    "current": 1,
+    "proposed": 2,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties",
+      "https://www.champagne.fr/en/champagne-frequently-asked-questions",
+      "https://www.pernod-ricard.com/en/media/champagne-terroir"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0003",
+      "grape_code": "gr_0001"
+    },
+    "field": "local_note",
+    "current": "body and red fruit",
+    "proposed": "body and structure",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties",
+      "https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0003",
+      "grape_code": "gr_0001"
+    },
+    "field": "display_order",
+    "current": 2,
+    "proposed": 1,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties",
+      "https://www.champagne.fr/en/champagne-frequently-asked-questions",
+      "https://www.pernod-ricard.com/en/media/champagne-terroir"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0004"
+    },
+    "field": "label_note",
+    "current": "Côtes du Rhône is the everyday name; village names such as Gigondas or Châteauneuf-du-Pape are a step up.",
+    "proposed": "From everyday to top: Côtes du Rhône, then Côtes du Rhône Villages, some adding a village name, then crus such as Gigondas or Châteauneuf-du-Pape.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.vins-rhone.com/en/aoc-cotes-du-rhone-villages",
+      "https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-gigondas",
+      "https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape",
+      "https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0004",
+      "grape_code": "gr_0005"
+    },
+    "field": "display_order",
+    "current": 1,
+    "proposed": 2,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vins-rhone.com/en/aoc-cotes-du-rhone",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide",
+      "https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0004",
+      "grape_code": "gr_0006"
+    },
+    "field": "display_order",
+    "current": 2,
+    "proposed": 1,
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vins-rhone.com/en/aoc-cotes-du-rhone",
+      "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0018"
+    },
+    "field": "colour",
+    "current": "red",
+    "proposed": "mixed",
+    "verdict": "adjusted",
+    "sources": [
+      "https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-hermitage",
+      "https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0018"
+    },
+    "field": "note",
+    "current": "Syrah: powerful, long-lived",
+    "proposed": "Syrah: powerful, long-lived; white too",
+    "verdict": "adjusted",
+    "sources": [
+      "https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-hermitage",
+      "https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0019"
+    },
+    "field": "note",
+    "current": "Syrah: lighter, good value",
+    "proposed": "Syrah: fruity, for drinking young",
+    "verdict": "adjusted",
+    "sources": [
+      "https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-crozes-hermitage",
+      "https://www.irishtimes.com/life-and-style/food-and-drink/drink/a-lighter-wine-from-the-rhone-valley-1.1964825",
+      "https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0005"
+    },
+    "field": "summary",
+    "current": "France's longest river, lined with fresh wines: Sauvignon Blanc in Sancerre, Chenin Blanc in Vouvray, light Cabernet Franc reds in Chinon.",
+    "proposed": "France's longest river, lined with fresh wines: Sauvignon Blanc in Sancerre, Chenin Blanc in Vouvray, fragrant Cabernet Franc reds in Chinon.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.guildsomm.com/learn/study/w/study-wiki/154/loire-valley",
+      "https://www.france.fr/en/article/loire-valley-vineyard/",
+      "https://www.vinsdeloire.fr/en/loire-wines/chinon",
+      "https://www.cellartours.com/france/french-wine-regions/chinon"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0005"
+    },
+    "field": "pairing",
+    "current": "Goat's cheese, fish, salads, charcuterie.",
+    "proposed": "Goat's cheese, fish, oysters, seafood.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/",
+      "https://winefolly.com/grapes/cabernet-franc/",
+      "https://www.vinsdeloire.fr/en/loire-wines/muscadet",
+      "https://www.vinsdeloire.fr/en/loire-wines/chinon",
+      "https://winefolly.com/deep-dive/tasting-and-pairing-muscadet-wine/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0005"
+    },
+    "field": "label_note",
+    "current": null,
+    "proposed": "On Vouvray, sec is dry, demi-sec medium-sweet, moelleux sweet. Muscadet sur lie has aged on its lees, for more texture.",
+    "verdict": "replaced",
+    "sources": [
+      "https://winefolly.com/deep-dive/all-about-vouvray-wine/",
+      "https://www.cellartours.com/france/french-wine-regions/vouvray",
+      "https://www.vinsdeloire.fr/en/loire-wines/muscadet",
+      "https://vinepair.com/articles/the-one-white-wine-from-france-you-need-to-be-drinking"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0005",
+      "grape_code": "gr_0011"
+    },
+    "field": "local_note",
+    "current": "Sancerre: flinty, crisp",
+    "proposed": "Sancerre: crisp, mineral",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vins-centre-loire.com/en/les-vins-de-sancerre/",
+      "https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0005",
+      "grape_code": "gr_0012"
+    },
+    "field": "local_note",
+    "current": "Vouvray: dry to sweet",
+    "proposed": "Vouvray: dry to sweet, often sparkling",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vinsdeloire.fr/en/loire-wines/vouvray",
+      "https://winefolly.com/deep-dive/all-about-vouvray-wine/",
+      "https://www.cellartours.com/france/french-wine-regions/vouvray"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0005",
+      "grape_code": "gr_0013"
+    },
+    "field": "local_note",
+    "current": "Chinon: a light, fragrant red",
+    "proposed": "Chinon: fragrant, light to firm",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vinsdeloire.fr/en/loire-wines/chinon",
+      "https://www.cellartours.com/france/french-wine-regions/chinon",
+      "https://winefolly.com/grapes/cabernet-franc/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0021"
+    },
+    "field": "note",
+    "current": "Sauvignon Blanc: crisp, flinty",
+    "proposed": "Sauvignon Blanc: crisp, mineral",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vins-centre-loire.com/en/les-vins-de-sancerre/",
+      "https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0023"
+    },
+    "field": "colour",
+    "current": "white",
+    "proposed": "mixed",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vinsdeloire.fr/en/loire-wines/vouvray",
+      "https://winefolly.com/deep-dive/all-about-vouvray-wine/",
+      "https://www.cellartours.com/france/french-wine-regions/vouvray"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0023"
+    },
+    "field": "note",
+    "current": "Chenin Blanc: dry to sweet",
+    "proposed": "Chenin Blanc: still or sparkling, dry to sweet",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vinsdeloire.fr/en/loire-wines/vouvray",
+      "https://winefolly.com/deep-dive/all-about-vouvray-wine/",
+      "https://www.cellartours.com/france/french-wine-regions/vouvray"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0024"
+    },
+    "field": "note",
+    "current": "Cabernet Franc: light, fragrant",
+    "proposed": "Cabernet Franc: fragrant, light to firm",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vinsdeloire.fr/en/loire-wines/chinon",
+      "https://www.cellartours.com/france/french-wine-regions/chinon",
+      "https://winefolly.com/grapes/cabernet-franc/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0025"
+    },
+    "field": "note",
+    "current": "light, salty, made for oysters",
+    "proposed": "light, saline, made for oysters",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.vinsdeloire.fr/en/loire-wines/muscadet",
+      "https://winefolly.com/deep-dive/tasting-and-pairing-muscadet-wine/",
+      "https://vinepair.com/articles/the-one-white-wine-from-france-you-need-to-be-drinking"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0006"
+    },
+    "field": "summary",
+    "current": "Spain's best-known red: mostly Tempranillo, often with Garnacha, traditionally aged in oak, which gives vanilla and spice.",
+    "proposed": "Spain's first DOCa (1991), best known for reds: mostly Tempranillo, often with Garnacha, traditionally aged in oak for vanilla and spice. Also whites, mainly Viura, and rosados.",
+    "verdict": "replaced",
+    "sources": [
+      "https://boe.es/boe/dias/1991/04/09/pdfs/A10675-10682.pdf",
+      "https://daily.sevenfifty.com/regions/rioja",
+      "https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf",
+      "https://www.thewinesociety.com/discover/explore/regional-guides/rioja-ultimate-guide",
+      "https://winefolly.com/deep-dive/rioja-wine-from-crianza-to-gran-reserva/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0006"
+    },
+    "field": "red_acidity",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://daily.sevenfifty.com/regions/rioja",
+      "https://winefolly.com/grapes/tempranillo/",
+      "https://greatbritishchefs.com/features/beginners-guide-to-rioja-wines"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0006"
+    },
+    "field": "pairing",
+    "current": "Lamb, chorizo, roasted vegetables, Manchego.",
+    "proposed": "Lamb, chorizo, cured meats, Manchego.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/deep-dive/rioja-wine-from-crianza-to-gran-reserva/",
+      "https://greatbritishchefs.com/features/beginners-guide-to-rioja-wines",
+      "https://www.thewinesociety.com/discover/explore/regional-guides/rioja-ultimate-guide"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0006"
+    },
+    "field": "label_note",
+    "current": "Crianza: at least two years old, some in oak. Reserva: aged longer, rounder. Gran Reserva: the longest aged, made in good years.",
+    "proposed": "For reds: Crianza at least two years old, one in oak; Reserva at least three, one in oak; Gran Reserva at least five, two in oak, usually from the best years.",
+    "verdict": "replaced",
+    "sources": [
+      "https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf",
+      "https://riojawine.com/en/blog/classification-of-rioja-wines-according-to-their-ageing/",
+      "https://daily.sevenfifty.com/regions/rioja",
+      "https://winefolly.com/deep-dive/rioja-wine-from-crianza-to-gran-reserva/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0006",
+      "grape_code": "gr_0006"
+    },
+    "field": "local_note",
+    "current": "warmth in the blend",
+    "proposed": "adds body and spice",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.thewinesociety.com/discover/explore/regional-guides/rioja-ultimate-guide",
+      "https://greatbritishchefs.com/features/beginners-guide-to-rioja-wines",
+      "https://daily.sevenfifty.com/regions/rioja"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0007"
+    },
+    "field": "red_acidity",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://daily.sevenfifty.com/regions/ribera-del-duero",
+      "https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf",
+      "https://www.irishtimes.com/food/drink/2025/09/27/full-bodied-and-hedonistic-welcome-to-wines-from-ribera-del-duero"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0007"
+    },
+    "field": "pairing",
+    "current": "Roast lamb, beef, game.",
+    "proposed": "Roast lamb, beef and other red meat.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.irishtimes.com/food/drink/2025/09/27/full-bodied-and-hedonistic-welcome-to-wines-from-ribera-del-duero",
+      "https://winefolly.com/grapes/tempranillo/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0007"
+    },
+    "field": "label_note",
+    "current": "Crianza: at least two years old, some in oak. Reserva: aged longer, rounder. Gran Reserva: the longest aged, made in good years.",
+    "proposed": "For reds: Crianza at least two years old, one in oak; Reserva at least three, one in oak; Gran Reserva at least five, two in oak.",
+    "verdict": "replaced",
+    "sources": [
+      "https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf",
+      "https://daily.sevenfifty.com/regions/ribera-del-duero"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0008"
+    },
+    "field": "summary",
+    "current": "Terraced slopes along the Douro river: the home of port, and more and more of dry, dark reds from Touriga Nacional and other local grapes.",
+    "proposed": "Terraced slopes along the Douro river: the home of port, and of a growing share of dry reds, blended from local grapes such as Touriga Franca and Touriga Nacional.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://winesofportugal.com/en/discover/wine-regions/porto-e-douro/",
+      "https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties",
+      "https://www.decanter.com/premium/good-value-douro-reds-417806/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0008"
+    },
+    "field": "pairing",
+    "current": "Port with blue cheese or chocolate; the dry reds with grilled meat.",
+    "proposed": "Port with blue cheese or chocolate; the dry reds with red meat.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.ivdp.pt/en/wines/pairings/",
+      "https://www.taylor.pt/en/enjoy-port-wine/pairing-port-food",
+      "https://winefolly.com/deep-dive/what-is-port-wine/",
+      "https://www.matchingfoodandwine.com/articles/roast-lamb-with-a-douro-red"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0008"
+    },
+    "field": "label_note",
+    "current": "Port: Ruby is young and fruity, Tawny is aged and nutty, Vintage comes from one exceptional year.",
+    "proposed": "Port: Ruby is young and fruity, Tawny is aged in wood and nutty, Vintage comes from one exceptional year and ages in bottle.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://ivdp.pt/en/wines/port-wines/introduction/",
+      "https://ivdp.pt/en/wines/port-wines/special-categories/",
+      "https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/",
+      "https://www.taylor.pt/en/enjoy-port-wine/pairing-port-food",
+      "https://winefolly.com/deep-dive/what-is-port-wine/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0008",
+      "grape_code": "gr_0007"
+    },
+    "field": "local_note",
+    "current": "as Tinta Roriz",
+    "proposed": "as Tinta Roriz: a main blending grape",
+    "verdict": "adjusted",
+    "sources": [
+      "https://winefolly.com/grapes/tempranillo/",
+      "https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties",
+      "https://winesofportugal.com/en/discover/wine-regions/porto-e-douro/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0026"
+    },
+    "field": "colour",
+    "current": "red",
+    "proposed": "mixed",
+    "verdict": "replaced",
+    "sources": [
+      "https://ivdp.pt/en/wines/port-wines/introduction/",
+      "https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/",
+      "https://winefolly.com/deep-dive/what-is-port-wine/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0026"
+    },
+    "field": "note",
+    "current": "fortified and sweet",
+    "proposed": "fortified, usually sweet",
+    "verdict": "adjusted",
+    "sources": [
+      "https://ivdp.pt/en/wines/port-wines/introduction/",
+      "https://winefolly.com/deep-dive/what-is-port-wine/",
+      "https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0010"
+    },
+    "field": "summary",
+    "current": "Foothills of the Alps where Nebbiolo makes Barolo and Barbaresco: pale, but with firm tannins and scents of rose and tar.",
+    "proposed": "In the Langhe hills, Nebbiolo makes Barolo and Barbaresco: pale, but with firm tannins and scents of rose and tar.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://langhe.net/en/wines/barolo-docg/",
+      "https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/",
+      "https://greatitalianchefs.com/features/piedmont-wine-guide"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0010"
+    },
+    "field": "red_body",
+    "current": 3,
+    "proposed": 4,
+    "verdict": "adjusted",
+    "sources": [
+      "https://langhe.net/en/wines/barolo-docg/",
+      "https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/",
+      "https://winefolly.com/grapes/nebbiolo/",
+      "https://winefolly.com/grapes/barbera/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0011"
+    },
+    "field": "pairing",
+    "current": "Pasta with tomato, grilled steak, pecorino.",
+    "proposed": "Pasta with tomato, pizza, grilled steak.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://vinepair.com/articles/chianti-classico-docg-wine-guide/",
+      "https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico",
+      "https://winefolly.com/grapes/sangiovese/"
+    ]
+  },
+  {
+    "table": "wine_regions",
+    "key": {
+      "region_code": "wr_0011"
+    },
+    "field": "label_note",
+    "current": "Chianti Classico comes from the historic heart; Riserva is aged longer. \"Super Tuscans\" are blends outside the rules, often with Cabernet.",
+    "proposed": "Chianti Classico comes from the historic heart; Riserva and Gran Selezione are aged longer. \"Super Tuscans\" began as blends outside the rules, often with Cabernet; most are now IGT Toscana or Bolgheri.",
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.frw.co.uk/editorial/the-super-tuscans",
+      "https://winescholarguild.com/blog/regional-spotlight/super-tuscans",
+      "https://italianwinecentral.com/denomination/chianti-classico-docg/",
+      "https://vinepair.com/wine-geekly/gran-selezione-is-the-new-king-of-chianti-heres-what-you-need-to-know/"
+    ]
+  },
+  {
+    "table": "wine_region_grapes",
+    "key": {
+      "region_code": "wr_0011",
+      "grape_code": "gr_0004"
+    },
+    "field": "link",
+    "current": null,
+    "proposed": "add",
+    "verdict": "add",
+    "sources": [
+      "https://www.bolgheridoc.com/en/wines/",
+      "https://winescholarguild.com/blog/regional-spotlight/super-tuscans",
+      "https://www.frw.co.uk/editorial/the-super-tuscans"
+    ],
+    "local_note": "in Bolgheri and Super Tuscan blends",
+    "display_order": 3
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0004"
+    },
+    "field": "aliases",
+    "current": [
+      "Macon-Villages",
+      "Mâcon"
+    ],
+    "proposed": [
+      "Macon-Villages"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57688.pdf",
+      "https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57689.pdf"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0009"
+    },
+    "field": "aliases",
+    "current": [
+      "Medoc",
+      "Haut-Médoc"
+    ],
+    "proposed": [
+      "Medoc"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bordeaux.com/en/mag/blog/battle-d-aoc-haut-medoc-vs-pessac-leognan/",
+      "https://www.bordeaux.com/en/designations/medoc/medoc/",
+      "https://en.wikipedia.org/wiki/Haut-M%C3%A9doc_AOC"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0014"
+    },
+    "field": "aliases",
+    "current": [
+      "Pessac-Leognan",
+      "Graves"
+    ],
+    "proposed": [
+      "Pessac-Leognan"
+    ],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.bordeaux.com/en/designations/graves-sauternes/",
+      "https://www.decanter.com/premium/pessac-leognan-story-appellation-394841/",
+      "https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0029"
+    },
+    "field": "aliases",
+    "current": [
+      "Barbera d'Asti"
+    ],
+    "proposed": [],
+    "verdict": "adjusted",
+    "sources": [
+      "https://www.decanter.com/learn/about-barbera-dasti-wines-five-things-to-know-381382/",
+      "https://www.langhevini.it/en/denominazioni/"
+    ]
+  },
+  {
+    "table": "wine_appellations",
+    "key": {
+      "appellation_code": "wa_0031"
+    },
+    "field": "aliases",
+    "current": [
+      "Chianti"
+    ],
+    "proposed": [],
+    "verdict": "adjusted",
+    "sources": [
+      "https://italianwinecentral.com/denomination/chianti-classico-docg/",
+      "https://vinepair.com/wine-geekly/gran-selezione-is-the-new-king-of-chianti-heres-what-you-need-to-know/"
+    ]
+  }
+]

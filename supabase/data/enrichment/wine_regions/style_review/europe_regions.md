@@ -1,0 +1,1079 @@
+# European wine regions: style-text review
+
+Every style claim for wr_0001..wr_0011 checked against at least two independent organisations (two pages of one site count once). Generated 2026-11-20 from four checker fragments plus a lead review.
+
+Fields checked: 218. Changed (incl. alias fixes and suggested links): 57.
+
+## Scale mapping used (1-5)
+
+- body: light 2, light-to-medium 2, medium 3, medium-plus / medium-full 4, full 5 (4 where sources split between medium-full and full)
+- acidity: low 2, medium 3, medium-plus / fresh / bright 4, high 5
+- tannin: very low 1, low / soft 2, medium 3, medium-plus / firm 4, high / very firm 5
+
+Evidence marked "(search-result evidence)" was seen only in a search snippet because the page refused automated fetching; it is weaker than a fetched page.
+
+## Burgundy (wr_0001)
+
+- **summary**: "A long, narrow strip of slopes where almost everything is one grape: Pinot Noir for red, Chardonnay for white. The village on the label tells you more than the grape does." → **replaced** → "Vineyards stretching some 230 km from Chablis down to the Mâconnais, where almost everything is one of two grapes: Chardonnay for white, Pinot Noir for red. The place on the label tells you more than the grape does."
+  - Why: BIVB gives the region as 230 km long from Chablis to the Mâconnais, but Chablis is 'geographically set apart' from the rest, so 'a long, narrow strip' only fits the Côte d'Or slope, not the whole region; and it is two grapes, not one. Chardonnay is listed first because it is 57% of plantings and whites 62% of output. 'Place' replaces 'village' because regional, Premier Cru and Grand Cru labels name a region or a vineyard.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/locating-the-bourgogne-region/locating-the-bourgogne-region,3202,14763.html>: Bourgogne is 230km long; six areas listed north to south, Chablis & Grand Auxerrois to Mâconnais
+  - <https://winefolly.com/review/guide-to-burgundy-wine-with-maps/>: two grapes to remember, Pinot Noir and Chardonnay; four quality levels; Chablis 'geographically set apart' from the rest; Mâconnais southernmost
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+  - <https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html>: Chardonnay 57% and Pinot Noir 34% of the vineyard; whites 62% of production, reds 29%; mostly single-varietal
+- **red_body**: 2 → **supported** → 2
+  - Why: Typical red Burgundy is light to medium-bodied (BIVB: 'light and fluid structure' for Bourgogne rouge; WSET L2: light to medium). Wine Folly rates Pinot Noir in general as medium, so 2 is kept for the typical bottle; top Côte de Nuits villages are fuller.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57664.pdf>: Bourgogne rouge fact sheet: 'light and fluid structure in the mouth'; pairs with delicate dishes, poultry tarts, veal, hard cheeses
+  - <https://open-exam-prep.com/study-guides/wset-level-2/black-varieties/pinot-noir>: WSET L2 study guide: Burgundian Pinot Noir typically light to medium body, fresh acidity, red fruit, low tannin
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+- **red_acidity**: 4 → **supported** → 4
+  - Why: Sources put it at medium-high/medium-plus, with freshness kept even in hot years; maps to 4.
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+  - <https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir/the-bourgogne-wine-region-birthplace-of-the-pinot-noir-varietal,2798,10603.html>: red and black fruit; 'assured yet delicate tannins'; freshness even in hot years; with age undergrowth, mushroom, truffle, animal notes
+  - <https://open-exam-prep.com/study-guides/wset-level-2/black-varieties/pinot-noir>: WSET L2 study guide: Burgundian Pinot Noir typically light to medium body, fresh acidity, red fruit, low tannin
+- **red_tannin**: 2 → **supported** → 2
+  - Why: Low tannin from thin skins (Wine Folly 'low'; BIVB 'delicate tannins'); maps to 2.
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+  - <https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir/the-bourgogne-wine-region-birthplace-of-the-pinot-noir-varietal,2798,10603.html>: red and black fruit; 'assured yet delicate tannins'; freshness even in hot years; with age undergrowth, mushroom, truffle, animal notes
+  - <https://open-exam-prep.com/study-guides/wset-level-2/black-varieties/pinot-noir>: WSET L2 study guide: Burgundian Pinot Noir typically light to medium body, fresh acidity, red fruit, low tannin
+- **pairing**: "Duck, mushrooms, poultry, soft cheeses." → **adjusted** → "Duck, poultry, mushroom dishes, mild soft cheeses."
+  - Why: Duck, poultry and mushroom dishes are supported. Soft cheeses only work when mild (brie, goat's cheese): Matching Food and Wine says Epoisses overwhelms red burgundy, and BIVB suggests hard cheeses for basic Bourgogne rouge.
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+  - <https://matchingfoodandwine.com/articles/-the-best-pairings-with-red-burgundy>: basic red burgundy: charcuterie, duck 'almost always a winner', goat's cheese and creamy, not too mature brie; Epoisses overwhelms it
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57664.pdf>: Bourgogne rouge fact sheet: 'light and fluid structure in the mouth'; pairs with delicate dishes, poultry tarts, veal, hard cheeses
+- **label_note**: "From everyday to rare: Bourgogne, then a village name, Premier Cru, Grand Cru." → **adjusted** → "From everyday to rare: regional wines such as Bourgogne, then a village name, Premier Cru, Grand Cru."
+  - Why: The four levels (Régionale, Village, Premier Cru, Grand Cru) are right, but the regional tier is more than the plain 'Bourgogne' name: BIVB lists 7 regional AOCs, Mâcon-Villages among them. Grand Cru labels name the vineyard alone, without the village.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/decoding-the-aocs/bourgogne-wines-decoding-the-aocs,2467,9263.html>: 84 AOCs in four levels: Régionale, Village, Premier Cru (Climats within villages), Grand Cru (Climat name replaces village)
+  - <https://www.guildsomm.com/p/publicstudyguide>: appellations run from Chablis (Yonne) to the south; four tiers régionale, village, premier cru, grand cru; Côte d'Or villages in a near north-south line
+  - <https://winefolly.com/review/guide-to-burgundy-wine-with-maps/>: two grapes to remember, Pinot Noir and Chardonnay; four quality levels; Chablis 'geographically set apart' from the rest; Mâconnais southernmost
+- **link Pinot Noir (gr_0001) · local_note**: "earthy, elegant" → **supported** → "earthy, elegant"
+  - Why: BIVB: delicate tannins, with undergrowth, mushroom and truffle notes as it ages; Wine Folly: Burgundian Pinot 'earthy and floral'.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir/the-bourgogne-wine-region-birthplace-of-the-pinot-noir-varietal,2798,10603.html>: red and black fruit; 'assured yet delicate tannins'; freshness even in hot years; with age undergrowth, mushroom, truffle, animal notes
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+- **link Pinot Noir (gr_0001) · display_order**: 1 → **adjusted** → 2
+  - Why: Chardonnay is the more planted grape: 57% against 34% for Pinot Noir (BIVB; other sources say about half against a third). Whites are 62% of production.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html>: Chardonnay 57% and Pinot Noir 34% of the vineyard; whites 62% of production, reds 29%; mostly single-varietal
+  - <https://www.sevenfifty.com/tc/bourgognes>: Chardonnay about half of Burgundy plantings, Pinot Noir about a third or more (search-result evidence, page not fetched)
+- **link Chardonnay (gr_0002) · local_note**: "from steely Chablis to rich Meursault" → **supported** → "from steely Chablis to rich Meursault"
+  - Why: BIVB: Chablis very dry, mineral, lively; Meursault 'rich and fat'. Wine Folly: Chablis the crispest white Burgundy, Côte de Beaune the most powerful.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57669.pdf>: Chablis: whites exclusively, Chardonnay; nose 'very fresh, lively and mineral'; 'very dry'
+  - <https://www.bourgogne-wines.com/our-wines-our-terroir/the-bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57695.pdf>: Meursault: nearly all white; toasted almonds, hazelnut, butter; 'rich and fat', hazelnut on the palate; small amount of red
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **link Chardonnay (gr_0002) · display_order**: 2 → **adjusted** → 1
+  - Why: Chardonnay leads plantings (57%) and production (white 62%).
+  - <https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html>: Chardonnay 57% and Pinot Noir 34% of the vineyard; whites 62% of production, reds 29%; mostly single-varietal
+  - <https://www.sevenfifty.com/tc/bourgognes>: Chardonnay about half of Burgundy plantings, Pinot Noir about a third or more (search-result evidence, page not fetched)
+- **Observation** ({"region_code": "wr_0001"}): Aligoté (6% of Burgundy plantings per BIVB, with its own Bourgogne Aligoté and Bouzeron AOCs) is not in the grapes table. Gamay (gr_0014) is allowed in a few regional AOCs but is only part of BIVB's 3% 'other varieties', so no link is suggested.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/our-grape-varietals-our-colors/pinot-noir-and-chardonnay-the-bourgogne-region-s-two-noble-grape-varietals,2475,9265.html>: Chardonnay 57% and Pinot Noir 34% of the vineyard; whites 62% of production, reds 29%; mostly single-varietal
+  - <https://www.guildsomm.com/p/publicstudyguide>: appellations run from Chablis (Yonne) to the south; four tiers régionale, village, premier cru, grand cru; Côte d'Or villages in a near north-south line
+- **appellation wa_0001 · name**: "Chablis" → **supported** → "Chablis"
+  - Why: Village AOC of the Chablis area.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57669.pdf>: Chablis: whites exclusively, Chardonnay; nose 'very fresh, lively and mineral'; 'very dry'
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **appellation wa_0001 · colour**: "white" → **supported** → "white"
+  - Why: BIVB: 'Whites exclusively - Chardonnay'.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57669.pdf>: Chablis: whites exclusively, Chardonnay; nose 'very fresh, lively and mineral'; 'very dry'
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **appellation wa_0001 · note**: "crisp, mineral" → **supported** → "crisp, mineral"
+  - Why: BIVB: very fresh, lively and mineral, very dry; Wine Folly: the crispest acid profile of white Burgundy.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57669.pdf>: Chablis: whites exclusively, Chardonnay; nose 'very fresh, lively and mineral'; 'very dry'
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **appellation wa_0002 · name**: "Meursault" → **supported** → "Meursault"
+  - Why: Village AOC, Côte de Beaune.
+  - <https://www.bourgogne-wines.com/our-wines-our-terroir/the-bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57695.pdf>: Meursault: nearly all white; toasted almonds, hazelnut, butter; 'rich and fat', hazelnut on the palate; small amount of red
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **appellation wa_0002 · colour**: "white" → **supported** → "white"
+  - Why: BIVB: 'Nearly all whites' (381 ha white against 11 ha red), so white is right for a list; a little red Meursault exists.
+  - <https://www.bourgogne-wines.com/our-wines-our-terroir/the-bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57695.pdf>: Meursault: nearly all white; toasted almonds, hazelnut, butter; 'rich and fat', hazelnut on the palate; small amount of red
+  - <https://www.winewithseth.com/winewiki/compare/chablis-vs-white-burgundy/>: Meursault leans to creamy, nutty richness (butter, hazelnut); Puligny to elegance and mineral drive (search-result evidence; page returned 429 when fetched)
+- **appellation wa_0002 · note**: "rich, nutty" → **supported** → "rich, nutty"
+  - Why: BIVB: 'rich and fat', toasted almonds and hazelnut; other sources: creamy, nutty richness.
+  - <https://www.bourgogne-wines.com/our-wines-our-terroir/the-bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57695.pdf>: Meursault: nearly all white; toasted almonds, hazelnut, butter; 'rich and fat', hazelnut on the palate; small amount of red
+  - <https://www.winewithseth.com/winewiki/compare/chablis-vs-white-burgundy/>: Meursault leans to creamy, nutty richness (butter, hazelnut); Puligny to elegance and mineral drive (search-result evidence; page returned 429 when fetched)
+- **appellation wa_0003 · name**: "Puligny-Montrachet" → **supported** → "Puligny-Montrachet"
+  - Why: Village AOC, Côte de Beaune.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57708.pdf>: Puligny-Montrachet: almost all white (95 ha white, 0.36 ha red); 'grace with a well-defined character', 'purified style'
+  - <https://www.zachys.com/blogs/news/chablis-vs-cote-de-beaune-white-burgundy>: Puligny Premier Crus among the most precise expressions of the Côte de Beaune (search-result evidence)
+- **appellation wa_0003 · colour**: "white" → **supported** → "white"
+  - Why: BIVB: almost all white (95 ha white, 0.36 ha red).
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57708.pdf>: Puligny-Montrachet: almost all white (95 ha white, 0.36 ha red); 'grace with a well-defined character', 'purified style'
+  - <https://www.winewithseth.com/winewiki/compare/chablis-vs-white-burgundy/>: Meursault leans to creamy, nutty richness (butter, hazelnut); Puligny to elegance and mineral drive (search-result evidence; page returned 429 when fetched)
+- **appellation wa_0003 · note**: "elegant, precise" → **supported** → "elegant, precise"
+  - Why: BIVB: 'grace with a well-defined character', 'purified style'; trade sources call Puligny precise and mineral.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57708.pdf>: Puligny-Montrachet: almost all white (95 ha white, 0.36 ha red); 'grace with a well-defined character', 'purified style'
+  - <https://www.zachys.com/blogs/news/chablis-vs-cote-de-beaune-white-burgundy>: Puligny Premier Crus among the most precise expressions of the Côte de Beaune (search-result evidence)
+  - <https://www.winewithseth.com/winewiki/compare/chablis-vs-white-burgundy/>: Meursault leans to creamy, nutty richness (butter, hazelnut); Puligny to elegance and mineral drive (search-result evidence; page returned 429 when fetched)
+- **appellation wa_0004 · name**: "Mâcon-Villages" → **supported** → "Mâcon-Villages"
+  - Why: Regional AOC of the Mâconnais (BIVB: Appellation Régionale, not a village AOC).
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57689.pdf>: Mâcon, Mâcon-Villages, Mâcon + village: Appellation Régionale; Mâcon-Villages white only (Chardonnay); 'fresh and luscious as well as dry and well-fruited'
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **appellation wa_0004 · colour**: "white" → **supported** → "white"
+  - Why: BIVB: Mâcon-Villages is white only, Chardonnay.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57689.pdf>: Mâcon, Mâcon-Villages, Mâcon + village: Appellation Régionale; Mâcon-Villages white only (Chardonnay); 'fresh and luscious as well as dry and well-fruited'
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **appellation wa_0004 · note**: "fresh, fruity, good value" → **adjusted** → "fresh, fruity"
+  - Why: 'Fresh' and 'fruity' are supported (BIVB: fresh, dry and well-fruited; Wine Folly: fruit-forward, approachable). 'Good value' is a price judgement, which the brief rules out.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57689.pdf>: Mâcon, Mâcon-Villages, Mâcon + village: Appellation Régionale; Mâcon-Villages white only (Chardonnay); 'fresh and luscious as well as dry and well-fruited'
+  - <https://winefolly.com/deep-dive/white-burgundy-tasting-pairing-and-french-chardonnay/>: Chablis has 'the tartest, crispest acid profile of all white Burgundy'; Mâconnais fruit-forward, approachable, mostly unoaked; Côte de Beaune the most powerful Chardonnay
+- **Observation** ({"appellation_code": "wa_0004"}): Alias problem: 'Mâcon' is not just another name for Mâcon-Villages. BIVB lists Mâcon (and Mâcon + village name) as separate regional labels, and they also cover red and rosé from Gamay and Pinot Noir. A search for 'Mâcon' should not resolve to a white-only appellation, so drop that alias. 'Macon-Villages' is fine.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57688.pdf>: Mâcon (and Mâcon + village) also exists as red and rosé from Gamay and Pinot Noir: a distinct label from Mâcon-Villages
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57689.pdf>: Mâcon, Mâcon-Villages, Mâcon + village: Appellation Régionale; Mâcon-Villages white only (Chardonnay); 'fresh and luscious as well as dry and well-fruited'
+- **appellation wa_0005 · name**: "Volnay" → **supported** → "Volnay"
+  - Why: Village AOC, Côte de Beaune.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57719.pdf>: Volnay: reds only, Pinot Noir; 'admired for its delicacy, its sap, and its bouquet'
+  - <https://en.wikipedia.org/wiki/Volnay_AOC>: Volnay typically light and aromatic, elegant rather than powerful, considerably less tannin than Pommard (search-result evidence)
+- **appellation wa_0005 · colour**: "red" → **supported** → "red"
+  - Why: BIVB: 'Reds only - Pinot Noir'.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57719.pdf>: Volnay: reds only, Pinot Noir; 'admired for its delicacy, its sap, and its bouquet'
+  - <https://en.wikipedia.org/wiki/Volnay_AOC>: Volnay typically light and aromatic, elegant rather than powerful, considerably less tannin than Pommard (search-result evidence)
+- **appellation wa_0005 · note**: "delicate, perfumed" → **supported** → "delicate, perfumed"
+  - Why: BIVB: admired for its delicacy and bouquet; Wikipedia/Decanter: light, aromatic, elegance over power.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57719.pdf>: Volnay: reds only, Pinot Noir; 'admired for its delicacy, its sap, and its bouquet'
+  - <https://en.wikipedia.org/wiki/Volnay_AOC>: Volnay typically light and aromatic, elegant rather than powerful, considerably less tannin than Pommard (search-result evidence)
+- **appellation wa_0006 · name**: "Pommard" → **supported** → "Pommard"
+  - Why: Village AOC, Côte de Beaune.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57704.pdf>: Pommard: reds only; deep dark red; 'dense and massive tannins', 'firm-textured tannins'
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+- **appellation wa_0006 · colour**: "red" → **supported** → "red"
+  - Why: BIVB: 'Reds only - Pinot Noir'.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57704.pdf>: Pommard: reds only; deep dark red; 'dense and massive tannins', 'firm-textured tannins'
+  - <https://en.wikipedia.org/wiki/Volnay_AOC>: Volnay typically light and aromatic, elegant rather than powerful, considerably less tannin than Pommard (search-result evidence)
+- **appellation wa_0006 · note**: "sturdier, more tannin" → **supported** → "sturdier, more tannin"
+  - Why: BIVB: 'dense and massive tannins'; Wine Folly: full-bodied and more tannic; Wikipedia: Volnay has much less tannin than Pommard.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57704.pdf>: Pommard: reds only; deep dark red; 'dense and massive tannins', 'firm-textured tannins'
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+  - <https://en.wikipedia.org/wiki/Volnay_AOC>: Volnay typically light and aromatic, elegant rather than powerful, considerably less tannin than Pommard (search-result evidence)
+- **appellation wa_0007 · name**: "Gevrey-Chambertin" → **supported** → "Gevrey-Chambertin"
+  - Why: Village AOC, Côte de Nuits.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57684.pdf>: Gevrey-Chambertin: reds exclusively; 'firm structure, velvety tannins'; 'full-bodied, powerful, rich, and meaty'
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+- **appellation wa_0007 · colour**: "red" → **supported** → "red"
+  - Why: BIVB: 'Reds exclusively - Pinot Noir'.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57684.pdf>: Gevrey-Chambertin: reds exclusively; 'firm structure, velvety tannins'; 'full-bodied, powerful, rich, and meaty'
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+- **appellation wa_0007 · note**: "firmer, darker" → **supported** → "firmer, darker"
+  - Why: BIVB: firm structure, full-bodied, powerful; Wine Folly: robust and structured, dark cherry and blackcurrant.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57684.pdf>: Gevrey-Chambertin: reds exclusively; 'firm structure, velvety tannins'; 'full-bodied, powerful, rich, and meaty'
+  - <https://winefolly.com/grapes/pinot-noir/>: Pinot Noir: medium body, low tannin, medium-high acidity; Burgundy earthy and floral, best vines on a narrow east-facing slope south of Dijon; pairs with duck and mushroom dishes; Gevrey robust, dark cherry; Pommard more tannic
+- **appellation wa_0008 · name**: "Nuits-Saint-Georges" → **supported** → "Nuits-Saint-Georges"
+  - Why: Village AOC, Côte de Nuits.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57701.pdf>: Nuits-Saint-Georges: almost all red (299 ha red, 10 ha white); 'muscular and vigorous, chewy and full-bodied'; truffle, leather, game with age
+  - <https://www.totalwine.com/wine-guide/french-wine/burgundy/cote-dor/nuits-saint-georges>: Premier crus fuller-bodied with firmer tannins, earthy notes with age; village wines softer (search-result evidence)
+- **appellation wa_0008 · colour**: "red" → **supported** → "red"
+  - Why: BIVB: almost all red (299 ha red, 10 ha white); Wikipedia: about 97% red.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57701.pdf>: Nuits-Saint-Georges: almost all red (299 ha red, 10 ha white); 'muscular and vigorous, chewy and full-bodied'; truffle, leather, game with age
+  - <https://www.totalwine.com/wine-guide/french-wine/burgundy/cote-dor/nuits-saint-georges>: Premier crus fuller-bodied with firmer tannins, earthy notes with age; village wines softer (search-result evidence)
+- **appellation wa_0008 · note**: "earthy, firm" → **supported** → "earthy, firm"
+  - Why: BIVB: muscular, chewy, full-bodied, truffle and leather with age; Total Wine/Kobrand: earthy, firmer tannins in the premiers crus.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57701.pdf>: Nuits-Saint-Georges: almost all red (299 ha red, 10 ha white); 'muscular and vigorous, chewy and full-bodied'; truffle, leather, game with age
+  - <https://www.totalwine.com/wine-guide/french-wine/burgundy/cote-dor/nuits-saint-georges>: Premier crus fuller-bodied with firmer tannins, earthy notes with age; village wines softer (search-result evidence)
+- **appellation wa_0004 · aliases**: ["Macon-Villages", "Mâcon"] → **adjusted** → ["Macon-Villages"]
+  - Why: Alias problem: 'Mâcon' is not just another name for Mâcon-Villages. BIVB lists Mâcon (and Mâcon + village name) as separate regional labels, and they also cover red and rosé from Gamay and Pinot Noir. A search for 'Mâcon' should not resolve to a white-only appellation, so drop that alias. 'Macon-Villages' is fine.
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57688.pdf>: Mâcon (and Mâcon + village) also exists as red and rosé from Gamay and Pinot Noir: a distinct label from Mâcon-Villages
+  - <https://www.bourgogne-wines.com/wine-and-terroir/bourgogne-and-its-appellations/gallery_files/site/321/402/57644/57689.pdf>: Mâcon, Mâcon-Villages, Mâcon + village: Appellation Régionale; Mâcon-Villages white only (Chardonnay); 'fresh and luscious as well as dry and well-fruited'
+
+## Bordeaux (wr_0002)
+
+- **summary**: "Red blends of Cabernet Sauvignon and Merlot from either side of the Gironde: Cabernet leads on the left bank, Merlot on the right. Also the sweet whites of Sauternes." → **adjusted** → "Mostly red blends of Merlot and Cabernet Sauvignon from both sides of the Gironde and its rivers, the Garonne and Dordogne: Cabernet leads on the left bank, Merlot on the right. Also dry whites and sweet Sauternes."
+  - Why: Saint-Émilion and Pomerol are on the right bank of the Dordogne, not of the Gironde estuary, and Pessac-Léognan and Sauternes are on the left bank of the Garonne. The banks are named after both rivers and the estuary. Dry whites (9% of output) are a much larger category than sweet ones (1%). Merlot is named first because it covers 66% of the red vineyard area. (Lead review: shortened to the summary length; content unchanged.)
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+  - <https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf>: CIVB Key Facts 2021: production 85% red, 9% dry white, 1% sweet white, 4% rosé, 1% crémant; red area Merlot 66%, Cab Sauvignon 22%, Cab Franc 9%; white area Sémillon 46%, Sauvignon 46%
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/>: Pomerol all red; Merlot about 80%, Cab Franc 15%; 'velvety smooth'; plateau sloping to the River Isle
+- **red_body**: 4 → **supported** → 4
+  - Why: Sources split between full (Wine Folly) and full-bodied but linear on the left bank, softer and plusher on the right (FRW). The brief's split rule gives 4.
+  - <https://winefolly.com/wines/bordeaux-blend-red/>: red Bordeaux blend: full body, high tannin, medium acidity; match with steak and other red meat
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **red_acidity**: 3 → **supported** → 3
+  - Why: Wine Folly: medium acidity. Merlot-led wines (most of the region) are lower in acidity than Cabernet-led ones. Maps to 3.
+  - <https://winefolly.com/wines/bordeaux-blend-red/>: red Bordeaux blend: full body, high tannin, medium acidity; match with steak and other red meat
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **red_tannin**: 4 → **supported** → 4
+  - Why: Wine Folly: high tannin; right-bank wines have softer tannins (FRW, Wine Folly blend page). Medium-plus overall maps to 4.
+  - <https://winefolly.com/wines/bordeaux-blend-red/>: red Bordeaux blend: full body, high tannin, medium acidity; match with steak and other red meat
+  - <https://winefolly.com/deep-dive/what-grape-varieties-make-up-a-bordeaux-blend/>: left bank Cabernet Sauvignon usually over 60%, bolder tannins; right bank Merlot over 60%, smoother; Cabernet Franc secondary on both banks; white blend 'zesty' Sémillon and Sauvignon Blanc
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **pairing**: "Lamb, beef, hard cheeses." → **supported** → "Lamb, beef, hard cheeses."
+  - Why: Lamb is the classic claret match. Wine Folly suggests steak and red meat. Pairing guides suggest aged hard cheeses (Comté, Gruyère).
+  - <https://winefolly.com/wines/bordeaux-blend-red/>: red Bordeaux blend: full body, high tannin, medium acidity; match with steak and other red meat
+  - <https://www.decanter.com/learn/food/pairing-bordeaux-wine-with-food-beyond-claret-and-lamb-459794/>: claret and lamb as the classic Bordeaux pairing (title and search snippet; page not fetched)
+  - <https://www.winetraveler.com/wine-pairing/food-pairing-red-bordeaux-wines/>: red Bordeaux with lamb and beef; aged hard cheeses such as Comté or Gruyère (search-result evidence)
+- **label_note**: "The château leads the label; the appellation tells you the bank: Médoc and Pessac-Léognan on the left, Saint-Émilion and Pomerol on the right." → **supported** → "The château leads the label; the appellation tells you the bank: Médoc and Pessac-Léognan on the left, Saint-Émilion and Pomerol on the right."
+  - Why: The bank assignments match FRW and Wine Anorak (left: Médoc, Graves, Pessac-Léognan; right: Saint-Émilion, Pomerol).
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+- **link Cabernet Sauvignon (gr_0003) · local_note**: "leads on the left bank: firm, cedar" → **supported** → "leads on the left bank: firm, cedar"
+  - Why: FRW: left-bank Cabernet-based wines are linear, austere when young, cedar with age; Wine Folly: bolder tannins, usually over 60% of left-bank blends.
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+  - <https://winefolly.com/deep-dive/what-grape-varieties-make-up-a-bordeaux-blend/>: left bank Cabernet Sauvignon usually over 60%, bolder tannins; right bank Merlot over 60%, smoother; Cabernet Franc secondary on both banks; white blend 'zesty' Sémillon and Sauvignon Blanc
+- **link Cabernet Sauvignon (gr_0003) · display_order**: 1 → **adjusted** → 2
+  - Why: Merlot covers 66% of Bordeaux's red vineyard area and Cabernet Sauvignon 22% (CIVB 2020 data), so Merlot is the region's main grape.
+  - <https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf>: CIVB Key Facts 2021: production 85% red, 9% dry white, 1% sweet white, 4% rosé, 1% crémant; red area Merlot 66%, Cab Sauvignon 22%, Cab Franc 9%; white area Sémillon 46%, Sauvignon 46%
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+- **link Merlot (gr_0004) · local_note**: "leads on the right bank: round, plummy" → **supported** → "leads on the right bank: round, plummy"
+  - Why: FRW: right bank softer, plusher, rounder, cherry and plum; bordeaux.com: Pomerol 'wonderful roundness', Saint-Émilion 'round texture'.
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+  - <https://www.bordeaux.com/en/mag/blog/battle-d-aop-pauillac-vs-pomerol/>: Pauillac: Cabernet Sauvignon leads, 'controlled power'; Pomerol: Merlot 'captain', 'wonderful roundness'
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/saint-emilion/>: Saint-Émilion dominated by Merlot, often with Cabernet Franc; 'charming, round texture'
+- **link Merlot (gr_0004) · display_order**: 2 → **adjusted** → 1
+  - Why: Merlot is the most planted grape (66% of red area against 22% for Cabernet Sauvignon).
+  - <https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf>: CIVB Key Facts 2021: production 85% red, 9% dry white, 1% sweet white, 4% rosé, 1% crémant; red area Merlot 66%, Cab Sauvignon 22%, Cab Franc 9%; white area Sémillon 46%, Sauvignon 46%
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+- **link Cabernet Franc (gr_0013) · local_note**: "in the blend, adds lift" → **adjusted** → "in the blend, adds freshness"
+  - Why: Sources describe Cabernet Franc's part in the blend as freshness and complexity, especially next to Merlot in Saint-Émilion. 'Lift' is jargon a newcomer may not know.
+  - <https://www.bordeaux.com/en/grape-varieties/cabernet-franc>: CIVB grape page on Cabernet Franc (search result); with Saint-Émilion sources crediting it with freshness and complexity in Merlot blends
+  - <https://www.thedrinksbusiness.com/2024/01/the-monocepage-wines-of-bordeaux-part-iii-cabernet-franc/>: in Saint-Emilion Cabernet Franc long accepted as bringing more freshness and complexity than Merlot (search-result evidence)
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/saint-emilion/>: Saint-Émilion dominated by Merlot, often with Cabernet Franc; 'charming, round texture'
+- **link Cabernet Franc (gr_0013) · display_order**: 3 → **supported** → 3
+  - Why: Third red grape: 9% of red area (CIVB).
+  - <https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf>: CIVB Key Facts 2021: production 85% red, 9% dry white, 1% sweet white, 4% rosé, 1% crémant; red area Merlot 66%, Cab Sauvignon 22%, Cab Franc 9%; white area Sémillon 46%, Sauvignon 46%
+  - <https://winefolly.com/deep-dive/what-grape-varieties-make-up-a-bordeaux-blend/>: left bank Cabernet Sauvignon usually over 60%, bolder tannins; right bank Merlot over 60%, smoother; Cabernet Franc secondary on both banks; white blend 'zesty' Sémillon and Sauvignon Blanc
+- **link Sauvignon Blanc (gr_0011) · link**: null → **adjusted** → "add"
+  - local_note: "dry whites, with Sémillon", display_order: 4
+  - Why: Suggest adding a link. Sauvignon Blanc covers 46% of the white vineyard area and goes into the dry whites, which are 9% of production. With the summary now naming dry whites, this link gives them a grape.
+  - <https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf>: CIVB Key Facts 2021: production 85% red, 9% dry white, 1% sweet white, 4% rosé, 1% crémant; red area Merlot 66%, Cab Sauvignon 22%, Cab Franc 9%; white area Sémillon 46%, Sauvignon 46%
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+  - <https://winefolly.com/deep-dive/what-grape-varieties-make-up-a-bordeaux-blend/>: left bank Cabernet Sauvignon usually over 60%, bolder tannins; right bank Merlot over 60%, smoother; Cabernet Franc secondary on both banks; white blend 'zesty' Sémillon and Sauvignon Blanc
+- **Observation** ({"region_code": "wr_0002"}): Sémillon is not in the grapes table. It is Bordeaux's other main white grape (46% of white area, equal to Sauvignon) and the main grape of Sauternes.
+  - <https://www.about-drinks.com/wp-content/uploads/2021/12/CIVB-Bordeaux-Key-Facts-2021_09.pdf>: CIVB Key Facts 2021: production 85% red, 9% dry white, 1% sweet white, 4% rosé, 1% crémant; red area Merlot 66%, Cab Sauvignon 22%, Cab Franc 9%; white area Sémillon 46%, Sauvignon 46%
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/sauternes-wine-region-and-semillon-grape-guide/>: Sauternes: Sémillon the most important grape, prone to noble rot; apricot, honeysuckle, fresh acidity (search-result evidence)
+- **appellation wa_0009 · name**: "Médoc" → **supported** → "Médoc"
+  - Why: Regional AOC of the Médoc peninsula.
+  - <https://www.bordeaux.com/en/designations/medoc/medoc/>: Médoc PDO: mainly red, Cabernet Sauvignon usually leads with Merlot; dry white allowed since 2025; base for seven other Médoc appellations
+  - <https://www.bordeaux.com/en/mag/blog/battle-d-aoc-haut-medoc-vs-pessac-leognan/>: Haut-Médoc is its own PDO, 4,318 ha north of Bordeaux; Pessac-Léognan reds with fine tannins, mineral-driven dry whites
+- **appellation wa_0009 · colour**: "red" → **supported** → "red"
+  - Why: bordeaux.com: mainly red (dry white allowed only since 2025).
+  - <https://www.bordeaux.com/en/designations/medoc/medoc/>: Médoc PDO: mainly red, Cabernet Sauvignon usually leads with Merlot; dry white allowed since 2025; base for seven other Médoc appellations
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+- **appellation wa_0009 · note**: "left bank, Cabernet: firm" → **supported** → "left bank, Cabernet: firm"
+  - Why: bordeaux.com: Cabernet Sauvignon usually leads, often with Merlot; FRW: left-bank wines structured and austere when young.
+  - <https://www.bordeaux.com/en/designations/medoc/medoc/>: Médoc PDO: mainly red, Cabernet Sauvignon usually leads with Merlot; dry white allowed since 2025; base for seven other Médoc appellations
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **Observation** ({"appellation_code": "wa_0009"}): Alias problem: 'Haut-Médoc' is a separate AOC (created 1936, its own 4,318 ha in the south of the peninsula), not another name for Médoc. The Médoc AOC lies mainly to the north. Drop the 'Haut-Médoc' alias, or add Haut-Médoc as its own appellation. 'Medoc' is fine.
+  - <https://www.bordeaux.com/en/mag/blog/battle-d-aoc-haut-medoc-vs-pessac-leognan/>: Haut-Médoc is its own PDO, 4,318 ha north of Bordeaux; Pessac-Léognan reds with fine tannins, mineral-driven dry whites
+  - <https://www.bordeaux.com/en/designations/medoc/medoc/>: Médoc PDO: mainly red, Cabernet Sauvignon usually leads with Merlot; dry white allowed since 2025; base for seven other Médoc appellations
+  - <https://en.wikipedia.org/wiki/Haut-M%C3%A9doc_AOC>: Haut-Médoc AOC created 1936, the southern part of the peninsula; Médoc AOC lies north of it (search-result evidence)
+- **appellation wa_0010 · name**: "Pauillac" → **supported** → "Pauillac"
+  - Why: Communal AOC in the Médoc.
+  - <https://www.bordeaux.com/en/mag/blog/battle-d-aop-pauillac-vs-pomerol/>: Pauillac: Cabernet Sauvignon leads, 'controlled power'; Pomerol: Merlot 'captain', 'wonderful roundness'
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0010 · colour**: "red" → **supported** → "red"
+  - Why: Red only.
+  - <https://www.bordeaux.com/en/mag/blog/battle-d-aop-pauillac-vs-pomerol/>: Pauillac: Cabernet Sauvignon leads, 'controlled power'; Pomerol: Merlot 'captain', 'wonderful roundness'
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0010 · note**: "left bank: powerful, cedar" → **supported** → "left bank: powerful, cedar"
+  - Why: bordeaux.com: Cabernet-led, 'controlled power'; FRW: left bank graphite, cassis, cedar with age.
+  - <https://www.bordeaux.com/en/mag/blog/battle-d-aop-pauillac-vs-pomerol/>: Pauillac: Cabernet Sauvignon leads, 'controlled power'; Pomerol: Merlot 'captain', 'wonderful roundness'
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0011 · name**: "Margaux" → **supported** → "Margaux"
+  - Why: Communal AOC in the Médoc.
+  - <https://www.bordeaux.com/en/designations/medoc/margaux/>: Margaux 100% red; 'elegant, feminine'; finesse, harmony; smooth tannins; Cabernet Sauvignon king
+  - <https://www.justerinis.com/fine-wines/france/bordeaux/appellations/margaux>: Margaux shows more perfume and roundness than its northern neighbours (search-result evidence)
+- **appellation wa_0011 · colour**: "red" → **supported** → "red"
+  - Why: bordeaux.com: 100% red.
+  - <https://www.bordeaux.com/en/designations/medoc/margaux/>: Margaux 100% red; 'elegant, feminine'; finesse, harmony; smooth tannins; Cabernet Sauvignon king
+  - <https://www.justerinis.com/fine-wines/france/bordeaux/appellations/margaux>: Margaux shows more perfume and roundness than its northern neighbours (search-result evidence)
+- **appellation wa_0011 · note**: "left bank: perfumed, elegant" → **supported** → "left bank: perfumed, elegant"
+  - Why: bordeaux.com: elegant, finesse, smooth tannins; Justerini & Brooks: more perfume than its northern neighbours.
+  - <https://www.bordeaux.com/en/designations/medoc/margaux/>: Margaux 100% red; 'elegant, feminine'; finesse, harmony; smooth tannins; Cabernet Sauvignon king
+  - <https://www.justerinis.com/fine-wines/france/bordeaux/appellations/margaux>: Margaux shows more perfume and roundness than its northern neighbours (search-result evidence)
+- **appellation wa_0012 · name**: "Saint-Émilion" → **supported** → "Saint-Émilion"
+  - Why: Right-bank AOC (alongside Saint-Émilion Grand Cru).
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/saint-emilion/>: Saint-Émilion dominated by Merlot, often with Cabernet Franc; 'charming, round texture'
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0012 · colour**: "red" → **supported** → "red"
+  - Why: Red, Merlot-dominated.
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/saint-emilion/>: Saint-Émilion dominated by Merlot, often with Cabernet Franc; 'charming, round texture'
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+- **appellation wa_0012 · note**: "right bank, Merlot: round" → **supported** → "right bank, Merlot: round"
+  - Why: bordeaux.com: dominated by Merlot, 'charming, round texture'; FRW: right bank rounder, softer.
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/saint-emilion/>: Saint-Émilion dominated by Merlot, often with Cabernet Franc; 'charming, round texture'
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0013 · name**: "Pomerol" → **supported** → "Pomerol"
+  - Why: Right-bank AOC.
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/>: Pomerol all red; Merlot about 80%, Cab Franc 15%; 'velvety smooth'; plateau sloping to the River Isle
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0013 · colour**: "red" → **supported** → "red"
+  - Why: bordeaux.com: all Pomerol wines are red.
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/>: Pomerol all red; Merlot about 80%, Cab Franc 15%; 'velvety smooth'; plateau sloping to the River Isle
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0013 · note**: "right bank: plush, velvety" → **supported** → "right bank: plush, velvety"
+  - Why: bordeaux.com: 'Velvety smooth'; FRW: right bank 'softer, plusher'.
+  - <https://www.bordeaux.com/en/designations/saint-emilion-pomerol-fronsac/pomerol/>: Pomerol all red; Merlot about 80%, Cab Franc 15%; 'velvety smooth'; plateau sloping to the River Isle
+  - <https://www.frw.co.uk/editorial/bordeaux-the-left-bank-versus-the-right-bank>: Gironde estuary fed by Dordogne and Garonne; Left Bank along the Gironde and Garonne, Right Bank along the Gironde and Dordogne; left: cassis, graphite, cedar with age, Cabernet-based; right: softer, plusher, rounder, plum, Merlot-based
+- **appellation wa_0014 · name**: "Pessac-Léognan" → **supported** → "Pessac-Léognan"
+  - Why: AOC created 1987 in the north of the Graves.
+  - <https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/>: Pessac-Léognan: red and dry white, reds 86% of production; silky tannins, mineral nuances; no mention of smoky
+  - <https://www.decanter.com/premium/pessac-leognan-story-appellation-394841/>: in 1987 the Graves appellation was split; northern vineyards became Pessac-Léognan, the south remained Graves (search-result evidence)
+- **appellation wa_0014 · colour**: "mixed" → **supported** → "mixed"
+  - Why: Red and dry white (bordeaux.com: reds 86% of production).
+  - <https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/>: Pessac-Léognan: red and dry white, reds 86% of production; silky tannins, mineral nuances; no mention of smoky
+  - <https://bordeaux.guides.winefolly.com/regions/pessac-leognan>: reds: cassis, red berries, spice, leather; whites dry with hazelnut and toast; gravel soils; does not say smoky
+- **appellation wa_0014 · note**: "red and white, smoky" → **adjusted** → "red and dry white, mostly red"
+  - Why: bordeaux.com and Wine Folly describe the reds as silky or leathery and the whites as mineral or toasty; neither says 'smoky', which only turns up in individual tasting notes. Production is 86% red. Saying 'dry' tells the white apart from Sauternes.
+  - <https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/>: Pessac-Léognan: red and dry white, reds 86% of production; silky tannins, mineral nuances; no mention of smoky
+  - <https://bordeaux.guides.winefolly.com/regions/pessac-leognan>: reds: cassis, red berries, spice, leather; whites dry with hazelnut and toast; gravel soils; does not say smoky
+- **Observation** ({"appellation_code": "wa_0014"}): Alias problem: 'Graves' is a separate, still-current AOC (red and dry white; sweet Graves Supérieures). Pessac-Léognan was split from its northern part in 1987, and the two appear on labels as different appellations. Drop the 'Graves' alias, or add Graves as its own appellation. 'Pessac-Leognan' is fine.
+  - <https://www.bordeaux.com/en/designations/graves-sauternes/>: Graves and Pessac-Léognan listed as distinct appellations; Pessac-Léognan created 1987 in the heart of the broader Graves
+  - <https://www.decanter.com/premium/pessac-leognan-story-appellation-394841/>: in 1987 the Graves appellation was split; northern vineyards became Pessac-Léognan, the south remained Graves (search-result evidence)
+  - <https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/>: Pessac-Léognan: red and dry white, reds 86% of production; silky tannins, mineral nuances; no mention of smoky
+- **appellation wa_0015 · name**: "Sauternes" → **supported** → "Sauternes"
+  - Why: Sweet-white AOC on the left bank of the Garonne.
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+  - <https://winefolly.com/deep-dive/sauternes-wine-guide/>: Sauternes: sweet, botrytised Sémillon-led white; honey, apricot, orange (search-result evidence)
+- **appellation wa_0015 · colour**: "white" → **supported** → "white"
+  - Why: Sweet white only.
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/sauternes-wine-region-and-semillon-grape-guide/>: Sauternes: Sémillon the most important grape, prone to noble rot; apricot, honeysuckle, fresh acidity (search-result evidence)
+- **appellation wa_0015 · note**: "sweet, honeyed" → **supported** → "sweet, honeyed"
+  - Why: Wine Anorak: lusciously sweet, botrytised; Wine Folly/Jeroboams: honey, apricot.
+  - <https://wineanorak.com/?p=1283>: Gironde splits into Dordogne and Garonne; left bank Médoc, Graves, Pessac-Léognan; right bank Saint-Emilion, Pomerol, Merlot is king; dry whites from Sauvignon Blanc and Semillon; Sauternes lusciously sweet, botrytised
+  - <https://winefolly.com/deep-dive/sauternes-wine-guide/>: Sauternes: sweet, botrytised Sémillon-led white; honey, apricot, orange (search-result evidence)
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/sauternes-wine-region-and-semillon-grape-guide/>: Sauternes: Sémillon the most important grape, prone to noble rot; apricot, honeysuckle, fresh acidity (search-result evidence)
+- **appellation wa_0009 · aliases**: ["Medoc", "Haut-Médoc"] → **adjusted** → ["Medoc"]
+  - Why: Alias problem: 'Haut-Médoc' is a separate AOC (created 1936, its own 4,318 ha in the south of the peninsula), not another name for Médoc. The Médoc AOC lies mainly to the north. Drop the 'Haut-Médoc' alias, or add Haut-Médoc as its own appellation. 'Medoc' is fine.
+  - <https://www.bordeaux.com/en/mag/blog/battle-d-aoc-haut-medoc-vs-pessac-leognan/>: Haut-Médoc is its own PDO, 4,318 ha north of Bordeaux; Pessac-Léognan reds with fine tannins, mineral-driven dry whites
+  - <https://www.bordeaux.com/en/designations/medoc/medoc/>: Médoc PDO: mainly red, Cabernet Sauvignon usually leads with Merlot; dry white allowed since 2025; base for seven other Médoc appellations
+  - <https://en.wikipedia.org/wiki/Haut-M%C3%A9doc_AOC>: Haut-Médoc AOC created 1936, the southern part of the peninsula; Médoc AOC lies north of it (search-result evidence)
+- **appellation wa_0014 · aliases**: ["Pessac-Leognan", "Graves"] → **adjusted** → ["Pessac-Leognan"]
+  - Why: Alias problem: 'Graves' is a separate, still-current AOC (red and dry white; sweet Graves Supérieures). Pessac-Léognan was split from its northern part in 1987, and the two appear on labels as different appellations. Drop the 'Graves' alias, or add Graves as its own appellation. 'Pessac-Leognan' is fine.
+  - <https://www.bordeaux.com/en/designations/graves-sauternes/>: Graves and Pessac-Léognan listed as distinct appellations; Pessac-Léognan created 1987 in the heart of the broader Graves
+  - <https://www.decanter.com/premium/pessac-leognan-story-appellation-394841/>: in 1987 the Graves appellation was split; northern vineyards became Pessac-Léognan, the south remained Graves (search-result evidence)
+  - <https://www.bordeaux.com/en/designations/graves-sauternes/pessac-leognan/>: Pessac-Léognan: red and dry white, reds 86% of production; silky tannins, mineral nuances; no mention of smoky
+
+## Champagne (wr_0003)
+
+- **summary**: "The cold north of France, where Chardonnay, Pinot Noir and Meunier become sparkling wine. Only wine from here may be called Champagne." → **supported** → "The cold north of France, where Chardonnay, Pinot Noir and Meunier become sparkling wine. Only wine from here may be called Champagne."
+  - Why: Comité Champagne: the most northern of France's vineyards, at the limit of the vine's cold tolerance, and the AOC protects the name. These three grapes are more than 99.6% of plantings.
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide>: grown 'so far north'; Chardonnay elegance and finesse, Pinot Noir body and structure, Meunier softness and fruitiness; NV blends several years for house style; vintage in exceptional years; BdB Chardonnay only, BdN Pinot Noir and/or Meunier; Chardonnay-led wines make aperitifs
+- **red_body**: null → **supported** → null
+  - Why: Null is right for a sparkling region. The still Coteaux Champenois reds are too marginal to describe a typical red.
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+- **red_acidity**: null → **supported** → null
+  - Why: Null is right for a sparkling region. The still Coteaux Champenois reds are too marginal to describe a typical red.
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+- **red_tannin**: null → **supported** → null
+  - Why: Null is right for a sparkling region. The still Coteaux Champenois reds are too marginal to describe a typical red.
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+- **pairing**: "Oysters, fried food, as an aperitif." → **supported** → "Oysters, fried food, as an aperitif."
+  - Why: Comité Champagne and The Wine Society recommend NV Brut/Blanc de Blancs as an aperitif. Pairing guides recommend oysters with Brut/Extra Brut, and Champagne with fried food because its acidity and bubbles cut through the fat.
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide>: grown 'so far north'; Chardonnay elegance and finesse, Pinot Noir body and structure, Meunier softness and fruitiness; NV blends several years for house style; vintage in exceptional years; BdB Chardonnay only, BdN Pinot Noir and/or Meunier; Chardonnay-led wines make aperitifs
+  - <https://vinepair.com/articles/champagne-fried-food-pairing-guide>: Champagne's bubbles and acidity cut through fried food (search-result evidence)
+  - <https://www.millesima-usa.com/blog/champagne-and-food-the-ultimate-food-pairing-guide.html>: oysters and young Brut/Extra Brut share a saline, high-acid profile (search-result evidence)
+- **label_note**: "Brut is dry, Extra Brut drier still. Blanc de Blancs is Chardonnay only, Blanc de Noirs black grapes only. Non-vintage is the house style; a vintage comes from one good year." → **adjusted** → "Brut is dry, Extra Brut drier still. Blanc de Blancs is white grapes only, nearly always Chardonnay; Blanc de Noirs is black grapes only. Non-vintage blends years into the house style; a vintage comes from one good year."
+  - Why: The dosage terms are right: Brut <12 g/l, Extra Brut <6 g/l (Comité). Blanc de Blancs is not by definition Chardonnay only: the Comité allows Arbane, Petit Meslier, Pinot Blanc and Pinot Gris, though they are under 0.4% of plantings. Blanc de Noirs is Pinot Noir and/or Meunier, so 'black grapes' is right. Non-vintage is a blend of several years (reserve wines); a vintage is made in a year considered exceptional, aged at least 36 months.
+  - <https://www.champagne.fr/system/files/2022-10/How%20to%20read%20a%20Champagne%20label.pdf>: dosage: Brut nature <3 g/l, Extra Brut <6, Brut <12, Extra-Dry 12-17, Sec 17-32, Demi-sec 32-50, Doux >50
+  - <https://www.champagne.fr/en/champagne-tasting/type-of-champagne/blanc-de-blancs>: Blanc de Blancs: no black grapes; Chardonnay 'of course', but Arbane, Petit Meslier, Pinot Blanc, Pinot Gris may be included
+  - <https://www.champagne.fr/en/champagne-tasting/choosing-your-champagne/blanc-de-noirs>: Blanc de Noirs: 'made from black grape varieties alone such as Pinot Noir and/or Meunier'
+  - <https://www.champagne.fr/en/champagne-tasting/choosing-your-champagne/vintage-champagne>: vintage made in a year 'considered exceptional', aged at least 36 months
+  - <https://www.champagne.fr/en/champagne-tasting/type-of-champagne/non-vintage-brut>: NV Brut: blend that may include reserve wines from previous years so the house style endures; over 90% of Champagne is Brut dosage
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide>: grown 'so far north'; Chardonnay elegance and finesse, Pinot Noir body and structure, Meunier softness and fruitiness; NV blends several years for house style; vintage in exceptional years; BdB Chardonnay only, BdN Pinot Noir and/or Meunier; Chardonnay-led wines make aperitifs
+- **link Chardonnay (gr_0002) · local_note**: "finesse and citrus" → **supported** → "finesse and citrus"
+  - Why: The Wine Society: Chardonnay brings elegance and finesse; Comité: freshness, and Blanc de Blancs shows citrus notes.
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide>: grown 'so far north'; Chardonnay elegance and finesse, Pinot Noir body and structure, Meunier softness and fruitiness; NV blends several years for house style; vintage in exceptional years; BdB Chardonnay only, BdN Pinot Noir and/or Meunier; Chardonnay-led wines make aperitifs
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+  - <https://www.champagne.fr/en/champagne-tasting/type-of-champagne/blanc-de-blancs>: Blanc de Blancs: no black grapes; Chardonnay 'of course', but Arbane, Petit Meslier, Pinot Blanc, Pinot Gris may be included
+- **link Chardonnay (gr_0002) · display_order**: 1 → **adjusted** → 2
+  - Why: Pinot Noir is the most planted grape (38%); Chardonnay and Meunier are 31% each (Comité Champagne). Second organisation added in lead review: Pernod Ricard gives Pinot Noir 38% as the largest share; Chardonnay and Meunier are level (31/31 Comité; 30/32 Pernod), so their order is a tie either way.
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.pernod-ricard.com/en/media/champagne-terroir>: Pernod Ricard (2015 key figures): Pinot Noir 38%, Meunier 32%, Chardonnay 30%
+- **link Pinot Noir (gr_0001) · local_note**: "body and red fruit" → **adjusted** → "body and structure"
+  - Why: Comité: Pinot Noir gives 'body, punch and structure'; The Wine Society: body and structure. Neither source given says red fruit.
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide>: grown 'so far north'; Chardonnay elegance and finesse, Pinot Noir body and structure, Meunier softness and fruitiness; NV blends several years for house style; vintage in exceptional years; BdB Chardonnay only, BdN Pinot Noir and/or Meunier; Chardonnay-led wines make aperitifs
+- **link Pinot Noir (gr_0001) · display_order**: 2 → **adjusted** → 1
+  - Why: Pinot Noir is 38% of plantings, the largest share. Second organisation added in lead review: Pernod Ricard gives Pinot Noir 38% as the largest share; Chardonnay and Meunier are level (31/31 Comité; 30/32 Pernod), so their order is a tie either way.
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.pernod-ricard.com/en/media/champagne-terroir>: Pernod Ricard (2015 key figures): Pinot Noir 38%, Meunier 32%, Chardonnay 30%
+- **link Meunier (gr_0016) · local_note**: "fruit and roundness" → **supported** → "fruit and roundness"
+  - Why: Comité: Meunier 'adds roundness'; The Wine Society: softness and fruitiness.
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/champagne-ultimate-guide>: grown 'so far north'; Chardonnay elegance and finesse, Pinot Noir body and structure, Meunier softness and fruitiness; NV blends several years for house style; vintage in exceptional years; BdB Chardonnay only, BdN Pinot Noir and/or Meunier; Chardonnay-led wines make aperitifs
+- **link Meunier (gr_0016) · display_order**: 3 → **supported** → 3
+  - Why: Meunier is 31%, level with Chardonnay; third place is fine. Second organisation added in lead review: Pernod Ricard gives Pinot Noir 38% as the largest share; Chardonnay and Meunier are level (31/31 Comité; 30/32 Pernod), so their order is a tie either way.
+  - <https://www.champagne.fr/en/about-champagne/a-great-blended-wine/champagne-and-its-grape-varieties>: Pinot Noir 38% of area, Chardonnay 31%, Meunier 31%; Pinot Noir gives 'body, punch and structure', Chardonnay 'freshness', Meunier 'roundness'
+  - <https://www.champagne.fr/en/champagne-frequently-asked-questions>: most northern of France's vineyards, vines at the northern limit of cold tolerance; AOC protects the Champagne name; NV can blend several years, min 15 months; vintage min three years; NV Brut is the most common; aperitif with crackers, nuts, olives
+  - <https://www.pernod-ricard.com/en/media/champagne-terroir>: Pernod Ricard (2015 key figures): Pinot Noir 38%, Meunier 32%, Chardonnay 30%
+
+## Rhône Valley (wr_0004)
+
+- **summary**: "Two halves: the steep north makes Syrah, peppery and dark; the warm south blends Grenache with Syrah and Mourvèdre into rich, spicy reds." → **supported** → "Two halves: the steep north makes Syrah, peppery and dark; the warm south blends Grenache with Syrah and Mourvèdre into rich, spicy reds."
+  - Why: Inter Rhone calls southern-led Cotes du Rhone reds rich, generous and spicy with Grenache as main grape; Wine Folly: Syrah reigns in the north, Grenache in the south, northern Syrah peppery with dark fruit.
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone>: Inter Rhone: reds 'rich, generous and pleasing with spicy overtones'; Grenache main grape, brings fruit, warmth, body; Syrah and Mourvedre add spice, colour, firm structure
+  - <https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/>: Wine Folly: pyramid Cotes du Rhone -> Villages (21 named villages) -> 20 crus incl. Gigondas and Chateauneuf-du-Pape; Syrah reigns in the north, Grenache in the south; 'full-bodied reds dominate'; CdP 'spicy dark fruits'; Gigondas 'full, earthy'
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **red_body**: 4 → **supported** → 4
+  - Why: Sources call typical reds full-bodied (VinePair, Wine Folly) but Inter Rhone calls Crozes soft and easy-drinking and Grenache rates medium-full; sources split, so 4 per the brief's split rule.
+  - <https://vinepair.com/articles/everything-you-need-to-know-about-the-cotes-du-rhone/>: VinePair: red CdR 'easy-drinking, full-bodied', black currant, plum, spice, 'approachable' tannins; pairs with rack of lamb, game, grilled meats
+  - <https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/>: Wine Folly: pyramid Cotes du Rhone -> Villages (21 named villages) -> 20 crus incl. Gigondas and Chateauneuf-du-Pape; Syrah reigns in the north, Grenache in the south; 'full-bodied reds dominate'; CdP 'spicy dark fruits'; Gigondas 'full, earthy'
+  - <https://winefolly.com/grapes/grenache/>: Wine Folly: Grenache medium-full body, medium tannin, medium acidity
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-crozes-hermitage>: Inter Rhone: cru, red (Syrah) and white; reds easy-drinking, soft, fruity (red berries), meant to be drunk young; largest northern appellation
+- **red_acidity**: 3 → **supported** → 3
+  - Why: Wine Folly rates both Grenache and Syrah medium acidity; no source describes typical Rhone reds as fresh or high-acid (The Wine Society stresses ripeness and sweetness of fruit). Only one source gives an explicit acidity level.
+  - <https://winefolly.com/grapes/grenache/>: Wine Folly: Grenache medium-full body, medium tannin, medium acidity
+  - <https://winefolly.com/grapes/syrah/>: Wine Folly: Syrah full body, medium-high tannin, medium acidity, peppery finish
+  - <https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide>: The Wine Society: Cotes du Rhone 'sweet, rounded tannins'; Grenache full body, high alcohol; dominates CdR, Villages and crus; CdP 'full-bodied, rich and dark'
+- **red_tannin**: 3 → **supported** → 3
+  - Why: Southern Grenache-led reds have 'approachable' / 'sweet, rounded' tannins, northern Syrah medium-high and crus like Gigondas firm; medium (3) is the fair middle for a typical Rhone red.
+  - <https://vinepair.com/articles/everything-you-need-to-know-about-the-cotes-du-rhone/>: VinePair: red CdR 'easy-drinking, full-bodied', black currant, plum, spice, 'approachable' tannins; pairs with rack of lamb, game, grilled meats
+  - <https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide>: The Wine Society: Cotes du Rhone 'sweet, rounded tannins'; Grenache full body, high alcohol; dominates CdR, Villages and crus; CdP 'full-bodied, rich and dark'
+  - <https://winefolly.com/grapes/syrah/>: Wine Folly: Syrah full body, medium-high tannin, medium acidity, peppery finish
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-gigondas>: Inter Rhone: 'Cotes du Rhone Cru AOC Gigondas', first Villages to be made a cru (1971); red, rose, white since 2023; reds full-bodied, pronounced tannins, spicy notes; Grenache main grape
+- **pairing**: "Lamb, game, grilled meat, stews." → **supported** → "Lamb, game, grilled meat, stews."
+  - Why: VinePair names rack of lamb, game and grilled meats; Matching Food and Wine pairs Rhone reds with lamb, game, meaty stews and grilled meat.
+  - <https://vinepair.com/articles/everything-you-need-to-know-about-the-cotes-du-rhone/>: VinePair: red CdR 'easy-drinking, full-bodied', black currant, plum, spice, 'approachable' tannins; pairs with rack of lamb, game, grilled meats
+  - <https://www.matchingfoodandwine.com/news/misc/tag/Rh%C3%B4ne>: Matching Food and Wine: Rhone reds with lamb, game (venison, pheasant, grouse), meaty stews and casseroles, grilled meat
+- **label_note**: "Côtes du Rhône is the everyday name; village names such as Gigondas or Châteauneuf-du-Pape are a step up." → **replaced** → "From everyday to top: Côtes du Rhône, then Côtes du Rhône Villages, some adding a village name, then crus such as Gigondas or Châteauneuf-du-Pape."
+  - Why: Gigondas and Chateauneuf-du-Pape are crus, the top tier, not 'village names'; the official hierarchy is Cotes du Rhone, Cotes du Rhone Villages (21 may add a village name), then the crus.
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone-villages>: Inter Rhone: Villages has stricter rules than Cotes du Rhone; 21 villages may add their name
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-gigondas>: Inter Rhone: 'Cotes du Rhone Cru AOC Gigondas', first Villages to be made a cru (1971); red, rose, white since 2023; reds full-bodied, pronounced tannins, spicy notes; Grenache main grape
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape>: Inter Rhone: Cotes du Rhone Cru since 1936; red and white; reds 'powerful and structured, with great complexity'; Grenache dominant
+  - <https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/>: Wine Folly: pyramid Cotes du Rhone -> Villages (21 named villages) -> 20 crus incl. Gigondas and Chateauneuf-du-Pape; Syrah reigns in the north, Grenache in the south; 'full-bodied reds dominate'; CdP 'spicy dark fruits'; Gigondas 'full, earthy'
+- **Observation** ({"region_code": "wr_0004"}): Region alias 'Côtes du Rhône' is strictly the regional appellation (171 communes, north and south), not the region itself; acceptable as a search alias since it covers the whole valley, but note it is also an appellation name.
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone>: Inter Rhone: reds 'rich, generous and pleasing with spicy overtones'; Grenache main grape, brings fruit, warmth, body; Syrah and Mourvedre add spice, colour, firm structure
+  - <https://vinepair.com/articles/everything-you-need-to-know-about-the-cotes-du-rhone/>: VinePair: red CdR 'easy-drinking, full-bodied', black currant, plum, spice, 'approachable' tannins; pairs with rack of lamb, game, grilled meats
+- **link Syrah (gr_0005) · local_note**: "the north: peppery and dark" → **supported** → "the north: peppery and dark"
+  - Why: Northern Syrah: white pepper, blackberry/black currant (Wine Folly); spice and black fruit (Inter Rhone Cote-Rotie).
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie>: Inter Rhone: cru; Syrah with Viognier; 'complex, elegant nose of spice, red and black berry fruit and violets'
+- **link Grenache (gr_0006) · local_note**: "the south: warm and generous" → **supported** → "the south: warm and generous"
+  - Why: Inter Rhone: Grenache brings fruit, warmth and body, reds 'rich, generous'; The Wine Society: full body, sensation of sweetness.
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone>: Inter Rhone: reds 'rich, generous and pleasing with spicy overtones'; Grenache main grape, brings fruit, warmth, body; Syrah and Mourvedre add spice, colour, firm structure
+  - <https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide>: The Wine Society: Cotes du Rhone 'sweet, rounded tannins'; Grenache full body, high alcohol; dominates CdR, Villages and crus; CdP 'full-bodied, rich and dark'
+- **link Mourvèdre (gr_0017) · local_note**: "the south: structure" → **supported** → "the south: structure"
+  - Why: Inter Rhone: Mourvedre (with Syrah) adds firm structure; Wine Folly: used sparingly to add tannin structure.
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone>: Inter Rhone: reds 'rich, generous and pleasing with spicy overtones'; Grenache main grape, brings fruit, warmth, body; Syrah and Mourvedre add spice, colour, firm structure
+  - <https://winefolly.com/deep-dive/try-gsm-cotes-du-rhone-blend/>: Wine Folly: Grenache red fruit and spice, Syrah dark fruit, Mourvedre used to 'add tannin structure'
+- **link Syrah (gr_0005) · display_order**: 1 → **adjusted** → 2
+  - Why: Grenache, not Syrah, is the main grape of the Rhone by volume: it dominates Cotes du Rhone, Villages and the southern crus, and the north is a small share. Suggest Grenache 1, Syrah 2 (summary can still describe the north first).
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone>: Inter Rhone: reds 'rich, generous and pleasing with spicy overtones'; Grenache main grape, brings fruit, warmth, body; Syrah and Mourvedre add spice, colour, firm structure
+  - <https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide>: The Wine Society: Cotes du Rhone 'sweet, rounded tannins'; Grenache full body, high alcohol; dominates CdR, Villages and crus; CdP 'full-bodied, rich and dark'
+  - <https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/>: Wine Folly: pyramid Cotes du Rhone -> Villages (21 named villages) -> 20 crus incl. Gigondas and Chateauneuf-du-Pape; Syrah reigns in the north, Grenache in the south; 'full-bodied reds dominate'; CdP 'spicy dark fruits'; Gigondas 'full, earthy'
+- **link Grenache (gr_0006) · display_order**: 2 → **adjusted** → 1
+  - Why: See Syrah record: Inter Rhone names Grenache noir the main variety; The Wine Society says Grenache dominates CdR, Villages and crus.
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone>: Inter Rhone: reds 'rich, generous and pleasing with spicy overtones'; Grenache main grape, brings fruit, warmth, body; Syrah and Mourvedre add spice, colour, firm structure
+  - <https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide>: The Wine Society: Cotes du Rhone 'sweet, rounded tannins'; Grenache full body, high alcohol; dominates CdR, Villages and crus; CdP 'full-bodied, rich and dark'
+- **link Mourvèdre (gr_0017) · display_order**: 3 → **supported** → 3
+  - Why: Mourvedre is the third partner of the southern blend, used in smaller amounts.
+  - <https://www.vins-rhone.com/en/aoc-cotes-du-rhone>: Inter Rhone: reds 'rich, generous and pleasing with spicy overtones'; Grenache main grape, brings fruit, warmth, body; Syrah and Mourvedre add spice, colour, firm structure
+  - <https://winefolly.com/deep-dive/try-gsm-cotes-du-rhone-blend/>: Wine Folly: Grenache red fruit and spice, Syrah dark fruit, Mourvedre used to 'add tannin structure'
+- **appellation wa_0016 · name**: "Châteauneuf-du-Pape" → **supported** → "Châteauneuf-du-Pape"
+  - Why: Correct spelling per Inter Rhone and Wine Folly.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape>: Inter Rhone: Cotes du Rhone Cru since 1936; red and white; reds 'powerful and structured, with great complexity'; Grenache dominant
+  - <https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/>: Wine Folly: pyramid Cotes du Rhone -> Villages (21 named villages) -> 20 crus incl. Gigondas and Chateauneuf-du-Pape; Syrah reigns in the north, Grenache in the south; 'full-bodied reds dominate'; CdP 'spicy dark fruits'; Gigondas 'full, earthy'
+- **appellation wa_0016 · colour**: "red" → **supported** → "red"
+  - Why: Red and white are made, but red dominates (Inter Rhone lists both; The Wine Society/Inter Rhone describe it as Grenache-based red). Kept 'red'; a little white exists.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape>: Inter Rhone: Cotes du Rhone Cru since 1936; red and white; reds 'powerful and structured, with great complexity'; Grenache dominant
+  - <https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide>: The Wine Society: Cotes du Rhone 'sweet, rounded tannins'; Grenache full body, high alcohol; dominates CdR, Villages and crus; CdP 'full-bodied, rich and dark'
+- **appellation wa_0016 · note**: "rich, spicy Grenache blend" → **supported** → "rich, spicy Grenache blend"
+  - Why: Inter Rhone: powerful, structured, Grenache dominant; Wine Folly: full, spicy dark fruits; The Wine Society: full-bodied, rich and dark.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-chateauneuf-du-pape>: Inter Rhone: Cotes du Rhone Cru since 1936; red and white; reds 'powerful and structured, with great complexity'; Grenache dominant
+  - <https://winefolly.com/deep-dive/cotes-du-rhone-wine-with-maps/>: Wine Folly: pyramid Cotes du Rhone -> Villages (21 named villages) -> 20 crus incl. Gigondas and Chateauneuf-du-Pape; Syrah reigns in the north, Grenache in the south; 'full-bodied reds dominate'; CdP 'spicy dark fruits'; Gigondas 'full, earthy'
+  - <https://www.thewinesociety.com/discover/wine-basics/grape-varieties/grenache-the-ultimate-grape-guide>: The Wine Society: Cotes du Rhone 'sweet, rounded tannins'; Grenache full body, high alcohol; dominates CdR, Villages and crus; CdP 'full-bodied, rich and dark'
+- **appellation wa_0017 · name**: "Côte-Rôtie" → **supported** → "Côte-Rôtie"
+  - Why: Correct.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie>: Inter Rhone: cru; Syrah with Viognier; 'complex, elegant nose of spice, red and black berry fruit and violets'
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0017 · colour**: "red" → **supported** → "red"
+  - Why: Red only (Syrah with optional Viognier).
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie>: Inter Rhone: cru; Syrah with Viognier; 'complex, elegant nose of spice, red and black berry fruit and violets'
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0017 · note**: "Syrah: perfumed, peppery" → **supported** → "Syrah: perfumed, peppery"
+  - Why: Inter Rhone: spice, berry fruit, violets; Wine Folly: white pepper, floral aromatics.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-cote-rotie>: Inter Rhone: cru; Syrah with Viognier; 'complex, elegant nose of spice, red and black berry fruit and violets'
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0018 · name**: "Hermitage" → **supported** → "Hermitage"
+  - Why: Correct.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-hermitage>: Inter Rhone: cru; red (Syrah, up to 15% Marsanne/Roussanne) and white (Marsanne, Roussanne); reds 'robust, full-bodied', good ageing potential
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0018 · colour**: "red" → **adjusted** → "mixed"
+  - Why: Hermitage makes red (Syrah) and a substantial white from Marsanne and Roussanne: about 31% white per Wine Folly. 'mixed' as used for Pessac-Léognan.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-hermitage>: Inter Rhone: cru; red (Syrah, up to 15% Marsanne/Roussanne) and white (Marsanne, Roussanne); reds 'robust, full-bodied', good ageing potential
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0018 · note**: "Syrah: powerful, long-lived" → **adjusted** → "Syrah: powerful, long-lived; white too"
+  - Why: Red description holds (Inter Rhone: robust, full-bodied, good ageing; Wine Folly: powerful, age-worthy); add the white so the mixed colour makes sense.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-hermitage>: Inter Rhone: cru; red (Syrah, up to 15% Marsanne/Roussanne) and white (Marsanne, Roussanne); reds 'robust, full-bodied', good ageing potential
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0019 · name**: "Crozes-Hermitage" → **supported** → "Crozes-Hermitage"
+  - Why: Correct.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-crozes-hermitage>: Inter Rhone: cru, red (Syrah) and white; reds easy-drinking, soft, fruity (red berries), meant to be drunk young; largest northern appellation
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0019 · colour**: "red" → **supported** → "red"
+  - Why: About 90% red / 10% white (Wine Folly); Inter Rhone lists red and white. Kept 'red'.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-crozes-hermitage>: Inter Rhone: cru, red (Syrah) and white; reds easy-drinking, soft, fruity (red berries), meant to be drunk young; largest northern appellation
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0019 · note**: "Syrah: lighter, good value" → **adjusted** → "Syrah: fruity, for drinking young"
+  - Why: Sources describe the typical style as fruity, soft, forward and meant to be drunk young, not explicitly 'lighter'; 'good value' is a price claim (brief: no prices).
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-crozes-hermitage>: Inter Rhone: cru, red (Syrah) and white; reds easy-drinking, soft, fruity (red berries), meant to be drunk young; largest northern appellation
+  - <https://www.irishtimes.com/life-and-style/food-and-drink/drink/a-lighter-wine-from-the-rhone-valley-1.1964825>: Irish Times: Crozes comes in two styles, the first 'forward, rounded and fruity'; ten times larger than Hermitage
+  - <https://winefolly.com/deep-dive/northern-rhone-wine-french-syrah/>: Wine Folly: Hermitage 'powerful, age-worthy' Syrah, 69% red / 31% white; Crozes 90% red / 10% white, from everyday to serious; Cote-Rotie white pepper, floral, up to 20% Viognier
+- **appellation wa_0020 · name**: "Gigondas" → **supported** → "Gigondas"
+  - Why: Correct.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-gigondas>: Inter Rhone: 'Cotes du Rhone Cru AOC Gigondas', first Villages to be made a cru (1971); red, rose, white since 2023; reds full-bodied, pronounced tannins, spicy notes; Grenache main grape
+  - <https://www.winetourism.com/wine-regions/france/rhone/gigondas/>: WineTourism: Gigondas 'full-bodied and robust', dark fruits, herbs and spices, firm tannins
+- **appellation wa_0020 · colour**: "red" → **supported** → "red"
+  - Why: Overwhelmingly red; rose is a small share and white only since the 2023 vintage (Inter Rhone). Kept 'red'.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-gigondas>: Inter Rhone: 'Cotes du Rhone Cru AOC Gigondas', first Villages to be made a cru (1971); red, rose, white since 2023; reds full-bodied, pronounced tannins, spicy notes; Grenache main grape
+  - <https://www.winetourism.com/wine-regions/france/rhone/gigondas/>: WineTourism: Gigondas 'full-bodied and robust', dark fruits, herbs and spices, firm tannins
+- **appellation wa_0020 · note**: "robust, spicy" → **supported** → "robust, spicy"
+  - Why: Inter Rhone: full body, pronounced tannins, spicy notes; WineTourism: full-bodied and robust, spices.
+  - <https://vins-rhone.com/en/cotes-du-rhone-cru-aoc-gigondas>: Inter Rhone: 'Cotes du Rhone Cru AOC Gigondas', first Villages to be made a cru (1971); red, rose, white since 2023; reds full-bodied, pronounced tannins, spicy notes; Grenache main grape
+  - <https://www.winetourism.com/wine-regions/france/rhone/gigondas/>: WineTourism: Gigondas 'full-bodied and robust', dark fruits, herbs and spices, firm tannins
+
+## Loire Valley (wr_0005)
+
+- **summary**: "France's longest river, lined with fresh wines: Sauvignon Blanc in Sancerre, Chenin Blanc in Vouvray, light Cabernet Franc reds in Chinon." → **adjusted** → "France's longest river, lined with fresh wines: Sauvignon Blanc in Sancerre, Chenin Blanc in Vouvray, fragrant Cabernet Franc reds in Chinon."
+  - Why: 'Longest river' confirmed by GuildSomm and Atout France. Chinon is not uniformly light: InterLoire lists it under 'powerful, tannic' reds and describes young wines as light and aromatic, older ones full-bodied; 'fragrant' holds for both.
+  - <https://www.guildsomm.com/learn/study/w/study-wiki/154/loire-valley>: GuildSomm: 'The Loire is France's longest river'
+  - <https://www.france.fr/en/article/loire-valley-vineyard/>: Atout France (france.fr): Loire 'the longest river in France'; main grapes Melon, Chenin, Cabernet Franc, Sauvignon; Vouvray still and sparkling
+  - <https://www.vinsdeloire.fr/en/loire-wines/chinon>: InterLoire: Chinon white, rose, red; style listed as 'Powerful, tannic red wines'; reds 'can be light and delicate, very aromatic (red fruits)' young, palate 'full-bodied and robust'; pairs with red meat, Loire fish (white)
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+- **red_body**: 2 → **supported** → 2
+  - Why: Wine Folly: Loire gives 'a lighter-bodied' Cabernet Franc; Cellar Tours: sand/gravel give lighter, earlier-drinking style. InterLoire notes fuller tuffeau wines too, but the typical red is light-to-medium (2).
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+  - <https://www.vinsdeloire.fr/en/loire-wines/chinon>: InterLoire: Chinon white, rose, red; style listed as 'Powerful, tannic red wines'; reds 'can be light and delicate, very aromatic (red fruits)' young, palate 'full-bodied and robust'; pairs with red meat, Loire fish (white)
+- **red_acidity**: 4 → **supported** → 4
+  - Why: Wine Folly: Chinon 'high acidity'; cool climate. Between fresh (4) and high (5); 4 kept since only one source states a level explicitly and InterLoire speaks of freshness rather than high acidity.
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+- **red_tannin**: 2 → **supported** → 2
+  - Why: Wine Folly: 'moderately low tannin'; Cellar Tours: classic low-to-moderate tannin; Touraine board: 'supple tannins'. Tuffeau Chinon can be firmer.
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+  - <https://www.tourainevaldeloire.com/en/discover/beautiful-vineyards-beautiful-dishes/welcome-to-the-touraine-vineyards/loire-wines/chinon-wine/>: Touraine tourism board: Chinon red fruit and spice, 'supple tannins', balance of power and finesse
+- **pairing**: "Goat's cheese, fish, salads, charcuterie." → **adjusted** → "Goat's cheese, fish, oysters, seafood."
+  - Why: Goat's cheese and fish are sourced (Wine Folly Sancerre/Cab Franc; InterLoire Muscadet and Chinon); oysters/seafood are the classic Muscadet match. Salads and charcuterie found in no source checked, so dropped.
+  - <https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/>: Wine Folly: Sancerre 'bracing acidity, and flinty-smoke flavors'; about 78% of vineyard white; goat cheese (Crottin de Chavignol) the regional pairing
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+  - <https://www.vinsdeloire.fr/en/loire-wines/muscadet>: InterLoire: Muscadet 'light, refreshing and fruity'; aroma 'Lemony, mineral and fresh'; lees ageing gives richness and suppleness; pairs with fresh oysters, bream ceviche, Sainte-Maure goat's cheese
+  - <https://www.vinsdeloire.fr/en/loire-wines/chinon>: InterLoire: Chinon white, rose, red; style listed as 'Powerful, tannic red wines'; reds 'can be light and delicate, very aromatic (red fruits)' young, palate 'full-bodied and robust'; pairs with red meat, Loire fish (white)
+  - <https://winefolly.com/deep-dive/tasting-and-pairing-muscadet-wine/>: Wine Folly: 'bone-dry, light-bodied', high acidity, 'almost saline-like quality' near the sea; best with oysters and mussels
+- **label_note**: null → **replaced** → "On Vouvray, sec is dry, demi-sec medium-sweet, moelleux sweet. Muscadet sur lie has aged on its lees, for more texture."
+  - Why: Null can carry a sourced note: Vouvray's sweetness terms and Muscadet's sur lie are the label words a newcomer meets most.
+  - <https://winefolly.com/deep-dive/all-about-vouvray-wine/>: Wine Folly: sparkling 'the dominant style produced in Vouvray'; still sec, tendre, demi-sec, moelleux
+  - <https://www.cellartours.com/france/french-wine-regions/vouvray>: Cellar Tours: sparkling over 55% of production; sec, sec-tendre, demi-sec, moelleux
+  - <https://www.vinsdeloire.fr/en/loire-wines/muscadet>: InterLoire: Muscadet 'light, refreshing and fruity'; aroma 'Lemony, mineral and fresh'; lees ageing gives richness and suppleness; pairs with fresh oysters, bream ceviche, Sainte-Maure goat's cheese
+  - <https://vinepair.com/articles/the-one-white-wine-from-france-you-need-to-be-drinking>: VinePair: Muscadet crisp, light, 'saline'; for oysters; aged on lees for creaminess
+- **Observation** ({"region_code": "wr_0005"}): Melon (Melon de Bourgogne / Melon B), the grape of Muscadet and one of the Loire's four main varieties, is not in the grapes table (gr_0001..gr_0017), so Muscadet has no grape link.
+  - <https://www.france.fr/en/article/loire-valley-vineyard/>: Atout France (france.fr): Loire 'the longest river in France'; main grapes Melon, Chenin, Cabernet Franc, Sauvignon; Vouvray still and sparkling
+  - <https://www.vinsdeloire.fr/en/loire-wines/muscadet>: InterLoire: Muscadet 'light, refreshing and fruity'; aroma 'Lemony, mineral and fresh'; lees ageing gives richness and suppleness; pairs with fresh oysters, bream ceviche, Sainte-Maure goat's cheese
+  - <https://winefolly.com/deep-dive/tasting-and-pairing-muscadet-wine/>: Wine Folly: 'bone-dry, light-bodied', high acidity, 'almost saline-like quality' near the sea; best with oysters and mussels
+- **link Sauvignon Blanc (gr_0011) · local_note**: "Sancerre: flinty, crisp" → **adjusted** → "Sancerre: crisp, mineral"
+  - Why: The official Centre-Loire body says lively, mineral, citrus and does not say flinty; flint (silex) applies to only part of the appellation. Wine Folly confirms bracing acidity.
+  - <https://www.vins-centre-loire.com/en/les-vins-de-sancerre/>: Vins du Centre-Loire (official): Sancerre whites 'dry, lively and fruity, combining minerality with citrus aromas'; white, red and rose; Sauvignon Blanc and Pinot Noir; soils terres blanches, caillottes, siliceous clay
+  - <https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/>: Wine Folly: Sancerre 'bracing acidity, and flinty-smoke flavors'; about 78% of vineyard white; goat cheese (Crottin de Chavignol) the regional pairing
+- **link Chenin Blanc (gr_0012) · local_note**: "Vouvray: dry to sweet" → **adjusted** → "Vouvray: dry to sweet, often sparkling"
+  - Why: Sparkling is now the dominant Vouvray style (over 55% per Cellar Tours); still wines range sec to moelleux.
+  - <https://www.vinsdeloire.fr/en/loire-wines/vouvray>: InterLoire: Vouvray colours White and Fine bubbles; sweet, sparkling and dry styles; Chenin
+  - <https://winefolly.com/deep-dive/all-about-vouvray-wine/>: Wine Folly: sparkling 'the dominant style produced in Vouvray'; still sec, tendre, demi-sec, moelleux
+  - <https://www.cellartours.com/france/french-wine-regions/vouvray>: Cellar Tours: sparkling over 55% of production; sec, sec-tendre, demi-sec, moelleux
+- **link Cabernet Franc (gr_0013) · local_note**: "Chinon: a light, fragrant red" → **adjusted** → "Chinon: fragrant, light to firm"
+  - Why: Chinon ranges from light, aromatic, early-drinking (sand/gravel) to structured, tannic (tuffeau); InterLoire even files it under 'powerful, tannic' reds.
+  - <https://www.vinsdeloire.fr/en/loire-wines/chinon>: InterLoire: Chinon white, rose, red; style listed as 'Powerful, tannic red wines'; reds 'can be light and delicate, very aromatic (red fruits)' young, palate 'full-bodied and robust'; pairs with red meat, Loire fish (white)
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+- **link Sauvignon Blanc (gr_0011) · display_order**: 1 → **supported** → 1
+  - Why: Sauvignon Blanc, Chenin Blanc and Cabernet Franc are three of the four main Loire grapes (Melon, not in the grapes table, is the fourth); order is sensible.
+  - <https://www.france.fr/en/article/loire-valley-vineyard/>: Atout France (france.fr): Loire 'the longest river in France'; main grapes Melon, Chenin, Cabernet Franc, Sauvignon; Vouvray still and sparkling
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+- **link Chenin Blanc (gr_0012) · display_order**: 2 → **supported** → 2
+  - Why: Sauvignon Blanc, Chenin Blanc and Cabernet Franc are three of the four main Loire grapes (Melon, not in the grapes table, is the fourth); order is sensible.
+  - <https://www.france.fr/en/article/loire-valley-vineyard/>: Atout France (france.fr): Loire 'the longest river in France'; main grapes Melon, Chenin, Cabernet Franc, Sauvignon; Vouvray still and sparkling
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+- **link Cabernet Franc (gr_0013) · display_order**: 3 → **supported** → 3
+  - Why: Sauvignon Blanc, Chenin Blanc and Cabernet Franc are three of the four main Loire grapes (Melon, not in the grapes table, is the fourth); order is sensible.
+  - <https://www.france.fr/en/article/loire-valley-vineyard/>: Atout France (france.fr): Loire 'the longest river in France'; main grapes Melon, Chenin, Cabernet Franc, Sauvignon; Vouvray still and sparkling
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+- **appellation wa_0021 · name**: "Sancerre" → **supported** → "Sancerre"
+  - Why: Correct.
+  - <https://www.vins-centre-loire.com/en/les-vins-de-sancerre/>: Vins du Centre-Loire (official): Sancerre whites 'dry, lively and fruity, combining minerality with citrus aromas'; white, red and rose; Sauvignon Blanc and Pinot Noir; soils terres blanches, caillottes, siliceous clay
+  - <https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/>: Wine Folly: Sancerre 'bracing acidity, and flinty-smoke flavors'; about 78% of vineyard white; goat cheese (Crottin de Chavignol) the regional pairing
+- **appellation wa_0021 · colour**: "white" → **supported** → "white"
+  - Why: Mostly white (about 78-81%); red and rose from Pinot Noir also made. Kept 'white'.
+  - <https://www.vins-centre-loire.com/en/les-vins-de-sancerre/>: Vins du Centre-Loire (official): Sancerre whites 'dry, lively and fruity, combining minerality with citrus aromas'; white, red and rose; Sauvignon Blanc and Pinot Noir; soils terres blanches, caillottes, siliceous clay
+  - <https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/>: Wine Folly: Sancerre 'bracing acidity, and flinty-smoke flavors'; about 78% of vineyard white; goat cheese (Crottin de Chavignol) the regional pairing
+- **appellation wa_0021 · note**: "Sauvignon Blanc: crisp, flinty" → **adjusted** → "Sauvignon Blanc: crisp, mineral"
+  - Why: Same as the grape link: official body says lively, mineral, citrus; flint only on part of the appellation.
+  - <https://www.vins-centre-loire.com/en/les-vins-de-sancerre/>: Vins du Centre-Loire (official): Sancerre whites 'dry, lively and fruity, combining minerality with citrus aromas'; white, red and rose; Sauvignon Blanc and Pinot Noir; soils terres blanches, caillottes, siliceous clay
+  - <https://winefolly.com/deep-dive/sancerre-the-ultimate-french-sauvignon-blanc/>: Wine Folly: Sancerre 'bracing acidity, and flinty-smoke flavors'; about 78% of vineyard white; goat cheese (Crottin de Chavignol) the regional pairing
+- **appellation wa_0022 · name**: "Pouilly-Fumé" → **supported** → "Pouilly-Fumé"
+  - Why: Correct.
+  - <https://www.tastefrance.com/french-products/wine-spirits/pouilly-fume-pdo>: Taste France (Business France): aroma 'flinty and slightly smoky', 'pronounced minerality'
+  - <https://pouilly-fume.com/en/?p=4122>: Pouilly-Fume appellation site: name from grey bloom on Blanc Fume grapes and an 'unmistakeable smokiness' linked to flint soils
+- **appellation wa_0022 · colour**: "white" → **supported** → "white"
+  - Why: White Sauvignon Blanc only.
+  - <https://www.tastefrance.com/french-products/wine-spirits/pouilly-fume-pdo>: Taste France (Business France): aroma 'flinty and slightly smoky', 'pronounced minerality'
+  - <https://pouilly-fume.com/en/?p=4122>: Pouilly-Fume appellation site: name from grey bloom on Blanc Fume grapes and an 'unmistakeable smokiness' linked to flint soils
+- **appellation wa_0022 · note**: "Sauvignon Blanc: smoky, mineral" → **supported** → "Sauvignon Blanc: smoky, mineral"
+  - Why: Taste France: 'flinty and slightly smoky', 'pronounced minerality'; appellation site: 'unmistakeable smokiness' (name partly from the grey bloom on the grapes).
+  - <https://www.tastefrance.com/french-products/wine-spirits/pouilly-fume-pdo>: Taste France (Business France): aroma 'flinty and slightly smoky', 'pronounced minerality'
+  - <https://pouilly-fume.com/en/?p=4122>: Pouilly-Fume appellation site: name from grey bloom on Blanc Fume grapes and an 'unmistakeable smokiness' linked to flint soils
+- **appellation wa_0023 · name**: "Vouvray" → **supported** → "Vouvray"
+  - Why: Correct.
+  - <https://www.vinsdeloire.fr/en/loire-wines/vouvray>: InterLoire: Vouvray colours White and Fine bubbles; sweet, sparkling and dry styles; Chenin
+  - <https://winefolly.com/deep-dive/all-about-vouvray-wine/>: Wine Folly: sparkling 'the dominant style produced in Vouvray'; still sec, tendre, demi-sec, moelleux
+- **appellation wa_0023 · colour**: "white" → **adjusted** → "mixed"
+  - Why: Vouvray is still white and sparkling, sparkling being the dominant style; 'mixed' fits better than 'white' (alternatively keep 'white' and rely on the note).
+  - <https://www.vinsdeloire.fr/en/loire-wines/vouvray>: InterLoire: Vouvray colours White and Fine bubbles; sweet, sparkling and dry styles; Chenin
+  - <https://winefolly.com/deep-dive/all-about-vouvray-wine/>: Wine Folly: sparkling 'the dominant style produced in Vouvray'; still sec, tendre, demi-sec, moelleux
+  - <https://www.cellartours.com/france/french-wine-regions/vouvray>: Cellar Tours: sparkling over 55% of production; sec, sec-tendre, demi-sec, moelleux
+- **appellation wa_0023 · note**: "Chenin Blanc: dry to sweet" → **adjusted** → "Chenin Blanc: still or sparkling, dry to sweet"
+  - Why: InterLoire lists White and Fine bubbles; Wine Folly and Cellar Tours: sparkling dominant, still from sec to moelleux.
+  - <https://www.vinsdeloire.fr/en/loire-wines/vouvray>: InterLoire: Vouvray colours White and Fine bubbles; sweet, sparkling and dry styles; Chenin
+  - <https://winefolly.com/deep-dive/all-about-vouvray-wine/>: Wine Folly: sparkling 'the dominant style produced in Vouvray'; still sec, tendre, demi-sec, moelleux
+  - <https://www.cellartours.com/france/french-wine-regions/vouvray>: Cellar Tours: sparkling over 55% of production; sec, sec-tendre, demi-sec, moelleux
+- **appellation wa_0024 · name**: "Chinon" → **supported** → "Chinon"
+  - Why: Correct.
+  - <https://www.vinsdeloire.fr/en/loire-wines/chinon>: InterLoire: Chinon white, rose, red; style listed as 'Powerful, tannic red wines'; reds 'can be light and delicate, very aromatic (red fruits)' young, palate 'full-bodied and robust'; pairs with red meat, Loire fish (white)
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+- **appellation wa_0024 · colour**: "red" → **supported** → "red"
+  - Why: Mostly red; small amounts of rose and Chenin white (InterLoire lists all three). Kept 'red'.
+  - <https://www.vinsdeloire.fr/en/loire-wines/chinon>: InterLoire: Chinon white, rose, red; style listed as 'Powerful, tannic red wines'; reds 'can be light and delicate, very aromatic (red fruits)' young, palate 'full-bodied and robust'; pairs with red meat, Loire fish (white)
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+- **appellation wa_0024 · note**: "Cabernet Franc: light, fragrant" → **adjusted** → "Cabernet Franc: fragrant, light to firm"
+  - Why: Light and aromatic young/on sand and gravel, structured and tannic on tuffeau; 'light' alone misdescribes much of it.
+  - <https://www.vinsdeloire.fr/en/loire-wines/chinon>: InterLoire: Chinon white, rose, red; style listed as 'Powerful, tannic red wines'; reds 'can be light and delicate, very aromatic (red fruits)' young, palate 'full-bodied and robust'; pairs with red meat, Loire fish (white)
+  - <https://www.cellartours.com/france/french-wine-regions/chinon>: Cellar Tours: sand and gravel give 'a lighter, earlier-drinking style'; tuffeau gives the most structured, powerful wines; classic style low-to-moderate tannin
+  - <https://winefolly.com/grapes/cabernet-franc/>: Wine Folly: Loire cool climate gives 'a lighter-bodied version' with lighter tannins; Chinon 'high acidity and moderately low tannin'; goat cheese with lighter styles
+- **appellation wa_0025 · name**: "Muscadet" → **supported** → "Muscadet"
+  - Why: Correct; Muscadet Sèvre et Maine is a separate, larger appellation within the family, so a search alias could be added if wanted.
+  - <https://www.vinsdeloire.fr/en/loire-wines/muscadet>: InterLoire: Muscadet 'light, refreshing and fruity'; aroma 'Lemony, mineral and fresh'; lees ageing gives richness and suppleness; pairs with fresh oysters, bream ceviche, Sainte-Maure goat's cheese
+  - <https://winefolly.com/deep-dive/tasting-and-pairing-muscadet-wine/>: Wine Folly: 'bone-dry, light-bodied', high acidity, 'almost saline-like quality' near the sea; best with oysters and mussels
+- **appellation wa_0025 · colour**: "white" → **supported** → "white"
+  - Why: Dry white.
+  - <https://www.vinsdeloire.fr/en/loire-wines/muscadet>: InterLoire: Muscadet 'light, refreshing and fruity'; aroma 'Lemony, mineral and fresh'; lees ageing gives richness and suppleness; pairs with fresh oysters, bream ceviche, Sainte-Maure goat's cheese
+  - <https://winefolly.com/deep-dive/tasting-and-pairing-muscadet-wine/>: Wine Folly: 'bone-dry, light-bodied', high acidity, 'almost saline-like quality' near the sea; best with oysters and mussels
+- **appellation wa_0025 · note**: "light, salty, made for oysters" → **adjusted** → "light, saline, made for oysters"
+  - Why: Light and oyster match confirmed (InterLoire, Wine Folly, VinePair). Sources say 'saline' / 'saline-like', not salty; InterLoire itself says lemony and mineral.
+  - <https://www.vinsdeloire.fr/en/loire-wines/muscadet>: InterLoire: Muscadet 'light, refreshing and fruity'; aroma 'Lemony, mineral and fresh'; lees ageing gives richness and suppleness; pairs with fresh oysters, bream ceviche, Sainte-Maure goat's cheese
+  - <https://winefolly.com/deep-dive/tasting-and-pairing-muscadet-wine/>: Wine Folly: 'bone-dry, light-bodied', high acidity, 'almost saline-like quality' near the sea; best with oysters and mussels
+  - <https://vinepair.com/articles/the-one-white-wine-from-france-you-need-to-be-drinking>: VinePair: Muscadet crisp, light, 'saline'; for oysters; aged on lees for creaminess
+
+## Rioja (wr_0006)
+
+- **summary**: "Spain's best-known red: mostly Tempranillo, often with Garnacha, traditionally aged in oak, which gives vanilla and spice." → **replaced** → "Spain's first DOCa (1991), best known for reds: mostly Tempranillo, often with Garnacha, traditionally aged in oak for vanilla and spice. Also whites, mainly Viura, and rosados."
+  - Why: No source calls Rioja "Spain's best-known red" (Wine Society: "Spain's fine wine capital"; Wine Folly: reputation "built on reds"); replaced with the verifiable first-DOCa fact. Grapes, oak, vanilla and spice are supported; whites (Viura) and rosados added since the region makes them. (Lead review: lightly shortened; content unchanged.)
+  - <https://boe.es/boe/dias/1991/04/09/pdfs/A10675-10682.pdf>: Order of 3 April 1991 grants Rioja the Calificada status
+  - <https://daily.sevenfifty.com/regions/rioja>: first Spanish region to earn DOCa, 1991; Tempranillo dominant, Garnacha, Mazuelo, Graciano; Viura main white; American oak, vanilla
+  - <https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf>: official pliego: red, white, rosado and sparkling wines; Reserva reds show spicy aromas (vanilla, toast, tobacco)
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/rioja-ultimate-guide>: Garnacha added to the typical crianza for body and spice; generous oak ageing; Viura whites
+  - <https://winefolly.com/deep-dive/rioja-wine-from-crianza-to-gran-reserva/>: Rioja's reputation was built on reds; whites and rosados also made
+- **red_body**: 3 → **supported** → 3
+  - Why: Sources describe Rioja reds as ranging from light and fruity to structured, with the typical crianza of good body but soft; medium (3) fits the typical bottle.
+  - <https://daily.sevenfifty.com/regions/rioja>: reds range from light and fruity to structured and complex
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/rioja-ultimate-guide>: Tempranillo wines from light and fruity to more structured; Garnacha added for body
+  - <https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf>: red crianza: "buen cuerpo con taninos suaves"
+- **red_acidity**: 3 → **adjusted** → 4
+  - Why: Sources consistently stress fresh, lifting acidity in Rioja reds (Tempranillo medium-high; Graciano adds acidity); medium-plus maps to 4.
+  - <https://daily.sevenfifty.com/regions/rioja>: Tempranillo gives "lifting acidity"; Rioja's refreshing acidity makes it food-friendly
+  - <https://winefolly.com/grapes/tempranillo/>: Tempranillo profile: acidity medium-high
+  - <https://greatbritishchefs.com/features/beginners-guide-to-rioja-wines>: Reserva has "ample acidity"; Graciano prized for freshness
+- **red_tannin**: 3 → **supported** → 3
+  - Why: Crianza is described officially as soft-tannined, Reservas as more tannic; Wine Folly calls Rioja firm. Medium (3) is the fair middle for the typical red.
+  - <https://riojawine.com/en/blog/classification-of-rioja-wines-according-to-their-ageing/>: Crianza reds: smooth and ready to enjoy, with soft tannins
+  - <https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf>: red crianza: taninos suaves; Gran Reserva: suaves, finos
+  - <https://greatbritishchefs.com/features/beginners-guide-to-rioja-wines>: Reserva has higher tannins
+  - <https://winefolly.com/deep-dive/rioja-wine-from-crianza-to-gran-reserva/>: describes firm tannins (upper end)
+- **pairing**: "Lamb, chorizo, roasted vegetables, Manchego." → **adjusted** → "Lamb, chorizo, cured meats, Manchego."
+  - Why: "Roasted vegetables" is not supported by any source found; cured meats are. Lamb, chorizo and Manchego are supported.
+  - <https://winefolly.com/deep-dive/rioja-wine-from-crianza-to-gran-reserva/>: roasted pork, chorizo and lamb; older wines with aged cheeses and cured meats
+  - <https://greatbritishchefs.com/features/beginners-guide-to-rioja-wines>: crianza with sobrasada and Manchego; Reserva with lamb
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/rioja-ultimate-guide>: Rioja and lamb a traditional match
+- **label_note**: "Crianza: at least two years old, some in oak. Reserva: aged longer, rounder. Gran Reserva: the longest aged, made in good years." → **replaced** → "For reds: Crianza at least two years old, one in oak; Reserva at least three, one in oak; Gran Reserva at least five, two in oak, usually from the best years."
+  - Why: Official red minimums (pliego in force): Crianza 2 calendar years incl. at least 1 year in 225 l oak; Reserva 36 months incl. 12 oak + 6 bottle; Gran Reserva 60 months incl. 24 oak + 24 bottle. "Some in oak" understated it; "rounder" is not a rule and dropped; best-vintage selection is producer practice (not legal), so "usually". Whites/rosados have shorter minima (18/24/48 months, 6 in oak), hence "For reds". Wine Folly still quotes the pre-2019 Gran Reserva bottle rule (3 years); not used. BOE-A-2026-21760 (Oct 2026) changes only the minimum barrel stock, not ageing times.
+  - <https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf>: official ageing minimums as above
+  - <https://riojawine.com/en/blog/classification-of-rioja-wines-according-to-their-ageing/>: Consejo: Crianza two years incl. one in oak; Reserva three; Gran Reserva five
+  - <https://daily.sevenfifty.com/regions/rioja>: Reserva 3 yrs incl. 1 barrel, 6 months bottle; Gran Reserva 5 yrs incl. 2 barrel, 2 bottle; Gran Reservas only in the best vintages
+  - <https://winefolly.com/deep-dive/rioja-wine-from-crianza-to-gran-reserva/>: Gran Reserva: selected wines from exceptional vintages
+- **link Tempranillo (gr_0007) · local_note**: "cherry, and vanilla from oak" → **supported** → "cherry, and vanilla from oak"
+  - Why: Cherry and vanilla are both named for Rioja Tempranillo; the Consejo notes vanilla after long ageing.
+  - <https://winefolly.com/grapes/tempranillo/>: Rioja notes: cherry, dill, cigar box, vanilla
+  - <https://riojawine.com/en/the-designation/grape-varieties/tempranillo/>: after long ageing, vanilla, cocoa, liquorice
+  - <https://daily.sevenfifty.com/regions/rioja>: modern Rioja: more vanilla from oak
+- **link Tempranillo (gr_0007) · display_order**: 1 → **supported** → 1
+  - Why: Tempranillo is about 88% of red plantings.
+  - <https://riojawine.com/en/the-designation/grape-varieties/tempranillo/>: Reds 87.78%
+  - <https://daily.sevenfifty.com/regions/rioja>: dominant red, over 75% of plantings
+- **link Grenache (gr_0006) · local_note**: "warmth in the blend" → **adjusted** → "adds body and spice"
+  - Why: "Warmth" is vague; sources say Garnacha is blended in to add body (and spice, alcohol) to Tempranillo.
+  - <https://www.thewinesociety.com/discover/explore/regional-guides/rioja-ultimate-guide>: blended into the typical crianza "to add body and spice"
+  - <https://greatbritishchefs.com/features/beginners-guide-to-rioja-wines>: Garnacha "adds body to the wine"
+  - <https://daily.sevenfifty.com/regions/rioja>: Garnacha has full body and a tendency to high alcohol
+- **link Grenache (gr_0006) · display_order**: 2 → **supported** → 2
+  - Why: Garnacha is the second red variety, around 7-8% of plantings.
+  - <https://daily.sevenfifty.com/regions/rioja>: Garnacha listed after Tempranillo
+  - <https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf>: Garnacha Tinta listed among the red varieties; separate bud limit for Garnacha
+- **Observation** ({"region_code": "wr_0006"}): Graciano, Mazuelo (Carignan) and Maturana Tinta (red) and Viura (main white) are authorised Rioja grapes not in the grapes table (gr_0001..gr_0017); no link added. Reds need at least 95% of the five red varieties (destemmed); whites may also use Chardonnay, Sauvignon Blanc, Verdejo among others; rosados at least 25% red varieties.
+  - <https://riojawine.com/wp-content/uploads/2023/07/pliego-de-condiciones-de-la-doca-rioja-en-vigor.pdf>: apartado 6 variety list and b.1 proportions
+  - <https://daily.sevenfifty.com/regions/rioja>: Graciano, Mazuelo roles; Viura main white
+
+## Ribera del Duero (wr_0007)
+
+- **summary**: "A high plateau along the Duero where Tempranillo, here called Tinto Fino, makes full, dark reds." → **supported** → "A high plateau along the Duero where Tempranillo, here called Tinto Fino, makes full, dark reds."
+  - Why: Plateau setting, the Tinto Fino synonym, and deeply coloured full-bodied reds are all stated by the Consejo and independent sources.
+  - <https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf>: Tempranillo (synonyms Tinto Fino, Tinta del País) is the principal red variety, at least 75% of reds; high average altitude
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: Meseta Central, 700-1,000 m; reds deeply coloured and full-bodied
+  - <https://www.irishtimes.com/food/drink/2025/09/27/full-bodied-and-hedonistic-welcome-to-wines-from-ribera-del-duero>: high plateau; full-bodied; tinto fino
+- **red_body**: 4 → **supported** → 4
+  - Why: Independent sources say full-bodied; the Consejo spec says medium-to-high body for crianza/reserva. Sources split, so 4 per the brief.
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: full-bodied
+  - <https://www.irishtimes.com/food/drink/2025/09/27/full-bodied-and-hedonistic-welcome-to-wines-from-ribera-del-duero>: hedonistic and full-bodied
+  - <https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf>: crianza/reserva: cuerpo medios a altos
+- **red_acidity**: 3 → **adjusted** → 4
+  - Why: Sources describe medium-to-high acidity, which the Consejo ties to altitude and cold nights; medium-plus maps to 4.
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: firm tannins and medium to high acidity
+  - <https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf>: altitude gives a balanced natural acidity; crianza with sufficient acid freshness
+  - <https://www.irishtimes.com/food/drink/2025/09/27/full-bodied-and-hedonistic-welcome-to-wines-from-ribera-del-duero>: very ripe grapes full of colour, flavour and acidity
+- **red_tannin**: 4 → **supported** → 4
+  - Why: Firm tannins.
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: firm tannins (softened by the long ripening)
+  - <https://winefolly.com/grapes/tempranillo/>: Tempranillo medium-high tannins; Ribera a richer style
+  - <https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf>: abundant phenolics, high-quality tannin
+- **pairing**: "Roast lamb, beef, game." → **adjusted** → "Roast lamb, beef and other red meat."
+  - Why: Roast lamb is the classic local match and red meat in general is supported; game was not found in any reliable source and is dropped.
+  - <https://www.irishtimes.com/food/drink/2025/09/27/full-bodied-and-hedonistic-welcome-to-wines-from-ribera-del-duero>: local speciality of roast lamb, and any other red meat
+  - <https://winefolly.com/grapes/tempranillo/>: bold, aged Tempranillo with steak and rack of lamb
+- **label_note**: "Crianza: at least two years old, some in oak. Reserva: aged longer, rounder. Gran Reserva: the longest aged, made in good years." → **replaced** → "For reds: Crianza at least two years old, one in oak; Reserva at least three, one in oak; Gran Reserva at least five, two in oak."
+  - Why: Official Ribera red minimums: Crianza 24 months incl. 12 in oak (max 330 l); Reserva 36 incl. 12 oak, rest bottle; Gran Reserva 60 incl. 24 oak, rest bottle. Same red minima as Rioja, but Ribera sets no 6/24-month bottle minimum. "Rounder" and "made in good years" are not in the rules and no source supports them for Ribera; dropped. White/rosado minima are 18/24/48 months with 6 in oak, hence "For reds".
+  - <https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf>: pliego b.2 ageing conditions as above
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: Crianza 24 months incl. 1 year barrel; Reserva 36 incl. 1 year; Gran Reserva 5 years incl. 2 in barrel
+- **link Tempranillo (gr_0007) · local_note**: "as Tinto Fino: fuller, darker" → **supported** → "as Tinto Fino: fuller, darker"
+  - Why: Ribera Tempranillo is described as richer and darker-fruited than Rioja.
+  - <https://winefolly.com/grapes/tempranillo/>: Ribera: black cherry, blackberry; richer style (Rioja: cherry)
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: deeply coloured, full-bodied
+- **link Tempranillo (gr_0007) · display_order**: 1 → **supported** → 1
+  - Why: Principal and dominant red grape.
+  - <https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf>: Tempranillo principal, at least 75% of reds
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: nearly 95% of the DO planted to Tempranillo
+- **Observation** ({"region_code": "wr_0007"}): Other authorised varieties: Cabernet Sauvignon (gr_0003), Merlot (gr_0004), Malbec, Garnacha Tinta (gr_0006) and white Albillo Mayor. They are minor (max 25% of a red, with Tempranillo ~95% of plantings), so no link added. Whites (since 2019, at least 75% Albillo Mayor, not in grapes table) and rosados/claretes (at least 50% red varieties) are also DO wines.
+  - <https://www.riberadelduero.es/sites/default/files/2020-12/PLIEGO%20DE%20CONDICIONES%20DOP%20RIBERA%20DEL%20DUERO_DOUE%2006-03-20.pdf>: apartado 6 and c.1 proportions
+  - <https://daily.sevenfifty.com/regions/ribera-del-duero>: up to 25% Cabernet, Merlot or Malbec; white Ribera since 2019
+
+## Douro (wr_0008)
+
+- **summary**: "Terraced slopes along the Douro river: the home of port, and more and more of dry, dark reds from Touriga Nacional and other local grapes." → **adjusted** → "Terraced slopes along the Douro river: the home of port, and of a growing share of dry reds, blended from local grapes such as Touriga Franca and Touriga Nacional."
+  - Why: Terraces, port and the rise of dry wines are supported. Touriga Franca, not Touriga Nacional, is the most planted grape; Douro reds are typically blends. "Dark" dropped as not consistently stated (style ranges from fruity to dense).
+  - <https://winesofportugal.com/en/discover/wine-regions/porto-e-douro/>: thousands of terraces; still Douro wines of growing notoriety; five main red grapes incl. Touriga Franca, Touriga Nacional
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: Touriga Francesa the most widely planted; Touriga Nacional rarely found outside the Port houses' quintas
+  - <https://www.decanter.com/premium/good-value-douro-reds-417806/>: 2017/18: 41% of production table wine
+- **red_body**: 4 → **supported** → 4
+  - Why: Douro reds are deep and concentrated; the flagship grape is full-bodied, though styles range. 4 fits.
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: Touriga Nacional deep, concentrated wines; Touriga Franca intense, structured
+  - <https://winefolly.com/grapes/touriga-nacional/>: Touriga Nacional full-bodied
+- **red_acidity**: 3 → **supported** → 3
+  - Why: Dry-climate Douro grapes often need acidification and some blends fall short on acidity; medium (3) fits.
+  - <https://www.jancisrobinson.com/articles/a-guide-to-the-new-douro>: very dry region; acidification often necessary
+  - <https://www.decanter.com/premium/good-value-douro-reds-417806/>: acidity sometimes falls short in Touriga-led blends
+  - <https://winefolly.com/grapes/touriga-nacional/>: Touriga Nacional medium-high acidity (upper bound)
+- **red_tannin**: 4 → **supported** → 4
+  - Why: Firm tannins from the main grapes.
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: Touriga Franca and Touriga Nacional both give firm tannins
+  - <https://www.jancisrobinson.com/articles/a-guide-to-the-new-douro>: grapes typically high in tannin; tannin management essential
+  - <https://winefolly.com/grapes/touriga-nacional/>: high tannins
+- **pairing**: "Port with blue cheese or chocolate; the dry reds with grilled meat." → **adjusted** → "Port with blue cheese or chocolate; the dry reds with red meat."
+  - Why: Port with blue cheese and chocolate is supported, including by the IVDP. The IVDP pairs Douro reds with red meat generally; one source warns simply grilled meat can suit softer reds better, so "grilled" is widened to red meat.
+  - <https://www.ivdp.pt/en/wines/pairings/>: old Vintage with blue cheese; young Vintage and LBV with chocolate desserts; Douro red with red meat
+  - <https://www.taylor.pt/en/enjoy-port-wine/pairing-port-food>: Vintage with mature blue cheese; Ruby with chocolate desserts
+  - <https://winefolly.com/deep-dive/what-is-port-wine/>: Port with blue cheese; chocolate
+  - <https://www.matchingfoodandwine.com/articles/roast-lamb-with-a-douro-red>: Douro red with roast lamb
+- **label_note**: "Port: Ruby is young and fruity, Tawny is aged and nutty, Vintage comes from one exceptional year." → **adjusted** → "Port: Ruby is young and fruity, Tawny is aged in wood and nutty, Vintage comes from one exceptional year and ages in bottle."
+  - Why: All three statements are supported; IVDP defines Tawny by wood ageing and Vintage as a single-year wine bottled 2-3 years after harvest that ages well in bottle, which is the practical point for a buyer. Vintage is "declared" by the house and approved by the IVDP; not added for brevity.
+  - <https://ivdp.pt/en/wines/port-wines/introduction/>: Ruby keeps the fruit of a young wine; Tawny aged in casks/vats; Vintage ages well in bottle
+  - <https://ivdp.pt/en/wines/port-wines/special-categories/>: Vintage from a single year, bottled two to three years after
+  - <https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/>: Ruby young and fruity; Vintage from a single exceptional harvest
+  - <https://www.taylor.pt/en/enjoy-port-wine/pairing-port-food>: aged Tawnies: mellow, spicy, nutty
+  - <https://winefolly.com/deep-dive/what-is-port-wine/>: Tawny develops dried-fruit, nutty, caramel flavours
+- **link Touriga Nacional (gr_0015) · local_note**: "port and dark dry reds" → **supported** → "port and dark dry reds"
+  - Why: Touriga Nacional gives deep, concentrated wines and is used in port and in dry Douro reds.
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: deep, concentrated wines, strong fruit, firm tannins
+  - <https://winefolly.com/grapes/touriga-nacional/>: originally a Port grape, now in Douro single-varietal and blended reds
+- **link Touriga Nacional (gr_0015) · display_order**: 1 → **supported** → 1
+  - Why: Kept first as the region's flagship grape; note that by plantings Tinta Roriz ranks above it (Touriga Franca, not in the table, is first). Swapping to Roriz first would also be defensible.
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: Touriga Nacional most famous; Tinta Roriz most new plantings after Touriga Francesa
+  - <https://winesofportugal.com/en/discover/wine-regions/porto-e-douro/>: both among the five selected red varieties
+- **link Tempranillo (gr_0007) · local_note**: "as Tinta Roriz" → **adjusted** → "as Tinta Roriz: a main blending grape"
+  - Why: Current note says only the synonym, not what it becomes; sources call it one of the main blending grapes of port and Douro reds.
+  - <https://winefolly.com/grapes/tempranillo/>: Tinta Roriz one of the main blending grapes in Port
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: well-structured, aromatic wines; second in plantings
+  - <https://winesofportugal.com/en/discover/wine-regions/porto-e-douro/>: one of five selected red varieties
+- **link Tempranillo (gr_0007) · display_order**: 2 → **supported** → 2
+  - Why: See the Touriga Nacional display_order record.
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: Tinta Roriz widely planted
+  - <https://winefolly.com/deep-dive/what-is-port-wine/>: listed among main Port grapes
+- **Observation** ({"region_code": "wr_0008"}): Touriga Franca (Touriga Francesa) is the most planted grape in the Douro but is missing from the grapes table; worth adding as a grape, then linking at display_order 1 or 2. Tinta Barroca and Tinto Cão (also main grapes) are missing too.
+  - <https://www.taylor.pt/us/what-is-port-wine/the-douro-valley/port-grape-varieties>: Touriga Francesa the most widely planted variety in the Douro
+  - <https://winefolly.com/deep-dive/what-is-port-wine/>: Port grapes: Touriga Franca, Touriga Nacional, Tinta Roriz, Tinta Barroca, Tinto Cão
+  - <https://winesofportugal.com/en/discover/wine-regions/porto-e-douro/>: five selected reds
+- **appellation wa_0026 · name**: "Port" → **supported** → "Port"
+  - Why: English name of Vinho do Porto; alias Porto is correct.
+  - <https://ivdp.pt/en/wines/port-wines/introduction/>: Port Wine
+  - <https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/>: Vinho do Porto / Port
+- **appellation wa_0026 · colour**: "red" → **replaced** → "mixed"
+  - Why: Port is made red (Ruby and Tawny styles), white and rosé; "mixed" is the allowed value that covers this.
+  - <https://ivdp.pt/en/wines/port-wines/introduction/>: Ruby and Tawny styles, White Port, Rosé Port
+  - <https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/>: Ruby, Tawny, Vintage, White and Rosé
+  - <https://winefolly.com/deep-dive/what-is-port-wine/>: white and rosé Port
+- **appellation wa_0026 · note**: "fortified and sweet" → **adjusted** → "fortified, usually sweet"
+  - Why: Port is fortified by adding grape brandy to stop fermentation; sweetness ranges from very sweet to extra dry (dry styles mostly white), so "usually".
+  - <https://ivdp.pt/en/wines/port-wines/introduction/>: can be very sweet, sweet, semi-dry or extra dry; fermentation stopped with grape brandy
+  - <https://winefolly.com/deep-dive/what-is-port-wine/>: ranging from dry to very sweet
+  - <https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/>: wide range of sweetness, 19-22% vol
+- **Observation** ({"appellation_code": "wa_0026"}): Alias {Porto} is correct (the protected name is Porto / Vinho do Porto); no wrong alias.
+  - <https://ivdp.pt/en/wines/port-wines/introduction/>: Port Wine / Porto
+  - <https://winesofportugal.com/en/portuguese-wines/wine-styles/vinho-do-porto/>: Vinho do Porto
+
+## Mosel (wr_0009)
+
+- **summary**: "Slate slopes so steep they are worked by hand, and Riesling that is light, fragrant and high in acidity, from bone-dry to sweet." → **supported** → "Slate slopes so steep they are worked by hand, and Riesling that is light, fragrant and high in acidity, from bone-dry to sweet."
+  - Why: Slate dominates; steep sites (largest steep-slope area) are almost all hand-picked; Riesling is ~62% of plantings, light/low alcohol, fresh-to-high acidity, made dry, semi-dry and noble-sweet.
+  - <https://winesofgermany.com/our-regions/growing-area/72/mosel>: 8,287 ha; Riesling 5,156 ha (~62%); ~90% white/10% red; slate; steep sites, nearly all hand-picked; relatively low alcohol; noble-sweet, dry and semi-dry wines
+  - <https://gold.rlp.de/en/wine/mosel>: 8,500+ ha mostly white, ~10% red; slate; world's largest steep-slope area; freshness, balanced acid, moderate alcohol
+  - <https://winefolly.com/deep-dive/the-tasters-guide-to-riesling-wine/>: high acidity; Asian/Indian spices and spicy food; pork among meat pairings; best Rieslings on Mosel steep slopes
+  - <https://www.decanterchina.com/en/knowledge/trivia/tip-of-the-day-83-german-wine-regulations-iii>: must weight shows ripeness at harvest; Kabinett lightest, fresh acidity; Auslese most usually sweet; 'Spatlese Trocken' is dry
+- **red_body**: null → **supported** → null
+  - Why: Kept null: both regional sources put red at only ~10% of the area (Pinot Noir, Dornfelder), ~90% white with Riesling ~62%; the region's identity is white. Borderline - if the rule is strictly 'white-only', Mosel is not, but no source describes a typical Mosel red.
+  - <https://winesofgermany.com/our-regions/growing-area/72/mosel>: 8,287 ha; Riesling 5,156 ha (~62%); ~90% white/10% red; slate; steep sites, nearly all hand-picked; relatively low alcohol; noble-sweet, dry and semi-dry wines
+  - <https://gold.rlp.de/en/wine/mosel>: 8,500+ ha mostly white, ~10% red; slate; world's largest steep-slope area; freshness, balanced acid, moderate alcohol
+- **red_acidity**: null → **supported** → null
+  - Why: Kept null: both regional sources put red at only ~10% of the area (Pinot Noir, Dornfelder), ~90% white with Riesling ~62%; the region's identity is white. Borderline - if the rule is strictly 'white-only', Mosel is not, but no source describes a typical Mosel red.
+  - <https://winesofgermany.com/our-regions/growing-area/72/mosel>: 8,287 ha; Riesling 5,156 ha (~62%); ~90% white/10% red; slate; steep sites, nearly all hand-picked; relatively low alcohol; noble-sweet, dry and semi-dry wines
+  - <https://gold.rlp.de/en/wine/mosel>: 8,500+ ha mostly white, ~10% red; slate; world's largest steep-slope area; freshness, balanced acid, moderate alcohol
+- **red_tannin**: null → **supported** → null
+  - Why: Kept null: both regional sources put red at only ~10% of the area (Pinot Noir, Dornfelder), ~90% white with Riesling ~62%; the region's identity is white. Borderline - if the rule is strictly 'white-only', Mosel is not, but no source describes a typical Mosel red.
+  - <https://winesofgermany.com/our-regions/growing-area/72/mosel>: 8,287 ha; Riesling 5,156 ha (~62%); ~90% white/10% red; slate; steep sites, nearly all hand-picked; relatively low alcohol; noble-sweet, dry and semi-dry wines
+  - <https://gold.rlp.de/en/wine/mosel>: 8,500+ ha mostly white, ~10% red; slate; world's largest steep-slope area; freshness, balanced acid, moderate alcohol
+- **pairing**: "Asian dishes, pork, fish, spicy food." → **supported** → "Asian dishes, pork, fish, spicy food."
+  - Why: Wine Folly names Asian/Indian spice, spicy food and pork for Riesling; Mosel producer Selbach-Oster names fish (incl. trout), pork and spicy/Asian dishes across Mosel styles.
+  - <https://winefolly.com/deep-dive/the-tasters-guide-to-riesling-wine/>: high acidity; Asian/Indian spices and spicy food; pork among meat pairings; best Rieslings on Mosel steep slopes
+  - <https://blog.iwfs.org/2016/08/tips-by-selbach-oster-on-pairing-german-mosel-wine-with-food>: Mosel producer Selbach-Oster: fish/shellfish, trout, pork, very spicy and Asian dishes across styles
+- **label_note**: "Trocken means dry. Kabinett, Spätlese and Auslese rise in ripeness, and often in sweetness." → **supported** → "Trocken means dry. Kabinett, Spätlese and Auslese rise in ripeness, and often in sweetness."
+  - Why: Pradikat levels are legally defined by minimum must weight (ripeness at harvest), not sweetness; Spatlese/Auslese are 'not necessarily/not always sweet' but Auslese is usually sweet, so 'often in sweetness' is accurate. Trocken = dry (<=4 g/l, or <=9 g/l with enough acidity).
+  - <https://www.winesofgermany.com/our-wine/quality-standards/quality-standard/449/pr%C3%A4dikate>: each Pradikat has a minimum must weight (ripeness); Spatlese 'not necessarily sweet', Auslese 'not always sweet'
+  - <https://www.decanterchina.com/en/knowledge/trivia/tip-of-the-day-83-german-wine-regulations-iii>: must weight shows ripeness at harvest; Kabinett lightest, fresh acidity; Auslese most usually sweet; 'Spatlese Trocken' is dry
+  - <https://www.winesofgermany.com/our-wine/wine-and-food/wine-and-food/195/levels-of-sweetness-in-german-wines>: trocken = dry: up to 4 g/l residual sugar, or 9 g/l with enough acidity
+- **link Riesling (gr_0008) · local_note**: "light, fragrant, dry to sweet" → **supported** → "light, fragrant, dry to sweet"
+  - Why: Riesling is ~62% of Mosel; fine, fruity, low alcohol, made dry, semi-dry and noble-sweet.
+  - <https://winesofgermany.com/our-regions/growing-area/72/mosel>: 8,287 ha; Riesling 5,156 ha (~62%); ~90% white/10% red; slate; steep sites, nearly all hand-picked; relatively low alcohol; noble-sweet, dry and semi-dry wines
+  - <https://www.decanterchina.com/en/knowledge/trivia/tip-of-the-day-83-german-wine-regulations-iii>: must weight shows ripeness at harvest; Kabinett lightest, fresh acidity; Auslese most usually sweet; 'Spatlese Trocken' is dry
+  - <https://winefolly.com/deep-dive/the-tasters-guide-to-riesling-wine/>: high acidity; Asian/Indian spices and spicy food; pork among meat pairings; best Rieslings on Mosel steep slopes
+- **link Riesling (gr_0008) · display_order**: 1 → **supported** → 1
+  - Why: Riesling is by far the leading grape (5,156 of 8,287 ha).
+  - <https://winesofgermany.com/our-regions/growing-area/72/mosel>: 8,287 ha; Riesling 5,156 ha (~62%); ~90% white/10% red; slate; steep sites, nearly all hand-picked; relatively low alcohol; noble-sweet, dry and semi-dry wines
+  - <https://gold.rlp.de/en/wine/mosel>: 8,500+ ha mostly white, ~10% red; slate; world's largest steep-slope area; freshness, balanced acid, moderate alcohol
+- **Observation** ({"region_code": "wr_0009"}): Müller-Thurgau (679 ha, second grape) and Elbling (405 ha) are notable Mosel grapes but are not in the grapes table (gr_0001..gr_0017); no link proposed. Pinot Noir (gr_0001) is grown but no source gives it a significant share, so not added.
+  - <https://winesofgermany.com/our-regions/growing-area/72/mosel>: 8,287 ha; Riesling 5,156 ha (~62%); ~90% white/10% red; slate; steep sites, nearly all hand-picked; relatively low alcohol; noble-sweet, dry and semi-dry wines
+  - <https://gold.rlp.de/en/wine/mosel>: 8,500+ ha mostly white, ~10% red; slate; world's largest steep-slope area; freshness, balanced acid, moderate alcohol
+
+## Piedmont (wr_0010)
+
+- **summary**: "Foothills of the Alps where Nebbiolo makes Barolo and Barbaresco: pale, but with firm tannins and scents of rose and tar." → **adjusted** → "In the Langhe hills, Nebbiolo makes Barolo and Barbaresco: pale, but with firm tannins and scents of rose and tar."
+  - Why: The wine description is well supported (pale/transparent garnet, rose and tar, very tannic). But Barolo and Barbaresco come from the Langhe hills around Alba, not the Alpine foothills; 'Piemonte' means foot of the mountains for the region as a whole. Named the Langhe instead.
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+  - <https://greatitalianchefs.com/features/piedmont-wine-guide>: Langhe; Barolo garnet and quite transparent, tannic; Barbaresco velvety, tannic, well-structured
+- **red_body**: 3 → **adjusted** → 4
+  - Why: Sources describe the typical Piedmont red as more than medium: Barolo 'full-bodied' (langhe.net) and 'most full-bodied' of northern Nebbiolos (Wine Folly); Nebbiolo and Barbera both 'medium-full' (Wine Folly). Split between medium-full and full -> 4 per the brief.
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+  - <https://winefolly.com/grapes/nebbiolo/>: medium-full body, high tannins, medium-high acidity, rose; truffle risotto, fatty/cheesy dishes
+  - <https://winefolly.com/grapes/barbera/>: medium-full body, low tannins, high acidity, tart cherry
+- **red_acidity**: 5 → **supported** → 5
+  - Why: Nebbiolo described as high in tannin and acidity (VinePair, Wine Folly region guide), Barbera high acidity; Wine Folly's Nebbiolo grape page says medium-high, so sources lean high -> 5 kept.
+  - <https://vinepair.com/articles/whats-the-difference-between-barolo-barbaresco-and-brunello/>: Barbaresco subtly lighter than Barolo, drinks younger; Nebbiolo high tannin and acidity; Brunello only Tuscan made with just Sangiovese
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+  - <https://winefolly.com/grapes/barbera/>: medium-full body, low tannins, high acidity, tart cherry
+  - <https://winefolly.com/grapes/nebbiolo/>: medium-full body, high tannins, medium-high acidity, rose; truffle risotto, fatty/cheesy dishes
+- **red_tannin**: 5 → **supported** → 5
+  - Why: Nebbiolo 'very tannic' (langhe.net), 'high tannins' and Barolo 'rigid tannins' (Wine Folly).
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://winefolly.com/grapes/nebbiolo/>: medium-full body, high tannins, medium-high acidity, rose; truffle risotto, fatty/cheesy dishes
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+- **pairing**: "Truffles, risotto, braised beef, aged cheese." → **supported** → "Truffles, risotto, braised beef, aged cheese."
+  - Why: langhe.net: mushroom risotto, braised meats, truffle dishes, aged hard cheeses; Wine Folly: truffle risotto, fatty/cheesy dishes.
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://winefolly.com/grapes/nebbiolo/>: medium-full body, high tannins, medium-high acidity, rose; truffle risotto, fatty/cheesy dishes
+- **label_note**: "Barolo and Barbaresco are the great names; Langhe Nebbiolo is the younger, friendlier version." → **supported** → "Barolo and Barbaresco are the great names; Langhe Nebbiolo is the younger, friendlier version."
+  - Why: Langhe Nebbiolo (min 85% Nebbiolo, no minimum ageing) is described as the younger, fresher, more accessible/approachable sibling of Barolo and Barbaresco, often from younger vines.
+  - <https://www.inquirer.com/philly/columnists/craig_laban/barolos-affordable-piedmont-nebbiolo-craig-laban-drink-20171103.html>: Langhe Nebbiolo: younger, fresher, more accessible than Barolo; younger vines or just outside the appellation
+  - <https://www.vinovest.co/blog/langhe-nebbiolo>: Langhe Nebbiolo: min 85% Nebbiolo, no minimum ageing; younger, more approachable sibling of Barolo/Barbaresco
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+- **link Nebbiolo (gr_0009) · local_note**: "Barolo and Barbaresco" → **supported** → "Barolo and Barbaresco"
+  - Why: Barolo is 100% Nebbiolo; Barbaresco is Nebbiolo.
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+- **link Nebbiolo (gr_0009) · display_order**: 1 → **supported** → 1
+  - Why: Nebbiolo is the signature grape of the region's leading wines.
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://greatitalianchefs.com/features/piedmont-wine-guide>: Langhe; Barolo garnet and quite transparent, tannic; Barbaresco velvety, tannic, well-structured
+- **Observation** ({"region_code": "wr_0010"}): Barbera (behind Barbera d'Alba/d'Asti), Moscato Bianco (Moscato d'Asti) and Dolcetto are major Piedmont grapes but are not in the grapes table; two of the region's four appellations therefore have no grape link. Consider adding Barbera and Moscato Bianco to the grapes table.
+  - <https://winefolly.com/grapes/barbera/>: medium-full body, low tannins, high acidity, tart cherry
+  - <https://winefolly.com/deep-dive/the-magic-of-moscato-dasti/>: frizzante (half-sparkling); typically 5.5%, DOCG range 4.5-6.5%; 100-150 g/l sugar; Moscato Bianco
+  - <https://www.langhevini.it/en/denominazioni/>: consortium list: Barolo DOCG, Barbaresco DOCG, Barbera d'Alba DOC, Langhe DOC
+- **appellation wa_0027 · name**: "Barolo" → **supported** → "Barolo"
+  - Why: Barolo DOCG.
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://www.langhevini.it/en/denominazioni/>: consortium list: Barolo DOCG, Barbaresco DOCG, Barbera d'Alba DOC, Langhe DOC
+- **appellation wa_0027 · colour**: "red" → **supported** → "red"
+  - Why: 100% Nebbiolo red.
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+- **appellation wa_0027 · note**: "Nebbiolo: powerful, firm tannins" → **supported** → "Nebbiolo: powerful, firm tannins"
+  - Why: Barolo: 'rigid tannins', full-bodied, high alcohol; 'very tannic'. (Legal minimum ageing 38 months incl. 18 in wood; Riserva 62 - not in the note.)
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+  - <https://langhe.net/en/wines/barolo-docg/>: 100% Nebbiolo; 38 months (18 in oak), Riserva 62; transparent ruby/garnet; rose to tar; full-bodied; very tannic; risotto, braised meats, truffle, aged cheeses
+  - <https://vinepair.com/articles/whats-the-difference-between-barolo-barbaresco-and-brunello/>: Barbaresco subtly lighter than Barolo, drinks younger; Nebbiolo high tannin and acidity; Brunello only Tuscan made with just Sangiovese
+- **appellation wa_0028 · name**: "Barbaresco" → **supported** → "Barbaresco"
+  - Why: Barbaresco DOCG.
+  - <https://www.langhevini.it/en/denominazioni/>: consortium list: Barolo DOCG, Barbaresco DOCG, Barbera d'Alba DOC, Langhe DOC
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+- **appellation wa_0028 · colour**: "red" → **supported** → "red"
+  - Why: Nebbiolo red.
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+  - <https://greatitalianchefs.com/features/piedmont-wine-guide>: Langhe; Barolo garnet and quite transparent, tannic; Barbaresco velvety, tannic, well-structured
+- **appellation wa_0028 · note**: "Nebbiolo: a little softer" → **supported** → "Nebbiolo: a little softer"
+  - Why: Wine Folly: softer, noticeably less tannin; VinePair: subtly lighter than Barolo, drinks younger. (Min ageing 26 months incl. 9 in wood vs Barolo's 38/18.)
+  - <https://winefolly.com/review/barolo-barbaresco-italy-nebbiolo-regions/>: pale garnet; roses and tar; Barolo rigid tannins, most full-bodied; Barbaresco softer, less tannin; Langhe Nebbiolo from outside DOCG zones
+  - <https://vinepair.com/articles/whats-the-difference-between-barolo-barbaresco-and-brunello/>: Barbaresco subtly lighter than Barolo, drinks younger; Nebbiolo high tannin and acidity; Brunello only Tuscan made with just Sangiovese
+- **appellation wa_0029 · name**: "Barbera d'Alba" → **supported** → "Barbera d'Alba"
+  - Why: Barbera d'Alba DOC exists (Langhe consortium list).
+  - <https://www.langhevini.it/en/denominazioni/>: consortium list: Barolo DOCG, Barbaresco DOCG, Barbera d'Alba DOC, Langhe DOC
+  - <https://www.decanter.com/learn/about-barbera-dasti-wines-five-things-to-know-381382/>: Barbera d'Asti DOC 1970, promoted to DOCG 2008; 90-100% Barbera; delicate fruit tannins
+- **appellation wa_0029 · colour**: "red" → **supported** → "red"
+  - Why: Red DOC from Barbera.
+  - <https://www.langhevini.it/en/denominazioni/>: consortium list: Barolo DOCG, Barbaresco DOCG, Barbera d'Alba DOC, Langhe DOC
+  - <https://winefolly.com/grapes/barbera/>: medium-full body, low tannins, high acidity, tart cherry
+- **appellation wa_0029 · note**: "juicy, fresh, low tannin" → **supported** → "juicy, fresh, low tannin"
+  - Why: Barbera: high acidity, low tannins, cherry fruit; delicate fruit tannins.
+  - <https://winefolly.com/grapes/barbera/>: medium-full body, low tannins, high acidity, tart cherry
+  - <https://www.decanter.com/learn/about-barbera-dasti-wines-five-things-to-know-381382/>: Barbera d'Asti DOC 1970, promoted to DOCG 2008; 90-100% Barbera; delicate fruit tannins
+- **Observation** ({"appellation_code": "wa_0029"}): Wrong alias: 'Barbera d'Asti' is not another name for Barbera d'Alba. It is a separate appellation (DOC 1970, DOCG since 2008, Monferrato hills, 90-100% Barbera), while Barbera d'Alba is a DOC around Alba. Remove the alias; add Barbera d'Asti as its own appellation if wanted.
+  - <https://www.decanter.com/learn/about-barbera-dasti-wines-five-things-to-know-381382/>: Barbera d'Asti DOC 1970, promoted to DOCG 2008; 90-100% Barbera; delicate fruit tannins
+  - <https://www.langhevini.it/en/denominazioni/>: consortium list: Barolo DOCG, Barbaresco DOCG, Barbera d'Alba DOC, Langhe DOC
+- **appellation wa_0030 · name**: "Moscato d'Asti" → **supported** → "Moscato d'Asti"
+  - Why: Moscato d'Asti (within the Asti DOCG).
+  - <https://winefolly.com/deep-dive/the-magic-of-moscato-dasti/>: frizzante (half-sparkling); typically 5.5%, DOCG range 4.5-6.5%; 100-150 g/l sugar; Moscato Bianco
+  - <https://www.decanter.com/sponsored/the-many-styles-of-asti-531531/>: Moscato d'Asti: 80-100 g/l sugar, max 2.5 atm fizz, 4.5-5.5% alcohol, Moscato Bianco
+- **appellation wa_0030 · colour**: "sparkling" → **supported** → "sparkling"
+  - Why: White, frizzante (max ~2.5 atm), so 'sparkling' is the closest allowed value; the note already says 'lightly'.
+  - <https://winefolly.com/deep-dive/the-magic-of-moscato-dasti/>: frizzante (half-sparkling); typically 5.5%, DOCG range 4.5-6.5%; 100-150 g/l sugar; Moscato Bianco
+  - <https://www.decanter.com/sponsored/the-many-styles-of-asti-531531/>: Moscato d'Asti: 80-100 g/l sugar, max 2.5 atm fizz, 4.5-5.5% alcohol, Moscato Bianco
+- **appellation wa_0030 · note**: "lightly sparkling, sweet, low alcohol" → **supported** → "lightly sparkling, sweet, low alcohol"
+  - Why: Frizzante, 80-150 g/l residual sugar, typically ~5.5% (legal 4.5-6.5%).
+  - <https://winefolly.com/deep-dive/the-magic-of-moscato-dasti/>: frizzante (half-sparkling); typically 5.5%, DOCG range 4.5-6.5%; 100-150 g/l sugar; Moscato Bianco
+  - <https://www.decanter.com/sponsored/the-many-styles-of-asti-531531/>: Moscato d'Asti: 80-100 g/l sugar, max 2.5 atm fizz, 4.5-5.5% alcohol, Moscato Bianco
+- **appellation wa_0029 · aliases**: ["Barbera d'Asti"] → **adjusted** → []
+  - Why: Wrong alias: 'Barbera d'Asti' is not another name for Barbera d'Alba. It is a separate appellation (DOC 1970, DOCG since 2008, Monferrato hills, 90-100% Barbera), while Barbera d'Alba is a DOC around Alba. Remove the alias; add Barbera d'Asti as its own appellation if wanted.
+  - <https://www.decanter.com/learn/about-barbera-dasti-wines-five-things-to-know-381382/>: Barbera d'Asti DOC 1970, promoted to DOCG 2008; 90-100% Barbera; delicate fruit tannins
+  - <https://www.langhevini.it/en/denominazioni/>: consortium list: Barolo DOCG, Barbaresco DOCG, Barbera d'Alba DOC, Langhe DOC
+
+## Tuscany (wr_0011)
+
+- **summary**: "Sangiovese country: Chianti and Brunello di Montalcino, with bright cherry fruit and fresh acidity." → **supported** → "Sangiovese country: Chianti and Brunello di Montalcino, with bright cherry fruit and fresh acidity."
+  - Why: Sangiovese is the base of Chianti Classico (min 80%) and Brunello (100%); cherry fruit and medium-high/high acidity in all sources.
+  - <https://winefolly.com/grapes/sangiovese/>: medium-full body, medium-high tannins, medium-high acidity; cherry, roasted tomato; tomato and grilled foods
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico>: Chianti Classico red cherry, medium body, lively and savoury, higher acidity; Brunello 100% Sangiovese, powerful, dense; pasta, bistecca, wild boar
+  - <https://italianwinecentral.com/denomination/chianti-classico-docg/>: separate DOCG since 1996; min 80% Sangiovese; Riserva 24 months incl 3 in bottle; Gran Selezione 30 months incl 3 in bottle
+- **red_body**: 3 → **supported** → 3
+  - Why: Typical red (Chianti Classico) is 'medium body' (Jeroboams); Wine Folly's Sangiovese is medium-full and Brunello fuller; kept 3 as Chianti is the typical red.
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico>: Chianti Classico red cherry, medium body, lively and savoury, higher acidity; Brunello 100% Sangiovese, powerful, dense; pasta, bistecca, wild boar
+  - <https://winefolly.com/grapes/sangiovese/>: medium-full body, medium-high tannins, medium-high acidity; cherry, roasted tomato; tomato and grilled foods
+- **red_acidity**: 4 → **supported** → 4
+  - Why: Sangiovese medium-high acidity (Wine Folly); Chianti Classico 'higher in acidity', lively (Jeroboams).
+  - <https://winefolly.com/grapes/sangiovese/>: medium-full body, medium-high tannins, medium-high acidity; cherry, roasted tomato; tomato and grilled foods
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico>: Chianti Classico red cherry, medium body, lively and savoury, higher acidity; Brunello 100% Sangiovese, powerful, dense; pasta, bistecca, wild boar
+- **red_tannin**: 4 → **supported** → 4
+  - Why: Sangiovese medium-high tannins (Wine Folly); Brunello high tannin (Wine Folly Brunello).
+  - <https://winefolly.com/grapes/sangiovese/>: medium-full body, medium-high tannins, medium-high acidity; cherry, roasted tomato; tomato and grilled foods
+  - <https://winefolly.com/review/brunello-di-montalcino-its-worth-the-wait/>: 100% Sangiovese; release V+5, 2 years oak, 4 months bottle; Riserva V+6; bold, high tannin and acidity
+  - <https://wineinsiders.com/wine-101/chianti-wine>: Wine Insiders: Chianti tannins "moderate to high", "moderate to firm"; high acidity
+- **pairing**: "Pasta with tomato, grilled steak, pecorino." → **adjusted** → "Pasta with tomato, pizza, grilled steak."
+  - Why: Tomato-sauce pasta, pizza and bistecca alla fiorentina are supported by VinePair, Jeroboams and Wine Folly; pecorino appeared only in search snippets and could not be confirmed on a fetched page, so replaced with pizza.
+  - <https://vinepair.com/articles/chianti-classico-docg-wine-guide/>: ripe cherries, red currants, herbs; pizza, red-sauce pastas, bistecca alla fiorentina; min 80% Sangiovese
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico>: Chianti Classico red cherry, medium body, lively and savoury, higher acidity; Brunello 100% Sangiovese, powerful, dense; pasta, bistecca, wild boar
+  - <https://winefolly.com/grapes/sangiovese/>: medium-full body, medium-high tannins, medium-high acidity; cherry, roasted tomato; tomato and grilled foods
+- **label_note**: "Chianti Classico comes from the historic heart; Riserva is aged longer. \"Super Tuscans\" are blends outside the rules, often with Cabernet." → **adjusted** → "Chianti Classico comes from the historic heart; Riserva and Gran Selezione are aged longer. \"Super Tuscans\" began as blends outside the rules, often with Cabernet; most are now IGT Toscana or Bolgheri."
+  - Why: Super Tuscans were outside the rules (sold as vino da tavola) but today are labelled Toscana IGT or Bolgheri DOC (reds admitted 1994), so present tense was misleading. Added Gran Selezione, the top tier since 2014 (30 months vs Riserva's 24).
+  - <https://www.frw.co.uk/editorial/the-super-tuscans>: Super Tuscans: outside Chianti rules, first sold as vino da tavola; now e.g. IGT Toscana; Sassicaia has own DOC; Cabernet-led and Merlot wines (Masseto pure Merlot)
+  - <https://winescholarguild.com/blog/regional-spotlight/super-tuscans>: Bolgheri DOC reds since 1994 from Cabernet Sauvignon, Merlot, Cabernet Franc, Syrah, Petit Verdot, Sangiovese up to 50%; similar wines elsewhere labelled Toscana IGT
+  - <https://italianwinecentral.com/denomination/chianti-classico-docg/>: separate DOCG since 1996; min 80% Sangiovese; Riserva 24 months incl 3 in bottle; Gran Selezione 30 months incl 3 in bottle
+  - <https://vinepair.com/wine-geekly/gran-selezione-is-the-new-king-of-chianti-heres-what-you-need-to-know/>: Chianti DOCG covers most of Tuscany; Classico separate DOCG 1996; Annata 12, Riserva 24, Gran Selezione 30 months; Super Tuscans made outside the rules
+- **link Sangiovese (gr_0010) · local_note**: "Chianti and Brunello" → **supported** → "Chianti and Brunello"
+  - Why: Min 80% of Chianti Classico; 100% of Brunello.
+  - <https://italianwinecentral.com/denomination/chianti-classico-docg/>: separate DOCG since 1996; min 80% Sangiovese; Riserva 24 months incl 3 in bottle; Gran Selezione 30 months incl 3 in bottle
+  - <https://italianwinecentral.com/denomination/brunello-di-montalcino-docg/>: 100% Sangiovese; 2 years in barrel + 4 months bottle, release 1 Jan V+5; Riserva 6 months bottle, V+6
+  - <https://winefolly.com/review/brunello-di-montalcino-its-worth-the-wait/>: Wine Folly: Brunello is 100% Sangiovese
+- **link Sangiovese (gr_0010) · display_order**: 1 → **supported** → 1
+  - Why: Sangiovese is the leading Tuscan grape.
+  - <https://winefolly.com/grapes/sangiovese/>: medium-full body, medium-high tannins, medium-high acidity; cherry, roasted tomato; tomato and grilled foods
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico>: Chianti Classico red cherry, medium body, lively and savoury, higher acidity; Brunello 100% Sangiovese, powerful, dense; pasta, bistecca, wild boar
+- **link Cabernet Sauvignon (gr_0003) · local_note**: "in the Super Tuscans" → **supported** → "in the Super Tuscans"
+  - Why: Cabernet leads Sassicaia, Solaia, Ornellaia and blends with Sangiovese in Tignanello; core Bolgheri variety.
+  - <https://www.frw.co.uk/editorial/the-super-tuscans>: Super Tuscans: outside Chianti rules, first sold as vino da tavola; now e.g. IGT Toscana; Sassicaia has own DOC; Cabernet-led and Merlot wines (Masseto pure Merlot)
+  - <https://winescholarguild.com/blog/regional-spotlight/super-tuscans>: Bolgheri DOC reds since 1994 from Cabernet Sauvignon, Merlot, Cabernet Franc, Syrah, Petit Verdot, Sangiovese up to 50%; similar wines elsewhere labelled Toscana IGT
+  - <https://www.bolgheridoc.com/en/wines/>: Consorzio: Rosso 0-100% Cab Sauv, Merlot, Cab Franc, up to 50% Syrah/Sangiovese; also Bianco (Vermentino) and Rosato; savoury notes of the nearby sea
+- **link Cabernet Sauvignon (gr_0003) · display_order**: 2 → **supported** → 2
+  - Why: Second after Sangiovese is sensible.
+  - <https://www.frw.co.uk/editorial/the-super-tuscans>: Super Tuscans: outside Chianti rules, first sold as vino da tavola; now e.g. IGT Toscana; Sassicaia has own DOC; Cabernet-led and Merlot wines (Masseto pure Merlot)
+  - <https://winescholarguild.com/blog/regional-spotlight/super-tuscans>: Bolgheri DOC reds since 1994 from Cabernet Sauvignon, Merlot, Cabernet Franc, Syrah, Petit Verdot, Sangiovese up to 50%; similar wines elsewhere labelled Toscana IGT
+- **link Merlot (gr_0004) · link**: null → **adjusted** → "add"
+  - local_note: "in Bolgheri and Super Tuscan blends", display_order: 3
+  - Why: Merlot is one of the three main Bolgheri Rosso varieties (0-100%) and the sole grape of Masseto; suggest adding it after Cabernet. Optional.
+  - <https://www.bolgheridoc.com/en/wines/>: Consorzio: Rosso 0-100% Cab Sauv, Merlot, Cab Franc, up to 50% Syrah/Sangiovese; also Bianco (Vermentino) and Rosato; savoury notes of the nearby sea
+  - <https://winescholarguild.com/blog/regional-spotlight/super-tuscans>: Bolgheri DOC reds since 1994 from Cabernet Sauvignon, Merlot, Cabernet Franc, Syrah, Petit Verdot, Sangiovese up to 50%; similar wines elsewhere labelled Toscana IGT
+  - <https://www.frw.co.uk/editorial/the-super-tuscans>: Super Tuscans: outside Chianti rules, first sold as vino da tavola; now e.g. IGT Toscana; Sassicaia has own DOC; Cabernet-led and Merlot wines (Masseto pure Merlot)
+- **appellation wa_0031 · name**: "Chianti Classico" → **supported** → "Chianti Classico"
+  - Why: Chianti Classico DOCG.
+  - <https://italianwinecentral.com/denomination/chianti-classico-docg/>: separate DOCG since 1996; min 80% Sangiovese; Riserva 24 months incl 3 in bottle; Gran Selezione 30 months incl 3 in bottle
+  - <https://vinepair.com/wine-geekly/gran-selezione-is-the-new-king-of-chianti-heres-what-you-need-to-know/>: Chianti DOCG covers most of Tuscany; Classico separate DOCG 1996; Annata 12, Riserva 24, Gran Selezione 30 months; Super Tuscans made outside the rules
+- **appellation wa_0031 · colour**: "red" → **supported** → "red"
+  - Why: Red, min 80% Sangiovese.
+  - <https://italianwinecentral.com/denomination/chianti-classico-docg/>: separate DOCG since 1996; min 80% Sangiovese; Riserva 24 months incl 3 in bottle; Gran Selezione 30 months incl 3 in bottle
+  - <https://vinepair.com/articles/chianti-classico-docg-wine-guide/>: ripe cherries, red currants, herbs; pizza, red-sauce pastas, bistecca alla fiorentina; min 80% Sangiovese
+- **appellation wa_0031 · note**: "Sangiovese: cherry, savoury" → **supported** → "Sangiovese: cherry, savoury"
+  - Why: Red cherry, lively and savoury (Jeroboams); ripe cherries, herbs (VinePair).
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico>: Chianti Classico red cherry, medium body, lively and savoury, higher acidity; Brunello 100% Sangiovese, powerful, dense; pasta, bistecca, wild boar
+  - <https://vinepair.com/articles/chianti-classico-docg-wine-guide/>: ripe cherries, red currants, herbs; pizza, red-sauce pastas, bistecca alla fiorentina; min 80% Sangiovese
+- **Observation** ({"appellation_code": "wa_0031"}): Wrong alias: 'Chianti' is a separate, much larger DOCG (most of Tuscany; DOCG 1984). Chianti Classico has been its own DOCG since 1996. A search for 'Chianti' resolving to Chianti Classico would be wrong; remove the alias. Rules check: Riserva 24 months incl. 3 in bottle; Gran Selezione 30 months incl. 3 in bottle, estate grapes, 80% Sangiovese rising to 90% from the 2027 vintage.
+  - <https://italianwinecentral.com/denomination/chianti-classico-docg/>: separate DOCG since 1996; min 80% Sangiovese; Riserva 24 months incl 3 in bottle; Gran Selezione 30 months incl 3 in bottle
+  - <https://vinepair.com/wine-geekly/gran-selezione-is-the-new-king-of-chianti-heres-what-you-need-to-know/>: Chianti DOCG covers most of Tuscany; Classico separate DOCG 1996; Annata 12, Riserva 24, Gran Selezione 30 months; Super Tuscans made outside the rules
+- **appellation wa_0032 · name**: "Brunello di Montalcino" → **supported** → "Brunello di Montalcino"
+  - Why: Brunello di Montalcino DOCG.
+  - <https://italianwinecentral.com/denomination/brunello-di-montalcino-docg/>: 100% Sangiovese; 2 years in barrel + 4 months bottle, release 1 Jan V+5; Riserva 6 months bottle, V+6
+  - <https://winefolly.com/review/brunello-di-montalcino-its-worth-the-wait/>: 100% Sangiovese; release V+5, 2 years oak, 4 months bottle; Riserva V+6; bold, high tannin and acidity
+- **appellation wa_0032 · colour**: "red" → **supported** → "red"
+  - Why: 100% Sangiovese red.
+  - <https://italianwinecentral.com/denomination/brunello-di-montalcino-docg/>: 100% Sangiovese; 2 years in barrel + 4 months bottle, release 1 Jan V+5; Riserva 6 months bottle, V+6
+  - <https://www.winespectator.com/articles/brunello-di-montalcino-sangiovese-103126>: by law 100% Sangiovese; some of Italy's most powerful, long-lived wines
+- **appellation wa_0032 · note**: "Sangiovese: fuller, long-aged" → **supported** → "Sangiovese: fuller, long-aged"
+  - Why: 100% Sangiovese; release from 1 Jan of the 5th year after harvest with 2 years in wood (Riserva 6th year); powerful, dense, long-lived compared with Chianti Classico.
+  - <https://italianwinecentral.com/denomination/brunello-di-montalcino-docg/>: 100% Sangiovese; 2 years in barrel + 4 months bottle, release 1 Jan V+5; Riserva 6 months bottle, V+6
+  - <https://winefolly.com/review/brunello-di-montalcino-its-worth-the-wait/>: 100% Sangiovese; release V+5, 2 years oak, 4 months bottle; Riserva V+6; bold, high tannin and acidity
+  - <https://jeroboams.co.uk/advice-centre/buyers-guide/brunello-di-montalcino-and-chianti-classico>: Chianti Classico red cherry, medium body, lively and savoury, higher acidity; Brunello 100% Sangiovese, powerful, dense; pasta, bistecca, wild boar
+  - <https://www.winespectator.com/articles/brunello-di-montalcino-sangiovese-103126>: by law 100% Sangiovese; some of Italy's most powerful, long-lived wines
+- **Observation** ({"appellation_code": "wa_0032"}): Alias 'Brunello' is fine as shorthand for the wine, but note Brunello is also the local name of the Sangiovese clone. No change.
+  - <https://winefolly.com/review/brunello-di-montalcino-its-worth-the-wait/>: 100% Sangiovese; release V+5, 2 years oak, 4 months bottle; Riserva V+6; bold, high tannin and acidity
+  - <https://italianwinecentral.com/denomination/brunello-di-montalcino-docg/>: 100% Sangiovese; 2 years in barrel + 4 months bottle, release 1 Jan V+5; Riserva 6 months bottle, V+6
+- **appellation wa_0033 · name**: "Bolgheri" → **supported** → "Bolgheri"
+  - Why: Bolgheri DOC.
+  - <https://www.bolgheridoc.com/en/wines/>: Consorzio: Rosso 0-100% Cab Sauv, Merlot, Cab Franc, up to 50% Syrah/Sangiovese; also Bianco (Vermentino) and Rosato; savoury notes of the nearby sea
+  - <https://winescholarguild.com/blog/regional-spotlight/super-tuscans>: Bolgheri DOC reds since 1994 from Cabernet Sauvignon, Merlot, Cabernet Franc, Syrah, Petit Verdot, Sangiovese up to 50%; similar wines elsewhere labelled Toscana IGT
+- **appellation wa_0033 · colour**: "red" → **supported** → "red"
+  - Why: Famous for Rosso; DOC also covers Bianco (Vermentino) and Rosato, but other entries (e.g. Sancerre) use the main colour, so 'red' kept.
+  - <https://www.bolgheridoc.com/en/wines/>: Consorzio: Rosso 0-100% Cab Sauv, Merlot, Cab Franc, up to 50% Syrah/Sangiovese; also Bianco (Vermentino) and Rosato; savoury notes of the nearby sea
+  - <https://winescholarguild.com/blog/regional-spotlight/super-tuscans>: Bolgheri DOC reds since 1994 from Cabernet Sauvignon, Merlot, Cabernet Franc, Syrah, Petit Verdot, Sangiovese up to 50%; similar wines elsewhere labelled Toscana IGT
+- **appellation wa_0033 · note**: "Bordeaux-style blends near the coast" → **supported** → "Bordeaux-style blends near the coast"
+  - Why: Rosso from Cabernet Sauvignon, Merlot, Cabernet Franc (each 0-100%), up to 50% Syrah/Sangiovese; savoury notes of the nearby sea.
+  - <https://www.bolgheridoc.com/en/wines/>: Consorzio: Rosso 0-100% Cab Sauv, Merlot, Cab Franc, up to 50% Syrah/Sangiovese; also Bianco (Vermentino) and Rosato; savoury notes of the nearby sea
+  - <https://winescholarguild.com/blog/regional-spotlight/super-tuscans>: Bolgheri DOC reds since 1994 from Cabernet Sauvignon, Merlot, Cabernet Franc, Syrah, Petit Verdot, Sangiovese up to 50%; similar wines elsewhere labelled Toscana IGT
+- **appellation wa_0031 · aliases**: ["Chianti"] → **adjusted** → []
+  - Why: Wrong alias: 'Chianti' is a separate, much larger DOCG (most of Tuscany; DOCG 1984). Chianti Classico has been its own DOCG since 1996. A search for 'Chianti' resolving to Chianti Classico would be wrong; remove the alias. Rules check: Riserva 24 months incl. 3 in bottle; Gran Selezione 30 months incl. 3 in bottle, estate grapes, 80% Sangiovese rising to 90% from the 2027 vintage.
+  - <https://italianwinecentral.com/denomination/chianti-classico-docg/>: separate DOCG since 1996; min 80% Sangiovese; Riserva 24 months incl 3 in bottle; Gran Selezione 30 months incl 3 in bottle
+  - <https://vinepair.com/wine-geekly/gran-selezione-is-the-new-king-of-chianti-heres-what-you-need-to-know/>: Chianti DOCG covers most of Tuscany; Classico separate DOCG 1996; Annata 12, Riserva 24, Gran Selezione 30 months; Super Tuscans made outside the rules

@@ -1,0 +1,444 @@
+[
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0021",
+   "grape_code": "gr_0002"
+  },
+  "field": "display_order",
+  "current": 3,
+  "proposed": 2,
+  "verdict": "adjusted",
+  "sources": [
+   "https://napavintners.com/press/docs/napa_valley_fast_facts.pdf",
+   "https://patch.com/california/napavalley/napa-county-sees-record-setting-year-winegrape-production-ag-report"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0021",
+   "grape_code": "gr_0004"
+  },
+  "field": "display_order",
+  "current": 2,
+  "proposed": 3,
+  "verdict": "adjusted",
+  "sources": [
+   "https://napavintners.com/press/docs/napa_valley_fast_facts.pdf",
+   "https://patch.com/california/napavalley/napa-county-sees-record-setting-year-winegrape-production-ag-report"
+  ]
+ },
+ {
+  "table": "wine_appellations",
+  "key": {
+   "appellation_code": "wa_0034"
+  },
+  "field": "note",
+  "current": "Cabernet: rich, polished",
+  "proposed": "Cabernet: ripe and powerful",
+  "verdict": "adjusted",
+  "sources": [
+   "https://napavintners.com/napa_valley/oakville-ava",
+   "https://www.wine.com/content/article/napa-valley-cabernet-guide"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0022",
+   "grape_code": "gr_0002"
+  },
+  "field": "display_order",
+  "current": 2,
+  "proposed": 1,
+  "verdict": "adjusted",
+  "sources": [
+   "https://sonomawinegrape.org/wp-content/uploads/2026/05/Fact-Sheet.pdf",
+   "https://www.sonomacounty.com/articles/sonoma-wine-facts"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0022",
+   "grape_code": "gr_0001"
+  },
+  "field": "display_order",
+  "current": 1,
+  "proposed": 2,
+  "verdict": "adjusted",
+  "sources": [
+   "https://sonomawinegrape.org/wp-content/uploads/2026/05/Fact-Sheet.pdf",
+   "https://www.sonomacounty.com/articles/sonoma-wine-facts"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0022",
+   "grape_code": "gr_0003"
+  },
+  "field": "display_order",
+  "current": 4,
+  "proposed": 3,
+  "verdict": "adjusted",
+  "sources": [
+   "https://sonomawinegrape.org/wp-content/uploads/2026/05/Fact-Sheet.pdf",
+   "https://www.sonomacounty.com/articles/sonoma-wine-facts"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0022",
+   "grape_code": "gr_0028"
+  },
+  "field": "display_order",
+  "current": 3,
+  "proposed": 4,
+  "verdict": "adjusted",
+  "sources": [
+   "https://sonomawinegrape.org/wp-content/uploads/2026/05/Fact-Sheet.pdf",
+   "https://www.sonomacounty.com/articles/sonoma-wine-facts"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0022",
+   "grape_code": "gr_0002"
+  },
+  "field": "local_note",
+  "current": null,
+  "proposed": "the county's most planted grape",
+  "verdict": "adjusted",
+  "sources": [
+   "https://sonomawinegrape.org/wp-content/uploads/2026/05/Fact-Sheet.pdf",
+   "https://www.sonomacounty.com/articles/sonoma-wine-facts"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0023"
+  },
+  "field": "summary",
+  "current": "Oregon's main wine valley, between the Coast Range and the Cascades: cool and often rainy, with dry summers. Famous for elegant Pinot Noir.",
+  "proposed": "Oregon's main wine valley, sheltered by the Coast Range and the Cascades: a cool climate with wet winters and dry summers. Best known for elegant, earthy Pinot Noir.",
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.willamettewines.com/about-the-valley",
+   "https://www.willamettewines.com/trade-resources/facts-and-figures/",
+   "https://en.wikipedia.org/wiki/Willamette_Valley_AVA",
+   "https://decanter.com/wine/wine-regions/oregon-region",
+   "https://winefolly.com/deep-dive/guide-to-oregon-pinot-noir/"
+  ]
+ },
+ {
+  "table": "wine_appellations",
+  "key": {
+   "appellation_code": "wa_0040"
+  },
+  "field": "note",
+  "current": "Pinot Noir, cooled by evening winds",
+  "proposed": "Pinot Noir, cooled by afternoon Pacific winds",
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.winespectator.com/webfeature/show/id/Wine-Tip-Everything-You-Need-to-Know-About-Oregon",
+   "https://willamettewines.com/about-the-valley/avas/",
+   "https://www.wineandspiritsmagazine.com/feature-story/wine-features/wine-powered-pinot-the-eola-amity-hills-break-out"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0024"
+  },
+  "field": "summary",
+  "current": "Rolling hills halfway between San Francisco and Los Angeles, shielded from the sea by the Santa Lucia Mountains: hot days and cold nights. Rich reds from Cabernet Sauvignon, Zinfandel and Rhône grapes.",
+  "proposed": "Rolling hills halfway between San Francisco and Los Angeles, inland of the Santa Lucia Mountains, with sea air through the Templeton Gap: hot days, cold nights. Ripe reds from Cabernet Sauvignon, Zinfandel and Rhône grapes.",
+  "verdict": "adjusted",
+  "sources": [
+   "https://pasowine.com/paso-robles/geography-climate/",
+   "https://www.winespectator.com/articles/abcs-paso-robles",
+   "https://paso.guides.winefolly.com/terroir/",
+   "https://www.justinwine.com/blog/paso-robles-vs-bordeaux-wines"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0024",
+   "grape_code": "gr_0003"
+  },
+  "field": "local_note",
+  "current": null,
+  "proposed": "the most planted grape",
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.winespectator.com/articles/abcs-paso-robles",
+   "https://pasowine.com/paso-robles/varieties-produced/"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0026",
+   "grape_code": "gr_0005"
+  },
+  "field": "link",
+  "current": null,
+  "proposed": "add",
+  "local_note": null,
+  "display_order": 3,
+  "verdict": "adjusted",
+  "sources": [
+   "https://argentina.guides.winefolly.com/regions/mendoza/",
+   "https://chamb.cancilleria.gob.ar/userfiles/2018/varieties.pdf"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0026",
+   "grape_code": "gr_0002"
+  },
+  "field": "display_order",
+  "current": 3,
+  "proposed": 4,
+  "verdict": "adjusted",
+  "sources": [
+   "https://argentina.guides.winefolly.com/regions/mendoza/",
+   "https://chamb.cancilleria.gob.ar/userfiles/2018/varieties.pdf"
+  ]
+ },
+ {
+  "table": "wine_appellations",
+  "key": {
+   "appellation_code": "wa_0041"
+  },
+  "field": "note",
+  "current": "Malbec's historic heart",
+  "proposed": "Malbec: ripe, velvety; Argentina's first DOC",
+  "verdict": "adjusted",
+  "sources": [
+   "https://blog.winesofargentina.com/?p=13871",
+   "https://delectable.com/feeds/lujan_de_cuyo_old_vines_and_a_patchwork_of_soils",
+   "https://argentina.guides.winefolly.com/regions/mendoza/"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0027"
+  },
+  "field": "red_tannin",
+  "current": 3,
+  "proposed": 4,
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.decanter.com/features/malbec-mendoza-sub-zones-259670/",
+   "https://www.decanter.com/wine/mendoza/andrew-jefford-lujan-de-cuyo-is-comforting-nourishing-maternal/",
+   "https://www.wineenthusiast.com/buying-guide/superuco-2016-gualta-michelini-sammartino-malbec-cabernet-franc-uco-valley/",
+   "https://argentina.guides.winefolly.com/regions/mendoza/"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0028"
+  },
+  "field": "summary",
+  "current": "In the Calchaquí valleys of Salta, among the highest vineyards in the world: dry, sunny, with big swings between day and night. Home of aromatic Torrontés; the reds are dark and concentrated.",
+  "proposed": "In the Calchaquí valleys of Salta, among the highest vineyards in the world: arid, sunny and irrigated. Home of aromatic Torrontés; the reds are dark and concentrated.",
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-argentine-wine",
+   "https://argentina.guides.winefolly.com/terroir/winemaking/",
+   "https://southamericawineguide.com/calchaqui-valley-wine-region-guide/",
+   "https://www.decanter.com/argentina-2014-coverage/discover-the-world-s-highest-vineyards-in-the-northern-region-of-argentina-30583/"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0028"
+  },
+  "field": "red_tannin",
+  "current": 4,
+  "proposed": 3,
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-argentine-wine",
+   "https://www.decanter.com/sponsored/salta-winemakings-high-point-549433/"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0028"
+  },
+  "field": "pairing",
+  "current": "Empanadas, spicy dishes, goat's cheese.",
+  "proposed": "Empanadas, spicy dishes.",
+  "verdict": "adjusted",
+  "sources": [
+   "https://worldoffinewine.com/wine-food/best-wines-salta-empanadas",
+   "https://winefolly.com/grapes/torrontes/"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0029"
+  },
+  "field": "pairing",
+  "current": "Grilled beef, empanadas.",
+  "proposed": "Grilled beef, lamb.",
+  "verdict": "adjusted",
+  "sources": [
+   "https://winefolly.com/grapes/cabernet-sauvignon/",
+   "https://vinepair.com/articles/steak-and-chilean-cab-a-perfect-pairing/",
+   "https://vinepair.com/articles/chile-wine-barbecue-pairing-guide/",
+   "https://www.decanter.com/learn/food/wine-with-lamb-easter-food-matching-296118/"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0029",
+   "grape_code": "gr_0004"
+  },
+  "field": "display_order",
+  "current": 3,
+  "proposed": 2,
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.winesofchile.org/en/wine-regions/",
+   "https://www.bbr.com/region-479-maipo"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0029",
+   "grape_code": "gr_0030"
+  },
+  "field": "display_order",
+  "current": 2,
+  "proposed": 3,
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.winesofchile.org/en/wine-regions/",
+   "https://www.bbr.com/region-479-maipo"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0030"
+  },
+  "field": "summary",
+  "current": "A broad valley south of Santiago running from the Andes to the Pacific: warm in the middle, cooler toward the coast. Full, ripe reds, Carménère above all.",
+  "proposed": "A valley south of Santiago that runs from the Andes to the Pacific: warm summers, tempered by breezes from the ocean and the mountains. Ripe reds from Cabernet Sauvignon, the most planted, and Carménère, its best-known grape.",
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.winesofchile.org/en/wine-regions/",
+   "https://www.bbr.com/region-496-colchagua-valley",
+   "https://winefolly.com/grapes/carmenere/",
+   "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+  ]
+ },
+ {
+  "table": "wine_regions",
+  "key": {
+   "region_code": "wr_0030"
+  },
+  "field": "pairing",
+  "current": "Roast pork, lamb, spicy dishes.",
+  "proposed": "Roast pork, grilled meat with herb sauces.",
+  "verdict": "adjusted",
+  "sources": [
+   "https://winefolly.com/grapes/carmenere/",
+   "https://vinepair.com/wine-101/learn-carmenere-wine/"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0030",
+   "grape_code": "gr_0003"
+  },
+  "field": "display_order",
+  "current": 2,
+  "proposed": 1,
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.winesofchile.org/en/wine-regions/",
+   "https://www.bbr.com/region-496-colchagua-valley"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0030",
+   "grape_code": "gr_0030"
+  },
+  "field": "display_order",
+  "current": 1,
+  "proposed": 2,
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.winesofchile.org/en/wine-regions/",
+   "https://www.bbr.com/region-496-colchagua-valley"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0030",
+   "grape_code": "gr_0030"
+  },
+  "field": "local_note",
+  "current": "full and ripe",
+  "proposed": "rich and ripe",
+  "verdict": "adjusted",
+  "sources": [
+   "https://www.bbr.com/region-496-colchagua-valley",
+   "https://winefolly.com/wine-regions/chile/"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0030",
+   "grape_code": "gr_0005"
+  },
+  "field": "link",
+  "current": "present (display_order 3, local_note null)",
+  "proposed": "remove",
+  "verdict": "dropped",
+  "sources": [
+   "https://www.winesofchile.org/en/wine-regions/",
+   "https://www.bbr.com/region-496-colchagua-valley"
+  ]
+ },
+ {
+  "table": "wine_region_grapes",
+  "key": {
+   "region_code": "wr_0030",
+   "grape_code": "gr_0004"
+  },
+  "field": "link",
+  "current": null,
+  "proposed": "add",
+  "local_note": null,
+  "display_order": 3,
+  "verdict": "replaced",
+  "sources": [
+   "https://www.winesofchile.org/en/wine-regions/",
+   "https://www.bbr.com/region-496-colchagua-valley"
+  ]
+ }
+]
