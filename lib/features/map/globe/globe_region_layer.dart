@@ -108,7 +108,7 @@ class GlobeRegionLayer extends StatelessWidget {
   static const _minRadius = 14.0;
   static const _maxRadius = 90.0;
   // Below this size on screen an outline reads as a speck: draw the patch.
-  static const _minShapeSize = 16.0;
+  static const _minShapeSize = 8.0;
 
   @override
   Widget build(BuildContext context) {

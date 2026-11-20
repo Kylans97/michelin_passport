@@ -1,0 +1,682 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0010,IT_001001,Agliè,Agliè,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001004,Albiano d'Ivrea,Albiano d'Ivrea,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001006,Almese,Almese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001009,Andezeno,Andezeno,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001010,Andrate,Andrate,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001011,Angrogna,Angrogna,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001012,Arignano,Arignano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001013,Avigliana,Avigliana,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001014,Azeglio,Azeglio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001015,Bairo,Bairo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001016,Balangero,Balangero,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001017,Baldissero Canavese,Baldissero Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001018,Baldissero Torinese + Baldissero torinese,Baldissero Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001020,Banchette,Banchette,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001021,Barbania,Barbania,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001023,Barone,Barone Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001025,Bibiana,Bibiana,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001026,Bobbio Pellice,Bobbio Pellice,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001027,Bollengo,Bollengo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001029,Borgiallo,Borgiallo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001030,Borgofranco d'Ivrea,Borgofranco d'Ivrea,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001031,Borgomasino,Borgomasino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001032,Borgone di Susa,Borgone Susa,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001035,Bricherasio,Bricherasio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001037,Brozolo,Brozolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001039,Brusasco,Brusasco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001040,Bruzolo,Bruzolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001041,Buriasco,Buriasco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001042,Burolo,Burolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001043,Busano,Busano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001044,Bussoleno,Bussoleno,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001046,Cafasse,Cafasse,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001047,Caluso,Caluso,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001049,Campiglione Fenile,Campiglione Fenile,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001050,Candia Canavese,Candia Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001053,Cantalupa,Cantalupa,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001055,Caprie,Caprie,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001056,Caravino,Caravino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001057,Carema,Carema,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001060,Casalborgone,Casalborgone,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001061,Cascinette d'Ivrea,Cascinette d'Ivrea,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001062,Caselette,Caselette,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001064,Castagneto Po,Castagneto Po,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001066,Castellamonte,Castellamonte,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001067,Castelnuovo Nigra,Castelnuovo Nigra,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001068,Castiglione Torinese,Castiglione Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001069,Cavagnolo,Cavagnolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001070,Cavour,Cavour,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001076,Chianocco,Chianocco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001077,Chiaverano,Chiaverano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001078,Chieri,Chieri,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001079,Chiesanuova,Chiesanuova,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001080,Chiomonte,Chiomonte,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001083,Ciconio,Ciconio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001084,Cintano,Cintano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001085,Cinzano,Cinzano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001088,Coassolo,Coassolo Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001091,Colleretto Castelnuovo,Colleretto Castelnuovo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001092,Colleretto Giacosa,Colleretto Giacosa,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001093,Condove,Condove,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001094,Corio,Corio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001095,Cossano Canavese,Cossano Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001096,Cuceglio,Cuceglio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001097,Cumiana,Cumiana,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001098,Cuorgnè,Cuorgnè,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001100,Exilles,Exilles,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001101,Favria,Favria,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001102,Feletto,Feletto,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001105,Fiorano Canavese,Fiorano Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001107,Forno Canavese,Forno Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001109,Front,Front,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001110,Frossasco,Frossasco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001111,Garzigliana,Garzigliana,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001112,Gassino Torinese,Gassino Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001113,Germagnano,Germagnano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001114,Giaglione,Giaglione,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001115,Giaveno,Giaveno,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001117,Gravere,Gravere,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001122,Inverso Pinasca,Inverso Pinasca,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001125,Ivrea,Ivrea,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001128,Lanzo Torinese,Lanzo Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001129,Lauriano,Lauriano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001132,Lessolo,Lessolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001133,Levone,Levone,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001137,Loranzè,Loranzè,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001139,Luserna San Giovanni,Luserna San Giovanni,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001140,Lusernetta,Lusernetta,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001141,Lusigliè,Lusigliè,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001142,Macello,Macello,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001143,Maglione,Maglione,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001144,Marentino,Marentino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001147,Mattie,Mattie,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001148,Mazzè,Mazzè,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001149,Meana di Susa,Meana di Susa,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001150,Mercenasco,Mercenasco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001153,Mombello di Torino + Mombello torinese,Mombello di Torino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001154,Mompantero,Mompantero,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001156,Moncalieri,Moncalieri,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001158,Montaldo Torinese + Montaldo torinese,Montaldo Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001159,Montalenghe,Montalenghe,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001160,Montalto Dora,Montalto Dora,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001162,Monteu da Po,Monteu da Po,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001163,Moriondo Torinese + Moriondo torinese,Moriondo Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001167,Nomaglio,Nomaglio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001170,Oglianico,Oglianico,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001172,Orio Canavese,Orio Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001173,Osasco,Osasco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001176,Ozegna,Ozegna,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001177,Palazzo Canavese,Palazzo Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001179,Parella,Parella,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001180,Pavarolo,Pavarolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001181,Pavone Canavese,Pavone Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001183,Pecetto Torinese + Pecetto torinese,Pecetto Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001184,Perosa Argentina,Perosa Argentina,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001185,Perosa Canavese,Perosa Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001186,Perrero,Perrero,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001187,Pertusio,Pertusio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001190,Pinasca,Pinasca,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001191,Pinerolo,Pinerolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001192,Pino Torinese + Pino torinese,Pino Torinese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001194,Piossasco,Piossasco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001196,Piverone,Piverone,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001198,Pomaretto,Pomaretto,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001199,Pont Canavese,Pont Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001200,Porte,Porte,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001203,Pralormo,Pralormo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001204,Pramollo,Pramollo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001205,Prarostino,Prarostino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001206,Prascorsano,Prascorsano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001207,Pratiglione,Pratiglione,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001208,Quagliuzzo,Quagliuzzo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001209,Quassolo,Quassolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001210,Quincinetto,Quincinetto,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001211,Reano,Reano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001213,Rivalba,Rivalba,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001214,Rivalta di Torino,Rivalta di Torino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001215,Riva Presso Chieri + Riva presso Chieri,Riva presso Chieri,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001216,Rivara,Rivara,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001217,Rivarolo Canavese,Rivarolo Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001219,Rivoli,Rivoli,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001222,Roletto,Roletto,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001223,Romano Canavese,Romano Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001226,Rorà,Rorà,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001229,Rubiana,Rubiana,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001231,Salassa,Salassa,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001233,Salerano,Salerano Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001235,Samone,Samone,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001237,San Carlo Canavese,San Carlo Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001238,San Colombano Belmonte,San Colombano Belmonte,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001239,San Didero,San Didero,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001241,Sangano,Sangano,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001242,San Germano Chisone,San Germano Chisone,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001244,San Giorgio Canavese,San Giorgio Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001246,San Giusto Canavese,San Giusto Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001247,San Martino Canavese,San Martino Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001250,San Pietro Val Lemina,San Pietro Val Lemina,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001251,San Ponso,San Ponso,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001252,San Raffaele Cimena,San Raffaele Cimena,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001253,San Sebastiano da Po,San Sebastiano da Po,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001254,San Secondo di Pinerolo,San Secondo di Pinerolo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001261,Scarmagno,Scarmagno,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001262,Sciolze,Sciolze,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001264,Settimo Rottaro,Settimo Rottaro,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001266,Settimo Vittone,Settimo Vittone,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001268,Strambinello,Strambinello,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001269,Strambino,Strambino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001270,Susa,Susa,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001271,Tavagnasco,Tavagnasco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001272,Torino,Torino,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001274,Torre Canavese,Torre Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001275,Torre Pellice,Torre Pellice,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001276,Trana,Trana,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001287,Valperga,Valperga,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001290,Vauda Canavese,Vauda Canavese,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001291,Venaus,Venaus,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001294,Verrua Savoia,Verrua Savoia,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001295,Vestignè,Vestignè,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001296,Vialfrè,Vialfrè,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001298,Vidracco,Vidracco,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001302,Villarbasse,Villarbasse,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001303,Villar Dora,Villar Dora,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001304,Villareggia,Villareggia,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001305,Villar Focchiardo,Villar Focchiardo,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001306,Villar Pellice,Villar Pellice,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001307,Villar Perosa,Villar Perosa,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001311,Vische,Vische,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001312,Vistrorio,Vistrorio,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_001317,Alice Superiore + Lugnacco + Pecco,Val di Chy,Torino,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_002004,Alice Castello,Alice Castello,Vercelli,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_002015,Borgo d'Ale,Borgo d'Ale,Vercelli,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_002061,Gattinara,Gattinara,Vercelli,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_002072,Lozzolo,Lozzolo,Vercelli,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_002079,Moncrivello,Moncrivello,Vercelli,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_002116,Roasio,Roasio,Vercelli,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_002137,Serravalle Sesia,Serravalle Sesia,Vercelli,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003001,Agrate Conturbia,Agrate Conturbia,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003012,Barengo,Barengo,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003019,Boca,Boca,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003021,Bogogno,Bogogno,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003024,Borgomanero,Borgomanero,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003027,Briona,Briona,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003044,Cavaglietto,Cavaglietto,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003045,Cavaglio d'Agogna,Cavaglio d'Agogna,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003047,Cavallirio,Cavallirio,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003055,Cressa,Cressa,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003058,Cureggio,Cureggio,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003065,Fara Novarese,Fara Novarese,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003066,Fontaneto d'Agogna,Fontaneto d'Agogna,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003073,Ghemme,Ghemme,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003079,Grignasco,Grignasco,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003088,Maggiora,Maggiora,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003091,Marano Ticino,Marano Ticino,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003097,Mezzomerico,Mezzomerico,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003103,Nebbiuno,Nebbiuno,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003108,Oleggio,Oleggio,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003116,Pettenasco,Pettenasco,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003122,Prato Sesia,Prato Sesia,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003130,Romagnano Sesia,Romagnano Sesia,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003139,Sizzano,Sizzano,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003143,Suno,Suno,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003153,Vaprio d'Agogna,Vaprio d'Agogna,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_003166,Gattico + Veruno,Gattico-Veruno,Novara,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004003,Alba,Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004004,Albaretto Torre + Albaretto della Torre,Albaretto della Torre,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004007,Arguello,Arguello,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004008,Bagnasco,Bagnasco,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004009,Bagnolo,Bagnolo Piemonte,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004010,Baldissero d'Alba,Baldissero d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004011,Barbaresco,Barbaresco,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004012,Barge,Barge,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004013,Barolo,Barolo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004014,Bastia Mondovi',Bastia Mondovì,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004018,Belvedere Langhe,Belvedere Langhe,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004019,Bene Vagienna,Bene Vagienna,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004020,Benevello,Benevello,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004021,Bergolo,Bergolo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004022,Bernezzo,Bernezzo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004023,Bonvicino,Bonvicino,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004024,Borgomale + Borgomale Camo,Borgomale,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004026,Bosia,Bosia,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004027,Bossolasco,Bossolasco,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004028,Boves,Boves,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004029,Bra,Bra,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004030,Briaglia,Briaglia,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004032,Brondello,Brondello,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004034,Busca,Busca,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004035,Camerana,Camerana,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004037,Canale d'Alba + Canale,Canale,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004040,Caraglio,Caraglio,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004043,Carru',Carrù,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004046,Castagnito,Castagnito,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004050,Castelletto Uzzone,Castelletto Uzzone,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004051,Castellinaldo,Castellinaldo d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004052,Castellino Tanaro,Castellino Tanaro,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004055,Castiglione Falletto,Castiglione Falletto,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004056,Castiglione Tinella,Castiglione Tinella,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004057,Castino,Castino,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004063,Cerretto Langhe,Cerretto Langhe,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004066,Ceva,Ceva,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004067,Cherasco,Cherasco,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004069,Ciglie',Cigliè,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004070,Cissone,Cissone,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004071,Clavesana,Clavesana,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004072,Corneliano d'Alba,Corneliano d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004073,Cortemilia,Cortemilia,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004074,Cossano Belbo,Cossano Belbo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004075,Costigliole Saluzzo,Costigliole Saluzzo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004076,Cravanzana,Cravanzana,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004080,Diano d'Alba,Diano d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004081,Dogliani,Dogliani,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004082,Dronero,Dronero,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004085,Envie,Envie,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004086,Farigliano,Farigliano,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004088,Feisoglio,Feisoglio,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004089,Fossano,Fossano,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004095,Garessio,Garessio,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004097,Gorzegno,Gorzegno,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004098,Gottasecca,Gottasecca,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004099,Govone,Govone,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004100,Grinzane Cavour,Grinzane Cavour,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004101,Guarene,Guarene,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004102,Igliano,Igliano,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004105,La Morra,La Morra,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004106,Lequio Berria,Lequio Berria,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004107,Lequio Tanaro,Lequio Tanaro,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004108,Lesegno,Lesegno,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004109,Levice,Levice,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004113,Magliano Alfieri,Magliano Alfieri,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004114,Magliano Alpi,Magliano Alpi,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004115,Mango,Mango,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004116,Manta,Manta,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004120,Marsaglia,Marsaglia,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004121,Martignana Po,Martiniana Po,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004124,Mombarcaro,Mombarcaro,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004125,Mombasiglio,Mombasiglio,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004126,Monastero di Vasco,Monastero di Vasco,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004129,Monchiero,Monchiero,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004130,Mondovi',Mondovì,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004131,Monesiglio,Monesiglio,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004132,Monforte d'Alba,Monforte d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004133,Monta' d'Alba + Montà d'Alba,Montà,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004134,Montaldo di Mondovi,Montaldo di Mondovì,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004135,Montaldo Roero,Montaldo Roero,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004137,Montelupo Albese,Montelupo Albese,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004140,Monteu Roero,Monteu Roero,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004142,Monticello d'Alba,Monticello d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004145,Murazzano,Murazzano,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004147,Narzole,Narzole,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004148,Neive Neviglie + Neive,Neive,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004149,Neive Neviglie + Neviglie,Neviglie,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004150,Niella Belbo,Niella Belbo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004151,Niella Tanaro,Niella Tanaro,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004152,Novello,Novello,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004158,Pagno,Pagno,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004160,Paroldo,Paroldo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004161,Perletto,Perletto,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004163,Peveragno,Peveragno,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004164,Pezzolo Valle Uzzone,Pezzolo Valle Uzzone,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004165,Pianfei,Pianfei,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004166,Piasco,Piasco,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004168,Piobesi d'Alba,Piobesi d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004169,Piozzo,Piozzo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004170,Pocapaglia,Pocapaglia,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004175,Priero,Priero,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004176,Priocca,Priocca,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004177,Priola,Priola,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004178,Prunetto + Prunetto Roascio,Prunetto,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004180,Revello,Revello,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004181,Rifreddo,Rifreddo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004184,Roascio + Prunetto Roascio,Roascio,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004188,Rocca Ciglie',Rocca Cigliè,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004193,Rocchetta Belbo,Rocchetta Belbo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004194,Roddi,Roddi,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004195,Roddino,Roddino,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004196,Rodello,Rodello,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004197,Rossana,Rossana,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004199,Sale Langhe,Sale delle Langhe,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004200,Sale San Giovanni,Sale San Giovanni,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004201,Saliceto,Saliceto,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004202,Salmour,Salmour,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004203,Castellar + Saluzzo,Saluzzo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004206,San Benedetto Belbo,San Benedetto Belbo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004209,Sanfront,Sanfront,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004210,San Michele Mondovi',San Michele Mondovì,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004212,Santa Vittoria d'Alba + S. Vittoria d'Alba,Santa Vittoria d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004213,Camo + Santo Stefano Belbo + Borgomale Camo + S. Stefano Belbo,Santo Stefano Belbo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004214,Santo Stefano Roero + S. Stefano Roero,Santo Stefano Roero,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004216,Scagnello,Scagnello,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004218,Serralunga d'Alba,Serralunga d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004219,Serravalle Langhe,Serravalle Langhe,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004220,Sinio,Sinio,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004221,Somano,Somano,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004223,Sommariva Perno,Sommariva Perno,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004226,Torre Bormida,Torre Bormida,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004229,Torresina,Torresina,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004230,Treiso + Treiso Trezzo Tinella,Treiso,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004231,Trezzo Tinella + Treiso Trezzo Tinella,Trezzo Tinella,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004232,Trinità,Trinità,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004238,Verduno,Verduno,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004240,Verzuolo,Verzuolo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004241,Vezza d'Alba,Vezza d'Alba,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004242,Vicoforte,Vicoforte,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004245,Villanova Mondovì,Villanova Mondovì,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_004247,Villar San Costanzo,Villar San Costanzo,Cuneo,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005001,Agliano Terme,Agliano Terme,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005002,Albugnano,Albugnano,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005003,Antignano,Antignano,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005004,Aramengo,Aramengo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005005,Asti,Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005006,Azzano d'Asti + Azzano,Azzano d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005007,Baldichieri d'Asti,Baldichieri d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005008,Belveglio,Belveglio,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005009,Berzano San Pietro,Berzano di San Pietro,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005010,Bruno,Bruno,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005011,Bubbio,Bubbio,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005012,Buttigliera d'Asti,Buttigliera d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005013,Calamandrana,Calamandrana,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005014,Calliano,Calliano Monferrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005015,Calosso,Calosso,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005016,Camerano Casasco,Camerano Casasco,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005017,Canelli,Canelli,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005018,Cantarana,Cantarana,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005019,Capriglio,Capriglio,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005020,Casorzo,Casorzo Monferrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005021,Cassinasco + Cassinasco Castagnole Lanze,Cassinasco,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005022,Castagnole Lanze + Cassinasco Castagnole Lanze,Castagnole delle Lanze,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005023,Castagnole Monferrato,Castagnole Monferrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005024,Castel Boglione,Castel Boglione,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005025,Castell'Alfero,Castell'Alfero,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005026,Castellero,Castellero,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005027,Castelletto Molina,Castelletto Molina,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005028,Castello d'Annone,Castello di Annone,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005029,Castelnuovo Belbo,Castelnuovo Belbo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005030,Castelnuovo Calcea,Castelnuovo Calcea,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005031,Castelnuovo Don Bosco,Castelnuovo Don Bosco,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005032,Castel Rocchero,Castel Rocchero,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005033,Cellarengo,Cellarengo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005034,Celle Enomondo,Celle Enomondo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005035,Cerreto d'Asti,Cerreto d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005036,Cerro Tanaro,Cerro Tanaro,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005037,Cessole,Cessole,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005038,Chiusano d'Asti,Chiusano d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005039,Cinaglio,Cinaglio,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005040,Cisterna d'Asti,Cisterna d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005041,Coazzolo,Coazzolo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005042,Cocconato,Cocconato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005044,Corsione,Corsione,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005045,Cortandone,Cortandone,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005046,Cortanze,Cortanze,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005047,Cortazzone,Cortazzone,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005048,Cortiglione,Cortiglione,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005049,Cossombrato,Cossombrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005050,Costigliole d'Asti Cunico + Costigliole d'Asti,Costigliole d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005051,Costigliole d'Asti Cunico,Cunico,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005052,Dusino San Michele,Dusino San Michele,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005053,Ferrere,Ferrere,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005054,Fontanile,Fontanile,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005055,Frinco,Frinco,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005056,Grana,Grana Monferrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005057,Grazzano Badoglio,Grazzano Badoglio,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005058,Incisa Scapaccino,Incisa Scapaccino,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005059,Isola d'Asti,Isola d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005060,Loazzolo,Loazzolo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005061,Maranzana,Maranzana,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005062,Maretto,Maretto,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005063,Moasca,Moasca,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005064,Mombaldone,Mombaldone,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005065,Mombaruzzo,Mombaruzzo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005066,Mombercelli,Mombercelli,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005067,Monale,Monale,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005068,Monastero Bormida,Monastero Bormida,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005069,Moncalvo,Moncalvo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005070,Moncucco Torinese,Moncucco Torinese,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005071,Mongardino,Mongardino,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005072,Montabone,Montabone,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005073,Montafia,Montafia,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005074,Montaldo Scarampi,Montaldo Scarampi,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005075,Montechiaro d'Asti,Montechiaro d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005076,Montegrosso d'Asti,Montegrosso d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005077,Montemagno,Montemagno Monferrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005080,Nizza Monferrato,Nizza Monferrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005081,Olmo Gentile,Olmo Gentile,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005082,Passerano Marmorito,Passerano Marmorito,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005083,Penango,Penango,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005084,Piea,Piea,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005085,Pino d'Asti,Pino d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005086,Piova Massaia,Piovà Massaia,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005087,Portacomaro,Portacomaro,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005088,Quaranti,Quaranti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005089,Refrancore,Refrancore,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005090,Revigliasco d'Asti,Revigliasco d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005091,Roatto,Roatto,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005092,Robella,Robella,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005093,Rocca d'Arazzo,Rocca d'Arazzo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005094,Roccaverano,Roccaverano,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005095,Rocchetta Palafea,Rocchetta Palafea,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005096,Rocchetta Tanaro,Rocchetta Tanaro,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005097,San Damiano d'Asti,San Damiano d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005098,San Giorgio Scarampi,San Giorgio Scarampi,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005099,San Martino Alfieri,San Martino Alfieri,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005100,San Marzano Oliveto,San Marzano Oliveto,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005101,San Paolo Solbrito,San Paolo Solbrito,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005103,Scurzolengo,Scurzolengo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005104,Serole,Serole,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005105,Sessame,Sessame,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005106,Settime,Settime,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005107,Soglio,Soglio,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005108,Tigliole,Tigliole,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005109,Tonco,Tonco,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005111,Vaglio Serra,Vaglio Serra,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005112,Valfenera,Valfenera,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005113,Vesime,Vesime,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005114,Viale d'Asti,Viale,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005115,Viarigi,Viarigi,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005116,Vigliano d'Asti,Vigliano d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005117,Villafranca d'Asti,Villafranca d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005118,Villanova d'Asti,Villanova d'Asti,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005119,Villa San Secondo,Villa San Secondo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005120,Vinchio + Vinchio d'Asti,Vinchio,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005121,Montiglio Monferrato,Montiglio Monferrato,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_005122,Moransengo + Tonengo + Morasengo,Moransengo-Tonengo,Asti,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006001,Acqui Terme,Acqui Terme,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006002,Albera Ligure,Albera Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006003,Alessandria,Alessandria,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006004,Alfiano Natta,Alfiano Natta,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006005,Alice Bel Colle,Alice Bel Colle,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006007,Altavilla Monferrato,Altavilla Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006009,Arquata Scrivia,Arquata Scrivia,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006010,Avolasca,Avolasca,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006012,Basaluzzo + Basaluzzo Bassignana,Basaluzzo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006013,Bassignana + Basaluzzo Bassignana,Bassignana,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006014,Belforte Monferrato,Belforte Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006015,Bergamasco,Bergamasco,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006016,Berzano di Tortona,Berzano di Tortona,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006017,Bistagno,Bistagno,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006018,Borghetto Borbera,Borghetto di Borbera,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006019,Borgoratto Alessandrino,Borgoratto Alessandrino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006022,Bosio,Bosio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006024,Brignano Frascata,Brignano-Frascata,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006025,Cabella Ligure,Cabella Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006026,Camagna,Camagna Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006027,Camino,Camino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006028,Cantalupo Ligure,Cantalupo Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006029,Capriata d'Orba,Capriata d'Orba,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006030,Carbonara Scrivia,Carbonara Scrivia,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006031,Carentino,Carentino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006032,Carezzano,Carezzano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006033,Carpeneto,Carpeneto,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006034,Carrega Ligure,Carrega Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006035,Carrosio,Carrosio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006036,Cartosio + Cartosio Casaleggio Boiro,Cartosio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006038,Casaleggio Boiro + Cartosio Casaleggio Boiro,Casaleggio Boiro,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006039,Casale Monferrato,Casale Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006040,Casalnoceto,Casalnoceto,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006041,Casasco,Casasco,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006043,Cassine,Cassine,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006044,Cassinelle,Cassinelle,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006045,Castellania,Castellania Coppi,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006046,Castellar Guidobono,Castellar Guidobono,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006048,Castelletto d'Erro + Castelletto d'Ero,Castelletto d'Erro,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006049,Castelletto d'Orba,Castelletto d'Orba,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006050,Castelletto Merli,Castelletto Merli,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006051,Castelletto Monferrato,Castelletto Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006052,Castelnuovo Bormida,Castelnuovo Bormida,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006053,Castelnuovo Scrivia,Castelnuovo Scrivia,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006055,Cavatore + Cavatore Grognardo,Cavatore,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006056,Cella Monte + Cellamonte,Cella Monte,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006057,Cereseto,Cereseto,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006058,Cerreto Grue,Cerreto Grue,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006059,Cerrina,Cerrina Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006060,Coniolo,Coniolo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006061,Conzano,Conzano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006062,Costa Vescovato,Costa Vescovato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006063,Cremolino,Cremolino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006065,Denice,Denice,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006066,Dernice,Dernice,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006067,Fabbrica Curone,Fabbrica Curone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006070,Francavilla Bisio,Francavilla Bisio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006071,Frascaro,Frascaro,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006072,Frassinello Monferrato,Frassinello Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006074,Fresonara,Fresonara,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006076,Fubine,Fubine Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006077,Gabiano,Gabiano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006078,Gamalero,Gamalero,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006079,Garbagna,Garbagna,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006081,Gavi + Gavi Grognardo,Gavi,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006083,Gremiasco,Gremiasco,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006084,Grognardo + Gavi Grognardo + Cavatore Grognardo,Grognardo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006085,Grondona,Grondona,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006088,Lerma,Lerma,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006090,Malvicino,Malvicino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006091,Masio,Masio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006092,Melazzo,Melazzo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006093,Merana,Merana,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006094,Mirabello Monferrato + Mirabello Monferrato Molare,Mirabello Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006095,Molare + Mirabello Monferrato Molare,Molare,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006097,Mombello Monferrato,Mombello Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006098,Momperone,Momperone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006099,Moncestino,Moncestino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006100,Mongiardino,Mongiardino Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006101,Monleale,Monleale,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006102,Montacuto,Montacuto,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006103,Montaldeo,Montaldeo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006104,Montaldo Bormida,Montaldo Bormida,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006105,Montecastello,Montecastello,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006106,Montechiaro d'Acqui,Montechiaro d'Acqui,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006107,Montegioco,Montegioco,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006108,Montemarzino,Montemarzino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006110,Morbello,Morbello,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006111,Mornese,Mornese,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006112,Morsasco,Morsasco,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006113,Murisengo,Murisengo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006114,Novi Ligure,Novi Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006115,Occimiano,Occimiano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006116,Odalengo Grande,Odalengo Grande,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006117,Odalengo Piccolo,Odalengo Piccolo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006118,Olivola,Olivola,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006119,Orsara Bormida,Orsara Bormida,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006120,Ottiglio Monferrato,Ottiglio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006121,Ovada,Ovada,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006122,Oviglio,Oviglio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006123,Ozzano,Ozzano Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006124,Paderna,Paderna,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006125,Pareto,Pareto,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006126,Parodi Ligure,Parodi Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006127,Pasturana,Pasturana,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006128,Pecetto di Valenza,Pecetto di Valenza,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006129,Pietra Marazzi,Pietra Marazzi,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006131,Pomaro Monferrato,Pomaro Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006132,Pontecurone,Pontecurone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006133,Pontestura,Pontestura,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006134,Ponti,Ponti,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006135,Ponzano,Ponzano Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006136,Ponzone,Ponzone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006137,Pozzolgroppo,Pozzol Groppo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006139,Prasco,Prasco,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006140,Predosa,Predosa,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006141,Quargnento,Quargnento,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006142,Quattordio,Quattordio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006143,Ricaldone,Ricaldone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006144,Rivalta Bormida,Rivalta Bormida,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006145,Rivarone,Rivarone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006146,Roccaforte,Roccaforte Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006147,Rocca Grimalda + RoccaGrimalda,Rocca Grimalda,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006148,Rocchetta Ligure,Rocchetta Ligure,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006149,Rosignano Monferrato,Rosignano Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006150,Sala Monferrato,Sala Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006152,San Cristoforo,San Cristoforo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006153,San Giorgio Monferrato,San Giorgio Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006154,San Salvatore Monferrato,San Salvatore Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006155,San Sebastiano Curone,San Sebastiano Curone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006156,Sant'Agata Fossili,Sant'Agata Fossili,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006157,Sardigliano,Sardigliano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006158,Sarezzano,Sarezzano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006159,Serralunga di Crea,Serralunga di Crea,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006160,Serravalle Scrivia,Serravalle Scrivia,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006161,Sezzadio,Sezzadio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006162,Silvano d'Orba,Silvano d'Orba,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006164,Solonghello,Solonghello,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006165,Spigno Monferrato,Spigno Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006166,Spineto Scrivia,Spineto Scrivia,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006167,Stazzano,Stazzano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006168,Strevi,Strevi,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006169,Tagliolo Monferrato,Tagliolo Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006170,Tassarolo,Tassarolo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006171,Terruggia,Terruggia,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006172,Terzo,Terzo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006174,Tortona,Tortona,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006175,Treville,Treville,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006176,Trisobbio,Trisobbio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006177,Valenza Po,Valenza,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006179,Vignale Monferrato,Vignale Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006180,Vignole Borbera,Vignole Borbera,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006181,Viguzzolo,Viguzzolo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006182,Villadeati,Villadeati,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006183,Villalvernia,Villalvernia,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006184,Villamiroglio,Villamiroglio,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006186,Villaromagnano,Villaromagnano,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006187,Visone,Visone,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006188,Volpedo,Volpedo,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006189,Volpeglino,Volpeglino,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006191,Cassano Spinola + Gavazzana,Cassano Spinola,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_006193,Cuccaro Monferrato + Lu Monferrato,Lu e Cuccaro Monferrato,Alessandria,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096007,Brusnengo,Brusnengo,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096012,Candelo,Candelo,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096016,Cavaglià,Cavaglià,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096020,Cossato,Cossato,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096023,Curino,Curino,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096025,Dorzano,Dorzano,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096030,Magnano,Magnano,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096032,Masserano,Masserano,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096037,Mottalciata,Mottalciata,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096054,Roppolo,Roppolo,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096058,Salussola,Salussola,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096064,Sostegno,Sostegno,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096067,Ternengo,Ternengo,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096071,Valdengo,Valdengo,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096077,Vigliano Biellese,Vigliano Biellese,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096078,Villa del Bosco,Villa del Bosco,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096080,Viverone,Viverone,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096081,Zimone,Zimone,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096085,Lessona,Lessona,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_096087,Cerreto Castello + Quaregna,Quaregna Cerreto,Biella,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103011,Beura-Cardezza,Beura-Cardezza,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103012,Bognanco,Bognanco,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103013,Brovello-Carpugnino,Brovello-Carpugnino,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103025,Crevoladossola,Crevoladossola,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103026,Crodo,Crodo,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103028,Domodossola,Domodossola,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103042,Masera,Masera,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103046,Montecrestese,Montecrestese,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103047,Montescheno,Montescheno,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103051,Ornavasso,Ornavasso,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103052,Pallanzeno,Pallanzeno,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103053,Piedimulera,Piedimulera,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103054,Pieve Vergonte,Pieve Vergonte,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103057,Premosello,Premosello-Chiovenda,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103068,Trontano,Trontano,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103075,Villadossola,Villadossola,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103077,Vogogna,Vogogna,Verbano-Cusio-Ossola,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf
+wr_0010,IT_103078,Viganella,Borgomezzavalle,Verbano-Cusio-Ossola,"yes: former comune(s) Viganella (103073, 01/01/2016) only, now part of Borgomezzavalle; not listed: Seppiana (103063, 01/01/2016)",https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Piemonte.pdf

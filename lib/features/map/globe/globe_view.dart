@@ -129,8 +129,9 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
   static const _resumeAfter = Duration(seconds: 12);
   static const _resumeMaxZoom = 1.3;
   static const _flyToPinMinZoom = 4.0;
-  // How close a tapped region is shown: Champagne's 120 km fills the view.
-  static const _regionMaxZoom = 24.0;
+  // How close a tapped region is shown: the Douro's 100 km fills about
+  // half the view.
+  static const _regionMaxZoom = 40.0;
 
   final _camera = ValueNotifier(const GlobeCamera(latitude: 30, longitude: 5));
   GlobeOutlines? _outlines;
@@ -343,7 +344,9 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
       fallback: camera,
       singlePointZoom: _regionMaxZoom,
     );
-    return fit.copyWith(zoom: math.max(fit.zoom, math.min(camera.zoom, 24)));
+    return fit.copyWith(
+      zoom: math.max(fit.zoom, math.min(camera.zoom, _regionMaxZoom)),
+    );
   }
 
   Future<void> _tapCluster(List<MapPin> members, Size size) async {

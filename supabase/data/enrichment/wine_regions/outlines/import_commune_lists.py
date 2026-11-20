@@ -29,6 +29,14 @@ LEFT_OUT = {
                 'of Burgos that is not.',
     'ES_42043': 'Burgo de Osma-Ciudad de Osma: only the village of '
                 'Alcubilla del Marqués is in the Ribera del Duero zone.',
+    'PT_180523': 'Várzea de Abrunhais: only the Quintas de Foutoura, do '
+                 'Prado and das Várzeas are in the Douro.',
+    'PT_040716': 'Frechas: only named properties (D. Maria Angélica de '
+                 'Sousa Pinto Barroso; Sociedade Clemente Meneres).',
+    'PT_040711': 'Carvalhais: only the properties of the Sociedade Clemente '
+                 'Meneres.',
+    'PT_040738': 'Avantos e Romeu: in both former freguesias only the '
+                 'properties of the Sociedade Clemente Meneres.',
 }
 
 

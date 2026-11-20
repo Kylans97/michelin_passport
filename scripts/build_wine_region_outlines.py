@@ -44,7 +44,9 @@ def main(lau_path):
     regions = {}
     for path in sorted((OUT / 'communes').glob('wr_*.csv')):
         rows = list(csv.DictReader(open(path, encoding='utf-8')))
-        regions[path.stem] = rows
+        # One row per name in the official text; several can fall in one
+        # municipality (Portugal's 2013 unions, Perl's Ortsteile).
+        regions[path.stem] = list({r['gisco_id']: r for r in rows}.values())
     wanted = {r['gisco_id'] for rows in regions.values() for r in rows}
 
     geoms = {}
