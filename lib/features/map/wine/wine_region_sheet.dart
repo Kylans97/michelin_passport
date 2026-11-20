@@ -543,6 +543,7 @@ class _Card extends StatelessWidget {
       border: Border.all(color: AppColors.cardBorder),
     ),
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         for (var i = 0; i < children.length; i++) ...[
           if (i > 0) const Divider(height: 1, color: AppColors.cardBorder),
@@ -568,28 +569,28 @@ class _CardRow extends StatelessWidget {
         horizontal: CsSpacing.md,
         vertical: CsSpacing.md,
       ),
-      child: Row(
+      // The note under the name, not beside it: right-aligned beside a
+      // name it wrapped into a ragged column with a word hanging alone
+      // ("red" under Chinon, seen in the simulator 2026-11-20).
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Text(
-              title,
-              style: CsTypography.placeTitle.copyWith(
-                fontSize: 15.5,
-                color: AppColors.textPrimary,
-              ),
+          Text(
+            title,
+            style: CsTypography.placeTitle.copyWith(
+              fontSize: 15.5,
+              color: AppColors.textPrimary,
             ),
           ),
-          const SizedBox(width: CsSpacing.md),
-          Flexible(
-            child: Text(
+          if (trailing.isNotEmpty) ...[
+            const SizedBox(height: 2),
+            Text(
               trailing,
-              textAlign: TextAlign.right,
               style: CsTypography.metadata.copyWith(
                 color: AppColors.textSecondary,
               ),
             ),
-          ),
+          ],
         ],
       ),
     ),
