@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/vineyard.dart';
 
-/// One estate in the Wine Estates collection. Typographic on purpose:
-/// photos of an estate come from the estate after review (the
-/// venue-supplied content rule), so until then the card shows the name,
-/// where it is and its rank — never a scraped image, never a placeholder
-/// pretending to be one. The rank is claret, never gold.
+/// One estate in the Wine Estates collection. Photos of an estate come
+/// from the estate after review (the venue-supplied content rule), so
+/// until then the card shows the name, where it is and its rank, with one
+/// of the three wine-estate line drawings beside it (CsHeaderDrawing,
+/// seeded by the estate's id) — never a scraped image. The rank is
+/// claret, never gold.
 class VineyardCard extends StatelessWidget {
   final Vineyard vineyard;
   final VoidCallback onTap;
@@ -78,6 +80,13 @@ class VineyardCard extends StatelessWidget {
                       ],
                     ],
                   ),
+                ),
+                const SizedBox(width: CsSpacing.md),
+                CsHeaderDrawing(
+                  drawing: HeaderDrawing.vineyard(vineyard.id),
+                  width: 64,
+                  height: 64,
+                  borderRadius: BorderRadius.circular(CsRadius.small),
                 ),
               ],
             ),

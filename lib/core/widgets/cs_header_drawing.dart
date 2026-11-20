@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:path_parsing/path_parsing.dart';
 
 import '../../models/event.dart';
+import '../../models/journey.dart';
 import '../constants/app_colors.dart';
 
 /// The line-drawn stand-in for a restaurant, hotel, private chef or event
@@ -35,6 +36,12 @@ enum HeaderDrawingScene {
   tasting,
   brunch,
   party,
+  vineyardRows,
+  vineyardHouse,
+  vineyardCellar,
+  train,
+  ship,
+  sailingYacht,
 }
 
 /// Which drawing a subject gets, and the small details that vary with it,
@@ -58,6 +65,25 @@ class HeaderDrawing {
   const HeaderDrawing.restaurant(String id) : this._(id, _restaurantPool);
   const HeaderDrawing.hotel(String id) : this._(id, _hotelPool);
   const HeaderDrawing.privateChef(String id) : this._(id, _chefPool);
+
+  /// A wine estate: rows over the hills, the house on the ridge, or the
+  /// cellar (product owner, 2026-11-20: "all three, alternating").
+  const HeaderDrawing.vineyard(String id) : this._(id, _vineyardPool);
+
+  /// A luxury train or small ship — one scene each, and sails for a
+  /// [shipType] of `sailing_yacht` (a phinisi or schooner never has a
+  /// funnel).
+  factory HeaderDrawing.journey(
+    String id,
+    JourneyKind kind, {
+    String? shipType,
+  }) => HeaderDrawing._(id, switch (kind) {
+    JourneyKind.train => const [HeaderDrawingScene.train],
+    JourneyKind.ship when shipType == 'sailing_yacht' => const [
+      HeaderDrawingScene.sailingYacht,
+    ],
+    JourneyKind.ship => const [HeaderDrawingScene.ship],
+  });
 
   factory HeaderDrawing.event(String id, EventType type) => HeaderDrawing._(
     id,
@@ -85,6 +111,11 @@ class HeaderDrawing {
     HeaderDrawingScene.facade,
     HeaderDrawingScene.gardenAllee,
     HeaderDrawingScene.frontDoor,
+  ];
+  static const _vineyardPool = [
+    HeaderDrawingScene.vineyardRows,
+    HeaderDrawingScene.vineyardHouse,
+    HeaderDrawingScene.vineyardCellar,
   ];
   static const _chefPool = [
     HeaderDrawingScene.chefBoard,
@@ -140,10 +171,13 @@ class HeaderDrawing {
     final mirrored = _mirrorable.contains(scene) && _draw(h, 1).isOdd;
     final light = HeaderDrawingLight.values[_draw(h, 2) % 4];
     final lit = <int>{};
-    if (scene == HeaderDrawingScene.facade) {
-      final count = 1 + _draw(h, 3) % 4;
+    final windows = _windows[scene];
+    if (windows != null) {
+      // Never more than the scene has, or picking distinct windows below
+      // would never finish (the yacht has three).
+      final count = math.min(1 + _draw(h, 3) % 4, windows.length);
       for (var k = 4; lit.length < count; k++) {
-        lit.add(_draw(h, k) % _facadeWindows.length);
+        lit.add(_draw(h, k) % windows.length);
       }
     }
     return HeaderDrawingVariant._(scene, mirrored, light, lit);
@@ -153,6 +187,12 @@ class HeaderDrawing {
   // knife belongs on the right), the board (same), the front door and the
   // façade (symmetric, so mirroring changes nothing).
   static const _mirrorable = {
+    HeaderDrawingScene.vineyardRows,
+    HeaderDrawingScene.vineyardHouse,
+    HeaderDrawingScene.vineyardCellar,
+    HeaderDrawingScene.train,
+    HeaderDrawingScene.ship,
+    HeaderDrawingScene.sailingYacht,
     HeaderDrawingScene.kitchenPass,
     HeaderDrawingScene.archedRoom,
     HeaderDrawingScene.gardenAllee,
@@ -180,7 +220,8 @@ class HeaderDrawingVariant {
   final bool mirrored;
   final HeaderDrawingLight light;
 
-  /// Indexes into the façade's windows that are lit; empty elsewhere.
+  /// Indexes into the scene's windows that are lit (the façade, the
+  /// carriage, the ship's saloon); empty elsewhere.
   final Set<int> litWindows;
 
   const HeaderDrawingVariant._(
@@ -287,6 +328,7 @@ class HeaderDrawingPainter extends CustomPainter {
   static const Color _ink = AppColors.textOnDark;
 
   Color _tone(_Tone tone) => switch (tone) {
+    _Tone.ground => muted ? const Color(0xFF3E3B35) : AppColors.deepGreen,
     _Tone.mid => muted ? const Color(0xFF34322D) : const Color(0xFF1B3B33),
     _Tone.forest => muted ? const Color(0xFF4A463F) : AppColors.forestGreen,
     _Tone.dark => muted ? const Color(0xFF26241F) : AppColors.darkGreen,
@@ -377,14 +419,15 @@ class HeaderDrawingPainter extends CustomPainter {
         canvas.drawPath(path, line);
       }
     }
-    canvas.restore();
-
-    if (variant.litWindows.isNotEmpty) {
+    // Inside the mirror, so a lit window stays in its frame.
+    final windows = _windows[variant.scene];
+    if (windows != null && variant.litWindows.isNotEmpty) {
       fill.color = _ink.withValues(alpha: 0.14);
       for (final index in variant.litWindows) {
-        canvas.drawRect(_facadeWindows[index], fill);
+        canvas.drawRect(windows[index], fill);
       }
     }
+    canvas.restore();
     canvas.restore();
   }
 
@@ -401,7 +444,9 @@ class HeaderDrawingPainter extends CustomPainter {
 // order: fill first, then line, each with its own opacity.
 // ---------------------------------------------------------------------------
 
-enum _Tone { mid, forest, dark, ink }
+/// [ground] is the background itself, for openings cut back out of a
+/// plane (the viaduct's arches).
+enum _Tone { ground, mid, forest, dark, ink }
 
 class _Light {
   final double cx;
@@ -480,6 +525,21 @@ String _roundRect(double x, double y, double w, double h, double r) =>
     'H${x + r}A$r $r 0 0 1 $x ${y + h - r}V${y + r}A$r $r 0 0 1 ${x + r} ${y}Z';
 
 const double _l = 0.22; // the default line opacity, as in the vineyard
+
+// The windows a seed may light, per scene.
+final Map<HeaderDrawingScene, List<Rect>> _windows = {
+  HeaderDrawingScene.facade: _facadeWindows,
+  HeaderDrawingScene.train: [
+    for (var x = 58.0; x <= 298; x += 30) Rect.fromLTWH(x, 156, 20, 14),
+  ],
+  HeaderDrawingScene.sailingYacht: [
+    for (final x in [102.0, 112.0, 122.0]) Rect.fromLTWH(x, 186, 6, 5),
+  ],
+  HeaderDrawingScene.ship: [
+    for (final x in [134.0, 150.0, 166.0, 182.0, 198.0, 214.0, 230.0, 246.0])
+      Rect.fromLTWH(x, 168, 10, 8),
+  ],
+};
 
 final List<Rect> _facadeWindows = [
   for (final x in [99.0, 142.0, 186.0, 230.0, 273.0]) ...[
@@ -918,7 +978,205 @@ final Map<HeaderDrawingScene, _Scene> _scenes = {
       line: 0.18,
     ),
   ]),
+  HeaderDrawingScene.vineyardRows: _Scene([
+    const _Layer(
+      'M0 170C80 130 170 140 250 165C310 182 350 175 390 160V300H0Z',
+      fill: _Tone.forest,
+    ),
+    const _Layer(
+      'M0 215C90 185 200 190 290 210C340 221 370 218 390 212V300H0Z',
+      fill: _Tone.mid,
+    ),
+    const _Layer(
+      'M-10 300L120 178M30 300L150 182M70 300L180 186M110 300L210 190'
+      'M150 300L240 194M190 300L268 199M230 300L296 204M270 300L322 208'
+      'M310 300L348 212M350 300L372 214',
+      line: 0.18,
+    ),
+  ], light: const _Light(318, 78, 22)),
+  HeaderDrawingScene.vineyardHouse: _Scene([
+    const _Layer(
+      'M0 190C70 150 150 132 230 140C300 148 350 170 390 182V300H0Z',
+      fill: _Tone.forest,
+    ),
+    const _Layer('M0 236C100 214 220 218 390 240V300H0Z', fill: _Tone.mid),
+    const _Layer(
+      'M0 205C80 168 160 154 240 160C310 168 350 188 390 198'
+      'M0 220C90 188 170 176 250 182C320 190 360 206 390 214'
+      'M0 234C100 206 180 198 260 204C330 210 365 222 390 228',
+      line: 0.14,
+    ),
+    const _Layer(
+      'M0 258C110 238 230 242 390 262M0 278C120 258 240 262 390 282'
+      'M0 296C130 278 250 282 390 300'
+      'M290 300C250 262 270 220 236 190C220 172 214 156 210 140',
+      line: 0.12,
+    ),
+    _Layer(
+      '${_rect(176, 112, 52, 26)} ${_rect(150, 100, 18, 38)}',
+      fill: _Tone.mid,
+      line: _l,
+    ),
+    const _Layer('M170 112L202 94L234 112M146 100L159 88L172 100', line: _l),
+    _Layer(
+      '${_rect(186, 120, 6, 8)} ${_rect(200, 120, 6, 8)} '
+      '${_rect(214, 120, 6, 8)} ${_rect(156, 108, 6, 8)}',
+      line: 0.16,
+    ),
+    _Layer(
+      '${_ellipse(250, 125, 5, 18)} ${_ellipse(262, 127, 5, 18)} '
+      '${_ellipse(274, 129, 5, 18)} ${_ellipse(120, 129, 5, 18)}',
+      fill: _Tone.mid,
+      line: _l,
+    ),
+  ], light: const _Light(318, 62, 18)),
+  HeaderDrawingScene.vineyardCellar: _Scene([
+    const _Layer('M40 250V140A155 120 0 0 1 350 140V250Z', fill: _Tone.mid),
+    const _Layer('M120 250V160A75 65 0 0 1 270 160V250Z', fill: _Tone.forest),
+    _Layer(_circle(195, 168, 24), fill: _Tone.ink, fillOpacity: 0.06),
+    _Layer(_rect(0, 250, 390, 50), fill: _Tone.dark),
+    const _Layer('M40 250V140A155 120 0 0 1 350 140V250M0 250H390', line: _l),
+    const _Layer('M80 250V150A115 90 0 0 1 310 150V250', line: 0.14),
+    const _Layer('M120 250V160A75 65 0 0 1 270 160V250', line: 0.16),
+    const _Layer('M150 250V168A45 42 0 0 1 240 168V250', line: 0.12),
+    const _Layer(
+      'M40 250L-20 300M120 250L80 300M270 250L310 300M350 250L410 300'
+      'M195 250V300',
+      line: 0.08,
+    ),
+    _Layer(
+      [for (final b in _barrels) _circle(b.dx, b.dy, 24)].join(' '),
+      fill: _Tone.forest,
+      line: _l,
+    ),
+    _Layer(
+      [for (final b in _barrels) _circle(b.dx, b.dy, 16)].join(' '),
+      line: 0.12,
+    ),
+    _Layer(
+      [for (final b in _barrels) _circle(b.dx, b.dy, 3)].join(' '),
+      line: 0.16,
+    ),
+  ]),
+  HeaderDrawingScene.train: _Scene([
+    const _Layer(
+      'M0 200L60 146L104 176L170 114L236 168L300 130L390 188V300H0Z',
+      fill: _Tone.forest,
+    ),
+    _Layer(_rect(0, 196, 390, 104), fill: _Tone.mid),
+    const _Layer('$_viaductArches Z', fill: _Tone.ground),
+    const _Layer(
+      'M0 200L60 146L104 176L170 114L236 168L300 130L390 188',
+      line: 0.12,
+    ),
+    const _Layer('M0 196H390', line: _l),
+    const _Layer('M0 204H390', line: 0.16),
+    const _Layer(_viaductArches, line: 0.16),
+    _Layer(_roundRect(40, 146, 300, 44, 6), fill: _Tone.forest, line: _l),
+    const _Layer('M44 146Q190 132 336 146', line: _l),
+    _Layer(
+      [for (var x = 58.0; x <= 298; x += 30) _rect(x, 156, 20, 14)].join(' '),
+      line: 0.18,
+    ),
+    const _Layer('M40 176H340', line: 0.14),
+    _Layer('${_rect(46, 154, 6, 28)} ${_rect(328, 154, 6, 28)}', line: 0.16),
+    _Layer(
+      '${_circle(80, 192, 6)} ${_circle(100, 192, 6)} '
+      '${_circle(280, 192, 6)} ${_circle(300, 192, 6)}',
+      fill: _Tone.mid,
+      line: _l,
+    ),
+  ], light: const _Light(66, 62, 18)),
+  HeaderDrawingScene.sailingYacht: _Scene([
+    _Layer(_rect(0, 206, 390, 94), fill: _Tone.mid),
+    // Gaff mainsail, foresail and jib, set from two masts.
+    const _Layer(
+      'M196 190V80L148 96L120 190Z M256 190V100L218 112L206 190Z '
+      'M262 98L368 178L300 190Z',
+      fill: _Tone.mid,
+      line: _l,
+    ),
+    const _Layer('M64 194L84 220H300L330 190Z', fill: _Tone.forest, line: _l),
+    _Layer(_rect(96, 182, 40, 12), fill: _Tone.mid, line: _l),
+    const _Layer(
+      'M200 196V70M260 196V92M330 190L372 176'
+      'M200 70L212 74L200 78',
+      line: _l,
+    ),
+    const _Layer('M70 198H326', line: 0.16),
+    const _Layer('M200 70L84 196M260 92L330 190', line: 0.1),
+    _Layer(
+      [
+        for (final x in const [102.0, 112.0, 122.0]) _rect(x, 186, 6, 5),
+      ].join(' '),
+      line: 0.16,
+    ),
+    const _Layer('M0 206H390', line: 0.16),
+    const _Layer('M290 216H322M294 226H318M298 236H314', line: 0.14),
+    const _Layer(
+      'M40 224H120M230 232H280M20 248H150M200 262H370M60 280H210',
+      line: 0.1,
+    ),
+    const _Layer('M90 226H290', line: 0.08),
+  ], light: const _Light(306, 64, 20)),
+  HeaderDrawingScene.ship: _Scene([
+    _Layer(_rect(0, 206, 390, 94), fill: _Tone.mid),
+    _Layer(
+      '${_rect(120, 160, 150, 28)} ${_rect(150, 140, 90, 20)}',
+      fill: _Tone.mid,
+    ),
+    const _Layer('M58 188L78 214H316L340 186Z', fill: _Tone.forest, line: _l),
+    _Layer(_rect(196, 116, 18, 24), fill: _Tone.forest),
+    const _Layer('M0 206H390M64 196H332', line: 0.16),
+    _Layer(
+      [for (var x = 100.5; x <= 300.5; x += 25) _circle(x, 203, 2.5)].join(' '),
+      line: 0.2,
+    ),
+    const _Layer(
+      'M120 188V160h150v28M150 160V140h90v20M196 140V116h18v24'
+      'M132 160V118M132 128H146',
+      line: _l,
+    ),
+    _Layer(
+      [
+        for (final x in const [
+          134.0,
+          150.0,
+          166.0,
+          182.0,
+          198.0,
+          214.0,
+          230.0,
+          246.0,
+        ])
+          _rect(x, 168, 10, 8),
+      ].join(' '),
+      line: 0.14,
+    ),
+    const _Layer('M160 146h70', line: 0.16),
+    const _Layer('M290 216H322M294 226H318M298 236H314', line: 0.14),
+    const _Layer(
+      'M40 224H120M230 232H280M20 248H150M200 262H370M60 280H210',
+      line: 0.1,
+    ),
+    const _Layer('M96 220H300', line: 0.08),
+  ], light: const _Light(306, 64, 20)),
 };
+
+const String _viaductArches =
+    'M7 300V238A25 25 0 0 1 57 238V300 M71 300V238A25 25 0 0 1 121 238V300 '
+    'M135 300V238A25 25 0 0 1 185 238V300 M199 300V238A25 25 0 0 1 249 238V300 '
+    'M263 300V238A25 25 0 0 1 313 238V300 M327 300V238A25 25 0 0 1 377 238V300';
+
+// Barrel ends in the cellar: two on the floor and one on top, each side.
+const List<Offset> _barrels = [
+  Offset(70, 226),
+  Offset(118, 226),
+  Offset(94, 186),
+  Offset(272, 226),
+  Offset(320, 226),
+  Offset(296, 186),
+];
 
 const String _arches =
     'M74 222V110A31 31 0 0 1 136 110V222Z M164 222V110A31 31 0 0 1 226 110V222Z '
