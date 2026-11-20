@@ -1,0 +1,2 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0022,US_COUNTY_06097,Sonoma County,Sonoma County,CA,,https://tigerweb.geo.census.gov/arcgis/rest/services/Generalized_ACS2024/State_County/MapServer/11/query?where=GEOID%3D%2706097%27&outFields=%2A&outSR=4326&f=geojson

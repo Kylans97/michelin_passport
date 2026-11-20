@@ -44,6 +44,27 @@ writes `outlines.json` and `wine_region_outlines.sql`.
 | wr_0019 Vijlen | a mapped area in the village of Vijlen, 419 ha | RVO productdossier BOB; BAG woonplaats Vijlen (1431) | 1 | 1 (woonplaats ~2.7x) | — |
 | wr_0011 Tuscany | IGT Toscana: the 10 provinces of Regione Toscana | MASAF disciplinari (IGT Toscano/Toscana, 12.07.2019) | 273 | — | — |
 
+**The Americas** (`import_americas.py`; official texts and boundary
+datasets in each region's notes):
+
+| Region | Defined as | Official source | Boundary data |
+|---|---|---|---|
+| wr_0021 Napa Valley | AVA | 27 CFR 9.23 | TTB AVA polygon (AVA Map Explorer, CC0) |
+| wr_0022 Sonoma County | the county (a legal US appellation, 27 CFR 4.25(a)(1)(iv)); no AVA or union of AVAs matches it | 27 CFR 4.25 | US Census county, shoreline-clipped |
+| wr_0023 Willamette Valley | AVA (parent; 11 sub-AVAs) | 27 CFR 9.90 | TTB |
+| wr_0024 Paso Robles | AVA (parent; 11 sub-AVAs cover ~59%) | 27 CFR 9.84 | TTB |
+| wr_0025 Finger Lakes | AVA | 27 CFR 9.34 | TTB |
+| wr_0026 Mendoza | IG at province level: all 18 departamentos | INV Res. C.32/2002 | IGN departamentos |
+| wr_0027 Valle de Uco | IG: San Carlos, Tunuyán, Tupungato (wording of INV's register, not the resolution) | INV Res. C.37/2002; register 2024 | IGN |
+| wr_0028 Cafayate | IG Cafayate = Valle de Cafayate: departamento Cafayate | INV Res. C.32/2002, C.15/2004 | IGN |
+| wr_0029 Valle del Maipo | all provinces of the Metropolitan Region (52 comunas) | Decreto 464, art. 1.4 | BCN comunas |
+| wr_0030 Valle de Colchagua | provinces Colchagua and Cardenal Caro (16 comunas) | Decreto 464 | BCN |
+| wr_0031 Valle de Casablanca | comuna Casablanca | Decreto 464 | BCN |
+
+Held back: IG Valles Calchaquíes (no official text gives it a boundary).
+TTB's outlines are informational; the written CFR description prevails.
+Source polygons are stored simplified to ~100 m.
+
 **Not drawn** (published with a point only; the municipalities the
 dossier names are kept in `communes_reference/` for the record):
 wr_0013 Maasvallei Limburg (a 155 km² strip on both Maas banks fixed by
