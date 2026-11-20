@@ -7,6 +7,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/data/repositories/profile_repository.dart'
+    show WelcomeGreeting;
 import 'package:michelin_passport/features/onboarding/onboarding_gate.dart';
 import 'package:michelin_passport/features/onboarding/welcome_flow_screen.dart';
 
@@ -73,6 +75,75 @@ void main() {
       await tester.pump();
       expect(find.byType(WelcomeFlow), findsOneWidget);
       expect(find.text('App'), findsNothing);
+    });
+
+    testWidgets('the greeting is fetched for the same userId and handed '
+        'to WelcomeFlow', (tester) async {
+      final fetchedFor = <String>[];
+      await tester.pumpWidget(
+        _wrap(
+          OnboardingGate(
+            userId: 'user-7',
+            hasSeenWelcome: (id) async => false,
+            welcomeGreeting: (id) async {
+              fetchedFor.add(id);
+              return const WelcomeGreeting(
+                firstName: 'Sophie',
+                memberNumber: 128,
+              );
+            },
+            child: const Text('App'),
+          ),
+        ),
+      );
+      await tester.pump();
+      await tester.pump();
+      await tester.pump();
+      final flow = tester.widget<WelcomeFlow>(find.byType(WelcomeFlow));
+      expect(fetchedFor, ['user-7']);
+      expect(flow.firstName, 'Sophie');
+      expect(flow.memberNumber, 128);
+    });
+
+    testWidgets('a greeting failure still shows WelcomeFlow, without a '
+        'name or number', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          OnboardingGate(
+            userId: 'user-1',
+            hasSeenWelcome: (id) async => false,
+            welcomeGreeting: (id) async => throw Exception('network error'),
+            child: const Text('App'),
+          ),
+        ),
+      );
+      await tester.pump();
+      await tester.pump();
+      await tester.pump();
+      final flow = tester.widget<WelcomeFlow>(find.byType(WelcomeFlow));
+      expect(flow.firstName, isNull);
+      expect(flow.memberNumber, isNull);
+    });
+
+    testWidgets('an account that has already seen it never fetches the '
+        'greeting', (tester) async {
+      var fetches = 0;
+      await tester.pumpWidget(
+        _wrap(
+          OnboardingGate(
+            userId: 'user-1',
+            hasSeenWelcome: (id) async => true,
+            welcomeGreeting: (id) async {
+              fetches++;
+              return const WelcomeGreeting();
+            },
+            child: const Text('App'),
+          ),
+        ),
+      );
+      await tester.pump();
+      await tester.pump();
+      expect(fetches, 0);
     });
 
     testWidgets('completing WelcomeFlow calls markWelcomeSeen with the '
