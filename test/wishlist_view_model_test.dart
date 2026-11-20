@@ -202,6 +202,14 @@ void main() {
       expect(groups.first.title, 'Antwerp');
     });
 
+    test('an event-only place takes its country name from the lookup', () {
+      final groups = groupWishlistByPlace(
+        WishlistContents(events: [_event('e1')]),
+        countryNames: const {'BE': 'Belgium'},
+      );
+      expect(groups.single.country, 'Belgium');
+    });
+
     test('an empty wishlist has no groups', () {
       expect(groupWishlistByPlace(const WishlistContents()), isEmpty);
     });

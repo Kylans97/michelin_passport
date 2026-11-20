@@ -80,6 +80,20 @@ class Vineyard {
   ].join(', ');
 
   /// "No. 3 · World's 50 Best Vineyards 2025", or null when unranked.
+  /// "🇪🇸  Laguardia, Spain" — the flag, the town (else the region) and
+  /// the country's name, never its code. What cards and picker rows show.
+  String get cardPlaceLabel {
+    final town = [city, region]
+        .map((s) => (s ?? '').trim())
+        .firstWhere((s) => s.isNotEmpty, orElse: () => '');
+    final where = [
+      if (town.isNotEmpty) town,
+      if ((countryName ?? '').trim().isNotEmpty) countryName!.trim(),
+    ].join(', ');
+    final flag = (flagEmoji ?? '').trim();
+    return [if (flag.isNotEmpty) flag, if (where.isNotEmpty) where].join('  ');
+  }
+
   String? get rankLabel {
     final rank = worlds50BestRank;
     if (rank == null) return null;

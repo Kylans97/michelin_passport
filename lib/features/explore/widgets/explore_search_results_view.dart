@@ -6,13 +6,11 @@ import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../core/widgets/floating_nav_bar.dart';
 import '../../../models/event.dart';
 import '../../../models/journey.dart';
-import '../../journeys/journey_detail_screen.dart';
-import '../../passport/widgets/venue_picker_parts.dart';
-import '../../vineyards/vineyard_detail_screen.dart';
 import '../../reports/widgets/report_missing_listing_sheet.dart';
 import '../models/explore_search_results.dart';
 import '../widgets/hotel_tile.dart';
 import '../widgets/restaurant_tile.dart';
+import 'catalogue_tiles.dart';
 import 'explore_event_result_tile.dart';
 
 /// Search mode's result list — RESTAURANTS / HOTELS / EVENTS as clearly
@@ -89,19 +87,8 @@ class ExploreSearchResultsView extends StatelessWidget {
             label: 'WINE ESTATES',
             count: results.vineyards.length,
             children: [
-              _PickerRows([
-                for (final vineyard in results.vineyards)
-                  VineyardPickerRow(
-                    vineyard: vineyard,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) =>
-                            VineyardDetailScreen(vineyardId: vineyard.id),
-                      ),
-                    ),
-                  ),
-              ]),
+              for (final vineyard in results.vineyards)
+                VineyardTile(vineyard: vineyard),
             ],
           ),
         if (results.journeys.isNotEmpty)
@@ -109,19 +96,8 @@ class ExploreSearchResultsView extends StatelessWidget {
             label: _journeysLabel(results.journeys),
             count: results.journeys.length,
             children: [
-              _PickerRows([
-                for (final journey in results.journeys)
-                  JourneyPickerRow(
-                    journey: journey,
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) =>
-                            JourneyDetailScreen(journeyId: journey.id),
-                      ),
-                    ),
-                  ),
-              ]),
+              for (final journey in results.journeys)
+                JourneyTile(journey: journey),
             ],
           ),
         SizedBox(height: floatingNavClearance(context)),
@@ -135,19 +111,6 @@ String _journeysLabel(List<Journey> journeys) {
   if (trains == journeys.length) return 'TRAINS';
   if (trains == 0) return 'SHIPS';
   return 'TRAINS & SHIPS';
-}
-
-/// Wine estate and journey results reuse the green pickers' rows, inside
-/// the page gutter.
-class _PickerRows extends StatelessWidget {
-  final List<Widget> rows;
-  const _PickerRows(this.rows);
-
-  @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(horizontal: CsSpacing.pageHorizontal),
-    child: PickerRowList(children: rows),
-  );
 }
 
 class _ResultSection extends StatelessWidget {

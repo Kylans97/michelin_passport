@@ -157,4 +157,9 @@ void main() {
     expect(results.isEmpty, isFalse);
     expect(results.totalCount, 2);
   });
+
+  test('an estate card names its town and country, never the code', () {
+    expect(_bordeaux.cardPlaceLabel, '🇫🇷  Martillac, France');
+    expect(_douro.cardPlaceLabel, '🇵🇹  Douro Valley, Portugal');
+  });
 }

@@ -7,6 +7,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../core/widgets/floating_nav_bar.dart';
+import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/booking_window.dart';
 import '../../models/event.dart';
@@ -22,6 +23,7 @@ import 'widgets/add_to_wishlist_sheet.dart';
 import 'widgets/event_wishlist_empty_state.dart';
 import 'widgets/wishlist_venue_cards.dart';
 import 'wishlist_view_model.dart';
+import '../../models/venue_country.dart';
 import '../../models/vineyard.dart';
 import '../events/event_detail_screen.dart';
 import '../hotels/hotel_detail_screen.dart';
@@ -70,6 +72,8 @@ class _WishlistBodyState extends State<WishlistBody> {
   List<Event>? _events; // null until the first load completes.
   List<Journey> _journeys = const []; // trains and ships
   List<Vineyard> _vineyards = const []; // wine estates
+  // Country code -> name, for places only known by a code (events).
+  Map<String, String> _countryNames = const {};
   bool _loading = true; // true only for the very first, blocking load.
   bool _loadError = false;
   bool _refreshing = false; // guards overlapping refresh calls.
@@ -107,13 +111,22 @@ class _WishlistBodyState extends State<WishlistBody> {
       final vineyardsFuture = _repo
           .getWishlistVineyards(_userId)
           .catchError((Object _) => const <Vineyard>[]);
+      final countriesFuture = _countryNames.isNotEmpty
+          ? Future.value(const <VenueCountry>[])
+          : getAllCountries(
+              Supabase.instance.client,
+            ).catchError((Object _) => const <VenueCountry>[]);
       final venues = await venuesFuture;
       final events = await eventsFuture;
       final plans = await plansFuture;
       final journeys = await journeysFuture;
       final vineyards = await vineyardsFuture;
+      final countries = await countriesFuture;
       if (!mounted) return;
       setState(() {
+        if (countries.isNotEmpty) {
+          _countryNames = {for (final c in countries) c.code: c.name};
+        }
         _venues = venues;
         _plans = plans;
         _events = events;
@@ -341,7 +354,10 @@ class _WishlistBodyState extends State<WishlistBody> {
   };
 
   List<Widget> _placeSlivers(WishlistContents contents) {
-    final groups = groupWishlistByPlace(contents);
+    final groups = groupWishlistByPlace(
+      contents,
+      countryNames: _countryNames,
+    );
     if (groups.isEmpty) {
       return const [
         SliverFillRemaining(

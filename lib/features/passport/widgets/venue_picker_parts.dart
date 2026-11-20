@@ -233,11 +233,10 @@ class VineyardPickerRow extends StatelessWidget {
       size: 52,
       borderRadius: const BorderRadius.all(Radius.circular(4)),
     ),
-    detail: CsCountryLabel(
-      cityName: (vineyard.city ?? '').trim().isNotEmpty
-          ? vineyard.city!.trim()
-          : (vineyard.region ?? ''),
-      countryCode: vineyard.countryCode,
+    detail: Text(
+      vineyard.cardPlaceLabel,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: CsFonts.sans(color: AppColors.secondaryOnDark, fontSize: 12.5),
     ),
   );

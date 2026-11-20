@@ -130,8 +130,13 @@ class WishlistPlaceGroup {
 /// town, always within its country (two regions of one name in different
 /// countries stay apart). Places with the most saved come first; trains and
 /// ships close the list as "On the move". Only stored location fields are
-/// used — nothing is matched or inferred by name.
-List<WishlistPlaceGroup> groupWishlistByPlace(WishlistContents contents) {
+/// used — nothing is matched or inferred by name. [countryNames] (code to
+/// name, from `public.countries`) names a country that a record carries
+/// only as a code — events.
+List<WishlistPlaceGroup> groupWishlistByPlace(
+  WishlistContents contents, {
+  Map<String, String> countryNames = const {},
+}) {
   final groups = <String, _GroupBuilder>{};
 
   void add({
@@ -144,7 +149,10 @@ List<WishlistPlaceGroup> groupWishlistByPlace(WishlistContents contents) {
     final place = _firstNonEmpty([region, town]) ?? countryName ?? countryCode;
     final key = '$countryCode|${place.toLowerCase()}';
     final group = groups.putIfAbsent(key, () => _GroupBuilder(place));
-    group.country ??= _firstNonEmpty([countryName]);
+    group.country ??= _firstNonEmpty([
+      countryName,
+      countryNames[countryCode],
+    ]);
     group.items.add(item);
   }
 
