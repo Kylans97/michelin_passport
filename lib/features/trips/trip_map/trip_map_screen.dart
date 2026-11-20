@@ -34,7 +34,8 @@ import 'trip_map_items.dart';
 /// as on the visited map ([VenuePin]), an ivory pin with a calendar for an
 /// event and with a check for anything already on the trip. Nearby pins
 /// fold into a numbered cluster until zoomed in; planned places and events
-/// never fold. Zoomed in, a pin shows its name (see [pickTripMapLabels]).
+/// never fold, except with places at the very same spot, which share one
+/// marker at any zoom and open as a short list. Zoomed in, a pin shows its name (see [pickTripMapLabels]).
 /// No gold on the map itself: stars and Keys appear only on the card, the
 /// way the rest of the app shows them.
 class TripMapScreen extends StatefulWidget {
@@ -170,12 +171,14 @@ class _TripMapScreenState extends State<TripMapScreen> {
       setState(() => _selectedKey = cluster.items.single.key);
       return;
     }
-    final points = cluster.items.map((i) => i.point).toSet().toList();
+    // Places at one spot, or already at the closest zoom, never come apart
+    // by zooming: list them instead.
     final camera = _mapController.camera;
-    if (points.length == 1) {
-      _mapController.move(points.single, camera.zoom + 2);
+    if (isTripMapSameSpot(cluster) || camera.zoom >= _maxZoom - 0.5) {
+      _pickFromSpot(cluster);
       return;
     }
+    final points = cluster.items.map((i) => i.point).toSet().toList();
     _mapController.fitCamera(
       CameraFit.coordinates(
         coordinates: points,
@@ -183,6 +186,18 @@ class _TripMapScreenState extends State<TripMapScreen> {
         maxZoom: 17,
       ),
     );
+  }
+
+  Future<void> _pickFromSpot(TripMapCluster cluster) async {
+    final key = await showModalBottomSheet<String>(
+      context: context,
+      backgroundColor: AppColors.warmWhite,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (_) => _SpotSheet(items: cluster.items),
+    );
+    if (key != null && mounted) setState(() => _selectedKey = key);
   }
 
   Future<void> _add(TripMapVenueItem item) async {
@@ -318,7 +333,7 @@ class _TripMapScreenState extends State<TripMapScreen> {
               maxZoom: 15,
             ),
             minZoom: 3,
-            maxZoom: 18,
+            maxZoom: _maxZoom,
             interactionOptions: const InteractionOptions(
               flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
             ),
@@ -355,6 +370,8 @@ class _TripMapScreenState extends State<TripMapScreen> {
     );
   }
 }
+
+const double _maxZoom = 18;
 
 /// The markers, re-clustered whenever the zoom changes: a child layer of
 /// the map, so [MapCamera.of] rebuilds it on every camera move.
@@ -430,7 +447,8 @@ class _ClusteredMarkers extends StatelessWidget {
               width: 44,
               height: 44,
               child: _ClusterMarker(
-                count: cluster.items.length,
+                cluster: cluster,
+                selected: cluster.items.any((i) => i.key == selectedKey),
                 onTap: () => onTap(cluster),
               ),
             ),
@@ -605,37 +623,106 @@ class _ItemMarker extends StatelessWidget {
 }
 
 class _ClusterMarker extends StatelessWidget {
-  final int count;
+  final TripMapCluster cluster;
+  final bool selected;
   final VoidCallback onTap;
 
-  const _ClusterMarker({required this.count, required this.onTap});
+  const _ClusterMarker({
+    required this.cluster,
+    required this.selected,
+    required this.onTap,
+  });
 
   @override
-  Widget build(BuildContext context) => Semantics(
-    button: true,
-    label: '$count places, zoom in',
-    child: GestureDetector(
-      onTap: onTap,
-      child: Center(
-        child: Container(
-          width: 34,
-          height: 34,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: AppColors.forestGreen,
-            shape: BoxShape.circle,
-            border: Border.all(color: AppColors.ivory, width: 1.5),
-          ),
-          child: ExcludeSemantics(
-            child: Text(
-              '$count',
-              style: CsTypography.metadata.copyWith(
-                color: AppColors.ivory,
-                fontSize: 12.5,
+  Widget build(BuildContext context) {
+    final count = cluster.items.length;
+    // Ivory, like a planned place's or an event's own pin, when one of
+    // them stands at this spot.
+    final light = cluster.items.any(
+      (i) => i is TripMapEventItem || (i is TripMapVenueItem && i.planned),
+    );
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: isTripMapSameSpot(cluster)
+          ? '$count places at one address, show them'
+          : '$count places, zoom in',
+      child: GestureDetector(
+        onTap: onTap,
+        child: Center(
+          child: Transform.scale(
+            scale: selected ? 1.25 : 1.0,
+            child: Container(
+              width: 34,
+              height: 34,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: light ? AppColors.ivory : AppColors.forestGreen,
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: light ? AppColors.forestGreen : AppColors.ivory,
+                  width: 1.5,
+                ),
+              ),
+              child: ExcludeSemantics(
+                child: Text(
+                  '$count',
+                  style: CsTypography.metadata.copyWith(
+                    color: light ? AppColors.forestGreen : AppColors.ivory,
+                    fontSize: 12.5,
+                  ),
+                ),
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+/// The places at one spot, to pick one: they share a marker, since no
+/// zoom draws them apart. Pops with the chosen item's key.
+class _SpotSheet extends StatelessWidget {
+  final List<TripMapItem> items;
+  const _SpotSheet({required this.items});
+
+  @override
+  Widget build(BuildContext context) => SafeArea(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.base),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (final item in items)
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: CsSpacing.pageHorizontal,
+              ),
+              leading: Icon(switch (item) {
+                TripMapVenueItem(planned: true) => Icons.check_rounded,
+                TripMapVenueItem(isHotel: true) => Icons.vpn_key_rounded,
+                TripMapVenueItem() => Icons.restaurant_rounded,
+                TripMapEventItem() => Icons.event_rounded,
+              }, color: AppColors.forestGreen),
+              title: Text(
+                _itemName(item),
+                style: CsTypography.placeTitle.copyWith(
+                  color: AppColors.textPrimary,
+                  fontSize: 17,
+                ),
+              ),
+              subtitle: item is TripMapVenueItem && item.planned
+                  ? Text(
+                      'On your trip',
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                    )
+                  : null,
+              onTap: () => Navigator.of(context).pop(item.key),
+            ),
+        ],
       ),
     ),
   );

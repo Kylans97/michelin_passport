@@ -88,6 +88,30 @@ void main() {
       expect((planned.items.single as TripMapVenueItem).planned, isTrue);
     });
 
+    test('a planned place and one at its very spot share a marker', () {
+      // A restaurant inside its hotel, a few metres off it: drawn apart,
+      // the planned pin would hide the other one at every zoom.
+      final clusters = clusterTripMapItems([
+        venue('hotel', 52.37, 4.89),
+        venue('restaurant', 52.37005, 4.89005, planned: true),
+        venue('elsewhere', 52.371, 4.891),
+      ], project);
+      final spot = clusters.singleWhere((c) => c.items.length == 2);
+      expect(spot.items.map((i) => (i as TripMapVenueItem).id), [
+        'hotel',
+        'restaurant',
+      ]);
+      expect(isTripMapSameSpot(spot), isTrue);
+    });
+
+    test('places a street apart are not at one spot', () {
+      final cluster = TripMapCluster([
+        venue('a', 52.37, 4.89),
+        venue('b', 52.3705, 4.89),
+      ]);
+      expect(isTripMapSameSpot(cluster), isFalse);
+    });
+
     test('a cluster sits at the average of its members', () {
       final cluster = TripMapCluster([venue('a', 1, 1), venue('b', 3, 5)]);
       expect(cluster.center, const LatLng(2, 3));
@@ -150,14 +174,17 @@ void main() {
       expect(labels['r:right'], TripMapLabelSide.right);
     });
 
-    test('names never overlap: a planned place picks first, the next moves', () {
-      final labels = pick([
-        venue('rest', 0.1, 0),
-        venue('planned', 0, 0, planned: true),
-      ]);
-      expect(labels['r:planned'], TripMapLabelSide.right);
-      expect(labels['r:rest'], TripMapLabelSide.left);
-    });
+    test(
+      'names never overlap: a planned place picks first, the next moves',
+      () {
+        final labels = pick([
+          venue('rest', 0.1, 0),
+          venue('planned', 0, 0, planned: true),
+        ]);
+        expect(labels['r:planned'], TripMapLabelSide.right);
+        expect(labels['r:rest'], TripMapLabelSide.left);
+      },
+    );
 
     test('a numbered cluster blocks a name like a pin does', () {
       final labels = pick(
@@ -264,6 +291,36 @@ void main() {
       await tester.pump();
       expect(find.text('On your trip'), findsOneWidget);
       expect(find.text('Add to trip'), findsNothing);
+    });
+
+    testWidgets('places at one spot open as a list, not an endless zoom', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        legs: [_tokyo],
+        venuesByCity: {
+          'c-tokyo': [
+            MappedVenue(HotelVenue(_hotel('h1', 'Hotel One')), 35.67, 139.76),
+            MappedVenue(
+              RestaurantVenue(_restaurant('r3', 'Restaurant In Hotel')),
+              35.67,
+              139.76,
+            ),
+          ],
+        },
+        plannedKeys: {'r:r3'},
+      );
+      expect(find.bySemanticsLabel('Hotel One'), findsNothing);
+      await tester.tap(
+        find.bySemanticsLabel('2 places at one address, show them'),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Restaurant In Hotel'), findsOneWidget);
+      await tester.tap(find.text('Hotel One'));
+      await tester.pumpAndSettle();
+      expect(find.text('Add to trip'), findsOneWidget);
+      expect(find.text('View venue'), findsOneWidget);
     });
 
     testWidgets('a failed add says so and leaves the venue unplanned', (

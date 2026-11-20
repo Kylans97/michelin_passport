@@ -187,6 +187,20 @@ The format follows Keep a Changelog.
   widget test for the add-a-stay form, and it was not checked on a device.
 
 ### Fixed
+- **Trip map: places at one address hid each other.** Reported
+  2026-11-20 as restaurants and hotels not always appearing in the right
+  place. The pins themselves were placed correctly (latitude/longitude
+  order, centre anchor and tile size all checked), but production holds
+  119 pairs of venues within 10 m of each other, mostly a restaurant inside
+  its hotel. A planned place never folded into a cluster, so it was drawn
+  straight over the hotel it sits in and hid it at every zoom; two
+  unplanned ones became a "2" that tapping zoomed into forever without
+  ever splitting. Places within 15 m now always share one marker, ivory
+  when one of them is planned or an event, and tapping it — or any
+  cluster at the closest zoom — opens a short list to pick from. The
+  other half of the report is data, not code: the earliest catalogue rows
+  carry coordinates hundreds of metres to 3 km from their own address.
+  Those are listed for review, not corrected here.
 - **Tests measured text in a font no user sees.** `flutter test` sets
   every family in its own "FlutterTest" font, where each glyph is one em
   wide, and the runtime-fetched fonts never loaded in tests. So every width

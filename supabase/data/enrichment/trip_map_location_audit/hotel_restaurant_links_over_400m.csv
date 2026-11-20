@@ -1,0 +1,21 @@
+hotel_code,restaurant_code,hcc,rcc,hname,rname,hlat,hlng,rlat,rlng,m
+hotel_2154,rest_0008,FR,FR,Le Pavillon De La Reine,Anne,48.856233,2.366003,48.8461,2.3262,3131
+hotel_02,rest_0021,NL,NL,Central Park,Central Park,52.069951,4.369563,52.059,4.3463,2007
+hotel_13,rest_0022,NL,NL,Château Neercanne,Chateau Neercanne,50.818737,5.667403,50.828,5.6882,1791
+hotel_450,rest_2301,IT,IT,L'Andana,La Trattoria Enrico Bartolini,42.797393,10.972716,42.78823,10.97122,1025
+hotel_2003,rest_1261,FR,FR,Baumanière,L'Oustau de Baumanière,43.740064,4.788683,43.7470213,4.7955483,950
+hotel_694,rest_2252,IT,IT,Hotel Il Pellicano,Il Pellicano,42.3737766,11.1875474,42.380472,11.1924477,846
+hotel_524,rest_1760,ES,ES,Bahia del Duque,Nub,28.093354,-16.742028,28.089486,-16.7352801,790
+hotel_2081,rest_1338,FR,FR,Château de Valmer,La Palmeraie - Château de Valmer,43.191745,6.587914,43.1859671,6.5928531,757
+hotel_2156,rest_1243,FR,FR,Le Phébus,La Table de Xavier Mathieu,43.92554,5.2519,43.9293122,5.2562362,545
+hotel_329,rest_2370,IT,IT,Castel Fragsburg,Prezioso,46.637531,11.191437,46.642027,11.1909286,501
+hotel_1501,rest_3008,US,US,"Auberge du Soleil, Auberge Collection",Auberge du Soleil,38.495944,-122.407684,38.49199,-122.40534,484
+hotel_17,rest_0047,NL,NL,De L'Europe,Flore,52.367511,4.894287,52.3638,4.8906,483
+hotel_2041,rest_0912,FR,FR,Le Domaine de Beaulieu,La Table de Christophe Dufossé,50.58194,2.50725,50.5830173,2.5137203,474
+hotel_2207,rest_1184,FR,FR,Villa Grand Voile Christopher Coutanceau,Christopher Coutanceau,46.158473,-1.156084,46.1553795,-1.1599853,457
+hotel_2170,rest_1339,FR,FR,Les Roches,L'Oursin - Hôtel Les Roches,43.14844,6.40079,43.1496061,6.4059097,436
+hotel_838,rest_2501,GB,GB,Hampton Manor,Grace & Savour,52.425942,-1.705272,52.4287987,-1.7009081,435
+hotel_2011,rest_1336,FR,FR,La Réserve Ramatuelle,La Voile - La Réserve Ramatuelle,43.193093,6.648491,43.1925762,6.6432324,431
+hotel_2195,rest_1577,FR,FR,Royal - Evian Resort,Les Fresques - Hôtel Royal,46.39656,6.59389,46.3966417,6.59945,428
+hotel_828,rest_2634,GB,GB,"Coworth Park, Dorchester Collection",Woven by Adam Smith,51.408495,-0.616136,51.4046576,-0.6164597,428
+hotel_133,rest_3649,AT,AT,Schwarzer Adler - Adults Only,Les Deux Kitzbühel - Brasserie & Bar,47.444672,12.394441,47.4456666,12.3893438,400

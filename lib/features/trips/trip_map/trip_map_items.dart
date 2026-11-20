@@ -64,6 +64,22 @@ class TripMapCluster {
   }
 }
 
+/// Within this many metres two items stand at one spot, which no zoom
+/// separates on screen: a restaurant inside its hotel often shares the
+/// hotel's coordinates, or sits a few metres off them.
+const tripMapSameSpotMetres = 15.0;
+
+const _sameSpotDistance = DistanceHaversine();
+
+/// Whether every item of [cluster] stands at the spot of its first one,
+/// so zooming in can never draw them apart.
+bool isTripMapSameSpot(TripMapCluster cluster) {
+  final first = cluster.items.first.point;
+  return cluster.items.every(
+    (i) => _sameSpotDistance(first, i.point) <= tripMapSameSpotMetres,
+  );
+}
+
 /// Groups [items] into clusters on a square grid of [cellSize] pixels at
 /// the current zoom. [project] maps a coordinate to world pixels at that
 /// zoom (flutter_map's `camera.projectAtZoom`), so the grid stays put
@@ -71,6 +87,8 @@ class TripMapCluster {
 ///
 /// Planned items and events are never folded into a cluster: they're what
 /// a traveller looks for first, so they always keep their own marker.
+/// Items at one spot (see [tripMapSameSpotMetres]) always share a marker,
+/// planned or not, so no pin is ever drawn hidden under another.
 List<TripMapCluster> clusterTripMapItems(
   List<TripMapItem> items,
   Offset Function(LatLng point) project, {
@@ -78,21 +96,59 @@ List<TripMapCluster> clusterTripMapItems(
 }) {
   final cells = <(int, int), List<TripMapItem>>{};
   final standalone = <TripMapCluster>[];
-  for (final item in items) {
-    final alwaysOwn =
-        item is TripMapEventItem || (item is TripMapVenueItem && item.planned);
+  for (final spot in _groupBySpot(items)) {
+    final alwaysOwn = spot.any(
+      (item) =>
+          item is TripMapEventItem ||
+          (item is TripMapVenueItem && item.planned),
+    );
     if (alwaysOwn) {
-      standalone.add(TripMapCluster([item]));
+      standalone.add(TripMapCluster(spot));
       continue;
     }
-    final p = project(item.point);
+    final p = project(spot.first.point);
     final cell = ((p.dx / cellSize).floor(), (p.dy / cellSize).floor());
-    (cells[cell] ??= []).add(item);
+    (cells[cell] ??= []).addAll(spot);
   }
   return [
     for (final members in cells.values) TripMapCluster(members),
     ...standalone,
   ];
+}
+
+// Items within tripMapSameSpotMetres of a spot's first item, in their
+// original order. Bucketed on a grid of about 22 m, so only the
+// neighbouring buckets are compared, not every pair: a whole-country leg
+// holds hundreds of places and this runs on every zoom.
+List<List<TripMapItem>> _groupBySpot(List<TripMapItem> items) {
+  const perDegree = 5000;
+  (int, int) bucket(LatLng p) =>
+      ((p.latitude * perDegree).floor(), (p.longitude * perDegree).floor());
+  final spots = <List<TripMapItem>>[];
+  final byBucket = <(int, int), List<int>>{};
+  for (final item in items) {
+    final (row, col) = bucket(item.point);
+    int? found;
+    search:
+    for (var dr = -1; dr <= 1; dr++) {
+      for (var dc = -1; dc <= 1; dc++) {
+        for (final s in byBucket[(row + dr, col + dc)] ?? const <int>[]) {
+          if (_sameSpotDistance(spots[s].first.point, item.point) <=
+              tripMapSameSpotMetres) {
+            found = s;
+            break search;
+          }
+        }
+      }
+    }
+    if (found != null) {
+      spots[found].add(item);
+    } else {
+      (byBucket[(row, col)] ??= []).add(spots.length);
+      spots.add([item]);
+    }
+  }
+  return spots;
 }
 
 /// From this zoom a place on the trip, or an event, shows its name.
