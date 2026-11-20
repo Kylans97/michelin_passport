@@ -18,7 +18,7 @@ The format follows Keep a Changelog.
   - **In the detail-page heroes the scene starts below the status bar and toolbar** (`CsHeaderDrawing.belowToolbar`). The hero runs up behind both, so the first simulator check showed Rosewood Hong Kong's moon behind the back button and Kadeau's pendant lamp under the camera cutout. The scene is now top-aligned under that band, any crop falls on the ground under the vignette, and cords and chains run up to the top edge, so a lamp never hangs from nothing. Cards are unchanged.
   - Checked: `flutter analyze` clean; `flutter test` all 2,957 pass, including new tests for pools, determinism, mirroring and the cleared toolbar band, and painting all fifteen scenes at hero, card and thumbnail size. Six tests that expected the monogram now expect the drawing. All scenes were rendered to an image and compared with the canvas. In the simulator against production: Explore's event, restaurant and hotel cards, and the Rosewood Hong Kong, Kadeau and Pair'd Margaret River pages, before and after the toolbar fix. Not checked: a private chef without a photo (the only one live has a photo), and the greyed version on a closed venue.
 - **Vineyards (wine estates), starting with The World's 50 Best Vineyards** (product owner, 2026-11-20, after reviewing the design canvas "Wijngaarden in Mantelier": vineyards get their own table; start with the 50 Best Vineyards; wines already logged stay as they are; no gold for wine; a stamp only from a confirmed visit or event, never from a bottle). Branch `claude/vineyards`.
-  - **Migration `20261101550000_add_vineyards.sql`, prepared and NOT applied.** It adds:
+  - **Migration `20261101550000_add_vineyards.sql`, applied to production on 2026-11-20** (product owner's go-ahead that day). It adds:
     - `vineyards`, its own table and not a kind of venue: generated `id`, `vineyard_code` (`vine_0001`…, unique), name, country, region, city, address, a nullable `location` that is never geocoded, `google_place_id`, `website_url` and `status`. It has no description or photo column, because those come from the estate after review.
     - `worlds_50_best_vineyards`, one row per estate per edition, shaped like `worlds_50_best_hotels`. The rank is not stored in `award_history`: that table holds MICHELIN stars and Keys, which sort the other way (DATABASE_ARCHITECTURE.md §3.6).
     - The `vineyards_full` view (security_invoker). Current rank means the latest edition, so an estate that left the list shows no rank.
@@ -37,7 +37,12 @@ The format follows Keep a Changelog.
     - An unlinked wine never sends `vineyard_id`.
     - Estate lookups on events and in the wine sheet fail quietly to empty.
     - The Explore row appears only once at least one estate can be read, so before the migration and the reviewed data are applied it simply isn't there.
-  - **Data, for review, nothing in Supabase:** `supabase/data/enrichment/worlds_50_best_vineyards/`. The 2026 edition (announced 18 November 2026) comes from the official list. worldsbestvineyards.com now redirects to the50.com/vineyards, which is where the data was read.
+  - **Applied to production on 2026-11-20:**
+    - The product owner agreed to apply all three pending migrations with one `db push`: `20261101510000` (announcement status, below), `20261101550000` and `20261101560000_add_lb_uy_countries.sql`. The last adds Lebanon and Uruguay, needed for Château Kefraya and Bodega Garzón.
+    - The estates were then loaded with `prepared_worlds_50_best_vineyards_2026.sql`: 44 estates (22 verified, 22 partial) and their 44 ranks for 2026. The 6 held-back rows stay out. 23 estates have a location, and none was geocoded.
+    - Read back afterwards: 44 vineyards, 44 ranks for 2026, no held-back code present, and the ledger shows 162/162 with local and remote in agreement.
+    - Over the real API with the anon key: `vineyards_full` reads, and a write to `vineyards` is refused (401). The `visit_wines → vineyards(…, countries(name))` and `visits(visited_on)` embed resolves: anon gets 42501 (permission), while a made-up relationship gets PGRST200.
+  - **Data:** `supabase/data/enrichment/worlds_50_best_vineyards/`. The 2026 edition (announced 18 November 2026) comes from the official list. worldsbestvineyards.com now redirects to the50.com/vineyards, which is where the data was read.
     - Every row has its source URLs. There are 22 verified rows, 22 partial and 6 held back; ranks 51–100 sit in a separate file and are unverified.
     - Location comes only from the estates' own sites, and nothing was geocoded.
     - Open issues are logged as QA-520..QA-529 in `qa_issues.csv`. Four estates sit behind age gates that were not clicked through, one gives no location, one prints conflicting street numbers, and several give no coordinates or street address.
@@ -70,8 +75,10 @@ The format follows Keep a Changelog.
   - **Expected** reads the new `events.announcement_status`: an event known
     from a secondary source that the venue has not announced yet.
   - **Migration `20261101510000_add_event_announcement_status.sql`**,
-    prepared and not applied (first prepared on 2026-11-05 as
-    `20261101320000`; renamed on 2026-11-19 to follow the highest migration):
+    applied to production on 2026-11-20 in the same `db push` as the
+    vineyards migration, on the product owner's go-ahead (first prepared on
+    2026-11-05 as `20261101320000`; renamed on 2026-11-19 to follow the
+    highest migration):
     - adds `announcement_status` (`official`/`expected`, default `official`)
       and `expected_source_url`, with a check that an expected event has a
       source;
