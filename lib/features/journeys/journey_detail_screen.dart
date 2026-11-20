@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -16,11 +18,15 @@ import '../../data/repositories/wishlist_repository.dart';
 import '../../models/journey.dart';
 import '../passport/stamp_ceremony.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import 'journey_visuals.dart';
 import 'widgets/confirm_travel_sheet.dart';
+import 'widgets/journey_cabins.dart';
 import 'widgets/journey_detail_hero.dart';
+import 'widgets/journey_figures.dart';
+import 'widgets/journey_route_globe.dart';
 
-/// A train's or ship's own page: hero, what it is, its routes, life on
-/// board, dining partners in the catalogue, the member's own travels with
+/// A train's or ship's own page: hero, what it is, its figures, where it
+/// goes on the globe with its routes, life on board (one mark per cabin), dining partners in the catalogue, the member's own travels with
 /// "I travelled on this", and the operator's website. Everything shown is
 /// the operator's published fact or our starting text; nothing is
 /// inferred, and nothing here is gold.
@@ -42,6 +48,9 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
 
   Journey? _journey;
   List<JourneyRoute> _routes = const [];
+  List<JourneyRouteStop> _stops = const [];
+  String? _selectedRouteId;
+  final _globeKey = GlobalKey();
   List<({String id, String name})> _partners = const [];
   List<JourneyTravel> _travels = const [];
   bool _wishlisted = false;
@@ -69,6 +78,11 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
           : await _repo
                 .getRoutes(journey.id)
                 .catchError((Object _) => const <JourneyRoute>[]);
+      final stops = routes.isEmpty
+          ? const <JourneyRouteStop>[]
+          : await _repo
+                .getRouteStops([for (final r in routes) r.id])
+                .catchError((Object _) => const <JourneyRouteStop>[]);
       final partners = journey == null
           ? const <({String id, String name})>[]
           : await _repo
@@ -89,6 +103,7 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
       setState(() {
         _journey = journey;
         _routes = routes;
+        _stops = stops;
         _partners = partners;
         _wishlisted = wishlisted;
         _travels = travels;
@@ -186,6 +201,22 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
     await celebrateNewStamp(context, EarnedStamp.travel(saved));
   }
 
+  // Shows the tapped route on the globe, bringing the globe back into view
+  // when the list has scrolled it away.
+  void _selectRoute(String routeId) {
+    setState(() => _selectedRouteId = routeId);
+    final globe = _globeKey.currentContext;
+    if (globe != null) {
+      Scrollable.ensureVisible(
+        globe,
+        // Clear of the status bar: the page scrolls under it.
+        alignment: 0.12,
+        duration: const Duration(milliseconds: 400),
+        curve: Curves.easeInOutCubic,
+      );
+    }
+  }
+
   Future<void> _openRestaurant(String id) async {
     final restaurant = await RestaurantRepository(
       _client,
@@ -241,8 +272,29 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
     }
 
     final summary = (journey.summary ?? '').trim();
+    final drawable = drawableRouteStops(_stops);
+    final drawnRoutes = [
+      for (final route in _routes)
+        if (drawable[route.id] != null) route,
+    ];
+    final selectedIndex = math.max(
+      0,
+      drawnRoutes.indexWhere((r) => r.id == _selectedRouteId),
+    );
+    final countryCodes = journeyCountryCodes(journey, _stops);
+    final cabins = parseCabins(journey.cabinsText);
+    final figures = journeyFigures(
+      journey: journey,
+      routes: _routes,
+      cabins: cabins,
+      countryCount: countryCodes.length,
+    );
     final onBoard = [
-      if ((journey.cabinsText ?? '').trim().isNotEmpty) journey.cabinsText!,
+      // A list of named, counted cabin types is shown whole by the marks;
+      // other cabins text stays, it says more than the count.
+      if ((journey.cabinsText ?? '').trim().isNotEmpty &&
+          !(cabins?.groups.any((g) => g.name != null) ?? false))
+        journey.cabinsText!,
       if (journey.guestCapacity != null) '${journey.guestCapacity} guests',
     ];
     final dining = (journey.diningText ?? '').trim();
@@ -273,12 +325,48 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
                     color: AppColors.textPrimary,
                   ),
                 ),
+              if (figures.isNotEmpty) ...[
+                const SizedBox(height: CsSpacing.section),
+                JourneyFigures(figures: figures),
+              ],
+              if (countryCodes.isNotEmpty || drawnRoutes.isNotEmpty) ...[
+                _sectionTitle(
+                  journey.kind == JourneyKind.ship
+                      ? 'WHERE IT SAILS'
+                      : 'WHERE IT RUNS',
+                ),
+                JourneyRouteGlobe(
+                  key: _globeKey,
+                  routes: [for (final r in drawnRoutes) drawable[r.id]!],
+                  selectedIndex: selectedIndex,
+                  countryCodes: countryCodes,
+                ),
+              ],
               if (_routes.isNotEmpty) ...[
                 _sectionTitle('ROUTES'),
-                for (final route in _routes) _RouteRow(route: route),
+                for (final route in _routes)
+                  _RouteRow(
+                    route: route,
+                    // Markers only when there is a choice to make: more
+                    // than one route, at least one of them drawn.
+                    marker: drawnRoutes.isEmpty || _routes.length < 2
+                        ? _RouteMarker.none
+                        : drawable[route.id] == null
+                        ? _RouteMarker.notDrawn
+                        : route.id == drawnRoutes[selectedIndex].id
+                        ? _RouteMarker.selected
+                        : _RouteMarker.drawn,
+                    onTap: drawable[route.id] == null || _routes.length < 2
+                        ? null
+                        : () => _selectRoute(route.id),
+                  ),
               ],
-              if (onBoard.isNotEmpty) ...[
+              if (onBoard.isNotEmpty || cabins != null) ...[
                 _sectionTitle('ON BOARD'),
+                if (cabins != null) ...[
+                  JourneyCabins(layout: cabins, kind: journey.kind),
+                  const SizedBox(height: CsSpacing.base),
+                ],
                 for (final line in onBoard) _bodyLine(line),
               ],
               if (dining.isNotEmpty) ...[
@@ -358,10 +446,21 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
   );
 }
 
+/// Whether a route row shows on the globe: the one drawn now, one that can
+/// be drawn on a tap, one with no stops on record (text only), or no
+/// marker at all when there is nothing to choose between.
+enum _RouteMarker { none, selected, drawn, notDrawn }
+
 class _RouteRow extends StatelessWidget {
   final JourneyRoute route;
+  final _RouteMarker marker;
+  final VoidCallback? onTap;
 
-  const _RouteRow({required this.route});
+  const _RouteRow({
+    required this.route,
+    this.marker = _RouteMarker.none,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -370,24 +469,74 @@ class _RouteRow extends StatelessWidget {
       ?route.lengthLabel,
       if ((route.seasonText ?? '').trim().isNotEmpty) route.seasonText!,
     ].join(' · ');
-    return Padding(
-      padding: const EdgeInsets.only(bottom: CsSpacing.md),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            route.name,
-            style: CsTypography.bodyMedium.copyWith(
-              color: AppColors.forestGreen,
-            ),
+    final text = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          route.name,
+          style: CsTypography.bodyMedium.copyWith(
+            color: marker == _RouteMarker.notDrawn
+                ? AppColors.textPrimary
+                : AppColors.forestGreen,
           ),
-          const SizedBox(height: 2),
-          Text(
-            details,
-            style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        ),
+        const SizedBox(height: 2),
+        Text(
+          details,
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        ),
+      ],
+    );
+    if (marker == _RouteMarker.none) {
+      return Padding(
+        padding: const EdgeInsets.only(bottom: CsSpacing.md),
+        child: text,
+      );
+    }
+    return Semantics(
+      button: onTap != null,
+      selected: marker == _RouteMarker.selected,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: CsSpacing.lg,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 7),
+                  child: _dot(),
+                ),
+              ),
+              Expanded(child: text),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
+
+  // Filled: on the globe now. Ring: tap to show it. Nothing: no stops on
+  // record, so it stays text.
+  Widget _dot() => switch (marker) {
+    _RouteMarker.selected => Container(
+      width: 8,
+      height: 8,
+      decoration: const BoxDecoration(
+        color: AppColors.forestGreen,
+        shape: BoxShape.circle,
+      ),
+    ),
+    _RouteMarker.drawn => Container(
+      width: 8,
+      height: 8,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        border: Border.all(color: AppColors.forestGreen),
+      ),
+    ),
+    _ => const SizedBox(width: 8, height: 8),
+  };
 }
