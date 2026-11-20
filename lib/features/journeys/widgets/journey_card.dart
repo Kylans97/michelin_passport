@@ -57,7 +57,11 @@ class JourneyCard extends StatelessWidget {
                 AspectRatio(
                   aspectRatio: 16 / 9,
                   child: CsHeaderDrawing(
-                    drawing: HeaderDrawing.journey(journey.id, journey.kind),
+                    drawing: HeaderDrawing.journey(
+                      journey.id,
+                      journey.kind,
+                      shipType: journey.shipType,
+                    ),
                     borderRadius: BorderRadius.circular(CsRadius.medium),
                   ),
                 ),

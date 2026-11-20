@@ -33,7 +33,11 @@ class JourneyDetailHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final where = journey.whereLine;
-    final drawing = HeaderDrawing.journey(journey.id, journey.kind);
+    final drawing = HeaderDrawing.journey(
+      journey.id,
+      journey.kind,
+      shipType: journey.shipType,
+    );
     return ColoredBox(
       color: AppColors.deepGreen,
       child: Stack(

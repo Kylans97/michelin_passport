@@ -19,6 +19,11 @@ Map<HeaderDrawingScene, HeaderDrawing> _onePerScene() {
       HeaderDrawing.vineyard('v-$i'),
       HeaderDrawing.journey('j-$i', JourneyKind.train),
       HeaderDrawing.journey('j-$i', JourneyKind.ship),
+      HeaderDrawing.journey(
+        'j-$i',
+        JourneyKind.ship,
+        shipType: 'sailing_yacht',
+      ),
     ]) {
       found.putIfAbsent(d.resolve().scene, () => d);
     }
@@ -97,6 +102,29 @@ void main() {
         expect(ship.scene, HeaderDrawingScene.ship);
         expect(train.litWindows.length, inInclusiveRange(1, 4));
         expect(ship.litWindows.length, inInclusiveRange(1, 4));
+      }
+    });
+
+    test('a sailing yacht gets sails; other ship types keep the ship', () {
+      for (var i = 0; i < 20; i++) {
+        expect(
+          HeaderDrawing.journey(
+            '$i',
+            JourneyKind.ship,
+            shipType: 'sailing_yacht',
+          ).resolve().scene,
+          HeaderDrawingScene.sailingYacht,
+        );
+        for (final type in const [null, 'river', 'expedition', 'yacht']) {
+          expect(
+            HeaderDrawing.journey(
+              '$i',
+              JourneyKind.ship,
+              shipType: type,
+            ).resolve().scene,
+            HeaderDrawingScene.ship,
+          );
+        }
       }
     });
 

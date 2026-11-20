@@ -41,6 +41,7 @@ enum HeaderDrawingScene {
   vineyardCellar,
   train,
   ship,
+  sailingYacht,
 }
 
 /// Which drawing a subject gets, and the small details that vary with it,
@@ -69,12 +70,20 @@ class HeaderDrawing {
   /// cellar (product owner, 2026-11-20: "all three, alternating").
   const HeaderDrawing.vineyard(String id) : this._(id, _vineyardPool);
 
-  /// A luxury train or small ship — one scene each.
-  factory HeaderDrawing.journey(String id, JourneyKind kind) =>
-      HeaderDrawing._(id, switch (kind) {
-        JourneyKind.train => const [HeaderDrawingScene.train],
-        JourneyKind.ship => const [HeaderDrawingScene.ship],
-      });
+  /// A luxury train or small ship — one scene each, and sails for a
+  /// [shipType] of `sailing_yacht` (a phinisi or schooner never has a
+  /// funnel).
+  factory HeaderDrawing.journey(
+    String id,
+    JourneyKind kind, {
+    String? shipType,
+  }) => HeaderDrawing._(id, switch (kind) {
+    JourneyKind.train => const [HeaderDrawingScene.train],
+    JourneyKind.ship when shipType == 'sailing_yacht' => const [
+      HeaderDrawingScene.sailingYacht,
+    ],
+    JourneyKind.ship => const [HeaderDrawingScene.ship],
+  });
 
   factory HeaderDrawing.event(String id, EventType type) => HeaderDrawing._(
     id,
@@ -164,7 +173,9 @@ class HeaderDrawing {
     final lit = <int>{};
     final windows = _windows[scene];
     if (windows != null) {
-      final count = 1 + _draw(h, 3) % 4;
+      // Never more than the scene has, or picking distinct windows below
+      // would never finish (the yacht has three).
+      final count = math.min(1 + _draw(h, 3) % 4, windows.length);
       for (var k = 4; lit.length < count; k++) {
         lit.add(_draw(h, k) % windows.length);
       }
@@ -181,6 +192,7 @@ class HeaderDrawing {
     HeaderDrawingScene.vineyardCellar,
     HeaderDrawingScene.train,
     HeaderDrawingScene.ship,
+    HeaderDrawingScene.sailingYacht,
     HeaderDrawingScene.kitchenPass,
     HeaderDrawingScene.archedRoom,
     HeaderDrawingScene.gardenAllee,
@@ -519,6 +531,9 @@ final Map<HeaderDrawingScene, List<Rect>> _windows = {
   HeaderDrawingScene.facade: _facadeWindows,
   HeaderDrawingScene.train: [
     for (var x = 58.0; x <= 298; x += 30) Rect.fromLTWH(x, 156, 20, 14),
+  ],
+  HeaderDrawingScene.sailingYacht: [
+    for (final x in [102.0, 112.0, 122.0]) Rect.fromLTWH(x, 186, 6, 5),
   ],
   HeaderDrawingScene.ship: [
     for (final x in [134.0, 150.0, 166.0, 182.0, 198.0, 214.0, 230.0, 246.0])
@@ -1072,6 +1087,38 @@ final Map<HeaderDrawingScene, _Scene> _scenes = {
       line: _l,
     ),
   ], light: const _Light(66, 62, 18)),
+  HeaderDrawingScene.sailingYacht: _Scene([
+    _Layer(_rect(0, 206, 390, 94), fill: _Tone.mid),
+    // Gaff mainsail, foresail and jib, set from two masts.
+    const _Layer(
+      'M196 190V80L148 96L120 190Z M256 190V100L218 112L206 190Z '
+      'M262 98L368 178L300 190Z',
+      fill: _Tone.mid,
+      line: _l,
+    ),
+    const _Layer('M64 194L84 220H300L330 190Z', fill: _Tone.forest, line: _l),
+    _Layer(_rect(96, 182, 40, 12), fill: _Tone.mid, line: _l),
+    const _Layer(
+      'M200 196V70M260 196V92M330 190L372 176'
+      'M200 70L212 74L200 78',
+      line: _l,
+    ),
+    const _Layer('M70 198H326', line: 0.16),
+    const _Layer('M200 70L84 196M260 92L330 190', line: 0.1),
+    _Layer(
+      [
+        for (final x in const [102.0, 112.0, 122.0]) _rect(x, 186, 6, 5),
+      ].join(' '),
+      line: 0.16,
+    ),
+    const _Layer('M0 206H390', line: 0.16),
+    const _Layer('M290 216H322M294 226H318M298 236H314', line: 0.14),
+    const _Layer(
+      'M40 224H120M230 232H280M20 248H150M200 262H370M60 280H210',
+      line: 0.1,
+    ),
+    const _Layer('M90 226H290', line: 0.08),
+  ], light: const _Light(306, 64, 20)),
   HeaderDrawingScene.ship: _Scene([
     _Layer(_rect(0, 206, 390, 94), fill: _Tone.mid),
     _Layer(
