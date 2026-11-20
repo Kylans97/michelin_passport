@@ -1,0 +1,320 @@
+[
+ {
+  "slug": "hrvatska-istra",
+  "name": "Hrvatska Istra",
+  "aliases": [
+   "Istria",
+   "Croatian Istria",
+   "Istra"
+  ],
+  "summary": "Istria is led by Malvazija Istarska, a floral, gently spicy white made fresh and young or richer and oak aged. Teran, the native red, is deep coloured with high acidity and firm tannins.",
+  "red_body": 4,
+  "red_acidity": 4,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "The grape name Teran may be used only on Hrvatska Istra wines, in the same field of view as the region name and in smaller letters.",
+  "grapes": [
+   {
+    "name": "Malvazija Istarska",
+    "local_note": "the most important and most planted white in Istria"
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Teran",
+    "local_note": "native red; recommended for this region only"
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Muškat momjanski / Moscato di Momiano",
+    "colour": "white",
+    "note": "EU PDO around the village of Momjan in north west Istria, for Muškat bijeli (Moscato bianco) wines, including dessert wines."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/the-wines-of-the-croatian-coast"
+   ],
+   "red_body": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080"
+   ],
+   "red_acidity": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/"
+   ],
+   "red_tannin": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2025_12_153_2279.html"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/64133",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v2/geographical-indications/EUGI00000014449"
+   ]
+  }
+ },
+ {
+  "slug": "srednja-i-juzna-dalmacija",
+  "name": "Srednja i Južna Dalmacija",
+  "aliases": [
+   "Central and Southern Dalmatia",
+   "Central and South Dalmatia"
+  ],
+  "summary": "Coastal slopes and islands from Trogir to Konavle. Plavac Mali, the main grape, gives full, high alcohol reds with soft acidity, prized from steep sites such as Dingač. Pošip is the leading white.",
+  "red_body": 4,
+  "red_acidity": 2,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "Labels may carry Kvalitetno vino KZP or Vrhunsko vino KZP. Arhivsko vino means at least five years in the cellar, three of them in bottle.",
+  "grapes": [
+   {
+    "name": "Plavac Mali",
+    "local_note": "the most planted red; best on south facing slopes of islands, peninsulas and coast"
+   },
+   {
+    "name": "Pošip",
+    "local_note": "the most planted white"
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Dingač",
+    "colour": "red",
+    "note": "EU PDO on the steep south west facing slopes of central Pelješac, Plavac Mali only. Klasiko requires at least 12 months of ageing, Riserva at least 24."
+   },
+   {
+    "name": "Ponikve",
+    "colour": "white, rosé, red",
+    "note": "EU PDO on Pelješac near Ston: whites from Rukatac (Maraština) and Pošip, rosé and red from Plavac Mali."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/",
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/"
+   ],
+   "red_body": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/"
+   ],
+   "red_acidity": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://en.wikipedia.org/wiki/Plavac_Mali"
+   ],
+   "red_tannin": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/57711"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/27841",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/57711",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v2/geographical-indications/EUGI00000010724",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v2/geographical-indications/EUGI00000014423"
+   ]
+  }
+ },
+ {
+  "slug": "slavonija",
+  "name": "Slavonija",
+  "aliases": [
+   "Slavonia"
+  ],
+  "summary": "Inland eastern Croatia with a continental climate, built on Graševina. Riesling, Chardonnay and Pinot Gris follow, Frankovka leads the reds, and late harvest and ice wines are also made.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Fresh Graševina suits shellfish and other seafood.",
+  "label_note": "Sweet wines use the terms Kasna berba, Izborna berba, Izborna berba bobica, Izborna berba prosušenih bobica and Ledeno vino, each with a minimum must weight.",
+  "grapes": [
+   {
+    "name": "Graševina",
+    "local_note": "the most planted white"
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Rajnski rizling locally"
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Pinot sivi locally"
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Frankovka locally; the most planted red"
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36373",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/",
+    "https://vinacroatia.hr/en/croatian-wine-regions/slavonia-and-croatian-danube/",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ],
+   "pairing": [
+    "https://winefolly.com/grapes/grasevina/",
+    "https://www.decanter.com/wine-reviews/croatia/slavonia/kutjevo-grasevina-slavonia-continental-croatia-2019-40998"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36373"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36373",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ]
+  }
+ },
+ {
+  "slug": "hrvatsko-podunavlje",
+  "name": "Hrvatsko Podunavlje",
+  "aliases": [
+   "Croatian Danube",
+   "Podunavlje"
+  ],
+  "summary": "The Danube side of eastern Croatia, around Ilok, Erdut and Baranja. Graševina leads, followed by Riesling, Chardonnay and Traminac, and late harvest and botrytis sweet wines are made near the river.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Fresh Graševina suits shellfish and other seafood.",
+  "label_note": "Sweet wines use the terms Kasna berba, Izborna berba, Izborna berba bobica, Izborna berba prosušenih bobica and Ledeno vino, each with a minimum must weight.",
+  "grapes": [
+   {
+    "name": "Graševina",
+    "local_note": "the most planted grape"
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Rajnski rizling locally"
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Gewürztraminer",
+    "local_note": "Traminac crveni (Traminac) locally"
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Pinot sivi locally"
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Frankovka locally; the most planted red"
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36303",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/"
+   ],
+   "pairing": [
+    "https://winefolly.com/grapes/grasevina/",
+    "https://www.decanter.com/wine-reviews/croatia/slavonia/kutjevo-grasevina-slavonia-continental-croatia-2019-40998"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36303"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36303",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ]
+  }
+ },
+ {
+  "slug": "plesivica",
+  "name": "Plešivica",
+  "aliases": [
+   "Plesivica"
+  ],
+  "summary": "Hillside vineyards west of Zagreb, on the slopes of Plešivica and Žumberak, with a cool continental climate. The wines are mostly fresh whites with lively acidity, led by Graševina, Riesling and Chardonnay.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Sparkling wines may be labelled Vrhunsko pjenušavo vino; sweet wines use the terms Kasna berba, Izborna berba and Ledeno vino, among others.",
+  "grapes": [
+   {
+    "name": "Graševina",
+    "local_note": "the most planted white"
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Rajnski rizling locally"
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Frankovka locally"
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Pinot crni locally"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36343",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36343"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36343",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ]
+  }
+ }
+]

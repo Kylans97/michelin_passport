@@ -1,0 +1,301 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0066,CH_CH5401,Aigle,Aigle,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5402,Bex,Bex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5403,Chessel,Chessel,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5404,Corbeyrier,Corbeyrier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5405,Gryon,Gryon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5406,Lavey-Morcles,Lavey-Morcles,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5407,Leysin,Leysin,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5408,Noville,Noville,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5409,Ollon,Ollon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5410,Ormont-Dessous,Ormont-Dessous,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5411,Ormont-Dessus,Ormont-Dessus,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5412,Rennaz,Rennaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5413,Roche (VD),Roche (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5414,Villeneuve (VD),Villeneuve (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5415,Yvorne,Yvorne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5422,Aubonne,Aubonne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5423,Ballens,Ballens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5424,Berolle,Berolle,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5425,Bière,Bière,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5426,Bougy-Villars,Bougy-Villars,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5427,Féchy,Féchy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5428,Gimel,Gimel,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5429,Longirod,Longirod,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5430,Marchissy,Marchissy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5431,Mollens (VD),Mollens (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5434,Saint-George,Saint-George,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5435,Saint-Livres,Saint-Livres,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5436,Saint-Oyens,Saint-Oyens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5437,Saubraz,Saubraz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5451,Avenches,Avenches,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5456,Cudrefin,Cudrefin,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5458,Faoug,Faoug,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5464,Vully-les-Lacs,Vully-les-Lacs,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5471,Bettens,Bettens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5472,Bournens,Bournens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5473,Boussens,Boussens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5474,La Chaux (Cossonay),La Chaux (Cossonay),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5475,Chavannes-le-Veyron,Chavannes-le-Veyron,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5476,Chevilly,Chevilly,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5477,Cossonay,Cossonay,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5479,Cuarnens,Cuarnens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5480,Daillens,Daillens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5481,Dizy,Dizy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5482,Eclépens,Eclépens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5483,Ferreyres,Ferreyres,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5484,Gollion,Gollion,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5485,Grancy,Grancy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5486,L'Isle,L'Isle,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5487,Lussery-Villars,Lussery-Villars,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5488,Mauraz,Mauraz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5489,Mex (VD),Mex (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5490,Moiry,Moiry,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5491,Mont-la-Ville,Mont-la-Ville,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5492,Montricher,Montricher,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5493,Orny,Orny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5495,Penthalaz,Penthalaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5496,Penthaz,Penthaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5497,Pompaples,Pompaples,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5498,La Sarraz,La Sarraz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5499,Senarclens,Senarclens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5501,Sullens,Sullens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5503,Vufflens-la-Ville,Vufflens-la-Ville,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5511,Assens,Assens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5512,Bercher,Bercher,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5514,Bottens,Bottens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5515,Bretigny-sur-Morrens,Bretigny-sur-Morrens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5516,Cugy (VD),Cugy (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5518,Echallens,Echallens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5520,Essertines-sur-Yverdon,Essertines-sur-Yverdon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5521,Etagnières,Etagnières,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5522,Fey,Fey,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5523,Froideville,Froideville,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5527,Morrens (VD),Morrens (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5529,Oulens-sous-Echallens,Oulens-sous-Echallens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5530,Pailly,Pailly,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5531,Penthéréaz,Penthéréaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5533,Poliez-Pittet,Poliez-Pittet,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5534,Rueyres,Rueyres,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5535,Saint-Barthélemy (VD),Saint-Barthélemy (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5537,Villars-le-Terroir,Villars-le-Terroir,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5539,Vuarrens,Vuarrens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5540,Montilliez,Montilliez,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5541,Goumoëns,Goumoëns,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5551,Bonvillars,Bonvillars,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5552,Bullet,Bullet,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5553,Champagne,Champagne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5554,Concise,Concise,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5555,Corcelles-près-Concise,Corcelles-près-Concise,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5556,Fiez,Fiez,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5557,Fontaines-sur-Grandson,Fontaines-sur-Grandson,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5559,Giez,Giez,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5560,Grandevent,Grandevent,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5561,Grandson,Grandson,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5562,Mauborget,Mauborget,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5563,Mutrux,Mutrux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5564,Novalles,Novalles,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5565,Onnens (VD),Onnens (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5566,Provence,Provence,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5568,Sainte-Croix,Sainte-Croix,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5571,Tévenon,Tévenon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5581,Belmont-sur-Lausanne,Belmont-sur-Lausanne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5582,Cheseaux-sur-Lausanne,Cheseaux-sur-Lausanne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5583,Crissier,Crissier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5584,Epalinges,Epalinges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5585,Jouxtens-Mézery,Jouxtens-Mézery,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5586,Lausanne,Lausanne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5587,Le Mont-sur-Lausanne,Le Mont-sur-Lausanne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5588,Paudex,Paudex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5589,Prilly,Prilly,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5590,Pully,Pully,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5591,Renens (VD),Renens (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5592,Romanel-sur-Lausanne,Romanel-sur-Lausanne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5601,Chexbres,Chexbres,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5604,Forel (Lavaux),Forel (Lavaux),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5606,Lutry,Lutry,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5607,Puidoux,Puidoux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5609,Rivaz,Rivaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5610,Saint-Saphorin (Lavaux),Saint-Saphorin (Lavaux),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5611,Savigny,Savigny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5613,Bourg-en-Lavaux,Bourg-en-Lavaux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5621,Aclens,Aclens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5622,Bremblens,Bremblens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5623,Buchillon,Buchillon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5624,Bussigny,Bussigny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5627,Chavannes-près-Renens,Chavannes-près-Renens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5628,Chigny,Chigny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5629,Clarmont,Clarmont,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5631,Denens,Denens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5632,Denges,Denges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5633,Echandens,Echandens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5634,Echichens,Echichens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5635,Ecublens (VD),Ecublens (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5636,Etoy,Etoy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5637,Lavigny,Lavigny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5638,Lonay,Lonay,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5639,Lully (VD),Lully (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5640,Lussy-sur-Morges,Lussy-sur-Morges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5642,Morges,Morges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5643,Préverenges,Préverenges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5645,Romanel-sur-Morges,Romanel-sur-Morges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5646,Saint-Prex,Saint-Prex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5648,Saint-Sulpice (VD),Saint-Sulpice (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5649,Tolochenaz,Tolochenaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5650,Vaux-sur-Morges,Vaux-sur-Morges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5651,Villars-Sainte-Croix,Villars-Sainte-Croix,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5652,Villars-sous-Yens,Villars-sous-Yens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5653,Vufflens-le-Château,Vufflens-le-Château,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5654,Vullierens,Vullierens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5655,Yens,Yens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5656,Hautemorges,Hautemorges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5661,Boulens,Boulens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5663,Bussy-sur-Moudon,Bussy-sur-Moudon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5665,Chavannes-sur-Moudon,Chavannes-sur-Moudon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5669,Curtilles,Curtilles,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5671,Dompierre (VD),Dompierre (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5673,Hermenches,Hermenches,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5674,Lovatens,Lovatens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5675,Lucens,Lucens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5678,Moudon,Moudon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5680,Ogens,Ogens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5683,Prévonloup,Prévonloup,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5684,Rossenges,Rossenges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5688,Syens,Syens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5690,Villars-le-Comte,Villars-le-Comte,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5692,Vucherens,Vucherens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5693,Montanaire,Montanaire,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5701,Arnex-sur-Nyon,Arnex-sur-Nyon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5702,Arzier-Le Muids,Arzier-Le Muids,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5703,Bassins,Bassins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5704,Begnins,Begnins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5705,Bogis-Bossey,Bogis-Bossey,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5706,Borex,Borex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5707,Chavannes-de-Bogis,Chavannes-de-Bogis,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5708,Chavannes-des-Bois,Chavannes-des-Bois,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5709,Chéserex,Chéserex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5710,Coinsins,Coinsins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5711,Commugny,Commugny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5712,Coppet,Coppet,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5713,Crans (VD),Crans (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5714,Crassier,Crassier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5715,Duillier,Duillier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5716,Eysins,Eysins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5717,Founex,Founex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5718,Genolier,Genolier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5719,Gingins,Gingins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5720,Givrins,Givrins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5721,Gland,Gland,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5722,Grens,Grens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5723,Mies,Mies,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5724,Nyon,Nyon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5725,Prangins,Prangins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5726,La Rippe,La Rippe,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5727,Saint-Cergue,Saint-Cergue,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5728,Signy-Avenex,Signy-Avenex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5729,Tannay,Tannay,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5730,Trélex,Trélex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5731,Le Vaud,Le Vaud,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5732,Vich,Vich,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5741,L'Abergement,L'Abergement,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5742,Agiez,Agiez,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5743,Arnex-sur-Orbe,Arnex-sur-Orbe,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5744,Ballaigues,Ballaigues,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5745,Baulmes,Baulmes,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5746,Bavois,Bavois,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5747,Bofflens,Bofflens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5748,Bretonnières,Bretonnières,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5749,Chavornay,Chavornay,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5750,Les Clées,Les Clées,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5752,Croy,Croy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5754,Juriens,Juriens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5755,Lignerolle,Lignerolle,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5756,Montcherand,Montcherand,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5757,Orbe,Orbe,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5758,La Praz,La Praz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5759,Premier,Premier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5760,Rances,Rances,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5761,Romainmôtier-Envy,Romainmôtier-Envy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5762,Sergey,Sergey,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5763,Valeyres-sous-Rances,Valeyres-sous-Rances,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5764,Vallorbe,Vallorbe,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5765,Vaulion,Vaulion,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5766,Vuiteboeuf,Vuiteboeuf,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5785,Corcelles-le-Jorat,Corcelles-le-Jorat,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5790,Maracon,Maracon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5792,Montpreveyres,Montpreveyres,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5798,Ropraz,Ropraz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5799,Servion,Servion,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5803,Vulliens,Vulliens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5804,Jorat-Menthue,Jorat-Menthue,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5805,Oron,Oron,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5806,Jorat-Mézières,Jorat-Mézières,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5812,Champtauroz,Champtauroz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5813,Chevroux,Chevroux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5816,Corcelles-près-Payerne,Corcelles-près-Payerne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5817,Grandcour,Grandcour,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5819,Henniez,Henniez,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5821,Missy,Missy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5822,Payerne,Payerne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5827,Trey,Trey,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5828,Treytorrens (Payerne),Treytorrens (Payerne),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5830,Villarzel,Villarzel,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5831,Valbroye,Valbroye,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5841,Château-d'Oex,Château-d'Oex,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5842,Rossinière,Rossinière,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5843,Rougemont,Rougemont,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5851,Allaman,Allaman,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5852,Bursinel,Bursinel,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5853,Bursins,Bursins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5854,Burtigny,Burtigny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5855,Dully,Dully,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5856,Essertines-sur-Rolle,Essertines-sur-Rolle,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5857,Gilly,Gilly,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5858,Luins,Luins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5859,Mont-sur-Rolle,Mont-sur-Rolle,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5860,Perroy,Perroy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5861,Rolle,Rolle,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5862,Tartegnin,Tartegnin,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5863,Vinzel,Vinzel,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5871,L'Abbaye,L'Abbaye,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5872,Le Chenit,Le Chenit,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5873,Le Lieu,Le Lieu,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5882,Chardonne,Chardonne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5883,Corseaux,Corseaux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5884,Corsier-sur-Vevey,Corsier-sur-Vevey,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5885,Jongny,Jongny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5886,Montreux,Montreux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5889,La Tour-de-Peilz,La Tour-de-Peilz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5890,Vevey,Vevey,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5891,Veytaux,Veytaux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5892,Blonay - Saint-Légier,Blonay - Saint-Légier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5902,Belmont-sur-Yverdon,Belmont-sur-Yverdon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5903,Bioley-Magnoux,Bioley-Magnoux,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5904,Chamblon,Chamblon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5905,Champvent,Champvent,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5907,Chavannes-le-Chêne,Chavannes-le-Chêne,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5908,Chêne-Pâquier,Chêne-Pâquier,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5909,Cheseaux-Noréaz,Cheseaux-Noréaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5910,Cronay,Cronay,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5911,Cuarny,Cuarny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5912,Démoret,Démoret,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5913,Donneloye,Donneloye,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5914,Ependes (VD),Ependes (VD),VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5919,Mathod,Mathod,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5921,Molondin,Molondin,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5922,Montagny-près-Yverdon,Montagny-près-Yverdon,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5923,Oppens,Oppens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5924,Orges,Orges,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5925,Orzens,Orzens,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5926,Pomy,Pomy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5928,Rovray,Rovray,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5929,Suchy,Suchy,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5930,Suscévaz,Suscévaz,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5931,Treycovagnes,Treycovagnes,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5932,Ursins,Ursins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5933,Valeyres-sous-Montagny,Valeyres-sous-Montagny,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5934,Valeyres-sous-Ursins,Valeyres-sous-Ursins,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5935,Villars-Epeney,Villars-Epeney,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5937,Vugelles-La Mothe,Vugelles-La Mothe,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5938,Yverdon-les-Bains,Yverdon-les-Bains,VD,,https://www.lexfind.ch/tolv/261089/fr
+wr_0066,CH_CH5939,Yvonand,Yvonand,VD,,https://www.lexfind.ch/tolv/261089/fr

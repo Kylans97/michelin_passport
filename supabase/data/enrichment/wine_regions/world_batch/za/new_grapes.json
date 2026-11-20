@@ -1,0 +1,111 @@
+[
+ {
+  "name": "Semillon",
+  "aliases": [
+   "Sémillon"
+  ],
+  "colour": "white",
+  "summary": "A white grape that once covered most of the Cape's vineyards. It gives fuller bodied wines, and in South Africa it is closely tied to Franschhoek.",
+  "tastes": [
+   "Beeswax",
+   "Lemon",
+   "Peach"
+  ],
+  "aged_note": null,
+  "body": 4,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/the-industry/varieties-and-styles/white-wine-varieties/",
+    "https://winefolly.com/grapes/semillon/",
+    "https://www.decanterchina.com/en/travel/franschhoek-south-africa/2/",
+    "https://www.wineanorak.com/southafrica/franschhoek_1_introduction.htm"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/semillon/",
+    "https://www.decanterchina.com/en/travel/franschhoek-south-africa/2/"
+   ],
+   "body": [
+    "https://www.wosa.co.za/the-industry/varieties-and-styles/white-wine-varieties/",
+    "https://winefolly.com/grapes/semillon/"
+   ]
+  }
+ },
+ {
+  "name": "Cinsault",
+  "aliases": [
+   "Cinsaut",
+   "Hermitage"
+  ],
+  "colour": "red",
+  "summary": "A red grape making light, soft wines with bright red berry fruit. In South Africa it was long called Hermitage, and it is a parent of Pinotage.",
+  "tastes": [
+   "Red berries",
+   "Raspberry",
+   "Cherry"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": null,
+  "tannin": 2,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/cinsault/",
+    "https://vinepair.com/articles/southern-hemisphere-cinsault/",
+    "https://www.wosa.co.za/WOSA-News/Blogs/Cape-Chatter/How-Pinotage-got-its-name/",
+    "https://www.wosa.co.za/the-industry/varieties-and-styles/red-wine-varieties/",
+    "https://winefolly.com/grapes/pinotage/"
+   ],
+   "aliases": [
+    "https://www.wosa.co.za/WOSA-News/Blogs/Cape-Chatter/How-Pinotage-got-its-name/",
+    "https://www.guildsomm.com/public_content/features/articles/b/morgan_harris/posts/south-africa-how-i-learned-to-stop-worrying-and-love-the-bomb"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/cinsault/",
+    "https://vinepair.com/articles/southern-hemisphere-cinsault/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/cinsault/",
+    "https://vinepair.com/articles/southern-hemisphere-cinsault/"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/cinsault/",
+    "https://vinepair.com/articles/southern-hemisphere-cinsault/"
+   ]
+  }
+ },
+ {
+  "name": "Pinotage",
+  "aliases": [],
+  "colour": "red",
+  "summary": "South Africa's own red grape, a cross of Pinot Noir and Cinsault first made in 1925 by Abraham Perold. Ripe red and black fruit, often with a smoky edge.",
+  "tastes": [
+   "Red fruit",
+   "Blackberry",
+   "Smoke"
+  ],
+  "aged_note": "Gains complexity with age.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/the-industry/varieties-and-styles/red-wine-varieties/",
+    "https://winefolly.com/grapes/pinotage/",
+    "https://www.winespectator.com/articles/what-is-the-pinotage-grape-5137"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/pinotage/",
+    "https://www.winespectator.com/articles/what-is-the-pinotage-grape-5137"
+   ],
+   "aged_note": [
+    "https://www.wosa.co.za/the-industry/varieties-and-styles/red-wine-varieties/",
+    "https://winefolly.com/grapes/pinotage/"
+   ]
+  }
+ }
+]

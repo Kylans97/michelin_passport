@@ -1,0 +1,470 @@
+[
+ {
+  "slug": "marlborough",
+  "name": "Marlborough",
+  "aliases": [],
+  "summary": "New Zealand's largest wine region, with a sunny, dry maritime climate and soils from old river deposits to clay. Sauvignon Blanc is pungent and aromatic, with tropical fruit and green herbs; Pinot Noir does best on heavier soils.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry a New Zealand GI only if at least 85% of it comes from grapes harvested in that GI and any remainder from grapes harvested in New Zealand (Geographical Indications (Wine and Spirits) Registration Act 2006, sections 21 to 26).",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "Pungent and aromatic, with tropical fruit and green herb notes."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Marlborough",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1004. No smaller GI is registered inside it."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.nzwine.com/en/regions/marlborough/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1830/NZGI1004-Marlborough-applicants-evidence-3.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "grapes": [
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf",
+    "https://www.iponz.govt.nz/assets/GIRegister/1830/NZGI1004-Marlborough-examiners-check-sheet.pdf"
+   ],
+   "grapes.Sauvignon Blanc.local_note": [
+    "https://www.nzwine.com/en/regions/marlborough/",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "appellations": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/marlborough"
+   ],
+   "label_note": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/using-gis/"
+   ]
+  }
+ },
+ {
+  "slug": "hawkes-bay",
+  "name": "Hawke's Bay",
+  "aliases": [
+   "Hawkes Bay"
+  ],
+  "summary": "On the North Island's east coast, with a temperate, maritime climate and free-draining alluvial plains and gravels, the Gimblett Gravels the best known. Its strengths are Chardonnay, Bordeaux-style red blends and aromatic, elegant Syrah.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry a New Zealand GI only if at least 85% of it comes from grapes harvested in that GI and any remainder from grapes harvested in New Zealand (Geographical Indications (Wine and Spirits) Registration Act 2006, sections 21 to 26).",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": "Aromatic and elegant."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Hawke's Bay",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1005. Also registered as Hawkes Bay."
+   },
+   {
+    "name": "Central Hawke's Bay",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1020. Lies wholly inside the Hawke's Bay GI; also registered as Central Hawkes Bay."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.nzwine.com/en/regions/hawkesbay/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1833/NZGI1005-Hawkes-Bay-applicants-evidence.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "grapes": [
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "grapes.Syrah.local_note": [
+    "https://www.nzwine.com/en/regions/hawkesbay/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "appellations": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/hawkes-bay",
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/central-hawkes-bay"
+   ],
+   "label_note": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/using-gis/"
+   ]
+  }
+ },
+ {
+  "slug": "central-otago",
+  "name": "Central Otago",
+  "aliases": [],
+  "summary": "Inland in the far south of the South Island, with a dry climate of hot summer days and cold nights, and stony, free-draining soils. Pinot Noir fills about four fifths of the vineyards and gives intense wines with lush fruit.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry a New Zealand GI only if at least 85% of it comes from grapes harvested in that GI and any remainder from grapes harvested in New Zealand (Geographical Indications (Wine and Spirits) Registration Act 2006, sections 21 to 26).",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": "About four fifths of the vineyard area."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Central Otago",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1007."
+   },
+   {
+    "name": "Bannockburn",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1028. Lies wholly inside the Central Otago GI."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.nzwine.com/en/regions/centralotago/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1839/NZGI1007-Central-Otago-examiners-check-sheet.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "grapes": [
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "grapes.Pinot Noir.local_note": [
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA",
+    "https://www.iponz.govt.nz/assets/GIRegister/1839/NZGI1007-Central-Otago-examiners-check-sheet.pdf",
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "appellations": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/central-otago",
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/bannockburn"
+   ],
+   "label_note": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/using-gis/"
+   ]
+  }
+ },
+ {
+  "slug": "north-canterbury",
+  "name": "North Canterbury",
+  "aliases": [],
+  "summary": "Spread north and south of Christchurch, on river gravels and limestone clays, with the Waipara Valley warmer than the rest. It is known for Riesling and for Pinot Noir from its clay and limestone soils.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry a New Zealand GI only if at least 85% of it comes from grapes harvested in that GI and any remainder from grapes harvested in New Zealand (Geographical Indications (Wine and Spirits) Registration Act 2006, sections 21 to 26).",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Close to half of New Zealand's Riesling is planted here."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "North Canterbury",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1016. Runs south to the Rakaia River."
+   },
+   {
+    "name": "Waipara Valley",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1010. Lies wholly inside the North Canterbury GI; also registered as Waipara."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.nzwine.com/en/regions/northcanterbury/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1866/Examiners-check-sheet.pdf",
+    "https://www.iponz.govt.nz/assets/GIRegister/1866/Applicants-Evidence.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "grapes": [
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "grapes.Riesling.local_note": [
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA",
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "appellations": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/north-canterbury",
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/waipara-valley",
+    "https://www.iponz.govt.nz/assets/GIRegister/1866/Examiners-check-sheet.pdf"
+   ],
+   "label_note": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/using-gis/"
+   ]
+  }
+ },
+ {
+  "slug": "gisborne",
+  "name": "Gisborne",
+  "aliases": [],
+  "summary": "One of New Zealand's sunniest and warmest wine regions, with soils that change from one subregion to the next. It is best known for Chardonnay with rich, generous fruit, grown alongside Sauvignon Blanc and Pinot Gris.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry a New Zealand GI only if at least 85% of it comes from grapes harvested in that GI and any remainder from grapes harvested in New Zealand (Geographical Indications (Wine and Spirits) Registration Act 2006, sections 21 to 26).",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": "Rich and generously fruited."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Gisborne",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1008. No smaller GI is registered inside it."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.nzwine.com/en/regions/gisborne/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1842/NZGI1008-Gisborne-examiners-check-sheet.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "grapes": [
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "grapes.Chardonnay.local_note": [
+    "https://www.nzwine.com/en/regions/gisborne/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1842/NZGI1008-Gisborne-examiners-check-sheet.pdf"
+   ],
+   "appellations": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/gisborne"
+   ],
+   "label_note": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/using-gis/"
+   ]
+  }
+ },
+ {
+  "slug": "wairarapa",
+  "name": "Wairarapa",
+  "aliases": [],
+  "summary": "Close to Wellington, with a cool, sunny climate, wide swings between day and night and free-draining river terraces. Pinot Noir and Sauvignon Blanc lead, and Martinborough made its name with Pinot Noir.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry a New Zealand GI only if at least 85% of it comes from grapes harvested in that GI and any remainder from grapes harvested in New Zealand (Geographical Indications (Wine and Spirits) Registration Act 2006, sections 21 to 26).",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Martinborough's reputation rests on it."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Wairarapa",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1012."
+   },
+   {
+    "name": "Martinborough",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1011. Lies wholly inside the Wairarapa GI."
+   },
+   {
+    "name": "Gladstone",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1014. Lies wholly inside the Wairarapa GI."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.nzwine.com/en/regions/wairarapa/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1851/NZGI1012-WAIRARAPA-examiners-check-sheet.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA",
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "grapes": [
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/"
+   ],
+   "grapes.Pinot Noir.local_note": [
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA"
+   ],
+   "appellations": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/wairarapa",
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/martinborough",
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/gladstone"
+   ],
+   "label_note": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/using-gis/"
+   ]
+  }
+ },
+ {
+  "slug": "nelson",
+  "name": "Nelson",
+  "aliases": [],
+  "summary": "A sheltered region with high sunshine and a moderating coastal climate. Sauvignon Blanc leads; the stony Waimea Plains and the clay soils of the Moutere Hills, which give richer, more textured wines, are its two main areas.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry a New Zealand GI only if at least 85% of it comes from grapes harvested in that GI and any remainder from grapes harvested in New Zealand (Geographical Indications (Wine and Spirits) Registration Act 2006, sections 21 to 26).",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Nelson",
+    "colour": "mixed",
+    "note": "Registered GI, NZGI 1006. No smaller GI is registered inside it."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.nzwine.com/en/regions/nelson/",
+    "https://www.iponz.govt.nz/assets/GIRegister/1836/Examiners-check-sheet.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/",
+    "https://www.nzherald.co.nz/viva/food-drink/an-expert-guide-to-new-zealands-wine-regions/BZSNU75OGNC33L3Y7J4F4BCZHA",
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf"
+   ],
+   "grapes": [
+    "https://www.nzwine.com/media/5fzng52v/vineyard-report-2026-final.pdf",
+    "https://wineanorak.com/2025/10/05/a-quick-guide-to-new-zealand-wine/"
+   ],
+   "appellations": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/register/nelson"
+   ],
+   "label_note": [
+    "https://www.iponz.govt.nz/get-ip/geographical-indications/using-gis/"
+   ]
+  }
+ }
+]

@@ -1,0 +1,525 @@
+[
+  {
+    "slug": "valais",
+    "name": "Valais",
+    "aliases": [
+      "Wallis",
+      "AOC Valais"
+    ],
+    "summary": "Switzerland's largest wine region, on steep and sunny slopes. Pinot Noir and Chasselas, sold as Fendant, lead the plantings, beside local grapes such as Petite Arvine and Cornalin.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": "Game with Humagne Rouge.",
+    "label_note": "\"AOC Valais\" must appear in full on the main label. Grand Cru may only be used with the name of its commune or region; \"Grand Cru Valais\" is not allowed.",
+    "grapes": [
+      {
+        "name": "Pinot Noir",
+        "local_note": "The base of Dôle, alone or blended with Gamay."
+      },
+      {
+        "name": "Chasselas",
+        "local_note": "Sold as Fendant."
+      },
+      {
+        "name": "Gamay",
+        "local_note": null
+      },
+      {
+        "name": "Petite Arvine",
+        "local_note": null
+      },
+      {
+        "name": "Syrah",
+        "local_note": null
+      },
+      {
+        "name": "Cornalin",
+        "local_note": "Also called Rouge du Pays."
+      },
+      {
+        "name": "Humagne Rouge",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Valais",
+        "colour": "red, white, rosé",
+        "note": "Cantonal AOC for grapes harvested and vinified in Valais."
+      },
+      {
+        "name": "Grand Cru",
+        "colour": "red, white",
+        "note": "Communal or regional designation for AOC Valais wines from listed grapes, set by each commune's own regulation."
+      },
+      {
+        "name": "Vin des Glaciers",
+        "colour": "white",
+        "note": "AOC white from the Sierre district, aged at least fifteen years in larch casks in the Val d'Anniviers."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.newsd.admin.ch/newsd/message/attachments/91825.pdf",
+        "https://www.swisswine.com/en/swiss-wine-regions/valais-wine-region",
+        "https://valais.ch/en/taste/valais-specialties/wine",
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142"
+      ],
+      "pairing": [
+        "https://swisswinevalais.ch/en/discover/grape-varieties/humagne-rouge/",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/humagne-rouge-en"
+      ],
+      "label_note": [
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142"
+      ],
+      "grapes": [
+        "https://www.swisswine.com/en/swiss-wine-regions/valais-wine-region",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142",
+        "https://valais.ch/en/taste/valais-specialties/wine"
+      ],
+      "appellations": [
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142"
+      ]
+    }
+  },
+  {
+    "slug": "vaud",
+    "name": "Vaud",
+    "aliases": [
+      "Waadt",
+      "AOC Vaud"
+    ],
+    "summary": "Switzerland's second largest wine canton and the only one where white grapes lead. Chasselas covers more than half the vineyard, across regions such as Chablais, Lavaux and La Côte.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": "Cheese fondue with Chasselas.",
+    "label_note": "A Vaud AOC white with no grape named must be at least 90% Chasselas; a single named grape must make up at least 85% of the wine.",
+    "grapes": [
+      {
+        "name": "Chasselas",
+        "local_note": "May be sold under the traditional name Dorin."
+      },
+      {
+        "name": "Pinot Noir",
+        "local_note": null
+      },
+      {
+        "name": "Gamay",
+        "local_note": null
+      },
+      {
+        "name": "Gamaret",
+        "local_note": null
+      },
+      {
+        "name": "Chardonnay",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Vaud",
+        "colour": "red, white, rosé",
+        "note": "Cantonal AOC for grapes harvested in the canton."
+      },
+      {
+        "name": "Chablais",
+        "colour": "white, red",
+        "note": "Regional AOC: the wine communes of the Aigle district."
+      },
+      {
+        "name": "Lavaux",
+        "colour": "white, red",
+        "note": "Regional AOC: the wine communes of the Lavaux-Oron and Riviera-Pays-d'Enhaut districts plus Lausanne."
+      },
+      {
+        "name": "La Côte",
+        "colour": "white, red",
+        "note": "Regional AOC: the wine communes of the Ouest lausannois, Nyon and Morges districts, with four exceptions."
+      },
+      {
+        "name": "Côtes-de-l'Orbe",
+        "colour": "white, red",
+        "note": "Regional AOC of twenty listed communes."
+      },
+      {
+        "name": "Bonvillars",
+        "colour": "white, red",
+        "note": "Regional AOC of eight listed communes."
+      },
+      {
+        "name": "Vully",
+        "colour": "white, red",
+        "note": "Regional AOC shared with Fribourg (Vully-les-Lacs and Mont-Vully)."
+      },
+      {
+        "name": "Dézaley Grand cru",
+        "colour": "white, red",
+        "note": "Delimited part of Puidoux, inside Lavaux."
+      },
+      {
+        "name": "Dézaley-Marsens Grand cru",
+        "colour": "white, red",
+        "note": "Part of Puidoux north of the Route de la Corniche."
+      },
+      {
+        "name": "Calamin Grand cru",
+        "colour": "white, red",
+        "note": "Part of the former commune of Epesses south of the Route de la Corniche."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.newsd.admin.ch/newsd/message/attachments/91825.pdf",
+        "https://www.swisswine.com/en/swiss-wine-regions/vaud-wine-region",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://www.lexfind.ch/tolv/261089/fr"
+      ],
+      "pairing": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/chasselas-en",
+        "https://winefolly.com/grapes/chasselas/"
+      ],
+      "label_note": [
+        "https://www.lexfind.ch/tolv/261089/fr"
+      ],
+      "grapes": [
+        "https://www.swisswine.com/en/swiss-wine-regions/vaud-wine-region",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://www.lexfind.ch/tolv/261089/fr"
+      ],
+      "appellations": [
+        "https://www.lexfind.ch/tolv/261089/fr"
+      ]
+    }
+  },
+  {
+    "slug": "lavaux",
+    "name": "Lavaux",
+    "aliases": [
+      "AOC Lavaux"
+    ],
+    "summary": "A regional appellation within Vaud covering the terraced vineyards east of Lausanne, listed by UNESCO in 2007. It contains the Dézaley and Calamin Grand Cru appellations.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "Wines from Dézaley or Calamin may also use the Lavaux appellation. Blending with other wines (coupage) is not allowed for AOC Lavaux.",
+    "grapes": [
+      {
+        "name": "Chasselas",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Lavaux",
+        "colour": "white, red",
+        "note": "Regional AOC within Vaud."
+      },
+      {
+        "name": "Dézaley Grand cru",
+        "colour": "white, red",
+        "note": "Delimited part of Puidoux; may carry only the commune name Puidoux."
+      },
+      {
+        "name": "Dézaley-Marsens Grand cru",
+        "colour": "white, red",
+        "note": "Part of Puidoux north of the Route de la Corniche."
+      },
+      {
+        "name": "Calamin Grand cru",
+        "colour": "white, red",
+        "note": "Part of the former commune of Epesses; may carry only the name Epesses."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.lexfind.ch/tolv/261089/fr",
+        "https://www.swisswine.com/en/swiss-wine-regions/vaud-wine-region",
+        "https://www.lavaux-unesco.ch/storage/app/media/1-pg-principal-vdef.pdf"
+      ],
+      "label_note": [
+        "https://www.lexfind.ch/tolv/261089/fr"
+      ],
+      "grapes": [
+        "https://www.swisswine.com/en/swiss-wine-regions/vaud-wine-region"
+      ],
+      "appellations": [
+        "https://www.lexfind.ch/tolv/261089/fr"
+      ]
+    }
+  },
+  {
+    "slug": "geneve",
+    "name": "Genève",
+    "aliases": [
+      "Geneva",
+      "Genf",
+      "AOC Genève"
+    ],
+    "summary": "Vineyards around the city that continue over the border into France. Gamay is the most planted grape, just ahead of Chasselas, with Pinot Noir, Gamaret and Chardonnay next.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "A commune or hamlet name may name an AOC Premier Cru only with an added term such as \"Côte de\" or \"Coteau de\". \"Perlan\" may appear on a still Chasselas.",
+    "grapes": [
+      {
+        "name": "Gamay",
+        "local_note": null
+      },
+      {
+        "name": "Chasselas",
+        "local_note": "May be labelled Perlan."
+      },
+      {
+        "name": "Pinot Noir",
+        "local_note": null
+      },
+      {
+        "name": "Gamaret",
+        "local_note": null
+      },
+      {
+        "name": "Chardonnay",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Genève",
+        "colour": "red, white, rosé",
+        "note": "Cantonal AOC; includes Challex, Ferney-Voltaire and parts of five other French communes."
+      },
+      {
+        "name": "Premier Cru",
+        "colour": "red, white",
+        "note": "Category of AOC for plots delimited on cantonal plans; the individual names are not listed in the regulation."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://silgeneve.ch/legis/data/rsg_m2_50p05.htm",
+        "https://www.ge.ch/document/5811/telecharger",
+        "https://www.swisswine.com/en/swiss-wine-regions/geneva-wine-region"
+      ],
+      "label_note": [
+        "https://silgeneve.ch/legis/data/rsg_m2_50p05.htm"
+      ],
+      "grapes": [
+        "https://www.ge.ch/document/5811/telecharger",
+        "https://www.swisswine.com/en/swiss-wine-regions/geneva-wine-region"
+      ],
+      "appellations": [
+        "https://silgeneve.ch/legis/data/rsg_m2_50p05.htm"
+      ]
+    }
+  },
+  {
+    "slug": "ticino",
+    "name": "Ticino",
+    "aliases": [
+      "Tessin",
+      "Ticino DOC"
+    ],
+    "summary": "Switzerland's wine region south of the Alps. Merlot covers about three quarters of the vineyard, and reds dominate; Merlot is also made as a white, known as Merlot bianco.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": 2,
+    "pairing": "Red meat and mature cheeses.",
+    "label_note": "A grape named on a DOC Ticino label must make up at least 90% of the wine; blends are sold as Rosso, Bianco or Rosato del Ticino.",
+    "grapes": [
+      {
+        "name": "Merlot",
+        "local_note": "Also vinified as a white, Merlot bianco."
+      },
+      {
+        "name": "Chardonnay",
+        "local_note": null
+      },
+      {
+        "name": "Sauvignon Blanc",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Ticino",
+        "colour": "red, white, rosé",
+        "note": "Cantonal DOC; grapes from Ticino and the Mesolcina."
+      },
+      {
+        "name": "Rosso del Ticino",
+        "colour": "red",
+        "note": "DOC term for a blend of red grapes."
+      },
+      {
+        "name": "Bianco del Ticino",
+        "colour": "white",
+        "note": "DOC term for a blend of white grapes."
+      },
+      {
+        "name": "Rosato del Ticino",
+        "colour": "rosé",
+        "note": "DOC term for a rosé blend."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.swisswine.com/en/swiss-wine-regions/ticino-wine-region",
+        "https://www.myswitzerland.com/en-ch/experiences/summer-autumn/oenotourism/wine-region-ticino/",
+        "https://www.newsd.admin.ch/newsd/message/attachments/91825.pdf",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/merlot-en",
+        "https://www4.ti.ch/fileadmin/DFE/DE-SA/viticoltura/direttive_viticoltura.pdf"
+      ],
+      "red_tannin": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/merlot-en",
+        "https://ticinowine.ch/vini-rossi/"
+      ],
+      "pairing": [
+        "https://ticinowine.ch/vini-rossi/",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/merlot-en"
+      ],
+      "label_note": [
+        "https://www4.ti.ch/fileadmin/DFE/DE-SA/viticoltura/direttive_viticoltura.pdf"
+      ],
+      "grapes": [
+        "https://www.swisswine.com/en/swiss-wine-regions/ticino-wine-region",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/merlot-en",
+        "https://www4.ti.ch/fileadmin/DFE/DE-SA/viticoltura/direttive_viticoltura.pdf"
+      ],
+      "appellations": [
+        "https://www4.ti.ch/fileadmin/DFE/DE-SA/viticoltura/direttive_viticoltura.pdf"
+      ]
+    }
+  },
+  {
+    "slug": "neuchatel",
+    "name": "Neuchâtel",
+    "aliases": [
+      "Neuenburg",
+      "AOC Neuchâtel"
+    ],
+    "summary": "A single cantonal AOC around Lake Neuchâtel. Pinot Noir and Chasselas are the main grapes, and the Non filtré, an unfiltered young Chasselas, is a local speciality.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "Pinot Noir must contain at least 95% Pinot Noir. Non filtré is an unfiltered Chasselas released no earlier than the third Wednesday of January after harvest.",
+    "grapes": [
+      {
+        "name": "Pinot Noir",
+        "local_note": null
+      },
+      {
+        "name": "Chasselas",
+        "local_note": "Also bottled unfiltered as Non filtré."
+      },
+      {
+        "name": "Pinot Gris",
+        "local_note": null
+      },
+      {
+        "name": "Chardonnay",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Neuchâtel",
+        "colour": "red, white, rosé",
+        "note": "Cantonal AOC bounded by the canton's political limits."
+      },
+      {
+        "name": "Grand Cru",
+        "colour": "red, white",
+        "note": "Regulated by the Neuchâtel wine interprofession; only still Chardonnay, Chasselas and red Pinot Noir."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://web.archive.org/web/2020/https://www.ne.ch/legislation-jurisprudence/pubfo/ArrRegCE/Documents/2016/FO25_04_ACE_DDTE_A_Vins_NE_AOC.pdf",
+        "https://www.swisswine.com/en/swiss-wine-regions/three-lakes-wine-region",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf"
+      ],
+      "label_note": [
+        "https://web.archive.org/web/2020/https://www.ne.ch/legislation-jurisprudence/pubfo/ArrRegCE/Documents/2016/FO25_04_ACE_DDTE_A_Vins_NE_AOC.pdf"
+      ],
+      "grapes": [
+        "https://www.swisswine.com/en/swiss-wine-regions/three-lakes-wine-region",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf"
+      ],
+      "appellations": [
+        "https://web.archive.org/web/2020/https://www.ne.ch/legislation-jurisprudence/pubfo/ArrRegCE/Documents/2016/FO25_04_ACE_DDTE_A_Vins_NE_AOC.pdf"
+      ]
+    }
+  },
+  {
+    "slug": "graubuenden",
+    "name": "Graubünden",
+    "aliases": [
+      "Grisons",
+      "Grigioni",
+      "AOC Graubünden"
+    ],
+    "summary": "Vineyards along the Rhine from Bonaduz to Fläsch, including the Bündner Herrschaft villages. Pinot Noir, called Blauburgunder here, covers about two thirds of the area, in a mild climate shaped by the foehn.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "A commune name may be added when at least 60% of the wine comes from that commune; a vineyard site name requires 100%.",
+    "grapes": [
+      {
+        "name": "Pinot Noir",
+        "local_note": "Called Blauburgunder."
+      },
+      {
+        "name": "Müller-Thurgau",
+        "local_note": null
+      },
+      {
+        "name": "Chardonnay",
+        "local_note": null
+      },
+      {
+        "name": "Pinot Gris",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Graubünden",
+        "colour": "red, white, rosé",
+        "note": "Cantonal AOC (also KUB Graubünden, DOC Grigioni)."
+      },
+      {
+        "name": "Graubünden Misox",
+        "colour": "red, white, rosé",
+        "note": "Regional AOC for wines from the Misox (Mesolcina)."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.swisswine.com/en/swiss-wine-regions/german-speaking-switzerland-wine-region/graubuenden-en",
+        "https://www.graubuendenviva.ch/sites/graubuenden_viva/files/2025-09/Factsheet%20Blauburgunder.pdf",
+        "https://www.gr-lex.gr.ch/app/de/texts_of_law/917.400"
+      ],
+      "label_note": [
+        "https://www.gr-lex.gr.ch/app/de/texts_of_law/917.400"
+      ],
+      "grapes": [
+        "https://www.swisswine.com/en/swiss-wine-regions/german-speaking-switzerland-wine-region/graubuenden-en",
+        "https://www.graubuendenviva.ch/sites/graubuenden_viva/files/2025-09/Factsheet%20Blauburgunder.pdf",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf"
+      ],
+      "appellations": [
+        "https://www.gr-lex.gr.ch/app/de/texts_of_law/917.400"
+      ]
+    }
+  }
+]

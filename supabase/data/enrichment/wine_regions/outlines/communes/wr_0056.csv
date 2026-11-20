@@ -1,0 +1,6 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0056,NZ_TA_058_LAND_EXCL_MB,North Canterbury,Hurunui District (land) without 5 meshblocks,Canterbury Region,approximation: whole district except 5 meshblocks (~325 km2) that the Marlborough GI covers,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/ ; https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2025/FeatureServer/0
+wr_0056,NZ_TA_059_LAND,North Canterbury,Waimakariri District (land),Canterbury Region,,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/
+wr_0056,NZ_TA_060_LAND,North Canterbury,Christchurch City (land),Canterbury Region,approximation: Lyttelton and Akaroa harbour waters coded Inlet are excluded but lie inside the registered GI,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/
+wr_0056,NZ_TA_062_LAND,North Canterbury,Selwyn District (land),Canterbury Region,,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/
+wr_0056,NZ_MB_2754200,North Canterbury,Meshblock 2754200,Canterbury Region,"approximation: one Ashburton District meshblock (~277 km2), wholly inside the registered GI",https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2025/FeatureServer/0

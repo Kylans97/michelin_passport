@@ -1,0 +1,379 @@
+[
+ {
+  "slug": "barossa_valley",
+  "name": "Barossa Valley",
+  "aliases": [],
+  "summary": "A warm valley with a Mediterranean climate of cool, wet winters and warm, dry summers, on soils from clay loam to sand. It is known for full bodied, ripe Shiraz, some from very old vines.",
+  "red_body": 5,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Barossa Valley as its only GI must contain at least 85% wine from grapes grown in the Barossa Valley GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Shiraz", "local_note": "Some vineyards are among the oldest Shiraz plantings in the world."},
+   {"name": "Cabernet Sauvignon", "local_note": null},
+   {"name": "Grenache", "local_note": null},
+   {"name": "Mourvèdre", "local_note": "Known locally as Mataro."},
+   {"name": "Merlot", "local_note": null},
+   {"name": "Semillon", "local_note": null},
+   {"name": "Chardonnay", "local_note": null}
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/south-australia/barossa-valley-wine-region",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/barossa",
+    "https://winecompanion.com.au/wineries/south-australia/barossa-valley",
+    "https://winefolly.com/australia/barossa-valley-and-the-wines-of-south-australia"
+   ],
+   "red_body": [
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/barossa",
+    "https://winecompanion.com.au/wineries/south-australia/barossa-valley",
+    "https://winefolly.com/australia/barossa-valley-and-the-wines-of-south-australia"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://riverlandwine.com.au/content/uploads/2026/08/sa_full_report_2026.pdf",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/barossa",
+    "https://winecompanion.com.au/wineries/south-australia/barossa-valley",
+    "https://winefolly.com/australia/barossa-valley-and-the-wines-of-south-australia"
+   ],
+   "appellations": ["https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"]
+  }
+ },
+ {
+  "slug": "mclaren_vale",
+  "name": "McLaren Vale",
+  "aliases": [],
+  "summary": "A warm Mediterranean region on the coast south of Adelaide, cooled by sea breezes and set on very varied soils. Its Shiraz is rich and medium to full bodied, often with chocolate notes, and old vine Grenache grows on sand.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with McLaren Vale as its only GI must contain at least 85% wine from grapes grown in the McLaren Vale GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Shiraz", "local_note": "Often shows dark chocolate and blue fruit notes."},
+   {"name": "Cabernet Sauvignon", "local_note": null},
+   {"name": "Grenache", "local_note": "Prized from old vines on sandy soils."},
+   {"name": "Chardonnay", "local_note": "The most planted white grape."},
+   {"name": "Merlot", "local_note": null}
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/south-australia/mclaren-vale-wine-region",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/mclaren-vale",
+    "https://mclarenvalewine.au/wine-region/climate",
+    "https://mclarenvalewine.au/wine/key-varieties",
+    "https://winecompanion.com.au/wineries/south-australia/mclaren-vale",
+    "https://winecompanion.com.au/resources/varietals/shiraz"
+   ],
+   "red_body": [
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/mclaren-vale",
+    "https://winecompanion.com.au/resources/varietals/shiraz"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://riverlandwine.com.au/content/uploads/2026/08/sa_full_report_2026.pdf",
+    "https://mclarenvalewine.au/wine/key-varieties",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/mclaren-vale",
+    "https://winecompanion.com.au/wineries/south-australia/mclaren-vale",
+    "https://winecompanion.com.au/resources/varietals/shiraz"
+   ],
+   "appellations": ["https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"]
+  }
+ },
+ {
+  "slug": "clare_valley",
+  "name": "Clare Valley",
+  "aliases": [],
+  "summary": "A valley in the northern Mount Lofty Ranges where warm days give way to cold nights and afternoon breezes, on varied soils that include slate. It is best known for dry, lime scented Riesling, alongside Shiraz and Cabernet Sauvignon.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Dry Riesling with shellfish, seafood and Asian dishes.",
+  "label_note": "A wine labelled with Clare Valley as its only GI must contain at least 85% wine from grapes grown in the Clare Valley GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Riesling", "local_note": "Made dry, with lime and citrus notes."},
+   {"name": "Shiraz", "local_note": null},
+   {"name": "Cabernet Sauvignon", "local_note": null}
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/south-australia/clare-valley-wine-region",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/clare-valley",
+    "https://winecompanion.com.au/wineries/south-australia/clare-valley",
+    "https://matchingfoodandwine.com/news/pairings/top-food-pairings-with-clare-valley-and-eden-valley-riesling/",
+    "https://winefolly.com/australia/barossa-valley-and-the-wines-of-south-australia"
+   ],
+   "pairing": [
+    "https://winecompanion.com.au/resources/food-and-wine/riesling-pairing",
+    "https://matchingfoodandwine.com/news/pairings/top-food-pairings-with-clare-valley-and-eden-valley-riesling/"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://riverlandwine.com.au/content/uploads/2026/08/sa_full_report_2026.pdf",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/clare-valley",
+    "https://winecompanion.com.au/wineries/south-australia/clare-valley",
+    "https://matchingfoodandwine.com/news/pairings/top-food-pairings-with-clare-valley-and-eden-valley-riesling/"
+   ],
+   "appellations": ["https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"]
+  }
+ },
+ {
+  "slug": "coonawarra",
+  "name": "Coonawarra",
+  "aliases": [],
+  "summary": "A cool region with a maritime influence in the south east of South Australia, known for a narrow strip of red terra rossa soil over limestone. Its Cabernet Sauvignon shows blackcurrant and plum fruit, and the best wines age well.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Coonawarra as its only GI must contain at least 85% wine from grapes grown in the Coonawarra GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Cabernet Sauvignon", "local_note": "The region's main grape, with blackcurrant and plum fruit."},
+   {"name": "Shiraz", "local_note": "Lighter than Shiraz from warmer South Australian regions."},
+   {"name": "Merlot", "local_note": null},
+   {"name": "Chardonnay", "local_note": null}
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/coonawarra",
+    "https://www.australianwine.com/our-places/south-australia/coonawarra-wine-region",
+    "https://coonawarra.org/our-landscape/",
+    "https://coonawarra.org/discover-coonawarra/",
+    "https://winecompanion.com.au/wineries/south-australia/coonawarra"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://vinehealth.com.au/wp-content/uploads/Coonawarra-report-2024.pdf",
+    "https://www.australianwine.com/our-places/south-australia/coonawarra-wine-region",
+    "https://coonawarra.org/discover-coonawarra/",
+    "https://winecompanion.com.au/wineries/south-australia/coonawarra"
+   ],
+   "appellations": ["https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"]
+  }
+ },
+ {
+  "slug": "adelaide_hills",
+  "name": "Adelaide Hills",
+  "aliases": [],
+  "summary": "A cool, elevated region in the Mount Lofty Ranges east of Adelaide, mostly on loamy sands and loams over clay. Grapes keep good natural acidity, giving fresh Sauvignon Blanc, Chardonnay, Pinot Noir and sparkling wine.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Adelaide Hills as its only GI must contain at least 85% wine from grapes grown in the Adelaide Hills GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Sauvignon Blanc", "local_note": null},
+   {"name": "Chardonnay", "local_note": null},
+   {"name": "Pinot Noir", "local_note": null},
+   {"name": "Shiraz", "local_note": "A cool climate style."},
+   {"name": "Pinot Gris", "local_note": null}
+  ],
+  "appellations": [
+   {"name": "Lenswood", "colour": "mixed", "note": "A cool subregion known for Chardonnay and Pinot Noir."},
+   {"name": "Piccadilly Valley", "colour": "mixed", "note": "A cool, high and wet subregion known for Chardonnay and Pinot Noir."}
+  ],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/south-australia/adelaide-hills-wine-region",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/adelaide-hills",
+    "https://www.adelaidehillswine.com.au/region/",
+    "https://www.adelaidehillswine.com.au/wine/climate-and-soils/",
+    "https://winecompanion.com.au/wineries/south-australia/adelaide-hills"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://vinehealth.com.au/wp-content/uploads/Adelaide-Hills-report-2024.pdf",
+    "https://www.australianwine.com/our-places/south-australia/adelaide-hills-wine-region",
+    "https://www.adelaidehillswine.com.au/region/"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications",
+    "https://winecompanion.com.au/articles/from-the-tasting-team/james-halliday-on-the-adelaide-hills-subregional-gis",
+    "https://www.indailysa.com.au/inreview/archive/2021/04/28/exploring-the-adelaide-hills-valley-of-chardonnay"
+   ]
+  }
+ },
+ {
+  "slug": "hunter",
+  "name": "Hunter",
+  "aliases": ["Hunter Valley"],
+  "summary": "A warm, humid region where cloud cover and sea breezes temper the heat. Its Semillon, grown on sandy alluvial flats, is picked early, low in alcohol and unoaked, and can age for decades; its Shiraz is medium bodied.",
+  "red_body": 3,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Young Semillon with seafood such as prawns, crab and white fish.",
+  "label_note": "A wine labelled with Hunter as its only GI must contain at least 85% wine from grapes grown in the Hunter GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Semillon", "local_note": "Picked early, low in alcohol and unoaked; can age for decades."},
+   {"name": "Chardonnay", "local_note": "Stone fruit and peach flavours."},
+   {"name": "Shiraz", "local_note": "Medium bodied, turning earthy with age."}
+  ],
+  "appellations": [
+   {"name": "Pokolbin", "colour": "mixed", "note": "Official subregion of the Hunter, entered in the Register on 29 July 2010."},
+   {"name": "Broke Fordwich", "colour": "mixed", "note": "Official subregion of the Hunter, entered in the Register on 2 September 1997."},
+   {"name": "Upper Hunter Valley", "colour": "mixed", "note": "Official subregion of the Hunter, entered in the Register on 29 July 2010."}
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/hunter-valley",
+    "https://www.australianwine.com/our-places/new-south-wales/hunter-valley-wine-region",
+    "https://www.winecountry.com.au/blog/the-hunter-valley-guide-to-semillon",
+    "https://winecountry.com.au/wine/winestyles",
+    "https://winecompanion.com.au/resources/varietals/semillon",
+    "https://winefolly.com/grapes/semillon/"
+   ],
+   "red_body": [
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/hunter-valley",
+    "https://winecountry.com.au/wine/winestyles"
+   ],
+   "pairing": [
+    "https://winecountry.com.au/wine/winestyles",
+    "https://www.nswwine.com.au/hunter-valley",
+    "https://winecompanion.com.au/resources/varietals/semillon"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://www.australianwine.com/our-places/new-south-wales/hunter-valley-wine-region",
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/hunter-valley",
+    "https://winecountry.com.au/wine/winestyles",
+    "https://www.winecountry.com.au/blog/the-hunter-valley-guide-to-semillon",
+    "https://winefolly.com/grapes/semillon/",
+    "https://en.wikipedia.org/wiki/Hunter_Valley_wine"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications",
+    "https://www.wineaustralia.com/labelling/geographical-indicators/labelling-gi-pokolbin",
+    "https://www.wineaustralia.com/labelling/geographical-indicators/labelling-gi-broke-fordwich",
+    "https://www.wineaustralia.com/labelling/geographical-indicators/labelling-gi-upper-hunter-valley"
+   ]
+  }
+ },
+ {
+  "slug": "yarra_valley",
+  "name": "Yarra Valley",
+  "aliases": [],
+  "summary": "A cool region east of Melbourne, with grey brown sandy loam on the northern side of the valley and red volcanic soil on the southern side. Pinot Noir and Chardonnay lead, and the Pinot Noir is light to medium bodied.",
+  "red_body": 2,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Yarra Valley as its only GI must contain at least 85% wine from grapes grown in the Yarra Valley GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Pinot Noir", "local_note": "Light to medium bodied."},
+   {"name": "Chardonnay", "local_note": null},
+   {"name": "Shiraz", "local_note": "A lighter, more medium bodied style."},
+   {"name": "Cabernet Sauvignon", "local_note": null},
+   {"name": "Pinot Gris", "local_note": null}
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/en-AU/our-places/victoria/yarra-valley-wine-region",
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/victoria-wines/yarra-valley",
+    "https://wineyarravalley.com.au/stats-and-facts/",
+    "https://www.winecompanion.com.au/wineries/victoria/yarra-valley",
+    "https://www.winecompanion.com.au/resources/varieties/pinot-noir"
+   ],
+   "red_body": [
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/victoria-wines/yarra-valley",
+    "https://www.winecompanion.com.au/resources/varieties/pinot-noir"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://wineyarravalley.com.au/?p=16934",
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/victoria-wines/yarra-valley",
+    "https://www.australianwine.com/en-AU/our-places/victoria/yarra-valley-wine-region",
+    "https://www.winecompanion.com.au/wineries/victoria/yarra-valley"
+   ],
+   "appellations": ["https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"]
+  }
+ },
+ {
+  "slug": "margaret_river",
+  "name": "Margaret River",
+  "aliases": [],
+  "summary": "A Mediterranean region with a strong maritime influence in the far south west of Western Australia, on gravelly, iron rich soils. Cabernet Sauvignon is its flagship red, alongside Chardonnay and crisp Semillon and Sauvignon Blanc blends.",
+  "red_body": 3,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Margaret River as its only GI must contain at least 85% wine from grapes grown in the Margaret River GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Cabernet Sauvignon", "local_note": "The flagship red, often blended with Merlot."},
+   {"name": "Sauvignon Blanc", "local_note": "Often blended with Semillon."},
+   {"name": "Chardonnay", "local_note": "Much of it from the Gingin clone, with lime like acidity."},
+   {"name": "Semillon", "local_note": "Often blended with Sauvignon Blanc."},
+   {"name": "Shiraz", "local_note": null}
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/discover-australian-wine/western-australia-wines/margaret-river",
+    "https://margaretriver.wine/wine-varieties",
+    "https://margaretriver.wine/geology-soils/",
+    "https://margaretriver.guides.winefolly.com/terroir/winemaking/",
+    "https://www.winecompanion.com.au/wineries/western-australia/margaret-river"
+   ],
+   "red_body": [
+    "https://www.wineaustralia.com/discover-australian-wine/western-australia-wines/margaret-river",
+    "https://margaretriver.wine/wine-varieties"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://www.wineaustralia.com/discover-australian-wine/western-australia-wines/margaret-river",
+    "https://margaretriver.wine/wine-varieties",
+    "https://margaretriver.guides.winefolly.com/wines",
+    "https://margaretriver.guides.winefolly.com/terroir/winemaking/",
+    "https://www.winecompanion.com.au/wineries/western-australia/margaret-river"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications",
+    "https://margaretriver.guides.winefolly.com/regions"
+   ]
+  }
+ },
+ {
+  "slug": "tasmania",
+  "name": "Tasmania",
+  "aliases": [],
+  "summary": "The coolest and most southerly of Australia's wine regions, an island state with very varied soils. It is known for Pinot Noir, Chardonnay with high natural acidity, and traditional method sparkling wine made mainly from those two grapes.",
+  "red_body": 2,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Tasmania as its only GI must contain at least 85% wine from grapes grown in the Tasmania GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {"name": "Pinot Noir", "local_note": "Fragrant and delicate, light to medium bodied; also a sparkling base."},
+   {"name": "Chardonnay", "local_note": "High natural acidity; also a sparkling base."},
+   {"name": "Pinot Gris", "local_note": null}
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/tasmania-wines/tasmania",
+    "https://winetasmania.com.au/crafting-the-good-stuff",
+    "https://winetasmania.com.au/vintage2025",
+    "https://winecompanion.com.au/wineries/tasmania"
+   ],
+   "red_body": [
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/tasmania-wines/tasmania",
+    "https://winecompanion.com.au/wineries/tasmania"
+   ],
+   "label_note": ["https://www.legislation.gov.au/F2018L00286/latest/text"],
+   "grapes": [
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/tasmania-wines/tasmania",
+    "https://winecompanion.com.au/wineries/tasmania",
+    "https://winetasmania.com.au/vintage2025"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications",
+    "https://winetasmania.com.au/how-awesome-is-tassies-wine"
+   ]
+  }
+ }
+]

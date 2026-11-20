@@ -41,6 +41,9 @@ OUT = ROOT / 'supabase/data/enrichment/wine_regions/outlines'
 TOLERANCE_DEG = 0.012  # ~1 km at these latitudes
 CLOSE_DEG = 0.015  # gaps and notches under ~1.5 km close up
 MIN_PART_KM2 = 4.0
+# An overlap larger than this share of the smaller region is nesting.
+NESTED_SHARE = 0.5
+LAU_SOURCE = 'Eurostat GISCO LAU 2024 (© EuroGeographics)'
 KM2_PER_DEG2_AT_45N = 111.32 * 111.32 * 0.707
 
 
@@ -56,11 +59,14 @@ def main(lau_path):
     geoms = {}
     # Official units finer than a municipality (the Dutch zones), keyed
     # by unit_id: see outlines/import_nl_regions.py.
+    unit_sources = {}
     for path in sorted((OUT / 'geometry').glob('*.geojson')):
         for f in json.load(open(path, encoding='utf-8'))['features']:
             gid = f['properties']['unit_id']
             if gid in wanted:
                 geoms[gid] = shape(f['geometry']).buffer(0)
+                unit_sources[gid] = _dataset(f['properties'].get('source'),
+                                             path.stem)
     for f in json.load(open(lau_path, encoding='utf-8'))['features']:
         gid = f['properties']['GISCO_ID']
         if gid in wanted:
@@ -69,7 +75,8 @@ def main(lau_path):
     if missing:
         sys.exit(f'Not in the LAU file: {missing}')
 
-    outlines, sql = {}, []
+    # 1. Each region on its own: union, close, simplify.
+    simple_by_code = {}
     for code, rows in regions.items():
         merged = unary_union([geoms[r['gisco_id']] for r in rows])
         # Close the hairline gaps the 1:1M generalisation leaves between
@@ -83,7 +90,29 @@ def main(lau_path):
         close, tolerance = CLOSE_DEG * scale, TOLERANCE_DEG * scale
         merged = merged.buffer(close, join_style='round').buffer(
             -close, join_style='round')
-        simple = merged.simplify(tolerance, preserve_topology=True)
+        simple_by_code[code] = merged.simplify(
+            tolerance, preserve_topology=True).buffer(0)
+
+    # 2. Neighbours, simplified separately, overlap in thin slivers along
+    # their shared border, which paint darker at close zoom. The later
+    # region gives the overlap up, so they meet edge to edge. A region
+    # mostly inside another (Vijlen in Mergelland, Uco in Mendoza, Lavaux
+    # in Vaud) is nesting, not a sliver, and is left alone.
+    codes = sorted(simple_by_code)
+    for i, a in enumerate(codes):
+        for b in codes[i + 1:]:
+            ga, gb = simple_by_code[a], simple_by_code[b]
+            if not ga.intersects(gb):
+                continue
+            overlap = ga.intersection(gb).area
+            if overlap == 0 or overlap > NESTED_SHARE * min(ga.area, gb.area):
+                continue
+            simple_by_code[b] = gb.difference(ga).buffer(0)
+
+    # 3. Write.
+    outlines, sql = {}, []
+    for code, rows in regions.items():
+        simple = simple_by_code[code]
         parts = simple.geoms if isinstance(simple, MultiPolygon) else [simple]
         polys = []
         for p in parts:
@@ -105,9 +134,11 @@ def main(lau_path):
         partial = sum(1 for r in rows if r['partial'])
         print(f'{code}: {len(rows)} municipalities ({partial} partial), '
               f'{len(polys)} parts, {points} points')
-        note = (f'Union of {len(rows)} municipalities from the official '
-                f'commune list; boundaries Eurostat GISCO LAU 2024 '
-                f'(© EuroGeographics), simplified to ~1 km.')
+        datasets = sorted({unit_sources.get(r['gisco_id'], LAU_SOURCE)
+                           for r in rows})
+        note = (f'Union of {len(rows)} official units from the official '
+                f'definition; boundaries: {"; ".join(datasets)}; simplified '
+                f'to ~1 km, overlaps with neighbours removed.')
         sql.append(
             'update public.wine_regions set\n'
             f"  outline = '{json.dumps(polys, separators=(',', ':'))}'::jsonb,\n"
@@ -122,6 +153,18 @@ def main(lau_path):
         '-- outlines/communes/*.csv. Do not edit by hand: change a commune\n'
         '-- list and run the script again.\n\n' + '\n'.join(sql),
         encoding='utf-8')
+
+
+def _dataset(source, stem):
+    """The dataset a unit comes from, short enough for a note: the part of
+    its source before the first parenthesis or comma."""
+    if not source:
+        return {'nl_finer_units': 'PDOK: Kadaster BAG woonplaatsen and CBS '
+                                  'Wijk- en Buurtkaart 2024'}.get(stem, stem)
+    for sep in (' (', ', ', ' via '):
+        if sep in source:
+            source = source.split(sep)[0]
+    return source.strip()
 
 
 def quote(text):
