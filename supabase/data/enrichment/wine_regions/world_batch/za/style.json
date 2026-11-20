@@ -1,0 +1,443 @@
+[
+ {
+  "slug": "stellenbosch",
+  "name": "Stellenbosch",
+  "aliases": [],
+  "summary": "Mountain slopes and valleys with deep, well drained soils from granite, shale and sandstone. Known for blended reds and Cabernet Sauvignon, while Syrah and Chenin Blanc also do well.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) defined under the name Stellenbosch (Board Notice 37 of 2004). SAWIS lists it in the Coastal Region.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Banghoek",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Bottelary",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Devon Valley",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Jonkershoek Valley",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Papegaaiberg",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Polkadraai Hills",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Simonsberg-Stellenbosch",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Vlottenburg",
+    "colour": "mixed",
+    "note": "Official ward of the Stellenbosch district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.guildsomm.com/public_content/features/mw-perspectives/b/mw-perspectives/posts/cabernet-in-stellenbosch",
+    "https://winefolly.com/deep-dive/wines-south-africas-stellenbosch-district/",
+    "https://www.winespectator.com/articles/abcs-of-south-africa-42847"
+   ],
+   "grapes": [
+    "https://www.winespectator.com/articles/abcs-of-south-africa-42847",
+    "https://www.guildsomm.com/public_content/features/mw-perspectives/b/mw-perspectives/posts/cabernet-in-stellenbosch",
+    "https://winefolly.com/deep-dive/wines-south-africas-stellenbosch-district/"
+   ],
+   "appellations": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1"
+   ],
+   "label_note": [
+    "https://www.gov.za/sites/default/files/gcis_document/201409/26164l0.pdf",
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "franschhoek",
+  "name": "Franschhoek",
+  "aliases": [
+   "Franschhoek Valley",
+   "Franschhoek Vallei"
+  ],
+  "summary": "A valley southeast of Paarl, enclosed by mountains on three sides. The grape most tied to it is Semillon, some from very old vines, and Chardonnay is another strength.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Defined as a district under the name \"Franschhoek/Franschhoek Valley\" (Board Notice 64 of 2010); SAWIS (Feb 2026) also gives the Afrikaans form Franschhoek Vallei.",
+  "grapes": [
+   {
+    "name": "Semillon",
+    "local_note": "Old vines, some planted over a century ago"
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.wineanorak.com/southafrica/franschhoek_1_introduction.htm",
+    "https://www.decanterchina.com/en/travel/franschhoek-south-africa/2/"
+   ],
+   "grapes": [
+    "https://www.decanterchina.com/en/travel/franschhoek-south-africa/2/",
+    "https://www.wineanorak.com/southafrica/franschhoek_1_introduction.htm"
+   ],
+   "label_note": [
+    "https://www.gov.za/sites/default/files/gcis_document/201409/3317064.pdf",
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ],
+   "aliases": [
+    "https://www.gov.za/sites/default/files/gcis_document/201409/3317064.pdf",
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "paarl",
+  "name": "Paarl",
+  "aliases": [],
+  "summary": "Lies north of Stellenbosch and is the warmer of the two, with a hot growing season. Cabernet Sauvignon, Shiraz, Chenin Blanc and Chardonnay all do well here.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) Paarl, Coastal Region (SAWIS production areas list, Feb 2026). Defining notice not located.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Agter-Paarl",
+    "colour": "mixed",
+    "note": "Official ward of the Paarl district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Simonsberg-Paarl",
+    "colour": "mixed",
+    "note": "Official ward of the Paarl district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Voor-Paardeberg",
+    "colour": "mixed",
+    "note": "Official ward of the Paarl district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.winespectator.com/articles/abcs-of-south-africa-42847"
+   ],
+   "grapes": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.winespectator.com/articles/abcs-of-south-africa-42847"
+   ],
+   "appellations": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "swartland",
+  "name": "Swartland",
+  "aliases": [],
+  "summary": "A large, warm and dry district north of Cape Town, with many old bush vines farmed without irrigation. Syrah and Cinsault stand out among the reds, with Chenin Blanc for whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) Swartland, Coastal Region (SAWIS production areas list, Feb 2026). Defining notice not located.",
+  "grapes": [
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": "Old bush vines"
+   },
+   {
+    "name": "Cinsault",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Malmesbury",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Paardeberg/Perdeberg",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Paardeberg South",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Piket-Bo-Berg",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Porseleinberg",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Riebeekberg",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Riebeeksrivier",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "St Helena Bay",
+    "colour": "mixed",
+    "note": "Official ward of the Swartland district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.winespectator.com/articles/abcs-of-south-africa-42847",
+    "https://wineanorak.com/?p=7884",
+    "https://www.vinography.com/2024/06/tasting-the-swartland-revolution"
+   ],
+   "grapes": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.winespectator.com/articles/abcs-of-south-africa-42847",
+    "https://www.vinography.com/2024/06/tasting-the-swartland-revolution",
+    "https://wineanorak.com/?p=7884"
+   ],
+   "appellations": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "constantia",
+  "name": "Constantia",
+  "aliases": [],
+  "summary": "Cool, ocean influenced slopes of the Table Mountain range above False Bay, on mainly granite soils. Whites lead, above all Sauvignon Blanc, and the valley is home to the historic sweet wine Vin de Constance.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A ward (production area) named Constantia (Board Notice 179 of 2010), listed by SAWIS under the Cape Town district, Coastal Region.",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://constantiawineroute.com/serious-about-sauvignon-constantias-golden-thread/",
+    "https://winemag.co.za/wine/opinion/greg-sherwood-mw-celebrating-a-resurgent-constantia-wine-route/",
+    "https://www.decanter.com/wine-reviews/south-africa/constantia/klein-constantia-vin-de-constance-constantia-2020-73371",
+    "https://www.guildsomm.com/public_content/features/articles/b/morgan_harris/posts/south-africa-how-i-learned-to-stop-worrying-and-love-the-bomb"
+   ],
+   "grapes": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://constantiawineroute.com/serious-about-sauvignon-constantias-golden-thread/"
+   ],
+   "label_note": [
+    "https://www.gov.za/sites/default/files/gcis_document/201409/33812179.pdf",
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "elgin",
+  "name": "Elgin",
+  "aliases": [],
+  "summary": "A high, cool district between about 250 and 500 m in the Hottentots Holland mountains, once mainly apple country. Sauvignon Blanc is the most planted grape, then Chardonnay and Pinot Noir, with some Syrah.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) Elgin, Cape South Coast region (Board Notice 189 of 2011; SAWIS Feb 2026). It has no wards.",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "About 37 to 38 percent of vines"
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://winemag.co.za/?p=41754",
+    "https://www.winesofelgin.co.za/our-story/"
+   ],
+   "grapes": [
+    "https://winemag.co.za/?p=41754",
+    "https://www.winesofelgin.co.za/our-story/",
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/"
+   ],
+   "label_note": [
+    "https://www.gov.za/sites/default/files/gcis_document/201409/34767bn189.pdf",
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "walker-bay",
+  "name": "Walker Bay",
+  "aliases": [],
+  "summary": "A cool coastal district around Hermanus, cooled by winds off the cold ocean, on largely shale soils. Chardonnay and Pinot Noir from the Hemel-en-Aarde valleys lead.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) Walker Bay, Cape South Coast region (Board Notice 59 of 2004; SAWIS Feb 2026). Hemel-en-Aarde is not itself a production area: the three Hemel-en-Aarde names are separate wards.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Bot River",
+    "colour": "mixed",
+    "note": "Official ward of the Walker Bay district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Hemel-en-Aarde Ridge",
+    "colour": "mixed",
+    "note": "Official ward of the Walker Bay district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Hemel-en-Aarde Valley",
+    "colour": "mixed",
+    "note": "Official ward of the Walker Bay district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Springfontein Rim",
+    "colour": "mixed",
+    "note": "Official ward of the Walker Bay district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Stanford Foothills",
+    "colour": "mixed",
+    "note": "Official ward of the Walker Bay district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Sunday's Glen",
+    "colour": "mixed",
+    "note": "Official ward of the Walker Bay district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   },
+   {
+    "name": "Upper Hemel-en-Aarde Valley",
+    "colour": "mixed",
+    "note": "Official ward of the Walker Bay district (SAWIS, Feb 2026); no colour rule in the ward definition"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://wineanorak.com/southafrica/hemelenaarde1intro.htm",
+    "https://www.guildsomm.com/public_content/features/articles/b/morgan_harris/posts/south-africa-how-i-learned-to-stop-worrying-and-love-the-bomb"
+   ],
+   "grapes": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://wineanorak.com/southafrica/hemelenaarde1intro.htm",
+    "https://www.guildsomm.com/public_content/features/articles/b/morgan_harris/posts/south-africa-how-i-learned-to-stop-worrying-and-love-the-bomb"
+   ],
+   "appellations": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1"
+   ],
+   "label_note": [
+    "https://www.gov.za/sites/default/files/gcis_document/201409/26374h0.pdf",
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ }
+]

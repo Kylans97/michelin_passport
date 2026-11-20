@@ -1,0 +1,350 @@
+[
+ {
+  "name": "Malvazija Istarska",
+  "aliases": [
+   "Malvazija",
+   "Vrbić",
+   "Očenaš"
+  ],
+  "colour": "white",
+  "summary": "Istria's leading white grape. Floral and gently spicy, it is made in many styles, from fresh and young to oak aged, skin contact, sparkling and sweet.",
+  "tastes": [
+   "floral",
+   "honey",
+   "spice"
+  ],
+  "aged_note": "Also made in oak, often acacia, which gives a richer, fuller style.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2025_12_153_2279.html"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/the-wines-of-the-croatian-coast",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/"
+   ],
+   "tastes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://www.decanter.com/wine-reviews/croatia/istria/kozlovic-santa-lucia-malvazija-istria-coastal-2018-113321/"
+   ],
+   "aged_note": [
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/the-wines-of-the-croatian-coast"
+   ]
+  }
+ },
+ {
+  "name": "Teran",
+  "aliases": [
+   "Istrijanac"
+  ],
+  "colour": "red",
+  "summary": "Istria's native red. Deep ruby with violet tones, it has high acidity and firm tannins, with forest berry and raspberry fruit.",
+  "tastes": [
+   "raspberry",
+   "forest berries",
+   "violet"
+  ],
+  "aged_note": "With age it gains vanilla, jam and spice notes, and it responds well to barrel ageing.",
+  "body": 4,
+  "acidity": 4,
+  "tannin": 4,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/"
+   ],
+   "tastes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/"
+   ],
+   "aged_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/the-wines-of-the-croatian-coast",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/"
+   ],
+   "body": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080"
+   ],
+   "acidity": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/40080",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/"
+   ],
+   "tannin": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://www.decanter.com/wine/croatia/the-life-and-soul-of-istrian-winemaking/"
+   ]
+  }
+ },
+ {
+  "name": "Plavac Mali",
+  "aliases": [
+   "Plavac mali crni",
+   "Plavac veliki",
+   "Crljenak mali"
+  ],
+  "colour": "red",
+  "summary": "Dalmatia's main red grape, a cross of Tribidrag (Zinfandel) and Dobričić. It gives full, high alcohol reds with plenty of tannin and soft acidity.",
+  "tastes": [
+   "dark cherry",
+   "plum",
+   "dried fig"
+  ],
+  "aged_note": "Tannins soften with age, and the best wines become fuller, rounder and softer.",
+  "body": 4,
+  "acidity": 2,
+  "tannin": 4,
+  "similar": {
+   "name": "Zinfandel",
+   "note": "One of its parents, known in Croatia as Tribidrag or Crljenak kaštelanski."
+  },
+  "sources": {
+   "aliases": [
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/57711"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/27841",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://en.wikipedia.org/wiki/Plavac_Mali",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/",
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/"
+   ],
+   "tastes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/27841",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/57711",
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/",
+    "https://en.wikipedia.org/wiki/Plavac_Mali"
+   ],
+   "aged_note": [
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/27841"
+   ],
+   "body": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/"
+   ],
+   "acidity": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://en.wikipedia.org/wiki/Plavac_Mali"
+   ],
+   "tannin": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://www.decanter.com/sponsored/dalmatia-the-crimson-coast/",
+    "https://en.wikipedia.org/wiki/Plavac_Mali"
+   ],
+   "similar": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://vinacroatia.hr/en/croatian-wine-regions/dalmatia/",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://en.wikipedia.org/wiki/Plavac_Mali"
+   ]
+  }
+ },
+ {
+  "name": "Pošip",
+  "aliases": [
+   "Pošip bijeli",
+   "Pošipak",
+   "Pošipica"
+  ],
+  "colour": "white",
+  "summary": "A native Dalmatian white grape, the most planted white in central and southern Dalmatia. Its wines are full bodied, with stone fruit and citrus notes.",
+  "tastes": [
+   "peach",
+   "citrus"
+  ],
+  "aged_note": null,
+  "body": 4,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/57711"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://en.wikipedia.org/wiki/Po%C5%A1ip"
+   ],
+   "tastes": [
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://en.wikipedia.org/wiki/Po%C5%A1ip",
+    "https://www.decanter.com/wine-reviews/croatia/dalmatia/provic-tiberius-posip-korcula-dalmatia-croatia-2021-91501/"
+   ],
+   "body": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36383",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/"
+   ]
+  }
+ },
+ {
+  "name": "Graševina",
+  "aliases": [
+   "Welschriesling",
+   "Laški rizling",
+   "Riesling Italico",
+   "Olasz Rizling"
+  ],
+  "colour": "white",
+  "summary": "Croatia's most planted white, known elsewhere as Welschriesling. Usually dry and fresh with apple and citrus notes; late harvest and other sweet styles are also made.",
+  "tastes": [
+   "apple",
+   "citrus"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://winefolly.com/grapes/grasevina/"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/grasevina/",
+    "https://winefolly.com/deep-dive/introduction-to-croatian-wines/",
+    "https://www.decanter.com/sponsored/croatia-wine-regions-beyond-istria-510681/",
+    "https://www.decanter.com/wine-reviews/croatia/slavonia/kutjevo-grasevina-slavonia-continental-croatia-2019-40998",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/36373",
+    "https://vinacroatia.hr/en/croatian-wine-regions/slavonia-and-croatian-danube/",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/grasevina/",
+    "https://www.decanter.com/wine-reviews/croatia/slavonia/kutjevo-grasevina-slavonia-continental-croatia-2019-40998"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/grasevina/",
+    "https://www.decanter.com/wine-reviews/croatia/slavonia/kutjevo-grasevina-slavonia-continental-croatia-2019-40998"
+   ]
+  }
+ },
+ {
+  "name": "Blaufränkisch",
+  "aliases": [
+   "Frankovka",
+   "Kékfrankos",
+   "Lemberger",
+   "Frankinja"
+  ],
+  "colour": "red",
+  "summary": "A red grape known as Kékfrankos in Hungary, Lemberger in Germany and Frankovka in Croatia. It gives dark fruited, spicy wines with fresh acidity and firm tannins.",
+  "tastes": [
+   "black cherry",
+   "blackberry",
+   "spice"
+  ],
+  "aged_note": "Tannins soften after a few years in bottle; good examples keep for up to about ten years.",
+  "body": 3,
+  "acidity": 4,
+  "tannin": 4,
+  "similar": {
+   "name": "Gamay",
+   "note": "Blaufränkisch is one of its parents."
+  },
+  "sources": {
+   "aliases": [
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ]
+  }
+ },
+ {
+  "name": "Gewürztraminer",
+  "aliases": [
+   "Traminac",
+   "Traminac crveni",
+   "Traminac mirisavi",
+   "Roter Traminer"
+  ],
+  "colour": "white",
+  "summary": "A highly aromatic white grape, called Traminac in Croatia. Known for lychee and rose, it makes rich, round wines with soft acidity, from dry to sweet.",
+  "tastes": [
+   "lychee",
+   "rose",
+   "ginger",
+   "grapefruit"
+  ],
+  "aged_note": null,
+  "body": 4,
+  "acidity": 2,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html",
+    "https://winefolly.com/grapes/gewurztraminer/"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/gewurztraminer/",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/gewurztraminer-the-ultimate-grape-guide",
+    "https://narodne-novine.nn.hr/clanci/sluzbeni/2022_07_81_1184.html"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/gewurztraminer/",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/gewurztraminer-the-ultimate-grape-guide"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/gewurztraminer/",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/gewurztraminer-the-ultimate-grape-guide"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/gewurztraminer/",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/gewurztraminer-the-ultimate-grape-guide"
+   ]
+  }
+ }
+]

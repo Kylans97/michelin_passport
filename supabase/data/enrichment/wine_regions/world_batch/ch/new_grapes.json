@@ -1,0 +1,176 @@
+[
+  {
+    "name": "Chasselas",
+    "aliases": [
+      "Fendant",
+      "Gutedel"
+    ],
+    "colour": "white",
+    "summary": "Switzerland's main white grape, sold as Fendant in Valais. It gives light, dry wines with floral, apple and citrus notes.",
+    "tastes": [
+      "Lime blossom",
+      "Apple",
+      "Citrus",
+      "Mineral"
+    ],
+    "aged_note": null,
+    "body": 2,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/chasselas-en"
+      ],
+      "summary": [
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/chasselas-en",
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142",
+        "https://winefolly.com/grapes/chasselas/",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/fendant/"
+      ],
+      "tastes": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/chasselas-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/fendant/",
+        "https://winefolly.com/grapes/chasselas/"
+      ],
+      "body": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/chasselas-en",
+        "https://winefolly.com/grapes/chasselas/",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/fendant/"
+      ]
+    }
+  },
+  {
+    "name": "Petite Arvine",
+    "aliases": [
+      "Arvine"
+    ],
+    "colour": "white",
+    "summary": "A white grape grown almost only in Valais. Its wines pair grapefruit and rhubarb with lively acidity and a salty finish.",
+    "tastes": [
+      "Grapefruit",
+      "Rhubarb",
+      "Wisteria",
+      "Salty finish"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": 4,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142"
+      ],
+      "summary": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/petite-arvine-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/petite-arvine/",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://valais.ch/en/taste/valais-specialties/wine"
+      ],
+      "tastes": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/petite-arvine-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/petite-arvine/",
+        "https://valais.ch/en/taste/valais-specialties/wine"
+      ],
+      "acidity": [
+        "https://swisswinevalais.ch/en/discover/grape-varieties/petite-arvine/",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/petite-arvine-en"
+      ]
+    }
+  },
+  {
+    "name": "Cornalin",
+    "aliases": [
+      "Rouge du Pays",
+      "Cornalin du Valais",
+      "Landroter"
+    ],
+    "colour": "red",
+    "summary": "A red grape from the Aosta Valley, now grown almost only in Valais, where it is also called Rouge du Pays. It gives black cherry fruit and firm tannins.",
+    "tastes": [
+      "Black cherry",
+      "Clove"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": 4,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/cornalin-en",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf"
+      ],
+      "summary": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/cornalin-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/cornalin/",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf",
+        "https://lex.vs.ch/app/fr/texts_of_law/916.142"
+      ],
+      "tastes": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/cornalin-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/cornalin/",
+        "https://valais.ch/en/taste/valais-specialties/wine"
+      ],
+      "tannin": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/cornalin-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/cornalin/"
+      ]
+    }
+  },
+  {
+    "name": "Humagne Rouge",
+    "aliases": [],
+    "colour": "red",
+    "summary": "A red grape from the Aosta Valley, now grown almost only in Valais. Its violet scented wines are often matched with game.",
+    "tastes": [
+      "Violet"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/humagne-rouge-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/humagne-rouge/",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf"
+      ],
+      "tastes": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/humagne-rouge-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/humagne-rouge/"
+      ]
+    }
+  },
+  {
+    "name": "Gamaret",
+    "aliases": [],
+    "colour": "red",
+    "summary": "A Swiss red cross of Gamay and Reichensteiner, grown mostly in Vaud, Geneva and Valais, where it gives spicy, tannic red wines.",
+    "tastes": [
+      "Spice"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/gamaret-en",
+        "https://swisswinevalais.ch/en/discover/grape-varieties/gamaret/",
+        "https://www.blw.admin.ch/dam/it/sd-web/an5PEIBQ1W3u/Weinjahr_2024_I_25_8.pdf"
+      ],
+      "tastes": [
+        "https://swisswinevalais.ch/en/discover/grape-varieties/gamaret/",
+        "https://www.swisswine.com/en/swiss-vineyards/wine-grapes/gamaret-en"
+      ]
+    }
+  }
+]

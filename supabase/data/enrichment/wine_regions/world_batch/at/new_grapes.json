@@ -1,0 +1,253 @@
+[
+ {
+  "name": "Grüner Veltliner",
+  "aliases": [
+   "Veltlínské zelené"
+  ],
+  "colour": "white",
+  "summary": "A white grape native to Austria, a natural crossing of Traminer and St. Georgener-Rebe. It gives dry wines with high acidity, citrus fruit and a white pepper note.",
+  "tastes": [
+   "Lemon and lime",
+   "White pepper",
+   "Green herbs"
+  ],
+  "aged_note": "Top wines can age for ten years or more.",
+  "body": 2,
+  "acidity": 4,
+  "tannin": null,
+  "similar": {
+   "name": "Sauvignon Blanc",
+   "note": "Often suggested as an alternative to it, for its fresh acidity and green notes."
+  },
+  "sources": {
+   "aliases": [
+    "https://winefolly.com/grapes/gruner-veltliner/",
+    "https://en.wikipedia.org/wiki/Gr%C3%BCner_Veltliner"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/gruner-veltliner/",
+    "https://en.wikipedia.org/wiki/Gr%C3%BCner_Veltliner",
+    "https://vinepair.com/wine-101/gruner-veltliner-white-wine-guide/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/gruner-veltliner/",
+    "https://vinepair.com/wine-101/gruner-veltliner-white-wine-guide/",
+    "https://en.wikipedia.org/wiki/Gr%C3%BCner_Veltliner"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/gruner-veltliner/",
+    "https://vinepair.com/wine-101/gruner-veltliner-white-wine-guide/",
+    "https://en.wikipedia.org/wiki/Gr%C3%BCner_Veltliner"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/gruner-veltliner/",
+    "https://vinepair.com/wine-101/gruner-veltliner-white-wine-guide/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/gruner-veltliner/",
+    "https://vinepair.com/wine-101/gruner-veltliner-white-wine-guide/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/gruner-veltliner/",
+    "https://vinepair.com/wine-101/gruner-veltliner-white-wine-guide/"
+   ]
+  }
+ },
+ {
+  "name": "Blaufränkisch",
+  "aliases": [
+   "Lemberger",
+   "Kékfrankos",
+   "Frankovka",
+   "Modra Frankinja"
+  ],
+  "colour": "red",
+  "summary": "A red grape of Central Europe, known in Germany as Lemberger and in Hungary as Kékfrankos. It gives dark fruited, peppery reds with fresh acidity and firm tannins.",
+  "tastes": [
+   "Black cherry",
+   "Blackberry",
+   "Pepper"
+  ],
+  "aged_note": "Good examples age five to ten years as the tannins soften.",
+  "body": 3,
+  "acidity": 4,
+  "tannin": 4,
+  "similar": {
+   "name": "Pinot Noir",
+   "note": "Often called the Pinot Noir of Eastern Europe."
+  },
+  "sources": {
+   "aliases": [
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/",
+    "https://en.wikipedia.org/wiki/Blaufr%C3%A4nkisch"
+   ],
+   "summary": [
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/",
+    "https://en.wikipedia.org/wiki/Blaufr%C3%A4nkisch",
+    "https://winefolly.com/grapes/blaufrankisch/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/",
+    "https://en.wikipedia.org/wiki/Blaufr%C3%A4nkisch"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/",
+    "https://en.wikipedia.org/wiki/Blaufr%C3%A4nkisch"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/blaufrankisch/",
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/"
+   ],
+   "similar": [
+    "https://vinepair.com/wine-101/blaufrankisch-wine-guide/",
+    "https://en.wikipedia.org/wiki/Blaufr%C3%A4nkisch"
+   ]
+  }
+ },
+ {
+  "name": "Zweigelt",
+  "aliases": [
+   "Blauer Zweigelt",
+   "Rotburger"
+  ],
+  "colour": "red",
+  "summary": "Austria's most planted red grape, a 1922 crossing of Blaufränkisch and St. Laurent. It makes soft, approachable reds with red fruit and spice.",
+  "tastes": [
+   "Red cherry",
+   "Raspberry",
+   "Pepper"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": null,
+  "tannin": 2,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Zweigelt"
+   ],
+   "summary": [
+    "https://vinepair.com/articles/illustrated-guide-zweigelt-austria",
+    "https://en.wikipedia.org/wiki/Zweigelt",
+    "https://winefolly.com/grapes/zweigelt/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/zweigelt/",
+    "https://vinepair.com/articles/illustrated-guide-zweigelt-austria"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/zweigelt/",
+    "https://vinepair.com/articles/illustrated-guide-zweigelt-austria"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/zweigelt/",
+    "https://vinepair.com/articles/illustrated-guide-zweigelt-austria"
+   ]
+  }
+ },
+ {
+  "name": "Welschriesling",
+  "aliases": [
+   "Graševina",
+   "Olaszrizling",
+   "Laški rizling",
+   "Riesling Italico"
+  ],
+  "colour": "white",
+  "summary": "A white grape grown across Central Europe and unrelated to Riesling. In Croatia it is called Graševina; near Lake Neusiedl it is also made into botrytised sweet wines.",
+  "tastes": [],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Welschriesling",
+    "https://winefolly.com/grapes/grasevina/"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Welschriesling",
+    "https://winefolly.com/grapes/grasevina/",
+    "https://rosemurraybrown.com/neusiedlersee-dac/",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ]
+  }
+ },
+ {
+  "name": "Pinot Blanc",
+  "aliases": [
+   "Weissburgunder",
+   "Weißburgunder",
+   "Klevner"
+  ],
+  "colour": "white",
+  "summary": "A white grape called Weissburgunder in Austria. It gives dry wines with citrus and stone fruit notes and a mineral edge, usually made to drink young.",
+  "tastes": [
+   "Lemon zest",
+   "Peach",
+   "Mineral"
+  ],
+  "aged_note": "Usually made to drink young.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Pinot_blanc",
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Pinot_blanc",
+    "https://winefolly.com/grapes/pinot-blanc/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/pinot-blanc/",
+    "https://en.wikipedia.org/wiki/Pinot_blanc"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/pinot-blanc/",
+    "https://en.wikipedia.org/wiki/Pinot_blanc"
+   ]
+  }
+ },
+ {
+  "name": "Muscat Blanc à Petits Grains",
+  "aliases": [
+   "Gelber Muskateller",
+   "Muskateller",
+   "Muscat Blanc"
+  ],
+  "colour": "white",
+  "summary": "A highly aromatic white grape of the Muscat family. In Austria it is called Gelber Muskateller or simply Muskateller.",
+  "tastes": [],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Muscat_Blanc_%C3%A0_Petits_Grains",
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/",
+    "https://winefolly.com/grapes/muscat-blanc/"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Muscat_Blanc_%C3%A0_Petits_Grains",
+    "https://winefolly.com/grapes/muscat-blanc/",
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/"
+   ]
+  }
+ }
+]

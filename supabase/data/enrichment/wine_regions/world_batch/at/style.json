@@ -1,0 +1,906 @@
+[
+ {
+  "slug": "wachau",
+  "name": "Wachau",
+  "aliases": [],
+  "summary": "A narrow stretch of the Danube valley with hot, dry summers and cold winters. Dry stone terraces on weathered gneiss, with loess in places, carry mostly Grüner Veltliner and Riesling, made as dry whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wachau DAC has three origin levels: Gebietswein (regional, 17 permitted varieties), Ortswein (a named village or the Großlage Spitzer Graben, nine white varieties) and Riedenwein (a single vineyard, Grüner Veltliner or Riesling only, no chaptalisation). Grapes must be hand picked and the vintage is mandatory.",
+  "grapes": [
+   {
+    "name": "Grüner Veltliner",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Zweigelt",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Wachau DAC",
+    "colour": "mixed",
+    "note": "Gebietswein level; red and white varieties permitted."
+   },
+   {
+    "name": "Wachau DAC Loiben",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Dürnstein",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Weißenkirchen",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Joching",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Wösendorf",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC St. Michael",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Spitz",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Gut am Steg",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Viessling",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Elsarn",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Mühldorf",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Spitzer Graben",
+    "colour": "white",
+    "note": "Ortswein for the Großlage Spitzer Graben; not usable for Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Schwallenbach",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Willendorf",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Groisbach",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Aggsbach",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Arnsdorf",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Rührsdorf",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Rossatz",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Unterbergern",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Mauternbach",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Mautern",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   },
+   {
+    "name": "Wachau DAC Baumgarten",
+    "colour": "white",
+    "note": "Ortswein; the same place name goes with a Ried name on a Riedenwein."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:e3bf80c9-6295-4e83-b7c1-ab830c69f76a/Wachau%20Produktspezifikation.pdf",
+    "https://winefolly.com/deep-dive/in-depth-guide-to-the-wachau-valley-wine-region/",
+    "https://www.donau.com/en/wine-producing-region-wachau"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:e3bf80c9-6295-4e83-b7c1-ab830c69f76a/Wachau%20Produktspezifikation.pdf",
+    "https://www.donau.com/en/wine-producing-region-wachau",
+    "https://winefolly.com/deep-dive/in-depth-guide-to-the-wachau-valley-wine-region/"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253625/NOR40253625.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40223095/NOR40223095.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40223096/NOR40223096.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40223097/NOR40223097.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40223095/NOR40223095.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40223096/NOR40223096.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40223097/NOR40223097.html"
+   ]
+  }
+ },
+ {
+  "slug": "kremstal",
+  "name": "Kremstal",
+  "aliases": [],
+  "summary": "Vineyards around the town of Krems on the Danube. Weathered primary rock in the north suits Riesling, while the loess terraces east of the town give a rounder Grüner Veltliner. Both are the grapes of Kremstal DAC.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Kremstal DAC is Grüner Veltliner or Riesling, dry, with the vintage on the label. It may name a village from the annex (Ortsangabe) or a Ried, and Kremstal DAC Reserve (at least 13.0% vol) is a fuller style in which slight botrytis and oak are allowed.",
+  "grapes": [
+   {
+    "name": "Grüner Veltliner",
+    "local_note": "Rounder in style from the loess terraces east of Krems."
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Grown mainly on the primary rock soils in the north."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Kremstal DAC",
+    "colour": "white",
+    "note": "Grüner Veltliner or Riesling; may add a Ried name."
+   },
+   {
+    "name": "Kremstal DAC Reserve",
+    "colour": "white",
+    "note": "At least 13.0% vol; submitted from 1 July after the harvest."
+   },
+   {
+    "name": "Kremstal DAC Krems",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Stein",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Rohrendorf",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Gedersdorf",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Stratzing",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Senftenberg",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Furth",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Höbenbach",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   },
+   {
+    "name": "Kremstal DAC Krustetten",
+    "colour": "white",
+    "note": "Ortsangabe listed in the annex of the Kremstal DAC regulation."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:1862785e-6b29-4856-8e65-55955bd4c9c4/Kremstal%20Produktspezifikation.pdf",
+    "https://www.donau.com/en/wine-producing-region-kremstal"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:1862785e-6b29-4856-8e65-55955bd4c9c4/Kremstal%20Produktspezifikation.pdf",
+    "https://www.donau.com/en/wine-producing-region-kremstal",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265212/NOR40265212.html"
+   ],
+   "grapes.Grüner Veltliner.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:1862785e-6b29-4856-8e65-55955bd4c9c4/Kremstal%20Produktspezifikation.pdf",
+    "https://www.donau.com/en/wine-producing-region-kremstal"
+   ],
+   "grapes.Riesling.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:1862785e-6b29-4856-8e65-55955bd4c9c4/Kremstal%20Produktspezifikation.pdf",
+    "https://www.donau.com/en/wine-producing-region-kremstal"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265212/NOR40265212.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241629/NOR40241629.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265212/NOR40265212.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241629/NOR40241629.html"
+   ]
+  }
+ },
+ {
+  "slug": "kamptal",
+  "name": "Kamptal",
+  "aliases": [],
+  "summary": "The valley of the river Kamp around Langenlois, north of the Danube. Loess, gravel and very old primary rock soils, as on the Heiligenstein hill, carry the two main grapes, Grüner Veltliner and Riesling.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Kamptal DAC has three levels: Gebietswein, Ortswein (one of 12 cross-village wine communes listed in the annex) and Riedenwein. Permitted grapes are Grüner Veltliner, Riesling, Chardonnay, Weißburgunder and Grauburgunder. From the 2025 harvest the grapes must be certified organic or Nachhaltig Austria, with small-producer exceptions.",
+  "grapes": [
+   {
+    "name": "Grüner Veltliner",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Kamptal DAC",
+    "colour": "white",
+    "note": "Gebietswein; also Riedenwein with a vineyard name, and Reserve."
+   },
+   {
+    "name": "Kamptal DAC Engabrunn",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Grafenegg",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Strass",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Hadersdorf",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Kammern",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Langenlois",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Gobelsburg",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Zöbing",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Mittelberg",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Schiltern",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Schönberg",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   },
+   {
+    "name": "Kamptal DAC Lengenfeld",
+    "colour": "white",
+    "note": "Ortswein (ortsübergreifende Weinbaugemeinde in the annex)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:9034ac7d-a3bf-4c58-9d3a-24acc5f18df9/Produktspezifikation_Kamptal.pdf",
+    "https://www.donau.com/en/wine-producing-region-kamptal",
+    "https://en.wikipedia.org/wiki/Kamptal"
+   ],
+   "grapes": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265239/NOR40265239.html",
+    "https://www.donau.com/en/wine-producing-region-kamptal",
+    "https://en.wikipedia.org/wiki/Kamptal"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265238/NOR40265238.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265239/NOR40265239.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265246/NOR40265246.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265238/NOR40265238.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265239/NOR40265239.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265246/NOR40265246.html"
+   ]
+  }
+ },
+ {
+  "slug": "wagram",
+  "name": "Wagram",
+  "aliases": [],
+  "summary": "A long terrace of deep loess above the north bank of the Danube, plus the vineyards around Klosterneuburg south of the river. The loess gives full, flavoursome whites led by Grüner Veltliner; Zweigelt is the main red.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wagram DAC is dry and carries the vintage. Gebietswein may use 13 varieties; Ortswein (named Katastralgemeinden only) seven single varieties; Riedenwein only Grüner Veltliner, Roter Veltliner or Riesling.",
+  "grapes": [
+   {
+    "name": "Grüner Veltliner",
+    "local_note": "Full and flavoursome from the deep loess."
+   },
+   {
+    "name": "Zweigelt",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Wagram DAC",
+    "colour": "mixed",
+    "note": "Gebietswein; red and white varieties permitted. Riedenwein is white only."
+   },
+   {
+    "name": "Wagram DAC Absdorf",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Fels",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Gösing",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Thürnthal",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Feuersbrunn",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Wagram",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Großriedenthal",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Ottenthal",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Neudegg",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Ameisthal",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Baumgarten",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Großweikersdorf",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Großwiesendorf",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Ruppersthal",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Tiefenthal",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Zaussenberg",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Engelmannsbrunn",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Kirchberg",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Mitterstockstall",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Oberstockstall",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Unterstockstall",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Königsbrunn",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Hippersdorf",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Eggendorf",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Starnwörth",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Stetteldorf",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde)."
+   },
+   {
+    "name": "Wagram DAC Klosterneuburg",
+    "colour": "mixed",
+    "note": "Ortsangabe (Katastralgemeinde) covering the Wagram communes south of the Danube."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:24c80f20-c06d-4159-b5bc-04feaeeadcad/Produktspezifikation_Wagram.pdf",
+    "https://www.donau.com/en/wine-growing-region-wagram",
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241653/NOR40241653.html"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:24c80f20-c06d-4159-b5bc-04feaeeadcad/Produktspezifikation_Wagram.pdf",
+    "https://www.donau.com/en/wine-growing-region-wagram",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "grapes.Grüner Veltliner.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:24c80f20-c06d-4159-b5bc-04feaeeadcad/Produktspezifikation_Wagram.pdf",
+    "https://www.donau.com/en/wine-growing-region-wagram",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241648/NOR40241648.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241652/NOR40241652.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241653/NOR40241653.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241654/NOR40241654.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241652/NOR40241652.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241653/NOR40241653.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241654/NOR40241654.html"
+   ]
+  }
+ },
+ {
+  "slug": "weinviertel",
+  "name": "Weinviertel",
+  "aliases": [],
+  "summary": "Austria's largest wine region, covering the north east of Lower Austria. Its flagship is Grüner Veltliner: Weinviertel DAC is dry, fruity and spicy with a peppery note, without oak or botrytis.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Wiener Schnitzel and spicy Asian or vegetarian dishes.",
+  "label_note": "Weinviertel DAC is Grüner Veltliner only, with at most 6 g/l residual sugar, no oak and no botrytis, and the vintage on the label. Weinviertel DAC Reserve (at least 13.0% vol) and Große Reserve are fuller styles; a village, Großlage or Ried may be named.",
+  "grapes": [
+   {
+    "name": "Grüner Veltliner",
+    "local_note": "Fruity and spicy, with a peppery note."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Weinviertel DAC",
+    "colour": "white",
+    "note": "Grüner Veltliner; fruity, spicy, peppery, no oak."
+   },
+   {
+    "name": "Weinviertel DAC Reserve",
+    "colour": "white",
+    "note": "Fuller style, at least 13.0% vol; slight botrytis or oak allowed."
+   },
+   {
+    "name": "Weinviertel DAC Große Reserve",
+    "colour": "white",
+    "note": "Reserve rules, submitted no earlier than 1 November of the year after harvest."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.weinvierteldac.at/en/?p=2665",
+    "https://en.wikipedia.org/wiki/Weinviertel_DAC",
+    "https://en.wikipedia.org/wiki/Weinviertel",
+    "https://www.statistik.at/fileadmin/pages/164/Weingartenflaechen2020nachWeinbauregionen.ods",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40254626/NOR40254626.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230115/NOR40230115.html"
+   ],
+   "grapes": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230115/NOR40230115.html",
+    "https://www.weinvierteldac.at/en/?p=2665",
+    "https://en.wikipedia.org/wiki/Weinviertel_DAC"
+   ],
+   "grapes.Grüner Veltliner.local_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230115/NOR40230115.html",
+    "https://www.weinvierteldac.at/en/?p=2665",
+    "https://en.wikipedia.org/wiki/Weinviertel_DAC"
+   ],
+   "pairing": [
+    "https://www.weinvierteldac.at/en/?p=2665",
+    "https://vinepair.com/wine-101/gruner-veltliner-white-wine-guide/"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230115/NOR40230115.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230116/NOR40230116.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230115/NOR40230115.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230116/NOR40230116.html"
+   ]
+  }
+ },
+ {
+  "slug": "leithaberg",
+  "name": "Leithaberg",
+  "aliases": [
+   "Neusiedlersee-Hügelland"
+  ],
+  "summary": "Between the Leitha hills and Lake Neusiedl, which tempers the climate. Leitha limestone and mica schist give tight, mineral wines: red Blaufränkisch, and whites from Pinot Blanc, Chardonnay and Grüner Veltliner.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Leithaberg DAC red must be Blaufränkisch; white must be Weißer Burgunder, Chardonnay, Neuburger, Grüner Veltliner or a blend of them. Both must be dry (reds below 2.5 g/l sugar) and may be Gebietswein or, with a narrower origin, Ortswein or Riedenwein.",
+  "grapes": [
+   {
+    "name": "Blaufränkisch",
+    "local_note": "The grape of red Leithaberg DAC."
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Called Weißburgunder here."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Grüner Veltliner",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Leithaberg DAC",
+    "colour": "white",
+    "note": "Weißer Burgunder, Chardonnay, Neuburger, Grüner Veltliner or a blend."
+   },
+   {
+    "name": "Leithaberg DAC",
+    "colour": "red",
+    "note": "Blaufränkisch; Orts- and Riedenwein released from 1 May of the second year after harvest."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:a0809121-2a1f-4cf7-8034-f65a5515da94/Leithaberg%20Produktspezifikation.pdf",
+    "https://wineanorak.com/2019/11/11/leithaberg-wines-from-a-distinctive-austrian-dac/",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253614/NOR40253614.html"
+   ],
+   "grapes": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253614/NOR40253614.html",
+    "https://wineanorak.com/2019/11/11/leithaberg-wines-from-a-distinctive-austrian-dac/"
+   ],
+   "grapes.Blaufränkisch.local_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253614/NOR40253614.html",
+    "https://wineanorak.com/2019/11/11/leithaberg-wines-from-a-distinctive-austrian-dac/"
+   ],
+   "grapes.Pinot Blanc.local_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253614/NOR40253614.html",
+    "https://en.wikipedia.org/wiki/Pinot_blanc"
+   ],
+   "aliases": [
+    "https://www.statistik.at/fileadmin/pages/164/Weingartenflaechen2020nachWeinbauregionen.ods"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230104/NOR40230104.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253614/NOR40253614.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253614/NOR40253614.html"
+   ]
+  }
+ },
+ {
+  "slug": "neusiedlersee",
+  "name": "Neusiedlersee",
+  "aliases": [],
+  "summary": "East of Lake Neusiedl, with hot, dry summers and little rain. The lake moderates temperatures and its autumn mists bring noble rot. Fruity Zweigelt leads the reds, alongside sweet wines from white grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Neusiedlersee DAC has four categories: Zweigelt (fruity, spicy, at most 4 g/l sugar, no Ried name), Zweigelt Reserve (aged in large casks or barrique, at least 13.0% vol), fruity sweet Spätlese or Auslese from white grapes, and nobly sweet Beerenauslese or Trockenbeerenauslese as Reserve. Sweet wines from Apetlon, Illmitz or Podersdorf may add „Seewinkel“.",
+  "grapes": [
+   {
+    "name": "Zweigelt",
+    "local_note": "Fruity, fresh style."
+   },
+   {
+    "name": "Welschriesling",
+    "local_note": "Used for sweet, botrytised wines."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Neusiedlersee DAC",
+    "colour": "red",
+    "note": "Zweigelt; vintage and variety on the label."
+   },
+   {
+    "name": "Neusiedlersee DAC Reserve",
+    "colour": "red",
+    "note": "Zweigelt, at least 13.0% vol, aged in large casks or barrique."
+   },
+   {
+    "name": "Neusiedlersee DAC",
+    "colour": "white",
+    "note": "Fruity sweet Spätlese or Auslese from white grapes, at least 45 g/l sugar."
+   },
+   {
+    "name": "Neusiedlersee DAC Reserve",
+    "colour": "white",
+    "note": "Nobly sweet Beerenauslese or Trockenbeerenauslese from white grapes."
+   },
+   {
+    "name": "Seewinkel",
+    "colour": "white",
+    "note": "Narrower origin for the sweet categories, grapes from Apetlon, Illmitz or Podersdorf."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:4f785904-f6b1-4562-a83f-b3bf82e7ae33/Neusiedlersee%20Produktspezifikation.pdf",
+    "https://rosemurraybrown.com/neusiedlersee-dac/",
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40226845/NOR40226845.html"
+   ],
+   "grapes": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40226846/NOR40226846.html",
+    "https://www.bmluk.gv.at/dam/jcr:4f785904-f6b1-4562-a83f-b3bf82e7ae33/Neusiedlersee%20Produktspezifikation.pdf",
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://rosemurraybrown.com/neusiedlersee-dac/"
+   ],
+   "grapes.Zweigelt.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:4f785904-f6b1-4562-a83f-b3bf82e7ae33/Neusiedlersee%20Produktspezifikation.pdf",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "grapes.Welschriesling.local_note": [
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://rosemurraybrown.com/neusiedlersee-dac/"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40226846/NOR40226846.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40226846/NOR40226846.html"
+   ]
+  }
+ },
+ {
+  "slug": "suedsteiermark",
+  "name": "Südsteiermark",
+  "aliases": [
+   "South Styria",
+   "Southern Styria"
+  ],
+  "summary": "Steep hills on the southern edge of the Graz basin, on sand, slate, marl and limestone. Warm days and cool nights give a long season and crisp, aromatic whites, led by Sauvignon Blanc.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Südsteiermark DAC is white only, from hand-picked grapes of eight varieties, at most 4 g/l sugar, with the vintage on the label. It has three levels: Gebietswein, Ortswein (Kitzeck-Sausal, Eichberg, Leutschach, Gamlitz or Ehrenhausen, each with set lead varieties) and Riedenwein.",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "The leading grape."
+   },
+   {
+    "name": "Welschriesling",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Called Weissburgunder here."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Called Muskateller or Gelber Muskateller here."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": "Called Morillon here."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Südsteiermark DAC",
+    "colour": "white",
+    "note": "Gebietswein; also Riedenwein with a registered vineyard name."
+   },
+   {
+    "name": "Südsteiermark DAC Kitzeck-Sausal",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Riesling."
+   },
+   {
+    "name": "Südsteiermark DAC Eichberg",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Muskateller."
+   },
+   {
+    "name": "Südsteiermark DAC Leutschach",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Muskateller."
+   },
+   {
+    "name": "Südsteiermark DAC Gamlitz",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Muskateller."
+   },
+   {
+    "name": "Südsteiermark DAC Ehrenhausen",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Morillon."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://info.bml.gv.at/dam/jcr:fd136104-9145-4cfa-9d5a-4d4d76413f8a/S%C3%BCdsteiermark%20Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "grapes": [
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/",
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253631/NOR40253631.html"
+   ],
+   "grapes.Sauvignon Blanc.local_note": [
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "grapes.Pinot Blanc.local_note": [
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/",
+    "https://en.wikipedia.org/wiki/Pinot_blanc"
+   ],
+   "grapes.Muscat Blanc à Petits Grains.local_note": [
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/",
+    "https://en.wikipedia.org/wiki/Muscat_Blanc_%C3%A0_Petits_Grains",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253632/NOR40253632.html"
+   ],
+   "grapes.Chardonnay.local_note": [
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/",
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253632/NOR40253632.html"
+   ],
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://steiermark.wine/en/original/winegrowing-regions/sudsteiermark/"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253631/NOR40253631.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230108/NOR40230108.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265207/NOR40265207.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253632/NOR40253632.html"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40230108/NOR40230108.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253632/NOR40253632.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265207/NOR40265207.html"
+   ]
+  }
+ }
+]

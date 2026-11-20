@@ -1,0 +1,8 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0053,NZ_TA_053_LAND,Marlborough,Marlborough District (land),Marlborough Region,approximation: land clip by Stats NZ meshblock land/water codes; ~0.4% of GI area missing along the coast,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/
+wr_0053,NZ_TA_054_LAND,Marlborough,Kaikoura District (land),Canterbury Region,,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/
+wr_0053,NZ_MB_2311100,Marlborough,Meshblock 2311100,Canterbury Region,"approximation: Hurunui strip meshblocks, land part",https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2025/FeatureServer/0
+wr_0053,NZ_MB_2311200,Marlborough,Meshblock 2311200,Canterbury Region,"approximation: Hurunui strip meshblocks, land part",https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2025/FeatureServer/0
+wr_0053,NZ_MB_2311502,Marlborough,Meshblock 2311502,Canterbury Region,"approximation: Hurunui strip meshblocks, land part",https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2025/FeatureServer/0
+wr_0053,NZ_MB_2310702,Marlborough,Meshblock 2310702,Canterbury Region,"approximation: Hurunui strip meshblocks, land part",https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2025/FeatureServer/0
+wr_0053,NZ_MB_2310800,Marlborough,Meshblock 2310800,Canterbury Region,"approximation: Hurunui strip meshblocks, land part",https://services2.arcgis.com/vKb0s8tBIA3bdocZ/ArcGIS/rest/services/Meshblock_2025/FeatureServer/0

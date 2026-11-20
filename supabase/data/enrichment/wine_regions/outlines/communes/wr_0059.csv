@@ -1,0 +1,3 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0059,NZ_TA_051_LAND,Nelson,Tasman District (land),Tasman Region,approximation: land clip by Stats NZ meshblock land/water codes; ~0.5% of GI area differs along the coast,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/
+wr_0059,NZ_TA_052_LAND,Nelson,Nelson City (land),Nelson Region,,https://datafinder.stats.govt.nz/layer/120963-territorial-authority-2025/

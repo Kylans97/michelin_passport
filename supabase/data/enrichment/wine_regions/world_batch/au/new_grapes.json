@@ -1,0 +1,61 @@
+[
+ {
+  "name": "Semillon",
+  "aliases": [
+   "Sémillon",
+   "Wyndruif"
+  ],
+  "colour": "white",
+  "summary": "A white grape from Bordeaux, made dry or sweet and often blended with Sauvignon Blanc. In the Hunter it is picked early for light, unoaked wines that change markedly with age.",
+  "tastes": [
+   "Lemon",
+   "Green apple",
+   "Honey"
+  ],
+  "aged_note": "With age it turns golden and gains honey, toast and nutty notes.",
+  "body": 2,
+  "acidity": null,
+  "tannin": null,
+  "similar": {
+   "name": "Sauvignon Blanc",
+   "note": "Its usual blending partner, in Bordeaux and in Margaret River."
+  },
+  "sources": {
+   "aliases": [
+    "https://winefolly.com/grapes/semillon/",
+    "https://en.wikipedia.org/wiki/Semillon"
+   ],
+   "colour": [
+    "https://winefolly.com/grapes/semillon/",
+    "https://winecompanion.com.au/resources/varietals/semillon"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/semillon/",
+    "https://winecompanion.com.au/resources/varietals/semillon",
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/semillon",
+    "https://www.winecountry.com.au/blog/the-hunter-valley-guide-to-semillon"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/semillon/",
+    "https://www.australianwine.com/our-wines/semillon",
+    "https://winecompanion.com.au/resources/varietals/semillon",
+    "https://www.winecountry.com.au/blog/the-hunter-valley-guide-to-semillon"
+   ],
+   "aged_note": [
+    "https://www.australianwine.com/our-wines/semillon",
+    "https://winecompanion.com.au/resources/varietals/semillon",
+    "https://www.winecountry.com.au/blog/the-hunter-valley-guide-to-semillon",
+    "https://winefolly.com/grapes/semillon/"
+   ],
+   "body": [
+    "https://www.wineaustralia.com/market-insights/regions-and-varieties/semillon",
+    "https://winecompanion.com.au/resources/varietals/semillon"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/semillon/",
+    "https://winecompanion.com.au/resources/varietals/semillon",
+    "https://margaretriver.wine/wine-varieties"
+   ]
+  }
+ }
+]
