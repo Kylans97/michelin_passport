@@ -9,6 +9,20 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **Line drawings for wine estates, trains and ships** (product owner, 2026-11-20: "I don't have drawings for vineyards and we have just added those"; from the header-drawings canvas, "use all three wine-estate drawings, alternating, plus the train and the ship").
+  - **Five new `CsHeaderDrawing` scenes:**
+    - Wine estates: rows over the hills (the original estate header), the house on the ridge, the cellar. `HeaderDrawing.vineyard(id)` alternates between them by id.
+    - `HeaderDrawing.journey(id, kind)`: a carriage on a viaduct for a train, a small ship at sea for a ship.
+    - The id also lights a few carriage and saloon windows, as it does on the hotel façade.
+  - **Where:** `VineyardDetailHero` and `JourneyDetailHero` keep their own widgets (settled: the heroes stay separate). Each now draws its scene behind the text, under the same vignette as the restaurant and hotel heroes, and is at least 300 pt tall below the status bar, with the name at the bottom.
+    - `VineyardCard` gets a 64 pt drawing beside the name.
+    - `JourneyCard` gets a 16:9 drawing above the eyebrow.
+    - Before this, all four were text-only, with no image slot.
+  - Neither table has a photo column yet, so for now every estate, train and ship shows its drawing.
+  - **Fixed in passing:** `_onePerScene` in `test/cs_header_drawing_test.dart` loops until it has found every scene. With five scenes no constructor in it produced, `flutter test` hung instead of failing. It now builds estates and journeys too.
+  - Checked: `flutter analyze` clean; `flutter test` all 2,977 pass, with new tests for the estate pool and the journey kinds. All five scenes were rendered to an image and compared with the canvas.
+    - In the simulator against production: the Wine Estates list (Schloss Johannisberg, Bodegas Ysios, Montes and others alternating), the Montes page, the Trains & Ships list (Belmond Andean Explorer) and the Amandira page.
+    - Seen there: Amandira is a sailing yacht (a phinisi), but the ship drawing has a funnel. Not changed.
 - **Line drawings in place of a missing photo** (product owner, 2026-11-20, after the vineyard estate header: similar drawings for restaurants, hotels and events without photos; on the design canvas, "of willen we gewoon alle verschillende tekeningen gebruiken en dat het gewoon wisselt, anders wordt het ook zo eentonig"). Canvas: https://claude.ai/artifact/891UF37f9npbsWwYFzrXE5.
   - **What:** `CsHeaderDrawing` (`lib/core/widgets/cs_header_drawing.dart`), one `CustomPainter` with fifteen scenes in the vineyard's style: two deep-green planes, ivory line at low opacity, one faint round light. No gold, no text, nothing that reads as a fact about the place. Restaurants rotate through a table setting, the pass and an arched dining room; hotels through a façade, a garden allée and a front door (no key, which would read as a MICHELIN Key); private chefs through a board and knife and a home table. Events are drawn by type: Dinner also draws from the three restaurant scenes, and Market, Experience and untyped events draw from all seven event scenes.
   - **Seeded by id:** the venue's or event's id picks the scene, mirroring (only where the mirror image is still right, so not the table setting or the knife), where the light sits and, on the façade, which windows are lit. FNV-1a plus the MurmurHash3 finaliser, never `String.hashCode`, so one place looks the same on every screen, device and release. The hash is pinned in a test.
