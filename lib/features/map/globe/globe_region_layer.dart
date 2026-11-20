@@ -77,8 +77,37 @@ class GlobeRegionLayer extends StatelessWidget {
       );
       placed.add((region, position, r, opacity));
     }
-    // Labels only once the globe is turned in far enough to read them.
-    final showLabels = camera.zoom >= 1.6;
+    // Labels only once the globe is turned in far enough to read them, and
+    // never on top of each other: a name that would overlap one already
+    // placed waits until the globe is zoomed in further. The selected
+    // region and the nearest-to-the-viewer ones go first.
+    final labels = <(GlobeRegion, Offset, double, double)>[];
+    if (camera.zoom >= 2.5) {
+      final placedRects = <Rect>[];
+      final ordered = [...placed]
+        ..sort((a, b) {
+          if (a.$1.id == selectedId) return -1;
+          if (b.$1.id == selectedId) return 1;
+          return b.$4.compareTo(a.$4);
+        });
+      for (final entry in ordered) {
+        final (region, position, r, _) = entry;
+        final left = position.dx + math.min(r, 18) * 0.6 + 4;
+        final rect = Rect.fromLTWH(
+          left,
+          position.dy - 8,
+          region.label.length * 6.4 + 4,
+          16,
+        );
+        // Nor across another region's dot (Bordeaux over the Rhône).
+        final coversDot = placed.any(
+          (o) => o.$1.id != region.id && rect.inflate(3).contains(o.$2),
+        );
+        if (coversDot || placedRects.any((p) => p.overlaps(rect))) continue;
+        placedRects.add(rect);
+        labels.add(entry);
+      }
+    }
     return Stack(
       children: [
         Positioned.fill(
@@ -106,30 +135,29 @@ class GlobeRegionLayer extends StatelessWidget {
               ),
             ),
           ),
-        if (showLabels)
-          for (final (region, position, r, opacity) in placed)
-            Positioned(
-              left: position.dx + math.min(r, 18) * 0.6 + 4,
-              top: position.dy - 8,
-              child: IgnorePointer(
-                child: Opacity(
-                  opacity: opacity,
-                  child: Text(
-                    region.label,
-                    style: CsFonts.sans(
-                      color: AppColors.ivory,
-                      fontSize: region.id == selectedId ? 12 : 10.5,
-                      fontWeight: region.id == selectedId
-                          ? FontWeight.w600
-                          : FontWeight.w500,
-                      shadows: const [
-                        Shadow(color: Colors.black54, blurRadius: 3),
-                      ],
-                    ),
+        for (final (region, position, r, opacity) in labels)
+          Positioned(
+            left: position.dx + math.min(r, 18) * 0.6 + 4,
+            top: position.dy - 8,
+            child: IgnorePointer(
+              child: Opacity(
+                opacity: opacity,
+                child: Text(
+                  region.label,
+                  style: CsFonts.sans(
+                    color: AppColors.ivory,
+                    fontSize: region.id == selectedId ? 12 : 10.5,
+                    fontWeight: region.id == selectedId
+                        ? FontWeight.w600
+                        : FontWeight.w500,
+                    shadows: const [
+                      Shadow(color: Colors.black54, blurRadius: 3),
+                    ],
                   ),
                 ),
               ),
             ),
+          ),
       ],
     );
   }
@@ -146,17 +174,14 @@ class _PatchPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (final (region, position, r, opacity) in placed) {
-      final rect = Rect.fromCircle(center: position, radius: r);
+      // A blurred disc rather than a gradient shader: soft-edged and
+      // cheap, and it renders the same on every backend.
       canvas.drawCircle(
         position,
-        r,
+        r * 0.6,
         Paint()
-          ..shader = RadialGradient(
-            colors: [
-              _claret.withValues(alpha: 0.9 * opacity),
-              _claret.withValues(alpha: 0),
-            ],
-          ).createShader(rect),
+          ..color = _claret.withValues(alpha: 0.75 * opacity)
+          ..maskFilter = MaskFilter.blur(BlurStyle.normal, r * 0.35),
       );
       canvas.drawCircle(
         position,

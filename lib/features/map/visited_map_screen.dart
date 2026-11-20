@@ -149,8 +149,9 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       _selectedRegionId = null;
     });
     if (on) {
-      // The first set of regions is all in Europe.
-      _globeController.flyToPoint(46, 4, zoom: 2.4);
+      // The first set of regions is all in western Europe: close enough
+      // that their names can be read.
+      _globeController.flyToPoint(45, 3, zoom: 5);
     } else {
       _globeController.showWholeGlobeAround(_visiblePoints);
     }
@@ -446,8 +447,11 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                       },
                     ),
                   ),
+                  // No overlay in wine mode. SizedBox.expand, not shrink: a
+                  // zero-sized child here would make this Stack, and with it
+                  // the globe, zero wide (seen in the simulator, 2026-11-20).
                   if (_wineMode)
-                    const SizedBox.shrink()
+                    const SizedBox.expand()
                   else if (_loading)
                     const Center(
                       child: CircularProgressIndicator(
