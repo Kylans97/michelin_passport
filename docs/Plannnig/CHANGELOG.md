@@ -9,6 +9,20 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **Wine regions on the globe** (product owner, 2026-11-20: "a wine variant of the globe... tap a region and see what grapes grow there and what taste that gives"; on the canvas https://claude.ai/artifact/DHKUpxQhmfhfu5bhAz61vp: "just build it and fine-tune"). My Map gets a "My places | Wine regions" toggle. It shows only on your own map, and only once published regions exist.
+  - **Globe:** in wine mode it turns to Europe and draws each region as a soft claret patch around a point, with its name when zoomed in, never as a border. A ring marks regions you have logged a wine from (through the estate the wine is linked to; free-text producers are never matched by name).
+  - **Region sheet:** tapping a region opens what it is, its grapes and what they become there, a red from here on a 1–5 body/acidity/tannin scale, what it goes with, the names a wine list uses for it, how its labels rank quality, and how many of your wines come from it.
+  - **Grape page:** what you taste, how it feels, where it grows and what that changes, and "Like this? Try ...".
+  - **Wine-list search:** "On the wine list? Search a region or grape" matches regions, list names (Meursault, Barolo) and grapes, including aliases such as Bourgogne and Spätburgunder, on stored names only.
+  - Where else to reach this (Cellar, Explore) is left for later, by decision.
+- **Migration `20261101580000_add_wine_regions.sql`, prepared, not applied.** Adds `wine_regions`, `grapes`, `wine_region_grapes` and `wine_appellations` as editorial reference content: RLS, world-readable once `publication_status = 'published'`, no client write, select-only grants. Also adds a nullable `vineyards.wine_region_id`. No function is created. Replayed with all earlier migrations on a scratch stack: it applies cleanly, and anon can read the tables but not write them.
+- **First content, draft for review, not applied:** `supabase/data/enrichment/wine_regions/wine_regions_seed_v1.sql`, with 11 regions, 17 grapes, 23 region–grape links and 33 wine-list names. It is our own editorial text from general wine knowledge, with approximate region centres. Every row needs checking against a reference and a `source_url` before publishing. Loaded cleanly on the scratch stack after one fix (`similar` is a reserved word).
+
+### Checked
+- `flutter analyze` is clean and `flutter test` passes all 3,010 tests, with new tests for the search, grapes per region, top-level regions and the region sheet.
+- **Not checked in the simulator:** the layer only shows once published regions exist in production.
+
+### Added
 - **A calmer Wishlist, with wine estates, trains and ships** (product owner, 2026-11-20, from the "Wishlist, calmer" canvas, https://claude.ai/artifact/9Z5VnN2hMZ44UfNXm7QzZC: "Build A, with B (Everything, by place) as the first item in the selector").
   - The chip row and the large "YOUR WISHLIST" title are gone; the Wishlist tab above already says where you are. One line, "Restaurants 18 ▾", opens a sheet listing each kind with its count: Everything by place, Restaurants, Hotels, Events, Wine estates, Trains, Ships. A kind with nothing saved stays out of the sheet. The + sits on the same line.
   - **Everything, by place** (the default): one card per region (else town), within its country, listing everything saved there with a kind icon. Places with the most saved come first. Trains and ships close the list together as "On the move", since they cross borders. Grouping uses the stored region, town and country only; nothing is matched by name.

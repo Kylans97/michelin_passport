@@ -8,16 +8,21 @@ import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/map_repository.dart';
 import '../../data/repositories/visited_repository.dart';
+import '../../data/repositories/wine_atlas_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
+import '../../models/wine_atlas.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../passport/passport_view_model.dart';
 import 'models/map_filter_type.dart';
+import 'globe/globe_region_layer.dart';
 import 'globe/globe_view.dart';
 import 'models/map_pin.dart';
 import 'widgets/event_map_preview_sheet.dart';
 import 'widgets/map_cluster_sheet.dart';
 import 'widgets/venue_preview_sheet.dart';
+import 'wine/wine_list_search_screen.dart';
+import 'wine/wine_region_sheet.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/screen_usage.dart';
 import '../../core/theme/cs_fonts.dart';
@@ -92,11 +97,87 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   bool _loadError = false;
   MapFilterType _filter = MapFilterType.all;
 
+  // The wine layer (product owner, 2026-11-20): wine regions instead of
+  // the member's places. Only on the member's own map, and only once
+  // published regions exist — before the migration or its content, no
+  // toggle shows and My Map is exactly as before.
+  bool _wineMode = false;
+  WineAtlas _atlas = WineAtlas.empty;
+  Map<String, int> _myWineCounts = const {};
+  String? _selectedRegionId;
+
   @override
   void initState() {
     super.initState();
-    if (!widget._isFriend) trackScreenOpened(AnalyticsScreen.map);
+    if (!widget._isFriend) {
+      trackScreenOpened(AnalyticsScreen.map);
+      _loadAtlas();
+    }
     _load();
+  }
+
+  Future<void> _loadAtlas() async {
+    final repo = WineAtlasRepository(Supabase.instance.client);
+    try {
+      final atlas = await repo.load();
+      if (!mounted) return;
+      setState(() => _atlas = atlas);
+      final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
+      final counts = await repo.loadMyWineCountsByRegion(uid);
+      if (mounted) setState(() => _myWineCounts = counts);
+    } catch (_) {
+      // No wine layer: the tables or their content aren't there yet.
+    }
+  }
+
+  List<GlobeRegion> get _globeRegions => [
+    for (final region in _atlas.globeRegions)
+      GlobeRegion(
+        id: region.id,
+        label: region.name,
+        latitude: region.latitude,
+        longitude: region.longitude,
+        radiusKm: region.radiusKm,
+        marked: (_myWineCounts[region.id] ?? 0) > 0,
+      ),
+  ];
+
+  void _setWineMode(bool on) {
+    if (on == _wineMode) return;
+    setState(() {
+      _wineMode = on;
+      _selectedRegionId = null;
+    });
+    if (on) {
+      // The first set of regions is all in Europe.
+      _globeController.flyToPoint(46, 4, zoom: 2.4);
+    } else {
+      _globeController.showWholeGlobeAround(_visiblePoints);
+    }
+  }
+
+  Future<void> _openRegion(WineRegion region) async {
+    setState(() => _selectedRegionId = region.id);
+    await showWineRegionSheet(
+      context,
+      atlas: _atlas,
+      region: region,
+      myWineCount: _myWineCounts[region.id] ?? 0,
+    );
+    if (mounted) setState(() => _selectedRegionId = null);
+  }
+
+  Future<void> _openWineSearch() async {
+    final region = await Navigator.push<WineRegion>(
+      context,
+      MaterialPageRoute(builder: (_) => WineListSearchScreen(atlas: _atlas)),
+    );
+    if (region == null || !mounted) return;
+    final shown = region.parentId == null
+        ? region
+        : (_atlas.region(region.parentId!) ?? region);
+    await _globeController.flyToPoint(shown.latitude, shown.longitude);
+    if (mounted) await _openRegion(region);
   }
 
   Future<void> _load() async {
@@ -265,6 +346,19 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                       child: EditorialBackButton(color: AppColors.ivory),
                     ),
                   ),
+                  if (!widget._isFriend && !_atlas.isEmpty)
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        CsSpacing.pageHorizontal,
+                        0,
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.sm,
+                      ),
+                      child: _ModeToggle(
+                        wine: _wineMode,
+                        onChanged: _setWineMode,
+                      ),
+                    ),
                   Padding(
                     padding: const EdgeInsets.fromLTRB(
                       CsSpacing.pageHorizontal,
@@ -277,14 +371,20 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          widget._isFriend ? "$_ownerName's Map" : 'My Map',
+                          _wineMode
+                              ? 'Wine regions'
+                              : widget._isFriend
+                              ? "$_ownerName's Map"
+                              : 'My Map',
                           style: CsTypography.screenTitle.copyWith(
                             color: AppColors.ivory,
                           ),
                         ),
                         const SizedBox(height: CsSpacing.xs),
                         Text(
-                          widget._isFriend
+                          _wineMode
+                              ? 'Tap a region to see its grapes and how they taste.'
+                              : widget._isFriend
                               ? 'Every place $_ownerName has shared with you.'
                               : "Every place you've experienced.",
                           style: CsTypography.body.copyWith(
@@ -301,22 +401,24 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                       CsSpacing.pageHorizontal,
                       CsSpacing.base,
                     ),
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          for (final type in MapFilterType.values) ...[
-                            if (type != MapFilterType.values.first)
-                              const SizedBox(width: CsSpacing.sm),
-                            CsFilterChip(
-                              label: type.label,
-                              selected: _filter == type,
-                              onTap: () => _onSelectFilter(type),
+                    child: _wineMode
+                        ? _WineSearchButton(onTap: _openWineSearch)
+                        : SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                              children: [
+                                for (final type in MapFilterType.values) ...[
+                                  if (type != MapFilterType.values.first)
+                                    const SizedBox(width: CsSpacing.sm),
+                                  CsFilterChip(
+                                    label: type.label,
+                                    selected: _filter == type,
+                                    onTap: () => _onSelectFilter(type),
+                                  ),
+                                ],
+                              ],
                             ),
-                          ],
-                        ],
-                      ),
-                    ),
+                          ),
                   ),
                 ],
               ),
@@ -330,13 +432,23 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                   Positioned.fill(
                     child: GlobeView(
                       controller: _globeController,
-                      pins: plottable,
-                      visitedCountryCodes: _visitedCountryCodes,
+                      pins: _wineMode ? const [] : plottable,
+                      visitedCountryCodes: _wineMode
+                          ? const {}
+                          : _visitedCountryCodes,
                       onPinTap: (pin) => _onPinTap(context, pin),
                       onClusterTap: (pins) => _onClusterTap(context, pins),
+                      regions: _wineMode ? _globeRegions : const [],
+                      selectedRegionId: _selectedRegionId,
+                      onRegionTap: (globeRegion) {
+                        final region = _atlas.region(globeRegion.id);
+                        if (region != null) _openRegion(region);
+                      },
                     ),
                   ),
-                  if (_loading)
+                  if (_wineMode)
+                    const SizedBox.shrink()
+                  else if (_loading)
                     const Center(
                       child: CircularProgressIndicator(
                         color: AppColors.ivory,
@@ -442,6 +554,96 @@ class _MapMessage extends StatelessWidget {
               ],
             ],
           ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// "My places | Wine regions" — which layer the globe shows.
+class _ModeToggle extends StatelessWidget {
+  final bool wine;
+  final ValueChanged<bool> onChanged;
+
+  const _ModeToggle({required this.wine, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(3),
+    decoration: BoxDecoration(
+      color: AppColors.darkGreen,
+      borderRadius: BorderRadius.circular(22),
+      border: Border.all(color: AppColors.subtleBorderDark),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _segment('My places', !wine, () => onChanged(false)),
+        _segment('Wine regions', wine, () => onChanged(true)),
+      ],
+    ),
+  );
+
+  Widget _segment(String label, bool selected, VoidCallback onTap) => Semantics(
+    button: true,
+    selected: selected,
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 36,
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: selected ? AppColors.ivory : Colors.transparent,
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: Text(
+          label,
+          style: CsFonts.sans(
+            color: selected ? AppColors.deepGreen : AppColors.secondaryOnDark,
+            fontSize: 13,
+            fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// Opens the wine-list search; looks like the search field it leads to.
+class _WineSearchButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _WineSearchButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 48,
+        padding: const EdgeInsets.symmetric(horizontal: 18),
+        decoration: BoxDecoration(
+          color: AppColors.ivory,
+          borderRadius: BorderRadius.circular(24),
+        ),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.search_rounded,
+              size: 20,
+              color: AppColors.deepGreen,
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                'On the wine list? Search a region or grape',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: CsFonts.sans(color: AppColors.taupe, fontSize: 14.5),
+              ),
+            ),
+          ],
         ),
       ),
     ),

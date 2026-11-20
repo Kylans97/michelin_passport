@@ -10,6 +10,7 @@ import '../widgets/venue_pin.dart';
 import 'globe_camera.dart';
 import 'globe_outlines.dart';
 import 'globe_painter.dart';
+import 'globe_region_layer.dart';
 import '../../../core/theme/cs_fonts.dart';
 
 /// Drives a [GlobeView] from outside — the globe's counterpart to
@@ -30,6 +31,25 @@ class GlobeController {
   /// Places the globe without animating: centred on the [points]' middle
   /// (latitude tilted no further than ±40°, so the globe stays upright),
   /// whole globe in view. Auto-rotation, if enabled, carries on from here.
+  /// Turns the globe to [latitude]/[longitude], zoomed in to at least
+  /// [zoom] — how a wine-list search shows the region it found.
+  Future<void> flyToPoint(
+    double latitude,
+    double longitude, {
+    double zoom = 3,
+  }) async {
+    final state = _state;
+    if (state == null) return;
+    final camera = state._camera.value;
+    await state._flyTo(
+      camera.copyWith(
+        latitude: latitude,
+        longitude: longitude,
+        zoom: math.max(camera.zoom, zoom),
+      ),
+    );
+  }
+
   void showWholeGlobeAround(List<(double, double)> points) {
     final state = _state;
     if (state == null) return;
@@ -66,6 +86,12 @@ class GlobeView extends StatefulWidget {
   /// Defaults to [GlobeOutlines.load]; injectable for tests.
   final Future<GlobeOutlines>? outlines;
 
+  /// The wine layer: regions drawn as soft patches with their names
+  /// (product owner, 2026-11-20). Empty for My Map.
+  final List<GlobeRegion> regions;
+  final String? selectedRegionId;
+  final ValueChanged<GlobeRegion>? onRegionTap;
+
   const GlobeView({
     super.key,
     required this.controller,
@@ -75,6 +101,9 @@ class GlobeView extends StatefulWidget {
     required this.onClusterTap,
     this.autoRotate = true,
     this.outlines,
+    this.regions = const [],
+    this.selectedRegionId,
+    this.onRegionTap,
   });
 
   @override
@@ -290,6 +319,18 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
     if (mounted) widget.onPinTap(pin);
   }
 
+  Future<void> _tapRegion(GlobeRegion region) async {
+    final camera = _camera.value;
+    await _flyTo(
+      camera.copyWith(
+        latitude: region.latitude,
+        longitude: region.longitude,
+        zoom: math.max(camera.zoom, 3.0),
+      ),
+    );
+    if (mounted) widget.onRegionTap?.call(region);
+  }
+
   Future<void> _tapCluster(List<MapPin> members, Size size) async {
     final camera = _camera.value;
     final points = [for (final p in members) (p.latitude, p.longitude)];
@@ -357,6 +398,16 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
                     valueListenable: _camera,
                     builder: (context, camera, _) => Stack(
                       children: [
+                        if (widget.regions.isNotEmpty)
+                          Positioned.fill(
+                            child: GlobeRegionLayer(
+                              regions: widget.regions,
+                              camera: camera,
+                              size: size,
+                              selectedId: widget.selectedRegionId,
+                              onTap: _tapRegion,
+                            ),
+                          ),
                         for (final cluster in clusterOnGlobe(
                           widget.pins,
                           projection: GlobeProjection(camera, size),
