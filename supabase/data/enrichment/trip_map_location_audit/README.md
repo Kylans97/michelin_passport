@@ -50,3 +50,102 @@ appear on the right place".
   `qa_issues.csv`, and an entry in the Michelin_Database changelog.
 - The 33 not-found rows and the non-NL rows were not researched further.
 - Nothing was reproduced in the simulator (it needs a signed-in account).
+
+## Verified coordinates for the seed restaurants (staged, 2026-11-20)
+
+`seed_coordinates_staged.csv`: one row for each of the 119 seed restaurants
+(`seed_scope.csv`: restaurant codes up to `rest_0143` whose stored point has
+at most 4 decimals). Nothing has been written to Supabase.
+
+**101 confirmed, 18 unclear.** Across the confirmed rows, the median
+distance from the stored point is 752 m: 61 move more than 500 m and 45
+more than 1 km.
+
+### Method
+
+1. **First pass, stored address** (`first_pass_nl_bag_osm.csv`, NL only).
+   - Look up the street and house number in the official Dutch address
+     register (BAG, via PDOK Locatieserver).
+   - Corroborate with an OpenStreetMap eating place of the same name within
+     150 m (`VENUE_EXACT`).
+   - 26 rows passed. A 27th, `rest_0055`, passed on BAG street, number and
+     postcode alone.
+   - Every other row was sent to research, including those where an OSM
+     venue stood more than 150 m away (`CONFLICT`).
+2. **Research** (`research/batch_*_in.csv` / `_out.csv`, 92 rows).
+   - The current address comes from the venue's own website plus a second
+     independent source: the MICHELIN Guide, or World's 50 Best where
+     MICHELIN has no guide.
+   - The research found the stored address unreliable. Most rows had the
+     wrong street, house number, postcode or town, and some were a former
+     location.
+3. **Geocoding** (`scripts/final.py`).
+   - A coordinate is written only when the address is confirmed and the
+     hit is at house level.
+   - NL: BAG on exact postcode + house number, with the street name
+     checked.
+   - Elsewhere: OSM with the same house number and postcode.
+   - Every Dutch point is also checked to fall inside the Netherlands.
+   - `coordinate_source` and `source_url` name the exact BAG or OSM record.
+
+### Held back (certainty `unclear`, no coordinate)
+
+- **Address confirmed, but no house-level geocode:**
+  - `rest_0136` AR, `rest_0138` CL, `rest_0143` CO, `rest_0067` ES
+    (Passeig de Gràcia 38-40), `rest_0137` HK, `rest_0077` IT,
+    `rest_0139` PE, `rest_0080` US.
+  - `rest_0093` NL: Museumstraat 2 is not in BAG.
+  - `rest_0082` NL: Hoofdstraat 75 is not in BAG, and sources disagree
+    between 73 and 75.
+- **Address not confirmed:**
+  - `rest_0092` NL: Wolfslaardreef 100 or 102.
+  - `rest_0115` NL: the official site is unreachable.
+  - `rest_0072` NL: Noor is closing; the address rests on MICHELIN only.
+  - `rest_0071` TR: the house number comes from MICHELIN only.
+  - `rest_0059` US: the official site gives only a mailing address.
+- **Closed:**
+  - `rest_0043` NL Demain: left Strandhotel Cadzand on 2026-05-31; no
+    new location yet.
+  - `rest_0108` NL The White Room: "officieel gesloten"; whether the
+    closure is permanent is not established.
+  - `rest_0140` BR Lasai: closed while it moves to the Sofitel Ipanema,
+    December 2026.
+
+### Status findings for review
+
+- **Moved:**
+  - `rest_0014` Bolenius, to Nachtwachtlaan 20B.
+  - `rest_0037` De Librije, to Spinhuisplein 1.
+  - `rest_0048` Fred, to Boompjes 41.
+  - `rest_0066` ML, to Klokhuisplein 5 (since 2018).
+  - `rest_0088` Calva, to Markt 53 Nootdorp.
+  - `rest_0098` Sense, to Raadhuisstraat 1 Vught.
+  - `rest_0137` The Chairman, to The Wellington (2022).
+- **Moves announced:**
+  - `rest_0096` Sabero, to Eindhoven on 2027-02-01.
+  - `rest_0113` Versaen, to Marktstraat 14 in mid-February 2027.
+  - Both coordinates are for the current location; re-check after the
+    move.
+- **Renamed:** `rest_0070` Noble Kitchen became Nami (2026-05-20); the
+  catalogue already uses the new name.
+- **Data mix-up:** `rest_0032` De Juwelier was stored at Zoldering's
+  address, Utrechtsestraat 141.
+- **Hotel link:** `rest_0008` Anne is at 28 place des Vosges, inside
+  Pavillon de la Reine. Its stored Cherche-Midi address was wrong, so its
+  link to `hotel_2154` holds.
+
+### Limits
+
+- **Stored address not researched for the 27 first-pass rows.** For those,
+  the coordinate is corroborated by the BAG address plus an OSM venue of
+  the same name (26 rows), or by the BAG address with a matching postcode
+  alone (`rest_0055`).
+- **Address corrections are not part of this file.** `current_address`
+  is recorded as evidence, but correcting the `address` column is a
+  separate decision.
+- **A BAG point is the building's address point, not the entrance.** For a
+  restaurant inside a large building (a hotel, Rijksmuseum), it is the
+  building's address.
+- **Before applying,** each correction needs a QA id from `qa_issues.csv`
+  and a Michelin_Database changelog entry. Guard each update on the old
+  point, as earlier coordinate corrections did.
