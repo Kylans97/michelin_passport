@@ -145,6 +145,17 @@ class GlobeRegionLayer extends StatelessWidget {
       }
       placed.add(_Placed(region, position, opacity, shape, r));
     }
+    // Large shapes first, then smaller ones, then patches, so a region
+    // inside another (Vijlen and Voerendaalse Bergen in Mergelland) is
+    // painted on top and, hit-tested from the top, takes the tap.
+    double extentOf(_Placed p) {
+      final shape = p.shape;
+      if (shape == null) return -1;
+      final b = shape.getBounds();
+      return b.width * b.height;
+    }
+
+    placed.sort((a, b) => extentOf(b).compareTo(extentOf(a)));
     // Labels only once the globe is turned in far enough to read them, and
     // never on top of each other: a name that would overlap one already
     // placed waits until the globe is zoomed in further. The selected

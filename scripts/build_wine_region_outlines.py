@@ -12,13 +12,17 @@ Nothing is traced by hand and nothing is matched across countries.
     curl -o lau2024.geojson https://gisco-services.ec.europa.eu/distribution/v2/lau/geojson/LAU_RG_01M_2024_4326.geojson
     /tmp/geo/bin/python scripts/build_wine_region_outlines.py lau2024.geojson
 
+Units finer than a municipality (BAG woonplaatsen, CBS buurten and
+wijken for the Dutch zones) come from outlines/geometry/*.geojson.
+
 Writes, next to the commune lists:
   outlines.json            {region_code: [[ring, ...], ...]} per polygon,
                            rings as [lng, lat] pairs, outer ring first
   wine_region_outlines.sql the updates that load them into wine_regions
 
 The outline is simplified for a globe, not for a legal boundary: gaps
-and notches under ~1.5 km closed, about 1 km of tolerance, parts under
+and notches under ~1.5 km closed, about 1 km of tolerance (both scaled
+down for a zone under ~40 km across), parts under
 4 km² dropped, coordinates to 3 decimals
 (about 100 m). It shows where a region is, not which side of a road a
 vineyard falls on.
@@ -50,6 +54,13 @@ def main(lau_path):
     wanted = {r['gisco_id'] for rows in regions.values() for r in rows}
 
     geoms = {}
+    # Official units finer than a municipality (the Dutch zones), keyed
+    # by unit_id: see outlines/import_nl_regions.py.
+    for path in sorted((OUT / 'geometry').glob('*.geojson')):
+        for f in json.load(open(path, encoding='utf-8'))['features']:
+            gid = f['properties']['unit_id']
+            if gid in wanted:
+                geoms[gid] = shape(f['geometry']).buffer(0)
     for f in json.load(open(lau_path, encoding='utf-8'))['features']:
         gid = f['properties']['GISCO_ID']
         if gid in wanted:
@@ -65,9 +76,14 @@ def main(lau_path):
         # neighbouring municipalities, and the notches under ~1.5 km that
         # read as noise on a globe, then simplify. Grows nothing: what is
         # buffered out is buffered back in.
-        merged = merged.buffer(CLOSE_DEG, join_style='round').buffer(
-            -CLOSE_DEG, join_style='round')
-        simple = merged.simplify(TOLERANCE_DEG, preserve_topology=True)
+        # A zone a few km across (Vijlen, Oolde) gets proportionally finer
+        # treatment, or it would collapse to a triangle.
+        minx, miny, maxx, maxy = merged.bounds
+        scale = min(1.0, max(maxx - minx, maxy - miny) / 0.6)
+        close, tolerance = CLOSE_DEG * scale, TOLERANCE_DEG * scale
+        merged = merged.buffer(close, join_style='round').buffer(
+            -close, join_style='round')
+        simple = merged.simplify(tolerance, preserve_topology=True)
         parts = simple.geoms if isinstance(simple, MultiPolygon) else [simple]
         polys = []
         for p in parts:

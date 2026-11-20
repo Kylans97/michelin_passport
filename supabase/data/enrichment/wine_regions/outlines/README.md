@@ -36,7 +36,26 @@ writes `outlines.json` and `wine_region_outlines.sql`.
 | wr_0008 Douro | Região Demarcada do Douro (DO Douro = Porto area) | EU technical file PDO-PT-A1539, hosted by IVDP | 131 | 9 | Várzea de Abrunhais, Frechas, Carvalhais, Avantos e Romeu (named estates only) |
 | wr_0009 Mosel | Anbaugebiet / g.U. Mosel | RLP product specification PDO-DE-A1270 (2011-12-19) | 132 | 1 | — |
 | wr_0010 Piedmont | DOC Piemonte Art. 3 (Barolo, Barbaresco, Barbera d'Alba and Asti/Moscato d'Asti all lie wholly inside it) | MASAF disciplinari (DOC Piemonte, DM 08.08.2019) | 681 | 1 | — (2 names held back, below) |
+| wr_0012 Achterhoek-Winterswijk | "de gehele gemeente Winterswijk" | RVO productdossier BOB (Jan 2022) | 1 | — | — |
+| wr_0014 Mergelland | 8 gemeenten + former Nuth (CBS wijken 01-04 of Beekdaelen), "voor zover" on loess | RVO productdossier BOB (2016) | 12 | 12 | — |
+| wr_0015 Oolde | the 1832 neighbourhood Oolde, 658 ha | RVO productdossier BOB (Dec 2016); CBS buurt BU02620206 | 1 | 1 (buurt ~1.8x the area) | — |
+| wr_0017 Schouwen-Duiveland | "het eiland Schouwen-Duiveland" | RVO productdossier BOB (Dec 2021) | 1 | — | — |
+| wr_0018 Twente | eastern Overijssel, 150,300 ha (the dossier map's 14 gemeenten, 150,377 ha) | RVO productdossier BOB (Apr 2022) | 14 | — | — |
+| wr_0019 Vijlen | a mapped area in the village of Vijlen, 419 ha | RVO productdossier BOB; BAG woonplaats Vijlen (1431) | 1 | 1 (woonplaats ~2.7x) | — |
 | wr_0011 Tuscany | IGT Toscana: the 10 provinces of Regione Toscana | MASAF disciplinari (IGT Toscano/Toscana, 12.07.2019) | 273 | — | — |
+
+**Not drawn** (published with a point only; the municipalities the
+dossier names are kept in `communes_reference/` for the record):
+wr_0013 Maasvallei Limburg (a 155 km² strip on both Maas banks fixed by
+roads and canals; its 11 municipalities are 5-7x that), wr_0016
+Rivierenland (5 km either side of the river centrelines; the 13 named
+municipalities are only part of it), wr_0020 Voerendaalse Bergen (six
+named slopes, ~900 ha; Voerendaal is 3.5x). See `import_nl_regions.py`.
+
+Dutch units finer than a municipality come from PDOK open data (BAG
+woonplaatsen, Kadaster, CC0; CBS Wijk- en Buurtkaart 2024, CC BY 4.0) in
+`geometry/nl_finer_units.geojson`. Zones under ~40 km across get
+proportionally finer smoothing and tolerance.
 
 France: merged communes resolve through INSEE's official event history
 (`v_mvt_commune_2026.csv`) to the commune that absorbed them, drawn whole
@@ -62,4 +81,4 @@ and marked partial.
   document's own totals, not against an image of the page.
 
 Per-region notes with every judgement call: `communes/wr_NNNN_notes.md`
-(Spain, Portugal, Germany, Italy).
+(Spain, Portugal, Germany, Italy, the Netherlands).

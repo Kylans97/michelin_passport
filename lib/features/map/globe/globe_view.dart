@@ -81,6 +81,10 @@ class GlobeController {
 ///
 /// Everything drawn comes from the bundled [GlobeOutlines] and the pins'
 /// own coordinates: no tiles, no network, no location permission.
+/// How far a cluster of the member's places is zoomed to tell them apart:
+/// the globe's limit before wine regions raised it to 1000.
+const double globePlacesMaxZoom = 60;
+
 class GlobeView extends StatefulWidget {
   final GlobeController controller;
   final List<MapPin> pins;
@@ -130,8 +134,8 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
   static const _resumeMaxZoom = 1.3;
   static const _flyToPinMinZoom = 4.0;
   // How close a tapped region is shown: the Douro's 100 km fills about
-  // half the view.
-  static const _regionMaxZoom = 40.0;
+  // half the view at 40; Vijlen's 3 km needs the globe's full 1000.
+  static const _regionMaxZoom = GlobeCamera.maxZoom;
 
   final _camera = ValueNotifier(const GlobeCamera(latitude: 30, longitude: 5));
   GlobeOutlines? _outlines;
@@ -355,7 +359,7 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
     final fitted = fitGlobeCamera(
       points,
       fallback: camera,
-      singlePointZoom: GlobeCamera.maxZoom,
+      singlePointZoom: globePlacesMaxZoom,
     );
     final separate =
         clusterOnGlobe(

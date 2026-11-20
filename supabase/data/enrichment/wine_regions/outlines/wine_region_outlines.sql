@@ -67,3 +67,39 @@ update public.wine_regions set
   outline_source = 'Union of 273 municipalities from the official commune list; boundaries Eurostat GISCO LAU 2024 (© EuroGeographics), simplified to ~1 km.',
   outline_source_url = 'https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_IGP/IGT_Toscano_o_Toscana.pdf'
 where region_code = 'wr_0011';
+
+update public.wine_regions set
+  outline = '[[[[6.63,51.951],[6.655,51.976],[6.657,52.014],[6.683,52.029],[6.688,52.04],[6.715,52.04],[6.751,52.029],[6.812,51.995],[6.827,51.994],[6.832,51.973],[6.829,51.965],[6.801,51.958],[6.796,51.939],[6.77,51.917],[6.721,51.896],[6.694,51.915],[6.662,51.917],[6.657,51.928],[6.633,51.937],[6.63,51.951]]]]'::jsonb,
+  outline_source = 'Union of 1 municipalities from the official commune list; boundaries Eurostat GISCO LAU 2024 (© EuroGeographics), simplified to ~1 km.',
+  outline_source_url = 'https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Achterhoek-Winterswijk.pdf'
+where region_code = 'wr_0012';
+
+update public.wine_regions set
+  outline = '[[[[5.64,50.847],[5.646,50.872],[5.679,50.883],[5.699,50.91],[5.722,50.911],[5.746,50.943],[5.791,50.911],[5.917,50.934],[5.911,50.913],[6.024,50.818],[5.997,50.792],[6.026,50.774],[6.021,50.754],[5.96,50.762],[5.918,50.751],[5.881,50.768],[5.849,50.755],[5.808,50.756],[5.77,50.783],[5.738,50.758],[5.682,50.757],[5.698,50.779],[5.693,50.807],[5.656,50.82],[5.64,50.847]]]]'::jsonb,
+  outline_source = 'Union of 12 municipalities from the official commune list; boundaries Eurostat GISCO LAU 2024 (© EuroGeographics), simplified to ~1 km.',
+  outline_source_url = 'https://api.pdok.nl/cbs/wijken-en-buurten-2024/ogc/v1/collections/wijken ; https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Mergelland.pdf'
+where region_code = 'wr_0014';
+
+update public.wine_regions set
+  outline = '[[[[6.322,52.211],[6.325,52.211],[6.327,52.216],[6.35,52.225],[6.355,52.222],[6.365,52.223],[6.356,52.207],[6.361,52.2],[6.37,52.203],[6.372,52.201],[6.373,52.195],[6.38,52.191],[6.38,52.184],[6.373,52.181],[6.326,52.183],[6.322,52.211]]]]'::jsonb,
+  outline_source = 'Union of 1 municipalities from the official commune list; boundaries Eurostat GISCO LAU 2024 (© EuroGeographics), simplified to ~1 km.',
+  outline_source_url = 'https://api.pdok.nl/cbs/wijken-en-buurten-2024/ogc/v1/collections/buurten'
+where region_code = 'wr_0015';
+
+update public.wine_regions set
+  outline = '[[[[3.679,51.703],[3.716,51.735],[3.813,51.741],[3.839,51.758],[3.882,51.749],[3.941,51.774],[4.013,51.759],[4.049,51.695],[4.152,51.685],[4.203,51.661],[4.193,51.639],[4.145,51.675],[4.116,51.672],[4.068,51.631],[3.97,51.614],[3.891,51.633],[3.872,51.669],[3.816,51.695],[3.723,51.665],[3.695,51.674],[3.679,51.703]]]]'::jsonb,
+  outline_source = 'Union of 1 municipalities from the official commune list; boundaries Eurostat GISCO LAU 2024 (© EuroGeographics), simplified to ~1 km.',
+  outline_source_url = 'https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Schouwen-Duiveland.pdf'
+where region_code = 'wr_0017';
+
+update public.wine_regions set
+  outline = '[[[[6.327,52.302],[6.347,52.318],[6.343,52.37],[6.393,52.389],[6.391,52.428],[6.507,52.491],[6.617,52.47],[6.668,52.494],[6.939,52.436],[6.989,52.469],[7.072,52.373],[7.027,52.288],[7.06,52.235],[6.989,52.226],[6.949,52.18],[6.91,52.175],[6.846,52.119],[6.716,52.118],[6.665,52.13],[6.673,52.156],[6.654,52.171],[6.492,52.178],[6.33,52.281],[6.327,52.302]]]]'::jsonb,
+  outline_source = 'Union of 14 municipalities from the official commune list; boundaries Eurostat GISCO LAU 2024 (© EuroGeographics), simplified to ~1 km.',
+  outline_source_url = 'https://www.rvo.nl/sites/default/files/2026-09/Productdossier-BOB-Twente.pdf'
+where region_code = 'wr_0018';
+
+update public.wine_regions set
+  outline = '[[[[5.921,50.769],[5.924,50.775],[5.931,50.775],[5.937,50.771],[5.943,50.773],[5.945,50.782],[5.942,50.789],[5.943,50.794],[5.945,50.796],[5.952,50.794],[5.964,50.802],[5.973,50.797],[5.974,50.791],[5.982,50.787],[5.985,50.781],[5.98,50.779],[5.975,50.772],[5.974,50.768],[5.966,50.761],[5.959,50.762],[5.936,50.757],[5.93,50.759],[5.93,50.762],[5.925,50.764],[5.925,50.766],[5.921,50.769]]]]'::jsonb,
+  outline_source = 'Union of 1 municipalities from the official commune list; boundaries Eurostat GISCO LAU 2024 (© EuroGeographics), simplified to ~1 km.',
+  outline_source_url = 'https://service.pdok.nl/lv/bag/wfs/v2_0'
+where region_code = 'wr_0019';
