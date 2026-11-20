@@ -153,6 +153,43 @@ void main() {
     }
   });
 
+  testWidgets('a hero drawing clears the status bar and toolbar', (
+    tester,
+  ) async {
+    final scenes = _onePerScene();
+    await tester.pumpWidget(
+      MediaQuery(
+        data: const MediaQueryData(padding: EdgeInsets.only(top: 62)),
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: Wrap(
+            children: [
+              for (final d in scenes.values)
+                CsHeaderDrawing(
+                  drawing: d,
+                  width: 40.2,
+                  height: 36,
+                  belowToolbar: true,
+                ),
+            ],
+          ),
+        ),
+      ),
+    );
+    expect(tester.takeException(), isNull);
+    final painter =
+        tester
+                .widget<CustomPaint>(
+                  find.descendant(
+                    of: find.byType(CsHeaderDrawing).first,
+                    matching: find.byType(CustomPaint),
+                  ),
+                )
+                .painter!
+            as HeaderDrawingPainter;
+    expect(painter.topInset, 62 + kToolbarHeight);
+  });
+
   testWidgets('VenueThumbnail shows the drawing when given one', (
     tester,
   ) async {

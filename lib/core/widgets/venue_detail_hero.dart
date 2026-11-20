@@ -234,7 +234,11 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
   Widget _noPhoto(bool isClosed) {
     final drawing = widget.drawing;
     if (drawing == null) return _FallbackGradient(isClosed: isClosed);
-    return CsHeaderDrawing(drawing: drawing, muted: isClosed);
+    return CsHeaderDrawing(
+      drawing: drawing,
+      muted: isClosed,
+      belowToolbar: true,
+    );
   }
 
   // One variant size for the shown photo and the precached next one, so

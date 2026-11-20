@@ -221,6 +221,12 @@ class CsHeaderDrawing extends StatelessWidget {
   final BorderRadius borderRadius;
   final bool muted;
 
+  /// For a full-bleed detail-page hero: the scene starts below the status
+  /// bar and toolbar instead of behind them, so no lamp hangs under the
+  /// camera cutout and no moon sits behind the back or Follow button.
+  /// Cords and chains still run up to the top edge. Cards leave it false.
+  final bool belowToolbar;
+
   const CsHeaderDrawing({
     super.key,
     required this.drawing,
@@ -228,10 +234,14 @@ class CsHeaderDrawing extends StatelessWidget {
     this.height,
     this.borderRadius = BorderRadius.zero,
     this.muted = false,
+    this.belowToolbar = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final topInset = belowToolbar
+        ? MediaQuery.paddingOf(context).top + kToolbarHeight
+        : 0.0;
     return ClipRRect(
       borderRadius: borderRadius,
       child: SizedBox(
@@ -245,7 +255,11 @@ class CsHeaderDrawing extends StatelessWidget {
                 : w * _designHeight / _designWidth;
             return CustomPaint(
               size: Size(w, h),
-              painter: HeaderDrawingPainter(drawing.resolve(), muted: muted),
+              painter: HeaderDrawingPainter(
+                drawing.resolve(),
+                muted: muted,
+                topInset: topInset,
+              ),
             );
           },
         ),
@@ -261,7 +275,13 @@ class HeaderDrawingPainter extends CustomPainter {
   final HeaderDrawingVariant variant;
   final bool muted;
 
-  HeaderDrawingPainter(this.variant, {this.muted = false});
+  /// Height at the top kept clear of the scene (see
+  /// [CsHeaderDrawing.belowToolbar]). The scene then fills the rest,
+  /// top-aligned: any crop falls on the ground plane, under the hero's
+  /// vignette, rather than on the lamps.
+  final double topInset;
+
+  HeaderDrawingPainter(this.variant, {this.muted = false, this.topInset = 0});
 
   static const double _lineWidth = 1.2;
   static const Color _ink = AppColors.textOnDark;
@@ -284,13 +304,15 @@ class HeaderDrawingPainter extends CustomPainter {
       Paint()..color = muted ? const Color(0xFF3E3B35) : AppColors.deepGreen,
     );
 
+    final top = topInset.clamp(0.0, size.height / 2);
+    final area = Size(size.width, size.height - top);
     final scale = math.max(
-      size.width / _designWidth,
-      size.height / _designHeight,
+      area.width / _designWidth,
+      area.height / _designHeight,
     );
     canvas.translate(
-      (size.width - _designWidth * scale) / 2,
-      (size.height - _designHeight * scale) / 2,
+      (area.width - _designWidth * scale) / 2,
+      top > 0 ? top : (area.height - _designHeight * scale) / 2,
     );
     canvas.scale(scale);
 
@@ -334,6 +356,14 @@ class HeaderDrawingPainter extends CustomPainter {
       canvas.translate(_designWidth, 0);
       canvas.scale(-1, 1);
     }
+    if (top > 0 && scene.hangers.isNotEmpty) {
+      // Cords and chains reach the top edge of the scene; carry them on
+      // up through the cleared band, so a lamp never hangs from nothing.
+      line.color = _ink.withValues(alpha: _l);
+      for (final x in scene.hangers) {
+        canvas.drawLine(Offset(x, -top / scale), Offset(x, 0), line);
+      }
+    }
     for (final layer in scene.layers) {
       final path = layer.path;
       final fillTone = layer.fill;
@@ -360,7 +390,7 @@ class HeaderDrawingPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(HeaderDrawingPainter old) =>
-      old.variant != variant || old.muted != muted;
+      old.variant != variant || old.muted != muted || old.topInset != topInset;
 }
 
 // ---------------------------------------------------------------------------
@@ -397,7 +427,10 @@ class _Layer {
 class _Scene {
   final List<_Layer> layers;
   final _Light? light;
-  const _Scene(this.layers, {this.light});
+
+  /// x of every cord or chain that starts at the scene's top edge.
+  final List<double> hangers;
+  const _Scene(this.layers, {this.light, this.hangers = const []});
 }
 
 final Map<String, Path> _pathCache = {};
@@ -477,58 +510,68 @@ final Map<HeaderDrawingScene, _Scene> _scenes = {
     _Layer(_circle(122, 62, 18), line: _l),
     const _Layer('M110 56L134 68', line: 0.16),
   ]),
-  HeaderDrawingScene.kitchenPass: _Scene([
-    const _Layer(
-      'M98 76L70 196H150L122 76Z M183 76L155 196H235L207 76Z '
-      'M268 76L240 196H320L292 76Z',
-      fill: _Tone.ink,
-      fillOpacity: 0.045,
-    ),
-    _Layer(_rect(0, 196, 390, 104), fill: _Tone.mid),
-    const _Layer('M110 0V54M195 0V54M280 0V54', line: _l),
-    const _Layer(
-      'M96 74L102 54H118L124 74Z M181 74L187 54H203L209 74Z '
-      'M266 74L272 54H288L294 74Z',
-      fill: _Tone.forest,
-      line: _l,
-    ),
-    const _Layer('M28 126H362', line: 0.3),
-    const _Layer(
-      'M44 126V148H58V126M64 126V144H78V126M312 126V150H326V126'
-      'M332 126V142H346V126',
-      line: 0.16,
-    ),
-    const _Layer('M0 196H390', line: _l),
-    const _Layer('M0 206H390', line: 0.1),
-    const _Layer('M84 196Q110 186 136 196M254 196Q280 186 306 196', line: _l),
-    const _Layer('M172 196A23 22 0 0 1 218 196Z', fill: _Tone.forest, line: _l),
-    _Layer(_circle(195, 171, 3), line: _l),
-    const _Layer('M164 196H226', line: 0.3),
-  ]),
-  HeaderDrawingScene.archedRoom: _Scene([
-    const _Layer(_arches, fill: _Tone.mid),
-    _Layer(_circle(206, 116, 11), fill: _Tone.ink, fillOpacity: 0.09),
-    _Layer(_rect(0, 236, 390, 64), fill: _Tone.dark),
-    const _Layer(_arches, line: _l),
-    const _Layer(
-      'M68 224V110A37 37 0 0 1 142 110V224 M158 224V110A37 37 0 0 1 232 110V224 '
-      'M248 224V110A37 37 0 0 1 322 110V224',
-      line: 0.1,
-    ),
-    const _Layer(
-      'M105 79V222M195 79V222M285 79V222M74 150H136M164 150H226M254 150H316',
-      line: 0.14,
-    ),
-    const _Layer('M0 236H390M195 0V40', line: _l),
-    const _Layer('M181 54Q195 36 209 54Z', fill: _Tone.forest, line: _l),
-    _Layer(_ellipse(195, 230, 46, 6), fill: _Tone.forest, line: _l),
-    const _Layer(
-      'M195 236V272M178 272H212'
-      'M128 196Q125 236 130 272M130 240H156M154 240V272'
-      'M262 196Q265 236 260 272M260 240H234M236 240V272',
-      line: _l,
-    ),
-  ]),
+  HeaderDrawingScene.kitchenPass: _Scene(
+    [
+      const _Layer(
+        'M98 76L70 196H150L122 76Z M183 76L155 196H235L207 76Z '
+        'M268 76L240 196H320L292 76Z',
+        fill: _Tone.ink,
+        fillOpacity: 0.045,
+      ),
+      _Layer(_rect(0, 196, 390, 104), fill: _Tone.mid),
+      const _Layer('M110 0V54M195 0V54M280 0V54', line: _l),
+      const _Layer(
+        'M96 74L102 54H118L124 74Z M181 74L187 54H203L209 74Z '
+        'M266 74L272 54H288L294 74Z',
+        fill: _Tone.forest,
+        line: _l,
+      ),
+      const _Layer('M28 126H362', line: 0.3),
+      const _Layer(
+        'M44 126V148H58V126M64 126V144H78V126M312 126V150H326V126'
+        'M332 126V142H346V126',
+        line: 0.16,
+      ),
+      const _Layer('M0 196H390', line: _l),
+      const _Layer('M0 206H390', line: 0.1),
+      const _Layer('M84 196Q110 186 136 196M254 196Q280 186 306 196', line: _l),
+      const _Layer(
+        'M172 196A23 22 0 0 1 218 196Z',
+        fill: _Tone.forest,
+        line: _l,
+      ),
+      _Layer(_circle(195, 171, 3), line: _l),
+      const _Layer('M164 196H226', line: 0.3),
+    ],
+    hangers: const [110, 195, 280],
+  ),
+  HeaderDrawingScene.archedRoom: _Scene(
+    [
+      const _Layer(_arches, fill: _Tone.mid),
+      _Layer(_circle(206, 116, 11), fill: _Tone.ink, fillOpacity: 0.09),
+      _Layer(_rect(0, 236, 390, 64), fill: _Tone.dark),
+      const _Layer(_arches, line: _l),
+      const _Layer(
+        'M68 224V110A37 37 0 0 1 142 110V224 M158 224V110A37 37 0 0 1 232 110V224 '
+        'M248 224V110A37 37 0 0 1 322 110V224',
+        line: 0.1,
+      ),
+      const _Layer(
+        'M105 79V222M195 79V222M285 79V222M74 150H136M164 150H226M254 150H316',
+        line: 0.14,
+      ),
+      const _Layer('M0 236H390M195 0V40', line: _l),
+      const _Layer('M181 54Q195 36 209 54Z', fill: _Tone.forest, line: _l),
+      _Layer(_ellipse(195, 230, 46, 6), fill: _Tone.forest, line: _l),
+      const _Layer(
+        'M195 236V272M178 272H212'
+        'M128 196Q125 236 130 272M130 240H156M154 240V272'
+        'M262 196Q265 236 260 272M260 240H234M236 240V272',
+        line: _l,
+      ),
+    ],
+    hangers: const [195],
+  ),
   HeaderDrawingScene.facade: _Scene([
     const _Layer('M86 86L104 58H286L304 86Z', fill: _Tone.mid),
     _Layer(_rect(78, 92, 234, 170), fill: _Tone.forest),
@@ -650,23 +693,26 @@ final Map<HeaderDrawingScene, _Scene> _scenes = {
       line: 0.16,
     ),
   ]),
-  HeaderDrawingScene.chefTable: _Scene([
-    _Layer(_circle(195, 140, 64), fill: _Tone.ink, fillOpacity: 0.04),
-    _Layer(_rect(0, 262, 390, 38), fill: _Tone.mid),
-    const _Layer('M290 36H350V86H290Z', line: 0.12),
-    const _Layer('M298 76L314 58L326 70L334 62L342 76', line: 0.1),
-    const _Layer('M163 96Q195 60 227 96Z', fill: _Tone.forest, line: _l),
-    _Layer(_rect(95, 192, 200, 6), fill: _Tone.forest, line: _l),
-    const _Layer('M160 192A35 32 0 0 1 230 192Z', fill: _Tone.mid),
-    _Layer(
-      'M195 0V74M105 198V262M285 198V262M160 192A35 32 0 0 1 230 192 '
-      '${_circle(195, 156, 4)} '
-      'M66 150Q64 200 70 262M70 214H92M92 214V262'
-      'M324 150Q326 200 320 262M320 214H298M298 214V262M0 262H390',
-      line: _l,
-    ),
-    const _Layer('M152 192H238', line: 0.3),
-  ]),
+  HeaderDrawingScene.chefTable: _Scene(
+    [
+      _Layer(_circle(195, 140, 64), fill: _Tone.ink, fillOpacity: 0.04),
+      _Layer(_rect(0, 262, 390, 38), fill: _Tone.mid),
+      const _Layer('M290 36H350V86H290Z', line: 0.12),
+      const _Layer('M298 76L314 58L326 70L334 62L342 76', line: 0.1),
+      const _Layer('M163 96Q195 60 227 96Z', fill: _Tone.forest, line: _l),
+      _Layer(_rect(95, 192, 200, 6), fill: _Tone.forest, line: _l),
+      const _Layer('M160 192A35 32 0 0 1 230 192Z', fill: _Tone.mid),
+      _Layer(
+        'M195 0V74M105 198V262M285 198V262M160 192A35 32 0 0 1 230 192 '
+        '${_circle(195, 156, 4)} '
+        'M66 150Q64 200 70 262M70 214H92M92 214V262'
+        'M324 150Q326 200 320 262M320 214H298M298 214V262M0 262H390',
+        line: _l,
+      ),
+      const _Layer('M152 192H238', line: 0.3),
+    ],
+    hangers: const [195],
+  ),
   HeaderDrawingScene.dinner: _Scene([
     _Layer(
       '${_circle(95, 126, 16)} ${_circle(145, 108, 16)} ${_circle(195, 92, 18)} '
@@ -764,37 +810,40 @@ final Map<HeaderDrawingScene, _Scene> _scenes = {
     ),
     const _Layer('M40 300C90 262 150 250 196 232', line: 0.12),
   ], light: const _Light(320, 64, 18)),
-  HeaderDrawingScene.gala: _Scene([
-    _Layer(_circle(195, 124, 72), fill: _Tone.ink, fillOpacity: 0.035),
-    _Layer(_circle(195, 124, 44), fill: _Tone.ink, fillOpacity: 0.04),
-    _Layer(_rect(0, 250, 390, 50), fill: _Tone.mid),
-    _Layer(
-      '${_ellipse(150, 75, 2, 3.5)} ${_ellipse(240, 75, 2, 3.5)} '
-      '${_ellipse(118, 111, 2, 3.5)} ${_ellipse(156, 122, 2, 3.5)} '
-      '${_ellipse(234, 122, 2, 3.5)} ${_ellipse(272, 111, 2, 3.5)}',
-      fill: _Tone.ink,
-      fillOpacity: 0.4,
-    ),
-    _Layer(
-      'M195 0V40M185 40H205M189 40L195 32L201 40M195 40V150'
-      'M150 92Q195 112 240 92M118 128Q195 158 272 128'
-      'M145 92H155M150 92V80M235 92H245M240 92V80M113 128H123M118 128V116'
-      'M151 139H161M156 139V127M229 139H239M234 139V127M267 128H277M272 128V116'
-      '${_circle(130, 149, 2.5)} ${_circle(150, 155, 2.5)} '
-      '${_circle(175, 159, 2.5)} ${_circle(215, 159, 2.5)} '
-      '${_circle(240, 155, 2.5)} ${_circle(260, 149, 2.5)} '
-      'M195 150L189 162L195 176L201 162Z M0 250H390',
-      line: _l,
-    ),
-    const _Layer(
-      'M130 132V146M150 138V152M175 142V156M215 142V156M240 138V152M260 132V146',
-      line: 0.16,
-    ),
-    const _Layer(
-      'M150 250L60 300M240 250L330 300M195 250V300M105 250L-30 300M285 250L420 300',
-      line: 0.08,
-    ),
-  ]),
+  HeaderDrawingScene.gala: _Scene(
+    [
+      _Layer(_circle(195, 124, 72), fill: _Tone.ink, fillOpacity: 0.035),
+      _Layer(_circle(195, 124, 44), fill: _Tone.ink, fillOpacity: 0.04),
+      _Layer(_rect(0, 250, 390, 50), fill: _Tone.mid),
+      _Layer(
+        '${_ellipse(150, 75, 2, 3.5)} ${_ellipse(240, 75, 2, 3.5)} '
+        '${_ellipse(118, 111, 2, 3.5)} ${_ellipse(156, 122, 2, 3.5)} '
+        '${_ellipse(234, 122, 2, 3.5)} ${_ellipse(272, 111, 2, 3.5)}',
+        fill: _Tone.ink,
+        fillOpacity: 0.4,
+      ),
+      _Layer(
+        'M195 0V40M185 40H205M189 40L195 32L201 40M195 40V150'
+        'M150 92Q195 112 240 92M118 128Q195 158 272 128'
+        'M145 92H155M150 92V80M235 92H245M240 92V80M113 128H123M118 128V116'
+        'M151 139H161M156 139V127M229 139H239M234 139V127M267 128H277M272 128V116'
+        '${_circle(130, 149, 2.5)} ${_circle(150, 155, 2.5)} '
+        '${_circle(175, 159, 2.5)} ${_circle(215, 159, 2.5)} '
+        '${_circle(240, 155, 2.5)} ${_circle(260, 149, 2.5)} '
+        'M195 150L189 162L195 176L201 162Z M0 250H390',
+        line: _l,
+      ),
+      const _Layer(
+        'M130 132V146M150 138V152M175 142V156M215 142V156M240 138V152M260 132V146',
+        line: 0.16,
+      ),
+      const _Layer(
+        'M150 250L60 300M240 250L330 300M195 250V300M105 250L-30 300M285 250L420 300',
+        line: 0.08,
+      ),
+    ],
+    hangers: const [195],
+  ),
   HeaderDrawingScene.tasting: _Scene([
     _Layer(_rect(0, 214, 390, 86), fill: _Tone.mid),
     const _Layer(

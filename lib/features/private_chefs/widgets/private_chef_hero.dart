@@ -494,7 +494,9 @@ class _NoPhotoBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final drawing = this.drawing;
-    if (drawing != null) return CsHeaderDrawing(drawing: drawing);
+    if (drawing != null) {
+      return CsHeaderDrawing(drawing: drawing, belowToolbar: true);
+    }
     return const DecoratedBox(
       decoration: BoxDecoration(
         gradient: LinearGradient(
