@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/journey.dart';
 
-/// One train or ship in the Trains & Ships collection. Typographic on
-/// purpose: photos of a journey come from its operator (the venue-supplied
-/// content rule), and until an operator supplies them the card shows the
-/// name, operator and where it runs — never a scraped image, never a
-/// placeholder pretending to be one. No badge at all: journeys are not in
+/// One train or ship in the Trains & Ships collection. Photos of a
+/// journey come from its operator (the venue-supplied content rule), so
+/// until an operator supplies them the card shows the train or ship line
+/// drawing (CsHeaderDrawing, seeded by the journey's id) above the name,
+/// operator and where it runs — never a scraped image. No badge at all: journeys are not in
 /// the Mantelier Selection, and nothing here is gold.
 class JourneyCard extends StatelessWidget {
   final Journey journey;
@@ -53,6 +54,18 @@ class JourneyCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: CsHeaderDrawing(
+                    drawing: HeaderDrawing.journey(
+                      journey.id,
+                      journey.kind,
+                      shipType: journey.shipType,
+                    ),
+                    borderRadius: BorderRadius.circular(CsRadius.medium),
+                  ),
+                ),
+                const SizedBox(height: CsSpacing.md),
                 Text(
                   eyebrow,
                   style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
