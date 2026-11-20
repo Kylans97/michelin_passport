@@ -104,8 +104,10 @@ class GlobeRegionLayer extends StatelessWidget {
   // Depth at which a region starts to show, and is fully shown.
   static const _hideDepth = 0.12;
   static const _fullDepth = 0.35;
-  // A patch never shrinks below a tappable size, nor swallows the view.
-  static const _minRadius = 14.0;
+  // A patch never swallows the view. It stays visible but true to scale: several small Dutch regions
+  // side by side would otherwise merge into one blur. Taps keep their own
+  // 44 pt target regardless.
+  static const _minRadius = 5.0;
   static const _maxRadius = 90.0;
   // Below this size on screen an outline reads as a speck: draw the patch.
   static const _minShapeSize = 8.0;
