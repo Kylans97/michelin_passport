@@ -150,7 +150,7 @@ more than 1 km.
   and a Michelin_Database changelog entry. Guard each update on the old
   point, as earlier coordinate corrections did.
 
-## Prepared update (not applied)
+## Update (applied 2026-11-20)
 
 `prepared_seed_location_corrections.sql` moves `location` for the 101
 confirmed rows (QA-530). It is one guarded transaction:
@@ -158,6 +158,8 @@ confirmed rows (QA-530). It is one guarded transaction:
 - a point moves only while the row still holds the old point (within 5 m);
 - the transaction aborts unless exactly 101 rows end at the new point.
 
-A read-only dry run on 2026-11-20 found all 101 rows still at their old
-point. The Michelin_Database changelog entry is written and marked
-PREPARED, NOT APPLIED; update it with the apply date when the file is run.
+Applied to production on 2026-11-20 at 10:14, at the product owner's
+request. Every guard passed. Afterwards, all 101 rows are at the new
+point and none is at the old one. The 18 low-precision seed points that
+remain are exactly the held-back set (QA-531). The apply is recorded in
+the Michelin_Database changelog.

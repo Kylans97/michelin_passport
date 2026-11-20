@@ -6,11 +6,11 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
-# 2026-11-20 — Seed restaurant coordinates (QA-530–QA-533) — PREPARED, NOT APPLIED
+# 2026-11-20 — Seed restaurant coordinates (QA-530–QA-533)
 
 | | |
 |---|---|
-| Applied | **Not applied.** Prepared 2026-11-20 on `claude/trip-map-positions`; awaiting the product owner's approval |
+| Applied | 2026-11-20 10:14, to production, at the product owner's request ("Apply prepared_seed_location_corrections.sql to production"), from `claude/trip-map-positions`. One transaction, every guard passed |
 | Migration | None. Data SQL only |
 | Data file | `trip_map_location_audit/prepared_seed_location_corrections.sql`, one transaction. It moves `location` for 101 restaurants (88 NL, 13 in ES, FR, GB, IT, PE, SE, US); no other column changes. Evidence: `seed_coordinates_staged.csv`, `README.md`, `research/` |
 
@@ -27,6 +27,8 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 **Guards.** Each code must still carry the expected name and country. A point moves only while the row still holds the old point, within 5 m. A row at neither the old nor the new point aborts the transaction, and so does any count other than 101 rows ending at the new point.
 
 **Dry run.** Read-only against production, 2026-11-20: all 101 codes still match on name and country, all 101 still hold the old point, and none is at the new point yet.
+
+**Checked after the apply.** Same read-only check: all 101 rows are now at the new point and none at the old one. 101 seed rows have `updated_at` from the apply. 18 seed rows still carry a point with at most 4 decimals, and they are exactly the QA-531 held-back set. `restaurants_full` serves the new point (`rest_0037` De Librije: 52.5153648, 6.0978784, Spinhuisplein 1).
 
 **Also settles.** The Vyn half of QA-403: `rest_0142`'s new point is 44 m from MICHELIN's pin.
 
