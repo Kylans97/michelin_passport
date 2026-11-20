@@ -18,6 +18,7 @@ import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/event_social_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
+import '../../data/repositories/vineyard_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance.dart';
@@ -29,9 +30,11 @@ import '../../models/friendship.dart';
 import '../../models/going_member_count.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
+import '../../models/vineyard.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../passport/stamp_ceremony.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import '../vineyards/vineyard_detail_screen.dart';
 import 'friends_going_view_model.dart';
 import 'going_member_count_format.dart';
 import 'widgets/at_this_event_section.dart';
@@ -162,6 +165,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   bool _loadError = false;
   Event? _event;
   EventVenues _venues = const EventVenues(restaurants: [], hotels: []);
+  // The wine estates taking part (event_vineyards, 20261101550000). An
+  // enhancement: a failed lookup, or a database without the table yet,
+  // leaves the section out rather than the page in error.
+  List<Vineyard> _vineyards = const [];
 
   // null = NONE (no intent recorded) — see event_intent.dart's own header
   // comment for why NONE is represented as a null status rather than a
@@ -236,6 +243,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     try {
       final eventFuture = _repo.loadEventById(widget.eventId);
       final venuesFuture = _repo.loadLinkedVenues(widget.eventId);
+      final vineyardsFuture = VineyardRepository(Supabase.instance.client)
+          .getForEvent(widget.eventId)
+          .catchError((Object _) => const <Vineyard>[]);
       final uid = _userId;
       final intentFuture = uid == null
           ? Future.value(null)
@@ -263,6 +273,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             );
       final event = await eventFuture;
       final venues = await venuesFuture;
+      final vineyards = await vineyardsFuture;
       final intent = await intentFuture;
       final confirmed = await confirmedFuture;
       final wishlisted = await wishlistedFuture;
@@ -277,6 +288,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       setState(() {
         _event = event;
         _venues = venues;
+        _vineyards = vineyards;
         _status = intent?.status;
         _confirmedAttendance = confirmed;
         _isWishlisted = wishlisted;
@@ -807,6 +819,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     );
   }
 
+  void _openVineyard(Vineyard vineyard) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => VineyardDetailScreen(vineyardId: vineyard.id),
+    ),
+  );
+
   void _openHotel(Hotel hotel) {
     Navigator.push(
       context,
@@ -1107,6 +1126,29 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     ],
                   ],
 
+                  // Estates are participants only: they pour, they don't
+                  // host or hold the evening.
+                  if (_vineyards.isNotEmpty) ...[
+                    const SectionDivider(),
+                    Text(
+                      'WINE ESTATES',
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.md),
+                    for (var i = 0; i < _vineyards.length; i++) ...[
+                      if (i > 0) const SizedBox(height: 10),
+                      LinkedVenueRow(
+                        name: _vineyards[i].name,
+                        recognition: _VineyardRecognition(
+                          vineyard: _vineyards[i],
+                        ),
+                        onTap: () => _openVineyard(_vineyards[i]),
+                      ),
+                    ],
+                  ],
+
                   // Events V2 Time Precision Phase B — Event Detail
                   // Hierarchy UX correction: LOCATION is now genuinely
                   // location-only — Tickets/Official website moved up to
@@ -1133,6 +1175,33 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The line under an estate's name on an event: where it is in taupe, then
+/// its rank in claret — never gold.
+class _VineyardRecognition extends StatelessWidget {
+  final Vineyard vineyard;
+
+  const _VineyardRecognition({required this.vineyard});
+
+  @override
+  Widget build(BuildContext context) {
+    final where = vineyard.regionLine;
+    final rank = vineyard.worlds50BestRank;
+    return Text.rich(
+      TextSpan(
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        children: [
+          TextSpan(text: where.isEmpty ? 'Wine estate' : where),
+          if (rank != null)
+            TextSpan(
+              text: " · No. $rank World's 50 Best Vineyards",
+              style: const TextStyle(color: AppColors.claret),
+            ),
         ],
       ),
     );

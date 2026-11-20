@@ -49,6 +49,7 @@ class _PushRecordingObserver extends NavigatorObserver {
 
 class _Harness {
   final ValueNotifier<int> passportInits = ValueNotifier(0);
+  final ValueNotifier<int> cellarInits = ValueNotifier(0);
   final ValueNotifier<int> wishlistInits = ValueNotifier(0);
   final ValueNotifier<int> rankingInits = ValueNotifier(0);
   final ValueNotifier<int> tripsInits = ValueNotifier(0);
@@ -63,6 +64,10 @@ class _Harness {
           passportBody: _CountingBody(
             label: 'FAKE PASSPORT BODY',
             initCount: passportInits,
+          ),
+          cellarBody: _CountingBody(
+            label: 'FAKE CELLAR BODY',
+            initCount: cellarInits,
           ),
           wishlistBody: _CountingBody(
             label: 'FAKE WISHLIST BODY',
@@ -138,7 +143,7 @@ void main() {
       );
       expect(find.text('PASSPORT'), findsOneWidget); // tab bar persists
       expect(find.text('WISHLIST'), findsOneWidget);
-      expect(_activeIndex(tester), 1);
+      expect(_activeIndex(tester), 2);
       expect(h.wishlistInits.value, 1);
 
       expect(find.byType(BackButton), findsNothing);
@@ -151,6 +156,22 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
+    testWidgets('tapping CELLAR swaps the content region the same way — '
+        'no back button, no push', (tester) async {
+      final h = _Harness();
+      await tester.pumpWidget(h.wrap());
+
+      await _tapTab(tester, 'CELLAR');
+      await tester.pump();
+
+      expect(find.text('FAKE CELLAR BODY'), findsOneWidget);
+      expect(_activeIndex(tester), 1);
+      expect(h.cellarInits.value, 1);
+      expect(find.byType(BackButton), findsNothing);
+      expect(h.observer.pushCount, 1);
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('tapping RANKING swaps the content region the same way — '
         'no back button, no push', (tester) async {
       final h = _Harness();
@@ -160,7 +181,7 @@ void main() {
       await tester.pump();
 
       expect(find.text('Passport'), findsOneWidget);
-      expect(_activeIndex(tester), 2);
+      expect(_activeIndex(tester), 3);
       expect(h.rankingInits.value, 1);
       expect(find.byType(BackButton), findsNothing);
       expect(h.observer.pushCount, 1);
@@ -176,7 +197,7 @@ void main() {
       await tester.pump();
 
       expect(find.text('Passport'), findsOneWidget);
-      expect(_activeIndex(tester), 3);
+      expect(_activeIndex(tester), 4);
       expect(h.tripsInits.value, 1);
       expect(find.byType(BackButton), findsNothing);
       expect(h.observer.pushCount, 1);
@@ -193,6 +214,7 @@ void main() {
       await tester.pumpWidget(h.wrap());
 
       for (final label in [
+        'CELLAR',
         'WISHLIST',
         'RANKING',
         'TRIPS',
@@ -206,6 +228,7 @@ void main() {
 
       // Each body was constructed exactly once despite multiple revisits.
       expect(h.passportInits.value, 1);
+      expect(h.cellarInits.value, 1);
       expect(h.wishlistInits.value, 1);
       expect(h.rankingInits.value, 1);
       expect(h.tripsInits.value, 1);
@@ -246,19 +269,19 @@ void main() {
     });
 
     for (final width in [320.0, 375.0, 390.0, 430.0]) {
-      testWidgets('all four tabs render, in order, no wrapping/overflow at '
+      testWidgets('all five tabs render, in order, no wrapping/overflow at '
           '${width.toInt()}px', (tester) async {
         final h = _Harness();
         await tester.pumpWidget(h.wrap(width: width));
 
-        final labels = ['PASSPORT', 'WISHLIST', 'RANKING', 'TRIPS'];
+        final labels = ['PASSPORT', 'CELLAR', 'WISHLIST', 'RANKING', 'TRIPS'];
         for (final label in labels) {
           expect(find.text(label), findsOneWidget, reason: label);
         }
         final ys = labels
             .map((l) => tester.getTopLeft(find.text(l)).dy)
             .toSet();
-        expect(ys.length, 1, reason: 'all four sit on the same row');
+        expect(ys.length, 1, reason: 'all five sit on the same row');
         expect(tester.takeException(), isNull);
       });
     }

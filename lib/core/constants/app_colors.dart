@@ -135,6 +135,14 @@ class AppColors {
   // still use [mutedBrass] itself — this variant is for text only.
   static const Color mutedBrassOnLight = Color(0xFF7F6947);
 
+  // Muted claret — wine's own accent: estates, the Cellar, a wine's link to
+  // its estate. Never gold: gold stays reserved for MICHELIN stars and Keys
+  // (product owner, 2026-11-20). Light surfaces only: 9.0:1 on [ivory] as
+  // text; too dark to read on [deepGreen], where [secondaryOnDark] is used.
+  static const Color claret = Color(0xFF6B2E36);
+  // The claret wash behind a wine-glass icon on a light card.
+  static const Color claretTint = Color(0xFFF3E9EA);
+
   // [textOnDark] above (0xFFF5EFE1) already matches the brief's "warm
   // ivory, approximately #F5EFE1" — reused as-is, not duplicated under a
   // new name. 12.29:1 on [deepGreen], comfortably AA.

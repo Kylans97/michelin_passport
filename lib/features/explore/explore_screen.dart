@@ -19,6 +19,7 @@ import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/editorial_selection_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/vineyard_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../models/cuisine_family.dart';
 import '../../models/event.dart';
@@ -31,6 +32,7 @@ import '../guides/guides_screen.dart';
 import '../guides/widgets/guide_destination_row.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../journeys/journeys_screen.dart';
+import '../vineyards/vineyards_screen.dart';
 import '../private_chefs/private_chefs_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'discovery_selectors.dart';
@@ -126,6 +128,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
       .getFreshFindCandidates();
   late final Future<List<Hotel>> _freshHotelsFuture = _hotelRepo
       .getFreshFindCandidates();
+  // Wine Estates shows only once estates exist: a database without the
+  // vineyards migration, or without reviewed estates, shows no row at all.
+  late final Future<bool> _hasVineyardsFuture = VineyardRepository(
+    Supabase.instance.client,
+  ).hasAny().catchError((Object _) => false);
   // The Selection, newest first. A failure leaves the section out rather
   // than failing Explore, like every other discovery section.
   late final Future<List<SelectionEntry>> _selectionFuture = _selectionRepo
@@ -434,6 +441,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
     MaterialPageRoute(builder: (_) => const JourneysScreen()),
   );
 
+  void _openVineyards() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const VineyardsScreen()),
+  );
+
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
@@ -492,6 +504,18 @@ class _ExploreScreenState extends State<ExploreScreen> {
               descriptor: 'Luxury trains and small ships, worth the journey.',
               onTap: _openJourneys,
               surface: CsSurface.dark,
+            ),
+            FutureBuilder<bool>(
+              future: _hasVineyardsFuture,
+              builder: (context, snap) => snap.data == true
+                  ? GuideDestinationRow(
+                      label: 'Wine Estates',
+                      descriptor:
+                          "The World's 50 Best Vineyards, estate by estate.",
+                      onTap: _openVineyards,
+                      surface: CsSurface.dark,
+                    )
+                  : const SizedBox.shrink(),
             ),
           ],
         ),

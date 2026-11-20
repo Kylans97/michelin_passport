@@ -5,7 +5,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../data/repositories/vineyard_repository.dart';
 import '../../../data/repositories/visit_wine_repository.dart';
+import '../../../models/vineyard.dart';
 import '../../../models/visit_wine.dart';
 
 /// One wine as it reads on a review, like a line on a wine list: the year
@@ -181,6 +183,7 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
     await showWineSheet(
       context,
       suggestions: _loadSuggestions(userId),
+      vineyards: loadVineyardsForWineSheet(),
       onSave: (wine) async {
         try {
           final saved = await _repo.add(
@@ -207,23 +210,19 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
       context,
       initial: existing,
       suggestions: _loadSuggestions(userId),
+      vineyards: loadVineyardsForWineSheet(),
       onSave: (wine) async {
         try {
-          await _repo.update(existing.id!, wine);
+          await _repo.update(
+            existing.id!,
+            wine,
+            wasLinked: existing.vineyardId != null,
+          );
           if (mounted) {
             setState(() {
               _wines = [
                 for (var i = 0; i < _wines.length; i++)
-                  i == index
-                      ? VisitWine(
-                          id: existing.id,
-                          producer: wine.producer,
-                          wineName: wine.wineName,
-                          vintage: wine.vintage,
-                          nonVintage: wine.nonVintage,
-                          size: wine.size,
-                        )
-                      : _wines[i],
+                  i == index ? wine.copyWith(id: existing.id) : _wines[i],
               ];
             });
           }
@@ -278,13 +277,23 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
   }
 }
 
+/// The estates the Producer field can suggest. Empty on failure, and
+/// before the vineyards migration is applied: the sheet then works exactly
+/// as it did before estates existed.
+Future<List<Vineyard>> loadVineyardsForWineSheet() =>
+    VineyardRepository(
+      Supabase.instance.client,
+    ).getAll().catchError((Object _) => const <Vineyard>[]);
+
 /// The short sheet that adds or edits one wine. [onSave] returns true when
 /// the wine was taken. A new wine can be followed by another without
-/// leaving the sheet.
+/// leaving the sheet. [vineyards] are the estates the Producer field may
+/// suggest; the member picks one or keeps what they wrote.
 Future<void> showWineSheet(
   BuildContext context, {
   VisitWine? initial,
   Future<WineSuggestions>? suggestions,
+  Future<List<Vineyard>>? vineyards,
   required Future<bool> Function(VisitWine wine) onSave,
   Future<void> Function()? onDelete,
 }) => showModalBottomSheet<void>(
@@ -297,6 +306,7 @@ Future<void> showWineSheet(
   builder: (_) => WineSheet(
     initial: initial,
     suggestions: suggestions,
+    vineyards: vineyards,
     onSave: onSave,
     onDelete: onDelete,
   ),
@@ -307,12 +317,14 @@ class WineSheet extends StatefulWidget {
     super.key,
     this.initial,
     this.suggestions,
+    this.vineyards,
     required this.onSave,
     this.onDelete,
   });
 
   final VisitWine? initial;
   final Future<WineSuggestions>? suggestions;
+  final Future<List<Vineyard>>? vineyards;
   final Future<bool> Function(VisitWine wine) onSave;
   final Future<void> Function()? onDelete;
 
@@ -330,6 +342,15 @@ class _WineSheetState extends State<WineSheet> {
   bool _saving = false;
   int _added = 0;
   WineSuggestions _suggestions = const WineSuggestions();
+  List<Vineyard> _vineyards = const [];
+
+  /// The estate the member picked for the producer. Cleared as soon as the
+  /// producer no longer reads as that estate's name.
+  Vineyard? _linked;
+
+  /// The producer text the member chose to keep as written, so the estate
+  /// suggestions stay away for it.
+  String? _keptAsWritten;
 
   bool get _editing => widget.initial != null;
 
@@ -343,10 +364,27 @@ class _WineSheetState extends State<WineSheet> {
       _year.text = w.vintage?.toString() ?? '';
       _nonVintage = w.nonVintage;
       _size = w.size;
+      _linked = w.vineyard;
+      if (w.vineyardId == null && w.producer != null) {
+        _keptAsWritten = w.producer;
+      }
     }
     unawaited(
       widget.suggestions?.then((s) {
         if (mounted) setState(() => _suggestions = s);
+      }),
+    );
+    unawaited(
+      widget.vineyards?.then((list) {
+        if (!mounted) return;
+        setState(() {
+          _vineyards = list;
+          // A wine read without its estate embed: find it in the list.
+          final id = widget.initial?.vineyardId;
+          if (_linked == null && id != null) {
+            _linked = list.where((v) => v.id == id).firstOrNull;
+          }
+        });
       }),
     );
   }
@@ -371,7 +409,42 @@ class _WineSheetState extends State<WineSheet> {
     vintage: int.tryParse(_year.text.trim()),
     nonVintage: _nonVintage,
     size: _size,
+    vineyardId: _linked?.id ?? _unresolvedVineyardId,
+    vineyard: _linked,
   );
+
+  /// An edited wine's estate before the estate list has arrived: kept, so
+  /// saving early never drops a link the member made.
+  String? get _unresolvedVineyardId {
+    final initial = widget.initial;
+    if (initial?.vineyardId == null || _vineyards.isNotEmpty) return null;
+    return _clean(_producer) == initial!.producer ? initial.vineyardId : null;
+  }
+
+  void _onProducerChanged(String text) => setState(() {
+    final linked = _linked;
+    if (linked != null && text.trim() != linked.name) _linked = null;
+  });
+
+  void _pickVineyard(Vineyard vineyard) => setState(() {
+    _linked = vineyard;
+    _keptAsWritten = null;
+    _producer.text = vineyard.name;
+    _producer.selection = TextSelection.collapsed(
+      offset: vineyard.name.length,
+    );
+  });
+
+  void _keepAsWritten() =>
+      setState(() => _keptAsWritten = _producer.text.trim());
+
+  List<Vineyard> get _estateOptions {
+    final typed = _producer.text.trim();
+    if (_linked != null || typed.isEmpty || typed == _keptAsWritten) {
+      return const [];
+    }
+    return matchingVineyards(_vineyards, typed);
+  }
 
   bool get _yearOk => isValidWineYear(_draft.vintage);
   bool get _canSave => !_saving && !_draft.isEmpty && _yearOk;
@@ -389,6 +462,8 @@ class _WineSheetState extends State<WineSheet> {
     }
     setState(() {
       _added++;
+      _linked = null;
+      _keptAsWritten = null;
       _producer.clear();
       _name.clear();
       _year.clear();
@@ -503,7 +578,27 @@ class _WineSheetState extends State<WineSheet> {
                 ),
               ),
               const SizedBox(height: CsSpacing.md),
-              _field('Producer', _producer, focusNode: _producerFocus),
+              _field(
+                'Producer',
+                _producer,
+                focusNode: _producerFocus,
+                onChanged: _onProducerChanged,
+              ),
+              if (_linked != null)
+                _LinkedEstate(
+                  vineyard: _linked!,
+                  onUnlink: () => setState(() {
+                    _keptAsWritten = _producer.text.trim();
+                    _linked = null;
+                  }),
+                )
+              else if (_estateOptions.isNotEmpty)
+                _EstateSuggestions(
+                  options: _estateOptions,
+                  typed: _producer.text.trim(),
+                  onPick: _pickVineyard,
+                  onKeep: _keepAsWritten,
+                ),
               _suggestionRow(
                 matchingWineNames(_suggestions.producers, _producer.text),
                 _producer,
@@ -663,6 +758,176 @@ class _Chip extends StatelessWidget {
           ),
         ),
       ),
+    ),
+  );
+}
+
+/// Under the Producer field while it reads as an estate's name: the estates
+/// it could be, and "Keep as written". A name only proposes; nothing links
+/// until the member taps an estate.
+class _EstateSuggestions extends StatelessWidget {
+  const _EstateSuggestions({
+    required this.options,
+    required this.typed,
+    required this.onPick,
+    required this.onKeep,
+  });
+
+  final List<Vineyard> options;
+  final String typed;
+  final ValueChanged<Vineyard> onPick;
+  final VoidCallback onKeep;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: 6),
+    child: Container(
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: AppColors.cardBorder),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          for (final vineyard in options) ...[
+            _EstateOption(vineyard: vineyard, onTap: () => onPick(vineyard)),
+            Container(height: 1, color: AppColors.hairlineOnPaper),
+          ],
+          InkWell(
+            onTap: onKeep,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.edit_outlined,
+                    size: 18,
+                    color: AppColors.taupe,
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      'Keep \u201c$typed\u201d as written',
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+class _EstateOption extends StatelessWidget {
+  const _EstateOption({required this.vineyard, required this.onTap});
+
+  final Vineyard vineyard;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final where = [
+      'Wine estate',
+      if (vineyard.placeLine.isNotEmpty) vineyard.placeLine,
+      if ((vineyard.countryName ?? '').isNotEmpty) vineyard.countryName!,
+    ].join(' · ');
+    return Semantics(
+      button: true,
+      label: 'Link to ${vineyard.name}, $where',
+      excludeSemantics: true,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          child: Row(
+            children: [
+              const _EstateIcon(),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      vineyard.name,
+                      style: CsTypography.placeTitle.copyWith(
+                        fontSize: 15.5,
+                        color: AppColors.forestGreen,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      where,
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The chosen estate under the Producer field, with a way back to a
+/// producer kept as written.
+class _LinkedEstate extends StatelessWidget {
+  const _LinkedEstate({required this.vineyard, required this.onUnlink});
+
+  final Vineyard vineyard;
+  final VoidCallback onUnlink;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: 6, bottom: 2),
+    child: Row(
+      children: [
+        const _EstateIcon(),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Text(
+            [
+              'Linked to the estate',
+              if (vineyard.region != null) vineyard.region!,
+            ].join(' · '),
+            style: CsTypography.metadata.copyWith(color: AppColors.claret),
+          ),
+        ),
+        TextButton(
+          onPressed: onUnlink,
+          style: TextButton.styleFrom(foregroundColor: AppColors.taupe),
+          child: const Text('Unlink'),
+        ),
+      ],
+    ),
+  );
+}
+
+class _EstateIcon extends StatelessWidget {
+  const _EstateIcon();
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: 32,
+    height: 32,
+    decoration: const BoxDecoration(
+      color: AppColors.claretTint,
+      shape: BoxShape.circle,
+    ),
+    child: const Icon(
+      Icons.wine_bar_outlined,
+      size: 17,
+      color: AppColors.claret,
     ),
   );
 }

@@ -17,6 +17,43 @@ The format follows Keep a Changelog.
   - `path_parsing` (already resolved through `flutter_svg` at 1.1.0) is now a direct dependency for parsing the path data.
   - **In the detail-page heroes the scene starts below the status bar and toolbar** (`CsHeaderDrawing.belowToolbar`). The hero runs up behind both, so the first simulator check showed Rosewood Hong Kong's moon behind the back button and Kadeau's pendant lamp under the camera cutout. The scene is now top-aligned under that band, any crop falls on the ground under the vignette, and cords and chains run up to the top edge, so a lamp never hangs from nothing. Cards are unchanged.
   - Checked: `flutter analyze` clean; `flutter test` all 2,957 pass, including new tests for pools, determinism, mirroring and the cleared toolbar band, and painting all fifteen scenes at hero, card and thumbnail size. Six tests that expected the monogram now expect the drawing. All scenes were rendered to an image and compared with the canvas. In the simulator against production: Explore's event, restaurant and hotel cards, and the Rosewood Hong Kong, Kadeau and Pair'd Margaret River pages, before and after the toolbar fix. Not checked: a private chef without a photo (the only one live has a photo), and the greyed version on a closed venue.
+- **Vineyards (wine estates), starting with The World's 50 Best Vineyards** (product owner, 2026-11-20, after reviewing the design canvas "Wijngaarden in Mantelier": vineyards get their own table; start with the 50 Best Vineyards; wines already logged stay as they are; no gold for wine; a stamp only from a confirmed visit or event, never from a bottle). Branch `claude/vineyards`.
+  - **Migration `20261101550000_add_vineyards.sql`, prepared and NOT applied.** It adds:
+    - `vineyards`, its own table and not a kind of venue: generated `id`, `vineyard_code` (`vine_0001`…, unique), name, country, region, city, address, a nullable `location` that is never geocoded, `google_place_id`, `website_url` and `status`. It has no description or photo column, because those come from the estate after review.
+    - `worlds_50_best_vineyards`, one row per estate per edition, shaped like `worlds_50_best_hotels`. The rank is not stored in `award_history`: that table holds MICHELIN stars and Keys, which sort the other way (DATABASE_ARCHITECTURE.md §3.6).
+    - The `vineyards_full` view (security_invoker). Current rank means the latest edition, so an estate that left the list shows no rank.
+    - A nullable `visit_wines.vineyard_id` (`on delete set null`), with no backfill. Existing wines stay unlinked and nothing is ever matched by name.
+    - `event_vineyards`, with the same shape as the other event links. A check keeps `is_host` and `is_venue` false, so an estate is only ever a participant for now.
+    - RLS on every new table, with public read and no client write; grants are narrowed to `select`. The event links follow the visibility of the other event links, and admins can also read draft-event links. No function is created, so no `revoke execute` is needed.
+  - **App:**
+    - Explore gains a "Wine Estates" row, which opens the collection in rank order. The row shows only when estates exist.
+    - Each estate has its own page. `VineyardDetailHero` is a separate hero, per the settled rule. The page shows the rank in claret, the member's own wines from that estate ("In your Passport"), the events it pours at, the location and the website. The About section stays empty until the estate supplies text.
+    - Logging a wine: typing a Producer suggests matching estates, with "Keep '…' as written" always offered. Picking an estate links the wine. Editing the producer away from the estate name, or tapping Unlink, removes the link.
+    - The Passport has a new Cellar tab, between Passport and Wishlist. It shows wines, estates and regions, groups wines by region and estate, and keeps unlinked wines apart, exactly as they were written.
+    - An event page lists its wine estates.
+    - `AppColors.claret` is new, a muted accent for light surfaces only.
+  - **Rollout:** this build works against a database without the migration.
+    - Wine reads ask for the estate link and fall back to the old columns.
+    - An unlinked wine never sends `vineyard_id`.
+    - Estate lookups on events and in the wine sheet fail quietly to empty.
+    - The Explore row appears only once at least one estate can be read, so before the migration and the reviewed data are applied it simply isn't there.
+  - **Data, for review, nothing in Supabase:** `supabase/data/enrichment/worlds_50_best_vineyards/`. The 2026 edition (announced 18 November 2026) comes from the official list. worldsbestvineyards.com now redirects to the50.com/vineyards, which is where the data was read.
+    - Every row has its source URLs. There are 22 verified rows, 22 partial and 6 held back; ranks 51–100 sit in a separate file and are unverified.
+    - Location comes only from the estates' own sites, and nothing was geocoded.
+    - Open issues are logged as QA-520..QA-529 in `qa_issues.csv`. Four estates sit behind age gates that were not clicked through, one gives no location, one prints conflicting street numbers, and several give no coordinates or street address.
+    - The names and regions for ranks 1–50 were re-checked against the official list page after staging.
+  - **Checked:**
+    - `flutter analyze` is clean, and all 2,966 tests in `flutter test` pass. New tests are in `test/vineyards_test.dart`; the Passport shell test now covers five tabs at 320–430 px.
+    - The migration was replayed on a scratch PostgreSQL 17 on top of a minimal prelude (countries, profiles, visits, events, `is_admin`/`is_friend` stubs) and `20261101330000`. PostGIS was not available there, so `location` was stubbed as `point`. Fifteen checks passed:
+      - the current rank comes only from the latest edition;
+      - the code format and duplicate rank/code are refused;
+      - the host flag is refused;
+      - anon can read but cannot write, and sees only published-event links;
+      - an admin sees draft links;
+      - a member can link their own wine;
+      - removing an estate leaves the wine unlinked;
+      - no function is created.
+  - **Not checked:** the full Supabase stack replay (no Docker on this machine), the geography column itself, PostgREST's embed of `vineyards(…, countries(name))` against a real API, and the screens in the simulator.
 - **The regional 50 Best lists and Guía Repsol as guides, app and hidden site** (product owner, 2026-11-17: "die nieuwe repsol guide ... en die 50 best van verschillende werelddelen. Die wil ik ook op de nieuwe website kunnen vinden en in de app"). Until now these showed only as a line on a restaurant's page; there was no way to browse a list.
   - **App:** Guides gains Asia, Latin America and North America under The World's 50 Best, and a Guía Repsol family with Restaurants. One new screen, `SharedGuideRestaurantScreen`, reads any guide from the shared tables (`guide_awards_current`, `guides.tier_labels`, `guide_coverage`) by `guide_code`, with the same search and country filter as the other guide lists. Ranked lists sort by rank, Repsol by Soles then name; each card reads "#1 · 2026" or "3 Soles · 2026". The coverage note shows above the list, so a partial list never reads as the whole guide.
   - **Hidden site:** `/guides/asia-50-best`, `/guides/latin-america-50-best`, `/guides/north-america-50-best` and `/guides/guia-repsol`, with the edition year in the title and the coverage note under the intro. The guides index lists all eight.

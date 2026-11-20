@@ -1,3 +1,5 @@
+import 'vineyard.dart';
+
 /// `visit_wines.bottle_size` (20261101330000).
 enum WineSize {
   glass('glass', 'Glass'),
@@ -30,6 +32,14 @@ class VisitWine {
   final bool nonVintage;
   final WineSize? size;
 
+  /// The estate the member picked for [producer] (`visit_wines.vineyard_id`,
+  /// 20261101550000). Null for a producer kept as written, and for every
+  /// wine logged before estates existed — those are never linked by name.
+  final String? vineyardId;
+
+  /// The picked estate itself, when it was read along with the wine.
+  final Vineyard? vineyard;
+
   const VisitWine({
     this.id,
     this.producer,
@@ -37,6 +47,8 @@ class VisitWine {
     this.vintage,
     this.nonVintage = false,
     this.size,
+    this.vineyardId,
+    this.vineyard,
   });
 
   factory VisitWine.fromJson(Map<String, dynamic> json) => VisitWine(
@@ -46,15 +58,32 @@ class VisitWine {
     vintage: (json['vintage'] as num?)?.toInt(),
     nonVintage: json['non_vintage'] as bool? ?? false,
     size: WineSize.fromDb(json['bottle_size'] as String?),
+    vineyardId: json['vineyard_id'] as String?,
+    vineyard: _embeddedVineyard(json['vineyards']),
   );
 
-  Map<String, Object?> toRow() => {
+  /// The row to write. `vineyard_id` is only sent when there is a link to
+  /// write or to clear ([withVineyard]), so saving an unlinked wine still
+  /// works against a database without the column (before 20261101550000).
+  Map<String, Object?> toRow({bool withVineyard = false}) => {
     'producer': producer,
     'wine_name': wineName,
     'vintage': vintage,
     'non_vintage': nonVintage,
     'bottle_size': size?.dbValue,
+    if (withVineyard || vineyardId != null) 'vineyard_id': vineyardId,
   };
+
+  VisitWine copyWith({String? id}) => VisitWine(
+    id: id ?? this.id,
+    producer: producer,
+    wineName: wineName,
+    vintage: vintage,
+    nonVintage: nonVintage,
+    size: size,
+    vineyardId: vineyardId,
+    vineyard: vineyard,
+  );
 
   /// The database refuses a row that says nothing.
   bool get isEmpty =>
@@ -78,6 +107,24 @@ class VisitWine {
     ];
     return parts.isEmpty ? null : parts.join(' · ');
   }
+}
+
+/// The `vineyards(...)` embed on a wine row: the estate, its region and its
+/// country's name, enough to group a cellar without another query.
+Vineyard? _embeddedVineyard(Object? embed) {
+  if (embed is! Map<String, dynamic>) return null;
+  final country = embed['countries'];
+  return Vineyard(
+    id: embed['id'] as String,
+    vineyardCode: embed['vineyard_code'] as String,
+    name: embed['name'] as String,
+    countryCode: embed['country_code'] as String,
+    countryName: country is Map<String, dynamic>
+        ? country['name'] as String?
+        : null,
+    region: embed['region'] as String?,
+    city: embed['city'] as String?,
+  );
 }
 
 /// A year a member can type: four digits, not impossible. Null is fine,

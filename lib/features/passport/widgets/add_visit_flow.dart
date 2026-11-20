@@ -333,6 +333,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   Future<void> _addWine() => showWineSheet(
     context,
     suggestions: _wineSuggestions(),
+    vineyards: loadVineyardsForWineSheet(),
     onSave: (wine) async {
       setState(() => _stagedWines.add(wine));
       return true;
@@ -343,6 +344,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     context,
     initial: _stagedWines[index],
     suggestions: _wineSuggestions(),
+    vineyards: loadVineyardsForWineSheet(),
     onSave: (wine) async {
       setState(() => _stagedWines[index] = wine);
       return true;
