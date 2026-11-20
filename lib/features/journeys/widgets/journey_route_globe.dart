@@ -80,7 +80,7 @@ class _JourneyRouteGlobeState extends State<JourneyRouteGlobe>
 
   // A Royal Scotsman loop spans a few degrees; at My Map's cap of 6 it
   // would be a smudge. The 1:50m coast still reads well this far in.
-  static const double _maxRouteZoom = 24;
+  static const double _maxRouteZoom = 14;
 
   // The route takes about half the panel, so the coast and the
   // neighbouring countries around it show where in the world it is.
