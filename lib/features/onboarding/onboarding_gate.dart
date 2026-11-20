@@ -10,7 +10,7 @@ import 'welcome_flow_screen.dart';
 /// than folded into AuthGate's own sticky-state tracking (which already
 /// juggles password recovery) to keep each widget's job narrow.
 ///
-/// [hasSeenWelcome]/[markWelcomeSeen] are optional DI seams (same
+/// [hasSeenWelcome]/[markWelcomeSeen]/[welcomeGreeting] are optional DI seams (same
 /// constructor-injection convention as every other Supabase-backed screen
 /// in this app) defaulting to real ProfileRepository-backed calls.
 class OnboardingGate extends StatefulWidget {
@@ -19,12 +19,18 @@ class OnboardingGate extends StatefulWidget {
   final Future<bool> Function(String userId)? hasSeenWelcome;
   final Future<void> Function(String userId)? markWelcomeSeen;
 
+  /// The first name and member number for the flow's last page, the
+  /// member's own Passport cover. Fetched only once the flow is known to
+  /// be needed, while the member is still on the first pages.
+  final Future<WelcomeGreeting> Function(String userId)? welcomeGreeting;
+
   const OnboardingGate({
     super.key,
     required this.userId,
     required this.child,
     this.hasSeenWelcome,
     this.markWelcomeSeen,
+    this.welcomeGreeting,
   });
 
   @override
@@ -35,6 +41,7 @@ class _OnboardingGateState extends State<OnboardingGate> {
   // null = still checking (BrandedSplash shown, same "waiting" visual
   // AuthGate uses for its own first-auth-event gap).
   bool? _needsWelcome;
+  WelcomeGreeting _greeting = const WelcomeGreeting();
 
   @override
   void initState() {
@@ -53,7 +60,10 @@ class _OnboardingGateState extends State<OnboardingGate> {
 
   Future<void> _check() async {
     final userId = widget.userId;
-    setState(() => _needsWelcome = null);
+    setState(() {
+      _needsWelcome = null;
+      _greeting = const WelcomeGreeting();
+    });
     final fetch =
         widget.hasSeenWelcome ??
         (id) => ProfileRepository(
@@ -72,6 +82,25 @@ class _OnboardingGateState extends State<OnboardingGate> {
     }
     if (!mounted || userId != widget.userId) return; // stale response guard
     setState(() => _needsWelcome = !seen);
+    if (!seen) _loadGreeting(userId);
+  }
+
+  // Best effort: without it the last page still works, it just says "Your
+  // Passport is ready" and the cover's "NO. —" instead of a name and
+  // number. Never blocks or delays the flow itself.
+  Future<void> _loadGreeting(String userId) async {
+    final fetch =
+        widget.welcomeGreeting ??
+        (id) => ProfileRepository(
+          Supabase.instance.client,
+        ).getWelcomeGreeting(userId: id);
+    try {
+      final greeting = await fetch(userId);
+      if (!mounted || userId != widget.userId) return;
+      setState(() => _greeting = greeting);
+    } catch (_) {
+      // Swallowed deliberately — see above.
+    }
   }
 
   Future<void> _onDone() async {
@@ -95,7 +124,13 @@ class _OnboardingGateState extends State<OnboardingGate> {
   @override
   Widget build(BuildContext context) {
     if (_needsWelcome == null) return const BrandedSplash();
-    if (_needsWelcome!) return WelcomeFlow(onDone: _onDone);
+    if (_needsWelcome!) {
+      return WelcomeFlow(
+        onDone: _onDone,
+        firstName: _greeting.firstName,
+        memberNumber: _greeting.memberNumber,
+      );
+    }
     return widget.child;
   }
 }

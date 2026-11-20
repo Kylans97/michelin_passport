@@ -27,6 +27,14 @@ const avatarBucket = 'profile-photos';
 
 final _avatarRandom = Random();
 
+/// What the welcome flow greets a new member with; see
+/// [ProfileRepository.getWelcomeGreeting].
+class WelcomeGreeting {
+  final String? firstName;
+  final int? memberNumber;
+  const WelcomeGreeting({this.firstName, this.memberNumber});
+}
+
 class ProfileRepository {
   ProfileRepository(this._client, {bool? avatarTransforms})
     : _avatarTransforms = avatarTransforms ?? memberPhotoTransformsEnabled;
@@ -89,6 +97,26 @@ class ProfileRepository {
         .limit(1);
     if ((rows as List).isEmpty) return false;
     return rows.first['has_seen_welcome'] as bool? ?? false;
+  }
+
+  /// The first name and member number the welcome flow's last page puts
+  /// on the member's Passport cover. The first name is the first word of
+  /// `display_name`; either value is null when the profile has none.
+  Future<WelcomeGreeting> getWelcomeGreeting({required String userId}) async {
+    final rows = await _client
+        .from('profiles')
+        .select('display_name, member_number')
+        .eq('id', userId)
+        .limit(1);
+    if ((rows as List).isEmpty) return const WelcomeGreeting();
+    final displayName = (rows.first['display_name'] as String?)?.trim();
+    final firstName = displayName == null || displayName.isEmpty
+        ? null
+        : displayName.split(RegExp(r'\s+')).first;
+    return WelcomeGreeting(
+      firstName: firstName,
+      memberNumber: rows.first['member_number'] as int?,
+    );
   }
 
   Future<void> markWelcomeSeen({required String userId}) async {

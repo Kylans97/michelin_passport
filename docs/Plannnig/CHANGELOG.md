@@ -8,6 +8,12 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.7.0 (37) — 2026-11-20
+
+Merged into main on 2026-11-20 from `claude/wine-regions` (the wine-regions globe, its outlines and content, the 1,000x zoom, the vineyard staging file) and `claude/welcome-flow-c0a99f` (the new first-launch welcome flow). One conflict, in this changelog only: both branches added entries under Unreleased; both kept. The database changes this build reads (`20261101580000`, `20261101590000`, `20261101600000` and the wine content) were applied to production before the build.
+
 ### Added
 - **Wine regions on the globe** (product owner, 2026-11-20: "a wine variant of the globe... tap a region and see what grapes grow there and what taste that gives"; on the canvas https://claude.ai/artifact/DHKUpxQhmfhfu5bhAz61vp: "just build it and fine-tune"). My Map gets a "My places | Wine regions" toggle. It shows only on your own map, and only once published regions exist.
   - **Globe:** in wine mode it turns to Europe and draws each region as a soft claret patch around a point, with its name when zoomed in, never as a border. A ring marks regions you have logged a wine from (through the estate the wine is linked to; free-text producers are never matched by name).
@@ -29,11 +35,17 @@ The format follows Keep a Changelog.
 - **Vineyards: an editorial staging file** (product owner, 2026-11-20: "start with a database whilst we think how vineyards come back in the app"; "Staging file first"). `supabase/data/enrichment/vineyards_editorial/` holds verified estates outside The World's 50 Best, not in production, since any row in `vineyards` shows at once in search, + Add and wine logging. Five estates, every field sourced, address points from BAG via PDOK: De Apostelhoeve (Maastricht), then the product owner's four picks from the evidence shortlist ("let's add those 4"): Wijnhoeve De Kleine Schorre (Dreischor), Wijngoed Thorn (Thorn; no coordinates, its published shop address is not in BAG), Domein De Wijngaardsberg (Ulestraten; takes no visitors, address likely partly a home) and Wijngaard St. Martinus (Vijlen; no BOB stated anywhere). Two claims from the shortlist were opened and corrected: the Oxford Companion quote on Kleine Schorre is real but from 2015, and Thorn's 2020 Kassa win was not a blind tasting.
 - **Near-miss: the globe was zero wide in wine mode on the device**, though widget tests passed. The empty overlay in wine mode was a `SizedBox.shrink()` as a non-positioned child of the globe's `Stack`, which sized the whole Stack, and the globe with it, to zero width. Now `SizedBox.expand()`. Any non-positioned child of that Stack decides its size; keep it filling. Also: region names show only from zoom 2.5 and never overlap each other or another region's dot, and wine mode opens at zoom 5 on Europe. The notes in the region and grape cards ("Chinon: a light, fragrant red") now sit under the name instead of right-aligned beside it, where they wrapped into a ragged column with one word hanging alone.
 
-### Checked
-- `flutter analyze` is clean and `flutter test` passes all 3,010 tests, with new tests for the search, grapes per region, top-level regions and the region sheet.
-- **Not checked in the simulator:** the layer only shows once published regions exist in production.
-
-### Added
+- **A new first-launch welcome flow** (product owner, 2026-11-20: "Ik wil dat als je de app opent voor het eerst echt denk van wow dit is gaaf en dat je tegelijkertijd snapt wat je allemaal met de app kan doen"; direction agreed on the "First-launch welcome flow" canvas, https://claude.ai/artifact/Dy38PFjN4rKraqHpwS3fBv). Six pages instead of four text-only ones, each pointing at a real part of the app:
+  1. **Arrival**: My Map's own globe, turning slowly, with the Benelux lit.
+  2. **Events**: the event line drawings cross-fading (gala, dinner, festival) under the shape of an event card with "Friends going".
+  3. **Explore**: three tilted cards (wine estate, Key hotel, three-star restaurant) naming MICHELIN, The World's 50 Best, Gault&Millau and our own Selection.
+  4. **Wishlist and Trips**: a dotted route over the train drawing, "Saved to Wishlist" and a trip day.
+  5. **Passport**: the Passport opened on a stamp page with three of its real stamp designs (round seal, oval, double frame) drawn by the Passport's own painters, and a small turning globe for My Map. Replaced a plain ivory page with drawn seals after the first simulator pass (product owner: "I don't really like that white passport page").
+  6. **Your Passport**: the member's own leather cover with their member number, "Your Passport is ready, {first name}", and Begin.
+  - Every picture is the app's own (`GlobePainter`, `CsHeaderDrawing`, `StarRow`/`KeyRow`, `stampPainterFor`, `PassportCoverFace`); no venue, person or date is invented. The sample stamps print a city, a kind of visit and today's date, never a venue's name. Gold only where it already is: stars, the Key and the cover's foil.
+  - No dashes in any copy (product owner: "this is really AI like"); a test guards it. Page 6's line is the product owner's own: "Start exploring your culinary journey. Find new spots, enjoy new experiences, and remember them forever."
+  - Motion stops when the system asks for reduced motion. The cross-fade runs only while its page is on screen; the stamp presses in once.
+  - `OnboardingGate` fetches the first name (first word of `display_name`) and `member_number` through the new `ProfileRepository.getWelcomeGreeting`, only once the flow is known to be needed. Best effort: on failure page 6 says "Your Passport is ready" and the cover keeps its own "NO. —". No database change.
 - **A calmer Wishlist, with wine estates, trains and ships** (product owner, 2026-11-20, from the "Wishlist, calmer" canvas, https://claude.ai/artifact/9Z5VnN2hMZ44UfNXm7QzZC: "Build A, with B (Everything, by place) as the first item in the selector").
   - The chip row and the large "YOUR WISHLIST" title are gone; the Wishlist tab above already says where you are. One line, "Restaurants 18 ▾", opens a sheet listing each kind with its count: Everything by place, Restaurants, Hotels, Events, Wine estates, Trains, Ships. A kind with nothing saved stays out of the sheet. The + sits on the same line.
   - **Everything, by place** (the default): one card per region (else town), within its country, listing everything saved there with a kind icon. Places with the most saved come first. Trains and ships close the list together as "On the move", since they cross borders. Grouping uses the stored region, town and country only; nothing is matched by name.
@@ -56,6 +68,9 @@ The format follows Keep a Changelog.
   - Shipped builds read the wishlist filtered by `entity_type`, so they ignore vineyard rows.
 
 ### Checked
+- `flutter analyze` is clean and `flutter test` passes all 3,010 tests, with new tests for the search, grapes per region, top-level regions and the region sheet.
+
+- Welcome flow: `flutter analyze` is clean and `flutter test` passes all 3,008 tests on the welcome-flow branch. New tests cover all six pages, Next, Skip and Begin, the name and number on page 6 and their absence, the no-dash rule, motion on, four phone sizes from 320×640 to 440×956 without overflow, and the gate's greeting fetch (same user, failure, never fetched when already seen). Checked in the iPhone 17 simulator through a throwaway preview entry point with sample values, not signed in; the real gate path with a fresh account was not run.
 - `flutter analyze` is clean and `flutter test` passes all 2,997 tests. New tests cover the selector and by-place grouping, the add sheet's estate, train and ship chips, estate visit rows and stamps, and the Explore filters.
 - The migration was replayed with all 162 earlier ones on a scratch `supabase start` stack, and applied cleanly. On that stack: anon has no SELECT on `vineyard_visits`, RLS is on with its four policies, the wishlist check lists `'vineyard'`, and an unknown activity is refused (23514).
 - `test/wishlist_default_venue_type_test.dart` is removed, with the default-kind rule it tested: the Wishlist now opens on Everything. The shell test now mirrors the selector line.
