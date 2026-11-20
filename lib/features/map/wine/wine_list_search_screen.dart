@@ -105,7 +105,7 @@ class _WineListSearchScreenState extends State<WineListSearchScreen> {
                     place: region.name,
                     lines: [
                       '${appellation.colourLabel[0].toUpperCase()}'
-                          '${appellation.colourLabel.substring(1)}: '
+                          '${appellation.colourLabel.substring(1)} · '
                           '${appellation.note}',
                       'From ${region.name}: '
                           '${widget.atlas.grapesOf(region).map((g) => g.$1.name).join(', ')}',
