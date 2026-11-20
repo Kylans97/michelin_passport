@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
-import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/cs_header_drawing.dart';
 import 'package:michelin_passport/features/wishlist/widgets/event_wishlist_card.dart';
 import 'package:michelin_passport/models/event.dart';
 
@@ -47,7 +47,7 @@ void main() {
       expect(find.text("'t Preuvenemint"), findsOneWidget);
       expect(find.text('Maastricht, NL'), findsOneWidget);
       expect(find.text('27–30 Aug 2026'), findsOneWidget);
-      expect(find.byType(CsImagePlaceholder), findsOneWidget);
+      expect(find.byType(CsHeaderDrawing), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
 

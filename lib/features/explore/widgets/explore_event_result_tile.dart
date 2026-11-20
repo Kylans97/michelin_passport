@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/event.dart';
 import '../../events/event_date_format.dart';
 import '../../../core/analytics/analytics_properties.dart';
@@ -54,13 +54,11 @@ class ExploreEventResultTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: SizedBox(
-                width: 56,
-                height: 56,
-                child: CsImagePlaceholder(logoScale: 0.4),
-              ),
+            CsHeaderDrawing(
+              drawing: HeaderDrawing.event(event.id, event.eventType),
+              width: 56,
+              height: 56,
+              borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             const SizedBox(width: 14),
             Expanded(

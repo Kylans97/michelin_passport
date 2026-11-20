@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/widgets/cs_header_drawing.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
@@ -193,6 +194,7 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
                       return GuideVenueCard(
                         title: hotel.name,
                         imageUrl: hotel.cardImageUrl,
+                        drawing: HeaderDrawing.hotel(hotel.id),
                         imageFraming: hotel.cardFraming,
                         inlineRecognition: KeyRow(count: keys, size: 12),
                         cityName: hotel.cityName,

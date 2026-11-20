@@ -12,6 +12,7 @@ import '../../reports/widgets/report_content_sheet.dart';
 import '../../../core/widgets/framed_image.dart';
 import '../../../models/photo_framing.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 
 /// Chef Detail's hero — a parallel, trimmed sibling of [VenueDetailHero],
 /// not a reuse of it: that widget hard-requires wishlist state
@@ -69,6 +70,12 @@ class PrivateChefHero extends StatefulWidget {
   /// tapped. Defaults to false; every existing call site is unaffected.
   final bool isPreview;
 
+  /// The line drawing shown when the chef has no photo at all, or the
+  /// profile image fails to load — `HeaderDrawing.privateChef(id)`. Null
+  /// keeps the plain gradient. One broken photo inside a gallery still
+  /// falls back to the gradient, as before.
+  final HeaderDrawing? drawing;
+
   const PrivateChefHero({
     super.key,
     required this.displayName,
@@ -81,6 +88,7 @@ class PrivateChefHero extends StatefulWidget {
     this.followBusy = false,
     this.onTapFollow,
     this.isPreview = false,
+    this.drawing,
   });
 
   @override
@@ -124,6 +132,9 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
     final hasFallbackPhoto =
         !hasGallery && (widget.profileImageUrl ?? '').isNotEmpty;
     final hasAnyPhoto = hasGallery || hasFallbackPhoto;
+    // A drawing takes the photo's lighter vignette, or its lower half
+    // would disappear under the no-photo one.
+    final hasBackdrop = hasAnyPhoto || widget.drawing != null;
     // A swipeable set only exists for 2+ photos — _PhotoGallery itself
     // renders a single photo as a plain static image (no PageView), same
     // "1 photo changes nothing" rule VenueDetailHero's gallery follows.
@@ -178,9 +189,9 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                 onPageChanged: (index) => setState(() => _pageIndex = index),
               )
             else if (hasFallbackPhoto)
-              _HeroImage(url: widget.profileImageUrl!)
+              _HeroImage(url: widget.profileImageUrl!, drawing: widget.drawing)
             else
-              const _NoPhotoBackground(),
+              _NoPhotoBackground(drawing: widget.drawing),
             // Bottom-weighted vignette so identity text stays legible
             // regardless of whether there's a photo underneath — same
             // treatment as VenueDetailHero.
@@ -192,10 +203,10 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                   colors: [
                     Colors.transparent,
                     AppColors.deepGreen.withValues(
-                      alpha: hasAnyPhoto ? 0.55 : 0,
+                      alpha: hasBackdrop ? 0.55 : 0,
                     ),
                     AppColors.deepGreen.withValues(
-                      alpha: hasAnyPhoto ? 0.9 : 1,
+                      alpha: hasBackdrop ? 0.9 : 1,
                     ),
                   ],
                   stops: const [0.0, 0.55, 1.0],
@@ -417,11 +428,13 @@ class _HeroImage extends StatelessWidget {
   final String url;
   final String? semanticLabel;
   final PhotoFraming framing;
+  final HeaderDrawing? drawing;
 
   const _HeroImage({
     required this.url,
     this.semanticLabel,
     this.framing = PhotoFraming.chefDefault,
+    this.drawing,
   });
 
   @override
@@ -435,7 +448,7 @@ class _HeroImage extends StatelessWidget {
         zoom: framing.zoom,
         fit: BoxFit.cover,
         alignment: alignment,
-        errorBuilder: (_, _, _) => const _NoPhotoBackground(),
+        errorBuilder: (_, _, _) => _NoPhotoBackground(drawing: drawing),
       ),
     ),
   );
@@ -474,20 +487,28 @@ class _ReportPhotoButton extends StatelessWidget {
 }
 
 class _NoPhotoBackground extends StatelessWidget {
-  const _NoPhotoBackground();
+  final HeaderDrawing? drawing;
+
+  const _NoPhotoBackground({this.drawing});
 
   @override
-  Widget build(BuildContext context) => const DecoratedBox(
-    decoration: BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          AppColors.brandGreenLight,
-          AppColors.deepGreen,
-          AppColors.heroGradientEnd,
-        ],
+  Widget build(BuildContext context) {
+    final drawing = this.drawing;
+    if (drawing != null) {
+      return CsHeaderDrawing(drawing: drawing, belowToolbar: true);
+    }
+    return const DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            AppColors.brandGreenLight,
+            AppColors.deepGreen,
+            AppColors.heroGradientEnd,
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

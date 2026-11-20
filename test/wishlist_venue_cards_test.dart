@@ -9,7 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
-import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/cs_header_drawing.dart';
 import 'package:michelin_passport/core/widgets/key_row.dart';
 import 'package:michelin_passport/core/widgets/venue_thumbnail.dart';
 import 'package:michelin_passport/core/widgets/star_row.dart';
@@ -84,7 +84,7 @@ void main() {
       expect(find.text('ABAC'), findsOneWidget);
       expect(find.text('Barcelona, 🇪🇸 Spain'), findsOneWidget);
       expect(find.byType(StarRow), findsOneWidget);
-      expect(find.byType(CsImagePlaceholder), findsOneWidget);
+      expect(find.byType(CsHeaderDrawing), findsOneWidget);
       // Wishlist is not visit history — no rating/visit-count/last-visit.
       expect(find.textContaining('visit'), findsNothing);
       expect(find.textContaining('average'), findsNothing);
@@ -93,7 +93,7 @@ void main() {
 
     testWidgets(
       'a restaurant with a cover photo renders it via VenueThumbnail, not '
-      'the branded placeholder',
+      'the line drawing',
       (tester) async {
         final restaurant = _restaurant(
           coverImageUrl: 'https://example.com/restaurants/r1/0.jpg',
@@ -101,7 +101,7 @@ void main() {
         await tester.pumpWidget(
           _wrap(WishlistRestaurantCard(restaurant: restaurant, onRemove: () {})),
         );
-        expect(find.byType(CsImagePlaceholder), findsNothing);
+        expect(find.byType(CsHeaderDrawing), findsNothing);
         final thumbnail = tester.widget<VenueThumbnail>(
           find.byType(VenueThumbnail),
         );
@@ -210,7 +210,7 @@ void main() {
 
     testWidgets(
       'a hotel with a cover photo renders it via VenueThumbnail, not the '
-      'branded placeholder',
+      'line drawing',
       (tester) async {
         final hotel = _hotel(
           coverImageUrl: 'https://example.com/hotels/h1/0.jpg',
@@ -218,7 +218,7 @@ void main() {
         await tester.pumpWidget(
           _wrap(WishlistHotelCard(hotel: hotel, onRemove: () {})),
         );
-        expect(find.byType(CsImagePlaceholder), findsNothing);
+        expect(find.byType(CsHeaderDrawing), findsNothing);
         final thumbnail = tester.widget<VenueThumbnail>(
           find.byType(VenueThumbnail),
         );

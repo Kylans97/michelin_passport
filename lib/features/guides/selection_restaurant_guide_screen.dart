@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/widgets/cs_header_drawing.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
@@ -181,6 +182,7 @@ class _SelectionRestaurantGuideScreenState
                         return GuideVenueCard(
                           title: r.name,
                           imageUrl: r.cardImageUrl,
+                          drawing: HeaderDrawing.restaurant(r.id),
                           imageFraming: r.cardFraming,
                           inlineRecognition: r.hasMichelinStar
                               ? StarRow(count: r.michelinStars!, size: 12)

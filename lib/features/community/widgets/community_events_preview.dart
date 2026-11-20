@@ -4,7 +4,7 @@ import '../../../core/analytics/impressions.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../models/event.dart';
 import '../../../models/going_member_count.dart';
 import '../../events/event_date_format.dart';
@@ -131,7 +131,10 @@ class _EventPreviewRow extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                _EventThumbnail(imageUrl: event.imageUrl),
+                _EventThumbnail(
+                  imageUrl: event.imageUrl,
+                  drawing: HeaderDrawing.event(event.id, event.eventType),
+                ),
                 const SizedBox(width: CsSpacing.md),
                 Expanded(
                   child: Column(
@@ -196,19 +199,21 @@ class _EventPreviewRow extends StatelessWidget {
 }
 
 /// The row's image slot — [Event.imageUrl] when set and loading
-/// successfully, otherwise the same branded [CsImagePlaceholder]
+/// successfully, otherwise the same line drawing ([CsHeaderDrawing])
 /// `EventCard` already falls back to. No duplicated fallback policy: this
 /// mirrors `EventCard`'s own `_EventImage` exactly, just at thumbnail
 /// scale rather than a 16:9 banner.
 class _EventThumbnail extends StatelessWidget {
   final String? imageUrl;
-  const _EventThumbnail({required this.imageUrl});
+  final HeaderDrawing drawing;
+  const _EventThumbnail({required this.imageUrl, required this.drawing});
 
   @override
   Widget build(BuildContext context) {
     final radius = BorderRadius.circular(CsRadius.small);
     if (imageUrl == null || imageUrl!.isEmpty) {
-      return CsImagePlaceholder(
+      return CsHeaderDrawing(
+        drawing: drawing,
         width: _EventPreviewRow._thumbnailSize,
         height: _EventPreviewRow._thumbnailSize,
         borderRadius: radius,
@@ -221,7 +226,8 @@ class _EventThumbnail extends StatelessWidget {
         width: _EventPreviewRow._thumbnailSize,
         height: _EventPreviewRow._thumbnailSize,
         fit: BoxFit.cover,
-        errorBuilder: (_, _, _) => CsImagePlaceholder(
+        errorBuilder: (_, _, _) => CsHeaderDrawing(
+          drawing: drawing,
           width: _EventPreviewRow._thumbnailSize,
           height: _EventPreviewRow._thumbnailSize,
           borderRadius: radius,

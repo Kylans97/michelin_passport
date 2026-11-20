@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/widgets/cs_place_card.dart';
 import '../../../core/widgets/key_row.dart';
@@ -50,6 +51,7 @@ class PassportHotelCard extends StatelessWidget {
     return CsPlaceCard(
       image: VenueThumbnail(
         imageUrl: hotel.cardImageUrl,
+        drawing: HeaderDrawing.hotel(hotel.id),
         framing: hotel.cardFraming,
         width: 96,
         height: 96,

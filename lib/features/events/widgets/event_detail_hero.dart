@@ -30,13 +30,12 @@ import '../../../core/widgets/editorial_back_button.dart';
 ///
 /// Unlike [VenueDetailHero] (whose no-photo fallback is a plain gradient,
 /// since no restaurant/hotel photo exists in the catalogue at all today),
-/// events already have a real `image_url` column and an established
-/// branded-monogram fallback ([CsImagePlaceholder], via [backgroundImage]
-/// — the caller supplies either a real `Image.network` with its own
-/// [CsImagePlaceholder] `errorBuilder`, or the placeholder directly when
-/// no URL exists at all). This hero always renders whatever
-/// [backgroundImage] it's given, photo or placeholder alike, under the
-/// same legibility vignette.
+/// events already have a real `image_url` column. The caller supplies
+/// [backgroundImage]: a real `Image.network`, or the event type's line
+/// drawing ([CsHeaderDrawing], since 2026-11-20; the monogram
+/// placeholder before) when there is no URL or it fails to load. This
+/// hero always renders whatever [backgroundImage] it's given, photo or
+/// drawing alike, under the same legibility vignette.
 ///
 /// Deliberately minimal: image/placeholder and a back action, nothing
 /// else in real Event Detail usage — no badge stack, no gold, no
@@ -151,7 +150,7 @@ class EventDetailHero extends StatelessWidget {
           children: [
             backgroundImage,
             // Bottom-weighted vignette so the eyebrow label stays legible
-            // over a real photo or the monogram placeholder alike —
+            // over a real photo or the line drawing alike —
             // deliberately lighter and shorter than an earlier title-era
             // version of this same gradient: a single small eyebrow line
             // doesn't need anywhere near as much of the image darkened as

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
 import '../../../core/utils/venue_lifecycle.dart';
@@ -77,6 +78,7 @@ class HotelTile extends StatelessWidget {
           children: [
             VenueThumbnail(
               imageUrl: hotel.cardImageUrl,
+              drawing: HeaderDrawing.hotel(hotel.id),
               framing: hotel.cardFraming,
             ),
             const SizedBox(width: 14),
