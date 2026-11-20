@@ -8,6 +8,12 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.6.1 (36) — 2026-11-20
+
+Merged into main on 2026-11-20 from `claude/trip-map-positions`, `claude/booking-windows` (log only) and `claude/release-next` (log only), on top of the sold-out/expected labels, the new typefaces, the stamp rework, the wine-on-stays change, vineyards and the missing-photo drawings already in main. No merge conflicts. `flutter analyze` clean, `flutter test` 2,981 passing on the merged tree. The migrations this build reads (`20261101510000_add_event_announcement_status`, the vineyards migrations) were already applied to production before the build. Schema diff at the bump (2026-11-20, per `NEW_MACHINE_SETUP.md` §4): all 162 migrations replay cleanly on a scratch stack; ledger 162/162. The `db dump` diff is one line, `EXTRACT(day …)` against `EXTRACT("day" …)` in `wishlist_planned_month_check`, which is a pg_dump quoting difference, not drift. Buckets, `storage`/`auth` policies and storage RLS hash identical. Production has three extra platform triggers on `storage.buckets` (`protect_active_lifecycle_states`, `wake_lifecycle_on_policy_write`, `wake_lifecycle_on_versioning_enable`), which come from the newer hosted storage service, not from a migration.
+
 ### Added
 - **Line drawings for wine estates, trains and ships** (product owner, 2026-11-20: "I don't have drawings for vineyards and we have just added those"; from the header-drawings canvas, "use all three wine-estate drawings, alternating, plus the train and the ship").
   - **Five new `CsHeaderDrawing` scenes:**
@@ -217,7 +223,9 @@ The format follows Keep a Changelog.
   cluster at the closest zoom — opens a short list to pick from. The
   other half of the report is data, not code: the earliest catalogue rows
   carry coordinates hundreds of metres to 3 km from their own address.
-  Those are listed for review, not corrected here.
+  Those were verified and 101 of them corrected in production the same
+  day, recorded in the Michelin_Database changelog (QA-530); 18 are held
+  back.
 - **Tests measured text in a font no user sees.** `flutter test` sets
   every family in its own "FlutterTest" font, where each glyph is one em
   wide, and the runtime-fetched fonts never loaded in tests. So every width
