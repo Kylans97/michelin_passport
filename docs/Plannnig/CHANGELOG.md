@@ -8,6 +8,24 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **The new site becomes mantelier.app, with the app's features up to 1.7** (product owner, 2026-11-21: "Kan je in een aparte sessie de website updaten?"; then "We kunnen ook de nieuwe website pakken, daar wel gewoon alles al opzetten tot 1.7"; then "Ja, bouw het zo, inclusief automatisch publiceren naar mantelier.app elke drie uur"). The old `site/` still said the app was coming, asked for a waiting list and listed events that had passed, while Mantelier 1.6.0 has been on the App Store since 2026-11-20 (id6806217056). Branch `claude/website-update-790380`; **not merged and not live**: merging it into `main` is what publishes it.
+  - **Launch switches** (`site-next/src/config.ts`): `HIDDEN = false`, so pages carry a canonical link instead of noindex; `public/_headers` no longer sends `X-Robots-Tag: noindex` and `robots.txt` allows everything; `APP_STORE_URL` is the store link without a country, so every "Get the app" and "in the app" call to action now links to the App Store.
+  - **The static pages moved into `site-next/public/`** as they were: Privacy, Terms, Support, Hosts, Journey, the venue guide and the lookbook with their screenshots, `auth/` (the confirm and reset links the app sends), `.well-known/apple-app-site-association` (still served as JSON), `brand/`, `_redirects` (`/auth/confirmed`) and the share image. The footer links are relative now, with The app and The journey added.
+  - **New page `/app`** and an **"In the app" band on the home page**: events, every guide in one place (with private chefs, trains, ships and the 50 Best Vineyards), wine regions on the globe, the wishlist by place with the planned month and the booking reminder, the Passport with journeys and estate visits, friends. One list in `src/lib/app-features.ts`, every line checked against this changelog; no counts.
+  - **/journey** has the App Store button where its waiting-list form was. The venue guide's "Download Mantelier" links to the store.
+  - **No dashes in the site's own copy** (product owner: they read as machine written): event dates read "19 to 22 Nov 2026" and times "19:00 to 23:00"; an empty guide score is a middle dot; page titles use "|"; the em dashes in Privacy, Terms, Support and the auth pages are rewritten as full stops, colons or brackets. Dashes inside venue names and venue-written event text are data and stay.
+  - **Privacy, updated 21 November 2026**, for what the app already records and did not say: trains and ships you travelled on (since 1.6.0), wine estates you visited (1.7.0), the month you'd like to go to a wishlisted restaurant (owner only) and the booking reminder push; friends' visibility and account deletion name journeys and estate visits (both tables cascade from `profiles`); the waiting list is described in the past tense; Google Fonts is named for the website and app versions before 1.6.1, since the app bundles its fonts since then.
+  - **Published automatically** (`.github/workflows/site-next.yml`): from `main` every three hours and on each push to `site-next/`, to the Pages production branch, which is mantelier.app; from any other branch still to the `next` preview. The "already deployed" cache key now includes the target, so an output sent to the preview is never mistaken for one already live.
+  - `site/` stays in the repository as a fallback only; deploying it by hand would replace the new site until the next scheduled run.
+
+### Fixed
+- **Canonical links pointed at `.html` addresses** (`https://mantelier.app/app.html`, `/index.html`), which Pages redirects. Harmless while the site was hidden (it had noindex instead), wrong the moment it is indexed. `Base.astro` now drops `.html` and a trailing `index`. Near miss: it only showed because launching turned the canonical on.
+
+### Checked
+- `npm run build` in `site-next/` builds 3,766 pages from production. Every root-relative link and image in `dist/` resolves to a file. In a local preview at 375 pt and desktop: home, `/app`, `/journey`, Privacy, the venue guide (12 images) and the lookbook (17 images) load with no horizontal scroll and no broken image; the journey script passes a syntax check after the form was removed. The workflow file parses as YAML; it has not run, since it only runs once it is on `main` or on push.
+- **Not checked:** the workflow's first production deploy, and the live site; both happen on merge.
+
 ---
 
 ## v1.7.1 (38) — 2026-11-20

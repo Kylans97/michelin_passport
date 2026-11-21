@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Venue guide | Mantelier</title>
+<meta name="description" content="How to claim your page on Mantelier, keep it up to date and publish your own events.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#16302A">
+
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ivory: #F4F0E7;
+    --green: #16302A;
+    --ink: #1D2B27;
+    --line: rgba(244, 240, 231, 0.22);
+    --muted: rgba(244, 240, 231, 0.66);
+    --ink-muted: rgba(29, 43, 39, 0.68);
+    --ink-line: rgba(29, 43, 39, 0.16);
+
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+    --util: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--green);
+    color: var(--ivory);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow {
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: 0.01em; margin: 0; }
+  h1 { font-size: clamp(44px, 8vw, 84px); line-height: 1.04; max-width: 13em; }
+  h2 { font-size: clamp(32px, 4.6vw, 48px); line-height: 1.1; }
+
+  .intro { padding: 12vh 0 9vh; }
+  .intro p.lede { font-size: 19px; max-width: 34em; margin: 26px 0 0; color: var(--muted); }
+
+  .notice {
+    margin-top: 34px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    max-width: 46em;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  section.chapter { padding: 9vh 0; border-top: 1px solid var(--line); }
+  section.chapter.paper {
+    background: var(--ivory);
+    color: var(--ink);
+    border-top: 0;
+  }
+  .paper .eyebrow, .paper .copy p { color: var(--ink-muted); }
+
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: 56px;
+    align-items: start;
+  }
+  .copy { position: sticky; top: 48px; }
+  .copy p { margin: 18px 0 0; color: var(--muted); }
+
+  .phones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    align-items: start;
+  }
+  .phones.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 68%; }
+
+  figure { margin: 0; }
+  .phone {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 9% / 4.2%;
+    box-shadow: 0 0 0 1px rgba(244, 240, 231, 0.28), 0 18px 44px rgba(0, 0, 0, 0.32);
+    background: #10231f;
+  }
+  .paper .phone { box-shadow: 0 0 0 1px var(--ink-line), 0 18px 44px rgba(22, 48, 42, 0.2); }
+  figcaption {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-top: 14px;
+    color: var(--muted);
+  }
+  .paper figcaption { color: var(--ink-muted); }
+
+  .split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 56px;
+    margin-top: 40px;
+  }
+  .split h3 { font-family: var(--display); font-weight: 500; font-size: 26px; margin: 0 0 12px; }
+  .split ul { margin: 0; padding: 0; list-style: none; }
+  .split li { padding: 10px 0; border-top: 1px solid var(--line); color: var(--muted); }
+
+  .close { padding: 11vh 0 9vh; border-top: 1px solid var(--line); }
+  .close p { max-width: 36em; color: var(--muted); margin: 20px 0 0; }
+  .close a { color: var(--ivory); }
+
+  footer { padding: 26px 0 60px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
+  footer p { margin: 0 0 8px; max-width: 60em; }
+
+  @media (max-width: 860px) {
+    .wrap { padding: 0 16px; }
+    .chapter-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .copy { position: static; }
+    .phones, .phones.two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: none; }
+    .split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  }
+
+  .steps { counter-reset: s; list-style: none; margin: 22px 0 0; padding: 0; }
+  .steps li { counter-increment: s; position: relative; padding: 0 0 14px 34px; color: var(--muted); }
+  .steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 2px; font-family: var(--util); font-size: 11px; letter-spacing: 0.1em; color: var(--muted); }
+  .paper .steps li, .paper .steps li::before { color: var(--ink-muted); }
+  .steps strong { color: var(--ivory); font-weight: 500; }
+  .paper .steps strong { color: var(--ink); }
+  .rules { width: 100%; border-collapse: collapse; margin-top: 34px; font-size: 15px; }
+  .rules th, .rules td { text-align: left; padding: 12px 14px 12px 0; border-top: 1px solid var(--line); vertical-align: top; }
+  .rules th { font-family: var(--util); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400; color: var(--muted); }
+  .rules td:first-child { color: var(--ivory); width: 34%; }
+  .rules td { color: var(--muted); }
+  .tag { display: inline-block; font-family: var(--util); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; padding: 2px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--ivory); }
+  .tag.review { border-style: dashed; color: var(--muted); }
+  .faq { margin-top: 34px; max-width: 46em; }
+  .faq h3 { font-family: var(--display); font-weight: 500; font-size: 24px; margin: 28px 0 6px; }
+  .faq p { margin: 0; color: var(--muted); }
+  @media (max-width: 860px) { .rules td:first-child { width: 42%; } }
+</style>
+</head>
+<body>
+
+<header class="wrap intro">
+  <p class="eyebrow">Mantelier · For venues</p>
+  <h1>Your page, in your hands.</h1>
+  <p class="lede">How to claim your restaurant, hotel or private-chef page, keep it up to date, and put your own evenings in front of the people who travel for them. Everything happens in the Mantelier app, in a few minutes at a time.</p>
+  <p class="notice"><strong>About these screens.</strong> They are the app as it is built today, filled with an invented venue (Maison Aurelle) and invented events, the same as in our <a href="/lookbook" style="color:inherit">lookbook</a>.</p>
+</header>
+
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Step 1 · Claim</p>
+      <h2>Claim your page</h2>
+      <ol class="steps">
+        <li><a href="https://apps.apple.com/app/mantelier/id6806217056">Download Mantelier</a> and create an account. Then go to <strong>Profile</strong> and tap <strong>Claim your venue</strong>.</li>
+        <li>Choose restaurant, hotel or private chef and search for your venue by name.</li>
+        <li>Tell us your role and leave a business email and phone number. An address on your venue's own domain lets us verify you faster.</li>
+        <li>We review every claim by hand and may get in touch to confirm. You hear back in the app either way.</li>
+      </ol>
+      <p>Not on Mantelier yet? Write to <a href="mailto:claimedvenues@mantelier.app" style="color:inherit">claimedvenues@mantelier.app</a>.</p>
+    </div>
+    <div class="phones">
+      <figure><img class="phone" src="venue-guide/01_profile.jpg" width="720" height="1558" loading="lazy" alt="Profile screen with Claim your venue and My venues"><figcaption>Start from Profile.</figcaption></figure>
+      <figure><img class="phone" src="venue-guide/02_claim_search.jpg" width="720" height="1558" loading="lazy" alt="Claim screen with a venue type and a name search"><figcaption>Find your venue.</figcaption></figure>
+      <figure><img class="phone" src="venue-guide/04_claim_next.jpg" width="720" height="1558" loading="lazy" alt="Claim details with business email, phone and what happens next"><figcaption>Your details, and what happens next.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter paper">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Step 2 · Your page</p>
+      <h2>One place for everything</h2>
+      <p>Once your claim is approved, your venue appears under <strong style="color:var(--ink);font-weight:500">Profile → My venues</strong>. The first time, a short welcome explains how hosting works.</p>
+      <p>From there you manage your story, website and phone, opening hours, booking window, team, photos and events. <strong style="color:var(--ink);font-weight:500">Preview my page</strong> shows your page exactly as guests will see it, including anything still waiting for review.</p>
+      <p>Several people can manage the same venue. Each makes their own claim.</p>
+    </div>
+    <div class="phones">
+      <figure><img class="phone" src="venue-guide/05_welcome.jpg" width="720" height="1558" loading="lazy" alt="Welcome screen for venue hosts"><figcaption>A welcome for new hosts.</figcaption></figure>
+      <figure><img class="phone" src="venue-guide/06_manage.jpg" width="720" height="1558" loading="lazy" alt="Manage venue screen listing profile, website, hours, booking window, team, photos and events"><figcaption>Your venue at a glance.</figcaption></figure>
+      <figure><img class="phone" src="venue-guide/07_profile_text.jpg" width="720" height="1558" loading="lazy" alt="Profile text editor with current text and a note about review"><figcaption>Your story, in your own words.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap">
+    <p class="eyebrow">Step 3 · Making changes</p>
+    <h2>What goes live straight away</h2>
+    <p style="max-width:40em;color:var(--muted);margin-top:18px">Practical details are yours to keep current and show at once. Anything new that guests read or see is checked by hand first, so every page keeps the same standard. You always see the outcome in the app.</p>
+    <table class="rules">
+      <thead><tr><th>What you change</th><th>When guests see it</th></tr></thead>
+      <tbody>
+        <tr><td>Website and phone</td><td><span class="tag">Straight away</span></td></tr>
+        <tr><td>Opening hours and closed days</td><td><span class="tag">Straight away</span></td></tr>
+        <tr><td>Booking window</td><td><span class="tag">Straight away</span></td></tr>
+        <tr><td>Photo order, framing and card photo</td><td><span class="tag">Straight away</span></td></tr>
+        <tr><td>Changes to an event that is already live</td><td><span class="tag">Straight away</span></td></tr>
+        <tr><td>Taking someone off your team</td><td><span class="tag">Straight away</span></td></tr>
+        <tr><td>Your description</td><td><span class="tag review">After review</span></td></tr>
+        <tr><td>New photos</td><td><span class="tag review">After review</span></td></tr>
+        <tr><td>Adding or updating a team member</td><td><span class="tag review">After review</span></td></tr>
+        <tr><td>A new event</td><td><span class="tag review">After review</span></td></tr>
+      </tbody>
+    </table>
+    <p style="max-width:40em;color:var(--muted);margin-top:22px">Awards, guide rankings and your location come from the guides and our own checks, not from venues, so they stay the same for everyone.</p>
+  </div>
+</section>
+
+<section class="chapter paper">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Photos</p>
+      <h2>Lead with your best image</h2>
+      <p>Your first photo is your cover: it opens your page. Use the arrows to change the order, and <strong style="color:var(--ink);font-weight:500">Adjust framing</strong> to choose exactly what shows. The small card photo used in Explore, search and Passport can be a different one.</p>
+      <ol class="steps">
+        <li>Up to <strong>5 photos</strong> per venue, JPEG or PNG, up to 5 MB each.</li>
+        <li>At least <strong>1200 pixels</strong> on the shorter side.</li>
+        <li>Shaped between a 3:4 portrait and a 16:9 landscape: no banners, no square posts.</li>
+        <li>Private chefs: the first photo is a portrait of you.</li>
+      </ol>
+    </div>
+    <div class="phones two">
+      <figure><img class="phone" src="venue-guide/08_photos.jpg" width="720" height="1558" loading="lazy" alt="Photos screen with cover, order arrows and card photo"><figcaption>Order, cover and card photo.</figcaption></figure>
+      <figure><img class="phone" src="venue-guide/09_framing.jpg" width="720" height="1558" loading="lazy" alt="Adjust framing screen with a photo of the dining room and a zoom slider"><figcaption>Framing goes live as soon as you save.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Events</p>
+      <h2>Launch your own evenings</h2>
+      <p>Events on Mantelier are not your regular menu. They are the nights guests plan a journey around: a four-hands dinner, a guest chef, a winemaker at the table, a gala.</p>
+      <ol class="steps">
+        <li>Go to <strong>My venues → your venue → Events</strong> and tap <strong>Create an event</strong>.</li>
+        <li>Give it a name and a description, in English, and choose a type and any tags.</li>
+        <li>Pick the date. Add times only if they are set: a missing time is shown as not given, never guessed.</li>
+        <li>Choose your venue or another location, and add a ticket link and admission if you have them.</li>
+        <li>Tap <strong>Submit for review</strong>. Once approved it goes live, and members who follow you hear about it.</li>
+      </ol>
+      <p>Events can be added up to a year ahead. Once live, you can still edit them, and changes show straight away. If plans change you can cancel: the event stays listed as cancelled, so anyone planning to go knows.</p>
+    </div>
+    <div class="phones">
+      <figure><img class="phone" src="venue-guide/11_event_form.jpg" width="720" height="1558" loading="lazy" alt="New event form with name, description, type and tags"><figcaption>Name, story, type and tags.</figcaption></figure>
+      <figure><img class="phone" src="venue-guide/12_event_form_bottom.jpg" width="720" height="1558" loading="lazy" alt="New event form with date, times, location, tickets and submit button"><figcaption>When, where and tickets.</figcaption></figure>
+      <figure><img class="phone" src="venue-guide/10_events.jpg" width="720" height="1558" loading="lazy" alt="Events list with one event awaiting review and one live"><figcaption>See what's live and what's in review.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter paper">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Booking window</p>
+      <h2>Never miss the day bookings open</h2>
+      <p>Tell us when your bookings open: a set number of days ahead, once a month, or by season. Members who plan a month at your restaurant get a reminder the day before that month opens, so the guests who travel furthest don't miss out.</p>
+      <p>It takes a minute and applies as soon as you save.</p>
+    </div>
+    <div class="phones two">
+      <figure><img class="phone" src="venue-guide/13_booking_window.jpg" width="720" height="1558" loading="lazy" alt="Booking window screen with options for a set time ahead, once a month or by season"><figcaption>Set when bookings open.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <p class="eyebrow">Good to know</p>
+    <h2>Questions venues ask</h2>
+    <div class="faq">
+      <h3>In which language should I write?</h3>
+      <p>In English. Mantelier is read by members across Europe and beyond.</p>
+      <h3>How long does a review take?</h3>
+      <p>We review by hand and can't promise a set time, but we aim to be quick. You see the outcome in the app either way, with a note if something needs changing.</p>
+      <h3>Can I change my stars or rankings?</h3>
+      <p>No. Recognition comes from the guides themselves and is the same for every venue. Your photos, story, team and events are yours.</p>
+      <h3>Can more than one person manage our page?</h3>
+      <p>Yes. Each person claims the venue from their own account.</p>
+    </div>
+    <p>Anything else? Write to <a href="mailto:claimedvenues@mantelier.app">claimedvenues@mantelier.app</a>, or see how a finished page looks in the <a href="/lookbook">lookbook</a>.</p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>Maison Aurelle, its team and its events are fictional and for illustration only. Photos from Unsplash, under the Unsplash License. Screens may change as the app develops.</p>
+  <p>Mantelier is independent. It is not affiliated with, endorsed by or sponsored by Michelin, The World's 50 Best, Gault&amp;Millau or any venue listed.</p>
+</footer>
+
+</body>
+</html>
