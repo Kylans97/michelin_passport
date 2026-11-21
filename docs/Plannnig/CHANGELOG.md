@@ -9,7 +9,7 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Changed
-- **The signed-in pages in the Keynote style** (product owner, 2026-11-21: "ik wil achter de login ook aanpakken, dat is nu heel matig"; after the designs, "je mag het bouwen"). Branch `claude/site-visuals-20cbbb`; preview first, not on `main`.
+- **The signed-in pages in the Keynote style** (product owner, 2026-11-21: "ik wil achter de login ook aanpakken, dat is nu heel matig"; after the designs, "je mag het bouwen"; after the preview, "Ja, zet de pagina's achter de login en de venues-tekst live op mantelier.app"). Branch `claude/site-visuals-20cbbb`, **merged into `main` on 2026-11-21**.
   - **Account home** (`/account`): a welcome with the member's Passport beside it (entries, countries and stars, read as the Passport page reads them), the next three evenings they are Going to or Interested in, and a tile for each section, with the unread count on Notifications.
   - **Sign in:** the form on an ivory card beside "Your Passport, on the web."; the steps, the two-step code and every message are unchanged.
   - **Lists** (wishlist, your events, following, friends, notifications, the globe's places, a friend's page, a visit): white rounded cards in a grid, group headings in light Spectral, tabs as one segmented control. Notifications stay one column, newest first. Wishlist, events and friends pages gain a one-line intro.
