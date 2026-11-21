@@ -1,0 +1,377 @@
+[
+ {
+  "name": "Furmint",
+  "aliases": [
+   "Šipon"
+  ],
+  "colour": "white",
+  "summary": "The main grape of Tokaj, where it covers about 65% of the vineyard. High in acidity, it makes everything from mineral dry whites to sweet Aszú shaped by noble rot.",
+  "tastes": [
+   "Green apple",
+   "Quince",
+   "Apricot",
+   "Lemon"
+  ],
+  "aged_note": "Serious dry Furmint develops in bottle for several years; sweet Aszú can age for decades.",
+  "body": 4,
+  "acidity": 5,
+  "tannin": null,
+  "similar": {
+   "name": "Riesling",
+   "note": "Ranges from bone dry to very sweet, always with a streak of acidity."
+  },
+  "sources": {
+   "summary": [
+    "https://bor.hu/en/furmint/",
+    "https://www.thewinesociety.com/discover/explore/expertise/furmint-is-hungarys-best-kept-wine-secret-the-next-big-thing/",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "aliases": [
+    "https://bor.hu/en/furmint/",
+    "https://www.thewinesociety.com/discover/explore/expertise/furmint-is-hungarys-best-kept-wine-secret-the-next-big-thing/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/furmint/",
+    "https://hungary.guides.winefolly.com/wines/furmint/",
+    "https://bor.hu/en/furmint/",
+    "https://www.decanter.com/wine-reviews/hungary/tokaj/royal-tokaji-szt-tamas-dry-furmint-tokaji-tokaj-2017-37553/",
+    "https://www.decanter.com/wine-reviews/hungary/tokaj/sauska-furmint-tokaj-hungary-2020-46672"
+   ],
+   "aged_note": [
+    "https://bor.hu/en/furmint/",
+    "https://www.thewinesociety.com/discover/explore/expertise/furmint-is-hungarys-best-kept-wine-secret-the-next-big-thing/"
+   ],
+   "body": [
+    "https://bor.hu/en/furmint/",
+    "https://hungary.guides.winefolly.com/wines/furmint/"
+   ],
+   "acidity": [
+    "https://bor.hu/en/furmint/",
+    "https://winefolly.com/grapes/furmint/",
+    "https://wineanorak.com/2022/04/02/exploring-hungarian-wine-the-hungarian-wine-summit-2022/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/furmint/",
+    "https://www.thewinesociety.com/discover/explore/expertise/furmint-is-hungarys-best-kept-wine-secret-the-next-big-thing/"
+   ]
+  }
+ },
+ {
+  "name": "Hárslevelű",
+  "aliases": [],
+  "colour": "white",
+  "summary": "An aromatic Hungarian grape related to Furmint, its main partner in Tokaj. Its name means linden leaf; it gives floral, spicy dry and sweet wines.",
+  "tastes": [
+   "Linden blossom",
+   "Peach",
+   "Spice"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://bor.hu/en/harslevelu/",
+    "https://www.guildsomm.com/stay_current/features/b/eric-danch/posts/tokaj-part-one",
+    "https://www.decanter.com/wine/grape-varieties/h-rslevel-white-52604/",
+    "https://wineanorak.com/2022/04/02/exploring-hungarian-wine-the-hungarian-wine-summit-2022/"
+   ],
+   "tastes": [
+    "https://bor.hu/en/harslevelu/",
+    "https://www.decanter.com/wine-reviews/hungary/tokaj/carpinus-harslevelu-tokaji-tokaj-hungary-2022-81813",
+    "https://www.decanter.com/wine-reviews/hungary/tokaj/lidl-carpinus-harslevelu-tokaj-hungary-2017-22842",
+    "https://www.decanter.com/wine/grape-varieties/h-rslevel-white-52604/",
+    "https://wineanorak.com/2022/04/02/exploring-hungarian-wine-the-hungarian-wine-summit-2022/"
+   ]
+  }
+ },
+ {
+  "name": "Kadarka",
+  "aliases": [
+   "Skadarka",
+   "Gamza"
+  ],
+  "colour": "red",
+  "summary": "A thin skinned red grape, probably from the Balkans, long important in Hungary. It makes pale, light wines with red berry fruit, bright acidity, soft tannins and a spicy note.",
+  "tastes": [
+   "Cherry",
+   "Raspberry",
+   "Paprika"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": 4,
+  "tannin": 2,
+  "similar": {
+   "name": "Pinot Noir",
+   "note": "Pale, light and fragrant, with bright red fruit."
+  },
+  "sources": {
+   "summary": [
+    "https://bor.hu/en/kadarka/",
+    "https://hungary.guides.winefolly.com/wines/kadarka/",
+    "https://wineanorak.com/2025/09/11/hungarys-red-grape-varieties-a-masterclass-in-budapest/"
+   ],
+   "aliases": [
+    "https://bor.hu/en/kadarka/"
+   ],
+   "tastes": [
+    "https://bor.hu/en/kadarka/",
+    "https://hungary.guides.winefolly.com/wines/kadarka/",
+    "https://wineanorak.com/2025/09/11/hungarys-red-grape-varieties-a-masterclass-in-budapest/"
+   ],
+   "body": [
+    "https://bor.hu/en/kadarka/",
+    "https://hungary.guides.winefolly.com/wines/kadarka/"
+   ],
+   "acidity": [
+    "https://bor.hu/en/kadarka/",
+    "https://hungary.guides.winefolly.com/wines/kadarka/"
+   ],
+   "tannin": [
+    "https://bor.hu/en/kadarka/",
+    "https://hungary.guides.winefolly.com/wines/kadarka/"
+   ],
+   "similar": [
+    "https://bor.hu/en/kadarka/",
+    "https://hungary.guides.winefolly.com/wines/kadarka/",
+    "https://wineanorak.com/2025/09/11/hungarys-red-grape-varieties-a-masterclass-in-budapest/"
+   ]
+  }
+ },
+ {
+  "name": "Portugieser",
+  "aliases": [
+   "Kékoportó",
+   "Blauer Portugieser"
+  ],
+  "colour": "red",
+  "summary": "A red grape once called Kékoportó in Hungary, where Villány is its stronghold. It gives light, fruity reds with soft tannins, mostly drunk young, and is the base of Redy.",
+  "tastes": [
+   "Red berries",
+   "Spice",
+   "Floral"
+  ],
+  "aged_note": "Mostly made for early drinking; some oaked versions take bottle age.",
+  "body": 2,
+  "acidity": null,
+  "tannin": 2,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://bor.hu/en/portugieser/",
+    "https://tastehungary.com/journal/portugieser-a-fresh-and-fruity-hungarian-red/",
+    "https://tastehungary.com/journal/villany-pdo-a-guide-to-the-wine-region/"
+   ],
+   "aliases": [
+    "https://bor.hu/en/portugieser/",
+    "https://tastehungary.com/journal/portugieser-a-fresh-and-fruity-hungarian-red/",
+    "https://boraszat.kormany.hu/download/f/12/a3000/VILL%C3%81NY_term%C3%A9kle%C3%ADr%C3%A1s_2026_7_v%C3%A1ltozat_kn.pdf"
+   ],
+   "tastes": [
+    "https://bor.hu/en/portugieser/",
+    "https://tastehungary.com/journal/portugieser-a-fresh-and-fruity-hungarian-red/"
+   ],
+   "aged_note": [
+    "https://bor.hu/en/portugieser/",
+    "https://tastehungary.com/journal/portugieser-a-fresh-and-fruity-hungarian-red/"
+   ],
+   "body": [
+    "https://bor.hu/en/portugieser/",
+    "https://tastehungary.com/journal/portugieser-a-fresh-and-fruity-hungarian-red/"
+   ],
+   "tannin": [
+    "https://bor.hu/en/portugieser/",
+    "https://tastehungary.com/journal/portugieser-a-fresh-and-fruity-hungarian-red/"
+   ]
+  }
+ },
+ {
+  "name": "Juhfark",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A rare Hungarian white grape whose name means sheep's tail, after its long bunches. Grown mainly on Somló, it gives lean, high acid wines with a salty, mineral character.",
+  "tastes": [
+   "Salty minerality",
+   "Spice",
+   "Citrus"
+  ],
+  "aged_note": "Benefits from time in bottle, which softens its acidity.",
+  "body": null,
+  "acidity": 5,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://bor.hu/en/juhfark/",
+    "https://www.decanterchina.com/en/knowledge/grapes/juhfark-white",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "tastes": [
+    "https://bor.hu/en/juhfark/",
+    "https://www.decanter.com/wine-reviews/hungary/somlo/kolonics-juhfark-somlo-hungary-2019-57651/",
+    "https://www.decanterchina.com/en/knowledge/grapes/juhfark-white"
+   ],
+   "aged_note": [
+    "https://bor.hu/en/juhfark/",
+    "https://www.decanterchina.com/en/knowledge/grapes/juhfark-white",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "acidity": [
+    "https://bor.hu/en/juhfark/",
+    "https://www.decanterchina.com/en/knowledge/grapes/juhfark-white"
+   ]
+  }
+ },
+ {
+  "name": "Assyrtiko",
+  "aliases": [
+   "Ασύρτικο"
+  ],
+  "colour": "white",
+  "summary": "A white grape from Santorini, now planted across Greece. It holds high acidity in heat, giving textured dry whites with a saline edge, and sweet wines from sun dried grapes.",
+  "tastes": [
+   "Citrus",
+   "Salinity",
+   "Stone fruit"
+  ],
+  "aged_note": null,
+  "body": 4,
+  "acidity": 5,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/varieties/assyrtiko/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "tastes": [
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://winesofgreece.org/pdo/pdo-santorini/"
+   ],
+   "body": [
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winesofgreece.org/varieties/assyrtiko/"
+   ],
+   "acidity": [
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://winesofgreece.org/varieties/assyrtiko/"
+   ]
+  }
+ },
+ {
+  "name": "Xinomavro",
+  "aliases": [
+   "Ξινόμαυρο"
+  ],
+  "colour": "red",
+  "summary": "The red grape of Naoussa and other northern Greek appellations. It gives pale reds with high acidity and firm tannins, red fruit, tomato and olive notes, and long ageing potential.",
+  "tastes": [
+   "Sour cherry",
+   "Tomato",
+   "Olive",
+   "Dried herbs"
+  ],
+  "aged_note": "Needs time for its tannins to soften and can age well beyond a decade.",
+  "body": 4,
+  "acidity": 4,
+  "tannin": 5,
+  "similar": {
+   "name": "Nebbiolo",
+   "note": "Pale in colour but high in tannin and acidity, and built to age."
+  },
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/varieties/xinomavro/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "tastes": [
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://winesofgreece.org/varieties/xinomavro/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098"
+   ],
+   "aged_note": [
+    "https://winesofgreece.org/pdo/pdo-naoussa/",
+    "https://winesofgreece.org/varieties/xinomavro/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "body": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098",
+    "https://winesofgreece.org/varieties/xinomavro/"
+   ],
+   "acidity": [
+    "https://winesofgreece.org/varieties/xinomavro/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "tannin": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://winesofgreece.org/pdo/pdo-naoussa/"
+   ],
+   "similar": [
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ]
+  }
+ },
+ {
+  "name": "Agiorgitiko",
+  "aliases": [
+   "Αγιωργίτικο"
+  ],
+  "colour": "red",
+  "summary": "The red grape of Nemea in the Peloponnese. Young wines are fruity with soft tannins; oak aged versions are deeper and more structured, with red fruit and sweet spice.",
+  "tastes": [
+   "Red fruit",
+   "Blackcurrant",
+   "Sweet spice"
+  ],
+  "aged_note": "Oak aged wines gain structure and notes of spice and chocolate.",
+  "body": 4,
+  "acidity": null,
+  "tannin": 3,
+  "similar": {
+   "name": "Merlot",
+   "note": "Generous, fruity and smooth, with a little more spice."
+  },
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/varieties/agiorgitiko/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/agiorgitiko/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "aged_note": [
+    "https://winesofgreece.org/varieties/agiorgitiko/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "body": [
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10693"
+   ],
+   "tannin": [
+    "https://winesofgreece.org/varieties/agiorgitiko/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "similar": [
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ]
+  }
+ }
+]

@@ -1,0 +1,249 @@
+[
+ {
+  "slug": "yamanashi",
+  "name": "Yamanashi",
+  "country": "JP",
+  "aliases": [
+   "山梨",
+   "GI Yamanashi"
+  ],
+  "summary": "An inland basin ringed by mountains, sunny and dry by Japanese standards, with wide swings between day and night temperatures. Its signature grape is Koshu, which gives delicate white wines with citrus notes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": 2,
+  "pairing": "Koshu with Japanese dishes based on seafood.",
+  "label_note": "A wine labelled GI Yamanashi must be made only from listed grape varieties harvested in Yamanashi, then produced, stored and bottled in the prefecture, and confirmed by the GI control body.",
+  "grapes": [
+   {
+    "name": "Koshu",
+    "local_note": "The region's main grape, well over half of its wine grape harvest."
+   },
+   {
+    "name": "Muscat Bailey A",
+    "local_note": "The main red grape here."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_01.htm",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/202009/202009_12_en.html",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine"
+   ],
+   "red_tannin": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_01.htm",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/202009/202009_12_en.html",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine"
+   ],
+   "pairing": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_01.htm",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/202009/202009_12_en.html",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/201511/201511_06_en.html",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/"
+   ],
+   "label_note": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_01.htm"
+   ],
+   "grapes": [
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine"
+   ],
+   "aliases": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/geographical/02.htm",
+    "https://www.nta.go.jp/taxes/sake/hyoji/chiri/ichiran.htm"
+   ]
+  }
+ },
+ {
+  "slug": "hokkaido",
+  "name": "Hokkaido",
+  "country": "JP",
+  "aliases": [
+   "北海道",
+   "GI Hokkaido"
+  ],
+  "summary": "Japan's northernmost wine region and its coolest, with harsh winters. Among European grapes, Kerner leads for white wine and Zweigelt and Pinot Noir for red, and Yoichi has become known for its Pinot Noir.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled GI Hokkaido must be made only from listed grape varieties harvested in Hokkaido, then produced, stored and bottled there, and confirmed by the GI control body.",
+  "grapes": [
+   {
+    "name": "Kerner",
+    "local_note": "The leading European white grape here."
+   },
+   {
+    "name": "Zweigelt",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Yoichi has become known for it."
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_07.htm",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.timeslive.co.za/news/world/2025-10-14-a-japanese-pinot-noir-town-blessed-by-climate-change-now-worries-about-the-weather/",
+    "https://www.nippon.com/en/articles/-/16436",
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf"
+   ],
+   "label_note": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_07.htm"
+   ],
+   "grapes": [
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.timeslive.co.za/news/world/2025-10-14-a-japanese-pinot-noir-town-blessed-by-climate-change-now-worries-about-the-weather/",
+    "https://www.nippon.com/en/articles/-/16436"
+   ],
+   "aliases": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/geographical/02.htm",
+    "https://www.nta.go.jp/taxes/sake/hyoji/chiri/ichiran.htm"
+   ]
+  }
+ },
+ {
+  "slug": "nagano",
+  "name": "Nagano",
+  "country": "JP",
+  "aliases": [
+   "長野",
+   "GI Nagano"
+  ],
+  "summary": "A mountainous prefecture where most vineyards sit above 500 metres. Cool nights keep acidity in the grapes and the climate is dry by Japanese standards. Merlot and Chardonnay lead among European grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled GI Nagano must be made only from listed grape varieties harvested in Nagano, then produced, stored and bottled in the prefecture, and confirmed by the GI control body. A stricter Nagano Wine Premium tier also exists.",
+  "grapes": [
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Muscat Bailey A",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_16.htm",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf"
+   ],
+   "label_note": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_16.htm"
+   ],
+   "grapes": [
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine"
+   ],
+   "aliases": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/geographical/02.htm",
+    "https://www.nta.go.jp/taxes/sake/hyoji/chiri/ichiran.htm"
+   ]
+  }
+ },
+ {
+  "slug": "ningxia_helan_mountain_east",
+  "name": "Helan Mountain East Foothill",
+  "country": "CN",
+  "aliases": [
+   "贺兰山东麓",
+   "Ningxia",
+   "Eastern Foothills of Helan Mountain"
+  ],
+  "summary": "A dry, sunny region with a strongly continental climate on the eastern foothills of the Helan Mountains, in Ningxia. Winters are so cold that vines are buried each autumn, and Cabernet Sauvignon is the main grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Only producers granted permission may put the Helan Mountain East Foothill geographical indication mark or name on their labels; unauthorised use is prohibited.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Marselan",
+    "local_note": null
+   },
+   {
+    "name": "Carménère",
+    "local_note": "Grown here as Cabernet Gernischt, a grape closely linked to Carménère."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://decanterchina.com/en/news/Decanter%20Features/ningxia-china-s-rapidly-emerging-fine-wine-region",
+    "https://decanterchina.com/en/news/Decanter%20Features/ningxia-wines-what-s-on-the-horizon",
+    "https://www.jamessuckling.com/wine-tasting-reports/report-asias-answer-bordeaux-blossoming",
+    "https://jiu.foodmate.net/news/show.php?itemid=153"
+   ],
+   "label_note": [
+    "http://www.nxrd.gov.cn/rdzt/zzqrdcwhhy/ssjjc/hyej/202403/t20240327_852891.html",
+    "https://gxt.nx.gov.cn/zwgk/fdzdgknr/zcfg/flfg/202405/t20240509_4533169.html",
+    "https://jiu.foodmate.net/news/show.php?itemid=153"
+   ],
+   "grapes": [
+    "https://decanterchina.com/en/news/Decanter%20Features/ningxia-china-s-rapidly-emerging-fine-wine-region",
+    "https://www.jamessuckling.com/wine-tasting-reports/report-asias-answer-bordeaux-blossoming"
+   ],
+   "aliases": [
+    "https://jiu.foodmate.net/news/show.php?itemid=153",
+    "http://www.nxrd.gov.cn/rdzt/zzqrdcwhhy/ssjjc/hyej/202403/t20240327_852891.html"
+   ]
+  }
+ }
+]

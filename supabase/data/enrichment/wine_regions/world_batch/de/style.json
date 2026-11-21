@@ -1,0 +1,392 @@
+[
+ {
+  "slug": "rheingau",
+  "name": "Rheingau",
+  "aliases": [],
+  "summary": "A small region on the right bank of the Rhine in Hesse, mostly in the Rheingau-Taunus district. Riesling covers about three quarters of the vineyards and Spätburgunder most of the rest.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. The Prädikat levels are Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese and Eiswein, and every wine must pass an official quality test.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Spätburgunder"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Rheingau_(wine_region)",
+    "https://www.winesofgermany.co.uk/region/rheingau/",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6403"
+   ],
+   "grapes": [
+    "https://en.wikipedia.org/wiki/Rheingau_(wine_region)",
+    "https://www.winesofgermany.co.uk/region/rheingau/",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6403",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ]
+  }
+ },
+ {
+  "slug": "pfalz",
+  "name": "Pfalz",
+  "aliases": [
+   "Palatinate",
+   "Rheinpfalz"
+  ],
+  "summary": "Germany's second largest wine region, a long strip below the Haardt hills at the edge of the Palatinate Forest. It is one of the sunniest and driest German regions, with a climate compared to Alsace.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. The Prädikat levels are Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese and Eiswein, and every wine must pass an official quality test.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Dornfelder",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Spätburgunder"
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Grauburgunder"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Mittelhaardt-Deutsche Weinstraße",
+    "colour": "mixed",
+    "note": "Bereich covering the north of the region."
+   },
+   {
+    "name": "Südliche Weinstraße",
+    "colour": "mixed",
+    "note": "Bereich covering the south of the region."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Pfalz_(wine_region)",
+    "https://www.winesofgermany.com/our-regions",
+    "http://data.europa.eu/eli/C/2026/898/oj"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Pfalz_(wine_region)",
+    "https://winesofgermany.co.uk/regions/pfalz/",
+    "http://data.europa.eu/eli/C/2026/898/oj"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Pfalz_(wine_region)",
+    "https://winesofgermany.co.uk/regions/pfalz/"
+   ],
+   "appellations": [
+    "https://www.statistischebibliothek.de/mir/servlets/MCRFileNodeServlet/RPHeft_derivate_00008841/C2053_202400_1j_AnbGeb.pdf",
+    "https://en.wikipedia.org/wiki/Pfalz_(wine_region)"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2026/898/oj",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ]
+  }
+ },
+ {
+  "slug": "rheinhessen",
+  "name": "Rheinhessen",
+  "aliases": [],
+  "summary": "Germany's largest wine region, rolling hill country inside the bend of the Rhine between Bingen, Mainz and Worms. It makes mostly white wine from Riesling, Müller-Thurgau and Silvaner, with Dornfelder the main red.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. The Prädikat levels are Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese and Eiswein, and every wine must pass an official quality test.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   },
+   {
+    "name": "Dornfelder",
+    "local_note": null
+   },
+   {
+    "name": "Silvaner",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Bingen",
+    "colour": "mixed",
+    "note": "Bereich in the north west, towards the Nahe."
+   },
+   {
+    "name": "Nierstein",
+    "colour": "mixed",
+    "note": "Bereich along the Rhine south of Mainz."
+   },
+   {
+    "name": "Wonnegau",
+    "colour": "mixed",
+    "note": "Bereich in the south, around Worms."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Rheinhessen_(wine_region)",
+    "https://winesofgermany.co.uk/regions/rheinhessen/",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "http://data.europa.eu/eli/C/2026/1820/oj"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Rheinhessen_(wine_region)"
+   ],
+   "appellations": [
+    "https://www.statistischebibliothek.de/mir/servlets/MCRFileNodeServlet/RPHeft_derivate_00008841/C2053_202400_1j_AnbGeb.pdf",
+    "https://en.wikipedia.org/wiki/Rheinhessen_(wine_region)"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2026/1820/oj",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ]
+  }
+ },
+ {
+  "slug": "nahe",
+  "name": "Nahe",
+  "aliases": [],
+  "summary": "A small region along the river Nahe from near Kirn down to Bingen, with an unusually wide range of soils, many of volcanic origin. Most of the wine is white and Riesling leads.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. The Prädikat levels are Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese and Eiswein, and every wine must pass an official quality test.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   },
+   {
+    "name": "Dornfelder",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Nahe_(wine_region)",
+    "https://winesofgermany.co.uk/regions/nahe/",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "http://data.europa.eu/eli/C/2026/1289/oj"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Nahe_(wine_region)"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2026/1289/oj",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ]
+  }
+ },
+ {
+  "slug": "franken",
+  "name": "Franken",
+  "aliases": [],
+  "summary": "The wine region of Bavaria, following the bends of the Main around Würzburg. Mostly dry white wines from Silvaner and Müller-Thurgau, many bottled in the flat, round Bocksbeutel.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. The Prädikat levels are Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese and Eiswein, and every wine must pass an official quality test. In Franken, Spätlese and the higher Prädikate may only be used together with a single vineyard (Einzellage) or Gewann name. The official term Erstes Gewächs is reserved for separately delimited sites with lower yield limits.",
+  "grapes": [
+   {
+    "name": "Silvaner",
+    "local_note": null
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Franconia_(wine_region)",
+    "https://winesofgermany.co.uk/regions/franken/",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/c2500c_202500.pdf",
+    "https://en.wikipedia.org/wiki/Franconia_(wine_region)"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2025/6794/oj",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ]
+  }
+ },
+ {
+  "slug": "baden",
+  "name": "Baden",
+  "aliases": [],
+  "summary": "Germany's southernmost region, warm and sunny, stretching about 400 km along the Rhine from Lake Constance to near Heidelberg. The Pinot family dominates, led by Spätburgunder.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. The Prädikat levels are Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese and Eiswein, and every wine must pass an official quality test. The Bocksbeutel bottle is traditional for wines from the Taubertal and Schüpfergrund, and from Neuweier, Steinbach, Umweg and Varnhalt in Baden-Baden.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": "Spätburgunder"
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Grauburgunder"
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Weißburgunder"
+   },
+   {
+    "name": "Chasselas",
+    "local_note": "Gutedel"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Tauberfranken",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Badische Bergstraße",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Kraichgau",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Ortenau",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Breisgau",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Kaiserstuhl",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Tuniberg",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Markgräflerland",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   },
+   {
+    "name": "Bodensee",
+    "colour": "mixed",
+    "note": "Bereich of Baden."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Baden_(wine_region)",
+    "https://winesofgermany.co.uk/regions/baden/"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Baden_(wine_region)"
+   ],
+   "appellations": [
+    "http://data.europa.eu/eli/C/2026/5957/oj",
+    "https://en.wikipedia.org/wiki/Baden_(wine_region)"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2026/5957/oj",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ]
+  }
+ },
+ {
+  "slug": "ahr",
+  "name": "Ahr",
+  "aliases": [],
+  "summary": "A small valley region on a tributary of the Rhine and one of the most northerly wine regions in Europe, known for red wine. Spätburgunder is the main grape, grown on terraces of slate.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. The Prädikat levels are Kabinett, Spätlese, Auslese, Beerenauslese, Trockenbeerenauslese and Eiswein, and every wine must pass an official quality test.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": "Spätburgunder"
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Ahr_(wine_region)",
+    "https://winesofgermany.co.uk/regions/ahr/",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://winesofgermany.co.uk/regions/ahr/",
+    "https://en.wikipedia.org/wiki/Ahr_(wine_region)"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/7180",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ]
+  }
+ }
+]

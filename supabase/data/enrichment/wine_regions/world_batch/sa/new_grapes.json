@@ -1,0 +1,91 @@
+[
+ {
+  "name": "Bonarda",
+  "aliases": [
+   "Bonarda Argentina",
+   "Bonarda de Argentina",
+   "Douce Noir",
+   "Douce Noire",
+   "Corbeau",
+   "Corbeau Noir",
+   "Charbono"
+  ],
+  "colour": "red",
+  "summary": "Argentina's second most planted red grape, identical to Douce Noir (Corbeau) from Savoie and California's Charbono, and not Italian Bonarda. It gives fruity, soft reds of moderate alcohol.",
+  "tastes": [
+   "Spice"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/lifestyle/move-over-malbec-bonarda-is-argentina/",
+    "https://blog.winesofargentina.com/destacadas/argentine-bonarda/",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=2826",
+    "https://winefolly.com/tips/5-south-american-wine-varieties-you-need-to-know/",
+    "https://www.decanter.com/argentina-2014-coverage/bonarda-a-unique-varietal-of-argentina-with-great-potential-30561/"
+   ],
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=2826",
+    "https://winefolly.com/lifestyle/move-over-malbec-bonarda-is-argentina/",
+    "https://winefolly.com/tips/5-south-american-wine-varieties-you-need-to-know/",
+    "https://blog.winesofargentina.com/destacadas/argentine-bonarda/"
+   ],
+   "tastes": [
+    "https://winefolly.com/lifestyle/move-over-malbec-bonarda-is-argentina/",
+    "https://www.decanter.com/argentina-2014-coverage/bonarda-a-unique-varietal-of-argentina-with-great-potential-30561/"
+   ]
+  }
+ },
+ {
+  "name": "País",
+  "aliases": [
+   "Listán Prieto",
+   "Mission",
+   "Criolla Chica"
+  ],
+  "colour": "red",
+  "summary": "A red grape the Spanish brought to the Americas, the same variety as Listán Prieto and Mission. Old vines in Chile's south now give pale, light reds.",
+  "tastes": [
+   "Raspberry",
+   "Red cherry"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://wineanorak.com/2021/06/18/pais-mission-criolla-chica-the-beaujolais-of-the-americas/",
+    "https://winefolly.com/wine-regions/chile/",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=6860",
+    "https://www.decanter.com/features/chile-back-to-the-future-266107/",
+    "https://www.decanter.com/wine-reviews-tastings/our-expert-recommends-18-brilliant-light-bodied-south-american-reds/"
+   ],
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=6860",
+    "https://wineanorak.com/2021/06/18/pais-mission-criolla-chica-the-beaujolais-of-the-americas/",
+    "https://winefolly.com/wine-regions/chile/",
+    "https://www.decanter.com/features/chile-back-to-the-future-266107/"
+   ],
+   "tastes": [
+    "https://wineanorak.com/2021/06/18/pais-mission-criolla-chica-the-beaujolais-of-the-americas/",
+    "https://winefolly.com/wine-regions/chile/"
+   ],
+   "body": [
+    "https://wineanorak.com/2021/06/18/pais-mission-criolla-chica-the-beaujolais-of-the-americas/",
+    "https://winefolly.com/wine-regions/chile/"
+   ]
+  }
+ },
+ {
+  "name": "Carignan",
+  "aliases": [
+   "Carignane"
+  ]
+ }
+]

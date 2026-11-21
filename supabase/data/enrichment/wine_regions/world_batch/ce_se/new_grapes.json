@@ -1,0 +1,562 @@
+[
+ {
+  "name": "Fetească Neagră",
+  "aliases": [
+   "Păsărească Neagră",
+   "Coada Rândunicii",
+   "Poama Fetei Neagră",
+   "Schwarze Mädchentraube"
+  ],
+  "colour": "red",
+  "summary": "Romania's best known native red grape, closely tied to Dealu Mare. It makes medium to full bodied reds with plum and spice that grow richer with age.",
+  "tastes": [
+   "Plum",
+   "Spice"
+  ],
+  "aged_note": "The best wines age well and grow richer.",
+  "body": 3,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4120",
+    "https://en.wikipedia.org/wiki/Fetească_neagră",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG"
+   ],
+   "colour": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4120",
+    "https://en.wikipedia.org/wiki/Fetească_neagră"
+   ],
+   "summary.best_known_red": [
+    "https://en.wikipedia.org/wiki/Romanian_wine",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/"
+   ],
+   "summary.dealu_mare": [
+    "https://winesofromania.com/en/soiuri/all-about-feteasca-neagra/",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/"
+   ],
+   "body": [
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/",
+    "https://vinepair.com/articles/wine-guide-central-eastern-europe/"
+   ],
+   "tastes.plum": [
+    "https://wineofmoldova.com/en/local-grape-varieties/",
+    "https://winesofromania.com/en/soiuri/all-about-feteasca-neagra/"
+   ],
+   "tastes.spice": [
+    "https://wineofmoldova.com/en/local-grape-varieties/",
+    "https://vinepair.com/articles/wine-guide-central-eastern-europe/"
+   ],
+   "aged_note": [
+    "https://en.wikipedia.org/wiki/Fetească_neagră",
+    "https://wineofmoldova.com/en/local-grape-varieties/",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/"
+   ]
+  }
+ },
+ {
+  "name": "Fetească Albă",
+  "aliases": [
+   "Păsărească Albă",
+   "Poama Fetei",
+   "Leányka",
+   "Mädchentraube"
+  ],
+  "colour": "white",
+  "summary": "A white grape native to Romania and also grown in Moldova. It is used for still and sparkling wines with delicate floral and citrus aromas.",
+  "tastes": [
+   "Floral",
+   "Citrus"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4119",
+    "https://en.wikipedia.org/wiki/Fetească_albă",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "colour": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4119",
+    "https://en.wikipedia.org/wiki/Fetească_albă"
+   ],
+   "summary.origin_romania": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4119",
+    "https://en.wikipedia.org/wiki/Fetească_albă"
+   ],
+   "summary.grown_in_moldova": [
+    "https://en.wikipedia.org/wiki/Fetească_albă",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "summary.sparkling": [
+    "https://en.wikipedia.org/wiki/Fetească_albă",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "tastes.floral": [
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/",
+    "https://wineofmoldova.com/en/local-grape-varieties/",
+    "https://en.wikipedia.org/wiki/Romanian_wine"
+   ],
+   "tastes.citrus": [
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ]
+  }
+ },
+ {
+  "name": "Fetească Regală",
+  "aliases": [
+   "Dănășană",
+   "Galbenă de Ardeal",
+   "Királyleányka",
+   "Königliche Mädchentraube"
+  ],
+  "colour": "white",
+  "summary": "A white grape that appeared in Romania in the 1920s, with Fetească Albă as one parent. It makes fresh white wines with floral aromas.",
+  "tastes": [
+   "Floral"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4121",
+    "https://en.wikipedia.org/wiki/Fetească_regală",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "colour": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4121",
+    "https://en.wikipedia.org/wiki/Fetească_regală"
+   ],
+   "summary.1920s": [
+    "https://en.wikipedia.org/wiki/Fetească_regală",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "summary.parent_feteasca_alba": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4121",
+    "https://en.wikipedia.org/wiki/Fetească_regală",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "summary.fresh": [
+    "https://en.wikipedia.org/wiki/Fetească_regală",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/"
+   ],
+   "tastes.floral": [
+    "https://wineofmoldova.com/en/local-grape-varieties/",
+    "https://en.wikipedia.org/wiki/Romanian_wine"
+   ]
+  }
+ },
+ {
+  "name": "Grasă de Cotnari",
+  "aliases": [
+   "Grasă",
+   "Kövérszőlő",
+   "Dicktraube"
+  ],
+  "colour": "white",
+  "summary": "A white grape from Cotnari in Romania's Moldavia region. It is best known for sweet, golden wines made from grapes touched by noble rot.",
+  "tastes": [],
+  "aged_note": "Ages well, its colour deepening toward amber.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4948",
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "colour": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4948",
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari"
+   ],
+   "summary.cotnari_origin": [
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4948",
+    "https://cotnari.ro/?p=5393"
+   ],
+   "summary.sweet_noble_rot": [
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari",
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://cotnari.ro/?p=5393"
+   ],
+   "summary.golden": [
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/"
+   ],
+   "aged_note": [
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ]
+  }
+ },
+ {
+  "name": "Frâncușă",
+  "aliases": [
+   "Mustoasă de Moldova",
+   "Vinoasă",
+   "Poamă Creață",
+   "Mildweisser"
+  ],
+  "colour": "white",
+  "summary": "A white grape native to Romania and traditional in Cotnari, where it goes into both still and sparkling wines.",
+  "tastes": [],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4221",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "colour": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4221",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "summary.origin_romania": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=4221",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "summary.traditional_cotnari": [
+    "https://en.wikipedia.org/wiki/Romanian_wine",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "summary.still_and_sparkling": [
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://www.cotnari.ro/?p=5384"
+   ]
+  }
+ },
+ {
+  "name": "Băbească Neagră",
+  "aliases": [
+   "Rară Neagră",
+   "Căldărușă",
+   "Crăcană",
+   "Serecsia",
+   "Grossmuttertraube"
+  ],
+  "colour": "red",
+  "summary": "An old red grape of Romania and Moldova, where it is called Rară Neagră. It gives pale, light bodied reds with high acidity.",
+  "tastes": [],
+  "aged_note": null,
+  "body": 2,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=843",
+    "https://en.wikipedia.org/wiki/Băbească_neagră",
+    "https://wineofmoldova.com/en/local-grape-varieties/",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG"
+   ],
+   "aliases.Rara_Neagra_in_Moldova": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=843",
+    "https://wineofmoldova.com/en/local-grape-varieties/",
+    "https://en.wikipedia.org/wiki/Băbească_neagră"
+   ],
+   "colour": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=843",
+    "https://en.wikipedia.org/wiki/Băbească_neagră"
+   ],
+   "summary.old": [
+    "https://en.wikipedia.org/wiki/Băbească_neagră",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "summary.pale": [
+    "https://en.wikipedia.org/wiki/Băbească_neagră",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "body": [
+    "https://en.wikipedia.org/wiki/Băbească_neagră",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ],
+   "acidity": [
+    "https://en.wikipedia.org/wiki/Băbească_neagră",
+    "https://wineofmoldova.com/en/local-grape-varieties/"
+   ]
+  }
+ },
+ {
+  "name": "Muscat Ottonel",
+  "aliases": [
+   "Muscat Ottonel Blanc",
+   "Muskotály",
+   "Misket Ottonel"
+  ],
+  "colour": "white",
+  "summary": "A white Muscat grape that originated in France, with Chasselas as one parent. In Romania it is grown in regions including Dealu Mare and Murfatlar.",
+  "tastes": [],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8243",
+    "https://en.wikipedia.org/wiki/Muscat_Ottonel",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG"
+   ],
+   "colour": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8243",
+    "https://en.wikipedia.org/wiki/Muscat_Ottonel"
+   ],
+   "summary.france": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8243",
+    "https://en.wikipedia.org/wiki/Muscat_Ottonel"
+   ],
+   "summary.chasselas_parent": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8243",
+    "https://en.wikipedia.org/wiki/Muscat_Ottonel"
+   ],
+   "summary.dealu_mare": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://en.wikipedia.org/wiki/Dealu_Mare_wine_region"
+   ],
+   "summary.murfatlar": [
+    "http://data.europa.eu/eli/C/2025/1479/oj",
+    "https://www.winetourism.com/wine-regions/romania/dobrogea/murfatlar/"
+   ]
+  }
+ },
+ {
+  "name": "Pálava",
+  "aliases": [
+   "Nema",
+   "Veverka"
+  ],
+  "colour": "white",
+  "summary": "A Moravian crossing of Traminer and Müller-Thurgau, bred by Josef Veverka in 1953, giving golden, full bodied aromatic whites close in style to Gewürztraminer.",
+  "tastes": [
+   "Nutmeg",
+   "Vanilla",
+   "Mandarin"
+  ],
+  "aged_note": null,
+  "body": 4,
+  "acidity": null,
+  "tannin": null,
+  "similar": {
+   "name": "Gewürztraminer",
+   "note": "A Traminer offspring with a similar aromatic profile."
+  },
+  "sources": {
+   "summary": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8875",
+    "https://en.wikipedia.org/wiki/P%C3%A1lava_(grape)",
+    "https://cs.wikipedia.org/wiki/P%C3%A1lava_(odr%C5%AFda_r%C3%A9vy_vinn%C3%A9)",
+    "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf"
+   ],
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8875",
+    "https://cs.wikipedia.org/wiki/P%C3%A1lava_(odr%C5%AFda_r%C3%A9vy_vinn%C3%A9)"
+   ],
+   "tastes": [
+    "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+    "https://cs.wikipedia.org/wiki/P%C3%A1lava_(odr%C5%AFda_r%C3%A9vy_vinn%C3%A9)"
+   ],
+   "body": [
+    "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+    "https://en.wikipedia.org/wiki/P%C3%A1lava_(grape)",
+    "https://cs.wikipedia.org/wiki/P%C3%A1lava_(odr%C5%AFda_r%C3%A9vy_vinn%C3%A9)"
+   ],
+   "similar": [
+    "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+    "https://cs.wikipedia.org/wiki/P%C3%A1lava_(odr%C5%AFda_r%C3%A9vy_vinn%C3%A9)"
+   ],
+   "main_grape": [
+    "https://mze.gov.cz/public/portal/mze/-a89668---4_yKzmAI/vyber-statistik-o-vinicich-2025",
+    "https://en.wikipedia.org/wiki/Czech_wine"
+   ]
+  }
+ },
+ {
+  "name": "Muškát moravský",
+  "aliases": [
+   "Moravian Muscat",
+   "Mopr"
+  ],
+  "colour": "white",
+  "summary": "A Moravian crossing of Muscat Ottonel and Prachttraube from the Polešovice breeding station, registered in 1987, giving light coloured whites with a clear muscat scent.",
+  "tastes": [
+   "Muscat"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+    "https://cs.wikipedia.org/wiki/Mu%C5%A1k%C3%A1t_moravsk%C3%BD"
+   ],
+   "aliases": [
+    "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+    "https://cs.wikipedia.org/wiki/Mu%C5%A1k%C3%A1t_moravsk%C3%BD",
+    "https://en.wikipedia.org/wiki/Czech_wine"
+   ],
+   "tastes": [
+    "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+    "https://cs.wikipedia.org/wiki/Mu%C5%A1k%C3%A1t_moravsk%C3%BD"
+   ],
+   "main_grape": [
+    "https://mze.gov.cz/public/portal/mze/-a89668---4_yKzmAI/vyber-statistik-o-vinicich-2025",
+    "https://en.wikipedia.org/wiki/Czech_wine",
+    "https://www.vinarskecentrum.cz/storage/files/Brochure-wine-accross-the-czech-republic-wine-2019.pdf"
+   ]
+  }
+ },
+ {
+  "name": "Shiroka Melnishka",
+  "aliases": [
+   "Shiroka Melnishka Loza",
+   "Melnik",
+   "Broadleaf Melnik"
+  ],
+  "colour": "red",
+  "summary": "A Bulgarian red grape grown almost only in the Struma valley near the Greek border, giving spicy, peppery wines with dark fruit.",
+  "tastes": [
+   "Black pepper",
+   "Spice",
+   "Black fruit"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Melnik_(grape)",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.272.01.0009.01.ENG",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://wineanorak.com/?p=31181"
+   ],
+   "summary": [
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://en.wikipedia.org/wiki/Melnik_(grape)",
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine",
+    "https://en.wikipedia.org/wiki/Bulgarian_wine"
+   ],
+   "tastes": [
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://en.wikipedia.org/wiki/Melnik_(grape)"
+   ]
+  }
+ },
+ {
+  "name": "Ranna Melnishka Loza",
+  "aliases": [
+   "Melnik 55",
+   "Early Melnik"
+  ],
+  "colour": "red",
+  "summary": "A Bulgarian crossing of Shiroka Melnishka and the French Valdiguié, grown almost only in the Struma valley. Its name means Early Melnik.",
+  "tastes": [],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.272.01.0009.01.ENG",
+    "https://en.wikipedia.org/wiki/Melnik_(grape)",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine"
+   ],
+   "summary": [
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine",
+    "https://en.wikipedia.org/wiki/Melnik_(grape)"
+   ]
+  }
+ },
+ {
+  "name": "Muscat Blanc à Petits Grains",
+  "aliases": [
+   "Tămâioasă Românească"
+  ]
+ },
+ {
+  "name": "Blaufränkisch",
+  "aliases": [
+   "Burgund Mare"
+  ]
+ },
+ {
+  "name": "Graševina",
+  "aliases": [
+   "Riesling Italian",
+   "Ryzlink vlašský",
+   "Grašac",
+   "Italijanski rizling"
+  ]
+ },
+ {
+  "name": "Riesling",
+  "aliases": [
+   "Ryzlink rýnský"
+  ]
+ },
+ {
+  "name": "Pinot Blanc",
+  "aliases": [
+   "Rulandské bílé"
+  ]
+ },
+ {
+  "name": "Pinot Gris",
+  "aliases": [
+   "Rulandské šedé"
+  ]
+ },
+ {
+  "name": "Pinot Noir",
+  "aliases": [
+   "Rulandské modré"
+  ]
+ },
+ {
+  "name": "Gewürztraminer",
+  "aliases": [
+   "Tramín červený"
+  ]
+ },
+ {
+  "name": "Zweigelt",
+  "aliases": [
+   "Zweigeltrebe"
+  ]
+ },
+ {
+  "name": "Portugieser",
+  "aliases": [
+   "Modrý Portugal"
+  ]
+ },
+ {
+  "name": "Sauvignon Blanc",
+  "aliases": [
+   "Sauvignon"
+  ]
+ }
+]

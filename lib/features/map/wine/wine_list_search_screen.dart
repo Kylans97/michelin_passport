@@ -66,6 +66,7 @@ class _WineListSearchScreenState extends State<WineListSearchScreen> {
             CsSearchField(
               controller: _controller,
               autofocus: true,
+              autocorrect: false,
               hintText: 'A region, a name or a grape',
               onChanged: (v) => setState(() => _query = v),
             ),

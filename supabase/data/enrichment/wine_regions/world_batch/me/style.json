@@ -1,0 +1,504 @@
+[
+ {
+  "slug": "commandaria",
+  "name": "Commandaria",
+  "country": "CY",
+  "aliases": [
+   "Κουμανδαρία"
+  ],
+  "summary": "A sweet amber wine from fourteen villages in the hills north of Limassol, made from sun dried Xynisteri and Mavro grapes and aged at least two years in oak.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The grapes are sun dried before pressing and the wine is aged at least two years in oak casks. It may be fortified.",
+  "grapes": [
+   {
+    "name": "Xynisteri",
+    "local_note": null
+   },
+   {
+    "name": "Mavro",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Commandaria",
+    "colour": "mixed",
+    "note": "Sweet amber PDO wine from sun dried white Xynisteri and red Mavro grapes, made as a liqueur wine or a wine from sun dried grapes."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/47638",
+    "https://www.cylaw.org/KDP/data/1990_1_41.pdf"
+   ],
+   "summary": [
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/47638",
+    "https://www.cylaw.org/KDP/data/1990_1_41.pdf",
+    "https://www.gob.mx/cms/uploads/attachment/file/245550/CY_Commandaria.pdf"
+   ],
+   "label_note": [
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf",
+    "https://www.cylaw.org/KDP/data/1990_1_41.pdf",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/47638"
+   ],
+   "grapes": [
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/47638",
+    "https://www.cylaw.org/KDP/data/1990_1_41.pdf",
+    "https://cyprus-mail.com/2025/05/22/it-is-may-time-for-cyprus-xynisteri"
+   ],
+   "appellations": [
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/47638",
+    "https://www.gob.mx/cms/uploads/attachment/file/245550/CY_Commandaria.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "krasochoria-lemesou",
+  "name": "Krasochoria Lemesou",
+  "country": "CY",
+  "aliases": [
+   "Κρασοχώρια Λεμεσού",
+   "Krasohoria Lemesou"
+  ],
+  "summary": "Hill villages of Limassol district whose PDO covers vineyards at 600 m and above. Whites are built on Xynisteri, while reds draw on Maratheftiko, Mavro and international grapes such as Syrah.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Red wines from Maratheftiko must age at least six months in oak barrels.",
+  "grapes": [
+   {
+    "name": "Xynisteri",
+    "local_note": null
+   },
+   {
+    "name": "Maratheftiko",
+    "local_note": null
+   },
+   {
+    "name": "Mavro",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Krasohoria Lemesou",
+    "colour": "mixed",
+    "note": "PDO for wines from vineyards at 600 m and above in named villages of Limassol district."
+   },
+   {
+    "name": "Krasohoria Lemesou - Afames",
+    "colour": "mixed",
+    "note": "Sub area for vineyards at 750 m and above in Vouni, Kilani, Mandria and Omodos, east of the Cha Potami river."
+   },
+   {
+    "name": "Krasohoria Lemesou - Laona",
+    "colour": "mixed",
+    "note": "Sub area for vineyards at 750 m and above in Arsos, Vasa and Omodos, west of the Cha Potami river."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875",
+    "https://www.cylaw.org/KDP/data/2004_1_706.pdf",
+    "https://www.moa.gov.cy/moa/da/da.nsf/All/05A574BE12FC3834C2258853002E381B/$file/(4)PDO-%CE%9A%CE%A1%CE%91%CE%A3%CE%9F%CE%A7%CE%A9%CE%A1%CE%99%CE%91%20%CE%9B%CE%95%CE%9C%CE%95%CE%A3%CE%9F%CE%A5%20-%20%CE%9B%CE%91%CE%9F%CE%9D%CE%91.pdf"
+   ],
+   "summary": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875",
+    "https://www.cylaw.org/KDP/data/2004_1_706.pdf",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko"
+   ],
+   "label_note": [
+    "https://www.cylaw.org/KDP/data/2004_1_706.pdf",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11786",
+    "https://www.moa.gov.cy/moa/da/da.nsf/All/05A574BE12FC3834C2258853002E381B/$file/(4)PDO-%CE%9A%CE%A1%CE%91%CE%A3%CE%9F%CE%A7%CE%A9%CE%A1%CE%99%CE%91%20%CE%9B%CE%95%CE%9C%CE%95%CE%A3%CE%9F%CE%A5%20-%20%CE%9B%CE%91%CE%9F%CE%9D%CE%91.pdf"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875",
+    "https://www.cylaw.org/KDP/data/2004_1_706.pdf",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11786",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11264",
+    "https://www.moa.gov.cy/moa/da/da.nsf/All/05A574BE12FC3834C2258853002E381B/$file/(4)PDO-%CE%9A%CE%A1%CE%91%CE%A3%CE%9F%CE%A7%CE%A9%CE%A1%CE%99%CE%91%20%CE%9B%CE%95%CE%9C%CE%95%CE%A3%CE%9F%CE%A5%20-%20%CE%9B%CE%91%CE%9F%CE%9D%CE%91.pdf",
+    "https://www.cylaw.org/KDP/data/2004_1_706.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "vayots-dzor",
+  "name": "Vayots Dzor",
+  "country": "AM",
+  "aliases": [],
+  "summary": "Armenia's highest wine region, in the south of the country. It is the home of Areni, the country's leading red grape, which gives fresh, red fruited wines here.",
+  "red_body": 3,
+  "red_acidity": 4,
+  "red_tannin": 3,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Areni",
+    "local_note": "Known locally as Sev Areni"
+   },
+   {
+    "name": "Voskehat",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://wineanorak.com/2021/11/22/armenian-wine-a-brief-study/",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region",
+    "https://vwfa.am/regions/vayots-dzor/"
+   ],
+   "red_body": [
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region"
+   ],
+   "red_acidity": [
+    "https://vwfa.am/varieties/",
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia"
+   ],
+   "red_tannin": [
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region",
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape"
+   ],
+   "grapes": [
+    "https://vwfa.am/regions/vayots-dzor/",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia",
+    "https://vwfa.am/varieties/"
+   ]
+  }
+ },
+ {
+  "slug": "galilee",
+  "name": "Galilee",
+  "country": "IL",
+  "aliases": [],
+  "summary": "Upper and Lower Galilee in northern Israel, with Upper Galilee vineyards at roughly 400 to 900 metres on basalt, limestone and terra rossa soils. Altitude brings a cooler climate and a longer ripening season.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.winetourism.com/wine-regions/israel-wine-regions/galille/",
+    "https://www.dalton-winery.com/en/the-winery/",
+    "https://www.galilmountain.co.il/en/company/about/main/",
+    "https://www.skurnik.com/producer/galil-mountain-winery/",
+    "https://archive.israel21c.org/a-guide-to-the-wines-of-the-galilee/",
+    "https://winetraveler.com/?p=11941"
+   ],
+   "grapes": [
+    "https://www.winetourism.com/wine-regions/israel-wine-regions/galille/",
+    "https://www.dalton-winery.com/en/the-winery/",
+    "https://www.skurnik.com/producer/galil-mountain-winery/",
+    "https://www.jpost.com/food-recipes/article-722664",
+    "https://archive.israel21c.org/a-guide-to-the-wines-of-the-galilee/"
+   ]
+  }
+ },
+ {
+  "slug": "judean-hills",
+  "name": "Judean Hills",
+  "country": "IL",
+  "aliases": [],
+  "summary": "High vineyards in the hills west of Jerusalem, planted on terra rossa, clay and limestone. Cool summer nights and a sharp drop in temperature after dark help the grapes ripen while keeping their acidity.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Petit Verdot",
+    "local_note": "Used in blends by Castel and Tzora."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://castel.co.il/en/?p=5784",
+    "https://www.skurnik.com/producer/tzora-vineyards",
+    "https://www.winetourism.com/wine-region/judea/",
+    "https://www.winespectator.com/articles/tasting-in-the-judean-hills-43537",
+    "https://www.jpost.com/food-recipes/article-911007"
+   ],
+   "grapes": [
+    "https://castel.co.il/en/?p=5784",
+    "https://www.winespectator.com/articles/tasting-in-the-judean-hills-43537",
+    "https://www.skurnik.com/?p=375494",
+    "https://www.algemeiner.com/?p=50985",
+    "https://www.skurnik.com/sku/shoresh-blanc-tzora-vineyards/"
+   ]
+  }
+ },
+ {
+  "slug": "negev",
+  "name": "Negev",
+  "country": "IL",
+  "aliases": [],
+  "summary": "Israel's southern desert, where irrigated vineyards in the highlands near Mitzpe Ramon sit at about 800 metres on loess. Hot days and cold nights shape the wines, and its whites are often singled out.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Petit Verdot",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Malbec",
+    "local_note": null
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.jpost.com/israel-news/wine-talk-desert-wine-679470",
+    "https://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/lessons-from-ancient-desert-vineyards.html",
+    "https://jpost.com/jerusalem-report/israeli-wine-from-the-desert-679400",
+    "https://www.washingtonjewishweek.com/wine-of-the-desert-the-bold-wineries-of-israels-negev/",
+    "https://www.timesofisrael.com/negev-desert-wins-recognition-as-unique-international-wine-region/",
+    "https://jpost.com/consumerism/article-896016"
+   ],
+   "grapes": [
+    "https://jpost.com/jerusalem-report/israeli-wine-from-the-desert-679400",
+    "https://archive.israel21c.org/winemakers-revive-ancient-negev-wine-route/",
+    "https://www.jpost.com/israel-news/wine-talk-desert-wine-679470",
+    "https://www.internationalwinechallenge.com/iwc-insight/tomorrows-vineyard/lessons-from-ancient-desert-vineyards.html",
+    "https://www.washingtonjewishweek.com/wine-of-the-desert-the-bold-wineries-of-israels-negev/"
+   ]
+  }
+ },
+ {
+  "slug": "trakya",
+  "name": "Thrace",
+  "country": "TR",
+  "aliases": [
+   "Trakya"
+  ],
+  "summary": "Turkey's corner of Europe, between Istanbul and the Greek and Bulgarian borders, with vineyards close to three seas. Bordeaux grapes do well here alongside the local red Papazkarası.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Papazkarası",
+    "local_note": "The local red grape of Turkish Thrace"
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Kınalı Yapıncak",
+    "local_note": "Local white of Şarköy and Mürefte"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "aliases": [
+    "https://goturkiye.com/vineyards/thrace-vineyard-route",
+    "https://www.trakyaka.org.tr/"
+   ],
+   "summary": [
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://www.afar.com/magazine/sip-your-way-along-turkiyes-oldest-wine-route",
+    "https://goturkiye.com/vineyards/thrace-vineyard-route",
+    "https://web.archive.org/web/20191220024453/http://www.winesofturkey.org/marmara/",
+    "https://cluboenologique.com/story/turkeys-vineyard-routes-the-wine-thrills-of-thrace"
+   ],
+   "grapes": [
+    "https://goturkiye.com/vineyards/thrace-vineyard-route",
+    "https://cluboenologique.com/story/turkeys-vineyard-routes-the-wine-thrills-of-thrace",
+    "https://www.afar.com/magazine/sip-your-way-along-turkiyes-oldest-wine-route",
+    "https://web.archive.org/web/20191220024453/http://www.winesofturkey.org/marmara/",
+    "https://www.vinography.com/2012/12/turkish_wine_the_tasting_notes",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/"
+   ]
+  }
+ },
+ {
+  "slug": "kapadokya",
+  "name": "Cappadocia",
+  "country": "TR",
+  "aliases": [
+   "Kapadokya"
+  ],
+  "summary": "High vineyards on volcanic tuff soils in central Anatolia, with a continental climate and wide swings between day and night. Its signature grape is the white Emir, which gives high acid, mineral wines.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Emir",
+    "local_note": "The region's signature white grape"
+   },
+   {
+    "name": "Narince",
+    "local_note": "Native to Tokat, also grown here"
+   },
+   {
+    "name": "Kalecik Karası",
+    "local_note": "Native to Kalecik near Ankara"
+   },
+   {
+    "name": "Öküzgözü",
+    "local_note": "Native to eastern Anatolia"
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "aliases": [
+    "https://www.ekonomigazetesi.com/nevsehir/turasan-sarapcilik-uc-nesildir-kapadokyanin-baglarinda-yazilan-bir-basari-oykusu-47964",
+    "https://dergipark.org.tr/tr/download/article-file/2797555"
+   ],
+   "summary": [
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://www.decanter.com/dream-destination/decanters-dream-destination-argos-in-cappadocia-turkey-551191/",
+    "https://web.archive.org/web/20200129161416/http://www.winesofturkey.org/mid-southern-anatolia/",
+    "https://web.archive.org/web/20260106060557/https://winesofturkey.org/emir/",
+    "https://goturkiye.com/vineyards/cappadocia-vineyard-route",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://dergipark.org.tr/tr/download/article-file/2797555"
+   ],
+   "grapes": [
+    "https://goturkiye.com/vineyards/cappadocia-vineyard-route",
+    "https://web.archive.org/web/20200129161416/http://www.winesofturkey.org/mid-southern-anatolia/",
+    "https://www.decanter.com/wine-reviews-tastings/turkish-wines-to-try-329265/",
+    "https://www.decanter.com/dream-destination/decanters-dream-destination-argos-in-cappadocia-turkey-551191/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey",
+    "https://www.vinography.com/2012/12/turkish_wine_the_tasting_notes",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://web.archive.org/web/20251207000349/https://winesofturkey.org/narince/",
+    "https://web.archive.org/web/20260106180433/https://winesofturkey.org/kalecik-karasi/",
+    "https://web.archive.org/web/20191219121925/http://www.winesofturkey.org/okuzgozu/",
+    "https://ci.turkpatent.gov.tr/cografi-isaretler/detay/37960"
+   ]
+  }
+ }
+]

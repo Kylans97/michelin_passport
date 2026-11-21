@@ -1,0 +1,55 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0193,DE_14628050,Bannewitz,Bannewitz,Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14625020,Bautzen,"Bautzen / Budyšin, Stadt",Bautzen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627010,Coswig Stadt,"Coswig, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627020,Diera-Zehren,Diera-Zehren,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628080,Dohna,"Dohna, Stadt",Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14612000,Dresden Stadt; Langebrück (former Gemeinde; ALKIS Gemarkung Langebrück 143036 lies in Dresden),"Dresden, Stadt",Dresden (kreisfreie Stadt) (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627030,Ebersbach (01561); Reinersdorf (ALKIS Gemarkung Reinersdorf 144457 lies in Ebersbach),Ebersbach,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14625130,Elstra,"Elstra / Halštrow, Stadt",Bautzen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14522120,Erlau (09306),Erlau,Mittelsachsen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628110,Freital Stadt,"Freital, Stadt",Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14729140,Frohburg,"Frohburg, Stadt",Leipzig (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627060,Großenhain; Zabeltitz (former Gemeinde; ALKIS Gemarkung Zabeltitz 144485 lies in Großenhain),"Großenhain, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14522220,Großweitzschen,Großweitzschen,Mittelsachsen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628160,Heidenau Stadt,"Heidenau, Stadt",Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627070,Hirschstein,Hirschstein,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14524120,"Hohenstein-Ernsthal (sic; Hohenstein-Ernstthal, PLZ 09337)","Hohenstein-Ernstthal, Stadt",Zwickau (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14522275,"Ostrau (04749; ALKIS Gemarkung Ostrau 142942 lies in Jahnatal, and PLZ 04749 is Jahnatal)",Jahnatal,Mittelsachsen (Sachsen),"yes: only the former Gemeinde Ostrau, now part of Jahnatal",http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_15091145,"Jessen (06917): Fluren 3, 4, 6 Gemarkung Jessen; Fluren 1, 8 Gemarkung Kleindröben; Fluren 2, 23 Gemarkung Schweinitz","Jessen (Elster), Stadt",Wittenberg (Sachsen-Anhalt),yes: seven Fluren in three Gemarkungen only,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627100,Klipphausen,Klipphausen,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628220,Kreischa,Kreischa,Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627080,Käbschütztal,Käbschütztal,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14625270,Königsbrück,"Königsbrück, Stadt",Bautzen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627110,Lampertswalde (01561),Lampertswalde,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627130,Lommatzsch Stadt,"Lommatzsch, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627140,Meißen Stadt,"Meißen, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14626310,Mittelherwigsdorf,Mittelherwigsdorf,Görlitz (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627150,Moritzburg,Moritzburg,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14729300,Naunhof (04683),"Naunhof, Stadt",Leipzig (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627170,Niederau,Niederau,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627180,Nossen Stadt; Leuben-Schleinitz (former Gemeinde; ALKIS Gemarkungen Leuben 145986 and Schleinitz 146077 lie in Nossen); Heynitz (former Gemeinde; ALKIS Gemarkung Heynitz 145939 lies in Nossen); Nossen,"Nossen, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627190,Nünchritz,Nünchritz,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_12066240,"Rebflächen in der Gemeinde Ortrand (01990), Landkreis Oberspreewald-Lausitz","Ortrand, Stadt",Oberspreewald-Lausitz (Brandenburg),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14730230,Oschatz,"Oschatz, Stadt",Nordsachsen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14626420,Ostritz,"Ostritz, Stadt",Görlitz (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14625430,Ottendorf-Okrilla,Ottendorf-Okrilla,Bautzen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628270,Pirna Stadt; Pirna,"Pirna, Stadt",Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627200,Priestewitz; Priestewitz,Priestewitz,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627210,Radebeul Stadt,"Radebeul, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627220,Radeburg,"Radeburg, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627230,Riesa,"Riesa, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14522510,Roßwein,"Roßwein, Stadt",Mittelsachsen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627240,Röderaue,Röderaue,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_12062445,"Gemeinde Schlieben (04936), Landkreis Elbe-Elster","Schlieben, Stadt",Elbe-Elster (Brandenburg),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627250,Schönfeld (01561),Schönfeld,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628370,Stadt Wehlen Stadt; Wehlen (ALKIS Gemarkungen Dorf Wehlen and Stadt Wehlen lie in Stadt Wehlen),"Stadt Wehlen, Stadt",Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627260,Stauchitz,Stauchitz,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627270,Strehla,"Strehla, Stadt",Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628390,Struppen,Struppen,Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628400,Tharandt,"Tharandt, Stadt",Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627290,Thiendorf,Thiendorf,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627310,Weinböhla,Weinböhla,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14730330,Wermsdorf,Wermsdorf,Nordsachsen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14628410,Wilsdruff Stadt; Wilsdruff; Mohorn (former Gemeinde; ALKIS Gemarkung Mohorn 143766 lies in Wilsdruff),"Wilsdruff, Stadt",Sächsische Schweiz-Osterzgebirge (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj
+wr_0193,DE_14627360,Zeithain,Zeithain,Meißen (Sachsen),,http://data.europa.eu/eli/C/2026/5718/oj

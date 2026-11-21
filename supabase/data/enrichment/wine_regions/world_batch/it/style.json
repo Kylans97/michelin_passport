@@ -1,0 +1,1137 @@
+[
+ {
+  "slug": "abruzzo",
+  "name": "Abruzzo",
+  "country": "IT",
+  "aliases": [
+   "Montepulciano d'Abruzzo"
+  ],
+  "summary": "Hill vineyards between the Apennines and the Adriatic, where the sea moderates the climate, grow Montepulciano on clay and limestone soils. The reds have a medium to full body and lively acidity.",
+  "red_body": 4,
+  "red_acidity": 4,
+  "red_tannin": null,
+  "pairing": "Lamb, above all grilled lamb skewers.",
+  "label_note": "At least 85 percent Montepulciano. Colline Teramane DOCG needs at least 90 percent, one year of ageing, and three years with one in wood for Riserva.",
+  "grapes": [
+   {
+    "name": "Montepulciano",
+    "local_note": "At least 85 percent of Montepulciano d'Abruzzo, 90 percent in Colline Teramane."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Montepulciano d'Abruzzo",
+    "colour": "red",
+    "note": "DOC across the hills of Chieti, Pescara, Teramo and L'Aquila."
+   },
+   {
+    "name": "Colline Teramane Montepulciano d'Abruzzo",
+    "colour": "red",
+    "note": "DOCG in the province of Teramo; also Riserva."
+   },
+   {
+    "name": "Terre di Casauria",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo, also called Casauria; also Riserva."
+   },
+   {
+    "name": "Terre dei Vestini",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo; also Riserva."
+   },
+   {
+    "name": "Alto Tirino",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo; also Riserva."
+   },
+   {
+    "name": "Terre dei Peligni",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo; also Riserva."
+   },
+   {
+    "name": "Teate",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo; also Riserva."
+   },
+   {
+    "name": "Terre di Chieti",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo; Superiore and Riserva."
+   },
+   {
+    "name": "Terre Aquilane",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo, also called Terre de L'Aquila; Superiore and Riserva."
+   },
+   {
+    "name": "Colline Pescaresi",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo; Superiore and Riserva."
+   },
+   {
+    "name": "San Martino sulla Marrucina",
+    "colour": "red",
+    "note": "Sottozona of Montepulciano d'Abruzzo; Superiore and Riserva."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montepulciano_d'Abruzzo.pdf",
+    "https://www.winetraveler.com/italy/montepulciano-wine-tasting-notes-pairings-origins/",
+    "https://www.vinovest.co/blog/montepulciano-dabruzzo-guide",
+    "https://winefolly.com/grapes/montepulciano/"
+   ],
+   "red_body": [
+    "https://winefolly.com/grapes/montepulciano/",
+    "https://www.vinovest.co/blog/montepulciano-dabruzzo-guide"
+   ],
+   "red_acidity": [
+    "https://winefolly.com/grapes/montepulciano/",
+    "https://www.winetraveler.com/italy/montepulciano-wine-tasting-notes-pairings-origins/"
+   ],
+   "pairing": [
+    "https://www.winetraveler.com/italy/montepulciano-wine-tasting-notes-pairings-origins/",
+    "https://www.vinovest.co/blog/montepulciano-dabruzzo-guide"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montepulciano_d'Abruzzo.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Colline_Teramane_Montepulciano_d'Abruzzo.pdf",
+    "https://winefolly.com/grapes/montepulciano/",
+    "https://italianwinecentral.com/variety/montepulciano/",
+    "https://www.winetraveler.com/wine-varietals/montepulciano/",
+    "https://www.winetraveler.com/italy/montepulciano-wine-tasting-notes-pairings-origins/",
+    "https://www.vinovest.co/blog/montepulciano-dabruzzo-guide"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montepulciano_d'Abruzzo.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Colline_Teramane_Montepulciano_d'Abruzzo.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montepulciano_d'Abruzzo.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Colline_Teramane_Montepulciano_d'Abruzzo.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montepulciano_d'Abruzzo.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Colline_Teramane_Montepulciano_d'Abruzzo.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "verdicchio-di-matelica",
+  "name": "Verdicchio di Matelica",
+  "country": "IT",
+  "aliases": [
+   "Matelica"
+  ],
+  "summary": "A closed inland valley in the Apennines, cut off from the sea, with cool nights and limestone and clay soils. Its Verdicchio is crisper and more mineral than coastal Jesi, with firm acidity.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Fish and seafood.",
+  "label_note": "At least 85 percent Verdicchio. Verdicchio di Matelica Riserva DOCG needs at least 18 months of ageing from 1 December after the harvest.",
+  "grapes": [
+   {
+    "name": "Verdicchio",
+    "local_note": "At least 85 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Verdicchio di Matelica",
+    "colour": "white",
+    "note": "DOC; also spumante and passito."
+   },
+   {
+    "name": "Verdicchio di Matelica Riserva",
+    "colour": "white",
+    "note": "DOCG; at least 18 months of ageing."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica.pdf",
+    "https://www.decanter.com/features/great-white-hope-the-marche-249097/",
+    "https://www.decanter.com/wine-reviews-tastings/wine-panel-tastings/verdicchio-panel-tasting-results-483305",
+    "https://www.decanter.com/premium/experts-choice-verdicchio-wines-435347/",
+    "https://www.italianwinepodcast.com/italian-wine-blog/cool-heart-of-the-marche-the-rise-of-verdicchio-di-matelica/"
+   ],
+   "pairing": [
+    "https://www.decanter.com/features/great-white-hope-the-marche-249097/",
+    "https://www.winespectator.com/articles/that-s-verdicchio-51987"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica_Riserva.pdf",
+    "https://winefolly.com/grapes/verdicchio/",
+    "https://italianwinecentral.com/variety/verdicchio/",
+    "https://wineparadigm.com/verdicchio/",
+    "https://www.decanter.com/features/great-white-hope-the-marche-249097/",
+    "https://www.decanter.com/wine-reviews-tastings/wine-panel-tastings/verdicchio-panel-tasting-results-483305"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica_Riserva.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica_Riserva.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_di_Matelica_Riserva.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "castelli-di-jesi",
+  "name": "Castelli di Jesi",
+  "country": "IT",
+  "aliases": [
+   "Verdicchio dei Castelli di Jesi",
+   "Jesi"
+  ],
+  "summary": "Hills along the Esino valley about 20 km from the Adriatic, on clay rich soils with limestone, give Verdicchio that is rounder and softer than Matelica's, with citrus fruit and high acidity.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Fish and seafood.",
+  "label_note": "At least 85 percent Verdicchio. Classico comes from the older core of the zone. Castelli di Jesi Verdicchio Riserva DOCG needs at least 18 months of ageing, six of them in bottle.",
+  "grapes": [
+   {
+    "name": "Verdicchio",
+    "local_note": "At least 85 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Verdicchio dei Castelli di Jesi",
+    "colour": "white",
+    "note": "DOC; also Classico, Superiore, Classico Superiore, Spumante and Passito."
+   },
+   {
+    "name": "Verdicchio dei Castelli di Jesi Classico",
+    "colour": "white",
+    "note": "The original, older part of the zone."
+   },
+   {
+    "name": "Castelli di Jesi Verdicchio Riserva",
+    "colour": "white",
+    "note": "DOCG; also Classico."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_dei_Castelli_di_Jesi.pdf",
+    "https://www.decanter.com/features/great-white-hope-the-marche-249097/",
+    "https://www.decanter.com/wine-reviews-tastings/wine-panel-tastings/verdicchio-panel-tasting-results-483305",
+    "https://www.bbr.com/region-3879-verdicchio-dei-castelli-di-jesi",
+    "https://www.winespectator.com/articles/that-s-verdicchio-51987"
+   ],
+   "pairing": [
+    "https://www.decanter.com/features/great-white-hope-the-marche-249097/",
+    "https://www.winespectator.com/articles/that-s-verdicchio-51987"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_dei_Castelli_di_Jesi.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Castelli_di_Jesi_Verdicchio_Riserva.pdf",
+    "https://winefolly.com/grapes/verdicchio/",
+    "https://italianwinecentral.com/variety/verdicchio/",
+    "https://wineparadigm.com/verdicchio/",
+    "https://www.decanter.com/features/great-white-hope-the-marche-249097/",
+    "https://www.decanter.com/wine-reviews-tastings/wine-panel-tastings/verdicchio-panel-tasting-results-483305"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_dei_Castelli_di_Jesi.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Castelli_di_Jesi_Verdicchio_Riserva.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_dei_Castelli_di_Jesi.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Castelli_di_Jesi_Verdicchio_Riserva.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Verdicchio_dei_Castelli_di_Jesi.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Castelli_di_Jesi_Verdicchio_Riserva.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "primitivo-di-manduria",
+  "name": "Primitivo di Manduria",
+  "country": "IT",
+  "aliases": [
+   "Manduria"
+  ],
+  "summary": "Flat land sloping to the Ionian Sea east of Taranto, with a hot, dry, breezy Mediterranean climate and clay and limestone soils, gives full, intensely flavoured Primitivo with high alcohol and soft tannins.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": 2,
+  "pairing": "Grilled meats and roast lamb.",
+  "label_note": "At least 85 percent Primitivo. Riserva needs 24 months of ageing, at least nine in wood. The sweet Dolce Naturale is a separate DOCG from 100 percent Primitivo.",
+  "grapes": [
+   {
+    "name": "Zinfandel",
+    "local_note": "Called Primitivo here; at least 85 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Primitivo di Manduria",
+    "colour": "red",
+    "note": "DOC; also Riserva."
+   },
+   {
+    "name": "Primitivo di Manduria Dolce Naturale",
+    "colour": "red",
+    "note": "Sweet DOCG from 100 percent Primitivo."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria.pdf",
+    "https://italymagazine.com/news/primitivo-puglias-powerful-red",
+    "https://www.gilbertgaillard.com/en/magazine/appellation-1/puglia-the-strength-of-the-wind-the-sun-and-the-sea",
+    "https://www.vino.com/en/vitigno/primitivo",
+    "https://winefolly.com/grapes/zinfandel/"
+   ],
+   "red_tannin": [
+    "https://www.vino.com/en/vitigno/primitivo",
+    "https://www.gilbertgaillard.com/en/magazine/appellation-1/puglia-the-strength-of-the-wind-the-sun-and-the-sea"
+   ],
+   "pairing": [
+    "https://www.vino.com/en/vitigno/primitivo",
+    "https://winefolly.com/grapes/zinfandel/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria_Dolce_Naturale.pdf",
+    "https://italymagazine.com/news/primitivo-puglias-powerful-red",
+    "https://www.gilbertgaillard.com/en/magazine/appellation-1/puglia-the-strength-of-the-wind-the-sun-and-the-sea"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria_Dolce_Naturale.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria_Dolce_Naturale.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Primitivo_di_Manduria_Dolce_Naturale.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "sardinia",
+  "name": "Sardinia",
+  "country": "IT",
+  "aliases": [
+   "Sardegna",
+   "Cannonau di Sardegna"
+  ],
+  "summary": "Cannonau grows across the whole island in a hot, dry and windy Mediterranean climate, on soils ranging from granite and schist to basalt and clay. The wines are full bodied and high in alcohol, with red fruit and soft acidity.",
+  "red_body": 5,
+  "red_acidity": 2,
+  "red_tannin": 2,
+  "pairing": "Roast pork and other roasted meats.",
+  "label_note": "Cannonau di Sardegna: at least 85 percent Cannonau, 90 percent for Classico from Nuoro and Ogliastra. Riserva needs two years of ageing with six months in wood. Vermentino di Sardegna: at least 85 percent Vermentino.",
+  "grapes": [
+   {
+    "name": "Grenache",
+    "local_note": "Called Cannonau here; at least 85 percent of Cannonau di Sardegna."
+   },
+   {
+    "name": "Vermentino",
+    "local_note": "At least 85 percent of Vermentino di Sardegna."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Cannonau di Sardegna",
+    "colour": "red",
+    "note": "DOC over the whole island; also rosato, Riserva, Passito and Liquoroso."
+   },
+   {
+    "name": "Cannonau di Sardegna Classico",
+    "colour": "red",
+    "note": "Provinces of Nuoro and Ogliastra; at least two years of ageing."
+   },
+   {
+    "name": "Oliena",
+    "colour": "red",
+    "note": "Sottozona of Cannonau di Sardegna, also called Nepente di Oliena."
+   },
+   {
+    "name": "Capo Ferrato",
+    "colour": "red",
+    "note": "Sottozona of Cannonau di Sardegna in the south east."
+   },
+   {
+    "name": "Jerzu",
+    "colour": "red",
+    "note": "Sottozona of Cannonau di Sardegna in Jerzu and Cardedu."
+   },
+   {
+    "name": "Vermentino di Sardegna",
+    "colour": "white",
+    "note": "DOC over the whole island; also frizzante and spumante."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cannonau_di_Sardegna.pdf",
+    "https://www.decanter.com/learn/what-is-cannonau-413919/",
+    "https://www.decanter.com/premium/experts-choice-sardinian-red-wines-484294/",
+    "https://www.decanter.com/premium/sardinia-wine-a-buyers-guide-406743/",
+    "https://www.winetraveler.com/italy/discover-sardinian-wine/",
+    "https://winefolly.com/update/introduction-to-sardinian-wine/"
+   ],
+   "red_body": [
+    "https://www.decanter.com/learn/what-is-cannonau-413919/",
+    "https://www.winetraveler.com/italy/discover-sardinian-wine/",
+    "https://winefolly.com/update/introduction-to-sardinian-wine/"
+   ],
+   "red_acidity": [
+    "https://www.decanter.com/learn/what-is-cannonau-413919/",
+    "https://www.winetraveler.com/italy/discover-sardinian-wine/"
+   ],
+   "red_tannin": [
+    "https://www.decanter.com/learn/what-is-cannonau-413919/",
+    "https://www.winetraveler.com/italy/discover-sardinian-wine/"
+   ],
+   "pairing": [
+    "https://www.winetraveler.com/italy/discover-sardinian-wine/",
+    "https://winefolly.com/grapes/grenache/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cannonau_di_Sardegna.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Sardegna.pdf",
+    "https://www.decanter.com/learn/what-is-cannonau-413919/",
+    "https://www.decanter.com/premium/experts-choice-sardinian-red-wines-484294/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cannonau_di_Sardegna.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Sardegna.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cannonau_di_Sardegna.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Sardegna.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cannonau_di_Sardegna.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Sardegna.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "gallura",
+  "name": "Gallura",
+  "country": "IT",
+  "aliases": [
+   "Vermentino di Gallura"
+  ],
+  "summary": "Weathered granite soils, constant wind and marked swings between day and night temperatures in Sardinia's north east give Vermentino with intensity and bright, refreshing acidity.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Seafood.",
+  "label_note": "At least 95 percent Vermentino.",
+  "grapes": [
+   {
+    "name": "Vermentino",
+    "local_note": "At least 95 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Vermentino di Gallura",
+    "colour": "white",
+    "note": "DOCG; also Superiore, frizzante, spumante, passito and vendemmia tardiva."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Gallura.pdf",
+    "https://www.decanter.com/premium/sardinia-wine-a-buyers-guide-406743/",
+    "https://winefolly.com/update/introduction-to-sardinian-wine/"
+   ],
+   "pairing": [
+    "https://winefolly.com/update/introduction-to-sardinian-wine/",
+    "https://www.decanter.com/premium/sardinia-wine-a-buyers-guide-406743/",
+    "https://www.winetraveler.com/italy/discover-sardinian-wine/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Gallura.pdf",
+    "https://www.decanter.com/premium/sardinia-wine-a-buyers-guide-406743/",
+    "https://winefolly.com/update/introduction-to-sardinian-wine/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Gallura.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Gallura.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Vermentino_di_Gallura.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "marsala",
+  "name": "Marsala",
+  "country": "IT",
+  "aliases": [],
+  "summary": "Low vineyards, 50 to 300 metres up across the province of Trapani at Sicily's western tip, with hot, dry summers and clay, sand and limestone soils, make fortified wines that range from dry to sweet.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Sweet Marsala with cannoli; drier styles with cheese.",
+  "label_note": "Oro and ambra from Grillo, Catarratto, Inzolia or Damaschino; rubino from red grapes. Ageing sets the label: Fine one year, Superiore two, Superiore Riserva four, Vergine five, Vergine Stravecchio or Riserva ten.",
+  "grapes": [
+   {
+    "name": "Grillo",
+    "local_note": "For Marsala oro and ambra."
+   },
+   {
+    "name": "Catarratto",
+    "local_note": "For Marsala oro and ambra."
+   },
+   {
+    "name": "Nero d'Avola",
+    "local_note": "Called Calabrese here; for Marsala rubino."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Marsala",
+    "colour": "mixed",
+    "note": "Fortified DOC, in oro, ambra and rubino; Fine, Superiore, Superiore Riserva, Vergine or Soleras, Vergine Riserva and Stravecchio."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Marsala.pdf",
+    "https://www.winetourism.com/wine-regions/italy/sicily/marsala/",
+    "https://sicily.guides.winefolly.com/regions/marsala/",
+    "https://www.decanter.com/premium/modern-marsala-how-an-italian-classic-rediscovered-its-verve-and-attitude-568845/",
+    "https://www.decanter.com/premium/marsala-diverging-paths-479518/",
+    "https://en.ilsole24ore.com/art/marsala-so-famous-and-so-unknown-that-is-why-it-is-a-historic-and-special-wine-AIjMiuwB"
+   ],
+   "pairing": [
+    "https://www.decanter.com/premium/modern-marsala-how-an-italian-classic-rediscovered-its-verve-and-attitude-568845/",
+    "https://www.winetourism.com/wine-regions/italy/sicily/marsala/",
+    "https://en.ilsole24ore.com/art/marsala-so-famous-and-so-unknown-that-is-why-it-is-a-historic-and-special-wine-AIjMiuwB"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Marsala.pdf",
+    "https://winefolly.com/grapes/grillo/",
+    "https://italianwinecentral.com/variety/grillo/",
+    "https://www.internationalwinechallenge.com/iwc-insight/amazing-wines/grillo-great-contender.html",
+    "https://italianwinecentral.com/variety/catarratto/",
+    "https://winefolly.com/grapes/catarratto/",
+    "https://www.superiore.de/en/catarratto/",
+    "https://winefolly.com/grapes/nero-davola/",
+    "https://wineparadigm.com/nero-davola/",
+    "https://italianwinecentral.com/variety/nero-davola/",
+    "https://www.winetraveler.com/grape/nero-d-avola-wine-taste-pairings-characteristics",
+    "https://www.winetourism.com/wine-regions/italy/sicily/marsala/",
+    "https://sicily.guides.winefolly.com/regions/marsala/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Marsala.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Marsala.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "cerasuolo-di-vittoria",
+  "name": "Cerasuolo di Vittoria",
+  "country": "IT",
+  "aliases": [
+   "Vittoria"
+  ],
+  "summary": "South east Sicily, near the sea, with a hot, dry climate and sandy, iron rich red soils over limestone, gives Nero d'Avola and Frappato blends known for their freshness.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Nero d'Avola 50 to 70 percent with Frappato 30 to 50 percent.",
+  "grapes": [
+   {
+    "name": "Nero d'Avola",
+    "local_note": "50 to 70 percent."
+   },
+   {
+    "name": "Frappato",
+    "local_note": "30 to 50 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Cerasuolo di Vittoria",
+    "colour": "red",
+    "note": "DOCG in the provinces of Ragusa, Caltanissetta and Catania."
+   },
+   {
+    "name": "Cerasuolo di Vittoria Classico",
+    "colour": "red",
+    "note": "The zone first delimited in 1973."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cerasuolo_di_Vittoria.pdf",
+    "https://www.decanter.com/premium/cerasuolo-di-vittoria-50-years-of-sicilys-only-docg-wine-495020",
+    "https://www.jamessuckling.com/wine-tasting-reports/a-hotspot-of-fresh-wines-vittorias-compelling-paradox"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cerasuolo_di_Vittoria.pdf",
+    "https://winefolly.com/grapes/nero-davola/",
+    "https://wineparadigm.com/nero-davola/",
+    "https://italianwinecentral.com/variety/nero-davola/",
+    "https://www.winetraveler.com/grape/nero-d-avola-wine-taste-pairings-characteristics",
+    "https://italianwinecentral.com/variety/frappato/",
+    "https://www.vinerra.com/education/wines/frappato-an-in-depth-wine-profile",
+    "https://vinovoss.com/grapes/frappato/",
+    "https://winefolly.com/grapes/frappato/",
+    "https://www.decanter.com/premium/cerasuolo-di-vittoria-50-years-of-sicilys-only-docg-wine-495020",
+    "https://www.jamessuckling.com/wine-tasting-reports/a-hotspot-of-fresh-wines-vittorias-compelling-paradox"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cerasuolo_di_Vittoria.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cerasuolo_di_Vittoria.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Cerasuolo_di_Vittoria.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "trentodoc",
+  "name": "Trentodoc",
+  "country": "IT",
+  "aliases": [
+   "Trento DOC",
+   "Trento"
+  ],
+  "summary": "Mountain vineyards in the valleys of Trentino, mostly on stony, well drained limestone slopes up to about 800 metres, see wide swings between day and night temperatures. The sparkling wines are fresh and precise, with bright acidity.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Bottle fermented from Chardonnay, Pinot Bianco, Pinot Nero and Meunier. At least 15 months on the lees; 24 for a vintage on the label; 36 for Riserva.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Called Pinot Nero here."
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Called Pinot Bianco here."
+   },
+   {
+    "name": "Meunier",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Trento",
+    "colour": "sparkling",
+    "note": "DOC for bottle fermented white and rosé; also Riserva."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf",
+    "https://www.trentodoc.com/en/territory-and-denomination/",
+    "https://www.openingabottle.com/first-taste-guide-to-trentodoc/",
+    "https://www.cellartours.com/blog/italy/trentodoc-sparkling-wines-italys-mountain-metodo-classico"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf",
+    "https://www.trentodoc.com/en/territory-and-denomination/",
+    "https://www.openingabottle.com/first-taste-guide-to-trentodoc/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "lugana",
+  "name": "Lugana",
+  "country": "IT",
+  "aliases": [],
+  "summary": "On the southern shore of Lake Garda, Turbiana grows on compact clay soils in a mild climate shaped by the lake. The wines are citrusy and fresh, with lively acidity and often a note of almond.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Freshwater fish from the lake, such as trout or pike.",
+  "label_note": "Turbiana, with up to 10 percent other white grapes. Superiore needs 12 months of ageing; Riserva 24 months, six in bottle.",
+  "grapes": [
+   {
+    "name": "Turbiana",
+    "local_note": "At least 90 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Lugana",
+    "colour": "white",
+    "note": "DOC; also Superiore, Riserva, Vendemmia Tardiva and spumante."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lugana.pdf",
+    "https://vinepair.com/articles/lugana-doc-wine-infographic/",
+    "https://www.cellartours.com/blog/italy/lake-gardas-liquid-luxury-luganas-elegant-whites"
+   ],
+   "pairing": [
+    "https://vinepair.com/articles/lugana-doc-wine-infographic/",
+    "https://www.cellartours.com/blog/italy/lake-gardas-liquid-luxury-luganas-elegant-whites"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lugana.pdf",
+    "https://vinepair.com/articles/summer-white-wine-italy/",
+    "https://www.circleofwinewriters.org/shared-expressions-of-the-turbiana-grape/",
+    "https://www.winescholarguild.com/blog/regional-spotlight/luscious-lugana-the-gem-of-lake-garda",
+    "https://italianwinecentral.com/variety/verdicchio/",
+    "https://vinepair.com/articles/lugana-doc-wine-infographic/",
+    "https://www.cellartours.com/blog/italy/lake-gardas-liquid-luxury-luganas-elegant-whites"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lugana.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lugana.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "lambrusco-di-sorbara",
+  "name": "Lambrusco di Sorbara",
+  "country": "IT",
+  "aliases": [
+   "Sorbara"
+  ],
+  "summary": "On the plain around Modena, between the Secchia and Panaro rivers, vines grow on soils laid down by the rivers. The wines are pale, light bodied sparkling reds with high acidity and very little tannin.",
+  "red_body": 2,
+  "red_acidity": 5,
+  "red_tannin": 1,
+  "pairing": null,
+  "label_note": "At least 60 percent Lambrusco di Sorbara, with up to 40 percent Lambrusco Salamino. Made only as frizzante and spumante.",
+  "grapes": [
+   {
+    "name": "Lambrusco di Sorbara",
+    "local_note": "At least 60 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Lambrusco di Sorbara",
+    "colour": "sparkling",
+    "note": "DOC; red and rosé frizzante and spumante, plus white spumante."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_di_Sorbara.pdf",
+    "https://www.visitmodena.it/en/discover-modena/itineraries-and-routes/history-and-the-taste-of-tradition/day-2-carpi-sorbara-and-nonantola/sorbara-and-the-lambrusco-wine",
+    "https://www.openingabottle.com/first-taste-guide-to-lambrusco/",
+    "https://winefolly.com/tutorial/lambrusco-wines-worth-drinking/",
+    "https://www.cellartours.com/italy/italian-wine-regions/lambrusco",
+    "https://italianwinecentral.com/variety/lambrusco/",
+    "https://winefolly.com/deep-dive/sparkling-red-wine/"
+   ],
+   "red_body": [
+    "https://italianwinecentral.com/variety/lambrusco/",
+    "https://winefolly.com/tutorial/lambrusco-wines-worth-drinking/",
+    "https://www.openingabottle.com/first-taste-guide-to-lambrusco/"
+   ],
+   "red_acidity": [
+    "https://italianwinecentral.com/variety/lambrusco/",
+    "https://winefolly.com/deep-dive/sparkling-red-wine/"
+   ],
+   "red_tannin": [
+    "https://www.openingabottle.com/first-taste-guide-to-lambrusco/",
+    "https://winefolly.com/deep-dive/sparkling-red-wine/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_di_Sorbara.pdf",
+    "https://winefolly.com/tutorial/lambrusco-wines-worth-drinking/",
+    "https://napavalleywineacademy.com/blogs/pouring-points/lambrusco-a-brief-history-and-modern-resurgence",
+    "https://openingabottle.com/?p=7267",
+    "https://www.cellartours.com/italy/italian-wine-regions/lambrusco",
+    "https://www.coravin.com/blogs/community/lambrusco-wine-guide",
+    "https://www.visitmodena.it/en/discover-modena/itineraries-and-routes/history-and-the-taste-of-tradition/day-2-carpi-sorbara-and-nonantola/sorbara-and-the-lambrusco-wine",
+    "https://www.openingabottle.com/first-taste-guide-to-lambrusco/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_di_Sorbara.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_di_Sorbara.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_di_Sorbara.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "lambrusco-grasparossa",
+  "name": "Lambrusco Grasparossa di Castelvetro",
+  "country": "IT",
+  "aliases": [
+   "Grasparossa",
+   "Castelvetro"
+  ],
+  "summary": "In the foothills and low hills south of Modena, around Castelvetro, Grasparossa gives the darkest of the Lambruscos, deep coloured sparkling reds with more body and tannin than the other styles.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "At least 85 percent Lambrusco Grasparossa. Made only as frizzante and spumante.",
+  "grapes": [
+   {
+    "name": "Lambrusco Grasparossa",
+    "local_note": "At least 85 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Lambrusco Grasparossa di Castelvetro",
+    "colour": "sparkling",
+    "note": "DOC; red and rosé frizzante and spumante."
+   },
+   {
+    "name": "Monte Barello",
+    "colour": "sparkling",
+    "note": "Sottozona of Lambrusco Grasparossa di Castelvetro, red frizzante only."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_Grasparossa_di_Castelvetro.pdf",
+    "https://www.openingabottle.com/first-taste-guide-to-lambrusco/",
+    "https://www.cellartours.com/italy/italian-wine-regions/lambrusco",
+    "https://winefolly.com/tutorial/lambrusco-wines-worth-drinking/",
+    "https://italianwinecentral.com/variety/lambrusco/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_Grasparossa_di_Castelvetro.pdf",
+    "https://napavalleywineacademy.com/blogs/pouring-points/lambrusco-a-brief-history-and-modern-resurgence",
+    "https://www.cellartours.com/italy/italian-wine-regions/lambrusco",
+    "https://openingabottle.com/?p=7267",
+    "https://www.coravin.com/blogs/community/lambrusco-wine-guide",
+    "https://winefolly.com/tutorial/lambrusco-wines-worth-drinking/",
+    "https://www.openingabottle.com/first-taste-guide-to-lambrusco/",
+    "https://www.cellartours.com/italy/italian-wine-regions/lambrusco"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_Grasparossa_di_Castelvetro.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_Grasparossa_di_Castelvetro.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Lambrusco_Grasparossa_di_Castelvetro.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "valtellina",
+  "name": "Valtellina",
+  "country": "IT",
+  "aliases": [
+   "Valtellina Superiore"
+  ],
+  "summary": "Nebbiolo, called Chiavennasca here, grows on steep, south facing terraces held up by dry stone walls on the Rhaetian Alps side of the valley, in shallow sandy soils from granite. The reds are marked by high acidity.",
+  "red_body": null,
+  "red_acidity": 4,
+  "red_tannin": null,
+  "pairing": "Pizzoccheri, the buckwheat pasta of the valley.",
+  "label_note": "At least 90 percent Nebbiolo. Valtellina Superiore needs 24 months of ageing, 12 in wood, and three years for Riserva. Sforzato is made from dried grapes.",
+  "grapes": [
+   {
+    "name": "Nebbiolo",
+    "local_note": "Called Chiavennasca here; at least 90 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valtellina Superiore",
+    "colour": "red",
+    "note": "DOCG; also Riserva."
+   },
+   {
+    "name": "Maroggia",
+    "colour": "red",
+    "note": "Sottozona of Valtellina Superiore."
+   },
+   {
+    "name": "Sassella",
+    "colour": "red",
+    "note": "Sottozona of Valtellina Superiore."
+   },
+   {
+    "name": "Grumello",
+    "colour": "red",
+    "note": "Sottozona of Valtellina Superiore."
+   },
+   {
+    "name": "Inferno",
+    "colour": "red",
+    "note": "Sottozona of Valtellina Superiore."
+   },
+   {
+    "name": "Valgella",
+    "colour": "red",
+    "note": "Sottozona of Valtellina Superiore."
+   },
+   {
+    "name": "Sforzato di Valtellina",
+    "colour": "red",
+    "note": "DOCG from dried grapes, also called Sfursat di Valtellina."
+   },
+   {
+    "name": "Rosso di Valtellina",
+    "colour": "red",
+    "note": "DOC, also called Valtellina Rosso."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_superiore.pdf",
+    "https://primalwine.com/blogs/italian-wine-regions/valtellina-wine-guide",
+    "https://www.wineandspiritsmagazine.com/free-reads/nebbiolos-future",
+    "https://www.eataly.com/us_en/magazine/producer-stories/nino-negri-mountain-nebbiolo-heart-valtellina"
+   ],
+   "red_acidity": [
+    "https://primalwine.com/blogs/italian-wine-regions/valtellina-wine-guide",
+    "https://www.wineandspiritsmagazine.com/free-reads/nebbiolos-future",
+    "https://www.eataly.com/us_en/magazine/producer-stories/nino-negri-mountain-nebbiolo-heart-valtellina"
+   ],
+   "pairing": [
+    "https://www.matchingfoodandwine.com/articles/pizzocheri-and-valtellina",
+    "https://www.apricaonline.com/it/node/1385"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_superiore.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Sforzato_di_Valtellina_o_Sfursat_di_Valtellina.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_rosso_o_rosso_di_Valtellina.pdf",
+    "https://primalwine.com/blogs/italian-wine-regions/valtellina-wine-guide",
+    "https://www.wineandspiritsmagazine.com/free-reads/nebbiolos-future"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_superiore.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Sforzato_di_Valtellina_o_Sfursat_di_Valtellina.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_rosso_o_rosso_di_Valtellina.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_superiore.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Sforzato_di_Valtellina_o_Sfursat_di_Valtellina.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_rosso_o_rosso_di_Valtellina.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_superiore.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Sforzato_di_Valtellina_o_Sfursat_di_Valtellina.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valtellina_rosso_o_rosso_di_Valtellina.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "montefalco",
+  "name": "Montefalco",
+  "country": "IT",
+  "aliases": [
+   "Montefalco Sagrantino"
+  ],
+  "summary": "Around the hill town of Montefalco in central Umbria, vines grow on gentle hills of clay, sand and marl in a continental climate. Sagrantino makes powerful, full bodied reds with very high tannin.",
+  "red_body": 5,
+  "red_acidity": null,
+  "red_tannin": 5,
+  "pairing": "Roast wild boar.",
+  "label_note": "Montefalco Sagrantino is 100 percent Sagrantino, aged at least 33 months plus four in bottle. Montefalco Rosso is 60 to 80 percent Sangiovese with 10 to 25 percent Sagrantino.",
+  "grapes": [
+   {
+    "name": "Sagrantino",
+    "local_note": "100 percent of Montefalco Sagrantino."
+   },
+   {
+    "name": "Sangiovese",
+    "local_note": "60 to 80 percent of Montefalco Rosso."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Montefalco Sagrantino",
+    "colour": "red",
+    "note": "DOCG, dry (Secco) and Passito."
+   },
+   {
+    "name": "Montefalco",
+    "colour": "mixed",
+    "note": "DOC; Rosso, Rosso Riserva, Bianco and Grechetto."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco_Sagrantino.pdf",
+    "https://www.vinography.com/2023/06/the-dark-jewel-of-umbria-thoughts-on-montefalco-sagrantino",
+    "https://winefolly.com/deep-dive/a-guide-to-umbrian-wine/",
+    "https://winefolly.com/grapes/sagrantino/"
+   ],
+   "red_body": [
+    "https://winefolly.com/grapes/sagrantino/",
+    "https://www.vinography.com/2023/06/the-dark-jewel-of-umbria-thoughts-on-montefalco-sagrantino"
+   ],
+   "red_tannin": [
+    "https://winefolly.com/grapes/sagrantino/",
+    "https://www.vinography.com/2023/06/the-dark-jewel-of-umbria-thoughts-on-montefalco-sagrantino"
+   ],
+   "pairing": [
+    "https://winefolly.com/deep-dive/a-guide-to-umbrian-wine/",
+    "https://www.vinography.com/2023/06/the-dark-jewel-of-umbria-thoughts-on-montefalco-sagrantino"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco_Sagrantino.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco.pdf",
+    "https://winefolly.com/grapes/sagrantino/",
+    "https://italianwinecentral.com/variety/sagrantino/",
+    "https://wineparadigm.com/sagrantino/",
+    "https://www.vinography.com/2023/06/the-dark-jewel-of-umbria-thoughts-on-montefalco-sagrantino",
+    "https://winefolly.com/deep-dive/a-guide-to-umbrian-wine/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco_Sagrantino.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco_Sagrantino.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco.pdf"
+   ],
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco_Sagrantino.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Montefalco.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "fiano-di-avellino",
+  "name": "Fiano di Avellino",
+  "country": "IT",
+  "aliases": [],
+  "summary": "Fiano grows on the hills around Avellino, on volcanic ash over clay and limestone, in a cool climate with snowy winters and wide day to night swings. The wines keep firm acidity and gain toasted nut notes with age.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "At least 85 percent Fiano. Riserva needs 12 months of ageing; spumante 18 months in bottle, 36 for Spumante Riserva.",
+  "grapes": [
+   {
+    "name": "Fiano",
+    "local_note": "At least 85 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Fiano di Avellino",
+    "colour": "white",
+    "note": "DOCG; also Riserva, Spumante and Spumante Riserva."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Fiano_di_Avellino.pdf",
+    "https://www.cellartours.com/blog/italy/fianos-glorious-comeback",
+    "https://www.gamberorossointernational.com/?p=515161",
+    "https://www.irishtimes.com/life-and-style/food-and-drink/very-special-white-wines-from-ancient-italian-vines-1.3036459",
+    "https://vinepair.com/articles/wine-101-campania/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Fiano_di_Avellino.pdf",
+    "https://winefolly.com/grapes/fiano/",
+    "https://italianwinecentral.com/variety/fiano/",
+    "https://wineparadigm.com/fiano/",
+    "https://www.bbr.com/grape-fi-fiano",
+    "https://www.cellartours.com/blog/italy/fianos-glorious-comeback",
+    "https://www.gamberorossointernational.com/?p=515161"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Fiano_di_Avellino.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Fiano_di_Avellino.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "greco-di-tufo",
+  "name": "Greco di Tufo",
+  "country": "IT",
+  "aliases": [],
+  "summary": "In eight villages of the Sabato valley in Irpinia, Greco grows on volcanic, clay and limestone soils in a cool climate with wide day to night swings. The wines have high acidity, a firm grip and a pleasant bitter finish.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Seafood and shellfish.",
+  "label_note": "At least 85 percent Greco, with up to 15 percent Coda di Volpe. Riserva needs 12 months; spumante 18 months on the lees, 36 for Spumante Riserva.",
+  "grapes": [
+   {
+    "name": "Greco",
+    "local_note": "At least 85 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Greco di Tufo",
+    "colour": "white",
+    "note": "DOCG; also Riserva, Spumante and Spumante Riserva."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Greco_di_Tufo.pdf",
+    "https://worldoffinewine.com/news-features/greco-di-tufo",
+    "https://www.irishtimes.com/life-and-style/food-and-drink/very-special-white-wines-from-ancient-italian-vines-1.3036459",
+    "https://www.winetraveler.com/grape/greco-di-tufo/",
+    "https://vinepair.com/articles/wine-101-campania/"
+   ],
+   "pairing": [
+    "https://www.winetraveler.com/grape/greco-di-tufo/",
+    "https://www.irishtimes.com/life-and-style/food-and-drink/very-special-white-wines-from-ancient-italian-vines-1.3036459"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Greco_di_Tufo.pdf",
+    "https://italianwinecentral.com/variety/greco/",
+    "https://wineparadigm.com/greco/",
+    "https://www.winetraveler.com/grape/greco-di-tufo/",
+    "https://worldoffinewine.com/news-features/greco-di-tufo",
+    "https://www.irishtimes.com/life-and-style/food-and-drink/very-special-white-wines-from-ancient-italian-vines-1.3036459"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Greco_di_Tufo.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Greco_di_Tufo.pdf"
+   ]
+  }
+ }
+]

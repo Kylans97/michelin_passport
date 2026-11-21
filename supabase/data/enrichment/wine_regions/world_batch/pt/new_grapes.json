@@ -1,0 +1,470 @@
+[
+  {
+    "name": "Albariño",
+    "aliases": [
+      "Alvarinho"
+    ],
+    "colour": "white",
+    "summary": "One grape on both sides of the Minho: Albariño in Galicia, Alvarinho in Portugal's Vinho Verde. Aromatic, high-acid whites with citrus, peach and a saline edge.",
+    "tastes": [
+      "lemon",
+      "peach",
+      "grapefruit",
+      "saline"
+    ],
+    "aged_note": "Usually drunk young, though the best can age for several years.",
+    "body": null,
+    "acidity": 5,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.bbr.com/articles/guides/albarino-guide",
+        "https://winefolly.com/grapes/albarino/",
+        "https://vinepair.com/articles/albarino-and-alvarinho-theyre-the-same-thing/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/albarino/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/alvarinho/",
+        "https://vinepair.com/articles/albarino-and-alvarinho-theyre-the-same-thing/",
+        "https://www.bbr.com/articles/guides/albarino-guide"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/albarino/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/alvarinho/",
+        "https://vinepair.com/wine-blog/7-things-you-need-to-know-about-vinho-verde/"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/albarino/",
+        "https://www.bbr.com/articles/guides/albarino-guide"
+      ]
+    }
+  },
+  {
+    "name": "Loureiro",
+    "aliases": [],
+    "colour": "white",
+    "summary": "A fragrant white grape of Portugal's Vinho Verde, often bottled on its own, giving bright wines with blossom and peach aromas.",
+    "tastes": [
+      "peach",
+      "lime blossom",
+      "bay leaf"
+    ],
+    "aged_note": "Mostly drunk young, though single-variety wines can age a few years.",
+    "body": null,
+    "acidity": 5,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/loureiro/",
+        "https://winefolly.com/grapes/loureiro/",
+        "https://winefolly.com/deep-dive/vinho-verde-the-perfect-poolside-wine-from-portugal/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/loureiro/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/loureiro/"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/loureiro/",
+        "https://vinepair.com/wine-blog/7-things-you-need-to-know-about-vinho-verde/"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/loureiro/",
+        "https://vinepair.com/wine-blog/7-things-you-need-to-know-about-vinho-verde/"
+      ]
+    }
+  },
+  {
+    "name": "Baga",
+    "aliases": [],
+    "colour": "red",
+    "summary": "The signature red of Bairrada, a small, thick-skinned grape giving deeply coloured, high-acid, tannic reds that can be tough young and soften with age.",
+    "tastes": [
+      "cherry",
+      "plum",
+      "tobacco",
+      "coffee"
+    ],
+    "aged_note": "Often astringent young, it softens and gains complexity over many years.",
+    "body": null,
+    "acidity": 5,
+    "tannin": 5,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/baga/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/",
+        "https://vinepair.com/articles/portuguese-wine-barolo/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/baga/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/baga/",
+        "https://vinepair.com/articles/portuguese-wine-barolo/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/"
+      ],
+      "aged_note": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/baga/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/",
+        "https://vinepair.com/articles/portuguese-wine-barolo/",
+        "https://winefolly.com/grapes/baga/"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/baga/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/baga/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/"
+      ],
+      "tannin": [
+        "https://winefolly.com/grapes/baga/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/baga/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/"
+      ]
+    }
+  },
+  {
+    "name": "Encruzado",
+    "aliases": [],
+    "colour": "white",
+    "summary": "A rare white grape grown almost only in Portugal's Dão, used alone and in blends, giving wines with citrus, resin and mineral notes.",
+    "tastes": [
+      "citrus",
+      "resin",
+      "mineral"
+    ],
+    "aged_note": "Takes well to oak and can age for years.",
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/encruzado/",
+        "https://winefolly.com/grapes/encruzado/",
+        "https://www.bbr.com/region-28-portugal"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/encruzado/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/encruzado/"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/encruzado/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/encruzado/"
+      ]
+    }
+  },
+  {
+    "name": "Alicante Bouschet",
+    "aliases": [],
+    "colour": "red",
+    "summary": "A French crossing with red flesh as well as red skin, now a mainstay of Portugal's Alentejo, giving dark, full, tannic reds.",
+    "tastes": [
+      "blackberry",
+      "tobacco"
+    ],
+    "aged_note": "Can age well, gaining savoury notes with time.",
+    "body": 5,
+    "acidity": null,
+    "tannin": 4,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://winefolly.com/grapes/alicante-bouschet/",
+        "https://vinepair.com/articles/wine-101-portugal/",
+        "https://vinepair.com/articles/vinepair-podcast-alentejo-portugal/",
+        "https://www.guildsomm.com/public_content/features/articles/b/richard-mayson/posts/portugal-treasure-trove-native-grapes",
+        "https://www.thewinesociety.com/discover/inspiration/lifestyle/hades-parades-portuguese-darkness/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/alicante-bouschet/",
+        "https://www.thewinesociety.com/discover/inspiration/lifestyle/hades-parades-portuguese-darkness/"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/alicante-bouschet/",
+        "https://www.thewinesociety.com/discover/inspiration/lifestyle/hades-parades-portuguese-darkness/"
+      ],
+      "body": [
+        "https://winefolly.com/grapes/alicante-bouschet/",
+        "https://vinepair.com/articles/vinepair-podcast-alentejo-portugal/"
+      ],
+      "tannin": [
+        "https://winefolly.com/grapes/alicante-bouschet/",
+        "https://vinepair.com/articles/vinepair-podcast-alentejo-portugal/",
+        "https://www.thewinesociety.com/discover/inspiration/lifestyle/hades-parades-portuguese-darkness/"
+      ]
+    }
+  },
+  {
+    "name": "Trincadeira",
+    "aliases": [
+      "Tinta Amarela",
+      "Trincadeira Preta"
+    ],
+    "colour": "red",
+    "summary": "One of Portugal's most widely planted reds, called Tinta Amarela in the Douro, making dry reds with herbal and floral notes.",
+    "tastes": [
+      "herbs",
+      "flowers"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/trincadeira/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/",
+        "https://www.guildsomm.com/public_content/features/articles/b/richard-mayson/posts/portugal-treasure-trove-native-grapes"
+      ],
+      "tastes": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/trincadeira/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/"
+      ]
+    }
+  },
+  {
+    "name": "Antão Vaz",
+    "aliases": [],
+    "colour": "white",
+    "summary": "The leading white grape of Portugal's Alentejo, giving firm, full-bodied whites with ripe tropical fruit, tangerine peel and a mineral note.",
+    "tastes": [
+      "tropical fruit",
+      "tangerine peel",
+      "mineral"
+    ],
+    "aged_note": "Riper, later-picked fruit suits ageing in oak barrels.",
+    "body": 4,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/ant%C3%A3o-vaz/",
+        "https://www.vinhosdoalentejo.pt/en/wines/grape-varieties/"
+      ],
+      "tastes": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/ant%C3%A3o-vaz/",
+        "https://www.vinhosdoalentejo.pt/en/wines/grape-varieties/"
+      ],
+      "aged_note": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/ant%C3%A3o-vaz/",
+        "https://www.vinhosdoalentejo.pt/en/wines/grape-varieties/"
+      ],
+      "body": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/ant%C3%A3o-vaz/",
+        "https://www.vinhosdoalentejo.pt/en/wines/grape-varieties/"
+      ]
+    }
+  },
+  {
+    "name": "Touriga Franca",
+    "aliases": [],
+    "colour": "red",
+    "summary": "A main grape of the Douro, used in Port and in dry reds and often blended, giving wines with blackberry and floral notes.",
+    "tastes": [
+      "blackberry",
+      "rose"
+    ],
+    "aged_note": "Adds ageing potential to blends and can age a decade or more.",
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/touriga-franca/",
+        "https://winefolly.com/grapes/touriga-franca/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/touriga-franca/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/touriga-franca/"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/touriga-franca/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/touriga-franca/"
+      ]
+    }
+  },
+  {
+    "name": "Sercial",
+    "aliases": [
+      "Esgana Cão"
+    ],
+    "colour": "white",
+    "summary": "A late-ripening white grape, known as Esgana Cão on the mainland, that makes the driest style of Madeira, with very high acidity.",
+    "tastes": [
+      "lemon peel",
+      "nuts",
+      "herbs",
+      "saline"
+    ],
+    "aged_note": "Needs long cask ageing to soften its acidity, then lasts for decades.",
+    "body": null,
+    "acidity": 5,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.bbr.com/grape-sl-sercial",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/madeira-ultimate-guide/",
+        "https://vinhomadeira.com/o-vinho-madeira/castas/sercial"
+      ],
+      "tastes": [
+        "https://winefolly.com/deep-dive/what-is-madeira-wine/",
+        "https://winefolly.com/wines/madeira/",
+        "https://www.bbr.com/articles/guides/a-guide-to-madeira",
+        "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/madeira",
+        "https://www.thewinesociety.com/product/blandys-sercial-10-years-old-en.aspx"
+      ],
+      "aged_note": [
+        "https://www.bbr.com/grape-sl-sercial",
+        "https://www.bbr.com/articles/guides/a-guide-to-madeira",
+        "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/madeira"
+      ],
+      "acidity": [
+        "https://www.bbr.com/grape-sl-sercial",
+        "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/madeira",
+        "https://vinhomadeira.com/o-vinho-madeira/castas/sercial"
+      ]
+    }
+  },
+  {
+    "name": "Verdelho",
+    "aliases": [],
+    "colour": "white",
+    "summary": "A white grape best known on Madeira for a medium-dry style, richer than Sercial but still high in acid; in Australia it makes dry, aromatic whites.",
+    "tastes": [
+      "caramel",
+      "nuts",
+      "spice"
+    ],
+    "aged_note": "As Madeira it can age for many decades.",
+    "body": null,
+    "acidity": 4,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.bbr.com/grape-ve-verdelho",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/madeira-ultimate-guide/",
+        "https://vinhomadeira.com/o-vinho-madeira/castas/verdelho",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/verdelho/"
+      ],
+      "tastes": [
+        "https://winefolly.com/deep-dive/what-is-madeira-wine/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/madeira-ultimate-guide/",
+        "https://www.bbr.com/articles/guides/a-guide-to-madeira",
+        "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/madeira"
+      ],
+      "aged_note": [
+        "https://winefolly.com/deep-dive/what-is-madeira-wine/",
+        "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/madeira"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/verdelho/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/verdelho/",
+        "https://www.bbr.com/articles/guides/a-guide-to-madeira"
+      ]
+    }
+  },
+  {
+    "name": "Mencía",
+    "aliases": [
+      "Jaen"
+    ],
+    "colour": "red",
+    "summary": "A red grape of northwest Spain, called Jaen in Portugal's Dão, giving fragrant reds with cherry, dark berry and herbal notes.",
+    "tastes": [
+      "cherry",
+      "blackberry",
+      "herbs",
+      "flowers"
+    ],
+    "aged_note": "Most are made to drink within a few years.",
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": {
+      "name": "Pinot Noir",
+      "note": "Often suggested to Pinot Noir lovers."
+    },
+    "sources": {
+      "summary": [
+        "https://winefolly.com/grapes/mencia/",
+        "https://vinepair.com/articles/what-is-mencia/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/jaen/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/mencia/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/jaen/",
+        "https://vinepair.com/articles/what-is-mencia/",
+        "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/mencia/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/jaen/"
+      ],
+      "similar": [
+        "https://winefolly.com/grapes/mencia/",
+        "https://vinepair.com/articles/what-is-mencia/"
+      ]
+    }
+  },
+  {
+    "name": "Tinta Negra",
+    "aliases": [
+      "Tinta Negra Mole"
+    ],
+    "colour": "red",
+    "summary": "A red grape and Madeira's most planted variety, the source of most Madeira and the only one used across every style from dry to rich.",
+    "tastes": [],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.thewinesociety.com/discover/explore/regional-guides/madeira-ultimate-guide/",
+        "https://vinhomadeira.com/o-vinho-madeira/castas/tinta-negra",
+        "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/madeira",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/tinta-negra/"
+      ]
+    }
+  },
+  {
+    "name": "Muscat of Alexandria",
+    "aliases": [
+      "Moscatel de Setúbal",
+      "Moscatel Graúdo",
+      "Moscatel de Alejandría",
+      "Zibibbo"
+    ],
+    "colour": "white",
+    "summary": "Known in Portugal as Moscatel de Setúbal, this Muscat gives aromatic, floral wines, most famously the sweet fortified wines of Setúbal.",
+    "tastes": [
+      "lychee",
+      "orange",
+      "honey",
+      "flowers"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/moscatel-de-setubal/",
+        "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide/",
+        "https://winefolly.com/grapes/muscat-of-alexandria/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/muscat-of-alexandria/",
+        "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/moscatel-de-setubal/"
+      ]
+    }
+  }
+]

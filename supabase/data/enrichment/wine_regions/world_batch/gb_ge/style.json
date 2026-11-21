@@ -1,0 +1,270 @@
+[
+  {
+    "slug": "sussex",
+    "name": "Sussex",
+    "country": "GB",
+    "aliases": [
+      "Sussex PDO"
+    ],
+    "summary": "A PDO covering East and West Sussex, crossed by the chalk of the South Downs. Traditional method sparkling wine from Chardonnay, Pinot Noir and Meunier is the main style, and still wines are made too.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "Labels must carry \"protected designation of origin\" and \"Product of England\" or \"Made in England\". \"Sussex\" may be followed by \"Classic\" or \"Origin\", and for sparkling wine by \"Sparkling\".",
+    "grapes": [
+      {
+        "name": "Chardonnay",
+        "local_note": null
+      },
+      {
+        "name": "Pinot Noir",
+        "local_note": null
+      },
+      {
+        "name": "Meunier",
+        "local_note": "Listed as Pinot Meunier in the Sussex specification."
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Sussex",
+        "colour": "mixed",
+        "note": "PDO for traditional method sparkling and still wine grown and made in East and West Sussex. Sparkling wine spends at least 15 months in bottle before release."
+      },
+      {
+        "name": "English",
+        "colour": "mixed",
+        "note": "Country-wide PDO for wine from vines in England grown below 220 metres."
+      },
+      {
+        "name": "English Regional",
+        "colour": "mixed",
+        "note": "Country-wide PGI for regional wine from England."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://assets.publishing.service.gov.uk/media/64198e2ce90e0769f47f4755/Product_specification_for_Sussex_final_.docx",
+        "https://winegb.co.uk/wines/regions/"
+      ],
+      "label_note": [
+        "https://assets.publishing.service.gov.uk/media/64198e2ce90e0769f47f4755/Product_specification_for_Sussex_final_.docx"
+      ],
+      "grapes": [
+        "https://winegb.co.uk/wp-content/uploads/WineGB-2025-Industry-Report.pdf",
+        "https://www.decanter.com/wine-news/british-wine-industry-increased-plantings-by-74-over-the-past-five-years-506303/",
+        "https://assets.publishing.service.gov.uk/media/64198e2ce90e0769f47f4755/Product_specification_for_Sussex_final_.docx"
+      ],
+      "appellations": [
+        "https://www.gov.uk/protected-food-drink-names/sussex",
+        "https://assets.publishing.service.gov.uk/media/64198e2ce90e0769f47f4755/Product_specification_for_Sussex_final_.docx",
+        "https://www.gov.uk/protected-food-drink-names/english",
+        "https://assets.publishing.service.gov.uk/media/5fd361f48fa8f54d6545da82/pfn-english-wine-pdo.pdf",
+        "https://www.gov.uk/protected-food-drink-names/english-regional"
+      ]
+    }
+  },
+  {
+    "slug": "kakheti",
+    "name": "Kakheti",
+    "country": "GE",
+    "aliases": [
+      "Kakhuri",
+      "Kakheti (Kakhuri)",
+      "კახეთი"
+    ],
+    "summary": "Georgia's largest wine region, in the east of the country, makes most of its wine. Saperavi leads the reds and Rkatsiteli the whites, many of them fermented on their skins in clay qvevri as amber wines.",
+    "red_body": 4,
+    "red_acidity": 4,
+    "red_tannin": 4,
+    "pairing": "Dry Saperavi with lamb.",
+    "label_note": "The label shows \"KAKHETI\" with \"Protected Designation of Origin\" or \"PDO\". The wine must be made inside Kakheti; bottling may take place elsewhere in Georgia.",
+    "grapes": [
+      {
+        "name": "Rkatsiteli",
+        "local_note": "Made as a dry white or as an amber wine on its skins."
+      },
+      {
+        "name": "Saperavi",
+        "local_note": "The only grape of Mukuzani, Kvareli and Akhasheni."
+      },
+      {
+        "name": "Mtsvane Kakhuri",
+        "local_note": "Called Kakhuri Mtsvane in the appellation rules; often up to 15% beside Rkatsiteli."
+      },
+      {
+        "name": "Kisi",
+        "local_note": null
+      },
+      {
+        "name": "Cabernet Sauvignon",
+        "local_note": "Allowed for red and rosé Kakheti; the only grape of Teliani."
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Kakheti",
+        "colour": "mixed",
+        "note": "Region-wide appellation for the eight Kakheti municipalities: white, amber, red and rosé, dry to sweet."
+      },
+      {
+        "name": "Tsinandali",
+        "colour": "mixed",
+        "note": "Dry white from Rkatsiteli with up to 15% Mtsvane Kakhuri, or dry red from Saperavi."
+      },
+      {
+        "name": "Mukuzani",
+        "colour": "red",
+        "note": "Dry red from Saperavi only, on the right bank of the Alazani."
+      },
+      {
+        "name": "Napareuli",
+        "colour": "mixed",
+        "note": "Dry red from Saperavi, or dry white from Rkatsiteli with up to 15% Kakhuri Mtsvane; Telavi municipality."
+      },
+      {
+        "name": "Kindzmarauli",
+        "colour": "red",
+        "note": "Naturally semi-sweet red from Saperavi, in Kvareli municipality."
+      },
+      {
+        "name": "Kvareli",
+        "colour": "red",
+        "note": "Dry red from Saperavi."
+      },
+      {
+        "name": "Akhasheni",
+        "colour": "red",
+        "note": "Semi-sweet red from Saperavi."
+      },
+      {
+        "name": "Teliani",
+        "colour": "red",
+        "note": "Dry red from Cabernet Sauvignon only."
+      },
+      {
+        "name": "Gurjaani",
+        "colour": "white",
+        "note": "Dry white from Rkatsiteli, with about 15% Kakhuri Mtsvane allowed."
+      },
+      {
+        "name": "Vazisubani",
+        "colour": "white",
+        "note": "Dry white from Rkatsiteli, with about 15% Kakhuri Mtsvane allowed."
+      },
+      {
+        "name": "Manavi",
+        "colour": "white",
+        "note": "Dry white from Kakhuri Mtsvane only, in Sagarejo municipality."
+      },
+      {
+        "name": "Tibaani",
+        "colour": "white",
+        "note": "Dry amber wine from Rkatsiteli, with about 15% Kakhuri Mtsvane and Khikhvi allowed."
+      },
+      {
+        "name": "Kardenakhi",
+        "colour": "white",
+        "note": "Dry amber wine or fortified white from Rkatsiteli, with about 15% Kakhuri Mtsvane and Khikhvi allowed."
+      },
+      {
+        "name": "Kotekhi",
+        "colour": "mixed",
+        "note": "Dry white from Rkatsiteli or dry red from Saperavi, on the right bank of the Alazani."
+      },
+      {
+        "name": "Saperavi Khashmi",
+        "colour": "red",
+        "note": "Dry red from Saperavi grown around the village of Khashmi, Sagarejo municipality."
+      },
+      {
+        "name": "Tsarapi",
+        "colour": "white",
+        "note": "Dry amber wine from Rkatsiteli, with up to 15% Kakhuri Mtsvane and Khikhvi; village of Kardenakhi."
+      },
+      {
+        "name": "Akhmeta",
+        "colour": "white",
+        "note": "White or amber wine from Kakhuri Mtsvane in Akhmeta municipality; also sold as Akhmetis Mtsvane."
+      },
+      {
+        "name": "Akhoebi",
+        "colour": "red",
+        "note": "Dry red from Saperavi and Saperavi Budeshuri; village of Kardenakhi."
+      },
+      {
+        "name": "Kisi Magraani",
+        "colour": "white",
+        "note": "Dry white or amber wine from Kisi, in Akhmeta municipality."
+      },
+      {
+        "name": "Zegaani",
+        "colour": "red",
+        "note": "Dry red from Saperavi made in qvevri."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.wsetglobal.com/knowledge-centre/blog/2026/qvevri-the-ancient-vessel-at-the-heart-of-georgian-winemaking",
+        "https://www.decanter.com/wine/from-qvevri-to-glass-the-fascinating-journey-of-georgian-orange-wine-570301/",
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://ich.unesco.org/en/RL/ancient-georgian-traditional-qvevri-wine-making-method-00870"
+      ],
+      "red_body": [
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/9e436e4c-2036-4549-bda6-d691935a4162.pdf",
+        "https://winecompanion.com.au/resources/varieties/saperavi"
+      ],
+      "red_acidity": [
+        "https://timatkin.com/red-varietals/saperavi/",
+        "https://www.decanter.com/wine/the-sommelier-suggests-saperavi-by-jarrett-buffington-507918/",
+        "https://winecompanion.com.au/resources/varieties/saperavi"
+      ],
+      "red_tannin": [
+        "https://timatkin.com/red-varietals/saperavi/",
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://www.decanter.com/wine/grape-varieties/saperavi-52204/"
+      ],
+      "pairing": [
+        "https://www.decanter.com/wine/the-sommelier-suggests-saperavi-by-jarrett-buffington-507918/",
+        "https://timatkin.com/red-varietals/saperavi/"
+      ],
+      "label_note": [
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/9e436e4c-2036-4549-bda6-d691935a4162.pdf"
+      ],
+      "grapes": [
+        "https://www.decanter.com/learn/georgias-indigenous-grapes-reviving-hidden-treasures-488731/",
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/9e436e4c-2036-4549-bda6-d691935a4162.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/4dcca59d-cad4-43d3-8f34-a7ee250dbc6e.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/f87c8bf7-efd6-45f0-b6ac-20ae11b2248b.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/dc87f7df-7b36-4849-a2a1-27a3a4c8cf27.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/16ffbcb2-9658-47cb-bf32-987b37a27b9e.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/a1143eeb-092b-4935-bbae-0652d6122707.pdf"
+      ],
+      "appellations": [
+        "https://www.sakpatenti.gov.ge/en/state_registry/",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/9e436e4c-2036-4549-bda6-d691935a4162.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/a1143eeb-092b-4935-bbae-0652d6122707.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/4dcca59d-cad4-43d3-8f34-a7ee250dbc6e.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/f393aa50-0305-4e85-8879-c8ea01fcd5cd.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/3ee48c15-7b85-4a19-af29-b8f4da34f21b.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/f87c8bf7-efd6-45f0-b6ac-20ae11b2248b.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/dc87f7df-7b36-4849-a2a1-27a3a4c8cf27.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/16ffbcb2-9658-47cb-bf32-987b37a27b9e.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/a133beca-3ec5-4814-8d89-8a311d7452e2.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/a9602fcf-9df6-49bb-b272-566f382b110b.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/bd82db3d-8c5f-4e66-8e44-b44cafdb3064.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/ec60c878-0ac3-42d9-9d7f-900fba12c41b.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/deedb664-caf7-403c-a24d-1a5ad84e18a2.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/b71eabae-e249-4819-be89-864d371d3ef2.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/17a1666d-e64e-4586-8a57-6067c3cb50b4.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/f11e8c96-4681-4588-bea5-da705ccf6da5.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/0f8fdee1-c9e3-4185-ab0d-1d94e6838b7c.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/f8d90ecd-897b-4809-a26a-c6f2c0d7a335.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/ad8d46f7-6da3-4b89-82d6-4de26ee54c71.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/4348ed73-3532-4980-bdd5-090de20a7c16.pdf"
+      ]
+    }
+  }
+]

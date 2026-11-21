@@ -67,10 +67,61 @@ class WineRow extends StatelessWidget {
                       ),
                     ),
                   ],
+                  if (wine.tastingNote != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      wine.tastingNote!,
+                      style: CsTypography.body.copyWith(
+                        fontStyle: FontStyle.italic,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                  ],
                 ],
               ),
             ),
+            if (wine.verdict != null) ...[
+              const SizedBox(width: CsSpacing.sm),
+              _VerdictMark(verdict: wine.verdict!),
+            ],
           ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The verdict beside a wine: "Again" in claret for a wine the member
+/// would drink again, quieter words for the others. Never gold.
+class _VerdictMark extends StatelessWidget {
+  const _VerdictMark({required this.verdict});
+
+  final WineVerdict verdict;
+
+  @override
+  Widget build(BuildContext context) {
+    final again = verdict == WineVerdict.again;
+    return Semantics(
+      label: verdict.label,
+      excludeSemantics: true,
+      child: Container(
+        margin: const EdgeInsets.only(top: 2),
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+        decoration: BoxDecoration(
+          color: again ? AppColors.claretTint : Colors.transparent,
+          borderRadius: BorderRadius.circular(99),
+          border: again ? null : Border.all(color: AppColors.cardBorder),
+        ),
+        child: Text(
+          switch (verdict) {
+            WineVerdict.again => 'Again',
+            WineVerdict.fine => 'Fine',
+            WineVerdict.notForMe => 'Not for me',
+          },
+          style: CsTypography.metadata.copyWith(
+            fontSize: 11,
+            color: again ? AppColors.claret : AppColors.taupe,
+          ),
         ),
       ),
     );
@@ -213,11 +264,7 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
       vineyards: loadVineyardsForWineSheet(),
       onSave: (wine) async {
         try {
-          await _repo.update(
-            existing.id!,
-            wine,
-            wasLinked: existing.vineyardId != null,
-          );
+          await _repo.update(existing.id!, wine, previous: existing);
           if (mounted) {
             setState(() {
               _wines = [
@@ -280,10 +327,9 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
 /// The estates the Producer field can suggest. Empty on failure, and
 /// before the vineyards migration is applied: the sheet then works exactly
 /// as it did before estates existed.
-Future<List<Vineyard>> loadVineyardsForWineSheet() =>
-    VineyardRepository(
-      Supabase.instance.client,
-    ).getAll().catchError((Object _) => const <Vineyard>[]);
+Future<List<Vineyard>> loadVineyardsForWineSheet() => VineyardRepository(
+  Supabase.instance.client,
+).getAll().catchError((Object _) => const <Vineyard>[]);
 
 /// The short sheet that adds or edits one wine. [onSave] returns true when
 /// the wine was taken. A new wine can be followed by another without
@@ -296,9 +342,13 @@ Future<void> showWineSheet(
   Future<List<Vineyard>>? vineyards,
   required Future<bool> Function(VisitWine wine) onSave,
   Future<void> Function()? onDelete,
+  bool keptWithoutVisit = false,
 }) => showModalBottomSheet<void>(
   context: context,
   isScrollControlled: true,
+  // With the verdict and, for a kept wine, where and when, the sheet can
+  // be taller than the screen; it stops below the status bar.
+  useSafeArea: true,
   backgroundColor: AppColors.surface,
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -309,6 +359,7 @@ Future<void> showWineSheet(
     vineyards: vineyards,
     onSave: onSave,
     onDelete: onDelete,
+    keptWithoutVisit: keptWithoutVisit,
   ),
 );
 
@@ -320,7 +371,12 @@ class WineSheet extends StatefulWidget {
     this.vineyards,
     required this.onSave,
     this.onDelete,
+    this.keptWithoutVisit = false,
   });
+
+  /// A wine kept in the Cellar without a visit: the sheet also asks where
+  /// and when it was drunk.
+  final bool keptWithoutVisit;
 
   final VisitWine? initial;
   final Future<WineSuggestions>? suggestions;
@@ -337,8 +393,13 @@ class _WineSheetState extends State<WineSheet> {
   final _name = TextEditingController();
   final _year = TextEditingController();
   final _producerFocus = FocusNode();
+  final _note = TextEditingController();
+  final _place = TextEditingController();
   bool _nonVintage = false;
   WineSize? _size;
+  WineVerdict? _verdict;
+  WineSetting _setting = WineSetting.home;
+  DateTime? _drunkOn;
   bool _saving = false;
   int _added = 0;
   WineSuggestions _suggestions = const WineSuggestions();
@@ -364,6 +425,11 @@ class _WineSheetState extends State<WineSheet> {
       _year.text = w.vintage?.toString() ?? '';
       _nonVintage = w.nonVintage;
       _size = w.size;
+      _verdict = w.verdict;
+      _note.text = w.tastingNote ?? '';
+      _setting = w.setting ?? WineSetting.home;
+      _place.text = w.place ?? '';
+      _drunkOn = w.drunkOn;
       _linked = w.vineyard;
       if (w.vineyardId == null && w.producer != null) {
         _keptAsWritten = w.producer;
@@ -394,6 +460,8 @@ class _WineSheetState extends State<WineSheet> {
     _producer.dispose();
     _name.dispose();
     _year.dispose();
+    _note.dispose();
+    _place.dispose();
     _producerFocus.dispose();
     super.dispose();
   }
@@ -411,6 +479,13 @@ class _WineSheetState extends State<WineSheet> {
     size: _size,
     vineyardId: _linked?.id ?? _unresolvedVineyardId,
     vineyard: _linked,
+    verdict: _verdict,
+    tastingNote: _clean(_note),
+    setting: widget.keptWithoutVisit ? _setting : null,
+    place: widget.keptWithoutVisit && _setting != WineSetting.home
+        ? _clean(_place)
+        : null,
+    drunkOn: widget.keptWithoutVisit ? _drunkOn : null,
   );
 
   /// An edited wine's estate before the estate list has arrived: kept, so
@@ -430,9 +505,7 @@ class _WineSheetState extends State<WineSheet> {
     _linked = vineyard;
     _keptAsWritten = null;
     _producer.text = vineyard.name;
-    _producer.selection = TextSelection.collapsed(
-      offset: vineyard.name.length,
-    );
+    _producer.selection = TextSelection.collapsed(offset: vineyard.name.length);
   });
 
   void _keepAsWritten() =>
@@ -469,9 +542,30 @@ class _WineSheetState extends State<WineSheet> {
       _year.clear();
       _nonVintage = false;
       _size = null;
+      _verdict = null;
+      _note.clear();
     });
     _producerFocus.requestFocus();
   }
+
+  Future<void> _pickDay() async {
+    final now = DateTime.now();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _drunkOn ?? now,
+      firstDate: DateTime(1950),
+      lastDate: now,
+    );
+    if (picked != null) setState(() => _drunkOn = picked);
+  }
+
+  Widget _label(String text) => Padding(
+    padding: const EdgeInsets.only(bottom: 6),
+    child: Text(
+      text,
+      style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+    ),
+  );
 
   Widget _field(
     String label,
@@ -481,6 +575,9 @@ class _WineSheetState extends State<WineSheet> {
     TextInputType? keyboardType,
     List<TextInputFormatter>? formatters,
     ValueChanged<String>? onChanged,
+    int maxLength = 120,
+    int maxLines = 1,
+    TextCapitalization? capitalization,
   }) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -494,10 +591,14 @@ class _WineSheetState extends State<WineSheet> {
         focusNode: focusNode,
         keyboardType: keyboardType,
         inputFormatters: formatters,
-        textCapitalization: keyboardType == null
-            ? TextCapitalization.words
-            : TextCapitalization.none,
-        maxLength: keyboardType == null ? 120 : null,
+        textCapitalization:
+            capitalization ??
+            (keyboardType == null
+                ? TextCapitalization.words
+                : TextCapitalization.none),
+        maxLength: keyboardType == null ? maxLength : null,
+        minLines: 1,
+        maxLines: maxLines,
         buildCounter:
             (_, {required currentLength, required isFocused, maxLength}) =>
                 null,
@@ -578,6 +679,46 @@ class _WineSheetState extends State<WineSheet> {
                 ),
               ),
               const SizedBox(height: CsSpacing.md),
+              if (widget.keptWithoutVisit) ...[
+                _label('Where did you drink it?'),
+                Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: [
+                    for (final setting in WineSetting.values)
+                      _Chip(
+                        label: setting.label,
+                        selected: _setting == setting,
+                        onTap: () => setState(() => _setting = setting),
+                      ),
+                  ],
+                ),
+                if (_setting != WineSetting.home) ...[
+                  const SizedBox(height: CsSpacing.md),
+                  _field(
+                    _setting == WineSetting.estate ? 'Which estate' : 'Where',
+                    _place,
+                    hint: _setting == WineSetting.estate
+                        ? 'Link it under Producer, or write it here'
+                        : 'A wine bar, a friend\'s table',
+                  ),
+                ],
+                const SizedBox(height: CsSpacing.md),
+                _label('When'),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: _Chip(
+                    label: _drunkOn == null
+                        ? 'Pick a day'
+                        : MaterialLocalizations.of(
+                            context,
+                          ).formatMediumDate(_drunkOn!),
+                    selected: _drunkOn != null,
+                    onTap: _pickDay,
+                  ),
+                ),
+                const SizedBox(height: CsSpacing.md),
+              ],
               _field(
                 'Producer',
                 _producer,
@@ -672,6 +813,31 @@ class _WineSheetState extends State<WineSheet> {
                     ),
                 ],
               ),
+              const SizedBox(height: CsSpacing.lg),
+              _label('How was it?'),
+              Wrap(
+                spacing: 6,
+                runSpacing: 6,
+                children: [
+                  for (final verdict in WineVerdict.values)
+                    _Chip(
+                      label: verdict.label,
+                      selected: _verdict == verdict,
+                      selectedColor: AppColors.claret,
+                      onTap: () => setState(
+                        () => _verdict = _verdict == verdict ? null : verdict,
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: CsSpacing.md),
+              _field(
+                'A line to remember it by',
+                _note,
+                maxLength: 280,
+                maxLines: 3,
+                capitalization: TextCapitalization.sentences,
+              ),
               const SizedBox(height: CsSpacing.md),
               Text(
                 _added > 0
@@ -728,11 +894,13 @@ class _Chip extends StatelessWidget {
     required this.label,
     required this.selected,
     required this.onTap,
+    this.selectedColor = AppColors.forestGreen,
   });
 
   final String label;
   final bool selected;
   final VoidCallback onTap;
+  final Color selectedColor;
 
   @override
   Widget build(BuildContext context) => Semantics(
@@ -743,12 +911,10 @@ class _Chip extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: selected ? AppColors.forestGreen : Colors.transparent,
+          color: selected ? selectedColor : Colors.transparent,
           borderRadius: BorderRadius.circular(99),
           border: Border.all(
-            color: selected
-                ? AppColors.forestGreen
-                : AppColors.subtleBorderLight,
+            color: selected ? selectedColor : AppColors.subtleBorderLight,
           ),
         ),
         child: Text(

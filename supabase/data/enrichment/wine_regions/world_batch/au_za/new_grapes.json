@@ -1,0 +1,222 @@
+[
+ {
+  "name": "Durif",
+  "aliases": [
+   "Petite Sirah"
+  ],
+  "colour": "red",
+  "summary": "A dark red grape bred in France in the late 19th century, with Syrah as one parent. Known as Petite Sirah in California, it gives full bodied, tannic wines.",
+  "tastes": [
+   "Dark chocolate",
+   "Blackberry",
+   "Spice"
+  ],
+  "aged_note": "Can age for around ten years.",
+  "body": 5,
+  "acidity": 3,
+  "tannin": 4,
+  "similar": {
+   "name": "Syrah",
+   "note": "One of its parents."
+  },
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=3738",
+    "https://winefolly.com/grapes/petite-sirah/",
+    "https://www.debortoli.com.au/wine-101/grape-variety/durif"
+   ],
+   "summary": [
+    "https://www.debortoli.com.au/wine-101/grape-variety/durif",
+    "https://winemakers.com.au/durif-of-rutherglen/",
+    "https://winecompanion.com.au/articles/from-the-tasting-team/jeni-port-on-durif",
+    "https://winefolly.com/grapes/petite-sirah/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/petite-sirah/",
+    "https://winemakers.com.au/durif-of-rutherglen/",
+    "https://www.debortoli.com.au/wine-101/grape-variety/durif"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/petite-sirah/",
+    "https://winemakers.com.au/durif-of-rutherglen/",
+    "https://www.debortoli.com.au/wine-101/grape-variety/durif"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/petite-sirah/",
+    "https://winemakers.com.au/durif-of-rutherglen/",
+    "https://www.debortoli.com.au/wine-101/grape-variety/durif"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/petite-sirah/",
+    "https://winemakers.com.au/durif-of-rutherglen/"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/petite-sirah/",
+    "https://www.debortoli.com.au/wine-101/grape-variety/durif",
+    "https://winemakers.com.au/durif-of-rutherglen/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/petite-sirah/",
+    "https://winecompanion.com.au/articles/from-the-tasting-team/jeni-port-on-durif",
+    "https://www.debortoli.com.au/wine-101/grape-variety/durif"
+   ]
+  }
+ },
+ {
+  "name": "Muscat à Petits Grains Rouges",
+  "aliases": [
+   "Muscat à Petits Grains Rouge",
+   "Brown Muscat",
+   "Rutherglen Brown Muscat",
+   "Muscat Rouge à Petits Grains",
+   "Brown Frontignac"
+  ],
+  "colour": "red",
+  "summary": "The dark skinned form of Muscat Blanc à Petits Grains, catalogued as a colour mutation. In Rutherglen it is the only grape used for Rutherglen Muscat, a sweet fortified wine.",
+  "tastes": [
+   "Raisin",
+   "Chocolate"
+  ],
+  "aged_note": "Rutherglen Muscat is aged in barrel and graded by age as Rutherglen, Classic, Grand and Rare.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": {
+   "name": "Muscat Blanc à Petits Grains",
+   "note": "The same grape in its white skinned form."
+  },
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8248",
+    "https://guildsomm.com/public_content/features/articles/b/bryce-wiatrak/posts/introduction-to-muscat",
+    "https://winemakers.com.au/muscat-of-rutherglen/",
+    "https://www.bbr.com/region-4191-rutherglen",
+    "https://www.australianwine.com/getContentAsset/0bdaf04a-2b2f-4f30-9ee5-42cb55e9df9b/2a6464f5-7547-4f96-aacf-a0c3da1718f8/AWD_Regions_A4_Rutherglen.pdf"
+   ],
+   "summary": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8248",
+    "https://guildsomm.com/public_content/features/articles/b/bryce-wiatrak/posts/introduction-to-muscat",
+    "https://www.australianwine.com/getContentAsset/0bdaf04a-2b2f-4f30-9ee5-42cb55e9df9b/2a6464f5-7547-4f96-aacf-a0c3da1718f8/AWD_Regions_A4_Rutherglen.pdf",
+    "https://winemakers.com.au/muscat-of-rutherglen/",
+    "https://www.bbr.com/region-4191-rutherglen"
+   ],
+   "tastes": [
+    "https://www.australianwine.com/getContentAsset/0bdaf04a-2b2f-4f30-9ee5-42cb55e9df9b/2a6464f5-7547-4f96-aacf-a0c3da1718f8/AWD_Regions_A4_Rutherglen.pdf",
+    "https://winemakers.com.au/muscat-of-rutherglen/",
+    "https://guildsomm.com/public_content/features/articles/b/bryce-wiatrak/posts/introduction-to-muscat"
+   ],
+   "aged_note": [
+    "https://www.australianwine.com/getContentAsset/0bdaf04a-2b2f-4f30-9ee5-42cb55e9df9b/2a6464f5-7547-4f96-aacf-a0c3da1718f8/AWD_Regions_A4_Rutherglen.pdf",
+    "https://winemakers.com.au/muscat-of-rutherglen/",
+    "https://guildsomm.com/public_content/features/articles/b/bryce-wiatrak/posts/introduction-to-muscat"
+   ],
+   "similar": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8248",
+    "https://guildsomm.com/public_content/features/articles/b/bryce-wiatrak/posts/introduction-to-muscat"
+   ]
+  }
+ },
+ {
+  "name": "Colombard",
+  "aliases": [
+   "Colombar",
+   "French Colombard"
+  ],
+  "colour": "white",
+  "summary": "A white grape from Gascony in south west France, long grown there for brandy. It gives light, crisp wines with high acidity and is widely planted in South Africa.",
+  "tastes": [
+   "Honeydew melon",
+   "White peach",
+   "Citrus"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=2771",
+    "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/White-Wine-Varieties/"
+   ],
+   "summary": [
+    "https://foodandtravel.com/drink/wine-opinion/word-on-the-vine-colombard",
+    "https://winefolly.com/grapes/colombard/",
+    "https://www.wosa.co.za/WOSA-News/Blogs/Cape-Chatter/Robertson-the-Valley-of-Wine-Roses-Chardonnay-and-Cap-Classique/",
+    "https://sawis.co.za/info/download/VERSPREIDING_VAN_WYNDRUIF_HEKTAAR_PER_WYNDISTRIK_EN_KULTIVAR_2015-2025_eng.xlsx",
+    "https://winemakermag.com/article/colombard-varietal-focus"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/colombard/",
+    "https://foodandtravel.com/drink/wine-opinion/word-on-the-vine-colombard",
+    "https://winemakermag.com/article/colombard-varietal-focus"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/colombard/",
+    "https://winemakermag.com/article/colombard-varietal-focus",
+    "https://foodandtravel.com/drink/wine-opinion/word-on-the-vine-colombard"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/colombard/",
+    "https://winemakermag.com/article/colombard-varietal-focus",
+    "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/White-Wine-Varieties/",
+    "https://foodandtravel.com/drink/wine-opinion/word-on-the-vine-colombard"
+   ]
+  }
+ },
+ {
+  "name": "Viognier",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A white grape from the northern Rhône, where it makes Condrieu. It gives full bodied, perfumed wines with fairly low acidity.",
+  "tastes": [
+   "Apricot",
+   "Peach",
+   "Honeysuckle",
+   "Rose"
+  ],
+  "aged_note": "Usually best drunk young.",
+  "body": 5,
+  "acidity": 2,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/viognier/",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/viognier-the-ultimate-grape-guide",
+    "https://jeroboams.co.uk/advice-centre/buyers-guide/viognier-wine-buyers-guide"
+   ],
+   "tastes": [
+    "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/White-Wine-Varieties/",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/viognier-the-ultimate-grape-guide",
+    "https://jeroboams.co.uk/advice-centre/buyers-guide/viognier-wine-buyers-guide",
+    "https://winefolly.com/grapes/viognier/"
+   ],
+   "aged_note": [
+    "https://jeroboams.co.uk/advice-centre/buyers-guide/viognier-wine-buyers-guide",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/viognier-the-ultimate-grape-guide"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/viognier/",
+    "https://www.thewinesociety.com/discover/wine-basics/grape-varieties/viognier-the-ultimate-grape-guide",
+    "https://jeroboams.co.uk/advice-centre/buyers-guide/viognier-wine-buyers-guide"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/viognier/",
+    "https://jeroboams.co.uk/advice-centre/buyers-guide/viognier-wine-buyers-guide"
+   ]
+  }
+ },
+ {
+  "name": "Chenin Blanc",
+  "aliases": [
+   "Steen"
+  ]
+ },
+ {
+  "name": "Muscat of Alexandria",
+  "aliases": [
+   "Hanepoot"
+  ]
+ }
+]

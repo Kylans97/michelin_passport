@@ -1,0 +1,163 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0085,DE_08317001,Achern,"Achern, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335002,Allensbach,Allensbach,Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226102,Angelbachtal,Angelbachtal,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317005,Appenweier,Appenweier,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315003,Au,Au,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315004,Auggen,Auggen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336006,Bad Bellingen,Bad Bellingen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315006,Bad Krozingen,"Bad Krozingen, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128007,Bad Mergentheim,"Bad Mergentheim, Stadt",Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08125006,Bad Rappenau,"Bad Rappenau, Stadt",Landkreis Heilbronn (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215100,Bad Schönborn,Bad Schönborn,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08211000,Baden-Baden,"Baden-Baden, Stadt",Baden-Baden (Stadtkreis) (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315007,Badenweiler,Badenweiler,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316002,Bahlingen am Kaiserstuhl,Bahlingen am Kaiserstuhl,Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315008,Ballrechten-Dottingen,Ballrechten-Dottingen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317009,Berghaupten,Berghaupten,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435005,Bermatingen,Bermatingen,Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08225010,Binau,Binau,Neckar-Odenwald-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336008,Binzen,Binzen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335098,Bodman-Ludwigshafen,Bodman-Ludwigshafen,Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315014,Bollschweil,Bollschweil,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128014,Boxberg,"Boxberg, Stadt",Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315015,Breisach am Rhein,"Breisach am Rhein, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215007,Bretten,"Bretten, Stadt",Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215009,Bruchsal,"Bruchsal, Stadt",Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315022,Buggingen,Buggingen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315013,Bötzingen,Bötzingen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08216007,Bühl,"Bühl, Stadt",Landkreis Rastatt (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08216008,Bühlertal,Bühlertal,Landkreis Rastatt (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435010,Daisendorf,Daisendorf,Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316009,Denzlingen,Denzlingen,Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226010,Dielheim,Dielheim,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226012,Dossenheim,Dossenheim,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317021,Durbach,Durbach,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226013,Eberbach,"Eberbach, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315028,Ebringen,Ebringen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336014,Efringen-Kirchen,Efringen-Kirchen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315131,Ehrenkirchen,Ehrenkirchen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315030,Eichstetten,Eichstetten am Kaiserstuhl,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336019,Eimeldingen,Eimeldingen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08236011,Eisingen,Eisingen,Enzkreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316011,Emmendingen,"Emmendingen, Stadt",Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316012,Endingen,"Endingen am Kaiserstuhl, Stadt",Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08125026,Eppingen,"Eppingen, Stadt",Landkreis Heilbronn (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315033,Eschbach,Eschbach,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317026,Ettenheim,"Ettenheim, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336024,Fischingen,Fischingen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08311000,Freiburg im Breisgau,"Freiburg im Breisgau, Stadt",Freiburg im Breisgau (Stadtkreis) (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317031,Friesenheim,Friesenheim,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335025,Gaienhofen,Gaienhofen,Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335026,Gailingen,Gailingen am Hochrhein,Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317034,Gengenbach,"Gengenbach, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08216017,Gernsbach,"Gernsbach, Stadt",Landkreis Rastatt (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315041,Glottertal,Glottertal,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215025,Gondelsheim,Gondelsheim,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315043,Gottenheim,Gottenheim,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336105,Grenzach-Wyhlen,Grenzach-Wyhlen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128045,Großrinderfeld,Großrinderfeld,Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128047,Grünsfeld,"Grünsfeld, Stadt",Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315047,Gundelfingen,Gundelfingen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435018,Hagnau am Bodensee,Hagnau am Bodensee,Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08225033,Haßmersheim,Haßmersheim,Neckar-Odenwald-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08221000,Heidelberg,"Heidelberg, Stadt",Heidelberg (Stadtkreis) (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315050,Heitersheim,"Heitersheim, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226031,Hemsbach,"Hemsbach, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316017,Herbolzheim,"Herbolzheim, Stadt",Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315051,Heuweiler,Heuweiler,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335035,Hilzingen,Hilzingen,Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226107,Hirschberg an der Bergstraße,Hirschberg an der Bergstraße,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317047,Hohberg,Hohberg,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08337053,Hohentengen am Hochrhein,Hohentengen am Hochrhein,Landkreis Waldshut (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315059,Ihringen,Ihringen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435024,Immenstaad am Bodensee,Immenstaad am Bodensee,Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336045,Kandern,"Kandern, Stadt",Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317056,Kappelrodeck,Kappelrodeck,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08212000,Karlsruhe,"Karlsruhe, Stadt",Karlsruhe (Stadtkreis) (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08236070,Keltern,Keltern,Enzkreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316020,Kenzingen,"Kenzingen, Stadt",Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317059,Kippenheim,Kippenheim,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08125049,Kirchardt,Kirchardt,Landkreis Heilbronn (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08337062,Klettgau,Klettgau,Landkreis Waldshut (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335043,Konstanz,"Konstanz, Universitätsstadt",Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215097,Kraichtal,"Kraichtal, Stadt",Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08126045,Krautheim,"Krautheim, Stadt",Hohenlohekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08236074,Kämpfelbach,Kämpfelbach,Enzkreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128061,Königheim,Königheim,Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128064,Külsheim,"Külsheim, Stadt",Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215040,Kürnbach,Kürnbach,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317065,Lahr/Schwarzwald,"Lahr/Schwarzwald, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128139,Lauda-Königshofen,"Lauda-Königshofen, Stadt",Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226040,Laudenbach,Laudenbach,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317068,Lauf,Lauf,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317067,Lautenbach,Lautenbach,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226041,Leimen,"Leimen, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08337070,Lottstetten,Lottstetten,Landkreis Waldshut (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336050,Lörrach,"Lörrach, Stadt",Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317073,Mahlberg,"Mahlberg, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226046,Malsch,Malsch,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316024,Malterdingen,Malterdingen,Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315132,March,March,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435034,Markdorf,"Markdorf, Stadt",Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435036,Meersburg,"Meersburg, Stadt",Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315072,Merdingen,Merdingen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315073,Merzhausen,Merzhausen,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335055,Moos,Moos,Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08225058,Mosbach,"Mosbach, Stadt",Neckar-Odenwald-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226054,Mühlhausen,Mühlhausen,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315074,Müllheim,"Müllheim im Markgräflerland, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315076,Neuenburg am Rhein,"Neuenburg am Rhein, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226060,Nußloch,Nußloch,Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215059,Oberderdingen,"Oberderdingen, Stadt",Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317089,Oberkirch,"Oberkirch, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317096,Offenburg,"Offenburg, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317097,Ohlsbach,Ohlsbach,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317100,Ortenberg,Ortenberg,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317102,Ottenhöfen im Schwarzwald,Ottenhöfen im Schwarzwald,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08216041,Ottersweier,Ottersweier,Landkreis Rastatt (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315089,Pfaffenweiler,Pfaffenweiler,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215101,Pfinztal,Pfinztal,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226065,Rauenberg,"Rauenberg, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335066,Reichenau,Reichenau,Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317110,Renchen,"Renchen, Stadt",Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336069,Rheinfelden (Baden),"Rheinfelden (Baden), Stadt",Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316037,Riegel,Riegel am Kaiserstuhl,Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317113,Ringsheim,Ringsheim,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336073,Rümmingen,Rümmingen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316038,Sasbach,Sasbach am Kaiserstuhl,Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317116,Sasbach,Sasbach,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08317118,Sasbachwalden,Sasbachwalden,Ortenaukreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336075,Schallbach,Schallbach,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315098,Schallstadt,Schallstadt,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336078,Schliengen,Schliengen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226082,Schriesheim,"Schriesheim, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316039,Sexau,Sexau,Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08335075,Singen (Hohentwiel),"Singen (Hohentwiel), Stadt",Landkreis Konstanz (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226085,Sinsheim,"Sinsheim, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08216049,Sinzheim,Sinzheim,Landkreis Rastatt (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315108,Staufen im Breisgau,"Staufen im Breisgau, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435054,Stetten,Stetten,Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315111,Sulzburg,"Sulzburg, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215082,Sulzfeld,Sulzfeld,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315107,Sölden,Sölden,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128115,Tauberbischofsheim,"Tauberbischofsheim, Stadt",Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316043,Teningen,Teningen,Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215084,Ubstadt-Weiher,Ubstadt-Weiher,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435066,Uhldingen-Mühlhofen,Uhldingen-Mühlhofen,Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315133,Vogtsburg im Kaiserstuhl,"Vogtsburg im Kaiserstuhl, Stadt",Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08316056,Waldkirch,"Waldkirch, Stadt",Landkreis Emmendingen (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215089,Walzbachtal,Walzbachtal,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336091,Weil am Rhein,"Weil am Rhein, Stadt",Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215090,Weingarten (Baden),Weingarten (Baden),Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226096,Weinheim,"Weinheim, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08216059,Weisenbach,Weisenbach,Landkreis Rastatt (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128128,Werbach,Werbach,Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08128131,Wertheim,"Wertheim, Stadt",Main-Tauber-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08226098,Wiesloch,"Wiesloch, Stadt",Rhein-Neckar-Kreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08336100,Wittlingen,Wittlingen,Landkreis Lörrach (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08315125,Wittnau,Wittnau,Landkreis Breisgau-Hochschwarzwald (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08337123,Wutöschingen,Wutöschingen,Landkreis Waldshut (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215094,Zaisenhausen,Zaisenhausen,Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08215064,Östringen,"Östringen, Stadt",Landkreis Karlsruhe (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj
+wr_0085,DE_08435059,Überlingen,"Überlingen, Stadt",Bodenseekreis (Baden-Württemberg),,http://data.europa.eu/eli/C/2026/5957/oj

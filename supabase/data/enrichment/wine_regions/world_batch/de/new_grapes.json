@@ -1,0 +1,160 @@
+[
+ {
+  "name": "Silvaner",
+  "aliases": [
+   "Grüner Silvaner",
+   "Sylvaner"
+  ],
+  "colour": "white",
+  "summary": "A white grape most at home in Franken, Germany. Fairly neutral in flavour, it shows its soil clearly, giving earthy, herbal wines with fresh acidity.",
+  "tastes": [
+   "pear",
+   "herbs",
+   "earthy",
+   "mineral"
+  ],
+  "aged_note": "The best examples can develop in the cellar for several years.",
+  "body": 2,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Silvaner",
+    "https://winefolly.com/grapes/silvaner/",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/91/portugieser"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Silvaner",
+    "https://punchdrink.com/articles/guide-to-german-wine-riesling-spatburgunder-silvaner-germany-grapes/",
+    "https://vinepair.com/wine-blog/4-german-wines-people-dont-know/",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/108/silvaner",
+    "https://germanwinesociety.org/?p=2852",
+    "https://winefolly.com/grapes/silvaner/"
+   ],
+   "tastes": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/108/silvaner",
+    "https://punchdrink.com/articles/guide-to-german-wine-riesling-spatburgunder-silvaner-germany-grapes/",
+    "https://en.wikipedia.org/wiki/Silvaner",
+    "https://vinepair.com/wine-blog/4-german-wines-people-dont-know/",
+    "https://winefolly.com/grapes/silvaner/"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/silvaner/",
+    "https://punchdrink.com/articles/guide-to-german-wine-riesling-spatburgunder-silvaner-germany-grapes/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/silvaner/",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/108/silvaner"
+   ],
+   "acidity": [
+    "https://en.wikipedia.org/wiki/Silvaner",
+    "https://winefolly.com/grapes/silvaner/",
+    "https://winefolly.com/deep-dive/guide-to-german-white-wine/"
+   ]
+  }
+ },
+ {
+  "name": "Dornfelder",
+  "aliases": [],
+  "colour": "red",
+  "summary": "A German red crossing from 1955, first bred to deepen the colour of pale reds. Its dark wines are fruity, with a gentle floral lift.",
+  "tastes": [
+   "blackberry",
+   "sour cherry",
+   "floral notes"
+  ],
+  "aged_note": "Barrel ageing can add vanilla and spice to the fruit.",
+  "body": 4,
+  "acidity": 3,
+  "tannin": 3,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://vinepair.com/articles/german-red-wines/",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/87/dornfelder",
+    "https://en.wikipedia.org/wiki/Dornfelder",
+    "https://winefolly.com/tips/3-german-red-wines-that-are-meant-for-summer/",
+    "https://www.decanterchina.com/en/knowledge/grapes/dornfelder-red"
+   ],
+   "tastes": [
+    "https://en.wikipedia.org/wiki/Dornfelder",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/87/dornfelder",
+    "https://vinepair.com/articles/german-red-wines/",
+    "https://winefolly.com/tips/3-german-red-wines-that-are-meant-for-summer/"
+   ],
+   "aged_note": [
+    "https://punchdrink.com/articles/guide-to-german-wine-riesling-spatburgunder-silvaner-germany-grapes/",
+    "https://vinepair.com/wine-blog/4-german-wines-people-dont-know/",
+    "https://winefolly.com/tips/3-german-red-wines-that-are-meant-for-summer/"
+   ],
+   "body": [
+    "https://winefolly.com/tips/3-german-red-wines-that-are-meant-for-summer/",
+    "https://germanwinesociety.org/?p=2852",
+    "https://vinepair.com/wine-blog/4-german-wines-people-dont-know/"
+   ],
+   "acidity": [
+    "https://en.wikipedia.org/wiki/Dornfelder",
+    "https://winefolly.com/tips/3-german-red-wines-that-are-meant-for-summer/"
+   ],
+   "tannin": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/87/dornfelder",
+    "https://germanwinesociety.org/?p=2852",
+    "https://en.wikipedia.org/wiki/Dornfelder"
+   ]
+  }
+ },
+ {
+  "name": "Scheurebe",
+  "aliases": [
+   "Sämling 88"
+  ],
+  "colour": "white",
+  "summary": "A German crossing of Riesling bred by Georg Scheu. Highly aromatic, with blackcurrant and grapefruit, it is made in styles from bone dry to lusciously sweet.",
+  "tastes": [
+   "blackcurrant",
+   "grapefruit",
+   "tangerine",
+   "lychee"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": {
+   "name": "Riesling",
+   "note": "Its parent, which it echoes from dry to sweet, with riper, more exotic fruit."
+  },
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Scheurebe",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/107/scheurebe",
+    "https://www.decanterchina.com/en/knowledge/grapes/scheurebe-white"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Scheurebe",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/107/scheurebe",
+    "https://www.decanterchina.com/en/knowledge/grapes/scheurebe-white",
+    "https://punchdrink.com/articles/guide-to-german-wine-riesling-spatburgunder-silvaner-germany-grapes/"
+   ],
+   "tastes": [
+    "https://en.wikipedia.org/wiki/Scheurebe",
+    "https://www.decanterchina.com/en/knowledge/grapes/scheurebe-white",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/107/scheurebe",
+    "https://punchdrink.com/articles/guide-to-german-wine-riesling-spatburgunder-silvaner-germany-grapes/",
+    "https://winefolly.com/deep-dive/guide-to-german-white-wine/",
+    "https://germanwinesociety.org/?p=2852"
+   ],
+   "acidity": [
+    "https://en.wikipedia.org/wiki/Scheurebe",
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/107/scheurebe",
+    "https://germanwinesociety.org/?p=2852"
+   ],
+   "similar": [
+    "https://en.wikipedia.org/wiki/Scheurebe",
+    "https://punchdrink.com/articles/guide-to-german-wine-riesling-spatburgunder-silvaner-germany-grapes/",
+    "https://www.decanterchina.com/en/knowledge/grapes/scheurebe-white"
+   ]
+  }
+ }
+]

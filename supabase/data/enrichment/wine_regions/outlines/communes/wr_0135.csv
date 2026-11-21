@@ -1,0 +1,2 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0135,US_AVA_santa_maria_valley,Santa Maria Valley,Santa Maria Valley,CA,,https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0/query?where=OBJECTID%3D12&outFields=%2A&outSR=4326&f=geojson

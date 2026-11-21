@@ -1,0 +1,136 @@
+[
+ {
+  "name": "Viognier",
+  "aliases": [],
+  "colour": "white",
+  "summary": "An aromatic white grape from the northern Rhône, the only grape of Condrieu. It gives full, fragrant wines with peach and floral notes, usually made dry.",
+  "tastes": [
+   "Peach",
+   "Floral"
+  ],
+  "aged_note": null,
+  "body": 4,
+  "acidity": null,
+  "tannin": null,
+  "similar": {
+   "name": "Chardonnay",
+   "note": "Both can make full, rich whites; Viognier is more aromatic."
+  },
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/viognier/",
+    "https://en.wikipedia.org/wiki/Viognier",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=viognier"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/viognier/",
+    "https://en.wikipedia.org/wiki/Viognier"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/viognier/",
+    "https://en.wikipedia.org/wiki/Viognier",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=viognier"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/viognier/",
+    "https://en.wikipedia.org/wiki/Viognier"
+   ]
+  }
+ },
+ {
+  "name": "Barbera",
+  "aliases": [],
+  "colour": "red",
+  "summary": "A red grape from Piedmont in northern Italy, long one of Italy's most planted reds. It gives deeply coloured wines with high acidity and low tannin.",
+  "tastes": [
+   "Cherry",
+   "Dried herbs"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": 4,
+  "tannin": 2,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Barbera",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=barbera",
+    "https://www.wine-searcher.com/grape-46-barbera"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/barbera/",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=barbera"
+   ],
+   "acidity": [
+    "https://en.wikipedia.org/wiki/Barbera",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=barbera"
+   ],
+   "tannin": [
+    "https://en.wikipedia.org/wiki/Barbera",
+    "https://www.wine-searcher.com/grape-46-barbera",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=barbera"
+   ]
+  }
+ },
+ {
+  "name": "Delaware",
+  "aliases": [],
+  "colour": "white",
+  "summary": "An American grape with pinkish red skins, grown for eating and for wine. A major table grape in Japan, it is the main white wine grape of Yamagata and Osaka.",
+  "tastes": [],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Delaware_(grape)",
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_15.htm",
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_3.htm",
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf",
+    "https://wineanorak.com/?p=20216"
+   ]
+  }
+ },
+ {
+  "name": "L'Acadie Blanc",
+  "aliases": [
+   "L'Acadie",
+   "Vineland 53261",
+   "V 53261"
+  ],
+  "colour": "white",
+  "summary": "A cold hardy hybrid white grape bred in 1953 at Vineland, Ontario, and named after Acadia. Nova Scotia's leading grape, it makes still whites and traditional method sparkling wine.",
+  "tastes": [
+   "Floral"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/L%27Acadie_blanc",
+    "https://www.decanter.com/premium/regional-profile-nova-scotia-wines-426262/",
+    "https://app.ckbk.com/reference/wine05383c12s001e005",
+    "https://circleofwinewriters.org/?p=52686"
+   ],
+   "tastes": [
+    "https://www.decanter.com/premium/regional-profile-nova-scotia-wines-426262/",
+    "https://en.wikipedia.org/wiki/L%27Acadie_blanc"
+   ],
+   "aliases": [
+    "https://en.wikipedia.org/wiki/L%27Acadie_blanc",
+    "https://www.decanter.com/premium/regional-profile-nova-scotia-wines-426262/"
+   ]
+  }
+ },
+ {
+  "name": "Carménère",
+  "aliases": [
+   "Cabernet Gernischt"
+  ]
+ }
+]

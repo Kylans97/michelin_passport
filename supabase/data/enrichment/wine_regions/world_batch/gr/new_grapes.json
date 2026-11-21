@@ -1,0 +1,272 @@
+[
+ {
+  "name": "Moschofilero",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A pink skinned Greek grape made mostly into aromatic, crisp dry whites, with some sparkling and rosé. Its home is the high Mantinia plateau in Arcadia.",
+  "tastes": [
+   "Rose petal",
+   "Citrus",
+   "Peach"
+  ],
+  "aged_note": "Mostly drunk young, though some gain from a few years in bottle.",
+  "body": 2,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/varieties/moschofilero/",
+    "https://www.decanter.com/wine/grape-varieties/moschofilero-white-52448/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://karakasis.mw/moschofilero/"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/moschofilero/",
+    "https://www.decanter.com/wine/grape-varieties/moschofilero-white-52448/",
+    "https://winefolly.com/grapes/moschofilero/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "aged_note": [
+    "https://winesofgreece.org/pdo/pdo-mantinia/",
+    "https://winefolly.com/grapes/moschofilero/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "body": [
+    "https://winesofgreece.org/varieties/moschofilero/",
+    "https://www.decanter.com/wine/grape-varieties/moschofilero-white-52448/",
+    "https://winefolly.com/grapes/moschofilero/"
+   ],
+   "acidity": [
+    "https://www.decanter.com/wine/grape-varieties/moschofilero-white-52448/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winesofgreece.org/varieties/moschofilero/",
+    "https://winefolly.com/grapes/moschofilero/"
+   ]
+  }
+ },
+ {
+  "name": "Roditis",
+  "aliases": [],
+  "colour": "white",
+  "summary": "Greece's most planted white grape, pink skinned and grown across much of the country. At low yields it gives citrus, mineral dry whites; it is the grape of PDO Patra.",
+  "tastes": [
+   "Citrus",
+   "Mineral"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/varieties/roditis/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://karakasis.mw/roditis/"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/roditis/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "body": [
+    "https://winesofgreece.org/varieties/roditis/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ]
+  }
+ },
+ {
+  "name": "Mavrodaphne",
+  "aliases": [
+   "Mavrodafni",
+   "Μαυροδάφνη"
+  ],
+  "colour": "red",
+  "summary": "A dark red grape of the north western Peloponnese and Kefalonia, long used for sweet fortified wines such as Mavrodaphni of Patra. Dry versions are now drawing attention.",
+  "tastes": [
+   "Dried fruit"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11842",
+    "https://winesofgreece.org/pdo/pdo-mavrodaphne-of-patras/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/varieties/mavrodaphne/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://karakasis.mw/mavrodaphne/",
+    "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/mavrodaphne/",
+    "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ]
+  }
+ },
+ {
+  "name": "Negoska",
+  "aliases": [
+   "Popolka"
+  ],
+  "colour": "red",
+  "summary": "A dark, soft red grape from northern Greece, now grown mainly on the slopes of Mount Paiko. It is blended with Xinomavro in Goumenissa to add colour and roundness.",
+  "tastes": [
+   "Chocolate"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": 3,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://winesofgreece.org/varieties/negoska/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560"
+   ],
+   "summary": [
+    "https://winesofgreece.org/varieties/negoska/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/negoska/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560"
+   ],
+   "acidity": [
+    "https://winesofgreece.org/varieties/negoska/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ]
+  }
+ },
+ {
+  "name": "Malagousia",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A Greek white grape rescued from near extinction and now planted across the country. It gives aromatic, full bodied whites, mostly dry, with some sweet ones.",
+  "tastes": [
+   "Peach",
+   "Floral"
+  ],
+  "aged_note": null,
+  "body": 4,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/varieties/malagousia/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://karakasis.mw/malagousia/",
+    "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/malagousia/",
+    "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://lizthachmw.com/winetravelstories/experiencing-the-wines-of-drama-in-northern-greece/"
+   ],
+   "body": [
+    "https://winesofgreece.org/varieties/malagousia/",
+    "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ]
+  }
+ },
+ {
+  "name": "Monemvasia",
+  "aliases": [
+   "Monemvassia"
+  ],
+  "colour": "white",
+  "summary": "A white grape named after the Laconian port of Monemvasia but grown today mostly on Paros. It makes dry whites there and sweet Malvasia wines from sun dried grapes.",
+  "tastes": [
+   "Citrus",
+   "Mineral"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://winesofgreece.org/varieties/monemvassia/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/varieties/monemvassia/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11567"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/monemvassia/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11101"
+   ]
+  }
+ },
+ {
+  "name": "Mandilaria",
+  "aliases": [
+   "Mandilari",
+   "Amorgiano"
+  ],
+  "colour": "red",
+  "summary": "A red grape of Crete and the Aegean islands that gives deeply coloured, tannic wine. It is mostly blended, with Monemvasia on Paros and with Kotsifali on Crete.",
+  "tastes": [
+   "Leather"
+  ],
+  "aged_note": "Benefits from a few years in bottle.",
+  "body": null,
+  "acidity": 4,
+  "tannin": 5,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://winesofgreece.org/varieties/mandelaria/",
+    "https://karakasis.mw/mandilaria/",
+    "https://www.winesofcrete.gr/en/varieties/mandilari/",
+    "https://www.winetraveler.com/grape/mandilaria/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/varieties/mandelaria/",
+    "https://karakasis.mw/mandilaria/",
+    "https://www.winetraveler.com/grape/mandilaria/"
+   ],
+   "tastes": [
+    "https://winesofgreece.org/varieties/mandelaria/",
+    "https://www.winesofcrete.gr/en/varieties/mandilari/",
+    "https://www.winetraveler.com/grape/mandilaria/"
+   ],
+   "aged_note": [
+    "https://winesofgreece.org/varieties/mandelaria/",
+    "https://karakasis.mw/mandilaria/"
+   ],
+   "acidity": [
+    "https://karakasis.mw/mandilaria/",
+    "https://www.winetraveler.com/grape/mandilaria/"
+   ],
+   "tannin": [
+    "https://winesofgreece.org/varieties/mandelaria/",
+    "https://karakasis.mw/mandilaria/",
+    "https://www.winetraveler.com/grape/mandilaria/"
+   ]
+  }
+ },
+ {
+  "name": "Muscat Blanc à Petits Grains",
+  "aliases": [
+   "White Muscat",
+   "Moschoudi",
+   "Muscat Samos"
+  ]
+ }
+]

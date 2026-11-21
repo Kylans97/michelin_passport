@@ -1,0 +1,342 @@
+[
+{
+"aliases": [
+"Spätburgunder",
+"Pinot Nero"
+],
+"grape_code": "gr_0001",
+"name": "Pinot Noir"
+},
+{
+"aliases": [],
+"grape_code": "gr_0002",
+"name": "Chardonnay"
+},
+{
+"aliases": [],
+"grape_code": "gr_0003",
+"name": "Cabernet Sauvignon"
+},
+{
+"aliases": [],
+"grape_code": "gr_0004",
+"name": "Merlot"
+},
+{
+"aliases": [
+"Shiraz"
+],
+"grape_code": "gr_0005",
+"name": "Syrah"
+},
+{
+"aliases": [
+"Garnacha"
+],
+"grape_code": "gr_0006",
+"name": "Grenache"
+},
+{
+"aliases": [
+"Tinto Fino",
+"Tinta del País",
+"Tinta Roriz"
+],
+"grape_code": "gr_0007",
+"name": "Tempranillo"
+},
+{
+"aliases": [],
+"grape_code": "gr_0008",
+"name": "Riesling"
+},
+{
+"aliases": [],
+"grape_code": "gr_0009",
+"name": "Nebbiolo"
+},
+{
+"aliases": [],
+"grape_code": "gr_0010",
+"name": "Sangiovese"
+},
+{
+"aliases": [],
+"grape_code": "gr_0011",
+"name": "Sauvignon Blanc"
+},
+{
+"aliases": [],
+"grape_code": "gr_0012",
+"name": "Chenin Blanc"
+},
+{
+"aliases": [],
+"grape_code": "gr_0013",
+"name": "Cabernet Franc"
+},
+{
+"aliases": [],
+"grape_code": "gr_0014",
+"name": "Gamay"
+},
+{
+"aliases": [],
+"grape_code": "gr_0015",
+"name": "Touriga Nacional"
+},
+{
+"aliases": [
+"Pinot Meunier"
+],
+"grape_code": "gr_0016",
+"name": "Meunier"
+},
+{
+"aliases": [
+"Monastrell",
+"Mataro"
+],
+"grape_code": "gr_0017",
+"name": "Mourvèdre"
+},
+{
+"aliases": [],
+"grape_code": "gr_0018",
+"name": "Solaris"
+},
+{
+"aliases": [],
+"grape_code": "gr_0019",
+"name": "Johanniter"
+},
+{
+"aliases": [],
+"grape_code": "gr_0020",
+"name": "Souvignier Gris"
+},
+{
+"aliases": [],
+"grape_code": "gr_0021",
+"name": "Regent"
+},
+{
+"aliases": [
+"Auxerrois Blanc"
+],
+"grape_code": "gr_0022",
+"name": "Auxerrois"
+},
+{
+"aliases": [
+"Rivaner"
+],
+"grape_code": "gr_0023",
+"name": "Müller-Thurgau"
+},
+{
+"aliases": [
+"Pinot Grigio",
+"Grauburgunder"
+],
+"grape_code": "gr_0024",
+"name": "Pinot Gris"
+},
+{
+"aliases": [],
+"grape_code": "gr_0025",
+"name": "Cabernet Cortis"
+},
+{
+"aliases": [],
+"grape_code": "gr_0026",
+"name": "Pinotin"
+},
+{
+"aliases": [],
+"grape_code": "gr_0027",
+"name": "Cabernet Blanc"
+},
+{
+"aliases": [
+"Primitivo"
+],
+"grape_code": "gr_0028",
+"name": "Zinfandel"
+},
+{
+"aliases": [
+"Côt"
+],
+"grape_code": "gr_0029",
+"name": "Malbec"
+},
+{
+"aliases": [
+"Carmenere"
+],
+"grape_code": "gr_0030",
+"name": "Carménère"
+},
+{
+"aliases": [
+"Torrontes"
+],
+"grape_code": "gr_0031",
+"name": "Torrontés"
+},
+{
+"aliases": [
+"Sémillon",
+"Wyndruif"
+],
+"grape_code": "gr_0032",
+"name": "Semillon"
+},
+{
+"aliases": [
+"Cinsaut",
+"Hermitage"
+],
+"grape_code": "gr_0033",
+"name": "Cinsault"
+},
+{
+"aliases": [],
+"grape_code": "gr_0034",
+"name": "Pinotage"
+},
+{
+"aliases": [
+"Malvazija",
+"Vrbić",
+"Očenaš"
+],
+"grape_code": "gr_0035",
+"name": "Malvazija Istarska"
+},
+{
+"aliases": [
+"Istrijanac"
+],
+"grape_code": "gr_0036",
+"name": "Teran"
+},
+{
+"aliases": [
+"Plavac mali crni",
+"Plavac veliki",
+"Crljenak mali"
+],
+"grape_code": "gr_0037",
+"name": "Plavac Mali"
+},
+{
+"aliases": [
+"Pošip bijeli",
+"Pošipak",
+"Pošipica"
+],
+"grape_code": "gr_0038",
+"name": "Pošip"
+},
+{
+"aliases": [
+"Welschriesling",
+"Laški rizling",
+"Riesling Italico",
+"Olasz Rizling",
+"Olaszrizling"
+],
+"grape_code": "gr_0039",
+"name": "Graševina"
+},
+{
+"aliases": [
+"Frankovka",
+"Kékfrankos",
+"Lemberger",
+"Frankinja",
+"Modra Frankinja"
+],
+"grape_code": "gr_0040",
+"name": "Blaufränkisch"
+},
+{
+"aliases": [
+"Traminac",
+"Traminac crveni",
+"Traminac mirisavi",
+"Roter Traminer"
+],
+"grape_code": "gr_0041",
+"name": "Gewürztraminer"
+},
+{
+"aliases": [
+"Fendant",
+"Gutedel"
+],
+"grape_code": "gr_0042",
+"name": "Chasselas"
+},
+{
+"aliases": [
+"Arvine"
+],
+"grape_code": "gr_0043",
+"name": "Petite Arvine"
+},
+{
+"aliases": [
+"Rouge du Pays",
+"Cornalin du Valais",
+"Landroter"
+],
+"grape_code": "gr_0044",
+"name": "Cornalin"
+},
+{
+"aliases": [],
+"grape_code": "gr_0045",
+"name": "Humagne Rouge"
+},
+{
+"aliases": [],
+"grape_code": "gr_0046",
+"name": "Gamaret"
+},
+{
+"aliases": [
+"Veltlínské zelené"
+],
+"grape_code": "gr_0047",
+"name": "Grüner Veltliner"
+},
+{
+"aliases": [
+"Blauer Zweigelt",
+"Rotburger"
+],
+"grape_code": "gr_0048",
+"name": "Zweigelt"
+},
+{
+"aliases": [
+"Weissburgunder",
+"Weißburgunder",
+"Klevner"
+],
+"grape_code": "gr_0049",
+"name": "Pinot Blanc"
+},
+{
+"aliases": [
+"Gelber Muskateller",
+"Muskateller",
+"Muscat Blanc"
+],
+"grape_code": "gr_0050",
+"name": "Muscat Blanc à Petits Grains"
+}
+]

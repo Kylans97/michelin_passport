@@ -1,0 +1,46 @@
+[
+ {
+  "name": "Vidal Blanc",
+  "aliases": [
+   "Vidal"
+  ],
+  "colour": "white",
+  "summary": "A French hybrid of Ugni Blanc bred by Jean Louis Vidal in the 1930s. Winter hardy, with tough skins and good acidity, it is best known for Canadian Icewine.",
+  "tastes": [
+   "Pineapple",
+   "Grapefruit",
+   "Honeysuckle"
+  ],
+  "aged_note": null,
+  "body": 3,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://winefolly.com/grapes/vidal/",
+    "https://en.wikipedia.org/wiki/Vidal_blanc"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Vidal_blanc",
+    "https://winefolly.com/grapes/vidal/",
+    "https://www.winetraveler.com/grape/vidal-blanc/",
+    "https://vqaontario.ca/wp-content/uploads/2025/07/OWAA-ANNUAL_REPORT_STATISTICS-2025.pdf"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/vidal/",
+    "https://en.wikipedia.org/wiki/Vidal_blanc",
+    "https://www.winetraveler.com/grape/vidal-blanc/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/vidal/",
+    "https://www.winetraveler.com/grape/vidal-blanc/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/vidal/",
+    "https://en.wikipedia.org/wiki/Vidal_blanc",
+    "https://www.winetraveler.com/grape/vidal-blanc/"
+   ]
+  }
+ }
+]

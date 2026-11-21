@@ -1,0 +1,89 @@
+[
+ {
+  "name": "Blauer Wildbacher",
+  "aliases": [
+   "Wildbacher"
+  ],
+  "colour": "red",
+  "summary": "A red grape native to Styria in Austria. It is made mostly into Schilcher, a pale dry rosé with crisp acidity and red berry fruit, and also into sparkling wine.",
+  "tastes": [
+   "Raspberry",
+   "Red berries"
+  ],
+  "aged_note": null,
+  "body": 1,
+  "acidity": 5,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher",
+    "https://www.bmluk.gv.at/themen/lebensmittel/trad-lebensmittel/getraenke/schilcher.html"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher",
+    "https://www.bmluk.gv.at/themen/lebensmittel/trad-lebensmittel/getraenke/schilcher.html",
+    "https://vinovoss.com/grapes/blauer-wildbacher"
+   ],
+   "tastes": [
+    "https://www.bmluk.gv.at/themen/lebensmittel/trad-lebensmittel/getraenke/schilcher.html",
+    "https://vinovoss.com/grapes/blauer-wildbacher",
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher"
+   ],
+   "body": [
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher",
+    "https://vinovoss.com/grapes/blauer-wildbacher"
+   ],
+   "acidity": [
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher",
+    "https://vinovoss.com/grapes/blauer-wildbacher",
+    "https://www.bmluk.gv.at/themen/lebensmittel/trad-lebensmittel/getraenke/schilcher.html"
+   ]
+  }
+ },
+ {
+  "name": "St. Laurent",
+  "aliases": [
+   "Sankt Laurent",
+   "Saint Laurent",
+   "Svatovavřinecké"
+  ],
+  "colour": "red",
+  "summary": "A red grape grown mainly in Austria and the Czech Republic and closely related to Pinot Noir. It gives wines with blackberry fruit and soft tannins.",
+  "tastes": [
+   "Blackberry"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": 2,
+  "similar": {
+   "name": "Pinot Noir",
+   "note": "A close relative; St. Laurent wines are often compared with Pinot Noir."
+  },
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/St._Laurent_(grape)",
+    "https://vinovoss.com/grapes/st-laurent"
+   ],
+   "summary": [
+    "https://en.wikipedia.org/wiki/St._Laurent_(grape)",
+    "https://winefolly.com/grapes/st-laurent/",
+    "https://vinovoss.com/grapes/st-laurent"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/st-laurent/",
+    "https://vinovoss.com/grapes/st-laurent"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/st-laurent/",
+    "https://vinovoss.com/grapes/st-laurent"
+   ],
+   "similar": [
+    "https://en.wikipedia.org/wiki/St._Laurent_(grape)",
+    "https://winefolly.com/grapes/st-laurent/",
+    "https://vinovoss.com/grapes/st-laurent"
+   ]
+  }
+ }
+]

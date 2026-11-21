@@ -1,0 +1,64 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0168,IT_022001,Ala,Ala,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022002,Albiano,Albiano,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022003,Aldeno,Aldeno,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022235,Faver + Grumes + Valda,Altavalle,Trento,yes,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022236,Vigolo Vattaro,Altopiano della Vigolana,Trento,yes,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022006,Arco,Arco,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022007,Avio,Avio,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022013,Besenello,Besenello,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022017,Bleggio superiore,Bleggio Superiore,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022022,Borgo Valsugana,Borgo Valsugana,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022025,Brentonico,Brentonico,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022034,Caldonazzo,Caldonazzo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022035,Calliano,Calliano,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022043,Carzano,Carzano,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022240,Ivano Fracena + Spera + Strigno + Villa Agnedo,Castel Ivano,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022049,Castelnuovo,Castelnuovo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022053,Cavedine,Cavedine,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022241,Cembra + Lisignago,Cembra Lisignago,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022058,Cimone,Cimone,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022061,Civezzano,Civezzano,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022228,Bleggio inferiore,Comano Terme,Trento,yes,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022078,Drena,Drena,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022079,Dro,Dro,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022091,Garniga,Garniga Terme,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022092,Giovo,Giovo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022098,Isera,Isera,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022103,Lavis,Lavis,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022104,Levico,Levico Terme,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022243,Calavino + Lasino,Madruzzo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022116,Mezzocorona,Mezzocorona,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022117,Mezzolombardo,Mezzolombardo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022123,Mori,Mori,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022124,Nago-Torbole,Nago-Torbole,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022127,Nogaredo,Nogaredo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022128,Nomi,Nomi,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022129,Novaledo,Novaledo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022130,Ospedaletto,Ospedaletto,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022139,Pergine Valsugana,Pergine Valsugana,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022144,Pomarolo,Pomarolo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022153,Riva del Garda,Riva del Garda,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022156,Roncegno,Roncegno Terme,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022161,Rovereto,Rovereto,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022160,Roverè della Luna,Roverè della Luna,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022231,Dorsino,San Lorenzo Dorsino,Trento,yes,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022167,Faedo + San Michele all’Adige,San Michele all'Adige,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022171,Scurelle,Scurelle,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022172,Segonzano,Segonzano,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022180,Spormaggiore,Spormaggiore,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022182,Stenico,Stenico,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022183,Storo,Storo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022188,Telve,Telve,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022189,Telve di sopra,Telve di Sopra,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022190,Tenna,Tenna,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022191,Tenno,Tenno,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022193,Terragnolo,Terragnolo,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022251,Nave S.Rocco + Zambana,Terre d'Adige,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022200,Ton,Ton,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022203,Trambileno,Trambileno,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022205,Trento,Trento,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022210,Vallarsa,Vallarsa,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022248,Padergnone + Terlago + Vezzano,Vallelaghi,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022222,Villa Lagarina,Villa Lagarina,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf
+wr_0168,IT_022224,Volano,Volano,Trento,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Trento.pdf

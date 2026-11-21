@@ -1,0 +1,299 @@
+[
+ {
+  "slug": "hagelandse_wijn",
+  "name": "Hagelandse wijn",
+  "country": "BE",
+  "aliases": [
+   "Hageland"
+  ],
+  "summary": "Belgium's first recognised wine appellation, in the rolling hills between Leuven, Aarschot, Diest and Tienen. Vines grow on its slopes over iron-rich sandy soils.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The text names the wine \"Hagelandse Wijn met gecontroleerde oorsprongsbenaming\" and requires all grapes to come from the recognised zone.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": "The official text names Chardonnay wines that recall Burgundy as the first of three main types."
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": "The official text names Müller-Thurgau wines, recalling those of Luxembourg, as a third type."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Hagelandse wijn",
+    "colour": "mixed",
+    "note": "PDO for still white, rosé and red wine."
+   },
+   {
+    "name": "Vlaamse mousserende kwaliteitswijn",
+    "colour": "sparkling",
+    "note": "Flemish PDO for quality sparkling wine; its zone includes all of Hageland."
+   },
+   {
+    "name": "Vlaamse landwijn",
+    "colour": "mixed",
+    "note": "Flemish PGI for still wine; its zone includes all of Hageland."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Belgian_wine",
+    "https://www.vrt.be/vrtnws/nl/2017/09/20/belgische-wijn--dit-zijn-onze-wijnstreken/",
+    "https://www.test-aankoop.be/voeding/wijn/dossier/belgische-wijnen",
+    "https://lv.vlaanderen.be/media/9155/download",
+    "http://data.europa.eu/eli/C/2024/1490/oj"
+   ],
+   "label_note": [
+    "https://lv.vlaanderen.be/media/9155/download"
+   ],
+   "grapes": [
+    "https://lv.vlaanderen.be/media/9155/download"
+   ],
+   "appellations": [
+    "http://data.europa.eu/eli/C/2024/1490/oj",
+    "https://lv.vlaanderen.be/media/9155/download",
+    "https://lv.vlaanderen.be/media/9156/download",
+    "https://lv.vlaanderen.be/media/9152/download"
+   ]
+  }
+ },
+ {
+  "slug": "haspengouwse_wijn",
+  "name": "Haspengouwse wijn",
+  "country": "BE",
+  "aliases": [
+   "Haspengouw"
+  ],
+  "summary": "Haspengouwse wijn comes from the fruit-growing south of Limburg, around Sint-Truiden, Borgloon and Tongeren. Its vineyards stand on the region's loam and marl.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "May carry the traditional term \"Gecontroleerde oorsprongsbenaming\"; all grapes must come from the recognised zone.",
+  "grapes": [],
+  "appellations": [
+   {
+    "name": "Haspengouwse wijn",
+    "colour": "mixed",
+    "note": "PDO for still white, rosé and red wine."
+   },
+   {
+    "name": "Vlaamse mousserende kwaliteitswijn",
+    "colour": "sparkling",
+    "note": "Flemish PDO for quality sparkling wine; its zone includes all of Haspengouw."
+   },
+   {
+    "name": "Vlaamse landwijn",
+    "colour": "mixed",
+    "note": "Flemish PGI for still wine; its zone includes all of Haspengouw."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.test-aankoop.be/voeding/wijn/dossier/belgische-wijnen",
+    "https://lv.vlaanderen.be/media/9153/download",
+    "http://data.europa.eu/eli/C/2024/1485/oj"
+   ],
+   "label_note": [
+    "https://lv.vlaanderen.be/media/9153/download"
+   ],
+   "appellations": [
+    "http://data.europa.eu/eli/C/2024/1485/oj",
+    "https://lv.vlaanderen.be/media/9153/download",
+    "https://lv.vlaanderen.be/media/9156/download",
+    "https://lv.vlaanderen.be/media/9152/download"
+   ]
+  }
+ },
+ {
+  "slug": "heuvellandse_wijn",
+  "name": "Heuvellandse wijn",
+  "country": "BE",
+  "aliases": [
+   "Heuvelland"
+  ],
+  "summary": "Heuvellandse wijn comes from the Heuvelland hills of West Flanders, with vineyards on the flanks of the Kemmelberg, the Monteberg and their neighbours. The soils are sandy, over iron-rich sandstone.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The text names the wine \"Heuvellandse Wijn met gecontroleerde oorsprongsbenaming\"; all grapes must come from the recognised zone.",
+  "grapes": [],
+  "appellations": [
+   {
+    "name": "Heuvellandse wijn",
+    "colour": "mixed",
+    "note": "PDO for still white, rosé and red wine."
+   },
+   {
+    "name": "Vlaamse mousserende kwaliteitswijn",
+    "colour": "sparkling",
+    "note": "Flemish PDO for quality sparkling wine; its zone includes all of Heuvelland."
+   },
+   {
+    "name": "Vlaamse landwijn",
+    "colour": "mixed",
+    "note": "Flemish PGI for still wine; its zone includes all of Heuvelland."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.test-aankoop.be/voeding/wijn/dossier/belgische-wijnen",
+    "https://lv.vlaanderen.be/media/9150/download",
+    "http://data.europa.eu/eli/C/2024/1487/oj"
+   ],
+   "label_note": [
+    "https://lv.vlaanderen.be/media/9150/download"
+   ],
+   "appellations": [
+    "http://data.europa.eu/eli/C/2024/1487/oj",
+    "https://lv.vlaanderen.be/media/9150/download",
+    "https://lv.vlaanderen.be/media/9156/download",
+    "https://lv.vlaanderen.be/media/9152/download"
+   ]
+  }
+ },
+ {
+  "slug": "cotes_de_sambre_et_meuse",
+  "name": "Côtes de Sambre et Meuse",
+  "country": "BE",
+  "aliases": [
+   "Côtes de Sambre-et-Meuse"
+  ],
+  "summary": "Covers the Walloon part of the Meuse basin, from the Sambre and Meuse valleys to the Ourthe, Lesse and Semois. Approved in 2004, it is for still wines; Walloon sparkling wine has its own names.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "May carry the traditional term \"Appellation d'origine contrôlée\". Grapes must be Vitis vinifera, picked in the Meuse basin and made into wine inside the zone.",
+  "grapes": [],
+  "appellations": [
+   {
+    "name": "Côtes de Sambre et Meuse",
+    "colour": "mixed",
+    "note": "PDO for still white, red and rosé wine from the Meuse basin in Wallonia."
+   },
+   {
+    "name": "Crémant de Wallonie",
+    "colour": "sparkling",
+    "note": "PDO covering all of Wallonia; white or rosé, second fermentation in bottle, at least nine months on lees."
+   },
+   {
+    "name": "Vin mousseux de qualité de Wallonie",
+    "colour": "sparkling",
+    "note": "PDO covering all of Wallonia; white or rosé, traditional method."
+   },
+   {
+    "name": "Vin de pays des jardins de Wallonie",
+    "colour": "mixed",
+    "note": "PGI covering all of Wallonia, for still white, red and rosé wine."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://wallex.wallonie.be/eli/arrete/2004/05/27/2004203295/2007/07/06",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11689",
+    "https://en.wikipedia.org/wiki/Belgian_wine",
+    "https://www.test-aankoop.be/voeding/wijn/dossier/belgische-wijnen",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10434",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10994"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11689"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11689",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10434",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10994",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10993"
+   ]
+  }
+ },
+ {
+  "slug": "moselle_luxembourgeoise",
+  "name": "Moselle Luxembourgeoise",
+  "country": "LU",
+  "aliases": [
+   "Luxembourg Moselle",
+   "AOP Moselle Luxembourgeoise"
+  ],
+  "summary": "Luxembourg's one appellation follows the Moselle for about 40 km, from Schengen to Wasserbillig. It makes mostly white wines, led by Rivaner, and a large share of Crémant de Luxembourg.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels must show \"Appellation d'origine protégée\" with \"Moselle Luxembourgeoise\". \"Coteaux de\" with a section, commune or canton name, and lieu-dit names, are reserved for hand-picked wines from base yields of at most 75 hl/ha.",
+  "grapes": [
+   {
+    "name": "Müller-Thurgau",
+    "local_note": "Sold as Rivaner; about 19% of the vineyard in 2024."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "About 16% of the vineyard in 2024."
+   },
+   {
+    "name": "Auxerrois",
+    "local_note": "About 15% of the vineyard in 2024."
+   },
+   {
+    "name": "Riesling",
+    "local_note": "About 13% of the vineyard in 2024."
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "About 13% of the vineyard in 2024."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "The main red grape, about 11% of the vineyard in 2024."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": "About 5% of the vineyard in 2024."
+   },
+   {
+    "name": "Elbling",
+    "local_note": "About 4% of the vineyard in 2024."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Moselle Luxembourgeoise",
+    "colour": "mixed",
+    "note": "The AOP for still white, red and rosé wine and for sparkling wine."
+   },
+   {
+    "name": "Crémant de Luxembourg",
+    "colour": "sparkling",
+    "note": "Traditional term within the AOP, not a separate registration; bottle-fermented white or rosé."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://agriculture.public.lu/dam-assets/veroeffentlichungen/dokumentationen/weinbau/oenologie/2020-cahier-des-charges-aop-moselle-luxembourgeoise.pdf",
+    "https://www.wine-searcher.com/regions-luxembourg",
+    "https://agriculture.public.lu/dam-assets/agrarstatistik/weinbau/superficie-2024.pdf",
+    "https://en.wikipedia.org/wiki/Luxembourg_wine",
+    "https://aop.public.lu/dam-assets/publications/20150429-depliant-aop-fr.pdf"
+   ],
+   "label_note": [
+    "https://data.legilux.public.lu/eli/etat/leg/rgd/2016/08/24/n8/jo/fr/html"
+   ],
+   "grapes": [
+    "https://agriculture.public.lu/dam-assets/agrarstatistik/weinbau/superficie-2024.pdf",
+    "https://www.wine-searcher.com/regions-luxembourg"
+   ],
+   "appellations": [
+    "https://data.legilux.public.lu/eli/etat/leg/rgd/2016/08/24/n8/jo/fr/html",
+    "https://agriculture.public.lu/dam-assets/veroeffentlichungen/dokumentationen/weinbau/oenologie/2020-cahier-des-charges-aop-moselle-luxembourgeoise.pdf",
+    "https://en.wikipedia.org/wiki/Luxembourg_wine",
+    "https://luxembourg.public.lu/en/visit/flavours/vintages-vineyard.html"
+   ]
+  }
+ }
+]

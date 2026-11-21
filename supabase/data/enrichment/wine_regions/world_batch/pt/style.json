@@ -1,0 +1,333 @@
+[
+ {
+  "slug": "vinho-verde",
+  "name": "Vinho Verde",
+  "aliases": [
+   "Vinhos Verdes",
+   "Região Demarcada dos Vinhos Verdes"
+  ],
+  "summary": "Portugal's rainy, Atlantic north west, mostly on granite. Its whites are light and fresh, with high acidity and fruity or floral aromas, from blends or single grapes such as Alvarinho and Loureiro.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Fish",
+  "label_note": "A wine labelled Alvarinho alone must be made only from Alvarinho; named beside other grapes it must be at least 30% of the blend. Origem do Alvarinho is reserved for Monção e Melgaço.",
+  "grapes": [
+   {
+    "name": "Albariño",
+    "local_note": "called Alvarinho here; the grape of Monção e Melgaço"
+   },
+   {
+    "name": "Loureiro",
+    "local_note": "leads the whites of the Lima sub-region"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Monção e Melgaço",
+    "colour": "mixed",
+    "note": "Along the south bank of the Minho, with cold winters and hot, dry summers. The home of Alvarinho, with Pedral for reds."
+   },
+   {
+    "name": "Lima",
+    "colour": "mixed",
+    "note": "The wettest sub-region. Whites are led by Loureiro; reds come mainly from Vinhão and Borraçal."
+   },
+   {
+    "name": "Cávado",
+    "colour": "mixed",
+    "note": "A mild, low river basin open to sea winds. Whites from Arinto, Loureiro and Trajadura; reds mostly Vinhão and Borraçal."
+   },
+   {
+    "name": "Ave",
+    "colour": "white",
+    "note": "Low ground across the Ave basin, exposed to sea winds. Mainly fresh whites with floral and citrus notes."
+   },
+   {
+    "name": "Basto",
+    "colour": "mixed",
+    "note": "The most inland sub-region, with cold, very wet winters and hot summers that suit late ripening Azal, Espadeiro and Rabo-de-Anho."
+   },
+   {
+    "name": "Sousa",
+    "colour": "mixed",
+    "note": "A mild transition zone. Arinto, Loureiro and Trajadura with Azal and Avesso; Espadeiro is much used for rosé."
+   },
+   {
+    "name": "Amarante",
+    "colour": "mixed",
+    "note": "Inland and higher, with warmer summers. Suits Azal, Avesso, Amaral and Espadeiro, and Vinhão ripens well for reds."
+   },
+   {
+    "name": "Paiva",
+    "colour": "mixed",
+    "note": "Inland and higher, where Amaral and above all Vinhão ripen fully; Avesso joins the usual whites."
+   },
+   {
+    "name": "Baião",
+    "colour": "mixed",
+    "note": "The south eastern edge, with colder winters and drier summers that ripen late grapes such as Azal, Avesso and Amaral."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202403412",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16924",
+    "https://winesofportugal.com/en/discover/wine-regions/vinho-verde/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "pairing": [
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide"
+   ],
+   "label_note": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202403412"
+   ],
+   "grapes": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202403412",
+    "https://winesofportugal.com/en/discover/wine-regions/vinho-verde/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16924",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202403412"
+   ]
+  }
+ },
+ {
+  "slug": "dao",
+  "name": "Dão",
+  "aliases": [
+   "Dao",
+   "Região Demarcada do Dão"
+  ],
+  "summary": "A granite plateau ringed by mountains in north central Portugal. Its reds, led by Touriga Nacional, are fresh rather than heavy and age well; Encruzado is the key white.",
+  "red_body": 3,
+  "red_acidity": 4,
+  "red_tannin": 3,
+  "pairing": null,
+  "label_note": "Dão Nobre must show the vintage and age at least 36 months for reds and 12 for whites; reds need at least 15% Touriga Nacional, whites at least 15% Encruzado.",
+  "grapes": [
+   {
+    "name": "Touriga Nacional",
+    "local_note": null
+   },
+   {
+    "name": "Mencía",
+    "local_note": "called Jaen here"
+   },
+   {
+    "name": "Tempranillo",
+    "local_note": "called Tinta Roriz or Aragonez here"
+   },
+   {
+    "name": "Encruzado",
+    "local_note": "the key white, grown almost only in Dão"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Alva",
+    "colour": "mixed",
+    "note": "The municipalities of Arganil, Oliveira do Hospital and Tábua."
+   },
+   {
+    "name": "Besteiros",
+    "colour": "mixed",
+    "note": "Mortágua, Santa Comba Dão and listed parishes of Tondela."
+   },
+   {
+    "name": "Castendo",
+    "colour": "mixed",
+    "note": "Penalva do Castelo with two parishes of Sátão."
+   },
+   {
+    "name": "Serra da Estrela",
+    "colour": "mixed",
+    "note": "Listed parishes of Gouveia and Seia."
+   },
+   {
+    "name": "Silgueiros",
+    "colour": "mixed",
+    "note": "Five parishes of Viseu, including Silgueiros itself."
+   },
+   {
+    "name": "Terras de Azurara",
+    "colour": "mixed",
+    "note": "The municipality of Mangualde."
+   },
+   {
+    "name": "Terras de Senhorim",
+    "colour": "mixed",
+    "note": "The municipalities of Carregal do Sal and Nelas."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16844",
+    "https://winesofportugal.com/en/discover/wine-regions/dao-e-lafoes/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://wineanorak.com/?p=28575",
+    "https://www.decanter.com/premium/regional-profile-dao-wines-worth-seeking-out-435787/"
+   ],
+   "red_body": [
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://www.decanter.com/premium/regional-profile-dao-wines-worth-seeking-out-435787/"
+   ],
+   "red_acidity": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16844",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://wineanorak.com/?p=28575",
+    "https://www.decanter.com/premium/regional-profile-dao-wines-worth-seeking-out-435787/"
+   ],
+   "red_tannin": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16844",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16844",
+    "https://faolex.fao.org/docs/pdf/por26220.pdf"
+   ],
+   "grapes": [
+    "https://winesofportugal.com/en/discover/wine-regions/dao-e-lafoes/",
+    "https://wineanorak.com/?p=28575",
+    "https://www.decanter.com/premium/regional-profile-dao-wines-worth-seeking-out-435787/",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16844"
+   ],
+   "appellations": [
+    "https://faolex.fao.org/docs/pdf/por26220.pdf",
+    "https://informador.pt/?p=79084"
+   ]
+  }
+ },
+ {
+  "slug": "bairrada",
+  "name": "Bairrada",
+  "aliases": [],
+  "summary": "Flat land near the Atlantic between the Vouga and Mondego rivers, largely on clay and limestone. Baga gives tannic, high acid reds that soften with age, and the region is known for sparkling wine.",
+  "red_body": null,
+  "red_acidity": 5,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "Clássico on the label means traditional grapes only, lower yields and long ageing: reds at least 30 months with 12 in bottle, whites 12 months with 6 in bottle.",
+  "grapes": [
+   {
+    "name": "Baga",
+    "local_note": "the dominant red"
+   },
+   {
+    "name": "Touriga Nacional",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.224.01.0043.01.ENG",
+    "https://winesofportugal.com/en/discover/wine-regions/bairrada/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "red_acidity": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.224.01.0043.01.ENG",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "red_tannin": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.224.01.0043.01.ENG",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "label_note": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.224.01.0043.01.ENG"
+   ],
+   "grapes": [
+    "https://winesofportugal.com/en/discover/wine-regions/bairrada/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.224.01.0043.01.ENG"
+   ]
+  }
+ },
+ {
+  "slug": "madeira",
+  "name": "Madeira",
+  "aliases": [
+   "Vinho da Madeira",
+   "Madeira Wine",
+   "Madère"
+  ],
+  "summary": "Fortified wine from steep volcanic terraces on Madeira and Porto Santo, with a high acidity found in every style. Styles run from dry Sercial and medium dry Verdelho to Boal and sweet Malvasia.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Age statements of 5, 10, 15, 20, 30 and over 40 years are allowed. Colheita and Frasqueira, also called Garrafeira, must show the harvest year.",
+  "grapes": [
+   {
+    "name": "Tinta Negra",
+    "local_note": "the most planted grape, used in every style"
+   },
+   {
+    "name": "Sercial",
+    "local_note": "gives the driest style"
+   },
+   {
+    "name": "Verdelho",
+    "local_note": "gives the medium dry style"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001",
+    "https://winesofportugal.com/en/discover/wine-regions/madeira/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001",
+    "https://winesofportugal.com/en/discover/wine-regions/madeira/"
+   ]
+  }
+ },
+ {
+  "slug": "setubal",
+  "name": "Setúbal",
+  "aliases": [
+   "Setubal",
+   "Moscatel de Setúbal"
+  ],
+  "summary": "South of Lisbon, the Setúbal DO is reserved for fortified Moscatel. Moscatel de Setúbal, from Muscat of Alexandria, is sweet and aromatic; Moscatel Roxo, from the grape of that name, is rarer.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Every Setúbal wine needs at least 67% Moscatel de Setúbal (white) or Moscatel Roxo (red); to carry either name on the label it needs 85%.",
+  "grapes": [
+   {
+    "name": "Muscat of Alexandria",
+    "local_note": "called Moscatel de Setúbal or Moscatel Graúdo here"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16888",
+    "https://winesofportugal.com/en/discover/wine-regions/peninsula-de-setubal/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16888"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16888",
+    "https://winesofportugal.com/en/discover/wine-regions/peninsula-de-setubal/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide"
+   ]
+  }
+ }
+]

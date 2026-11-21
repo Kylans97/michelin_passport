@@ -1,0 +1,612 @@
+[
+  {
+    "name": "Savagnin",
+    "aliases": [
+      "Savagnin Blanc",
+      "Naturé"
+    ],
+    "colour": "white",
+    "summary": "The Jura white grape behind vin jaune. High in acidity, with citrus and apple notes, and a close relative of Gewürztraminer.",
+    "tastes": [
+      "Citrus",
+      "Apple",
+      "Almond",
+      "Walnut"
+    ],
+    "aged_note": "Aged under a veil of yeast as vin jaune, it takes on walnut, hazelnut and spice notes.",
+    "body": null,
+    "acidity": 4,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=17636",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=savagnin",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=17636",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement"
+      ],
+      "summary": [
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.saq.com/en/content/inspiration/profiles/grape-variety-savagnin",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/",
+        "https://france.fr/en/article/5-minutes-wines-jura",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=savagnin",
+        "https://www.systembolaget.se/vin/druvans-varld/druvsorter/savagnin/"
+      ],
+      "tastes": [
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.systembolaget.se/vin/druvans-varld/druvsorter/savagnin/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=savagnin",
+        "https://www.saq.com/en/content/inspiration/profiles/grape-variety-savagnin",
+        "https://www.jura-vins.com/les-blancs.htm",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/"
+      ],
+      "aged_note": [
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.saq.com/en/content/inspiration/profiles/grape-variety-savagnin",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/",
+        "https://france.fr/en/article/5-minutes-wines-jura"
+      ],
+      "acidity": [
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.saq.com/en/content/inspiration/profiles/grape-variety-savagnin",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=savagnin"
+      ]
+    }
+  },
+  {
+    "name": "Poulsard",
+    "aliases": [
+      "Ploussard"
+    ],
+    "colour": "red",
+    "summary": "A Jura red that makes very pale, light wines with little tannin, so pale they are sometimes taken for rosé, with red berry fruit.",
+    "tastes": [
+      "Red berries"
+    ],
+    "aged_note": null,
+    "body": 2,
+    "acidity": null,
+    "tannin": 1,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement",
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.jura-vins.com/les-rouges.htm",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=poulsard"
+      ],
+      "colour": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement",
+        "https://www.jura-vins.com/les-rouges.htm"
+      ],
+      "summary": [
+        "https://www.jura-vins.com/les-rouges.htm",
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://winefolly.com/deep-dive/light-red-wine/",
+        "https://france.fr/en/article/5-minutes-wines-jura",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=poulsard",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/"
+      ],
+      "tastes": [
+        "https://www.jura-vins.com/les-rouges.htm",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=poulsard"
+      ],
+      "body": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=poulsard",
+        "https://winefolly.com/deep-dive/light-red-wine/"
+      ],
+      "tannin": [
+        "https://winefolly.com/deep-dive/light-red-wine/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/"
+      ]
+    }
+  },
+  {
+    "name": "Trousseau",
+    "aliases": [
+      "Bastardo",
+      "Merenzao"
+    ],
+    "colour": "red",
+    "summary": "A Jura red with more colour and tannin than Poulsard, showing strawberry and cherry fruit with pepper and spice. A relative of Savagnin.",
+    "tastes": [
+      "Strawberry",
+      "Cherry",
+      "Pepper",
+      "Forest floor"
+    ],
+    "aged_note": "It develops more intense, complex aromas over a few years in bottle.",
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement",
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=trousseau"
+      ],
+      "colour": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement",
+        "https://www.jura-vins.com/les-rouges.htm"
+      ],
+      "summary": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/",
+        "https://france.fr/en/article/5-minutes-wines-jura",
+        "https://www.jura-vins.com/les-rouges.htm",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=trousseau",
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/634/trousseau-cepage-noir-origine-utilisation-particularites/"
+      ],
+      "tastes": [
+        "https://www.jura-vins.com/les-rouges.htm",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=trousseau",
+        "https://france.fr/en/article/5-minutes-wines-jura"
+      ],
+      "aged_note": [
+        "https://www.jura-vins.com/les-rouges.htm",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=trousseau"
+      ]
+    }
+  },
+  {
+    "name": "Sylvaner",
+    "aliases": [
+      "Silvaner"
+    ],
+    "colour": "white",
+    "summary": "A white grape best known in Alsace and Germany, probably from Austria. Dry, light and fresh, with lively acidity and gentle floral, herbal notes.",
+    "tastes": [
+      "White flowers",
+      "Herbs",
+      "Mineral"
+    ],
+    "aged_note": null,
+    "body": 2,
+    "acidity": 4,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=11805",
+        "https://winefolly.com/grapes/silvaner/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=silvaner",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=11805",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement"
+      ],
+      "summary": [
+        "https://www.vinsalsace.com/en/gouts-et-couleurs/cepages/frais-et-secs/sylvaner-dalsace/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=silvaner",
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=11805",
+        "https://winefolly.com/grapes/silvaner/",
+        "https://hachette-vins.com/tout-sur-le-vin/appellations-vins/90/alsace-sylvaner"
+      ],
+      "tastes": [
+        "https://www.vinsalsace.com/en/gouts-et-couleurs/cepages/frais-et-secs/sylvaner-dalsace/",
+        "https://hachette-vins.com/tout-sur-le-vin/appellations-vins/90/alsace-sylvaner",
+        "https://winefolly.com/grapes/silvaner/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=silvaner"
+      ],
+      "body": [
+        "https://winefolly.com/grapes/silvaner/",
+        "https://hachette-vins.com/tout-sur-le-vin/appellations-vins/90/alsace-sylvaner"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/silvaner/",
+        "https://www.vinsalsace.com/en/gouts-et-couleurs/cepages/frais-et-secs/sylvaner-dalsace/",
+        "https://hachette-vins.com/tout-sur-le-vin/appellations-vins/90/alsace-sylvaner"
+      ]
+    }
+  },
+  {
+    "name": "Jacquère",
+    "aliases": [],
+    "colour": "white",
+    "summary": "The most planted white grape of Savoie, giving fresh, light wines with white flowers, pear and citrus, made for early drinking.",
+    "tastes": [
+      "White flowers",
+      "Pear",
+      "Citrus"
+    ],
+    "aged_note": "Made to be drunk young, within a few years of the vintage.",
+    "body": 2,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "colour": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=jacquere"
+      ],
+      "summary": [
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=jacquere",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps"
+      ],
+      "tastes": [
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=jacquere",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps"
+      ],
+      "aged_note": [
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps",
+        "https://winefolly.com/deep-dive/savoie-wine-guide/"
+      ],
+      "body": [
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=jacquere"
+      ]
+    }
+  },
+  {
+    "name": "Mondeuse",
+    "aliases": [
+      "Mondeuse Noire"
+    ],
+    "colour": "red",
+    "summary": "A Savoie red with deep colour, firm structure and strawberry, raspberry and spice notes. It rewards a few years of cellaring.",
+    "tastes": [
+      "Strawberry",
+      "Raspberry",
+      "Spice"
+    ],
+    "aged_note": "Often best after two years or more in bottle, and good examples keep for many years.",
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": {
+      "name": "Syrah",
+      "note": "A relative of Syrah that shares some of its spice."
+    },
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=7921",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=7921",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement"
+      ],
+      "summary": [
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=mondeuse",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/261/savoie-vin-de",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps"
+      ],
+      "tastes": [
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/261/savoie-vin-de",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/"
+      ],
+      "aged_note": [
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=mondeuse"
+      ],
+      "similar": [
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=mondeuse",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps"
+      ]
+    }
+  },
+  {
+    "name": "Altesse",
+    "aliases": [
+      "Roussette"
+    ],
+    "colour": "white",
+    "summary": "A Savoie white grape, also called Roussette, giving fuller wines than Jacquère, with almond, honey, pineapple and bergamot notes.",
+    "tastes": [
+      "Almond",
+      "Honey",
+      "Pineapple",
+      "Bergamot"
+    ],
+    "aged_note": "It improves with a few years in bottle.",
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=354",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=altesse",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps",
+        "https://winefolly.com/deep-dive/savoie-wine-guide/"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=354",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-4e7522c5-c36c-4a53-8f45-aedf50e7f9de/telechargement"
+      ],
+      "summary": [
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/23/vins-de-savoie-et-du-bugey-les-cepages-et-styles-de-vins/",
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://hachette-vins.com/guide-vins/actualite-vin/533/altesse-cepage-blanc-origine-utilisation-particularites",
+        "https://www.vinmonopolet.no/fag/drueleksikon?id=altesse"
+      ],
+      "tastes": [
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps",
+        "https://hachette-vins.com/guide-vins/actualite-vin/533/altesse-cepage-blanc-origine-utilisation-particularites"
+      ],
+      "aged_note": [
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/261/savoie-vin-de"
+      ]
+    }
+  },
+  {
+    "name": "Carignan",
+    "aliases": [
+      "Carignan Noir",
+      "Mazuelo",
+      "Cariñena",
+      "Samsó",
+      "Carignano"
+    ],
+    "colour": "red",
+    "summary": "A red grape from Spain, widely grown in southern France, with bright acidity and red fruit. The best wines tend to come from old vines with low yields.",
+    "tastes": [
+      "Red fruit",
+      "Herbs",
+      "Meaty notes"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": 4,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=2098",
+        "https://riojawine.com/en/the-designation/grape-varieties/mazuelo/",
+        "https://www.vins-rhone.com/en/carignan-grape-variety",
+        "https://www.hachette-vins.com/tout-sur-le-vin/cepages-vins/c",
+        "https://winefolly.com/deep-dive/carignan-guide-food-wine/"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=2098",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/551/carignan-cepage-noir-origine-utilisation-particularites/"
+      ],
+      "summary": [
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/551/carignan-cepage-noir-origine-utilisation-particularites/",
+        "https://www.vins-rhone.com/en/carignan-grape-variety",
+        "https://winefolly.com/deep-dive/carignan-guide-food-wine/",
+        "https://vinepair.com/articles/carignan-underrated-wine/",
+        "https://riojawine.com/en/the-designation/grape-varieties/mazuelo/"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/carignan/",
+        "https://winefolly.com/deep-dive/carignan-guide-food-wine/",
+        "https://vinepair.com/articles/carignan-underrated-wine/",
+        "https://riojawine.com/en/the-designation/grape-varieties/mazuelo/"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/carignan/",
+        "https://www.vins-rhone.com/en/carignan-grape-variety",
+        "https://riojawine.com/en/the-designation/grape-varieties/mazuelo/",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/551/carignan-cepage-noir-origine-utilisation-particularites/",
+        "https://vinepair.com/articles/carignan-underrated-wine/"
+      ]
+    }
+  },
+  {
+    "name": "Vermentino",
+    "aliases": [
+      "Rolle",
+      "Vermentinu"
+    ],
+    "colour": "white",
+    "summary": "A white grape grown around the Mediterranean and known in southern France as Rolle. It gives light, fresh wines with notes of grapefruit, apple and almond.",
+    "tastes": [
+      "Grapefruit",
+      "Apple",
+      "Almond"
+    ],
+    "aged_note": null,
+    "body": 2,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=12989",
+        "https://www.vins-rhone.com/en/rolle-or-vermentino-grape-variety",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/618/rolle-vermentino-cepage-blanc-origine-utilisation-particularites/",
+        "https://winefolly.com/grapes/vermentino/"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=12989",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/618/rolle-vermentino-cepage-blanc-origine-utilisation-particularites/"
+      ],
+      "summary": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/cepages-vins/v",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/618/rolle-vermentino-cepage-blanc-origine-utilisation-particularites/",
+        "https://www.vins-rhone.com/en/rolle-or-vermentino-grape-variety",
+        "https://winefolly.com/grapes/vermentino/",
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=12989"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/vermentino/",
+        "https://www.vins-rhone.com/en/rolle-or-vermentino-grape-variety",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/618/rolle-vermentino-cepage-blanc-origine-utilisation-particularites/"
+      ],
+      "body": [
+        "https://winefolly.com/grapes/vermentino/",
+        "https://www.vins-rhone.com/en/rolle-or-vermentino-grape-variety"
+      ]
+    }
+  },
+  {
+    "name": "Tannat",
+    "aliases": [
+      "Harriague"
+    ],
+    "colour": "red",
+    "summary": "A red grape with thick skins from southwest France, best known from Madiran and also widely grown in Uruguay. It makes robust wines with firm tannins.",
+    "tastes": [
+      "Plum",
+      "Smoke"
+    ],
+    "aged_note": "It benefits from bottle age, and good examples can be kept for ten years or more.",
+    "body": 5,
+    "acidity": null,
+    "tannin": 5,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=12257",
+        "https://winefolly.com/grapes/tannat/"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=12257",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/631/tannat-cepage-noir-origine-utilisation-particularites/"
+      ],
+      "summary": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://tablascreek.com/vineyard_and_winemaking/grapes/tannat",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/631/tannat-cepage-noir-origine-utilisation-particularites/",
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=12257"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://tablascreek.com/vineyard_and_winemaking/grapes/tannat"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://tablascreek.com/vineyard_and_winemaking/grapes/tannat",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/631/tannat-cepage-noir-origine-utilisation-particularites/"
+      ],
+      "body": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://tablascreek.com/vineyard_and_winemaking/grapes/tannat"
+      ],
+      "tannin": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/631/tannat-cepage-noir-origine-utilisation-particularites/",
+        "https://tablascreek.com/vineyard_and_winemaking/grapes/tannat"
+      ]
+    }
+  },
+  {
+    "name": "Grenache Blanc",
+    "aliases": [
+      "Garnacha Blanca"
+    ],
+    "colour": "white",
+    "summary": "The white form of Grenache, from Spain and also grown in southern France. Its wines are round and low in acidity, and it is often used in blends.",
+    "tastes": [
+      "Plum"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": 2,
+    "tannin": null,
+    "similar": {
+      "name": "Grenache",
+      "note": "Grenache Blanc is a colour mutation of the same grape."
+    },
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=4457",
+        "https://www.vins-rhone.com/en/grenache-blanc-grape-variety"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=4457",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/576/grenache-cepage-blanc-origine-utilisation-particularites/"
+      ],
+      "summary": [
+        "https://winefolly.com/grapes/grenache-blanc/",
+        "https://www.vins-rhone.com/en/grenache-blanc-grape-variety",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/576/grenache-cepage-blanc-origine-utilisation-particularites/",
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=4457"
+      ],
+      "tastes": [
+        "https://winefolly.com/grapes/grenache-blanc/",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/576/grenache-cepage-blanc-origine-utilisation-particularites/"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/grenache-blanc/",
+        "https://www.vins-rhone.com/en/grenache-blanc-grape-variety",
+        "https://www.hachette-vins.com/guide-vins/actualite-vin/576/grenache-cepage-blanc-origine-utilisation-particularites/"
+      ],
+      "similar": [
+        "https://winefolly.com/grapes/grenache-blanc/",
+        "https://www.vins-rhone.com/en/grenache-blanc-grape-variety",
+        "https://www.hachette-vins.com/tout-sur-le-vin/cepages-vins/g"
+      ]
+    }
+  },
+  {
+    "name": "Macabeo",
+    "aliases": [
+      "Viura",
+      "Macabeu"
+    ],
+    "colour": "white",
+    "summary": "A white grape from Spain, called Viura in Rioja and Macabeu in Roussillon, and used in Cava. It mostly makes light, floral dry whites.",
+    "tastes": [
+      "Floral"
+    ],
+    "aged_note": "Its wines have good ageing capacity.",
+    "body": 2,
+    "acidity": 3,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=13127",
+        "https://winefolly.com/grapes/viura/",
+        "https://www.cava.wine/en/origin-cava/authorised-grape-varieties/",
+        "https://riojawine.com/en/the-designation/grape-varieties/viura/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/cepages-vins/M/",
+        "https://www.roussillon.wine/vins-et-terroirs/nos-cepages/"
+      ],
+      "colour": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=13127",
+        "https://www.hachette-vins.com/tout-sur-le-vin/cepages-vins/M/"
+      ],
+      "summary": [
+        "https://www.vivc.de/index.php?r=passport%2Fview&id=13127",
+        "https://www.hachette-vins.com/tout-sur-le-vin/cepages-vins/M/",
+        "https://riojawine.com/en/the-designation/grape-varieties/viura/",
+        "https://winefolly.com/grapes/viura/",
+        "https://www.cava.wine/en/origin-cava/authorised-grape-varieties/",
+        "https://www.roussillon.wine/vins-et-terroirs/nos-cepages/"
+      ],
+      "tastes": [
+        "https://riojawine.com/en/the-designation/grape-varieties/viura/",
+        "https://www.cava.wine/en/origin-cava/authorised-grape-varieties/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/cepages-vins/M/"
+      ],
+      "aged_note": [
+        "https://winefolly.com/grapes/viura/",
+        "https://www.cava.wine/en/origin-cava/authorised-grape-varieties/"
+      ],
+      "body": [
+        "https://winefolly.com/grapes/viura/",
+        "https://www.cava.wine/en/origin-cava/authorised-grape-varieties/"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/viura/",
+        "https://www.cava.wine/en/origin-cava/authorised-grape-varieties/"
+      ]
+    }
+  }
+]

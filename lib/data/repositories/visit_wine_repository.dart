@@ -6,35 +6,63 @@ const _legacyWineColumns =
 
 // The picked estate comes along with the wine (20261101550000), with its
 // country's name, so a cellar can be grouped without a second query.
-const _wineColumns =
-    '$_legacyWineColumns, vineyard_id, '
+const _estateColumns =
+    'vineyard_id, '
     'vineyards(id, vineyard_code, name, region, city, country_code, '
     'countries(name))';
 
-/// One wine in a member's cellar, with the day of the visit it was on.
+const _linkedWineColumns = '$_legacyWineColumns, $_estateColumns';
+
+// The verdict and note (20261101640000).
+const _wineColumns = '$_linkedWineColumns, verdict, tasting_note';
+
+// A wine kept without a visit (`cellar_wines`, 20261101640000).
+const _cellarWineColumns =
+    '$_wineColumns, setting, place, drunk_on, created_at';
+
+/// One wine in a member's cellar: from a visit ([visitId] and [date] the
+/// visit's day), or kept without one ([visitId] null, [date] the day the
+/// member gave, if any).
 class CellarWine {
   final VisitWine wine;
-  final String visitId;
-  final DateTime? visitedOn;
+  final String? visitId;
+  final DateTime? date;
 
-  const CellarWine({required this.wine, required this.visitId, this.visitedOn});
+  const CellarWine({required this.wine, this.visitId, this.date});
+
+  bool get isKeptWithoutVisit => visitId == null;
 }
 
 CellarWine _cellarWine(Map<String, dynamic> row) => CellarWine(
   wine: VisitWine.fromJson(row),
   visitId: row['visit_id'] as String,
-  visitedOn: switch (row['visits']) {
+  date: switch (row['visits']) {
     {'visited_on': final String day} => DateTime.tryParse(day),
     _ => null,
   },
 );
 
+CellarWine _keptWine(Map<String, dynamic> row) {
+  final wine = VisitWine.fromJson(row);
+  return CellarWine(wine: wine, date: wine.drunkOn);
+}
+
+/// Newest first: the day drunk where there is one, else when it was noted.
+int _newestFirst(CellarWine a, CellarWine b) {
+  final da = a.date, db = b.date;
+  if (da == null && db == null) return 0;
+  if (da == null) return 1;
+  if (db == null) return -1;
+  return db.compareTo(da);
+}
+
 /// The wines on a visit or stay (`visit_wines`, 20261101330000). RLS makes a
 /// wine exactly as visible as its visit, so nothing is filtered here.
 ///
-/// Reads ask for the estate link first and fall back to the columns every
-/// database has, so this build keeps showing wines before the vineyards
-/// migration is applied.
+/// Reads ask for the verdict and the estate link first and fall back step
+/// by step to the columns every database has, so this build keeps showing
+/// wines before the vineyards or the verdicts migration is applied.
+/// `cellar_wines` is read only when it exists.
 class VisitWineRepository {
   VisitWineRepository(this._client);
 
@@ -43,11 +71,14 @@ class VisitWineRepository {
   Future<List<Map<String, dynamic>>> _withFallback(
     Future<List<dynamic>> Function(String columns) query,
   ) async {
-    try {
-      return (await query(_wineColumns)).cast<Map<String, dynamic>>();
-    } on PostgrestException {
-      return (await query(_legacyWineColumns)).cast<Map<String, dynamic>>();
+    for (final columns in const [_wineColumns, _linkedWineColumns]) {
+      try {
+        return (await query(columns)).cast<Map<String, dynamic>>();
+      } on PostgrestException {
+        // An older database: try the next, narrower set.
+      }
     }
+    return (await query(_legacyWineColumns)).cast<Map<String, dynamic>>();
   }
 
   Future<List<VisitWine>> loadForVisit(String visitId) async {
@@ -62,8 +93,9 @@ class VisitWineRepository {
     return [for (final row in rows) VisitWine.fromJson(row)];
   }
 
-  /// Every wine the member has logged, newest first, for the Passport's
-  /// Cellar. Only the member's own: the cellar is personal.
+  /// Every wine the member has logged, from visits and kept without one,
+  /// newest first, for the Passport's Cellar. Only the member's own: the
+  /// cellar is personal.
   Future<List<CellarWine>> loadCellar(String userId) async {
     final rows = await _withFallback(
       (columns) => _client
@@ -73,24 +105,49 @@ class VisitWineRepository {
           .order('created_at', ascending: false)
           .limit(1000),
     );
-    return [for (final row in rows) _cellarWine(row)];
+    final kept = await _loadKept({'user_id': userId});
+    return [for (final row in rows) _cellarWine(row), ...kept]
+      ..sort(_newestFirst);
   }
 
-  /// The member's own wines from one estate, for "In your Passport" on the
-  /// estate's page.
+  /// The member's wines kept without a visit, matching every column in
+  /// [filters]. Empty before the verdicts migration is applied, never an
+  /// error.
+  Future<List<CellarWine>> _loadKept(Map<String, String> filters) async {
+    try {
+      var query = _client.from('cellar_wines').select(_cellarWineColumns);
+      for (final f in filters.entries) {
+        query = query.eq(f.key, f.value);
+      }
+      final rows = await query
+          .order('created_at', ascending: false)
+          .limit(1000);
+      return [for (final row in rows) _keptWine(row)];
+    } on PostgrestException {
+      return const [];
+    }
+  }
+
+  /// The member's own wines from one estate, from visits and kept without
+  /// one, for "In your Passport" on the estate's page.
   Future<List<CellarWine>> loadForVineyard({
     required String userId,
     required String vineyardId,
   }) async {
-    final rows = await _client
-        .from('visit_wines')
-        .select('$_wineColumns, visit_id, visits(visited_on)')
-        .eq('user_id', userId)
-        .eq('vineyard_id', vineyardId)
-        .order('created_at', ascending: false);
-    return [
-      for (final row in rows as List) _cellarWine(row as Map<String, dynamic>),
-    ];
+    final rows = await _withFallback(
+      (columns) => _client
+          .from('visit_wines')
+          .select('$columns, visit_id, visits(visited_on)')
+          .eq('user_id', userId)
+          .eq('vineyard_id', vineyardId)
+          .order('created_at', ascending: false),
+    );
+    final kept = await _loadKept({
+      'user_id': userId,
+      'vineyard_id': vineyardId,
+    });
+    return [for (final row in rows) _cellarWine(row), ...kept]
+      ..sort(_newestFirst);
   }
 
   Future<VisitWine> add({
@@ -112,19 +169,41 @@ class VisitWineRepository {
     return wine.copyWith(id: row['id'] as String);
   }
 
-  /// [wasLinked]: the wine had an estate before, so a cleared link is
-  /// written as null rather than left out.
-  Future<void> update(
-    String wineId,
-    VisitWine wine, {
-    bool wasLinked = false,
-  }) => _client
-      .from('visit_wines')
-      .update(wine.toRow(withVineyard: wasLinked))
-      .eq('id', wineId);
+  /// [previous]: the wine as it was, so a cleared estate link, verdict or
+  /// note is written as null rather than left out.
+  Future<void> update(String wineId, VisitWine wine, {VisitWine? previous}) =>
+      _client
+          .from('visit_wines')
+          .update(
+            wine.toRow(
+              withVineyard: previous?.vineyardId != null,
+              withVerdict:
+                  previous?.verdict != null || previous?.tastingNote != null,
+            ),
+          )
+          .eq('id', wineId);
 
   Future<void> delete(String wineId) =>
       _client.from('visit_wines').delete().eq('id', wineId);
+
+  /// A wine kept in the Cellar without a visit (`cellar_wines`).
+  Future<VisitWine> addKept({
+    required String userId,
+    required VisitWine wine,
+  }) async {
+    final row = await _client
+        .from('cellar_wines')
+        .insert({...wine.toCellarRow(), 'user_id': userId})
+        .select('id')
+        .single();
+    return wine.copyWith(id: row['id'] as String);
+  }
+
+  Future<void> updateKept(String wineId, VisitWine wine) =>
+      _client.from('cellar_wines').update(wine.toCellarRow()).eq('id', wineId);
+
+  Future<void> deleteKept(String wineId) =>
+      _client.from('cellar_wines').delete().eq('id', wineId);
 
   /// The member's own earlier producers and wine names, newest first, for
   /// the suggestions in the add sheet. Never anyone else's.

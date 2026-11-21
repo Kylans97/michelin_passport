@@ -1,0 +1,4 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0259,ZA_ward_hemel-en-aarde-valley,"Hemel-en-Aarde Valley (ward, Walker Bay district)",Hemel-en-Aarde Valley,Western Cape,,https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1
+wr_0259,ZA_ward_upper-hemel-en-aarde-valley,"Upper Hemel-en-Aarde Valley (ward, Walker Bay district)",Upper Hemel-en-Aarde Valley,Western Cape,,https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1
+wr_0259,ZA_ward_hemel-en-aarde-ridge,"Hemel-en-Aarde Ridge (ward, Walker Bay district)",Hemel-en-Aarde Ridge,Western Cape,,https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1

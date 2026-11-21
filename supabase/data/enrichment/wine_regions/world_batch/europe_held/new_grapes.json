@@ -1,0 +1,133 @@
+[
+ {
+  "name": "Kéknyelű",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A rare white grape of Badacsony, on the north shore of Lake Balaton, grown almost nowhere else. Restrained, lightly aromatic dry whites with citrus, herbal and almond notes and a mineral edge.",
+  "tastes": [
+   "citrus",
+   "almond",
+   "herbs",
+   "blossom"
+  ],
+  "aged_note": "Benefits from a few years in bottle.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://bor.hu/en/keknyelu/",
+    "https://worldoffinewine.com/news-features/wine-hungary-keknyelu"
+   ],
+   "tastes": [
+    "https://bor.hu/en/keknyelu/",
+    "https://worldoffinewine.com/news-features/wine-hungary-keknyelu"
+   ],
+   "aged_note": [
+    "https://bor.hu/en/keknyelu/",
+    "https://worldoffinewine.com/news-features/wine-hungary-keknyelu"
+   ]
+  }
+ },
+ {
+  "name": "Schioppettino",
+  "aliases": [
+   "Ribolla Nera",
+   "Pocalza"
+  ],
+  "colour": "red",
+  "summary": "A red grape of Friuli and neighbouring Slovenia, at home around Prepotto in the Colli Orientali. Aromatic, medium bodied reds with pepper, raspberry and violet over high acidity.",
+  "tastes": [
+   "pepper",
+   "raspberry",
+   "violet"
+  ],
+  "aged_note": null,
+  "body": 3,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://vinepair.com/articles/italian-wine-schioppettino-explainer",
+    "https://en.wikipedia.org/wiki/Schioppettino"
+   ],
+   "summary": [
+    "https://vinepair.com/articles/italian-wine-schioppettino-explainer",
+    "https://en.wikipedia.org/wiki/Schioppettino",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli"
+   ],
+   "tastes": [
+    "https://vinepair.com/articles/italian-wine-schioppettino-explainer",
+    "https://en.wikipedia.org/wiki/Schioppettino",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli",
+    "https://www.vinetur.com/en/20260902106218/colli-orientali-draws-fresh-attention-for-native-red-wines.html"
+   ],
+   "body": [
+    "https://vinepair.com/articles/italian-wine-schioppettino-explainer",
+    "https://en.wikipedia.org/wiki/Schioppettino"
+   ],
+   "acidity": [
+    "https://vinepair.com/articles/italian-wine-schioppettino-explainer",
+    "https://en.wikipedia.org/wiki/Schioppettino",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli"
+   ]
+  }
+ },
+ {
+  "name": "Picolit",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A rare white grape of Friuli whose poor fruit set gives very low yields. Used almost only for sweet wines from late picked or dried grapes, with soft floral aromas and peach and apricot.",
+  "tastes": [
+   "apricot",
+   "peach",
+   "floral"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.awri.com.au/s2389-alternative-varieties-picolit",
+    "https://en.wikipedia.org/wiki/Picolit",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli"
+   ],
+   "tastes": [
+    "https://www.awri.com.au/s2389-alternative-varieties-picolit",
+    "https://en.wikipedia.org/wiki/Picolit"
+   ]
+  }
+ },
+ {
+  "name": "Malvasia de Colares",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A white grape of the Colares sands, genetically distinct from other Malvasias. Its wines are saline, with citrus and waxy notes.",
+  "tastes": [
+   "citrus",
+   "saline",
+   "beeswax"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.guildsomm.com/public_content/features/articles/b/jens-peter-nebsbjerg/posts/colares-wines-by-the-waves",
+    "https://wineanorak.com/2020/05/20/viuva-gomes-the-future-of-colares-one-of-portugals-historic-wine-regions/",
+    "https://www.nationalgeographic.com/travel/article/sandy-vines-subtle-wines-lisbons-underrated-wine-region"
+   ],
+   "tastes": [
+    "https://www.guildsomm.com/public_content/features/articles/b/jens-peter-nebsbjerg/posts/colares-wines-by-the-waves",
+    "https://www.nationalgeographic.com/travel/article/sandy-vines-subtle-wines-lisbons-underrated-wine-region",
+    "https://wineanorak.com/2020/05/20/viuva-gomes-the-future-of-colares-one-of-portugals-historic-wine-regions/"
+   ]
+  }
+ }
+]

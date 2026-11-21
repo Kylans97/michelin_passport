@@ -1,0 +1,594 @@
+[
+ {
+  "name": "Xynisteri",
+  "aliases": [
+   "Xinisteri",
+   "Ξυνιστέρι"
+  ],
+  "colour": "white",
+  "summary": "The most planted white grape of Cyprus, giving delicate, fresh whites with citrus and stone fruit notes, at its best from high vineyards. One of the two Commandaria grapes.",
+  "tastes": [
+   "Lemon",
+   "Stone fruit",
+   "White flowers",
+   "Herbs"
+  ],
+  "aged_note": "Good examples can age, gaining complexity over several years in bottle.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875",
+    "https://www.cylaw.org/KDP/data/2004_1_706.pdf"
+   ],
+   "colour": [
+    "https://karakasis.mw/greek-varieties/?gv_page=3",
+    "https://app.ckbk.com/reference/wine05383c03s001e450e009/vine-varieties",
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines"
+   ],
+   "summary": [
+    "https://karakasis.mw/greek-varieties/?gv_page=3",
+    "https://app.ckbk.com/reference/wine05383c03s001e450e009/vine-varieties",
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2025/05/22/it-is-may-time-for-cyprus-xynisteri",
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf"
+   ],
+   "tastes": [
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2025/05/22/it-is-may-time-for-cyprus-xynisteri",
+    "https://karakasis.mw/greek-varieties/?gv_page=3"
+   ],
+   "aged_note": [
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2025/05/08/myth-or-fact-white-wine-cant-be-aged",
+    "https://cyprus-mail.com/2025/05/22/it-is-may-time-for-cyprus-xynisteri"
+   ]
+  }
+ },
+ {
+  "name": "Mavro",
+  "aliases": [
+   "Local Mavro"
+  ],
+  "colour": "red",
+  "summary": "The most planted grape of Cyprus, a red that tends to give pale, lighter wines with red fruit and soft tannins. With Xynisteri it makes the sweet Commandaria.",
+  "tastes": [
+   "Red fruit"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": null,
+  "tannin": 2,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875"
+   ],
+   "colour": [
+    "https://karakasis.mw/greek-varieties/?gv_page=3",
+    "https://app.ckbk.com/reference/wine05383c03s001e450e009/vine-varieties",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875"
+   ],
+   "summary": [
+    "https://app.ckbk.com/reference/wine05383c03s001e450e009/vine-varieties",
+    "https://karakasis.mw/greek-varieties/?gv_page=3",
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko",
+    "https://lisbon-express.wipo.int/pdf/CRTINF_25557_Current%20information%20-%20AO-1240.pdf"
+   ],
+   "tastes": [
+    "https://karakasis.mw/greek-varieties/?gv_page=3",
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines"
+   ],
+   "body": [
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko"
+   ],
+   "tannin": [
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko",
+    "https://karakasis.mw/greek-varieties/?gv_page=3"
+   ]
+  }
+ },
+ {
+  "name": "Maratheftiko",
+  "aliases": [
+   "Vamvakada"
+  ],
+  "colour": "red",
+  "summary": "A rare red native to Cyprus whose vines cannot pollinate themselves and need partner vines. Its wines show violet, cherry and dark berry fruit with firm tannins.",
+  "tastes": [
+   "Violet",
+   "Cherry",
+   "Blackberry"
+  ],
+  "aged_note": "Good examples are built to age over the medium to long term, with or without oak.",
+  "body": 3,
+  "acidity": null,
+  "tannin": 4,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://app.ckbk.com/reference/wine05383c03s001e450e009/vine-varieties",
+    "https://www.cylaw.org/KDP/data/2004_1_706.pdf",
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko"
+   ],
+   "colour": [
+    "https://karakasis.mw/greek-varieties/?gv_page=4",
+    "https://app.ckbk.com/reference/wine05383c03s001e450e009/vine-varieties",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11875"
+   ],
+   "summary": [
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko",
+    "https://karakasis.mw/greek-varieties/?gv_page=4",
+    "https://app.ckbk.com/reference/wine05383c03s001e450e009/vine-varieties"
+   ],
+   "tastes": [
+    "https://karakasis.mw/greek-varieties/?gv_page=4",
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko"
+   ],
+   "aged_note": [
+    "https://karakasis.mw/greek-varieties/?gv_page=4",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko"
+   ],
+   "body": [
+    "https://karakasis.mw/greek-varieties/?gv_page=4",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko"
+   ],
+   "tannin": [
+    "https://karakasis.mw/greek-varieties/?gv_page=4",
+    "https://cyprus-mail.com/2022/11/26/all-about-maratheftiko",
+    "https://worldoffinewine.com/travel/cyprus-best-producers-wines"
+   ]
+  }
+ },
+ {
+  "name": "Areni",
+  "aliases": [
+   "Areni Noir",
+   "Areni Noire",
+   "Sev Areni"
+  ],
+  "colour": "red",
+  "summary": "Armenia's most celebrated red grape, thick skinned and closely tied to Vayots Dzor. It gives fresh, red fruited wines that are structured but not heavily tannic.",
+  "tastes": [
+   "Cherry",
+   "Plum",
+   "Black pepper and spice"
+  ],
+  "aged_note": "Oak aged and older examples gain depth and tertiary notes.",
+  "body": 3,
+  "acidity": 4,
+  "tannin": 3,
+  "similar": {
+   "name": "Pinot Noir",
+   "note": "Writers often compare it with Pinot Noir."
+  },
+  "sources": {
+   "aliases": [
+    "https://vwfa.am/varieties/",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia",
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape",
+    "https://wineanorak.com/2021/11/22/armenian-wine-a-brief-study/"
+   ],
+   "colour": [
+    "https://vwfa.am/varieties/",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region"
+   ],
+   "summary": [
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region",
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape",
+    "https://vwfa.am/varieties/"
+   ],
+   "tastes": [
+    "https://vwfa.am/varieties/",
+    "https://wineanorak.com/2021/11/22/armenian-wine-a-brief-study/",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia",
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape"
+   ],
+   "aged_note": [
+    "https://vwfa.am/varieties/",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region"
+   ],
+   "body": [
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region"
+   ],
+   "acidity": [
+    "https://vwfa.am/varieties/",
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia"
+   ],
+   "tannin": [
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region",
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape"
+   ],
+   "similar": [
+    "https://daily.sevenfifty.com/a-benchmark-example-of-armenias-most-popular-red-grape",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia"
+   ]
+  }
+ },
+ {
+  "name": "Voskehat",
+  "aliases": [],
+  "colour": "white",
+  "summary": "Armenia's leading native white grape. It makes crisp, fresh wines with citrus, orchard fruit and floral notes, and a certain weight and texture.",
+  "tastes": [
+   "Citrus",
+   "Pear",
+   "White flowers"
+  ],
+  "aged_note": null,
+  "body": 3,
+  "acidity": 3,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "colour": [
+    "https://vwfa.am/varieties/",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia"
+   ],
+   "summary": [
+    "https://vwfa.am/varieties/",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia",
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region"
+   ],
+   "tastes": [
+    "https://vwfa.am/varieties/",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia",
+    "https://wineanorak.com/2021/11/22/armenian-wine-a-brief-study/"
+   ],
+   "body": [
+    "https://worldoffinewine.com/homepage-featured-articles/vayots-dzor-armenias-most-exciting-wine-region",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia"
+   ],
+   "acidity": [
+    "https://vwfa.am/varieties/",
+    "https://www.vinography.com/2025/04/kingdom-of-wine-drinking-the-past-present-and-future-in-armenia"
+   ]
+  }
+ },
+ {
+  "name": "Petit Verdot",
+  "aliases": [],
+  "colour": "red",
+  "summary": "A red grape from Bordeaux, used there in small amounts for blending, that gives deep colour and full bodied, firm wines with violet perfume.",
+  "tastes": [
+   "Violet",
+   "Black cherry",
+   "Plum",
+   "Lilac"
+  ],
+  "aged_note": "Ages well; time softens its firm structure.",
+  "body": 5,
+  "acidity": 3,
+  "tannin": 4,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/petit-verdot/",
+    "https://www.winetraveler.com/grape/petit-verdot/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/petit-verdot/",
+    "https://www.winetraveler.com/grape/petit-verdot/"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/petit-verdot/",
+    "https://www.winetraveler.com/grape/petit-verdot/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/petit-verdot/",
+    "https://www.winetraveler.com/grape/petit-verdot/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/petit-verdot/",
+    "https://www.winetraveler.com/grape/petit-verdot/"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/petit-verdot/",
+    "https://www.winetraveler.com/grape/petit-verdot/"
+   ]
+  }
+ },
+ {
+  "name": "Öküzgözü",
+  "aliases": [],
+  "colour": "red",
+  "summary": "A red grape from Elazığ in eastern Anatolia, named for its large dark berries. It gives fruity reds and is often blended with Boğazkere.",
+  "tastes": [
+   "Cherry",
+   "Berry fruit",
+   "Spice",
+   "Herbs"
+  ],
+  "aged_note": null,
+  "body": 3,
+  "acidity": 4,
+  "tannin": 3,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://web.archive.org/web/20191219121925/http://www.winesofturkey.org/okuzgozu/",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://www.wineanorak.com/wineblog/?p=11173",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "tastes": [
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey",
+    "https://www.wineanorak.com/wineblog/?p=11173",
+    "https://web.archive.org/web/20191219121925/http://www.winesofturkey.org/okuzgozu/",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/"
+   ],
+   "body": [
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://web.archive.org/web/20191219121925/http://www.winesofturkey.org/okuzgozu/"
+   ],
+   "acidity": [
+    "https://web.archive.org/web/20191219121925/http://www.winesofturkey.org/okuzgozu/",
+    "https://www.wineanorak.com/wineblog/?p=11173"
+   ],
+   "tannin": [
+    "https://www.wineanorak.com/wineblog/?p=11173",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/"
+   ]
+  }
+ },
+ {
+  "name": "Boğazkere",
+  "aliases": [
+   "Bogazkere"
+  ],
+  "colour": "red",
+  "summary": "A thick skinned red grape from Diyarbakır in eastern Turkey. It makes dark, firmly tannic reds and is often blended with Öküzgözü.",
+  "tastes": [
+   "Cherry",
+   "Mulberry",
+   "Spice",
+   "Leather"
+  ],
+  "aged_note": "Made to age; its firm tannins need time in bottle.",
+  "body": 4,
+  "acidity": null,
+  "tannin": 5,
+  "similar": {
+   "name": "Nebbiolo",
+   "note": "Its firm tannins are often compared with Nebbiolo."
+  },
+  "sources": {
+   "aliases": [
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.vinography.com/2012/12/turkish_wine_the_tasting_notes",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "summary": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://www.decanter.com/wine/turkey-wine-lands-on-the-rise-535193/",
+    "https://web.archive.org/web/20191219120104/http://www.winesofturkey.org/bogazkere/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "tastes": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.vinography.com/2012/12/turkish_wine_the_tasting_notes",
+    "https://web.archive.org/web/20191219120104/http://www.winesofturkey.org/bogazkere/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/"
+   ],
+   "aged_note": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.vinography.com/2012/12/turkish_wine_the_tasting_notes"
+   ],
+   "body": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://web.archive.org/web/20191219120104/http://www.winesofturkey.org/bogazkere/"
+   ],
+   "tannin": [
+    "https://web.archive.org/web/20191219120104/http://www.winesofturkey.org/bogazkere/",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "similar": [
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ]
+  }
+ },
+ {
+  "name": "Kalecik Karası",
+  "aliases": [
+   "Kalecik Karasi"
+  ],
+  "colour": "red",
+  "summary": "A red grape from Kalecik near Ankara in central Anatolia. It makes pale, light reds with fresh red fruit.",
+  "tastes": [
+   "Cherry",
+   "Raspberry"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": null,
+  "tannin": null,
+  "similar": {
+   "name": "Pinot Noir",
+   "note": "Writers liken it to Pinot Noir for its light, red fruited style."
+  },
+  "sources": {
+   "aliases": [
+    "https://www.decanter.com/wine-reviews-tastings/turkish-wines-to-try-329265/",
+    "https://www.decanter.com/dream-destination/decanters-dream-destination-argos-in-cappadocia-turkey-551191/",
+    "https://www.vinography.com/2012/12/turkish_wine_the_tasting_notes",
+    "https://www.wineanorak.com/wineblog/?p=9857"
+   ],
+   "summary": [
+    "https://web.archive.org/web/20260106180433/https://winesofturkey.org/kalecik-karasi/",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://ci.turkpatent.gov.tr/cografi-isaretler/detay/37960",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/dream-destination/decanters-dream-destination-argos-in-cappadocia-turkey-551191/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "tastes": [
+    "https://web.archive.org/web/20260106180433/https://winesofturkey.org/kalecik-karasi/",
+    "https://www.decanter.com/dream-destination/decanters-dream-destination-argos-in-cappadocia-turkey-551191/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836"
+   ],
+   "body": [
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/dream-destination/decanters-dream-destination-argos-in-cappadocia-turkey-551191/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "similar": [
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ]
+  }
+ },
+ {
+  "name": "Narince",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A white grape from Tokat in Anatolia. It gives rounder, fuller whites with citrus and yellow fruit, often fermented or matured in oak.",
+  "tastes": [
+   "Citrus",
+   "Yellow fruit",
+   "Floral",
+   "Orange"
+  ],
+  "aged_note": "Often fermented in oak and aged on its lees, which gives a rounder, richer wine.",
+  "body": 4,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://web.archive.org/web/20251207000349/https://winesofturkey.org/narince/",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/wine/turkey-wine-lands-on-the-rise-535193/",
+    "https://www.decanter.com/wine-reviews-tastings/turkish-wines-to-try-329265/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "tastes": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://web.archive.org/web/20251207000349/https://winesofturkey.org/narince/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey",
+    "https://www.decanter.com/wine-reviews-tastings/turkish-wines-to-try-329265/"
+   ],
+   "aged_note": [
+    "https://www.decanter.com/wine-reviews-tastings/turkish-wines-to-try-329265/",
+    "https://prospectmagazine.co.uk/society/43312/wine-tantalising-taste-of-another-turkey"
+   ],
+   "body": [
+    "https://web.archive.org/web/20251207000349/https://winesofturkey.org/narince/",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836"
+   ]
+  }
+ },
+ {
+  "name": "Emir",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A white grape native to Cappadocia in central Anatolia. It makes light, high acid whites with green apple and mineral notes, both still and sparkling.",
+  "tastes": [
+   "Green apple",
+   "Citrus",
+   "Mineral"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://web.archive.org/web/20260106060557/https://winesofturkey.org/emir/",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836",
+    "https://www.decanter.com/wine/turkey-wine-lands-on-the-rise-535193/"
+   ],
+   "tastes": [
+    "https://web.archive.org/web/20260106060557/https://winesofturkey.org/emir/",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/dream-destination/decanters-dream-destination-argos-in-cappadocia-turkey-551191/",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/"
+   ],
+   "body": [
+    "https://web.archive.org/web/20260106060557/https://winesofturkey.org/emir/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-turkish-renaissance-23836"
+   ],
+   "acidity": [
+    "https://web.archive.org/web/20260106060557/https://winesofturkey.org/emir/",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/",
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties"
+   ]
+  }
+ },
+ {
+  "name": "Papazkarası",
+  "aliases": [
+   "Papaskarasi"
+  ],
+  "colour": "red",
+  "summary": "A local red grape of Turkish Thrace, grown around Kırklareli and Edirne. It is made as red wine and also as a white blanc de noirs.",
+  "tastes": [],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://cluboenologique.com/story/turkeys-vineyard-routes-the-wine-thrills-of-thrace",
+    "https://www.wineanorak.com/wineblog/?p=9857"
+   ],
+   "summary": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://goturkiye.com/vineyards/thrace-vineyard-route",
+    "https://cluboenologique.com/story/turkeys-vineyard-routes-the-wine-thrills-of-thrace",
+    "https://www.afar.com/magazine/sip-your-way-along-turkiyes-oldest-wine-route"
+   ]
+  }
+ },
+ {
+  "name": "Kınalı Yapıncak",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A local white grape of Şarköy and Mürefte in Tekirdağ, on the Turkish side of Thrace. Its wines show pear among their fruit notes.",
+  "tastes": [
+   "Pear"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/"
+   ],
+   "tastes": [
+    "https://goturkiye.com/vineyards/indigenous-grape-varieties",
+    "https://www.decanter.com/premium/a-new-taste-of-turkish-wine-435840/"
+   ]
+  }
+ }
+]

@@ -1,0 +1,952 @@
+[
+ {
+  "slug": "eden_valley",
+  "name": "Eden Valley",
+  "country": "AU",
+  "aliases": [],
+  "summary": "A hilly region next to the Barossa Valley, cooler than its neighbour, with rocky, gravelly soils. It is best known for Riesling, while Shiraz is its most planted grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Eden Valley as its only GI must contain at least 85% wine from grapes grown in the Eden Valley GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {
+    "name": "Shiraz",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": "The region's best known wine and, in 2026, its largest variety by tonnes crushed."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "High Eden",
+    "colour": "mixed",
+    "note": "Registered subregion of the Eden Valley GI, in its southern part"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/south-australia/eden-valley-wine-region",
+    "https://www.wineaustralia.com/discover-australian-wine/south-australia-wines/eden-valley",
+    "https://www.winecompanion.com.au/wineries/south-australia/eden-valley",
+    "https://winefolly.com/australia/barossa-valley-and-the-wines-of-south-australia",
+    "https://www.barossa.com/wp-content/uploads/2017/12/Barossa-Valley-Eden-Valley-Comparison.pdf",
+    "https://jeroboams.co.uk/advice-centre/buyers-guide/eden-valley-wine-guide/",
+    "https://riverlandwine.com.au/content/uploads/2026/08/sa_full_report_2026.pdf"
+   ],
+   "grapes": [
+    "https://riverlandwine.com.au/content/uploads/2026/08/sa_full_report_2026.pdf",
+    "https://www.australianwine.com/our-places/south-australia/eden-valley-wine-region",
+    "https://www.winecompanion.com.au/wineries/south-australia/eden-valley",
+    "https://winefolly.com/australia/barossa-valley-and-the-wines-of-south-australia",
+    "https://www.barossa.com/wp-content/uploads/2017/12/Barossa-Valley-Eden-Valley-Comparison.pdf"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text"
+   ],
+   "appellations": [
+    "https://www.wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications/high-eden",
+    "https://www.winecompanion.com.au/wineries/south-australia/eden-valley"
+   ]
+  }
+ },
+ {
+  "slug": "mornington_peninsula",
+  "name": "Mornington Peninsula",
+  "country": "AU",
+  "aliases": [],
+  "summary": "A peninsula with a cool maritime climate and a mix of sandy, red volcanic and clay based soils. Pinot Noir is the main grape, followed by Chardonnay and Pinot Gris.",
+  "red_body": null,
+  "red_acidity": 4,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Mornington Peninsula as its only GI must contain at least 85% wine from grapes grown in the Mornington Peninsula GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Shiraz",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/victoria/mornington-peninsula-wine-region",
+    "https://www.wineaustralia.com/discover-australian-wine/victoria-wines/mornington-peninsula",
+    "https://www.winecompanion.com.au/wineries/victoria/mornington-peninsula",
+    "https://morningtonpeninsulawine.com.au/region-and-history",
+    "https://www.wineaustralia.com/getmedia/e0aa33b6-819c-4406-bbda-688063a25698/MI_Mornington-Peninsula-Region-Snapshot-2025-26.pdf"
+   ],
+   "red_acidity": [
+    "https://www.wineaustralia.com/discover-australian-wine/victoria-wines/mornington-peninsula",
+    "https://morningtonpeninsulawine.com.au/wines"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/getmedia/e0aa33b6-819c-4406-bbda-688063a25698/MI_Mornington-Peninsula-Region-Snapshot-2025-26.pdf",
+    "https://morningtonpeninsulawine.com.au/region-and-history",
+    "https://www.australianwine.com/our-places/victoria/mornington-peninsula-wine-region"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+   ]
+  }
+ },
+ {
+  "slug": "heathcote",
+  "name": "Heathcote",
+  "country": "AU",
+  "aliases": [],
+  "summary": "An inland region with warm summers, shaped by the Mount Camel Range, where deep red Cambrian soils give intensely coloured wines. Shiraz is the main grape and its best known wine.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Heathcote as its only GI must contain at least 85% wine from grapes grown in the Heathcote GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {
+    "name": "Shiraz",
+    "local_note": "Known for an inky depth of colour."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Grenache",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.winecompanion.com.au/wineries/victoria/heathcote",
+    "https://www.heathcotewinegrowers.com.au/our-wine-region/about",
+    "https://wineaustralia.com/au/discover-australian-wine/victoria-wines/heathcote",
+    "https://www.wineaustralia.com/getmedia/4910801e-8470-4003-973b-e87d3566c93e/MI_Heathcote-Region-Snapshot-2025-26.pdf"
+   ],
+   "red_body": [
+    "https://www.winecompanion.com.au/wineries/victoria/heathcote",
+    "https://wineaustralia.com/au/discover-australian-wine/victoria-wines/heathcote"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/getmedia/4910801e-8470-4003-973b-e87d3566c93e/MI_Heathcote-Region-Snapshot-2025-26.pdf",
+    "https://www.winecompanion.com.au/wineries/victoria/heathcote",
+    "https://wineaustralia.com/au/discover-australian-wine/victoria-wines/heathcote",
+    "https://www.heathcotewinegrowers.com.au/our-wine-region/about"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+   ]
+  }
+ },
+ {
+  "slug": "rutherglen",
+  "name": "Rutherglen",
+  "country": "AU",
+  "aliases": [],
+  "summary": "An inland region with a continental climate and loamy soils, known for its sweet fortified Muscat and Topaque and for rich reds from Shiraz and Durif.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Rutherglen as its only GI must contain at least 85% wine from grapes grown in the Rutherglen GI (Wine Australia Regulations 2018, s 26(2)). Topaque, the name that replaced Tokay from 1 September 2020, is a certification trade mark owned by Wine Australia.",
+  "grapes": [
+   {
+    "name": "Shiraz",
+    "local_note": null
+   },
+   {
+    "name": "Durif",
+    "local_note": "A regional speciality, grown here for over a century."
+   },
+   {
+    "name": "Muscat à Petits Grains Rouges",
+    "local_note": "Known locally as Rutherglen Brown Muscat; the only grape of Rutherglen Muscat, which is graded Rutherglen, Classic, Grand and Rare."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Muscadelle",
+    "local_note": "Used for Topaque, the fortified wine formerly sold as Tokay."
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/victoria/rutherglen-wine-region",
+    "https://winemakers.com.au/",
+    "https://www.bbr.com/region-4191-rutherglen",
+    "https://www.winecompanion.com.au/wineries/victoria/rutherglen"
+   ],
+   "red_body": [
+    "https://winemakers.com.au/shiraz-of-rutherglen/",
+    "https://www.australianwine.com/our-places/victoria/rutherglen-wine-region"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/getmedia/bdf3b474-8b41-4d7c-8678-a07d0941ce12/MI_Rutherglen-Region-Snapshot-2025-26.pdf",
+    "https://www.australianwine.com/our-places/victoria/rutherglen-wine-region",
+    "https://www.winecompanion.com.au/wineries/victoria/rutherglen",
+    "https://winemakers.com.au/durif-of-rutherglen/",
+    "https://winemakers.com.au/muscat-of-rutherglen/",
+    "https://www.bbr.com/region-4191-rutherglen",
+    "https://www.australianwine.com/getContentAsset/0bdaf04a-2b2f-4f30-9ee5-42cb55e9df9b/2a6464f5-7547-4f96-aacf-a0c3da1718f8/AWD_Regions_A4_Rutherglen.pdf",
+    "https://winemakers.com.au/topaque-of-rutherglen/",
+    "https://winecompanion.com.au/articles/news/james-explains-the-fortified-wines-of-north-east-victoria"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text",
+    "https://wineaustralia.com/labelling/additional-labelling-terms",
+    "https://wineaustralia.com/news/articles/time-almost-up-for-tokay"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+   ]
+  }
+ },
+ {
+  "slug": "beechworth",
+  "name": "Beechworth",
+  "country": "AU",
+  "aliases": [],
+  "summary": "A small, elevated hillside region in north east Victoria with a continental climate and granite based soils. It is best known for Chardonnay, with Pinot Noir, Shiraz and Italian grapes such as Sangiovese also grown.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Beechworth as its only GI must contain at least 85% wine from grapes grown in the Beechworth GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Sangiovese",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Shiraz",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.australianwine.com/our-places/victoria/beechworth-wine-region",
+    "https://www.winecompanion.com.au/wineries/victoria/beechworth",
+    "https://winecompanion.com.au/articles/wine-lists/20-beechworth-wines-to-try",
+    "https://www.wineaustralia.com/getmedia/7e28bc67-ba1c-4f7e-b8db-cacf20a6b357/MI_Beechworth-Region-Snapshot-2025-26.pdf"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/getmedia/7e28bc67-ba1c-4f7e-b8db-cacf20a6b357/MI_Beechworth-Region-Snapshot-2025-26.pdf",
+    "https://www.winecompanion.com.au/wineries/victoria/beechworth",
+    "https://www.australianwine.com/our-places/victoria/beechworth-wine-region"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+   ]
+  }
+ },
+ {
+  "slug": "orange",
+  "name": "Orange",
+  "country": "AU",
+  "aliases": [],
+  "summary": "A high region around Mount Canobolas, an ancient volcano, on basalt derived soils. By law it covers only land above 600 metres. Chardonnay and Sauvignon Blanc lead the crush, while Shiraz is the most planted grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Orange as its only GI must contain at least 85% wine from grapes grown in the Orange GI (Wine Australia Regulations 2018, s 26(2)). The GI is defined as the contiguous area above 600 metres within the City of Orange and the Shires of Cabonne and Blayney.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Shiraz",
+    "local_note": "The most widely planted variety, though fifth by tonnes crushed in 2026."
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/labelling/geographical-indicators/labelling-gi-orange",
+    "https://www.nswwine.com.au/orange",
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/orange",
+    "https://www.winecompanion.com.au/wineries/new-south-wales/orange",
+    "https://www.orange360.com.au/Wineries/Terroir",
+    "https://www.wineaustralia.com/getmedia/b78c9235-2747-4649-8483-26b2f2e0a524/MI_Orange-Region-Snapshot-2025-26.pdf"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/getmedia/b78c9235-2747-4649-8483-26b2f2e0a524/MI_Orange-Region-Snapshot-2025-26.pdf",
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/orange",
+    "https://www.winecompanion.com.au/wineries/new-south-wales/orange"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text",
+    "https://www.wineaustralia.com/labelling/geographical-indicators/labelling-gi-orange"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+   ]
+  }
+ },
+ {
+  "slug": "mudgee",
+  "name": "Mudgee",
+  "country": "AU",
+  "aliases": [],
+  "summary": "An inland region with cold winters, warm dry summers and sandy loam soils over clay, with vineyards dating back to 1858. It is mostly planted to red grapes, led by Shiraz, alongside Chardonnay.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Mudgee as its only GI must contain at least 85% wine from grapes grown in the Mudgee GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Shiraz",
+    "local_note": "Described as robust; the leading red by tonnes crushed."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/mudgee",
+    "https://mudgeewine.com.au/our-region/",
+    "https://mudgeewine.com.au/",
+    "https://www.nswwine.com.au/mudgee",
+    "https://www.winecompanion.com.au/wineries/new-south-wales/mudgee",
+    "https://www.wineaustralia.com/getmedia/947c995b-e2b8-43dc-af77-24e986affe22/MI_Mudgee-Region-Snapshot-2025-26.pdf"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/getmedia/947c995b-e2b8-43dc-af77-24e986affe22/MI_Mudgee-Region-Snapshot-2025-26.pdf",
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/mudgee",
+    "https://mudgeewine.com.au/",
+    "https://www.australianwine.com/our-places/new-south-wales/mudgee-wine-region"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+   ]
+  }
+ },
+ {
+  "slug": "great_southern",
+  "name": "Great Southern",
+  "country": "AU",
+  "aliases": [],
+  "summary": "A large region in the south of Western Australia, maritime near the coast and more continental inland, with five official subregions. Riesling is its most recognised wine; Shiraz and Cabernet Sauvignon lead the crush.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Great Southern as its only GI must contain at least 85% wine from grapes grown in the Great Southern GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {
+    "name": "Shiraz",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Ages well, often for ten years or more."
+   },
+   {
+    "name": "Semillon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Albany",
+    "colour": "mixed",
+    "note": "Registered subregion of the Great Southern GI"
+   },
+   {
+    "name": "Denmark",
+    "colour": "mixed",
+    "note": "Registered subregion of the Great Southern GI"
+   },
+   {
+    "name": "Frankland River",
+    "colour": "mixed",
+    "note": "Registered subregion of the Great Southern GI"
+   },
+   {
+    "name": "Mount Barker",
+    "colour": "mixed",
+    "note": "Registered subregion of the Great Southern GI"
+   },
+   {
+    "name": "Porongurup",
+    "colour": "mixed",
+    "note": "Registered subregion of the Great Southern GI"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/discover-australian-wine/western-australia-wines/great-southern",
+    "https://winewa.asn.au/wp-content/uploads/2022/07/Regional-Fact-Sheet_Great-Southern_Jul2022.pdf",
+    "https://www.winecompanion.com.au/wineries/western-australia/great-southern",
+    "https://www.wineaustralia.com/getmedia/be548db2-114b-44eb-8bd5-1747ffca84cf/MI_Great-Southern-Region-Snapshot-2025-26.pdf"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/getmedia/be548db2-114b-44eb-8bd5-1747ffca84cf/MI_Great-Southern-Region-Snapshot-2025-26.pdf",
+    "https://www.wineaustralia.com/discover-australian-wine/western-australia-wines/great-southern",
+    "https://winewa.asn.au/wp-content/uploads/2022/07/Regional-Fact-Sheet_Great-Southern_Jul2022.pdf",
+    "https://www.winecompanion.com.au/wineries/western-australia/great-southern"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications",
+    "https://winewa.asn.au/wp-content/uploads/2022/07/Regional-Fact-Sheet_Great-Southern_Jul2022.pdf",
+    "https://www.winecompanion.com.au/wineries/western-australia/great-southern"
+   ]
+  }
+ },
+ {
+  "slug": "canberra_district",
+  "name": "Canberra District",
+  "country": "AU",
+  "aliases": [],
+  "summary": "A region around Canberra, partly in New South Wales and partly in the Australian Capital Territory, with a strongly continental climate. Shiraz, including Shiraz Viognier blends, and Riesling are its best known wines.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled with Canberra District as its only GI must contain at least 85% wine from grapes grown in the Canberra District GI (Wine Australia Regulations 2018, s 26(2)).",
+  "grapes": [
+   {
+    "name": "Shiraz",
+    "local_note": "Often made as a Shiraz Viognier blend."
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Viognier",
+    "local_note": "Mainly blended with Shiraz."
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wineaustralia.com/labelling/geographical-indicators/labelling-gi-canberra-district",
+    "https://www.canberrawines.com.au/region/cdwia/",
+    "https://www.decanter.com/features/canberra-capital-gains-246302/",
+    "https://www.nswwine.com.au/canberra"
+   ],
+   "grapes": [
+    "https://www.wineaustralia.com/discover-australian-wine/new-south-wales-wines/canberra-district",
+    "https://www.decanter.com/features/canberra-capital-gains-246302/",
+    "https://www.nswwine.com.au/canberra",
+    "https://www.canberrawines.com.au/region/cdwia/"
+   ],
+   "label_note": [
+    "https://www.legislation.gov.au/F2018L00286/latest/text"
+   ],
+   "appellations": [
+    "https://wineaustralia.com/labelling/register-of-protected-gis-and-other-terms/geographical-indications"
+   ]
+  }
+ },
+ {
+  "slug": "hemel-en-aarde",
+  "name": "Hemel-en-Aarde",
+  "country": "ZA",
+  "aliases": [
+   "Hemel en Aarde"
+  ],
+  "summary": "Three wards in one valley, cooled by ocean breezes and with more rain than most Cape areas. Soils move from clay rich shale near the sea to sandstone and granite inland. Chardonnay and Pinot Noir lead.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Hemel-en-Aarde is not itself a production area: Hemel-en-Aarde Valley, Upper Hemel-en-Aarde Valley and Hemel-en-Aarde Ridge are separate wards of the Walker Bay district, Cape South Coast region (SAWIS, Feb 2026). The first two were defined by Board Notices 88 and 89 of 2006.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Noted for its structure."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Hemel-en-Aarde Valley",
+    "colour": "mixed",
+    "note": "Official ward nearest the sea, on clay rich Bokkeveld shale"
+   },
+   {
+    "name": "Upper Hemel-en-Aarde Valley",
+    "colour": "mixed",
+    "note": "Official ward further inland, mainly on Table Mountain sandstone and decomposed granite"
+   },
+   {
+    "name": "Hemel-en-Aarde Ridge",
+    "colour": "mixed",
+    "note": "Official ward furthest inland; the smallest, highest and coolest of the three"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://wineanorak.com/southafrica/hemelenaarde1intro.htm",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/into-the-fold/",
+    "https://wesgro.co.za/travel/blog/hemel-en-aarde-wine-route"
+   ],
+   "grapes": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://wineanorak.com/southafrica/hemelenaarde1intro.htm",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/into-the-fold/",
+    "https://wesgro.co.za/travel/blog/hemel-en-aarde-wine-route"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://www.gov.za/sites/default/files/gcis_document/201409/29319j0.pdf"
+   ],
+   "appellations": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1",
+    "https://wineanorak.com/southafrica/hemelenaarde1intro.htm",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/into-the-fold/",
+    "https://www.paulcaputo.wine/locations/hemel-en-aarde-ridge"
+   ]
+  }
+ },
+ {
+  "slug": "durbanville",
+  "name": "Durbanville",
+  "country": "ZA",
+  "aliases": [],
+  "summary": "A ward of the Cape Town district on rolling hill slopes, cooled by sea breezes and night mists, with deep soils. Sauvignon Blanc is its signature wine, with Cabernet Sauvignon and Merlot among the reds.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A ward (production area) named Durbanville, in the Cape Town district, Coastal Region (SAWIS, Feb 2026); its definition was amended by Board Notices 55 of 2003, 40 of 2005 and 25 of 2007.",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://southafrica.net/gl/en/travel/article/durbanville-wine-valley-western-cape-winelands-right-on-cape-town-s-doorstep",
+    "https://durbanvillewine.co.za/"
+   ],
+   "grapes": [
+    "https://sawis.co.za/info/download/VERSPREIDING_VAN_WYNDRUIF_HEKTAAR_PER_WYNDISTRIK_EN_KULTIVAR_2015-2025_eng.xlsx",
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://southafrica.net/gl/en/travel/article/durbanville-wine-valley-western-cape-winelands-right-on-cape-town-s-doorstep",
+    "https://durbanvillewine.co.za/"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://www.gov.za/sites/default/files/gcis_document/201409/25164j0.pdf",
+    "https://www.gov.za/sites/default/files/gcis_document/201409/27470r.pdf",
+    "https://www.gov.za/sites/default/files/gcis_document/201409/29716f.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "tulbagh",
+  "name": "Tulbagh",
+  "country": "ZA",
+  "aliases": [],
+  "summary": "A valley ringed by mountains that are often snow capped in winter. Cold night air is trapped on the valley floor, giving wide swings between day and night. Known for Cap Classique sparkling wine and Shiraz.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) Tulbagh, Coastal Region, with no wards (SAWIS, Feb 2026). Defining notice not located.",
+  "grapes": [
+   {
+    "name": "Chenin Blanc",
+    "local_note": "The most planted variety."
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.wosa.co.za/WOSA-News/Blogs/Cape-Chatter/Tulbagh/",
+    "https://southafrica.net/gl/en/travel/article/the-cape-s-champagne-valley"
+   ],
+   "grapes": [
+    "https://www.wosa.co.za/WOSA-News/Blogs/Cape-Chatter/Tulbagh/",
+    "https://southafrica.net/gl/en/travel/article/the-cape-s-champagne-valley",
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "robertson",
+  "name": "Robertson",
+  "country": "ZA",
+  "aliases": [],
+  "summary": "A dry inland valley along the Breede River, which supplies its irrigation, with lime rich soils and warm days cooled by south easterly winds. Best known for Chardonnay and Cap Classique sparkling wine.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) Robertson, Breede River Valley region, with fourteen wards (SAWIS, Feb 2026). Defining notice not located.",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Colombard",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": "Much of it goes into Cap Classique sparkling wine."
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Pinotage",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Agterkliphoogte",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Ashton",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Boesmansrivier",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Bonnievale",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Eilandia",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Goedemoed",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Goree",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Goudmyn",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Hoopsrivier",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Klaasvoogds",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Le Chasseur",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "McGregor",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Vinkrivier",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Zandrivier",
+    "colour": "mixed",
+    "note": "Official ward of the Robertson district (SAWIS, Feb 2026); no colour rule in the ward list"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.decanter.com/features/robertson-rank-outsider-248028/",
+    "https://the-buyer.net/producer/why-robertson-is-fast-gaining-influence-as-a-top-wine-area-in-the-western-cape",
+    "https://robertsonwinevalley.com/wine/",
+    "https://www.wosa.co.za/WOSA-News/Blogs/Cape-Chatter/Terroir-talk-Robertson/"
+   ],
+   "grapes": [
+    "https://sawis.co.za/info/download/VERSPREIDING_VAN_WYNDRUIF_HEKTAAR_PER_WYNDISTRIK_EN_KULTIVAR_2015-2025_eng.xlsx",
+    "https://www.wosa.co.za/WOSA-News/Blogs/Cape-Chatter/Terroir-talk-Robertson/",
+    "https://the-buyer.net/producer/why-robertson-is-fast-gaining-influence-as-a-top-wine-area-in-the-western-cape",
+    "https://robertsonwinevalley.com/wine/",
+    "https://www.decanter.com/features/robertson-rank-outsider-248028/"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ],
+   "appellations": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1"
+   ]
+  }
+ },
+ {
+  "slug": "cederberg",
+  "name": "Cederberg",
+  "country": "ZA",
+  "aliases": [],
+  "summary": "A remote stand alone ward in the Cederberg mountains, with vineyards at around 1,000 metres, among the highest in South Africa, where frost is a constant risk. Known for Shiraz, Cabernet Sauvignon and Chenin Blanc.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A ward (production area) named Cederberg that belongs to no district or region; SAWIS lists it directly under the Western Cape geographical unit (Feb 2026). Defining notice not located.",
+  "grapes": [
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.cederbergwine.com/discover-cederberg/",
+    "https://www.decanter.com/wine/south-africa/peak-performance-the-rise-of-high-altitude-wine-in-south-africa/",
+    "https://www.the-buyer.net/people/marginal-viticulture-south-africa"
+   ],
+   "grapes": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://www.the-buyer.net/people/marginal-viticulture-south-africa"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "breedekloof",
+  "name": "Breedekloof",
+  "country": "ZA",
+  "aliases": [],
+  "summary": "A district of river valleys with soils over beds of river stone and sand, and high rainfall for the Cape. It is a major source of Chenin Blanc, its most planted grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Production area (district) Breedekloof, Breede River Valley region, with the wards Goudini and Slanghoek (SAWIS, Feb 2026). Defining notice not located.",
+  "grapes": [
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Colombard",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinotage",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Goudini",
+    "colour": "mixed",
+    "note": "Official ward of the Breedekloof district (SAWIS, Feb 2026); no colour rule in the ward list"
+   },
+   {
+    "name": "Slanghoek",
+    "colour": "mixed",
+    "note": "Official ward of the Breedekloof district (SAWIS, Feb 2026); no colour rule in the ward list"
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.wosa.co.za/The-Industry/Winegrowing-Areas/Winelands-of-South-Africa/",
+    "https://wineland.co.za/distrikblik-breedekloof-its-just-beyond-berg",
+    "https://www.wineanorak.com/wineblog/?p=12204",
+    "https://www.breedekloof.com/wine",
+    "https://sawis.co.za/info/download/VERSPREIDING_VAN_WYNDRUIF_HEKTAAR_PER_WYNDISTRIK_EN_KULTIVAR_2015-2025_eng.xlsx"
+   ],
+   "grapes": [
+    "https://sawis.co.za/info/download/VERSPREIDING_VAN_WYNDRUIF_HEKTAAR_PER_WYNDISTRIK_EN_KULTIVAR_2015-2025_eng.xlsx",
+    "https://wineland.co.za/distrikblik-breedekloof-its-just-beyond-berg",
+    "https://www.wineanorak.com/wineblog/?p=12204",
+    "https://www.breedekloof.com/wine"
+   ],
+   "label_note": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf"
+   ],
+   "appellations": [
+    "https://www.sawis.co.za/cert/download/Production_areas_-_Eng_&_Afr_-_Feb26.pdf",
+    "https://services-eu1.arcgis.com/u4YTgbzxcollBKYL/arcgis/rest/services/WINE_OF_ORIGIN_SYSTEM_20260626/FeatureServer/1"
+   ]
+  }
+ }
+]

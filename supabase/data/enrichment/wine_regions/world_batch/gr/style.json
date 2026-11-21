@@ -1,0 +1,489 @@
+[
+ {
+  "slug": "rapsani",
+  "name": "Rapsani",
+  "country": "GR",
+  "aliases": [
+   "Ραψάνη"
+  ],
+  "summary": "A small red wine zone on the slopes of Mount Olympus in Thessaly. Its wines blend Xinomavro with two local red grapes, Krasato and Stavroto.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Réserve needs two years of ageing, at least twelve months in oak and six in bottle. Grande Réserve needs four years, at least eighteen months in oak and eighteen in bottle.",
+  "grapes": [
+   {
+    "name": "Xinomavro",
+    "local_note": "The lead grape, always blended here with the local Krasato and Stavroto."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Rapsani",
+    "colour": "red",
+    "note": "PDO for dry red from Xinomavro, Krasato and Stavroto."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10367",
+    "https://winesofgreece.org/pdo/pdo-rapsani/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-rapsani/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10367"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10367",
+    "https://winesofgreece.org/pdo/pdo-rapsani/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10367",
+    "https://winesofgreece.org/pdo/pdo-rapsani/"
+   ]
+  }
+ },
+ {
+  "slug": "mantinia",
+  "name": "Mantinia",
+  "country": "GR",
+  "aliases": [
+   "Μαντινεία",
+   "Mantineia"
+  ],
+  "summary": "A high, cool plateau around Tripoli in Arcadia, in the central Peloponnese, where the harvest comes late. It makes aromatic, crisp dry and sparkling whites from the pink skinned Moschofilero.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Réserve needs a year of ageing, at least six months in oak and three in bottle. Grande Réserve needs two years, at least twelve months in oak and six in bottle.",
+  "grapes": [
+   {
+    "name": "Moschofilero",
+    "local_note": "At least 85% of every Mantinia wine, with Asproudes allowed for the rest."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Mantinia",
+    "colour": "white",
+    "note": "PDO for dry white and sparkling white from at least 85% Moschofilero, with Asproudes."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11314",
+    "https://winesofgreece.org/pdo/pdo-mantinia/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://karakasis.mw/moschofilero/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-mantinia/",
+    "https://www.decanter.com/wine/grape-varieties/moschofilero-white-52448/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://karakasis.mw/moschofilero/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11314"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11314",
+    "https://winesofgreece.org/pdo/pdo-mantinia/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11314",
+    "https://winesofgreece.org/pdo/pdo-mantinia/"
+   ]
+  }
+ },
+ {
+  "slug": "goumenissa",
+  "name": "Goumenissa",
+  "country": "GR",
+  "aliases": [
+   "Γουμένισσα"
+  ],
+  "summary": "A small red wine zone on the south eastern foothills of Mount Paiko in Kilkis, Macedonia. Xinomavro is blended with at least 20% Negoska, which makes the wines fruitier and rounder than those of Naoussa.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Réserve needs two years of ageing, at least twelve months in oak and six in bottle. Grande Réserve needs four years, at least eighteen months in oak and eighteen in bottle.",
+  "grapes": [
+   {
+    "name": "Xinomavro",
+    "local_note": "The main grape, fermented together with Negoska."
+   },
+   {
+    "name": "Negoska",
+    "local_note": "At least 20% of the blend; it adds colour and softens the wine."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Goumenissa",
+    "colour": "red",
+    "note": "PDO for dry red from Xinomavro with at least 20% Negoska."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560",
+    "https://winesofgreece.org/pdo/pdo-goumenissa/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-goumenissa/",
+    "https://winesofgreece.org/varieties/negoska/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece"
+   ],
+   "red_body": [
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560",
+    "https://winesofgreece.org/pdo/pdo-goumenissa/",
+    "https://winesofgreece.org/varieties/negoska/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11560",
+    "https://winesofgreece.org/pdo/pdo-goumenissa/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece"
+   ]
+  }
+ },
+ {
+  "slug": "patras",
+  "name": "Patras",
+  "country": "GR",
+  "aliases": [
+   "Patra",
+   "Πάτρα"
+  ],
+  "summary": "The hills and coast of Achaia around the city of Patras, in the northern Peloponnese. Dry whites come from Roditis in the hill country, and sweet wines from Mavrodaphne and Muscat around the city.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Mavrodaphni of Patra spends at least a year in oak casks of up to 1,000 litres. Reserve needs three years of ageing in all, Vieille Reserve five and Grand Reserve seven, each with set time in cask and in bottle.",
+  "grapes": [
+   {
+    "name": "Roditis",
+    "local_note": "The grape of the dry PDO Patra whites."
+   },
+   {
+    "name": "Mavrodaphne",
+    "local_note": "More than half of every Mavrodaphni of Patra, with Black Corinth allowed for the rest."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "The only grape of both Muscat PDOs; called Moschato Aspro in the specifications and Moschoudi locally."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Patra",
+    "colour": "white",
+    "note": "PDO for dry, medium dry and medium sweet white from Roditis, from hill vineyards."
+   },
+   {
+    "name": "Mavrodaphni of Patra",
+    "colour": "red",
+    "note": "PDO for sweet fortified red from more than half Mavrodaphne, with up to 49% Black Corinth. Aged at least a year in oak."
+   },
+   {
+    "name": "Muscat of Patra",
+    "colour": "white",
+    "note": "PDO for sweet Muscat: fortified vin doux naturel, with a Grand Cru version from selected low yielding vineyards, vin doux, and naturally sweet wine from sun dried grapes."
+   },
+   {
+    "name": "Muscat of Rio Patra",
+    "colour": "white",
+    "note": "PDO for the same sweet Muscat styles from a smaller zone around Rio, east of the city."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11783",
+    "https://winesofgreece.org/pdo/pdo-patras/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-patras/",
+    "https://winesofgreece.org/pdo/pdo-mavrodaphne-of-patras/",
+    "https://winesofgreece.org/pdo/pdo-muscat-of-patras/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11783",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11842",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11842"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11783",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11842",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11084",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11558",
+    "https://winesofgreece.org/pdo/pdo-patras/",
+    "https://winesofgreece.org/pdo/pdo-mavrodaphne-of-patras/",
+    "https://winesofgreece.org/pdo/pdo-muscat-of-patras/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11783",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11842",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11084",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11558",
+    "https://winesofgreece.org/pdo/pdo-patras/",
+    "https://winesofgreece.org/pdo/pdo-mavrodaphne-of-patras/",
+    "https://winesofgreece.org/pdo/pdo-muscat-of-patras/",
+    "https://winesofgreece.org/pdo/pdo-muscat-of-rio-patras/"
+   ]
+  }
+ },
+ {
+  "slug": "drama",
+  "name": "Drama",
+  "country": "GR",
+  "aliases": [
+   "Δράμα"
+  ],
+  "summary": "A PGI covering the whole regional unit of Drama in northern Greece. It is best known for blending Greek and international grapes, above all white blends of Sauvignon Blanc with Assyrtiko.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "Most often blended with Assyrtiko, the region's best known white style."
+   },
+   {
+    "name": "Assyrtiko",
+    "local_note": "Made on its own and in blends with Sauvignon Blanc."
+   },
+   {
+    "name": "Malagousia",
+    "local_note": "A native white on the rise, made alone or in blends."
+   },
+   {
+    "name": "Agiorgitiko",
+    "local_note": "A native red permitted for PGI Drama reds and rosés."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Drama",
+    "colour": "mixed",
+    "note": "PGI for white, rosé and red wines from dry to sweet, including sweet wines from sun dried grapes."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11853",
+    "https://winesofgreece.org/pgi/pgi-drama/"
+   ],
+   "summary": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11853",
+    "https://winesofgreece.org/pgi/pgi-drama/",
+    "https://lizthachmw.com/winetravelstories/experiencing-the-wines-of-drama-in-northern-greece/"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11853",
+    "https://winesofgreece.org/pgi/pgi-drama/",
+    "https://lizthachmw.com/winetravelstories/experiencing-the-wines-of-drama-in-northern-greece/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11853",
+    "https://winesofgreece.org/pgi/pgi-drama/"
+   ]
+  }
+ },
+ {
+  "slug": "paros",
+  "name": "Paros",
+  "country": "GR",
+  "aliases": [
+   "Πάρος"
+  ],
+  "summary": "A Cycladic island where the white Monemvasia makes the dry whites and, unusually, is blended with the red Mandilaria for the reds. Malvasia Paros is a sweet wine from sun dried grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Malvasia Paros needs at least 24 months of oxidative ageing in oak. Longer ageing may be stated only as 4, 8, 12 or more years, in steps of four.",
+  "grapes": [
+   {
+    "name": "Monemvasia",
+    "local_note": "The grape of white Paros, part of the red, and at least 85% of Malvasia Paros."
+   },
+   {
+    "name": "Mandilaria",
+    "local_note": "The red grape of PDO Paros, blended with the white Monemvasia."
+   },
+   {
+    "name": "Assyrtiko",
+    "local_note": "Allowed with Monemvasia in Malvasia Paros."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Paros",
+    "colour": "mixed",
+    "note": "PDO for dry white from Monemvasia and dry red from Mandilaria with Monemvasia."
+   },
+   {
+    "name": "Malvasia Paros",
+    "colour": "white",
+    "note": "PDO for sweet white from sun dried grapes, natural or fortified, from at least 85% Monemvasia with Assyrtiko."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11101",
+    "https://winesofgreece.org/pdo/pdo-paros/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-paros/",
+    "https://winesofgreece.org/pdo/pdo-malvasia-paros/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://www.winetraveler.com/grape/mandilaria/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11101"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11567"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11101",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11567",
+    "https://winesofgreece.org/pdo/pdo-paros/",
+    "https://winesofgreece.org/pdo/pdo-malvasia-paros/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://www.winetraveler.com/grape/mandilaria/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11101",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11567",
+    "https://winesofgreece.org/pdo/pdo-paros/",
+    "https://winesofgreece.org/pdo/pdo-malvasia-paros/"
+   ]
+  }
+ },
+ {
+  "slug": "monemvasia",
+  "name": "Monemvasia",
+  "country": "GR",
+  "aliases": [
+   "Monemvasia - Malvasia",
+   "Μονεμβασία"
+  ],
+  "summary": "The south eastern tip of Laconia in the Peloponnese, around Monemvasia. Its PDO, created in 2010, revives the historic sweet Malvasia wine made from sun dried grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Monemvasia and Malvasia must appear together in the same size and colour, Malvasia always in Latin letters. Ageing may be stated only as 4, 8, 12 or more years, in steps of four.",
+  "grapes": [
+   {
+    "name": "Monemvasia",
+    "local_note": "At least 51% of the blend."
+   },
+   {
+    "name": "Assyrtiko",
+    "local_note": "Allowed in the blend with the local Asproudes and Kydonitsa."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Monemvasia - Malvasia",
+    "colour": "white",
+    "note": "PDO for sweet white from sun dried grapes, natural or fortified, from at least 51% Monemvasia with Assyrtiko, Asproudes and Kydonitsa. At least 24 months of oxidative ageing in oak."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11311",
+    "https://winesofgreece.org/pdo/pdo-monemvassia-malvasia/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-monemvassia-malvasia/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11311"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11311"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11311",
+    "https://winesofgreece.org/pdo/pdo-monemvassia-malvasia/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11311",
+    "https://winesofgreece.org/pdo/pdo-monemvassia-malvasia/"
+   ]
+  }
+ },
+ {
+  "slug": "samos",
+  "name": "Samos",
+  "country": "GR",
+  "aliases": [
+   "Σάμος"
+  ],
+  "summary": "An eastern Aegean island whose PDO covers sweet wines from Muscat Blanc à Petits Grains, in styles from vin doux and fortified vin doux naturel to wines from sun dried grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "The only grape of PDO Samos."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Samos",
+    "colour": "white",
+    "note": "PDO for sweet Muscat: vin doux, fortified vin doux naturel with a Grand Cru version from selected vineyards, and naturally sweet wine from sun dried grapes."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/16146",
+    "https://winesofgreece.org/pdo/pdo-samos/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-samos/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-beginners-guide-to-greek-wines/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "grapes": [
+    "https://winesofgreece.org/pdo/pdo-samos/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/16146",
+    "https://winesofgreece.org/pdo/pdo-samos/"
+   ]
+  }
+ }
+]

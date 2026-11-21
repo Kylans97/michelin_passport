@@ -1,0 +1,216 @@
+[
+ {
+  "name": "Godello",
+  "aliases": [
+   "Gouveio",
+   "Agudelo"
+  ],
+  "colour": "white",
+  "summary": "A Galician white grape centred on Valdeorras and Monterrei, also planted in Bierzo and Portugal's Douro, making dry whites of citrus, orchard fruit and saline freshness.",
+  "tastes": [
+   "Citrus",
+   "Apple",
+   "White flowers",
+   "Saline"
+  ],
+  "aged_note": "Takes well to lees ageing, and some versions see subtle oak.",
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": {
+   "name": "Chardonnay",
+   "note": "Often likened to white Burgundy for its texture and balance."
+  },
+  "sources": {
+   "aliases": [
+    "https://winefolly.com/grapes/godello",
+    "https://vivc.de/index.php?id=12953&r=passport%2Fview",
+    "https://guiapenin.wine/en-godello"
+   ],
+   "colour": [
+    "https://winefolly.com/grapes/godello",
+    "https://vivc.de/index.php?id=12953&r=passport%2Fview"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/godello",
+    "https://guiapenin.wine/en-godello",
+    "https://vinepair.com/articles/chardonnay-fans-white-wine-godello/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/godello",
+    "https://vinepair.com/articles/chardonnay-fans-white-wine-godello/"
+   ],
+   "aged_note": [
+    "https://guiapenin.wine/en-godello",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-the-new-gold-in-valdeorras",
+    "https://vinepair.com/articles/chardonnay-fans-white-wine-godello/",
+    "https://winefolly.com/grapes/godello"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/godello",
+    "https://vinepair.com/articles/chardonnay-fans-white-wine-godello/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-the-new-gold-in-valdeorras"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/godello",
+    "https://vinepair.com/articles/chardonnay-fans-white-wine-godello/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-the-new-gold-in-valdeorras"
+   ]
+  }
+ },
+ {
+  "name": "Treixadura",
+  "aliases": [
+   "Trajadura",
+   "Verdello Rubio"
+  ],
+  "colour": "white",
+  "summary": "A white grape of Galicia's Ribeiro, where it leads most blends, and of Portugal's Vinho Verde as Trajadura, giving aromatic, floral and fresh dry whites.",
+  "tastes": [
+   "Floral",
+   "Peach",
+   "Apricot",
+   "Herbal"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://guiapenin.wine/en-treixadura",
+    "https://vivc.de/index.php?id=12629&r=passport%2Fview"
+   ],
+   "colour": [
+    "https://guiapenin.wine/en-treixadura",
+    "https://vivc.de/index.php?id=12629&r=passport%2Fview"
+   ],
+   "summary": [
+    "https://guiapenin.wine/en-treixadura",
+    "https://www.ribeiro.wine/types-of-grapes/treixadura-en",
+    "https://winesofportugal.com/en/portuguese-wines/grape-varieties/trajadura/"
+   ],
+   "tastes": [
+    "https://guiapenin.wine/en-treixadura",
+    "https://www.ribeiro.wine/types-of-grapes/treixadura-en",
+    "https://winesofportugal.com/en/portuguese-wines/grape-varieties/trajadura/",
+    "https://www.decanter.com/wine-reviews/spain/ribeiro/ramon-do-casar-treixadura-ribeiro-spain-2021-62500"
+   ]
+  }
+ },
+ {
+  "name": "Hondarrabi Zuri",
+  "aliases": [],
+  "colour": "white",
+  "summary": "The main grape of Txakoli in Spain's Basque Country, making light, low alcohol, dry whites with high acidity, often with a slight spritz.",
+  "tastes": [
+   "Citrus",
+   "Saline"
+  ],
+  "aged_note": "Usually fermented in stainless steel.",
+  "body": 1,
+  "acidity": 5,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "colour": [
+    "https://winefolly.com/wines/txakoli-white/",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=3211"
+   ],
+   "summary": [
+    "https://winefolly.com/wines/txakoli-white/",
+    "https://vinepair.com/articles/txakoli-basque-country-wine-summer/",
+    "https://www.winespectator.com/articles/basque-country-wine-txakoli-kramer"
+   ],
+   "tastes": [
+    "https://winefolly.com/wines/txakoli-white/",
+    "https://www.winespectator.com/articles/a-tongue-twisting-spanish-white-40305",
+    "https://vinepair.com/articles/txakoli-basque-country-wine-summer/"
+   ],
+   "aged_note": [
+    "https://www.winespectator.com/articles/basque-country-wine-txakoli-kramer",
+    "https://punchdrink.com/articles/how-ameztoi-txakoli-wine-is-made-getaria-spain/"
+   ],
+   "body": [
+    "https://winefolly.com/wines/txakoli-white/",
+    "https://www.winespectator.com/articles/basque-country-wine-txakoli-kramer"
+   ],
+   "acidity": [
+    "https://winefolly.com/wines/txakoli-white/",
+    "https://vinepair.com/articles/txakoli-basque-country-wine-summer/",
+    "https://www.winespectator.com/articles/basque-country-wine-txakoli-kramer",
+    "https://punchdrink.com/articles/how-ameztoi-txakoli-wine-is-made-getaria-spain/"
+   ]
+  }
+ },
+ {
+  "name": "Parellada",
+  "aliases": [
+   "Montonec",
+   "Martorella",
+   "Verda Grossa"
+  ],
+  "colour": "white",
+  "summary": "A white grape of Catalonia's Penedès and one of the three traditional Cava grapes with Macabeo and Xarel·lo, adding fruit and floral aroma to the blend.",
+  "tastes": null,
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://guiapenin.wine/en-parellada",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8938"
+   ],
+   "colour": [
+    "https://guiapenin.wine/en-parellada",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8938"
+   ],
+   "summary": [
+    "https://guiapenin.wine/en-parellada",
+    "https://winefolly.com/tips/what-is-cava/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/penedes-article"
+   ]
+  }
+ },
+ {
+  "name": "Listán Negro",
+  "aliases": [],
+  "colour": "red",
+  "summary": "The most planted red grape of the Canary Islands, best known from Tenerife's volcanic soils, making peppery reds, often light and fruity through carbonic maceration.",
+  "tastes": [
+   "Red cherry",
+   "Strawberry",
+   "Smoke",
+   "Spice"
+  ],
+  "aged_note": "Often made by carbonic maceration in a light, fruity style.",
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "colour": [
+    "https://winefolly.com/grapes/listan-negro/",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=14943"
+   ],
+   "summary": [
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/canary-islands",
+    "https://vinepair.com/wine-blog/a-complete-guide-to-wine-from-the-canary-islands/",
+    "https://vinepair.com/articles/spain-chillable-reds-guide/",
+    "https://winefolly.com/grapes/listan-negro/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/listan-negro/",
+    "https://vinepair.com/articles/spain-chillable-reds-guide/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/canary-islands"
+   ],
+   "aged_note": [
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/canary-islands",
+    "https://vinepair.com/wine-blog/a-complete-guide-to-wine-from-the-canary-islands/"
+   ]
+  }
+ }
+]

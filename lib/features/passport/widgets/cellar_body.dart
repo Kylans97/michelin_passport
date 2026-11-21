@@ -8,10 +8,11 @@ import '../../vineyards/vineyard_detail_screen.dart';
 import '../../visits/widgets/visit_wines.dart';
 import '../models/cellar.dart';
 
-/// The Passport's Cellar: every wine the member has logged, grouped by
-/// region and estate, with the wines not linked to an estate kept apart,
-/// exactly as written. A wine never makes a stamp; stamps come only from a
-/// confirmed visit or event.
+/// The Passport's Cellar: every wine the member has logged, from visits
+/// and kept without one, grouped by region and estate, with the wines not
+/// linked to an estate kept apart, exactly as written. One quiet filter
+/// keeps the wines the member would drink again. A wine never makes a
+/// stamp; stamps come only from a confirmed visit or event.
 class CellarBody extends StatefulWidget {
   const CellarBody({super.key, this.repository});
 
@@ -25,7 +26,8 @@ class _CellarBodyState extends State<CellarBody> {
   late final VisitWineRepository _repo =
       widget.repository ?? VisitWineRepository(Supabase.instance.client);
 
-  Cellar? _cellar;
+  List<CellarWine> _wines = const [];
+  bool _againOnly = false;
   bool _loading = true;
   bool _error = false;
 
@@ -45,7 +47,7 @@ class _CellarBodyState extends State<CellarBody> {
     });
     if (uid == null) {
       setState(() {
-        _cellar = const Cellar(regions: [], unlinked: []);
+        _wines = const [];
         _loading = false;
       });
       return;
@@ -54,7 +56,7 @@ class _CellarBodyState extends State<CellarBody> {
       final wines = await _repo.loadCellar(uid);
       if (!mounted) return;
       setState(() {
-        _cellar = buildCellar(wines);
+        _wines = wines;
         _loading = false;
       });
     } catch (_) {
@@ -64,6 +66,82 @@ class _CellarBodyState extends State<CellarBody> {
         _error = true;
       });
     }
+  }
+
+  void _failed() {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Could not save that. Please try again.')),
+    );
+  }
+
+  Future<WineSuggestions> _suggestions(String userId) => _repo
+      .loadSuggestions(userId)
+      .catchError((Object _) => const WineSuggestions());
+
+  /// A wine drunk without a restaurant visit: at home, at an estate,
+  /// somewhere else.
+  Future<void> _addKept() async {
+    final uid = _userId;
+    if (uid == null) return;
+    var added = false;
+    await showWineSheet(
+      context,
+      keptWithoutVisit: true,
+      suggestions: _suggestions(uid),
+      vineyards: loadVineyardsForWineSheet(),
+      onSave: (wine) async {
+        try {
+          await _repo.addKept(userId: uid, wine: wine);
+          added = true;
+          return true;
+        } catch (_) {
+          _failed();
+          return false;
+        }
+      },
+    );
+    if (added) await _load();
+  }
+
+  /// Opens a wine to change it: its verdict and note, or anything else.
+  Future<void> _edit(CellarWine entry) async {
+    final uid = _userId;
+    final existing = entry.wine;
+    final id = existing.id;
+    if (uid == null || id == null) return;
+    final kept = entry.isKeptWithoutVisit;
+    var changed = false;
+    await showWineSheet(
+      context,
+      initial: existing,
+      keptWithoutVisit: kept,
+      suggestions: _suggestions(uid),
+      vineyards: loadVineyardsForWineSheet(),
+      onSave: (wine) async {
+        try {
+          if (kept) {
+            await _repo.updateKept(id, wine);
+          } else {
+            await _repo.update(id, wine, previous: existing);
+          }
+          changed = true;
+          return true;
+        } catch (_) {
+          _failed();
+          return false;
+        }
+      },
+      onDelete: () async {
+        try {
+          await (kept ? _repo.deleteKept(id) : _repo.delete(id));
+          changed = true;
+        } catch (_) {
+          _failed();
+        }
+      },
+    );
+    if (changed) await _load();
   }
 
   void _openEstate(CellarEstate estate) => Navigator.push(
@@ -86,8 +164,7 @@ class _CellarBodyState extends State<CellarBody> {
         ),
       );
     }
-    final cellar = _cellar;
-    if (_error || cellar == null) {
+    if (_error) {
       return Center(
         child: TextButton(
           onPressed: _load,
@@ -98,7 +175,13 @@ class _CellarBodyState extends State<CellarBody> {
         ),
       );
     }
-    if (cellar.isEmpty) return const _EmptyCellar();
+    if (_wines.isEmpty) return _EmptyCellar(onAdd: _addKept);
+    final whole = buildCellar(_wines);
+    final again = [
+      for (final w in _wines)
+        if (w.wine.wouldDrinkAgain) w,
+    ];
+    final cellar = _againOnly ? buildCellar(again) : whole;
 
     return RefreshIndicator(
       color: AppColors.textOnDark,
@@ -112,7 +195,26 @@ class _CellarBodyState extends State<CellarBody> {
           CsSpacing.section,
         ),
         children: [
-          _CellarStats(cellar: cellar),
+          _CellarStats(cellar: whole),
+          const SizedBox(height: CsSpacing.lg),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _CellarFilter(
+              againOnly: _againOnly,
+              againCount: again.length,
+              onChanged: (v) => setState(() => _againOnly = v),
+            ),
+          ),
+          if (_againOnly && again.isEmpty)
+            Padding(
+              padding: const EdgeInsets.only(top: CsSpacing.xl),
+              child: Text(
+                'Open a wine and choose Would drink again, and it shows here.',
+                style: CsTypography.body.copyWith(
+                  color: AppColors.secondaryOnDark,
+                ),
+              ),
+            ),
           for (final region in cellar.regions) ...[
             _label(
               '${region.label} · ${region.wineCount} '
@@ -124,6 +226,7 @@ class _CellarBodyState extends State<CellarBody> {
                 child: _EstateCard(
                   estate: estate,
                   onTap: () => _openEstate(estate),
+                  onTapWine: _edit,
                 ),
               ),
           ],
@@ -132,8 +235,13 @@ class _CellarBodyState extends State<CellarBody> {
               'Not linked to an estate · ${cellar.unlinked.length} '
               '${cellar.unlinked.length == 1 ? 'wine' : 'wines'}',
             ),
-            _UnlinkedCard(wines: cellar.unlinked),
+            _UnlinkedCard(wines: cellar.unlinked, onTapWine: _edit),
           ],
+          const SizedBox(height: CsSpacing.lg),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _AddWine(onTap: _addKept),
+          ),
         ],
       ),
     );
@@ -210,10 +318,15 @@ class _Stat extends StatelessWidget {
 }
 
 class _EstateCard extends StatelessWidget {
-  const _EstateCard({required this.estate, required this.onTap});
+  const _EstateCard({
+    required this.estate,
+    required this.onTap,
+    required this.onTapWine,
+  });
 
   final CellarEstate estate;
   final VoidCallback onTap;
+  final ValueChanged<CellarWine> onTapWine;
 
   @override
   Widget build(BuildContext context) {
@@ -259,7 +372,10 @@ class _EstateCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: CsSpacing.sm),
-              WineList(wines: [for (final w in estate.wines) w.wine]),
+              WineList(
+                wines: [for (final w in estate.wines) w.wine],
+                onTapWine: (i) => onTapWine(estate.wines[i]),
+              ),
             ],
           ),
         ),
@@ -271,9 +387,10 @@ class _EstateCard extends StatelessWidget {
 /// The wines kept as written: shown as the member wrote them, on a quieter
 /// dashed-feeling card, with a line saying they can be linked any time.
 class _UnlinkedCard extends StatelessWidget {
-  const _UnlinkedCard({required this.wines});
+  const _UnlinkedCard({required this.wines, required this.onTapWine});
 
   final List<CellarWine> wines;
+  final ValueChanged<CellarWine> onTapWine;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -285,11 +402,14 @@ class _UnlinkedCard extends StatelessWidget {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        WineList(wines: [for (final w in wines) w.wine]),
+        WineList(
+          wines: [for (final w in wines) w.wine],
+          onTapWine: (i) => onTapWine(wines[i]),
+        ),
         const SizedBox(height: CsSpacing.sm),
         Text(
-          'Your own notes stay exactly as you wrote them. Open a wine on its '
-          'visit to link it to an estate whenever you like.',
+          'Your own notes stay exactly as you wrote them. Open a wine to link '
+          'it to an estate whenever you like.',
           style: CsTypography.metadata.copyWith(color: AppColors.taupe),
         ),
       ],
@@ -298,7 +418,9 @@ class _UnlinkedCard extends StatelessWidget {
 }
 
 class _EmptyCellar extends StatelessWidget {
-  const _EmptyCellar();
+  const _EmptyCellar({required this.onAdd});
+
+  final VoidCallback onAdd;
 
   @override
   Widget build(BuildContext context) => Center(
@@ -316,13 +438,91 @@ class _EmptyCellar extends StatelessWidget {
           ),
           const SizedBox(height: CsSpacing.sm),
           Text(
-            'Add the wines you drank to a visit, and they gather here by '
-            'region and estate.',
+            'Add the wines you drank to a visit, or one you had at home, and '
+            'they gather here by region and estate.',
             textAlign: TextAlign.center,
             style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
           ),
+          const SizedBox(height: CsSpacing.lg),
+          _AddWine(onTap: onAdd),
         ],
       ),
+    ),
+  );
+}
+
+/// The Cellar's one filter: every wine, or the ones the member would
+/// drink again. A filter, never a different sort.
+class _CellarFilter extends StatelessWidget {
+  const _CellarFilter({
+    required this.againOnly,
+    required this.againCount,
+    required this.onChanged,
+  });
+
+  final bool againOnly;
+  final int againCount;
+  final ValueChanged<bool> onChanged;
+
+  Widget _option(String label, bool selected, VoidCallback onTap) => Semantics(
+    button: true,
+    selected: selected,
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+        decoration: BoxDecoration(
+          color: selected ? AppColors.ivory : Colors.transparent,
+          borderRadius: BorderRadius.circular(99),
+        ),
+        child: Text(
+          label,
+          style: CsTypography.metadata.copyWith(
+            color: selected ? AppColors.deepGreen : AppColors.secondaryOnDark,
+            fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+          ),
+        ),
+      ),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(3),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(99),
+      border: Border.all(color: AppColors.subtleBorderDark),
+    ),
+    child: Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _option('All wines', !againOnly, () => onChanged(false)),
+        _option(
+          againCount > 0
+              ? 'Would drink again · $againCount'
+              : 'Would drink again',
+          againOnly,
+          () => onChanged(true),
+        ),
+      ],
+    ),
+  );
+}
+
+/// Adding a wine from the Cellar itself, without a visit.
+class _AddWine extends StatelessWidget {
+  const _AddWine({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => TextButton.icon(
+    onPressed: onTap,
+    style: TextButton.styleFrom(foregroundColor: AppColors.textOnDark),
+    icon: const Icon(Icons.add_rounded, size: 18),
+    label: Text(
+      'Add a wine',
+      style: CsTypography.bodyMedium.copyWith(color: AppColors.textOnDark),
     ),
   );
 }

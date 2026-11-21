@@ -1,0 +1,120 @@
+[
+ {
+  "grape": "Muscat Blanc à Petits Grains",
+  "alias": "Tămâioasă Românească",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=8193",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+   "http://data.europa.eu/eli/C/2025/1479/oj"
+  ]
+ },
+ {
+  "grape": "Blaufränkisch",
+  "alias": "Burgund Mare",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=1459",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+   "http://data.europa.eu/eli/C/2025/1479/oj"
+  ]
+ },
+ {
+  "grape": "Graševina",
+  "alias": "Riesling Italian",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=13217",
+   "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+   "http://data.europa.eu/eli/C/2025/1479/oj"
+  ]
+ },
+ {
+  "grape": "Graševina",
+  "alias": "Ryzlink vlašský",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine",
+   "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074"
+  ]
+ },
+ {
+  "grape": "Riesling",
+  "alias": "Ryzlink rýnský",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine",
+   "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074"
+  ]
+ },
+ {
+  "grape": "Pinot Blanc",
+  "alias": "Rulandské bílé",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine"
+  ]
+ },
+ {
+  "grape": "Pinot Gris",
+  "alias": "Rulandské šedé",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine"
+  ]
+ },
+ {
+  "grape": "Pinot Noir",
+  "alias": "Rulandské modré",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine"
+  ]
+ },
+ {
+  "grape": "Gewürztraminer",
+  "alias": "Tramín červený",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine"
+  ]
+ },
+ {
+  "grape": "Zweigelt",
+  "alias": "Zweigeltrebe",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine"
+  ]
+ },
+ {
+  "grape": "Portugieser",
+  "alias": "Modrý Portugal",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://en.wikipedia.org/wiki/Czech_wine"
+  ]
+ },
+ {
+  "grape": "Sauvignon Blanc",
+  "alias": "Sauvignon",
+  "source": [
+   "https://www.vinarskecentrum.cz/storage/files/odrudy-vune-brozura-AJ-2021-web.pdf",
+   "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074"
+  ]
+ },
+ {
+  "grape": "Graševina",
+  "alias": "Grašac",
+  "source": [
+   "https://en.wikipedia.org/wiki/Serbian_wine",
+   "https://weinakademie.at/diplomapdf/12069270.pdf",
+   "https://ives-openscience.eu/13105/"
+  ]
+ },
+ {
+  "grape": "Graševina",
+  "alias": "Italijanski rizling",
+  "source": [
+   "https://faolex.fao.org/docs/pdf/srb153778.pdf",
+   "https://weinakademie.at/diplomapdf/12069270.pdf"
+  ]
+ }
+]

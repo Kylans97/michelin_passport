@@ -1,0 +1,26 @@
+[
+ {
+  "grape": "Muscat Blanc à Petits Grains",
+  "alias": "White Muscat",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=8193",
+   "https://winesofgreece.org/varieties/white-muscat/"
+  ]
+ },
+ {
+  "grape": "Muscat Blanc à Petits Grains",
+  "alias": "Moschoudi",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=8193",
+   "https://winesofgreece.org/pdo/pdo-muscat-of-patras/"
+  ]
+ },
+ {
+  "grape": "Muscat Blanc à Petits Grains",
+  "alias": "Muscat Samos",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=8193",
+   "https://winesofgreece.org/pdo/pdo-samos/"
+  ]
+ }
+]

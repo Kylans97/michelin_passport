@@ -1,0 +1,49 @@
+[
+ {
+  "name": "Elbling",
+  "aliases": [
+   "Weißer Elbling"
+  ],
+  "colour": "white",
+  "summary": "An old white grape of the Upper Moselle, grown in Luxembourg and Germany. It gives light, fresh, sharply acidic wines, still or sparkling, with a fairly neutral, apple-like character.",
+  "tastes": [
+   "apple",
+   "tart",
+   "neutral"
+  ],
+  "aged_note": null,
+  "body": 1,
+  "acidity": 5,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/99/elbling",
+    "https://en.wikipedia.org/wiki/Elbling",
+    "https://decanterchina.com/en/knowledge/grapes/elbling-red-white",
+    "https://agriculture.public.lu/dam-assets/veroeffentlichungen/dokumentationen/weinbau/oenologie/2020-cahier-des-charges-aop-moselle-luxembourgeoise.pdf",
+    "https://aop.public.lu/en/cepages.html"
+   ],
+   "aliases": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/99/elbling"
+   ],
+   "tastes": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/99/elbling",
+    "https://aop.public.lu/en/cepages.html",
+    "https://en.wikipedia.org/wiki/Elbling",
+    "https://decanterchina.com/en/knowledge/grapes/elbling-red-white",
+    "https://agriculture.public.lu/dam-assets/veroeffentlichungen/dokumentationen/weinbau/oenologie/2020-cahier-des-charges-aop-moselle-luxembourgeoise.pdf"
+   ],
+   "body": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/99/elbling",
+    "https://decanterchina.com/en/knowledge/grapes/elbling-red-white",
+    "https://agriculture.public.lu/dam-assets/veroeffentlichungen/dokumentationen/weinbau/oenologie/2020-cahier-des-charges-aop-moselle-luxembourgeoise.pdf"
+   ],
+   "acidity": [
+    "https://decanterchina.com/en/knowledge/grapes/elbling-red-white",
+    "https://en.wikipedia.org/wiki/Elbling",
+    "https://agriculture.public.lu/dam-assets/veroeffentlichungen/dokumentationen/weinbau/oenologie/2020-cahier-des-charges-aop-moselle-luxembourgeoise.pdf"
+   ]
+  }
+ }
+]

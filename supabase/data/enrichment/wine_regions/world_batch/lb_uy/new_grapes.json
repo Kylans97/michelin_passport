@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Tannat",
+    "aliases": [
+      "Harriague"
+    ],
+    "colour": "red",
+    "summary": "A deeply coloured red grape from southwest France, where it makes Madiran, and Uruguay's most planted variety. Its wines are known for high tannin, dark fruit and fresh acidity.",
+    "tastes": [
+      "Plum",
+      "Blackcurrant",
+      "Liquorice",
+      "Spice"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": 4,
+    "tannin": 5,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf",
+        "https://daily.sevenfifty.com/regions/uruguay/"
+      ],
+      "summary": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://www.decanter.com/learn/tannat-red-52146/",
+        "https://en.wikipedia.org/wiki/Tannat",
+        "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf",
+        "https://daily.sevenfifty.com/regions/uruguay/"
+      ],
+      "tastes": [
+        "https://www.decanter.com/learn/tannat-red-52146/",
+        "https://winefolly.com/grapes/tannat/",
+        "https://daily.sevenfifty.com/regions/uruguay/"
+      ],
+      "acidity": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://daily.sevenfifty.com/regions/uruguay/",
+        "https://www.decanter.com/learn/tannat-red-52146/"
+      ],
+      "tannin": [
+        "https://winefolly.com/grapes/tannat/",
+        "https://daily.sevenfifty.com/exploring-the-wines-of-uruguay/",
+        "https://daily.sevenfifty.com/regions/uruguay/",
+        "https://www.decanter.com/learn/tannat-red-52146/"
+      ]
+    }
+  },
+  {
+    "name": "Albariño",
+    "aliases": [
+      "Alvarinho"
+    ],
+    "colour": "white",
+    "summary": "A white grape native to Galicia, called Alvarinho in Portugal, making dry whites with high acidity and a saline edge. It is now also grown on Uruguay's Atlantic coast.",
+    "tastes": [
+      "Peach",
+      "Apricot",
+      "Citrus",
+      "Saline"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": 4,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "aliases": [
+        "https://www.decanter.com/wine/grape-varieties/albarino/",
+        "https://winefolly.com/grapes/albarino/"
+      ],
+      "summary": [
+        "https://www.decanter.com/wine/grape-varieties/albarino/",
+        "https://winefolly.com/grapes/albarino/",
+        "https://daily.sevenfifty.com/exploring-the-wines-of-uruguay/",
+        "https://winefolly.com/wine-regions/uruguay/"
+      ],
+      "tastes": [
+        "https://www.decanter.com/wine/grape-varieties/albarino/",
+        "https://winefolly.com/grapes/albarino/"
+      ],
+      "acidity": [
+        "https://www.decanter.com/wine/grape-varieties/albarino/",
+        "https://winefolly.com/grapes/albarino/"
+      ]
+    }
+  }
+]

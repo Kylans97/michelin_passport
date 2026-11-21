@@ -1,0 +1,818 @@
+[
+ {
+  "slug": "ribeira_sacra",
+  "name": "Ribeira Sacra",
+  "country": "ES",
+  "aliases": [
+   "DO Ribeira Sacra",
+   "DOP Ribeira Sacra"
+  ],
+  "summary": "Ribeira Sacra follows the steep banks of the Miño and Sil rivers in southern Lugo and northern Ourense. It is best known for fresh, light red wines from Mencía grown on terraced slopes.",
+  "red_body": 2,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Mencía",
+    "local_note": null
+   },
+   {
+    "name": "Godello",
+    "local_note": "main white grape"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Amandi",
+    "colour": "mixed",
+    "note": "Subzona in the pliego, defined by parishes."
+   },
+   {
+    "name": "Chantada",
+    "colour": "mixed",
+    "note": "Subzona in the pliego, defined by parishes."
+   },
+   {
+    "name": "Quiroga-Bibei",
+    "colour": "mixed",
+    "note": "Subzona in the pliego, defined by parishes."
+   },
+   {
+    "name": "Ribeiras do Miño",
+    "colour": "mixed",
+    "note": "Subzona in the pliego, defined by parishes."
+   },
+   {
+    "name": "Ribeiras do Sil",
+    "colour": "mixed",
+    "note": "Subzona in the pliego, defined by parishes."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-ribeira-sacra-do-dop",
+    "https://www.spain.info/en/oenology/ribeira-sacra-wine-route/",
+    "https://vinepair.com/good-wine-reviews/best-red-wines-from-northwest-spain/",
+    "https://guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain"
+   ],
+   "red_body": [
+    "https://guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://www.spain.info/en/oenology/ribeira-sacra-wine-route/",
+    "https://guiapenin.wine/en-ribeira-sacra-do-dop"
+   ],
+   "grapes": [
+    "https://vinepair.com/good-wine-reviews/best-red-wines-from-northwest-spain/",
+    "https://guiapenin.wine/en-ribeira-sacra-do-dop",
+    "https://vinepair.com/articles/galicia-spain-definitive-guide/",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/godello",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/mencia"
+   ],
+   "appellations": [
+    "https://ribeirasacra.org/media/documentos/25%2002%2018%20Pliego%20de%20Condiciones.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "valdeorras",
+  "name": "Valdeorras",
+  "country": "ES",
+  "aliases": [
+   "DO Valdeorras",
+   "DOP Valdeorras"
+  ],
+  "summary": "Valdeorras is Galicia's easternmost appellation, in Ourense province bordering Bierzo. It is known above all for white wines from Godello, with a smaller share of red wines from Mencía.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wines from raisined grapes are labelled 'tostado'. 'Producción controlada' is reserved for reds and Godello whites from vineyards classed as such.",
+  "grapes": [
+   {
+    "name": "Godello",
+    "local_note": null
+   },
+   {
+    "name": "Mencía",
+    "local_note": "main red grape"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://vinepair.com/articles/galicia-spain-definitive-guide/",
+    "https://guiapenin.wine/en-valdeorras-do-dop",
+    "https://vinepair.com/good-wine-reviews/best-red-wines-from-northwest-spain/",
+    "https://guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain"
+   ],
+   "grapes": [
+    "https://vinepair.com/good-wine-reviews/best-red-wines-from-northwest-spain/",
+    "https://guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/godello",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/mencia"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/valdeorras_2024_12_04.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "ribeiro",
+  "name": "Ribeiro",
+  "country": "ES",
+  "aliases": [
+   "DO Ribeiro",
+   "DOP Ribeiro"
+  ],
+  "summary": "Ribeiro lies in western Ourense along the Miño river and its tributaries. It is mainly a white wine region, known for aromatic blends led by Treixadura, often with Torrontés.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wines based on the principal varieties may be labelled 'castes', 'barrica', 'espumoso' or 'tostado'; tostado is made from raisined grapes.",
+  "grapes": [
+   {
+    "name": "Treixadura",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-ribeiro-do-dop",
+    "https://vinepair.com/articles/galicia-spain-definitive-guide/",
+    "https://www.ribeiro.wine/our-wines/white",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/treixadura"
+   ],
+   "grapes": [
+    "https://www.ribeiro.wine/our-wines/white",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/treixadura",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/torrontes",
+    "https://guiapenin.wine/en-ribeiro-do-dop"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/ribeiro_2025_12_04.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "monterrei",
+  "name": "Monterrei",
+  "country": "ES",
+  "aliases": [
+   "DO Monterrei",
+   "DOP Monterrei"
+  ],
+  "summary": "Monterrei sits in southeastern Ourense on the border with Portugal. It is mainly a white wine region led by Godello, with red wines made chiefly from Mencía.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Godello",
+    "local_note": null
+   },
+   {
+    "name": "Mencía",
+    "local_note": "main red grape"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle de Monterrei",
+    "colour": "mixed",
+    "note": "Subzona in the pliego, defined by parishes."
+   },
+   {
+    "name": "Ladera de Monterrei",
+    "colour": "mixed",
+    "note": "Subzona in the pliego, defined by parishes."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-monterrei-do-dop",
+    "https://vinepair.com/articles/galicia-spain-definitive-guide/",
+    "https://guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/mencia"
+   ],
+   "grapes": [
+    "https://guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/godello",
+    "https://museovinogalicia.xunta.gal/en/o-vino/uvas-e-vinos-de-galicia/mencia",
+    "https://vinepair.com/articles/galicia-spain-definitive-guide/"
+   ],
+   "appellations": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/monterrei_2025_09_12.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "getariako_txakolina",
+  "name": "Getariako Txakolina",
+  "country": "ES",
+  "aliases": [
+   "Txakoli de Getaria",
+   "Chacolí de Getaria"
+  ],
+  "summary": "Txakoli from the Basque province of Gipuzkoa, with most vineyards around the coastal towns of Getaria, Zarautz and Aia. Mostly a pale, light white with high acidity and a slight spritz, made chiefly from Hondarrabi Zuri.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Seafood and pintxos",
+  "label_note": "'Vendimia tardía' may be used for wines from overripe grapes of at least 12% alcohol.",
+  "grapes": [
+   {
+    "name": "Hondarrabi Zuri",
+    "local_note": "about 90% of the vineyard per Guía Peñín"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-getariako-txakolina-do-dop",
+    "https://www.getariakotxakolina.eus/en/",
+    "https://vinepair.com/articles/txakoli-basque-country-wine-summer/"
+   ],
+   "pairing": [
+    "https://vinepair.com/articles/txakoli-basque-country-wine-summer/",
+    "https://winefolly.com/wines/txakoli-white/",
+    "https://www.spain.info/en/top/regional-wines-and-tapas/"
+   ],
+   "grapes": [
+    "https://guiapenin.wine/en-getariako-txakolina-do-dop",
+    "https://www.getariakotxakolina.eus/en/"
+   ],
+   "aliases": [
+    "https://www.getariakotxakolina.eus/en/",
+    "https://guiapenin.wine/en-getariako-txakolina-do-dop"
+   ],
+   "label_note": [
+    "https://www.euskadi.eus/contenidos/informacion/dop_txakoli_getaria/es_dapa/adjuntos/PLIEGO-CR-GT_29-06-2011.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "bizkaiko_txakolina",
+  "name": "Bizkaiko Txakolina",
+  "country": "ES",
+  "aliases": [
+   "Txakoli de Bizkaia"
+  ],
+  "summary": "Txakoli from the Basque province of Bizkaia, around Bilbao, in coastal and inland valleys. Mostly a light, crisp white with high acidity, made from Hondarrabi Zuri, with Folle Blanche adding a herbal note.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Raw seafood such as oysters",
+  "label_note": "'Vendimia tardía' may be used alongside the name Bizkaia for late harvest wines.",
+  "grapes": [
+   {
+    "name": "Hondarrabi Zuri",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-bizkaiko-txakolina-do-dop",
+    "https://vinepair.com/articles/wine-101-txakolina/",
+    "https://www.winespectator.com/articles/a-tongue-twisting-spanish-white-40305"
+   ],
+   "pairing": [
+    "https://www.winespectator.com/articles/a-tongue-twisting-spanish-white-40305",
+    "https://winefolly.com/wines/txakoli-white/"
+   ],
+   "grapes": [
+    "https://guiapenin.wine/en-bizkaiko-txakolina-do-dop",
+    "https://www.winespectator.com/articles/a-tongue-twisting-spanish-white-40305",
+    "https://vinepair.com/articles/wine-101-txakolina/"
+   ],
+   "aliases": [
+    "https://vinepair.com/articles/wine-101-txakolina/"
+   ],
+   "label_note": [
+    "https://www.euskadi.eus/contenidos/informacion/dop_txakoli_bizkaia/es_dapa/adjuntos/BIZKAIKO-TXAKOLINAren-pliegoak-20241128-consolidado.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "navarra",
+  "name": "Navarra",
+  "country": "ES",
+  "aliases": [
+   "Navarre"
+  ],
+  "summary": "Wine region across the northern Spanish province of Navarra, split into five subzones. Best known for fresh, fruity Grenache rosado made by bleeding the tank, and also for reds from Grenache, Tempranillo and international grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Grenache",
+    "local_note": "Garnacha"
+   },
+   {
+    "name": "Tempranillo",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Ribera Baja",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor in the pliego."
+   },
+   {
+    "name": "Ribera Alta",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor in the pliego."
+   },
+   {
+    "name": "Tierra Estella",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor in the pliego."
+   },
+   {
+    "name": "Valdizarbe",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor in the pliego."
+   },
+   {
+    "name": "Baja Montaña",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor in the pliego."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-navarra-do-dop",
+    "https://navarrawine.com/en/",
+    "https://www.spain.info/en/discover-spain/wines-navarra-tour-vineyards-wineries/"
+   ],
+   "grapes": [
+    "https://guiapenin.wine/en-navarra-do-dop",
+    "https://www.spain.info/en/discover-spain/wines-navarra-tour-vineyards-wineries/",
+    "https://navarrawine.com/en/?p=963"
+   ],
+   "aliases": [
+    "https://guiapenin.wine/en-navarra-do-dop",
+    "https://www.decanter.com/magazine/discover-navarre-488997/"
+   ],
+   "appellations": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/navarra_2024_10_11.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "cigales",
+  "name": "Cigales",
+  "country": "ES",
+  "aliases": [],
+  "summary": "Small region north of Valladolid on both banks of the Pisuerga river, reaching into Palencia province. Best known for rosado and also making reds, with Tempranillo, locally Tinta del País, the dominant grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Tempranillo",
+    "local_note": "Tinta del País; about 70% of the vineyard per the Consejo Regulador"
+   },
+   {
+    "name": "Grenache",
+    "local_note": "Garnacha"
+   },
+   {
+    "name": "Verdejo",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-cigales-do-dop",
+    "https://do-cigales.es/viticultura/",
+    "https://www.spain.info/en/oenology/wine-route-cigales/"
+   ],
+   "grapes": [
+    "https://do-cigales.es/viticultura/",
+    "https://guiapenin.wine/en-cigales-do-dop",
+    "https://www.spain.info/en/oenology/wine-route-cigales/"
+   ]
+  }
+ },
+ {
+  "slug": "somontano",
+  "name": "Somontano",
+  "country": "ES",
+  "aliases": [],
+  "summary": "Somontano lies in Huesca province in Aragón, northeast Spain. It is known for international grapes such as Cabernet Sauvignon, Merlot, Chardonnay and Gewürztraminer, grown alongside the native red grapes Moristel and Parraleta.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.spain.info/en/oenology/wine-route-somontano/",
+    "https://guiapenin.wine/en-somontano-do-dop"
+   ]
+  }
+ },
+ {
+  "slug": "calatayud",
+  "name": "Calatayud",
+  "country": "ES",
+  "aliases": [],
+  "summary": "Calatayud lies in the west of Zaragoza province in Aragón, with vineyards set high in the hills. It is known above all for red wines from Garnacha, much of it from old vines, along with fresh Garnacha rosés.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Optional label terms include 'Calatayud Superior' and 'Viñas viejas' (old vines).",
+  "grapes": [
+   {
+    "name": "Grenache",
+    "local_note": "Garnacha Tinta"
+   },
+   {
+    "name": "Tempranillo",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.spain.info/en/oenology/calatayud-wine-route/",
+    "https://guiapenin.wine/en-calatayud-do-dop",
+    "https://winefolly.com/tips/types-of-spanish-red-wine/"
+   ],
+   "grapes": [
+    "https://guiapenin.wine/en-calatayud-do-dop",
+    "https://www.calatayudwine.com/"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/calatayud_2024_02_26.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "campo_de_borja",
+  "name": "Campo de Borja",
+  "country": "ES",
+  "aliases": [],
+  "summary": "Campo de Borja lies in northwest Zaragoza province in Aragón, between the Moncayo foothills and the Ebro valley. Garnacha dominates its vineyards, many of them old, and it is best known for Garnacha red wines.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Grenache",
+    "local_note": "Garnacha"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-campo-de-borja-do-dop",
+    "https://www.spain.info/en/oenology/wine-route-garnacha-campo-borja/",
+    "https://docampodeborja.com/en/the-wines/",
+    "https://winefolly.com/tips/types-of-spanish-red-wine/"
+   ],
+   "grapes": [
+    "https://guiapenin.wine/en-campo-de-borja-do-dop",
+    "https://docampodeborja.com/en/the-wines/"
+   ]
+  }
+ },
+ {
+  "slug": "jumilla",
+  "name": "Jumilla",
+  "country": "ES",
+  "aliases": [],
+  "summary": "Jumilla spans the provinces of Murcia and Albacete in southeastern Spain. It is known for bold, deeply coloured red wines from Monastrell, the grape that covers most of its vineyards.",
+  "red_body": 5,
+  "red_acidity": null,
+  "red_tannin": 4,
+  "pairing": "Grilled meats",
+  "label_note": "'Viña vieja' is reserved for wines made from at least 85% grapes from vineyards at least 30 years old.",
+  "grapes": [
+   {
+    "name": "Mourvèdre",
+    "local_note": "Monastrell"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://guiapenin.wine/en-jumilla-do-dop",
+    "https://vinepair.com/good-wine-reviews/bodegas-olivares-altos-de-la-hoya-monastrell-2018-jumilla-spain/",
+    "https://www.decanter.com/sponsored/jumilla-grapes-and-flavours-447496/",
+    "https://winefolly.com/tips/types-of-spanish-red-wine/"
+   ],
+   "red_body": [
+    "https://winefolly.com/tips/types-of-spanish-red-wine/",
+    "https://guiapenin.wine/en-jumilla-do-dop",
+    "https://vinepair.com/good-wine-reviews/bodegas-olivares-altos-de-la-hoya-monastrell-2018-jumilla-spain/"
+   ],
+   "red_tannin": [
+    "https://winefolly.com/tips/types-of-spanish-red-wine/",
+    "https://guiapenin.wine/en-jumilla-do-dop",
+    "https://www.decanter.com/sponsored/jumilla-grapes-and-flavours-447496/"
+   ],
+   "pairing": [
+    "https://winefolly.com/videos/5-spanish-red-wines-you-must-try/",
+    "https://vinepair.com/good-wine-reviews/bodegas-olivares-altos-de-la-hoya-monastrell-2018-jumilla-spain/"
+   ],
+   "grapes": [
+    "https://guiapenin.wine/en-jumilla-do-dop",
+    "https://www.decanter.com/sponsored/jumilla-grapes-and-flavours-447496/",
+    "https://vinepair.com/good-wine-reviews/bodegas-olivares-altos-de-la-hoya-monastrell-2018-jumilla-spain/"
+   ],
+   "label_note": [
+    "https://mapa.gob.es/ca/alimentacion/temas/calidad-diferenciada/jumilla_2023_03_21_tcm34-656751.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "montsant",
+  "name": "Montsant",
+  "country": "ES",
+  "aliases": [],
+  "summary": "Montsant lies in Tarragona, Catalonia, and almost surrounds Priorat. It is known above all for full, fruit rich red wines built mainly on Grenache, often blended with Carignan.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Grenache",
+    "local_note": "Garnacha / Garnatxa"
+   },
+   {
+    "name": "Carignan",
+    "local_note": "Cariñena / Samsó"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://winefolly.com/deep-dive/spanish-wine-exploration-map/",
+    "https://guiapenin.wine/en-montsant-do-dop"
+   ],
+   "red_body": [
+    "https://winefolly.com/deep-dive/spanish-wine-exploration-map/",
+    "https://guiapenin.wine/en-montsant-do-dop"
+   ],
+   "grapes": [
+    "https://guiapenin.wine/en-montsant-do-dop",
+    "https://winefolly.com/deep-dive/spanish-wine-exploration-map/"
+   ]
+  }
+ },
+ {
+  "slug": "cava",
+  "name": "Cava",
+  "country": "ES",
+  "aliases": [],
+  "summary": "Cava is Spain's traditional method sparkling wine, made mostly in Catalonia's Penedès around Sant Sadurní d'Anoia. It is mainly white, from Macabeo, Xarel·lo and Parellada, with some rosé.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "'Reserva' needs at least 18 months from tirage to disgorgement, 'Gran Reserva' at least 30 and 'Paraje Calificado' at least 36.",
+  "grapes": [
+   {
+    "name": "Macabeo",
+    "local_note": "Macabeu / Viura"
+   },
+   {
+    "name": "Xarel·lo",
+    "local_note": null
+   },
+   {
+    "name": "Parellada",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Comtats de Barcelona",
+    "colour": "sparkling",
+    "note": "Zona (unidad geográfica menor) in the pliego."
+   },
+   {
+    "name": "Valle del Ebro",
+    "colour": "sparkling",
+    "note": "Zona (unidad geográfica menor) in the pliego."
+   },
+   {
+    "name": "Viñedos de Almendralejo",
+    "colour": "sparkling",
+    "note": "Zona (unidad geográfica menor) in the pliego."
+   },
+   {
+    "name": "Requena",
+    "colour": "sparkling",
+    "note": "Zona (unidad geográfica menor) in the pliego."
+   },
+   {
+    "name": "Valls d'Anoia-Foix",
+    "colour": "sparkling",
+    "note": "Subzona in the pliego."
+   },
+   {
+    "name": "Serra de Mar",
+    "colour": "sparkling",
+    "note": "Subzona in the pliego."
+   },
+   {
+    "name": "Conca del Gaià",
+    "colour": "sparkling",
+    "note": "Subzona in the pliego."
+   },
+   {
+    "name": "Serra de Prades",
+    "colour": "sparkling",
+    "note": "Subzona in the pliego."
+   },
+   {
+    "name": "Pla de Ponent",
+    "colour": "sparkling",
+    "note": "Subzona in the pliego."
+   },
+   {
+    "name": "Alto Ebro",
+    "colour": "sparkling",
+    "note": "Subzona in the pliego."
+   },
+   {
+    "name": "Valle del Cierzo",
+    "colour": "sparkling",
+    "note": "Subzona in the pliego."
+   },
+   {
+    "name": "Vallcirera",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "El tros Nou",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "La Fideuera",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "La Pleta",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Can Sala",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Font de Jui",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "La Capella",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Terroja",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Turó d'en Mota",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Serral del vell",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Vinyes de Can Martí",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Can Prats",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Can Bas",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   },
+   {
+    "name": "Les Flandes dels Casots",
+    "colour": "sparkling",
+    "note": "Cava de Paraje Calificado (MAPA list)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://vinepair.com/articles/wine-101-summer-sparkling-cava/",
+    "https://www.cava.wine/en/news-articles/cava-grapes-types-and-varieties-of-cava-grapes/",
+    "https://winefolly.com/deep-dive/spanish-wine-exploration-map/"
+   ],
+   "grapes": [
+    "https://www.cava.wine/en/news-articles/cava-grapes-types-and-varieties-of-cava-grapes/",
+    "https://vinepair.com/articles/wine-101-summer-sparkling-cava/"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/es/alimentacion/temas/calidad-diferenciada/pliegodecondicionesdopcava_tcm30-564756.pdf"
+   ],
+   "appellations": [
+    "https://www.mapa.gob.es/es/alimentacion/temas/calidad-diferenciada/pliegodecondicionesdopcava_tcm30-564756.pdf",
+    "https://www.mapa.gob.es/es/alimentacion/temas/calidad-diferenciada/parajescalificadoscava_tcm30-563225.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "islas_canarias",
+  "name": "Islas Canarias",
+  "country": "ES",
+  "aliases": [
+   "DOP Islas Canarias",
+   "Canary Islands"
+  ],
+  "summary": "Islas Canarias is the umbrella appellation for the whole Canary archipelago, where vines grow on volcanic soils. Listán Blanco and Listán Negro lead, with Malvasía, and most reds are light and fruity.",
+  "red_body": 2,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine may carry the name of one island (Tenerife or Fuerteventura) or one municipality when it comes only from there; that name is printed no larger than 'Islas Canarias'.",
+  "grapes": [
+   {
+    "name": "Palomino",
+    "local_note": "Listán Blanco"
+   },
+   {
+    "name": "Listán Negro",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Tenerife",
+    "colour": "mixed",
+    "note": "Island named as unidad geográfica menor in the pliego; single municipalities may also be named."
+   },
+   {
+    "name": "Fuerteventura",
+    "colour": "mixed",
+    "note": "Island named as unidad geográfica menor in the pliego; single municipalities may also be named."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://guiapenin.wine/en-islas-canarias-vino-de-calidad-dop",
+    "https://www.canarywine.com/en/varieties/"
+   ],
+   "summary": [
+    "https://guiapenin.wine/en-islas-canarias-vino-de-calidad-dop",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/canary-islands",
+    "https://vinepair.com/wine-blog/a-complete-guide-to-wine-from-the-canary-islands/"
+   ],
+   "red_body": [
+    "https://vinepair.com/wine-blog/a-complete-guide-to-wine-from-the-canary-islands/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/canary-islands"
+   ],
+   "grapes": [
+    "https://www.canarywine.com/en/varieties/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/canary-islands",
+    "https://vinepair.com/wine-blog/a-complete-guide-to-wine-from-the-canary-islands/"
+   ],
+   "label_note": [
+    "https://canarywine.com/descargas/202208_nuevo_pliego_condiciones_final.pdf"
+   ],
+   "appellations": [
+    "https://canarywine.com/descargas/202208_nuevo_pliego_condiciones_final.pdf"
+   ]
+  }
+ }
+]

@@ -1,0 +1,1128 @@
+[
+ {
+  "slug": "valle-del-elqui",
+  "name": "Valle del Elqui",
+  "country": "CL",
+  "aliases": [
+   "Elqui Valley",
+   "Elqui",
+   "D.O. Valle del Elqui"
+  ],
+  "summary": "An arid valley of clear skies, with vineyards cooled by Pacific fog near the coast and others climbing high toward the Andes. Syrah leads the reds and Sauvignon Blanc the whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under Decree 464, wines from the La Serena area may add the term Costa, and wines from the Vicuña and Paiguano areas the term Andes, when at least 85% of the wine comes from areas with that condition.",
+  "grapes": [
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pedro Ximénez",
+    "local_note": "Known in Chile as Pedro Jiménez."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle del Elqui",
+    "colour": "mixed",
+    "note": "Subregión of the Región Vitícola de Coquimbo, defined by the province of Elqui."
+   },
+   {
+    "name": "La Serena",
+    "colour": "mixed",
+    "note": "Área within Valle del Elqui; may use the label term Costa."
+   },
+   {
+    "name": "Vicuña",
+    "colour": "mixed",
+    "note": "Área within Valle del Elqui; may use the label term Andes."
+   },
+   {
+    "name": "Paiguano",
+    "colour": "mixed",
+    "note": "Área within Valle del Elqui; may use the label term Andes."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://daily.sevenfifty.com/regions/chile/"
+   ],
+   "grapes": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "grapes.Syrah": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/",
+    "https://daily.sevenfifty.com/regions/chile/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "grapes.Sauvignon Blanc": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/"
+   ],
+   "grapes.Pedro Ximénez": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "label_note": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "appellations": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ]
+  }
+ },
+ {
+  "slug": "valle-del-limari",
+  "name": "Valle del Limarí",
+  "country": "CL",
+  "aliases": [
+   "Limarí Valley",
+   "Limari Valley",
+   "Limarí",
+   "D.O. Valle del Limarí"
+  ],
+  "summary": "A dry valley cooled by Pacific fog in the morning, with pockets of limestone soil. It is best known for fresh, mineral Chardonnay, with Syrah and Pinot Noir also doing well.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under Decree 464, wines from the Ovalle area may add the term Costa, from Punitaqui the term Entre Cordilleras, and from Monte Patria and Río Hurtado the term Andes, when at least 85% of the wine comes from areas with that condition.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": "Fresh and mineral, notably from limestone soils."
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle del Limarí",
+    "colour": "mixed",
+    "note": "Subregión of the Región Vitícola de Coquimbo, defined by the province of Limarí."
+   },
+   {
+    "name": "Ovalle",
+    "colour": "mixed",
+    "note": "Área within Valle del Limarí; may use the label term Costa."
+   },
+   {
+    "name": "Punitaqui",
+    "colour": "mixed",
+    "note": "Área within Valle del Limarí; may use the label term Entre Cordilleras."
+   },
+   {
+    "name": "Monte Patria",
+    "colour": "mixed",
+    "note": "Área within Valle del Limarí; may use the label term Andes."
+   },
+   {
+    "name": "Río Hurtado",
+    "colour": "mixed",
+    "note": "Área within Valle del Limarí; may use the label term Andes."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://daily.sevenfifty.com/regions/chile/"
+   ],
+   "grapes": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "grapes.Chardonnay": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://daily.sevenfifty.com/regions/chile/"
+   ],
+   "grapes.Syrah": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "grapes.Sauvignon Blanc": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes.Pinot Noir": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://winefolly.com/review/the-best-wines-to-try-from-chile/"
+   ],
+   "label_note": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "appellations": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ]
+  }
+ },
+ {
+  "slug": "valle-del-aconcagua",
+  "name": "Valle del Aconcagua",
+  "country": "CL",
+  "aliases": [
+   "Aconcagua Valley",
+   "D.O. Valle del Aconcagua"
+  ],
+  "summary": "A valley following the Aconcagua River from the Andes toward the Pacific. Its inland vineyards near the Andes have a long tradition of red wine, led by Cabernet Sauvignon and Carménère, while cooler sites nearer the coast grow white grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under Decree 464, wines from the Quillota area may add the term Costa; from Hijuelas, Panquehue, Catemu, Llaillay and San Felipe the term Entre Cordilleras; and from Santa María, Calle Larga and San Esteban the term Andes, when at least 85% of the wine comes from areas with that condition.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Carménère",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": "Interest has grown here since the 1990s."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": "Grown mostly in the Quillota area, toward the coast."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "Grown mostly in the Quillota area, toward the coast."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle del Aconcagua",
+    "colour": "mixed",
+    "note": "Subregión of the Región Vitícola de Aconcagua, covering the provinces of San Felipe de Aconcagua, Los Andes and Quillota."
+   },
+   {
+    "name": "Panquehue",
+    "colour": "mixed",
+    "note": "Área within Valle del Aconcagua; may use the label term Entre Cordilleras."
+   },
+   {
+    "name": "Quillota",
+    "colour": "mixed",
+    "note": "Área within Valle del Aconcagua; may use the label term Costa."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://www.bbr.com/region-472-aconcagua-valley",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "grapes.Cabernet Sauvignon": [
+    "https://www.bbr.com/region-472-aconcagua-valley",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://daily.sevenfifty.com/regions/chile/"
+   ],
+   "grapes.Carménère": [
+    "https://www.bbr.com/region-472-aconcagua-valley",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes.Syrah": [
+    "https://www.bbr.com/region-472-aconcagua-valley",
+    "https://daily.sevenfifty.com/regions/chile/",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/"
+   ],
+   "grapes.Chardonnay": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes.Sauvignon Blanc": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes.Pinot Noir": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "label_note": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "appellations": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ]
+  }
+ },
+ {
+  "slug": "valle-de-san-antonio",
+  "name": "Valle de San Antonio",
+  "country": "CL",
+  "aliases": [
+   "San Antonio Valley",
+   "D.O. Valle de San Antonio",
+   "Leyda",
+   "Valle de Leyda",
+   "Leyda Valley"
+  ],
+  "summary": "A small, young coastal valley close to the Pacific, with thin, poor soils. Sauvignon Blanc leads, followed by Pinot Noir, Chardonnay and Syrah, and Leyda is its best known zone.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under Decree 464, wines from the San Juan, Santo Domingo, Cartagena and Algarrobo areas may add the term Costa when at least 85% of the wine comes from areas with that condition.",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle de San Antonio",
+    "colour": "mixed",
+    "note": "Subregión of the Región Vitícola de Aconcagua, defined by the province of San Antonio."
+   },
+   {
+    "name": "Valle de Leyda",
+    "colour": "mixed",
+    "note": "Zona within Valle de San Antonio, covering the comunas of San Antonio and Santo Domingo, with the Áreas San Juan and Santo Domingo."
+   },
+   {
+    "name": "Lo Abarca",
+    "colour": "mixed",
+    "note": "Área within Valle de San Antonio, the rural locality of that name in the comuna of Cartagena."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://daily.sevenfifty.com/regions/chile/"
+   ],
+   "grapes": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "grapes.Sauvignon Blanc": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "grapes.Pinot Noir": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://daily.sevenfifty.com/regions/chile/",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/"
+   ],
+   "grapes.Chardonnay": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "grapes.Syrah": [
+    "https://www.winesofchile.org/en/wine-regions",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/real-frontier-chilean-wine/"
+   ],
+   "grapes.Riesling": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "label_note": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "appellations": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ]
+  }
+ },
+ {
+  "slug": "valle-del-maule",
+  "name": "Valle del Maule",
+  "country": "CL",
+  "aliases": [
+   "Maule Valley",
+   "Maule",
+   "D.O. Valle del Maule"
+  ],
+  "summary": "Cabernet Sauvignon leads the plantings in Maule, with País second by area. Old, dry farmed bush vines in the secano of the interior are a noted source of Carignan.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under Decree 464, País or Cinsault from the dry farmed areas of Talca, Pencahue, San Clemente, San Rafael, San Javier, Villa Alegre, Parral, Linares and Cauquenes may be labelled Secano Interior. Wines from Empedrado and Curepto may add the term Costa, from San Clemente and Colbún the term Andes, and from the other areas Entre Cordilleras.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "País",
+    "local_note": "Often from old vines."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Carménère",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Carignan",
+    "local_note": "Prized from old, dry farmed bush vines. VIGNO, a producers' association, sets its own rules for these wines; they are not part of the decree."
+   },
+   {
+    "name": "Malbec",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle del Maule",
+    "colour": "mixed",
+    "note": "Subregión of the Región Vitícola del Valle Central: the province of Talca except the comuna of Río Claro, the province of Linares and the comuna of Cauquenes."
+   },
+   {
+    "name": "Valle del Claro",
+    "colour": "mixed",
+    "note": "Zona within Valle del Maule."
+   },
+   {
+    "name": "Valle del Loncomilla",
+    "colour": "mixed",
+    "note": "Zona within Valle del Maule."
+   },
+   {
+    "name": "Valle del Tutuvén",
+    "colour": "mixed",
+    "note": "Zona within Valle del Maule."
+   },
+   {
+    "name": "Secano Interior",
+    "colour": "red",
+    "note": "Special denomination under Decree 464 for wines from País or Cinsault grown in the dry farmed secano. In Maule it covers the areas of Talca, Pencahue, San Clemente, San Rafael, San Javier, Villa Alegre, Parral, Linares and Cauquenes."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://winefolly.com/wine-regions/chile/",
+    "https://www.decanter.com/features/chile-back-to-the-future-266107/"
+   ],
+   "summary": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://www.winesofchile.org/winegrowing-regions/",
+    "https://www.decanter.com/features/chile-back-to-the-future-266107/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://wineanorak.com/2022/10/15/dry-farmed-chile-the-exciting-wines-of-the-south-1-vigno-in-maule/"
+   ],
+   "grapes": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "grapes.País": [
+    "https://winefolly.com/wine-regions/chile/",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/old-vines-new-world"
+   ],
+   "grapes.Carignan": [
+    "https://www.winesofchile.org/winegrowing-regions/",
+    "https://www.decanter.com/features/chile-back-to-the-future-266107/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://www.guildsomm.com/public_content/features/articles/b/kelli-white/posts/old-vines-new-world",
+    "https://wineanorak.com/2022/10/15/dry-farmed-chile-the-exciting-wines-of-the-south-1-vigno-in-maule/"
+   ],
+   "label_note": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "appellations": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "red_body": [],
+   "red_acidity": [],
+   "red_tannin": [],
+   "pairing": []
+  }
+ },
+ {
+  "slug": "valle-del-itata",
+  "name": "Valle del Itata",
+  "country": "CL",
+  "aliases": [
+   "Itata Valley",
+   "Itata",
+   "D.O. Valle del Itata"
+  ],
+  "summary": "One of Chile's oldest wine areas, planted mainly with País and Moscatel de Alejandría, with Cinsault next. Many of its old bush vines grow on granite hillsides and are dry farmed.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under Decree 464, País or Cinsault from the dry farmed areas of Chillán, Quillón, Portezuelo and Coelemu may be labelled Secano Interior. Wines from Portezuelo and Coelemu may add the term Costa, and from Chillán and Quillón the term Entre Cordilleras.",
+  "grapes": [
+   {
+    "name": "País",
+    "local_note": null
+   },
+   {
+    "name": "Muscat of Alexandria",
+    "local_note": "Known locally as Moscatel de Alejandría."
+   },
+   {
+    "name": "Cinsault",
+    "local_note": "Old, dry farmed bush vines give fresh, fruity reds."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle del Itata",
+    "colour": "mixed",
+    "note": "Subregión of the Región Vitícola del Sur."
+   },
+   {
+    "name": "Chillán",
+    "colour": "mixed",
+    "note": "Área within Valle del Itata; may use the label term Entre Cordilleras."
+   },
+   {
+    "name": "Quillón",
+    "colour": "mixed",
+    "note": "Área within Valle del Itata; may use the label term Entre Cordilleras."
+   },
+   {
+    "name": "Portezuelo",
+    "colour": "mixed",
+    "note": "Área within Valle del Itata; may use the label term Costa."
+   },
+   {
+    "name": "Coelemu",
+    "colour": "mixed",
+    "note": "Área within Valle del Itata; may use the label term Costa."
+   },
+   {
+    "name": "Secano Interior",
+    "colour": "red",
+    "note": "Special denomination under Decree 464 for wines from País or Cinsault grown in the dry farmed secano. In Itata it covers the areas of Chillán, Quillón, Portezuelo and Coelemu."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://winefolly.com/wine-regions/chile/",
+    "https://www.decanter.com/decanter-world-wine-awards/chile-15-award-winning-wines-from-the-south-452311/"
+   ],
+   "summary": [
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://www.winesofchile.org/winegrowing-regions/",
+    "https://www.decanter.com/decanter-world-wine-awards/chile-15-award-winning-wines-from-the-south-452311/",
+    "https://www.decanter.com/features/chile-back-to-the-future-266107/",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://wineanorak.com/2024/03/03/dry-grown-chile-exploring-itata-a-historic-region-whose-time-has-now-come/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "grapes": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "grapes.Muscat of Alexandria": [
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes.Cinsault": [
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://daily.sevenfifty.com/regions/chile/",
+    "https://wineanorak.com/2024/03/03/dry-grown-chile-exploring-itata-a-historic-region-whose-time-has-now-come/",
+    "https://www.decanter.com/wine-reviews-tastings/our-expert-recommends-18-brilliant-light-bodied-south-american-reds/"
+   ],
+   "label_note": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "appellations": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "red_body": [],
+   "red_acidity": [],
+   "red_tannin": [],
+   "pairing": []
+  }
+ },
+ {
+  "slug": "valle-del-bio-bio",
+  "name": "Valle del Biobío",
+  "country": "CL",
+  "aliases": [
+   "Bío Bío Valley",
+   "Bío-Bío Valley",
+   "Biobío Valley",
+   "Bio Bio Valley",
+   "Valle del Bío Bío",
+   "D.O. Valle del Bío Bío",
+   "Bío Bío"
+  ],
+  "summary": "A windy, rainy valley in Chile's south, where Pinot Noir is the most planted grape, ahead of Chardonnay and País. Riesling and Sauvignon Blanc also suit the area.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under Decree 464, País or Cinsault from the dry farmed Yumbel area may be labelled Secano Interior. Wines from Yumbel and Mulchén may add the term Entre Cordilleras.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "País",
+    "local_note": null
+   },
+   {
+    "name": "Muscat of Alexandria",
+    "local_note": "Known locally as Moscatel de Alejandría."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Gewürztraminer",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valle del Biobío",
+    "colour": "mixed",
+    "note": "Subregión of the Región Vitícola del Sur."
+   },
+   {
+    "name": "Yumbel",
+    "colour": "mixed",
+    "note": "Área within Valle del Biobío; may use the label term Entre Cordilleras."
+   },
+   {
+    "name": "Mulchén",
+    "colour": "mixed",
+    "note": "Área within Valle del Biobío; may use the label term Entre Cordilleras."
+   },
+   {
+    "name": "Secano Interior",
+    "colour": "red",
+    "note": "Special denomination under Decree 464 for wines from País or Cinsault grown in the dry farmed secano. In Biobío it covers the Yumbel area."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://winefolly.com/wine-regions/chile/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://www.decanter.com/decanter-world-wine-awards/chile-15-award-winning-wines-from-the-south-452311/",
+    "https://www.decanter.com/wine-reviews-tastings/our-expert-recommends-18-brilliant-light-bodied-south-american-reds/"
+   ],
+   "summary": [
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://www.winesofchile.org/winegrowing-regions/",
+    "https://daily.sevenfifty.com/regions/chile/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/"
+   ],
+   "grapes.Muscat of Alexandria": [
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx"
+   ],
+   "grapes.Riesling": [
+    "https://www.winesofchile.org/winegrowing-regions/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "grapes.Gewürztraminer": [
+    "https://bibliotecadigital.odepa.gob.cl/bitstream/handle/20.500.12650/73137/informe%20catastro%20vit%c3%adcola%202022.xlsx",
+    "https://www.winesofchile.org/wine-regions-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/chilean-wine-ultimate-guide"
+   ],
+   "label_note": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "appellations": [
+    "https://www.bcn.cl/leychile/navegar?idNorma=13601"
+   ],
+   "red_body": [],
+   "red_acidity": [],
+   "red_tannin": [],
+   "pairing": []
+  }
+ },
+ {
+  "slug": "anelo",
+  "name": "Añelo",
+  "country": "AR",
+  "aliases": [
+   "I.G. Añelo",
+   "Anelo",
+   "San Patricio del Chañar",
+   "Neuquén"
+  ],
+  "summary": "Añelo holds almost all of Neuquén's vineyards, around San Patricio del Chañar, a Patagonian wine zone developed from the late 1990s. Malbec is the main grape, and Pinot Noir and Merlot also do well.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Malbec",
+    "local_note": "More than a third of the province's vineyard."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Añelo",
+    "colour": "mixed",
+    "note": "Departmental I.G., INV Resolución C.32/2002. The department holds San Patricio del Chañar."
+   },
+   {
+    "name": "Neuquén",
+    "colour": "mixed",
+    "note": "Provincial I.G., INV Resolución C.32/2002, which contains Añelo."
+   },
+   {
+    "name": "Patagonia",
+    "colour": "mixed",
+    "note": "Interprovincial I.G., INV Resolución C.37/2002; Patagonia Argentina is a recognised synonym (Resolución 10/2009)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.argentina.gob.ar/sites/default/files/2018/10/neuquen_2023.pdf",
+    "https://blog.winesofargentina.com/destacadas/san-patricio-del-chanar/",
+    "https://www.decanter.com/wine-reviews-tastings/10-top-argentina-syrah-275435/",
+    "https://winefolly.com/lifestyle/adventurists-guide-argentina-wine-country/",
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/resolucionc18-2012.pdf"
+   ],
+   "grapes": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/2018/10/neuquen_2023.pdf"
+   ],
+   "grapes.Malbec": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/2018/10/neuquen_2023.pdf",
+    "https://blog.winesofargentina.com/destacadas/san-patricio-del-chanar/"
+   ],
+   "grapes.Pinot Noir": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/san-patricio-del-chanar/",
+    "https://winefolly.com/lifestyle/adventurists-guide-argentina-wine-country/",
+    "https://www.decanter.com/wine-news/argentina-harvest-2024-another-unusual-year-but-excellent-quality-529343/"
+   ],
+   "grapes.Merlot": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/san-patricio-del-chanar/",
+    "https://winefolly.com/lifestyle/adventurists-guide-argentina-wine-country/"
+   ],
+   "grapes.Chardonnay": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/san-patricio-del-chanar/",
+    "https://www.decanter.com/wine-news/argentina-harvest-2024-another-unusual-year-but-excellent-quality-529343/"
+   ],
+   "grapes.Sauvignon Blanc": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/san-patricio-del-chanar/"
+   ],
+   "appellations": [
+    "https://www.argentina.gob.ar/sites/default/files/resolucionnc32-02.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina18_de_abril_2024.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/resolucionc18-2012.pdf"
+   ],
+   "aliases": [
+    "https://www.argentina.gob.ar/sites/default/files/resolucionnc32-02.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/resolucionc18-2012.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "general-roca",
+  "name": "General Roca",
+  "country": "AR",
+  "aliases": [
+   "I.G. General Roca"
+  ],
+  "summary": "General Roca holds about 70 per cent of Río Negro's vineyards, in the Alto Valle along the Río Negro. Malbec leads, Merlot and Pinot Noir are also important, and old vineyards give notable Semillon.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Malbec",
+    "local_note": "About a quarter of the province's vineyard."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Semillon",
+    "local_note": "Grown on old vines in the Alto Valle."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "General Roca",
+    "colour": "mixed",
+    "note": "Departmental I.G., INV Resolución C.32/2002."
+   },
+   {
+    "name": "Alto Valle de Río Negro",
+    "colour": "mixed",
+    "note": "I.G., INV Resolución C.37/2002, with no official boundary; General Roca lies within the valley."
+   },
+   {
+    "name": "Río Negro",
+    "colour": "mixed",
+    "note": "Provincial I.G., INV Resolución C.32/2002, which contains General Roca."
+   },
+   {
+    "name": "Patagonia",
+    "colour": "mixed",
+    "note": "Interprovincial I.G., INV Resolución C.37/2002; Patagonia Argentina is a recognised synonym (Resolución 10/2009)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/wines-of-rio-negro/",
+    "https://winefolly.com/lifestyle/adventurists-guide-argentina-wine-country/",
+    "https://www.argentina.gob.ar/sites/default/files/2018/10/rio_negro_2023.pdf",
+    "https://www.decanter.com/wine-news/argentina-harvest-2024-another-unusual-year-but-excellent-quality-529343/",
+    "https://www.decanter.com/wine/the-sommelier-suggests-semillon-by-florencia-rey-521315/"
+   ],
+   "grapes": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf"
+   ],
+   "grapes.Malbec": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/wines-of-rio-negro/"
+   ],
+   "grapes.Merlot": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/wines-of-rio-negro/",
+    "https://winefolly.com/lifestyle/adventurists-guide-argentina-wine-country/"
+   ],
+   "grapes.Pinot Noir": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/wines-of-rio-negro/",
+    "https://blog.winesofargentina.com/destacadas/mainque-patagonian-pinot-noir/",
+    "https://winefolly.com/lifestyle/adventurists-guide-argentina-wine-country/",
+    "https://www.decanter.com/wine-news/argentina-harvest-2024-another-unusual-year-but-excellent-quality-529343/"
+   ],
+   "grapes.Sauvignon Blanc": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/wines-of-rio-negro/"
+   ],
+   "grapes.Chardonnay": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/mainque-patagonian-pinot-noir/"
+   ],
+   "grapes.Semillon": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/wines-of-rio-negro/",
+    "https://www.decanter.com/wine/the-sommelier-suggests-semillon-by-florencia-rey-521315/"
+   ],
+   "appellations": [
+    "https://www.argentina.gob.ar/sites/default/files/resolucionnc32-02.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina18_de_abril_2024.pdf",
+    "https://www.argentina.gob.ar/sites/default/files/resolucionnc37-02.pdf",
+    "https://blog.winesofargentina.com/destacadas/wines-of-rio-negro/"
+   ]
+  }
+ },
+ {
+  "slug": "san-juan",
+  "name": "San Juan",
+  "country": "AR",
+  "aliases": [
+   "I.G. San Juan"
+  ],
+  "summary": "San Juan is Argentina's second largest wine province. Its warm lowland valleys long supplied everyday wine and grape must, while higher valleys such as Pedernal give fresher wines. Malbec has now overtaken the traditional Syrah.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Malbec",
+    "local_note": "Now the leading red, ahead of Syrah."
+   },
+   {
+    "name": "Bonarda",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": "The province's traditional red."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "San Juan",
+    "colour": "mixed",
+    "note": "Provincial I.G., INV Resolución C.32/2002."
+   },
+   {
+    "name": "Valle del Tulum",
+    "colour": "mixed",
+    "note": "I.G., INV Resolución C.32/2002 (Tulum Valley)."
+   },
+   {
+    "name": "Valle del Pedernal",
+    "colour": "mixed",
+    "note": "I.G., INV Resolución C.21/2007, in Sarmiento department."
+   },
+   {
+    "name": "Calingasta",
+    "colour": "mixed",
+    "note": "I.G., INV Resolución C.32/2002; Valle de Calingasta is a recognised synonym (Resolución C.41/2013)."
+   },
+   {
+    "name": "Barreal",
+    "colour": "mixed",
+    "note": "I.G. in Calingasta department, INV Resolución C.42/2013."
+   },
+   {
+    "name": "Valle de Zonda",
+    "colour": "mixed",
+    "note": "I.G. in Zonda department, INV Resolución C.04/2015."
+   },
+   {
+    "name": "Zonda",
+    "colour": "mixed",
+    "note": "Departmental I.G., INV Resolución C.32/2002."
+   },
+   {
+    "name": "Ullum",
+    "colour": "mixed",
+    "note": "Departmental I.G., INV Resolución C.32/2002."
+   },
+   {
+    "name": "Pozo de los Algarrobos",
+    "colour": "mixed",
+    "note": "I.G. in Caucete department, INV Resolución C.33/2015."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/the-wines-of-san-juan/",
+    "https://blog.winesofargentina.com/destacadas/san-juan/",
+    "https://blog.winesofargentina.com/destacadas/argentine-bonarda/",
+    "https://www.decanter.com/wine/wine-regions/mendoza/terroir-of-contrasts-uco-valley-and-pedernal-vs-east-of-mendoza-and-tulum-valley-2881/",
+    "https://www.decanter.com/wine-reviews-tastings/10-top-argentina-syrah-275435/"
+   ],
+   "grapes": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf"
+   ],
+   "grapes.Malbec": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/the-wines-of-san-juan/"
+   ],
+   "grapes.Bonarda": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://winefolly.com/tips/5-south-american-wine-varieties-you-need-to-know/",
+    "https://blog.winesofargentina.com/destacadas/the-wines-of-san-juan/",
+    "https://blog.winesofargentina.com/destacadas/argentine-bonarda/"
+   ],
+   "grapes.Syrah": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/the-wines-of-san-juan/",
+    "https://www.decanter.com/wine/wine-regions/mendoza/terroir-of-contrasts-uco-valley-and-pedernal-vs-east-of-mendoza-and-tulum-valley-2881/",
+    "https://www.decanter.com/wine-reviews-tastings/10-top-argentina-syrah-275435/"
+   ],
+   "grapes.Cabernet Sauvignon": [
+    "https://argentina.gob.ar/sites/default/files/2018/10/anuario_superficie_2024.pdf",
+    "https://blog.winesofargentina.com/destacadas/the-wines-of-san-juan/",
+    "https://blog.winesofargentina.com/destacadas/san-juan/"
+   ],
+   "appellations": [
+    "https://www.argentina.gob.ar/sites/default/files/i.g._y_d.o.c._de_la_republica_argentina_1.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "altos-de-pinto-bandeira",
+  "name": "Altos de Pinto Bandeira",
+  "country": "BR",
+  "aliases": [
+   "DO Altos de Pinto Bandeira"
+  ],
+  "summary": "A small appellation for traditional method sparkling wine only, on basalt soils between 520 and 770 metres in Brazil's Serra Gaúcha. Just three grapes are allowed: Chardonnay, Pinot Noir and Riesling Itálico.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Sparkling wine only, made by the traditional method with a second fermentation in bottle; Charmat is not allowed. Wines spend at least 12 months on the lees before disgorgement, and Reserva needs 24 months in bottle, Gran Reserva 36. Only Chardonnay, Pinot Noir and Riesling Itálico, with Riesling Itálico at most 25% of the blend. Grapes are grown and the wine is made inside the zone.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Graševina",
+    "local_note": "Called Riesling Itálico here; at most 25% of a blend."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Altos de Pinto Bandeira",
+    "colour": "sparkling",
+    "note": "Denominação de Origem since 29 November 2022 (INPI BR412021000003-4), for espumante natural only; 65 km² in Pinto Bandeira, Farroupilha and Bento Gonçalves."
+   },
+   {
+    "name": "Pinto Bandeira",
+    "colour": "mixed",
+    "note": "Indicação de Procedência since 13 July 2010 (INPI IG200803) for red, white and sparkling wines."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.decanter.com/wine-news/brazils-altos-de-pinto-bandeira-becomes-first-do-exclusively-for-sparkling-wines-in-the-new-world-496863/",
+    "https://www.embrapa.br/en/web/uva-e-vinho/indicacoes-geograficas-de-vinhos-do-brasil/do-altos-de-pinto-bandeira",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/cadernos-de-especificacoes-tecnicas/AltosdePintoBandeira.pdf"
+   ],
+   "grapes": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/cadernos-de-especificacoes-tecnicas/AltosdePintoBandeira.pdf",
+    "https://www.embrapa.br/en/web/uva-e-vinho/indicacoes-geograficas-de-vinhos-do-brasil/do-altos-de-pinto-bandeira",
+    "https://www.decanter.com/wine-news/brazils-altos-de-pinto-bandeira-becomes-first-do-exclusively-for-sparkling-wines-in-the-new-world-496863/"
+   ],
+   "grapes.Graševina": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/cadernos-de-especificacoes-tecnicas/AltosdePintoBandeira.pdf",
+    "https://www.embrapa.br/en/web/uva-e-vinho/indicacoes-geograficas-de-vinhos-do-brasil/do-altos-de-pinto-bandeira",
+    "https://www.decanter.com/wine-news/brazils-altos-de-pinto-bandeira-becomes-first-do-exclusively-for-sparkling-wines-in-the-new-world-496863/"
+   ],
+   "label_note": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/cadernos-de-especificacoes-tecnicas/AltosdePintoBandeira.pdf"
+   ],
+   "appellations": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASDENOMINAESDEORIGEMRECONHECIDAS.At20Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASINDICAESDEPROCEDNCIARECONHECIDAS.At27Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/cadernos-de-especificacoes-tecnicas/AltosdePintoBandeira.pdf",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf"
+   ]
+  }
+ }
+]

@@ -1,0 +1,141 @@
+[
+ {
+  "name": "Koshu",
+  "aliases": [
+   "甲州"
+  ],
+  "colour": "white",
+  "summary": "A Japanese white grape with thick, pink skins, grown in Yamanashi for centuries. It gives light, delicate wines with citrus notes, often made to go with Japanese food.",
+  "tastes": [
+   "Citrus",
+   "Yuzu",
+   "White peach"
+  ],
+  "aged_note": null,
+  "body": 2,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.dailymaverick.co.za/article/2019-08-02-the-rise-of-japanese-wine-made-from-koshu-grapes/",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/202009/202009_12_en.html",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/201511/201511_06_en.html",
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_01.htm"
+   ],
+   "tastes": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_01.htm",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.dailymaverick.co.za/article/2019-08-02-the-rise-of-japanese-wine-made-from-koshu-grapes/"
+   ],
+   "body": [
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/201511/201511_06_en.html"
+   ]
+  }
+ },
+ {
+  "name": "Muscat Bailey A",
+  "aliases": [
+   "マスカット・ベーリーA"
+  ],
+  "colour": "red",
+  "summary": "A red grape bred in Japan in the 1920s by Zenbei Kawakami, from Bailey and Muscat Hamburg. Its wines are fruity, with strawberry aromas and soft tannins.",
+  "tastes": [
+   "Strawberry",
+   "Cherry candy"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": 2,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/202009/202009_12_en.html",
+    "https://www.dailymaverick.co.za/article/2019-08-02-the-rise-of-japanese-wine-made-from-koshu-grapes/"
+   ],
+   "tastes": [
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/202009/202009_12_en.html",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://www.dailymaverick.co.za/article/2019-08-02-the-rise-of-japanese-wine-made-from-koshu-grapes/"
+   ],
+   "tannin": [
+    "https://www.guildsomm.com/public_content/features/articles/b/yasha-lysenko/posts/the-rise-of-japanese-wine",
+    "https://www.decanter.com/wine/japan/yamanashi-regional-profile-six-star-wines-to-try/",
+    "https://gov-online.go.jp/eng/publicity/book/hlj/html/202009/202009_12_en.html",
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_01.htm"
+   ]
+  }
+ },
+ {
+  "name": "Kerner",
+  "aliases": [],
+  "colour": "white",
+  "summary": "A white grape bred in Germany in 1929 by crossing the red Trollinger with Riesling. It gives fruity, aromatic wines in a style close to Riesling.",
+  "tastes": [
+   "Apple",
+   "Pear",
+   "Peach"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": {
+   "name": "Riesling",
+   "note": "One of its parents. Kerner is similar in style but a little more aromatic."
+  },
+  "sources": {
+   "summary": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/102/kerner",
+    "https://www.weinstrasse.com/en/highlights/wine/wines-and-grape-varieties/kerner"
+   ],
+   "tastes": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/102/kerner",
+    "https://www.weinstrasse.com/en/highlights/wine/wines-and-grape-varieties/kerner"
+   ],
+   "similar": [
+    "https://www.winesofgermany.com/our-wine/grape-varieties/grape-variety/102/kerner",
+    "https://www.weinstrasse.com/en/highlights/wine/wines-and-grape-varieties/kerner"
+   ]
+  }
+ },
+ {
+  "name": "Marselan",
+  "aliases": [],
+  "colour": "red",
+  "summary": "A red grape bred in France in 1961 from Cabernet Sauvignon and Grenache. It gives deeply coloured, fragrant wines and is now grown in China as well.",
+  "tastes": [
+   "Dark berries"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": 4,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://vins-rhone.com/en/marselan-grape-variety",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=marselan",
+    "https://www.jamessuckling.com/wine-tasting-reports/report-asias-answer-bordeaux-blossoming",
+    "https://decanterchina.com/en/news/Decanter%20Features/ningxia-china-s-rapidly-emerging-fine-wine-region"
+   ],
+   "tastes": [
+    "https://vins-rhone.com/en/marselan-grape-variety",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=marselan",
+    "https://decanterchina.com/en/news/Decanter%20Features/ningxia-china-s-rapidly-emerging-fine-wine-region"
+   ],
+   "tannin": [
+    "https://vins-rhone.com/en/marselan-grape-variety",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=marselan"
+   ]
+  }
+ }
+]
