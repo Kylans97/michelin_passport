@@ -118,7 +118,13 @@ def do_import(scratch):
             shutil.copy(notes, OUTLINES / 'communes' / f'{code}_notes.md')
         if units and units not in seen_units:
             seen_units.add(units)
-            shutil.copy(src / units, OUTLINES / 'geometry' / units)
+            dest = OUTLINES / 'geometry' / units
+            # Never overwrite another round's file of the same name (round
+            # 7's sa_units.geojson once replaced the Americas one).
+            if dest.exists() and dest.read_bytes() != (src / units).read_bytes():
+                sys.exit(f'{dest.name} already holds other units; '
+                         'give this group a name of its own')
+            shutil.copy(src / units, dest)
         print(f'{code} {country} {slug}: {len(rows)} units')
     for country, folder, *_ in BATCH + ([AT] if AT[3] else []):
         dest = HERE / pathlib.Path(folder).name
