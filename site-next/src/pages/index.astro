@@ -4,7 +4,7 @@ import AppCta from '../components/AppCta.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import GuideScores from '../components/GuideScores.astro';
 import HideEnded from '../components/HideEnded.astro';
-import { loadArticles, readingMinutes, sectionLabel, formatNewsDate } from '../lib/news';
+import { blocks, loadArticles, readingMinutes, sectionLabel } from '../lib/news';
 import { guideCount, loadCatalogue, place } from '../lib/restaurants';
 import { formatWhen, loadEvents, place as eventPlace } from '../lib/events';
 
@@ -16,6 +16,9 @@ import { formatWhen, loadEvents, place as eventPlace } from '../lib/events';
 const articles = await loadArticles();
 const lead = articles.find((a) => a.section === 'interview') ?? articles[0];
 const latest = articles.filter((a) => a !== lead).slice(0, 3);
+// The interview tile opens with the story's own first lines.
+const opening = lead ? blocks(lead.body).find((b) => b.kind === 'text')?.text ?? '' : '';
+const leadTeaser = opening.length > 150 ? `${opening.slice(0, 147).trimEnd()}…` : opening;
 
 // The next events that aren't cancelled. Spare cards ride along so that,
 // after HideEnded removes ended ones, a stale build still shows eight.
@@ -43,11 +46,11 @@ const heroPhones = [
   phone('06_event_top.jpg', 'An event page in the Mantelier app'),
 ];
 ---
-<Base description="Every guide side by side, evenings that happen once, and a Passport that keeps every one you attend.">
+<Base description="The best restaurants from every guide, the dinners that happen only once, and a Passport that keeps every evening you attend.">
   <section class="hero">
     <p class="kicker-k accent rise">Mantelier for iPhone</p>
     <h1 class="hero-title rise d1">Discover. Plan. Attend. <em>Keep&nbsp;it.</em></h1>
-    <p class="hero-intro rise d2">Every guide side by side, evenings that happen once, and a Passport that keeps every one you attend.</p>
+    <p class="hero-intro rise d2">The best restaurants from every guide, the dinners that happen only once, and a Passport that keeps every evening you attend.</p>
     <div class="hero-actions rise d2">
       <AppCta label="Download on the App Store" variant="ivory" size="large" />
       <a class="soft-link" href="#story">See how it works</a>
@@ -66,7 +69,7 @@ const heroPhones = [
       <div class="wrap k-wrap head">
         <div>
           <p class="kicker-k claret">Coming up</p>
-          <h2 class="headline" id="coming-up">Evenings that happen once.</h2>
+          <h2 class="headline" id="coming-up">Dinners that happen only once.</h2>
         </div>
         <a class="more" href="/events">All events</a>
       </div>
@@ -101,18 +104,18 @@ const heroPhones = [
       <div class="steps">
         <div class="step">
           <p class="kicker-k accent">Follow</p>
-          <h2 class="headline">Hear it first.</h2>
-          <p>Follow the kitchens you love, and hear when they announce something.</p>
+          <h2 class="headline">Follow the kitchens you love.</h2>
+          <p>Hear the moment they announce a four hands dinner, a guest chef or an evening with a winemaker.</p>
         </div>
         <div class="step">
           <p class="kicker-k accent">Plan</p>
-          <h2 class="headline">Bring your friends.</h2>
-          <p>See which friends are going, invite them to dinner, and plan the trip together on one map.</p>
+          <h2 class="headline">Plan it together.</h2>
+          <p>See which friends are going, invite them along, and plan the whole trip on one shared map.</p>
         </div>
         <div class="step">
           <p class="kicker-k accent">Passport</p>
-          <h2 class="headline">Earned at the table.</h2>
-          <p>Every dinner, stay, journey and estate visit becomes a stamp, with your scores, notes, photos and the wines you drank. A stamp from an event comes only once you have actually been there.</p>
+          <h2 class="headline">Keep every evening.</h2>
+          <p>Each dinner, stay, journey and estate visit becomes a stamp in your Passport, with your scores, notes, photos and the wines you drank. A stamp from an event only appears once you have actually been there.</p>
         </div>
       </div>
     </div>
@@ -122,8 +125,8 @@ const heroPhones = [
     <section class="guides" aria-labelledby="every-guide">
       <div class="wrap k-wrap centre">
         <p class="kicker-k forest">Guides</p>
-        <h2 class="headline" id="every-guide">One restaurant. Every guide.</h2>
-        <p class="lede">Each guide judges in its own way. Mantelier puts them side by side, on every restaurant’s page.</p>
+        <h2 class="headline" id="every-guide">See what every guide says.</h2>
+        <p class="lede">MICHELIN, The World’s 50 Best, Gault&amp;Millau and our own Selection each judge in their own way. On every restaurant page you see them together.</p>
         <div class="compare">
           <p class="compare-name"><a href={`/restaurants/${featured.slug}`}>{featured.name}</a></p>
           <p class="compare-place">{place(featured)}</p>
@@ -138,9 +141,9 @@ const heroPhones = [
     <div class="wrap k-wrap wine-grid">
       <div class="wine-text">
         <p class="kicker-k blush">Wine</p>
-        <h2 class="headline" id="wine">The world, by the glass.</h2>
+        <h2 class="headline" id="wine">Know what is in your glass.</h2>
         <p>Tap a region on the globe to see its grapes and what they become there. Handed a wine list? Search a region, an appellation or a grape and find out where it comes from.</p>
-        <p>Then keep what you drank in your Cellar, beside the evening it belonged to.</p>
+        <p>Keep what you drank in your Cellar, next to the evening it belonged to.</p>
         <AppCta label="Open the globe in the app" variant="on-green" />
       </div>
       <svg class="globe" viewBox="0 0 440 440" role="img" aria-label="A globe with wine regions marked across Europe">
@@ -173,23 +176,23 @@ const heroPhones = [
 
   <section class="more-section" aria-labelledby="and-more">
     <div class="wrap k-wrap">
-      <h2 class="headline centre-text" id="and-more">And there is more.</h2>
+      <h2 class="headline centre-text" id="and-more">Also in the app.</h2>
       <div class="bento">
         <div class="tile forest-tile">
           <p class="kicker-k accent">Plan</p>
-          <p class="tile-title">A wishlist, by place.</p>
+          <p class="tile-title">Save places for later.</p>
           <p class="tile-text">Choose the month you would like to go, and get a reminder the day before bookings open.</p>
         </div>
         <div class="tile card-tile">
           <p class="kicker-k forest">Friends</p>
-          <p class="tile-title">Shared, if you choose.</p>
+          <p class="tile-title">Share only what you want.</p>
           <p class="tile-text">See where friends have been and what they are planning. You decide what they see.</p>
         </div>
         {lead && (
           <a class="tile green-tile" href={`/news/${lead.slug}`}>
-            <p class="kicker-k accent">{sectionLabel(lead.section)} · {readingMinutes(lead.body)} min read</p>
+            <p class="kicker-k accent">{lead.section === 'interview' ? 'Behind the pass' : sectionLabel(lead.section)} · {readingMinutes(lead.body)} min read</p>
             <p class="tile-title">{lead.shortTitle}</p>
-            <p class="tile-text">{formatNewsDate(lead.publishedAt)}</p>
+            {leadTeaser && <p class="tile-text">{leadTeaser}</p>}
             <span class="tile-go">Read {lead.section === 'interview' ? 'the interview' : 'the story'}</span>
           </a>
         )}
@@ -312,11 +315,12 @@ const heroPhones = [
   /* And there is more */
   .more-section { background: var(--ivory); padding: 140px 0 72px; }
   .bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 40px; }
-  .tile { border-radius: 28px; padding: 40px; min-height: 340px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; }
+  .tile { border-radius: 28px; padding: 40px; min-height: 300px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; }
   .tile p { margin: 0; }
   .tile-title { font-family: var(--display); font-size: 34px; line-height: 1.1; }
-  .tile-text { margin-top: auto !important; font-size: 16px; line-height: 1.55; }
-  .tile-go { font-size: 14px; color: var(--on-green-accent); }
+  .tile-title + .tile-text { margin-top: 4px; }
+  .tile-text { font-size: 16px; line-height: 1.55; }
+  .tile-go { margin-top: auto; padding-top: 12px; font-size: 14px; color: var(--on-green-accent); }
   a.tile:hover { text-decoration: none; }
   a.tile:hover .tile-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
   .forest-tile { background: var(--forest); color: var(--ivory); }
