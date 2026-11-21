@@ -1,0 +1,781 @@
+[
+ {
+  "slug": "morava",
+  "name": "Moravia",
+  "country": "CZ",
+  "aliases": [
+   "Morava"
+  ],
+  "summary": "Moravia sits mostly in the warm Pannonian zone, with continental influence. Vines grow on loess, limestone and sands; about two thirds of the area is white, giving aromatic whites with fresh acidity and soft, fruity reds.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": 2,
+  "pairing": null,
+  "label_note": "Quality wine needs at least 15 °NM must weight. Predicate wines (jakostní víno s přívlastkem) rise by ripeness: kabinetní víno 19 °NM, pozdní sběr 21, výběr z hroznů 24, výběr z bobulí, ledové víno and slámové víno 27, výběr z cibéb 32.",
+  "grapes": [
+   {
+    "name": "Grüner Veltliner",
+    "local_note": "Veltlínské zelené; about 1,365 ha in Morava at 31 Dec 2025, the most planted"
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Ryzlink rýnský"
+   },
+   {
+    "name": "Graševina",
+    "local_note": "Ryzlink vlašský; strongest in the Mikulovská subregion"
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Rulandské šedé"
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "Sauvignon"
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Frankovka; the most planted red, strongest in Velkopavlovická"
+   },
+   {
+    "name": "Pálava",
+    "local_note": "A Moravian crossing"
+   },
+   {
+    "name": "Gewürztraminer",
+    "local_note": "Tramín červený"
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Rulandské bílé"
+   },
+   {
+    "name": "St. Laurent",
+    "local_note": "Svatovavřinecké"
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Rulandské modré"
+   },
+   {
+    "name": "Zweigelt",
+    "local_note": "Zweigeltrebe"
+   },
+   {
+    "name": "Muškát moravský",
+    "local_note": "Moravian Muscat, a Moravian crossing"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Mikulovská",
+    "colour": "mixed",
+    "note": "PDO subregion; about 4,827 ha at 31 Dec 2025, the largest, mostly white."
+   },
+   {
+    "name": "Velkopavlovická",
+    "colour": "mixed",
+    "note": "PDO subregion; about 4,468 ha, with the most red vineyard of any subregion."
+   },
+   {
+    "name": "Slovácká",
+    "colour": "mixed",
+    "note": "PDO subregion; about 3,992 ha in the east."
+   },
+   {
+    "name": "Znojemská",
+    "colour": "mixed",
+    "note": "PDO subregion; about 2,953 ha in the southwest, mostly white."
+   },
+   {
+    "name": "VOC Znojmo",
+    "colour": "white",
+    "note": "VOC since 2009 for Sauvignon, Ryzlink rýnský and Veltlínské zelené; Znojmo lies in the Znojemská subregion."
+   },
+   {
+    "name": "VOC Valtice",
+    "colour": "mixed",
+    "note": "VOC since 2015 for Ryzlink rýnský, Sylvánské zelené and Rulandské modré; Valtice lies in the Mikulovská subregion."
+   },
+   {
+    "name": "VOC Bzenec",
+    "colour": "white",
+    "note": "VOC since 2017 for Ryzlink rýnský and Rulandské bílé; Bzenec lies in the Slovácká subregion."
+   },
+   {
+    "name": "VOC Mutěnice",
+    "colour": "mixed",
+    "note": "VOC since 2018 for Ryzlink rýnský, Sylvánské zelené, Tramín červený and Zweigeltrebe; Mutěnice lies in the Slovácká subregion."
+   },
+   {
+    "name": "VOC Kyjov",
+    "colour": "mixed",
+    "note": "VOC since 2023 for Pinot Blanc, Pinot Gris, Chardonnay and Pinot Noir; Kyjov lies in the Slovácká subregion."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.vinarskecentrum.cz/storage/files/Brochure-wine-accross-the-czech-republic-wine-2019.pdf",
+    "https://en.wikipedia.org/wiki/Czech_wine",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074",
+    "https://www.vinarskecentrum.cz/storage/files/Brochure-wine-accross-the-czech-republic-wine-2019.pdf",
+    "https://vinarskecentrum.cz/en/o-vine/historie-a-soucasnost",
+    "https://mze.gov.cz/public/portal/mze/-a89668---4_yKzmAI/vyber-statistik-o-vinicich-2025"
+   ],
+   "red_tannin": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074",
+    "https://www.vinarskecentrum.cz/storage/files/Brochure-wine-accross-the-czech-republic-wine-2019.pdf"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074",
+    "https://www.vinarskecentrum.cz/storage/files/Brochure-wine-accross-the-czech-republic-wine-2019.pdf",
+    "https://en.wikipedia.org/wiki/Czech_wine"
+   ],
+   "grapes": [
+    "https://mze.gov.cz/public/portal/mze/-a89668---4_yKzmAI/vyber-statistik-o-vinicich-2025",
+    "https://vinarskecentrum.cz/en/o-vine/historie-a-soucasnost",
+    "https://www.vinarskecentrum.cz/storage/files/Brochure-wine-accross-the-czech-republic-wine-2019.pdf",
+    "https://en.wikipedia.org/wiki/Czech_wine",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074"
+   ],
+   "appellations": [
+    "https://www.e-sbirka.cz/sb/2010/254/2025-04-01",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17074",
+    "https://mze.gov.cz/public/portal/mze/-a89668---4_yKzmAI/vyber-statistik-o-vinicich-2025",
+    "https://www.mze.gov.cz/public/portal/mze/-a79008---RltfvyKH/svz-reva-vinna-a-vino-2025",
+    "https://en.wikipedia.org/wiki/Czech_wine"
+   ],
+   "share_of_czech_vineyard": [
+    "https://mze.gov.cz/public/portal/mze/-a89668---4_yKzmAI/vyber-statistik-o-vinicich-2025",
+    "https://vinarskecentrum.cz/en/o-vine/historie-a-soucasnost",
+    "https://en.wikipedia.org/wiki/Czech_wine",
+    "https://www.vinarskecentrum.cz/storage/files/Brochure-wine-accross-the-czech-republic-wine-2019.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "dealu-mare",
+  "name": "Dealu Mare",
+  "country": "RO",
+  "aliases": [
+   "Dealul Mare"
+  ],
+  "summary": "Hill vineyards in Prahova and Buzău counties, one of Romania's best known wine districts. Iron rich red clays suit its reds, which are known above all for Fetească Neagră.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The name may be followed by one of eight official sub-designations, such as Dealu Mare-Urlați, and then by a single vineyard name.",
+  "grapes": [
+   {
+    "name": "Fetească Neagră",
+    "local_note": "The grape the district is best known for."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Grown here as Burgund Mare."
+   },
+   {
+    "name": "Fetească Albă",
+    "local_note": null
+   },
+   {
+    "name": "Fetească Regală",
+    "local_note": null
+   },
+   {
+    "name": "Muscat Ottonel",
+    "local_note": null
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Grown here as Tămâioasă Românească."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Graševina",
+    "local_note": "Grown here as Riesling italian."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Dealu Mare-Boldești",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Prahova County."
+   },
+   {
+    "name": "Dealu Mare-Valea Călugărească",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Prahova County."
+   },
+   {
+    "name": "Dealu Mare-Urlați",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Prahova County."
+   },
+   {
+    "name": "Dealu Mare-Ceptura",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Prahova County."
+   },
+   {
+    "name": "Dealu Mare-Tohani",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Prahova County."
+   },
+   {
+    "name": "Dealu Mare-Breaza",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Buzău County."
+   },
+   {
+    "name": "Dealu Mare-Merei",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Buzău County."
+   },
+   {
+    "name": "Dealu Mare-Zorești",
+    "colour": "mixed",
+    "note": "Sub-designation of origin in Buzău County."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Romanian_wine",
+    "https://www.winetourism.com/wine-regions/romania/muntenia/"
+   ],
+   "summary.location": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://en.wikipedia.org/wiki/Dealu_Mare_wine_region"
+   ],
+   "summary.best_known": [
+    "https://www.winetourism.com/wine-regions/romania/muntenia/",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/"
+   ],
+   "summary.iron_rich_soils": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://www.winetourism.com/wine-regions/romania/muntenia/"
+   ],
+   "summary.reds_feteasca_neagra": [
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-romanian-wine/",
+    "https://winesofromania.com/en/soiuri/all-about-feteasca-neagra/",
+    "https://en.wikipedia.org/wiki/Dealu_Mare_wine_region",
+    "https://www.winetourism.com/wine-regions/romania/muntenia/"
+   ],
+   "label_note": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://winesofromania.com/en/what-doc-ig-and-varietal-wines-mean-in-romania-and-why-it-matters/"
+   ],
+   "grapes": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://en.wikipedia.org/wiki/Dealu_Mare_wine_region"
+   ],
+   "grapes.local_note.Burgund_Mare": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=1459"
+   ],
+   "appellations": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.253.01.0011.01.ENG",
+    "https://winesofromania.com/en/what-doc-ig-and-varietal-wines-mean-in-romania-and-why-it-matters/"
+   ]
+  }
+ },
+ {
+  "slug": "cotnari",
+  "name": "Cotnari",
+  "country": "RO",
+  "aliases": [],
+  "summary": "Vineyards in Iași County, in Romania's historic Moldavia region, famous for golden sweet white wines touched by noble rot. Dry whites come from native grapes such as Fetească Albă and Frâncușă.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The label may add one of 24 official single vineyard names, such as Dealul Castel or Dealul Paraclis.",
+  "grapes": [
+   {
+    "name": "Grasă de Cotnari",
+    "local_note": "The grape behind the famous sweet wines."
+   },
+   {
+    "name": "Fetească Albă",
+    "local_note": null
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Grown here as Tămâioasă Românească."
+   },
+   {
+    "name": "Frâncușă",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary.location": [
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/"
+   ],
+   "summary.sweet_noble_rot": [
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://en.wikipedia.org/wiki/Grasă_de_Cotnari",
+    "https://cotnari.ro/?p=5393",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/"
+   ],
+   "summary.dry_whites_native_grapes": [
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/",
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2025/821/oj"
+   ],
+   "grapes.Grasa_de_Cotnari": [
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://en.wikipedia.org/wiki/Cotnari",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/"
+   ],
+   "grapes.Feteasca_Alba": [
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/",
+    "https://cotnari.ro/?p=5393"
+   ],
+   "grapes.Tamaioasa_Romaneasca": [
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/",
+    "https://cotnari.ro/?p=5393"
+   ],
+   "grapes.Francusa": [
+    "http://data.europa.eu/eli/C/2025/821/oj",
+    "https://en.wikipedia.org/wiki/Romanian_wine",
+    "https://www.winetourism.com/wine-regions/romania/moldovan-hills/"
+   ]
+  }
+ },
+ {
+  "slug": "murfatlar",
+  "name": "Murfatlar",
+  "country": "RO",
+  "aliases": [],
+  "summary": "Vineyards on limestone soils in Dobrogea, between the Danube and the Black Sea, among Romania's sunniest and driest. Wines run from dry to sweet, including ripe reds and late harvest whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The sub-designation Medgidia or Cernavodă may accompany the name, and a single vineyard name such as Basarabi may be added.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Muscat Ottonel",
+    "local_note": null
+   },
+   {
+    "name": "Fetească Neagră",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Medgidia",
+    "colour": "mixed",
+    "note": "Sub-designation of origin, used with or without the Murfatlar name."
+   },
+   {
+    "name": "Cernavodă",
+    "colour": "mixed",
+    "note": "Sub-designation of origin, used with or without the Murfatlar name."
+   }
+  ],
+  "sources": {
+   "summary.location": [
+    "http://data.europa.eu/eli/C/2025/1479/oj",
+    "https://www.winetourism.com/wine-regions/romania/dobrogea/"
+   ],
+   "summary.limestone": [
+    "http://data.europa.eu/eli/C/2025/1479/oj",
+    "https://www.winetourism.com/wine-regions/romania/dobrogea/"
+   ],
+   "summary.sunny_dry": [
+    "http://data.europa.eu/eli/C/2025/1479/oj",
+    "https://www.winetourism.com/wine-regions/romania/dobrogea/"
+   ],
+   "summary.dry_to_sweet_ripe_reds_late_harvest_whites": [
+    "http://data.europa.eu/eli/C/2025/1479/oj",
+    "https://www.winetourism.com/wine-regions/romania/dobrogea/"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2025/1479/oj"
+   ],
+   "grapes": [
+    "http://data.europa.eu/eli/C/2025/1479/oj",
+    "https://www.winetourism.com/wine-regions/romania/dobrogea/murfatlar/"
+   ],
+   "appellations": [
+    "http://data.europa.eu/eli/C/2025/1479/oj"
+   ]
+  }
+ },
+ {
+  "slug": "melnik",
+  "name": "Melnik",
+  "country": "BG",
+  "aliases": [],
+  "summary": "Warm valley vineyards in south western Bulgaria near the Greek border, open to Mediterranean influence and mostly on sandy soils over limestone. The reds, led by the local Melnik grapes, are spicy and peppery with firm tannins.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "Registered as Мелник; the PDO may also be labelled with the traditional term GKNP (guaranteed and controlled appellation of origin).",
+  "grapes": [
+   {
+    "name": "Shiroka Melnishka",
+    "local_note": "Grown almost only in the Struma valley."
+   },
+   {
+    "name": "Ranna Melnishka Loza",
+    "local_note": "Also sold as Melnik 55, a crossing of Shiroka Melnishka and Valdiguié."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Melnik",
+    "colour": "mixed",
+    "note": "PDO covering villages in the Sandanski, Petrich, Strumyani and Kresna municipalities; red, rosé and, since 2023, white."
+   },
+   {
+    "name": "Sandanski",
+    "colour": "red",
+    "note": "PDO for red wine from Cabernet Sauvignon only."
+   },
+   {
+    "name": "Trakiyska nizina",
+    "colour": "mixed",
+    "note": "PGI (Thracian Lowlands) whose area includes the Petrich, Sandanski, Kresna and Strumyani municipalities."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.272.01.0009.01.ENG",
+    "https://wineanorak.com/?p=31181",
+    "https://en.wikipedia.org/wiki/Melnik,_Bulgaria",
+    "https://en.wikipedia.org/wiki/Bulgarian_wine",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine"
+   ],
+   "red_tannin": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.272.01.0009.01.ENG",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/"
+   ],
+   "label_note": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.272.01.0009.01.ENG"
+   ],
+   "grapes": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.272.01.0009.01.ENG",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine",
+    "https://en.wikipedia.org/wiki/Melnik_(grape)",
+    "https://wineanorak.com/?p=31181"
+   ],
+   "appellations": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.C_.2023.272.01.0009.01.ENG",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17631",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/9182"
+   ]
+  }
+ },
+ {
+  "slug": "sakar",
+  "name": "Sakar",
+  "country": "BG",
+  "aliases": [],
+  "summary": "Vineyards at the foot of the Sakar mountain in Bulgaria's Thracian Lowland. Red wines lead, chiefly from Merlot and Syrah.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Registered as Сакар; the PDO may also be labelled with the traditional term GKNP (guaranteed and controlled appellation of origin).",
+  "grapes": [
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Sakar",
+    "colour": "mixed",
+    "note": "PDO for red, rosé and white wine from villages around Svilengrad on the south western slopes of the Sakar mountain."
+   },
+   {
+    "name": "Trakiyska nizina",
+    "colour": "mixed",
+    "note": "PGI (Thracian Lowlands) covering the wider plain."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/26815",
+    "https://en.wikipedia.org/wiki/Bulgarian_wine",
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/26815"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/26815",
+    "https://winefolly.com/deep-dive/the-wines-of-bulgaria/",
+    "https://gilbertgaillard.com/en/magazine/discovery/bulgaria-a-new-chapter-for-wine"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/26815",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/9182"
+   ]
+  }
+ },
+ {
+  "slug": "fruska-gora",
+  "name": "Fruška Gora",
+  "country": "RS",
+  "aliases": [],
+  "summary": "Vineyards cover the slopes of Fruška Gora, a low range above the Danube, whose nearness helps the grapes ripen. Soils are largely chernozem over loess, and Grašac, the local Welschriesling, has long been grown here.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Serbian quality wines with geographical origin are labelled K.P.K. (controlled origin and quality) or K.G.P.K. (controlled and guaranteed origin and quality, the top tier).",
+  "grapes": [
+   {
+    "name": "Graševina",
+    "local_note": "Grašac or Italijanski rizling locally; recommended for Fruška gora in the official zoning rulebook"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Fruška gora",
+    "colour": "mixed",
+    "note": "Vinogorje (Fruškogorsko vinogorje), the only vinogorje of the Srem rejon, on the higher slopes around the national park."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://faolex.fao.org/docs/pdf/srb153778.pdf",
+    "https://ives-openscience.eu/13105/",
+    "https://www.origin-gi.com/wp-content/uploads/2014/11/serbia_srem.pdf",
+    "https://doi.org/10.1515/geo-2022-0701",
+    "https://weinakademie.at/diplomapdf/12069270.pdf"
+   ],
+   "label_note": [
+    "https://faolex.fao.org/docs/pdf/srb153778.pdf"
+   ],
+   "grapes": [
+    "https://faolex.fao.org/docs/pdf/srb153778.pdf",
+    "https://weinakademie.at/diplomapdf/12069270.pdf",
+    "https://ives-openscience.eu/13105/",
+    "https://doi.org/10.1515/geo-2022-0701",
+    "https://en.wikipedia.org/wiki/Serbian_wine"
+   ],
+   "appellations": [
+    "https://faolex.fao.org/docs/pdf/srb153778.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "codru",
+  "name": "Codru",
+  "country": "MD",
+  "aliases": [],
+  "summary": "Hilly, forested country in central Moldova, where the woods temper a warm continental climate. Its light soils favour white wines, which make up most of the output, with Merlot also widely grown.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The main label must carry the wine category and the words cu indicație geografică protejată \"Codru\".",
+  "grapes": [
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Codru",
+    "colour": "mixed",
+    "note": "PGI for white, rosé, red, liqueur and sparkling wines."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://wineofmoldova.com/wp-content/uploads/2020/12/215_28-12-2011-min.pdf",
+    "https://wineofmoldova.com/en/codru-pgi-region",
+    "https://www.winetourism.com/wine-regions/moldova/",
+    "https://en.wikipedia.org/wiki/Moldovan_wine"
+   ],
+   "label_note": [
+    "https://wineofmoldova.com/wp-content/uploads/2020/12/215_28-12-2011-min.pdf"
+   ],
+   "grapes": [
+    "https://wineofmoldova.com/en/codru-pgi-region",
+    "https://www.winetourism.com/wine-regions/moldova/"
+   ],
+   "appellations": [
+    "https://wineofmoldova.com/wp-content/uploads/2020/12/215_28-12-2011-min.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "stefan-voda",
+  "name": "Ștefan Vodă",
+  "country": "MD",
+  "aliases": [],
+  "summary": "Moldova's south eastern wine region, planted mainly on black earth soils rich in humus. It is above all a red wine region, built on Cabernet Sauvignon, Merlot and the local Rară Neagră.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels must state vin cu indicație geografică protejată \"Ștefan Vodă\"; a variety may be named when it makes up at least 85% of the wine.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Băbească Neagră",
+    "local_note": "Known in Moldova as Rară Neagră."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Ștefan Vodă",
+    "colour": "mixed",
+    "note": "PGI for white, rosé and red wines."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://wineofmoldova.com/wp-content/uploads/2020/12/188_12-10-2011-min.pdf",
+    "https://wineofmoldova.com/en/stefan-voda-pgi-region",
+    "https://www.winetourism.com/wine-regions/moldova/",
+    "https://en.wikipedia.org/wiki/Moldovan_wine"
+   ],
+   "label_note": [
+    "https://wineofmoldova.com/wp-content/uploads/2020/12/188_12-10-2011-min.pdf"
+   ],
+   "grapes": [
+    "https://wineofmoldova.com/en/stefan-voda-pgi-region",
+    "https://www.winetourism.com/wine-regions/moldova/"
+   ],
+   "appellations": [
+    "https://wineofmoldova.com/wp-content/uploads/2020/12/188_12-10-2011-min.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "valul-lui-traian",
+  "name": "Valul lui Traian",
+  "country": "MD",
+  "aliases": [],
+  "summary": "Moldova's south western wine region is mainly known for red wines. Merlot and Cabernet Sauvignon are the leading grapes, with Fetească Neagră among the local varieties grown there.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Fetească Neagră",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valul lui Traian",
+    "colour": "mixed",
+    "note": "PGI."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://wineofmoldova.com/valul-lui-traian/",
+    "https://www.winetourism.com/wine-regions/moldova/",
+    "https://en.wikipedia.org/wiki/Moldovan_wine"
+   ],
+   "grapes": [
+    "https://wineofmoldova.com/valul-lui-traian/",
+    "https://www.winetourism.com/wine-regions/moldova/"
+   ],
+   "appellations": [
+    "https://wineofmoldova.com/valul-lui-traian/",
+    "https://en.wikipedia.org/wiki/Moldovan_wine"
+   ]
+  }
+ }
+]
