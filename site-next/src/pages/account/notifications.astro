@@ -32,11 +32,11 @@ import '../../styles/account.css';
 
 <style>
   .top { display: flex; justify-content: space-between; align-items: baseline; max-width: 880px; margin-bottom: 8px; }
-  .notices { max-width: 880px; }
-  .notices :global(li.unread .saved-name::before) { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); margin: 0 8px 3px 0; }
+  .notices { max-width: 880px; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .notices :global(li.unread .saved-name::before) { content: ''; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--claret); margin: 0 10px 4px 0; }
   .notices :global(.when) { font-size: 12px; color: var(--taupe); margin-top: 2px; }
   .more { margin-top: 18px; }
-  .prefs { margin-top: 56px; max-width: 560px; }
+  .prefs { margin-top: 72px; max-width: 880px; background: var(--card); border-radius: 22px; padding: 32px; }
   .prefs h2 { margin-bottom: 8px; }
   .toggle { display: flex; gap: 12px; align-items: flex-start; margin-top: 16px; font-size: 14px; color: var(--ink-soft); cursor: pointer; }
   .toggle b { color: var(--green); font-weight: 500; }

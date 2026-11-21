@@ -8,7 +8,7 @@ export const APP_FEATURES: AppFeature[] = [
   {
     kicker: 'Events',
     title: 'Evenings that happen once',
-    text: 'Four hands dinners, guest chefs, winemaker dinners, galas and festivals. Follow the kitchens you love, hear when they announce something, and see which friends are going.',
+    text: 'Four hands dinners, guest chefs, winemaker dinners, galas and festivals. Follow the venues you love, hear when they announce something, and see which friends are going.',
   },
   {
     kicker: 'Discover',

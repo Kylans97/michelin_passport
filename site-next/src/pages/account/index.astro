@@ -1,90 +1,246 @@
 ---
-// The signed-in home: who is signed in, where their saved things are, and
-// signing out of the site. Nothing personal is in the HTML; the script
-// fills it in.
+// The signed-in home (Keynote, 2026-11-21): a welcome with the member's
+// Passport beside it, their next evenings, and a tile for everything they
+// keep. Nothing personal is in the HTML; the script fills it in.
 import Base from '../../layouts/Base.astro';
-import PageHeader from '../../components/PageHeader.astro';
 import '../../styles/account.css';
+
+const TILES = [
+  { href: '/account/notifications', kicker: 'Notifications', title: 'Friend requests and new events.', text: 'From the people and venues you follow.', unread: true },
+  { href: '/account/wishlist', kicker: 'Wishlist', title: 'Places you want to go.', text: 'Restaurants, hotels and events you saved.' },
+  { href: '/account/friends', kicker: 'Friends', title: 'Your friends and requests.', text: 'And what they share with you.' },
+  { href: '/account/following', kicker: 'Following', title: 'Venues you follow.', text: 'Restaurants, hotels and private chefs.' },
+  { href: '/account/globe', kicker: 'Your globe', title: 'Everywhere you have been.', text: 'On the map, place by place.', tone: 'forest' },
+  { href: '/account/passport', kicker: 'Passport', title: 'Every stamp you earned.', text: 'And the visit, stay or event behind it.', tone: 'green' },
+];
 ---
 <Base title="Your account" description="Your Mantelier account." noindex>
-  <PageHeader eyebrow="Your account" title="Welcome" />
+  <section class="welcome">
+    <div class="wrap k-wrap welcome-grid">
+      <div class="hello">
+        <p class="kicker-k accent">Your account</p>
+        <h1 class="title" data-title>Welcome back.</h1>
+        <p class="sub">Your Passport, your plans and your friends, in one place. New stamps and trips are added in the app.</p>
+        <div class="actions">
+          <a class="pill solid" href="/account/passport">Open your Passport</a>
+          <a class="pill line" href="/account/globe">Your globe</a>
+        </div>
+      </div>
+      <a class="booklet" href="/account/passport" data-booklet hidden aria-label="Open your Passport">
+        <span class="b-head"><span>Passeport gastronomique</span><span class="b-m">M</span></span>
+        <span class="b-holder">
+          <span class="b-photo" data-initials></span>
+          <span class="b-fields">
+            <span class="b-label">Holder</span>
+            <span class="b-name" data-holder></span>
+            <span class="b-no" data-member></span>
+          </span>
+        </span>
+        <span class="b-counts">
+          <span><span class="b-count" data-entries></span><span class="b-label">Entries</span></span>
+          <span><span class="b-count" data-countries></span><span class="b-label">Countries</span></span>
+          <span><span class="b-count" data-stars></span><span class="b-label">Stars</span></span>
+        </span>
+      </a>
+    </div>
+  </section>
 
-  <div class="wrap account-body" data-account-page hidden>
-    <ul class="saved-list account-narrow">
-      <li>
+  <div data-account-page hidden>
+    <section class="wrap k-wrap block" data-upcoming hidden>
+      <div class="head">
         <div>
-          <p class="saved-name"><a href="/account/passport">Passport</a></p>
-          <p class="saved-meta">Your stamps and every visit, stay and event behind them.</p>
+          <p class="kicker-k claret">Coming up for you</p>
+          <h2 class="headline">Your next evenings.</h2>
         </div>
-      </li>
-      <li>
-        <div>
-          <p class="saved-name"><a href="/account/globe">Your globe</a></p>
-          <p class="saved-meta">Everywhere you’ve been, on the map.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <p class="saved-name"><a href="/account/notifications">Notifications</a> <span class="unread" data-unread hidden></span></p>
-          <p class="saved-meta">Friend requests and new events from places you follow.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <p class="saved-name"><a href="/account/friends">Friends</a></p>
-          <p class="saved-meta">Your friends, requests, and what they share with you.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <p class="saved-name"><a href="/account/following">Following</a></p>
-          <p class="saved-meta">The restaurants, hotels and chefs you follow.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <p class="saved-name"><a href="/account/wishlist">Wishlist</a></p>
-          <p class="saved-meta">The restaurants, hotels and events you saved.</p>
-        </div>
-      </li>
-      <li>
-        <div>
-          <p class="saved-name"><a href="/account/events">Your events</a></p>
-          <p class="saved-meta">Where you’re Interested or Going.</p>
-        </div>
-      </li>
-    </ul>
-    <p class="help signed-as">Signed in as <span data-email></span>. New stamps and trips are in the app.</p>
-    <button class="button quiet" type="button" data-sign-out>Sign out</button>
+        <a class="more" href="/account/events">All your events</a>
+      </div>
+      <ul class="cards" data-cards></ul>
+    </section>
+
+    <section class="wrap k-wrap block">
+      <h2 class="headline">Everything you keep.</h2>
+      <div class="tiles">
+        {TILES.map((t) => (
+          <a class:list={['tile', t.tone]} href={t.href}>
+            <span class="tile-top">
+              <span class="tile-kicker">{t.kicker}</span>
+              {t.unread && <span class="badge" data-unread hidden></span>}
+            </span>
+            <span class="tile-title">{t.title}</span>
+            <span class="tile-text">{t.text}</span>
+          </a>
+        ))}
+      </div>
+      <div class="signed">
+        <span class="help">Signed in as <span data-email></span></span>
+        <button class="button quiet" type="button" data-sign-out>Sign out</button>
+      </div>
+    </section>
   </div>
 </Base>
 
 <style>
-  .signed-as { margin: 28px 0 18px; }
-  .unread { font-family: var(--body); font-size: 11px; background: var(--green); color: var(--ivory); border-radius: 999px; padding: 2px 8px; vertical-align: middle; }
+  .k-wrap { max-width: 1200px; }
+  .accent { color: var(--on-green-accent); }
+  .claret { color: var(--claret); }
+
+  .welcome { background: var(--green); color: var(--ivory); padding: 88px 0 96px; overflow: hidden; }
+  .welcome-grid { display: flex; flex-wrap: wrap; gap: 56px; align-items: center; justify-content: space-between; }
+  .hello { flex: 1 1 420px; }
+  .title { font-family: var(--display); font-weight: 300; font-size: clamp(48px, 6.4vw, 92px); line-height: 0.98; letter-spacing: -0.02em; margin: 0; }
+  .sub { margin: 20px 0 0; max-width: 40ch; font-size: 19px; line-height: 1.55; color: var(--on-green-muted); }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .pill { font-size: 15px; font-weight: 600; padding: 13px 24px; border-radius: 999px; }
+  .pill:hover { text-decoration: none; opacity: 0.88; }
+  .pill.solid { background: var(--ivory); color: var(--green); }
+  .pill.line { border: 1px solid rgba(244, 240, 231, 0.4); font-weight: 500; }
+
+  .booklet {
+    width: 360px; max-width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px;
+    background: #F7F2E9; color: var(--green); border-radius: 10px 22px 22px 10px; padding: 32px;
+    box-shadow: 0 50px 90px -40px rgba(0, 0, 0, 0.6); transform: rotate(2deg); transition: transform 0.4s ease;
+  }
+  .booklet:hover { text-decoration: none; transform: rotate(0deg) translateY(-4px); }
+  .b-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+  .b-m { font-family: var(--display); font-size: 16px; letter-spacing: 0; }
+  .b-holder { display: flex; gap: 16px; align-items: center; }
+  .b-photo { flex: none; width: 72px; height: 88px; background: var(--forest); color: var(--ivory); display: grid; place-items: center; font-family: var(--display); font-size: 28px; }
+  .b-fields { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .b-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+  .b-name { font-family: var(--display); font-size: 24px; line-height: 1.15; overflow-wrap: anywhere; }
+  .b-no { font-size: 13px; color: var(--ink-soft); }
+  .b-counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #E7DFCE; border-bottom: 1px solid #E7DFCE; padding: 14px 0; text-align: center; }
+  .b-counts > span { display: flex; flex-direction: column; gap: 6px; }
+  .b-counts > span + span { border-left: 1px solid #E7DFCE; }
+  .b-count { font-family: var(--display); font-size: 34px; line-height: 1; }
+
+  .block { padding-top: 96px; }
+  .block:last-child { padding-bottom: 120px; }
+  .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .block > .headline { margin-bottom: 32px; }
+  .headline { font-size: clamp(36px, 4.4vw, 60px); }
+  .more { font-size: 16px; color: var(--forest); }
+
+  .cards { list-style: none; margin: 0; padding: 0 0 8px; display: flex; gap: 20px; overflow-x: auto; }
+  .cards :global(li) { flex: 0 0 300px; }
+  .cards :global(a) {
+    display: flex; flex-direction: column; gap: 8px; min-height: 260px; padding: 28px; box-sizing: border-box;
+    border-radius: 24px; background: var(--card); height: 100%;
+  }
+  .cards :global(a:hover) { text-decoration: none; }
+  .cards :global(a:hover .c-name) { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .cards :global(.going a) { background: var(--green); color: var(--ivory); }
+  .cards :global(.c-status) { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 3px 12px; border-radius: 999px; border: 1px solid #C9BFA8; color: var(--forest); }
+  .cards :global(.going .c-status) { background: var(--ivory); color: var(--green); border-color: var(--ivory); }
+  .cards :global(.c-name) { font-family: var(--display); font-size: 28px; line-height: 1.1; margin-top: 8px; }
+  .cards :global(.c-meta) { margin-top: auto; font-size: 15px; }
+  .cards :global(.interested .c-meta) { color: var(--ink-soft); }
+  .cards :global(.going .c-meta) { color: var(--on-green-muted); }
+
+  .tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .tile { background: var(--card); border-radius: 24px; padding: 32px; min-height: 200px; display: flex; flex-direction: column; gap: 8px; box-sizing: border-box; }
+  .tile:hover { text-decoration: none; }
+  .tile:hover .tile-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .tile-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .tile-kicker { font-size: 15px; font-weight: 600; color: var(--forest); }
+  .tile-title { font-family: var(--display); font-size: 28px; line-height: 1.15; }
+  .tile-text { margin-top: auto; font-size: 15px; color: var(--ink-soft); }
+  .tile.forest { background: var(--forest); color: var(--ivory); }
+  .tile.green { background: var(--green); color: var(--ivory); }
+  .tile.forest .tile-kicker, .tile.green .tile-kicker { color: var(--on-green-accent); }
+  .tile.forest .tile-text, .tile.green .tile-text { color: var(--on-green-muted); }
+  .badge { background: var(--claret); color: var(--ivory); font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+
+  .signed { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; border-top: 1px solid var(--rule); padding-top: 24px; margin-top: 48px; }
+  .signed .button { align-self: auto; }
+
+  @media (max-width: 900px) {
+    .tiles { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 760px) {
+    .welcome { padding: 48px 0 56px; }
+    .welcome-grid { gap: 36px; }
+    .booklet { transform: none; padding: 24px; }
+    .block { padding-top: 64px; }
+    .block:last-child { padding-bottom: 72px; }
+    .cards :global(li) { flex-basis: 250px; }
+    .cards :global(a) { min-height: 210px; padding: 22px; }
+    .tile { min-height: 0; padding: 24px; }
+  }
 </style>
 
 <script>
-  import { loadName, requireSession, signOut } from '../../lib/account/client';
+  import { requireSession, signOut } from '../../lib/account/client';
+  import { catalogue, el } from '../../lib/account/catalogue';
+  import { eventHasEnded, myIntents, publishedEvents } from '../../lib/account/data';
+  import { loadPassport } from '../../lib/account/passport';
   import { showMemberInHeader } from '../../lib/account/peek';
   import { unreadCount } from '../../lib/account/social';
+  import { formatDateRange } from '../../lib/event-dates';
 
   const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const two = (n: number) => String(n).padStart(2, '0');
+  const initials = (name: string) => name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]!.toUpperCase()).join('');
+
+  // The next three evenings the member is Going to or Interested in, soonest
+  // first, as on the events page: checked live for still being published
+  // and not yet ended.
+  async function upcoming(userId: string) {
+    const rows = await myIntents(userId);
+    if (!rows.length) return;
+    const [cat, live] = await Promise.all([catalogue(rows.map((r) => r.event_id)), publishedEvents(rows.map((r) => r.event_id))]);
+    const status = new Map(rows.map((r) => [r.event_id, r.status]));
+    const items = live
+      .filter((e) => !eventHasEnded({ endAt: e.end_at, endDate: e.end_date, timezone: e.timezone }))
+      .sort((a, b) => a.start_date.localeCompare(b.start_date))
+      .slice(0, 3);
+    if (!items.length) return;
+    const list = $('[data-cards]');
+    for (const e of items) {
+      const s = status.get(e.id) ?? 'interested';
+      const built = cat.e[e.id];
+      const li = el('li', s);
+      const a = el('a');
+      a.href = built ? `/events/${built[0]}` : '/account/events';
+      const when = built ? built[2] : formatDateRange({ startDate: e.start_date, endDate: e.end_date });
+      a.append(
+        el('span', 'c-status', e.cancelled_at ? 'Cancelled' : s === 'going' ? 'Going' : 'Interested'),
+        el('span', 'c-name', built ? built[1] : e.name),
+        el('span', 'c-meta', [when, built ? built[3] : e.city].filter(Boolean).join(' · ')),
+      );
+      li.append(a);
+      list.append(li);
+    }
+    $('[data-upcoming]').hidden = false;
+  }
 
   async function main() {
     const session = await requireSession();
-    const name = await loadName(session.user.id);
-    document.querySelector('.band h1')!.textContent = name ? `Welcome, ${name}` : 'Welcome';
-    document.querySelector('[data-email]')!.textContent = session.user.email ?? '';
-    document.querySelector<HTMLElement>('[data-account-page]')!.hidden = false;
-    showMemberInHeader(name);
+    const userId = session.user.id;
+    $('[data-email]').textContent = session.user.email ?? '';
+    $('[data-account-page]').hidden = false;
+
+    loadPassport(userId).then((p) => {
+      const first = p.name.split(/\s+/)[0];
+      $('[data-title]').textContent = first ? `Welcome back, ${first}.` : 'Welcome back.';
+      showMemberInHeader(p.name || null);
+      $('[data-initials]').textContent = initials(p.name) || 'M';
+      $('[data-holder]').textContent = p.name;
+      $('[data-member]').textContent = p.memberNumber !== null ? `Member no. ${p.memberNumber}` : '';
+      $('[data-entries]').textContent = two(p.stamps.length);
+      $('[data-countries]').textContent = two(p.countryCodes.length);
+      $('[data-stars]').textContent = two(p.stars);
+      $('[data-booklet]').hidden = false;
+    }).catch(() => {});
+
+    upcoming(userId).catch(() => {});
     unreadCount().then((n) => {
       if (n > 0) { $('[data-unread]').textContent = `${n} new`; $('[data-unread]').hidden = false; }
     }).catch(() => {});
   }
   main();
 
-  document.querySelector('[data-sign-out]')!.addEventListener('click', async () => {
+  $('[data-sign-out]').addEventListener('click', async () => {
     await signOut();
     location.replace('/');
   });
