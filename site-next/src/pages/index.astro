@@ -2,29 +2,28 @@
 import Base from '../layouts/Base.astro';
 import AppCta from '../components/AppCta.astro';
 import ArticleCard from '../components/ArticleCard.astro';
-import FeatureStory from '../components/FeatureStory.astro';
 import GuideScores from '../components/GuideScores.astro';
-import EventRow from '../components/EventRow.astro';
 import HideEnded from '../components/HideEnded.astro';
-import { loadArticles } from '../lib/news';
+import { blocks, loadArticles, readingMinutes, sectionLabel } from '../lib/news';
 import { guideCount, loadCatalogue, place } from '../lib/restaurants';
-import { loadEvents } from '../lib/events';
-import { APP_FEATURES } from '../lib/app-features';
+import { formatWhen, loadEvents, place as eventPlace } from '../lib/events';
 
-// Layout B (product owner, 2026-11-16): the lead story as a green panel
-// beside its photo, then what's coming up beside the latest stories, then
-// one restaurant across every guide. A block with nothing to show is left
-// out, never shown as a placeholder.
+// Direction B, "Keynote" (product owner, 2026-11-21): Mantelier crossed
+// with an art gallery and Apple's product pages. One idea per section,
+// large light headlines, the app shown on real screenshots. A block with
+// nothing to show is left out, never shown as a placeholder.
 
-// The lead is the newest interview (else the newest article).
 const articles = await loadArticles();
 const lead = articles.find((a) => a.section === 'interview') ?? articles[0];
-const others = articles.filter((a) => a !== lead);
-const moreInterviews = others.filter((a) => a.section === 'interview').slice(0, 3);
+const latest = articles.filter((a) => a !== lead).slice(0, 3);
+// The interview tile opens with the story's own first lines.
+const opening = lead ? blocks(lead.body).find((b) => b.kind === 'text')?.text ?? '' : '';
+const leadTeaser = opening.length > 150 ? `${opening.slice(0, 147).trimEnd()}…` : opening;
 
-// The next events that aren't cancelled. Spare rows ride along so that,
-// after HideEnded removes ended ones, a stale build still shows five.
-const upcoming = (await loadEvents()).filter((e) => !e.cancelled).slice(0, 10);
+// The next events that aren't cancelled. Spare cards ride along so that,
+// after HideEnded removes ended ones, a stale build still shows eight.
+const upcoming = (await loadEvents()).filter((e) => !e.cancelled).slice(0, 14);
+const TONES = ['green', 'card', 'claret', 'card', 'forest'] as const;
 
 // "One restaurant, every guide": the open restaurant the most guides
 // recognise, best World's 50 Best rank breaking a tie. Chosen by rule, so
@@ -37,141 +36,332 @@ const featured = catalogue.restaurants
     || (a.w50bRank ?? 999) - (b.w50bRank ?? 999)
     || (b.stars ?? 0) - (a.stars ?? 0)
     || a.code.localeCompare(b.code))[0];
+
+// The phones show the public lookbook screenshots: demo content, never a
+// member's own data.
+const phone = (file: string, alt: string) => ({ src: `/lookbook/${file}`, alt });
+const heroPhones = [
+  phone('03_venue_top.jpg', 'A restaurant page in the Mantelier app'),
+  phone('10_passport_page.jpg', 'The Passport in the Mantelier app'),
+  phone('06_event_top.jpg', 'An event page in the Mantelier app'),
+];
 ---
-<Base description="Guide news, chef interviews and one-off dinners across Europe.">
-  <h1 class="sr-only">Mantelier: restaurant guides, interviews and gastronomy events</h1>
-
-  {lead && <FeatureStory article={lead} tone="green" />}
-
-  <section class="wrap now">
-    <div class="coming" data-events-scope>
-      <div class="head">
-        <p class="eyebrow">Coming up</p>
-        <a class="more" href="/events">All events →</a>
-      </div>
-      {upcoming.length > 0 && <ul class="events" data-home-events>{upcoming.map((e) => <EventRow event={e} />)}</ul>}
-      <p class="empty" data-events-empty hidden={upcoming.length > 0}>We add new events every week.</p>
-      <div class="cta"><AppCta label="Mark an evening as Going in the app" /></div>
+<Base description="The best restaurants from every guide, the dinners that happen only once, and a Passport that keeps every evening you attend.">
+  <section class="hero">
+    <p class="kicker-k accent rise">Mantelier for iPhone</p>
+    <h1 class="hero-title rise d1">Discover. Plan. Attend. <em>Keep&nbsp;it.</em></h1>
+    <p class="hero-intro rise d2">The best restaurants from every guide, the dinners that happen only once, and a Passport that keeps every evening you attend.</p>
+    <div class="hero-actions rise d2">
+      <AppCta label="Download on the App Store" variant="ivory" size="large" />
+      <a class="soft-link" href="#story">See how it works</a>
     </div>
-
-    <aside class="latest" aria-labelledby="latest">
-      <p class="eyebrow" id="latest">Latest</p>
-      {others.slice(0, 4).map((a) => <ArticleCard article={a} variant="row" />)}
-      <a class="row-link" href="/guides">
-        <span class="eyebrow">Guides</span>
-        <span class="display row-title">Where the guides agree</span>
-      </a>
-    </aside>
+    <div class="phones rise d2" aria-hidden="false">
+      {heroPhones.map((p, i) => (
+        <div class:list={['phone', { side: i !== 1, left: i === 0, right: i === 2 }]}>
+          <img src={p.src} alt={p.alt} width="720" height="1565" loading={i === 1 ? 'eager' : 'lazy'} />
+        </div>
+      ))}
+    </div>
   </section>
 
-  <section class="app-band" aria-labelledby="in-the-app">
-    <div class="wrap">
-      <div class="app-head">
+  {upcoming.length > 0 && (
+    <section class="coming" data-events-scope aria-labelledby="coming-up">
+      <div class="wrap k-wrap head">
         <div>
-          <p class="eyebrow app-kicker" id="in-the-app">In the app · Free for iPhone</p>
-          <p class="display app-title">Discover, plan, attend, and keep it in your Passport.</p>
+          <p class="kicker-k claret">Coming up</p>
+          <h2 class="headline" id="coming-up">Dinners that happen only once.</h2>
         </div>
-        <AppCta label="Download on the App Store" variant="ivory" />
+        <a class="more" href="/events">All events</a>
       </div>
-      <ul class="app-grid">
-        {APP_FEATURES.map((f) => (
-          <li>
-            <span class="eyebrow app-kicker">{f.kicker}</span>
-            <span class="display app-item">{f.title}</span>
-          </li>
-        ))}
+      <ul class="cards" data-home-events>
+        {upcoming.map((e, i) => {
+          const host = e.venues.find((v) => v.roles.includes('host'));
+          const where = [host?.name ?? e.venueName, eventPlace(e)].filter(Boolean).join(', ');
+          return (
+            <li class={`ev ${TONES[i % TONES.length]}`} data-end-date={e.endDate} data-tz={e.timezone ?? 'Europe/Amsterdam'}>
+              <a href={`/events/${e.slug}`}>
+                <span class="ev-type">{e.type}</span>
+                <span class="ev-name">{e.name}</span>
+                <span class="ev-when">{formatWhen(e)}</span>
+                {where && <span class="ev-where">{where}</span>}
+              </a>
+            </li>
+          );
+        })}
       </ul>
-      <a class="app-more" href="/app">What the app does →</a>
+      <p class="wrap k-wrap note" data-events-empty hidden>We add new events every week.</p>
+      <p class="wrap k-wrap note">Times are local to each event. We add new events every week.</p>
+    </section>
+  )}
+
+  <section class="story" id="story" aria-label="How the app works">
+    <div class="wrap k-wrap story-grid">
+      <div class="story-phone">
+        <div class="phone big">
+          <img src="/lookbook/15_stamps.jpg" alt="A Passport page with three stamps" width="720" height="1565" loading="lazy" />
+        </div>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <p class="kicker-k accent">Follow</p>
+          <h2 class="headline">Follow the kitchens you love.</h2>
+          <p>Hear the moment they announce a four hands dinner, a guest chef or an evening with a winemaker.</p>
+        </div>
+        <div class="step">
+          <p class="kicker-k accent">Plan</p>
+          <h2 class="headline">Plan it together.</h2>
+          <p>See which friends are going, invite them along, and plan the whole trip on one shared map.</p>
+        </div>
+        <div class="step">
+          <p class="kicker-k accent">Passport</p>
+          <h2 class="headline">Keep every evening.</h2>
+          <p>Each dinner, stay, journey and estate visit becomes a stamp in your Passport, with your scores, notes, photos and the wines you drank. A stamp from an event only appears once you have actually been there.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   {featured && (
-    <section class="wrap" aria-labelledby="every-guide">
-      <div class="compare">
-        <div class="compare-head">
-          <div>
-            <p class="eyebrow" id="every-guide">One restaurant, every guide</p>
-            <p class="display compare-title"><a href={`/restaurants/${featured.slug}`}>{featured.name}</a><span class="compare-place"> · {place(featured)}</span></p>
-          </div>
-          <AppCta label="Add to wishlist in the app" />
+    <section class="guides" aria-labelledby="every-guide">
+      <div class="wrap k-wrap centre">
+        <p class="kicker-k forest">Guides</p>
+        <h2 class="headline" id="every-guide">See what every guide says.</h2>
+        <p class="lede">MICHELIN, The World’s 50 Best, Gault&amp;Millau and our own Selection each judge in their own way. On every restaurant page you see them together.</p>
+        <div class="compare">
+          <p class="compare-name"><a href={`/restaurants/${featured.slug}`}>{featured.name}</a></p>
+          <p class="compare-place">{place(featured)}</p>
+          <GuideScores restaurant={featured} w50bYear={catalogue.w50bYear} />
+          <a class="more" href="/guides">Compare every guide</a>
         </div>
-        <GuideScores restaurant={featured} w50bYear={catalogue.w50bYear} />
-        <a class="more right" href="/guides">Compare every guide →</a>
       </div>
     </section>
   )}
 
-  {moreInterviews.length > 0 && (
-    <section class="wrap behind" aria-labelledby="behind">
-      <div class="head">
-        <p class="eyebrow" id="behind">Behind the pass</p>
-        <a href="/behind-the-pass" class="more">All interviews →</a>
+  <section class="wine" aria-labelledby="wine">
+    <div class="wrap k-wrap wine-grid">
+      <div class="wine-text">
+        <p class="kicker-k blush">Wine</p>
+        <h2 class="headline" id="wine">Know what is in your glass.</h2>
+        <p>Tap a region on the globe to see its grapes and what they become there. Handed a wine list? Search a region, an appellation or a grape and find out where it comes from.</p>
+        <p>Keep what you drank in your Cellar, next to the evening it belonged to.</p>
+        <AppCta label="Open the globe in the app" variant="on-green" />
       </div>
-      <div class="grid3">{moreInterviews.map((a) => <ArticleCard article={a} />)}</div>
+      <svg class="globe" viewBox="0 0 440 440" role="img" aria-label="A globe with wine regions marked across Europe">
+        <defs>
+          <radialGradient id="globe-fill" cx="38%" cy="32%" r="75%">
+            <stop offset="0%" stop-color="#8A4049" />
+            <stop offset="100%" stop-color="#4A1F26" />
+          </radialGradient>
+        </defs>
+        <circle cx="220" cy="220" r="200" fill="url(#globe-fill)" />
+        <g fill="none" stroke="rgba(244,240,231,0.16)">
+          <ellipse cx="220" cy="220" rx="70" ry="200" />
+          <ellipse cx="220" cy="220" rx="135" ry="200" />
+          <ellipse cx="220" cy="220" rx="200" ry="66" />
+          <ellipse cx="220" cy="140" rx="176" ry="48" />
+          <ellipse cx="220" cy="300" rx="176" ry="48" />
+        </g>
+        <g fill="#F4F0E7" font-family="Hanken Grotesk, sans-serif" font-size="12">
+          <circle cx="206" cy="140" r="6" /><text x="216" y="128">Champagne</text>
+          <circle cx="238" cy="128" r="5" /><text x="248" y="118">Mosel</text>
+          <circle cx="214" cy="164" r="5" /><text x="140" y="176">Bourgogne</text>
+          <circle cx="250" cy="182" r="5" /><text x="262" y="186">Piemonte</text>
+          <circle cx="176" cy="200" r="5" /><text x="112" y="214">Bordeaux</text>
+          <circle cx="168" cy="228" r="5" /><text x="128" y="250">Rioja</text>
+        </g>
+        <circle cx="206" cy="140" r="16" fill="none" stroke="#F4F0E7" />
+      </svg>
+    </div>
+  </section>
+
+  <section class="more-section" aria-labelledby="and-more">
+    <div class="wrap k-wrap">
+      <h2 class="headline centre-text" id="and-more">Also in the app.</h2>
+      <div class="bento">
+        <div class="tile forest-tile">
+          <p class="kicker-k accent">Plan</p>
+          <p class="tile-title">Save places for later.</p>
+          <p class="tile-text">Choose the month you would like to go, and get a reminder the day before bookings open.</p>
+        </div>
+        <div class="tile card-tile">
+          <p class="kicker-k forest">Friends</p>
+          <p class="tile-title">Share only what you want.</p>
+          <p class="tile-text">See where friends have been and what they are planning. You decide what they see.</p>
+        </div>
+        {lead && (
+          <a class="tile green-tile" href={`/news/${lead.slug}`}>
+            <p class="kicker-k accent">{lead.section === 'interview' ? 'Behind the pass' : sectionLabel(lead.section)} · {readingMinutes(lead.body)} min read</p>
+            <p class="tile-title">{lead.shortTitle}</p>
+            {leadTeaser && <p class="tile-text">{leadTeaser}</p>}
+            <span class="tile-go">Read {lead.section === 'interview' ? 'the interview' : 'the story'}</span>
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  {latest.length > 0 && (
+    <section class="latest" aria-labelledby="latest">
+      <div class="wrap k-wrap">
+        <div class="head">
+          <h2 class="headline small" id="latest">Latest</h2>
+          <a class="more" href="/news">All stories</a>
+        </div>
+        <div class="grid3">{latest.map((a) => <ArticleCard article={a} />)}</div>
+      </div>
     </section>
   )}
+
+  <section class="close flush-end">
+    <h2 class="close-title">Start your own journey.</h2>
+    <AppCta label="Download on the App Store" variant="ivory" size="large" />
+    <p class="close-note">Free · For iPhone</p>
+  </section>
 
   <HideEnded />
   <script is:inline>
-    // Five rows at most, counted after ended ones are hidden.
-    document.querySelectorAll('[data-home-events] > li:not([hidden])').forEach((li, i) => { if (i >= 5) li.hidden = true; });
+    // Eight cards at most, counted after ended ones are hidden.
+    document.querySelectorAll('[data-home-events] > li:not([hidden])').forEach((li, i) => { if (i >= 8) li.hidden = true; });
   </script>
 </Base>
 
 <style>
-  .now { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 56px; padding-top: 56px; }
-  .head { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid var(--green); }
-  .more { font-size: 13px; color: var(--ink-soft); }
-  .right { align-self: flex-end; }
-  .events { list-style: none; margin: 0; padding: 0; }
-  .empty { color: var(--ink-soft); margin: 16px 0 0; }
-  .cta { margin-top: 20px; }
+  .k-wrap { max-width: 1200px; }
+  .centre { text-align: center; }
+  .centre-text { text-align: center; }
+  .accent { color: var(--on-green-accent); }
+  .claret { color: var(--claret); }
+  .forest { color: var(--forest); }
+  .blush { color: var(--on-claret-accent); }
+  .more { font-size: 17px; color: var(--forest); }
+  .note { font-size: 14px; color: var(--ink-soft); margin-top: 20px; margin-bottom: 0; }
 
-  .latest { display: flex; flex-direction: column; gap: 14px; }
-  .latest > .eyebrow { padding-bottom: 10px; border-bottom: 1px solid var(--green); }
-  .row-link { display: flex; flex-direction: column; gap: 6px; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
-  .row-link:hover { text-decoration: none; }
-  .row-link:hover .row-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-  .row-title { font-size: 20px; line-height: 1.2; }
-
-  .app-band { background: var(--green); color: var(--ivory); margin-top: 72px; padding: 52px 0 44px; }
-  .app-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
-  .app-kicker { color: var(--on-green-accent); }
-  .app-title { font-size: clamp(30px, 3.6vw, 44px); margin-top: 10px; max-width: 22ch; }
-  .app-grid { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
-  .app-grid li { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid var(--on-green-rule); }
-  .app-item { font-size: 24px; }
-  .app-more { display: inline-block; margin-top: 22px; font-size: 13px; color: var(--on-green-muted); }
-  .app-more:hover { color: var(--ivory); }
-
-  .compare {
-    margin-top: 64px;
-    background: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 6px;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  /* Hero */
+  .hero { background: var(--green); color: var(--ivory); text-align: center; padding: 112px var(--gutter) 0; overflow: hidden; }
+  .hero-title {
+    font-family: var(--display); font-weight: 300; margin: 0 auto; max-width: 15ch;
+    font-size: clamp(48px, 7.6vw, 116px); line-height: 0.98; letter-spacing: -0.025em;
   }
-  .compare-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
-  .compare-title { font-size: 30px; margin-top: 4px; }
-  .compare-place { color: var(--ink-soft); font-size: 22px; }
+  .hero-title em { color: var(--on-green-accent); }
+  .hero-intro { margin: 28px auto 0; max-width: 40ch; font-size: 21px; line-height: 1.5; color: var(--on-green-muted); }
+  .hero-actions { display: flex; justify-content: center; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 36px; }
+  .soft-link { font-size: 16px; color: var(--on-green-accent); }
+  .phones { display: flex; justify-content: center; align-items: flex-end; gap: 28px; margin-top: 88px; }
+  .phone { width: 300px; border-radius: 46px; padding: 10px; background: #0B1A16; box-shadow: 0 60px 120px -40px rgba(0, 0, 0, 0.6); position: relative; z-index: 1; }
+  .phone img { width: 100%; height: auto; border-radius: 37px; }
+  .phone.side { width: 250px; border-radius: 40px; padding: 9px; z-index: 0; }
+  .phone.side img { border-radius: 32px; }
+  .phone.left { transform: translateY(70px) rotate(-3deg); }
+  .phone.right { transform: translateY(70px) rotate(3deg); }
 
-  .behind { margin-top: 64px; }
-  .behind .head { margin-bottom: 18px; }
+  @keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+  .rise { animation: rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .d1 { animation-delay: 0.15s; }
+  .d2 { animation-delay: 0.3s; }
+  @media (prefers-reduced-motion: reduce) { .rise { animation: none; } }
+
+  /* Coming up */
+  .coming { background: var(--ivory); padding: 128px 0 112px; }
+  .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+  .coming .headline { max-width: 14ch; }
+  .cards {
+    --edge: max(var(--gutter), calc((100vw - 1200px) / 2 + var(--gutter)));
+    list-style: none; margin: 48px auto 0; padding: 8px var(--edge) 24px; scroll-padding-inline: var(--edge);
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin;
+  }
+  .ev { flex: 0 0 300px; scroll-snap-align: start; border-radius: 26px; }
+  .ev a { display: flex; flex-direction: column; gap: 10px; min-height: 380px; padding: 30px; box-sizing: border-box; height: 100%; }
+  .ev a:hover { text-decoration: none; }
+  .ev a:hover .ev-name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .ev-type { font-size: 13px; font-weight: 600; }
+  .ev-name { font-family: var(--display); font-size: 30px; line-height: 1.1; }
+  .ev-when { margin-top: auto; font-size: 15px; }
+  .ev-where { font-size: 14px; opacity: 0.75; }
+  .ev.green { background: var(--green); color: var(--ivory); }
+  .ev.forest { background: var(--forest); color: var(--ivory); }
+  .ev.claret { background: var(--claret); color: var(--ivory); }
+  .ev.card { background: var(--card); color: var(--green); }
+  .ev.green .ev-type, .ev.forest .ev-type { color: var(--on-green-accent); }
+  .ev.claret .ev-type { color: var(--on-claret-accent); }
+  .ev.card .ev-type { color: var(--claret); }
+  .ev.card .ev-where { color: var(--ink-soft); opacity: 1; }
+
+  /* The Passport story: the phone holds still while the steps scroll by. */
+  .story { background: var(--deep); color: var(--ivory); padding: 140px 0; }
+  .story-grid { display: flex; gap: 80px; align-items: flex-start; max-width: 1100px; }
+  .story-phone { position: sticky; top: 96px; flex: 0 0 320px; }
+  .phone.big { background: #050D0B; }
+  .steps { flex: 1 1 400px; display: flex; flex-direction: column; gap: 200px; padding: 80px 0; }
+  .step { max-width: 460px; }
+  .step .headline { font-size: clamp(36px, 4vw, 56px); }
+  .step p:not(.kicker-k) { margin: 16px 0 0; font-size: 19px; line-height: 1.55; color: var(--on-green-muted); }
+
+  /* Guides */
+  .guides { background: var(--ivory); padding: 140px 0; }
+  .guides .headline { max-width: 16ch; margin: 0 auto; }
+  .lede { margin: 22px auto 0; max-width: 44ch; font-size: 19px; line-height: 1.55; color: var(--ink-soft); }
+  .compare { max-width: 1000px; margin: 64px auto 0; background: var(--card); border-radius: 28px; padding: 48px 32px 36px; display: flex; flex-direction: column; gap: 0; }
+  .compare-name { margin: 0; font-family: var(--display); font-size: clamp(34px, 3.6vw, 48px); line-height: 1.1; }
+  .compare-place { margin: 6px 0 32px; font-size: 15px; color: var(--ink-soft); }
+  .compare .more { margin-top: 28px; }
+
+  /* Wine */
+  .wine { background: var(--claret); color: var(--ivory); padding: 140px 0; }
+  .wine-grid { display: flex; flex-wrap: wrap; gap: 64px; align-items: center; justify-content: center; }
+  .wine-text { flex: 1 1 380px; max-width: 480px; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  .wine-text p:not(.kicker-k) { margin: 0; font-size: 19px; line-height: 1.55; color: rgba(244, 240, 231, 0.8); }
+  .globe { width: min(480px, 100%); height: auto; }
+
+  /* And there is more */
+  .more-section { background: var(--ivory); padding: 140px 0 72px; }
+  .bento { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 40px; }
+  .tile { border-radius: 28px; padding: 40px; min-height: 300px; display: flex; flex-direction: column; gap: 12px; box-sizing: border-box; }
+  .tile p { margin: 0; }
+  .tile-title { font-family: var(--display); font-size: 34px; line-height: 1.1; }
+  .tile-title + .tile-text { margin-top: 4px; }
+  .tile-text { font-size: 16px; line-height: 1.55; }
+  .tile-go { margin-top: auto; padding-top: 12px; font-size: 14px; color: var(--on-green-accent); }
+  a.tile:hover { text-decoration: none; }
+  a.tile:hover .tile-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .forest-tile { background: var(--forest); color: var(--ivory); }
+  .forest-tile .tile-text, .green-tile .tile-text { color: var(--on-green-muted); }
+  .card-tile { background: var(--card); }
+  .card-tile .tile-text { color: var(--ink-soft); }
+  .green-tile { background: var(--green); color: var(--ivory); }
+
+  /* Latest */
+  .latest { background: var(--ivory); padding: 72px 0 140px; }
+  .latest .head { padding-bottom: 14px; border-bottom: 1px solid var(--rule); margin-bottom: 24px; }
+  .headline.small { font-size: clamp(32px, 3.6vw, 48px); }
   .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 
+  /* Close */
+  .close { background: var(--green); color: var(--ivory); text-align: center; padding: 160px var(--gutter); display: flex; flex-direction: column; align-items: center; gap: 36px; }
+  .close-title { font-family: var(--display); font-weight: 300; font-size: clamp(44px, 6.4vw, 96px); line-height: 1; letter-spacing: -0.02em; margin: 0; max-width: 14ch; }
+  .close-note { margin: -18px 0 0; font-size: 14px; color: var(--on-green-muted); }
+
   @media (max-width: 900px) {
-    .now { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 36px; }
-  }
-  @media (max-width: 900px) {
-    .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .story-grid { flex-direction: column; align-items: center; gap: 40px; }
+    .story-phone { position: static; flex: 0 0 auto; }
+    .steps { gap: 64px; padding: 0; }
+    .bento, .grid3 { grid-template-columns: minmax(0, 1fr); }
   }
   @media (max-width: 760px) {
-    .app-band { margin-top: 56px; padding: 40px 0 32px; }
-    .app-grid { grid-template-columns: minmax(0, 1fr); }
-    .grid3 { grid-template-columns: minmax(0, 1fr); }
-    .compare { padding: 20px; }
+    .hero { padding-top: 64px; }
+    .hero-intro { font-size: 17px; }
+    .phones { margin-top: 48px; margin-bottom: -120px; }
+    .phone.side { display: none; }
+    .phone { width: 240px; border-radius: 38px; padding: 8px; }
+    .phone img { border-radius: 31px; }
+    .coming { padding: 160px 0 64px; }
+    .ev { flex-basis: 260px; }
+    .ev a { min-height: 300px; padding: 24px; }
+    .ev-name { font-size: 26px; }
+    .story, .guides, .wine, .more-section { padding: 72px 0; }
+    .story-phone .phone { width: 220px; }
+    .compare { padding: 28px 16px; border-radius: 24px; }
+    .tile { min-height: 0; padding: 28px; }
+    .latest { padding: 32px 0 72px; }
+    .close { padding: 80px var(--gutter); }
   }
 </style>

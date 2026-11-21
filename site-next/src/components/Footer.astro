@@ -32,7 +32,9 @@ import Mark from './Mark.astro';
 </footer>
 
 <style>
-  .footer { background: var(--green); color: var(--on-green-muted); margin-top: 88px; font-size: 13px; }
+  .footer { background: var(--deep); color: var(--on-green-muted); margin-top: 88px; font-size: 13px; }
+  /* A page that ends on its own full-width band sits flush on the footer. */
+  :global(main:has(> .flush-end)) + .footer { margin-top: 0; }
   .footer a:hover { color: var(--ivory); }
   .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-top: 36px; padding-bottom: 24px; flex-wrap: wrap; }
   .left { display: flex; gap: 10px; align-items: center; max-width: 420px; }
