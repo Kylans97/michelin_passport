@@ -82,5 +82,11 @@ o.append(f"insert into public.news_articles(id,title,body,image_url,status,publi
 o.append(f"insert into public.planned_trips(id,user_id,title,start_date,end_date,country_code,city) values('dddddddd-0000-0000-0000-000000000001','{uid}','A weekend in Amsterdam','2026-12-04','2026-12-07','NL','Amsterdam');")
 o.append(f"insert into public.planned_venues(user_id,entity_type,entity_id,trip_id,start_date) values('{uid}','hotel','{u('b1')}','dddddddd-0000-0000-0000-000000000001','2026-12-04'),('{uid}','restaurant','{u('a1')}','dddddddd-0000-0000-0000-000000000001','2026-12-05');")
 o.append(f"update public.planned_trip_destinations set city_id='{c['ams']}' where trip_id='dddddddd-0000-0000-0000-000000000001';")
+# The venue guide's manager screens (2026-11-21): the member manages Maison
+# Aurelle through an approved claim, and has one event of their own in review.
+o.append(f"insert into public.claims_restaurants(id,user_id,restaurant_id,status,reviewed_at,role,business_email,phone) values('ffffffff-0000-0000-0000-000000000001','{uid}','{u('a1')}','approved',now(),'owner','lena@maison-aurelle.example','+31 20 000 0000');")
+o.append(f"insert into public.venue_managers_restaurants(user_id,restaurant_id,claim_id) values('{uid}','{u('a1')}','ffffffff-0000-0000-0000-000000000001');")
+o.append(f"insert into public.events(id,name,description,event_type,status,moderation_status,country_code,city,timezone,start_date,end_date,start_time,end_time,submitted_by,submitted_at,admission_type,announcement_status) values('eeeeeeee-0000-0000-0000-000000000009','Grower Champagne night with Daan Hofman',{q('Six small grower houses, poured by our sommelier, with a menu built around them.')},'dinner','upcoming','submitted','NL','Amsterdam','Europe/Amsterdam','2027-03-06','2027-03-06','19:00','22:30','{uid}',now(),'paid','official');")
+o.append(f"insert into public.event_restaurants(event_id,restaurant_id,is_host,is_venue) values('eeeeeeee-0000-0000-0000-000000000009','{u('a1')}',true,true);")
 o.append("commit;")
 print("\n".join(o))
