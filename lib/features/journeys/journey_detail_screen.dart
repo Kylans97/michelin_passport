@@ -10,8 +10,8 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
-import '../../core/widgets/linked_venue_row.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/journey_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
@@ -20,16 +20,22 @@ import '../passport/stamp_ceremony.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'journey_visuals.dart';
 import 'widgets/confirm_travel_sheet.dart';
-import 'widgets/journey_cabins.dart';
+import 'widgets/journey_cabin_manifest.dart';
 import 'widgets/journey_detail_hero.dart';
+import 'widgets/journey_dining.dart';
 import 'widgets/journey_figures.dart';
+import 'widgets/journey_itinerary.dart';
+import 'widgets/journey_passport_stamps.dart';
 import 'widgets/journey_route_globe.dart';
 
 /// A train's or ship's own page: hero, what it is, its figures, where it
-/// goes on the globe with its routes, life on board (one mark per cabin), dining partners in the catalogue, the member's own travels with
-/// "I travelled on this", and the operator's website. Everything shown is
-/// the operator's published fact or our starting text; nothing is
-/// inferred, and nothing here is gold.
+/// goes on the globe with the selected route stop by stop, its routes,
+/// life on board (a cabin manifest when the cabins text counts its
+/// types), the table aboard (the dining text and the dining partners in
+/// the catalogue), the member's own Passport stamps with "I travelled on
+/// this", and the operator's website. Everything shown is the operator's
+/// published fact or our starting text; nothing is inferred. The only
+/// gold is a partner restaurant's own MICHELIN stars.
 class JourneyDetailScreen extends StatefulWidget {
   final String journeyId;
 
@@ -51,7 +57,8 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
   List<JourneyRouteStop> _stops = const [];
   String? _selectedRouteId;
   final _globeKey = GlobalKey();
-  List<({String id, String name})> _partners = const [];
+  List<JourneyDiningPartner> _partners = const [];
+  Map<String, String> _countryNames = const {};
   List<JourneyTravel> _travels = const [];
   bool _wishlisted = false;
   bool _wishlistBusy = false;
@@ -84,10 +91,17 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
                 .getRouteStops([for (final r in routes) r.id])
                 .catchError((Object _) => const <JourneyRouteStop>[]);
       final partners = journey == null
-          ? const <({String id, String name})>[]
+          ? const <JourneyDiningPartner>[]
           : await _repo
                 .getDiningPartners(journey.id)
-                .catchError((Object _) => const <({String id, String name})>[]);
+                .catchError((Object _) => const <JourneyDiningPartner>[]);
+      // Names only for the borders a route crosses; one country needs none.
+      final stopCountries = {for (final s in stops) s.countryCode};
+      final countryNames = stopCountries.length < 2
+          ? const <String, String>{}
+          : await resolveVenueCountries(_client, stopCountries)
+                .then((list) => {for (final c in list) c.code: c.name})
+                .catchError((Object _) => const <String, String>{});
       final uid = _userId;
       final wishlisted = (journey == null || uid == null)
           ? false
@@ -105,6 +119,7 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
         _routes = routes;
         _stops = stops;
         _partners = partners;
+        _countryNames = countryNames;
         _wishlisted = wishlisted;
         _travels = travels;
         _loading = false;
@@ -289,11 +304,13 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
       cabins: cabins,
       countryCount: countryCodes.length,
     );
+    // Named, counted cabin types make a manifest; any other cabins text
+    // stays the operator's own sentence.
+    final manifest = (cabins?.groups.any((g) => g.name != null) ?? false)
+        ? cabins
+        : null;
     final onBoard = [
-      // A list of named, counted cabin types is shown whole by the marks;
-      // other cabins text stays, it says more than the count.
-      if ((journey.cabinsText ?? '').trim().isNotEmpty &&
-          !(cabins?.groups.any((g) => g.name != null) ?? false))
+      if ((journey.cabinsText ?? '').trim().isNotEmpty && manifest == null)
         journey.cabinsText!,
       if (journey.guestCapacity != null) '${journey.guestCapacity} guests',
     ];
@@ -341,8 +358,18 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
                   selectedIndex: selectedIndex,
                   countryCodes: countryCodes,
                 ),
+                if (drawnRoutes.isNotEmpty) ...[
+                  const SizedBox(height: CsSpacing.xl),
+                  JourneyItinerary(
+                    route: drawnRoutes[selectedIndex],
+                    stops: drawable[drawnRoutes[selectedIndex].id]!,
+                    countryNames: _countryNames,
+                  ),
+                ],
               ],
-              if (_routes.isNotEmpty) ...[
+              // A single drawn route is already named and laid out above.
+              if (_routes.length > 1 ||
+                  (_routes.isNotEmpty && drawnRoutes.isEmpty)) ...[
                 _sectionTitle('ROUTES'),
                 for (final route in _routes)
                   _RouteRow(
@@ -361,32 +388,39 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
                         : () => _selectRoute(route.id),
                   ),
               ],
-              if (onBoard.isNotEmpty || cabins != null) ...[
+              if (onBoard.isNotEmpty || manifest != null) ...[
                 _sectionTitle('ON BOARD'),
-                if (cabins != null) ...[
-                  JourneyCabins(layout: cabins, kind: journey.kind),
+                if (manifest != null) ...[
+                  JourneyCabinManifest(layout: manifest, title: journey.name),
                   const SizedBox(height: CsSpacing.base),
                 ],
                 for (final line in onBoard) _bodyLine(line),
               ],
-              if (dining.isNotEmpty) ...[
-                _sectionTitle('DINING'),
-                _bodyLine(dining),
-              ],
-              if (_partners.isNotEmpty) ...[
-                const SizedBox(height: CsSpacing.md),
-                for (final partner in _partners)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: CsSpacing.sm),
-                    child: LinkedVenueRow(
-                      name: partner.name,
-                      onTap: () => _openRestaurant(partner.id),
-                    ),
-                  ),
+              if (dining.isNotEmpty || _partners.isNotEmpty) ...[
+                _sectionTitle('THE TABLE ABOARD'),
+                JourneyDining(
+                  diningText: dining,
+                  partners: _partners,
+                  onOpenRestaurant: _openRestaurant,
+                ),
               ],
               _sectionTitle('YOUR PASSPORT'),
+              const SizedBox(height: CsSpacing.sm),
+              JourneyPassportStamps(
+                journey: journey,
+                routes: _routes,
+                travels: _travels,
+              ),
+              const SizedBox(height: CsSpacing.base),
               if (_travels.isEmpty)
-                _bodyLine('Travelled on it? Add it to your Passport.')
+                Center(
+                  child: Text(
+                    'Not yet in your Passport.',
+                    style: CsTypography.editorialLead(
+                      size: 16,
+                    ).copyWith(color: AppColors.taupe),
+                  ),
+                )
               else
                 for (final travel in _travels) _bodyLine(_travelLine(travel)),
               const SizedBox(height: CsSpacing.base),
@@ -421,7 +455,7 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
         .firstOrNull;
     final dates = travel.arrivedOn == null
         ? loc.formatMediumDate(travel.departedOn)
-        : '${loc.formatMediumDate(travel.departedOn)} – '
+        : '${loc.formatMediumDate(travel.departedOn)} to '
               '${loc.formatMediumDate(travel.arrivedOn!)}';
     return route == null ? dates : '$route · $dates';
   }
