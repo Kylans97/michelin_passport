@@ -21,7 +21,7 @@ enum WineSize {
   }
 }
 
-/// What the member thought of a wine (`verdict`, 20261101630000). Three
+/// What the member thought of a wine (`verdict`, 20261101640000). Three
 /// plain answers, never a score; a verdict never makes a stamp.
 enum WineVerdict {
   again('again', 'Would drink again'),
@@ -42,7 +42,7 @@ enum WineVerdict {
 }
 
 /// Where a wine kept without a visit was drunk (`cellar_wines.setting`,
-/// 20261101630000).
+/// 20261101640000).
 enum WineSetting {
   home('home', 'At home'),
   estate('estate', 'At an estate'),
@@ -130,7 +130,7 @@ class VisitWine {
   /// there is a link to write or to clear ([withVineyard]), and the verdict
   /// and note only when there is one to write or to clear ([withVerdict]),
   /// so saving a plain wine still works against a database without those
-  /// columns (before 20261101550000 and 20261101630000).
+  /// columns (before 20261101550000 and 20261101640000).
   Map<String, Object?> toRow({
     bool withVineyard = false,
     bool withVerdict = false,

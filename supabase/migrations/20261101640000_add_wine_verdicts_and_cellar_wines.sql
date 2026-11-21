@@ -4,8 +4,9 @@
 -- Plan (https://claude.ai/artifact/FR6GKmiV91PrSzmJ48XHJb) and approved
 -- the same day ("jaa dat wine verdicts plan mag je bouwen"). Written
 -- 2026-11-21 on claude/wine-regions. The number is sort order, not a date:
--- the next after 20261101620000_add_ge_country.sql, the highest on any
--- branch.
+-- written as 20261101630000, renumbered the same day (neither applied) to
+-- follow 20261101630000_add_md_am_il_cy_countries.sql, so the countries
+-- round 6 needs can be applied while this waits for the privacy policy.
 --
 -- PREPARED -- NOT APPLIED until the product owner approves, and only after
 -- the privacy policy names verdicts, notes and wines kept without a visit

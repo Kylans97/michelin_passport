@@ -13,10 +13,10 @@ const _estateColumns =
 
 const _linkedWineColumns = '$_legacyWineColumns, $_estateColumns';
 
-// The verdict and note (20261101630000).
+// The verdict and note (20261101640000).
 const _wineColumns = '$_linkedWineColumns, verdict, tasting_note';
 
-// A wine kept without a visit (`cellar_wines`, 20261101630000).
+// A wine kept without a visit (`cellar_wines`, 20261101640000).
 const _cellarWineColumns =
     '$_wineColumns, setting, place, drunk_on, created_at';
 

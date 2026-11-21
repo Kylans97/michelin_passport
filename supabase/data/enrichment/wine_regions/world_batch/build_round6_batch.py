@@ -22,7 +22,7 @@ Vayots Dzor (no registered GI found), Israel's Galilee, Judean Hills and
 Negev (no open geometry; every point checked to lie inside the pre-1967
 borders, nothing drawn or named beyond them) and Turkey's Thrace and
 Cappadocia (no wine GI).
-Needs 20261101640000_add_md_am_il_cy_countries.sql.
+Needs 20261101630000_add_md_am_il_cy_countries.sql.
 """
 
 import csv

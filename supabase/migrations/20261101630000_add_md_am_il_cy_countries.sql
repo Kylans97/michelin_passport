@@ -7,9 +7,10 @@
 -- Written 2026-11-21, on the product owner's request "Start round 6:
 -- Eastern Europe and the Eastern Mediterranean (Moravia, Romania, Bulgaria,
 -- Serbia, Moldova, Armenia, Israel, Cyprus, Turkey, more of Greece)".
--- Filename is a sequence number: the next after
--- 20261101630000_add_wine_verdicts_and_cellar_wines.sql, the highest on
--- any branch.
+-- Filename is a sequence number: written as 20261101640000 after the
+-- wine verdicts migration, renumbered the same day (neither applied) to
+-- come before it, so these countries can be applied while the verdicts
+-- wait for the privacy policy.
 --
 -- None of the four exists in production (read 2026-11-21 with a select on
 -- countries). ON CONFLICT DO NOTHING keeps this safe if one is added in
