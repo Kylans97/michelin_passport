@@ -21,6 +21,11 @@ class CsSearchField extends StatefulWidget {
   final CsSurface surface;
   final bool autofocus;
 
+  /// Off for searches of names a dictionary doesn't know (wine regions,
+  /// grapes): iOS otherwise "corrects" Kakheti to Katherine as the field
+  /// loses focus.
+  final bool autocorrect;
+
   const CsSearchField({
     super.key,
     this.controller,
@@ -28,6 +33,7 @@ class CsSearchField extends StatefulWidget {
     this.onChanged,
     this.surface = CsSurface.dark,
     this.autofocus = false,
+    this.autocorrect = true,
   });
 
   @override
@@ -73,6 +79,8 @@ class _CsSearchFieldState extends State<CsSearchField> {
         controller: _controller,
         onChanged: widget.onChanged,
         autofocus: widget.autofocus,
+        autocorrect: widget.autocorrect,
+        enableSuggestions: widget.autocorrect,
         style: CsTypography.body.copyWith(color: foreground),
         decoration: InputDecoration(
           hintText: widget.hintText,

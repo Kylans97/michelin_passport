@@ -55,7 +55,7 @@ class GlobeController {
   Future<void> flyToRegion(GlobeRegion region) async {
     final state = _state;
     if (state == null) return;
-    await state._flyTo(state._regionCamera(region));
+    await state._flyTo(state._regionCamera(region, keepCloser: false));
   }
 
   void showWholeGlobeAround(List<(double, double)> points) {
@@ -339,15 +339,18 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
     if (mounted) widget.onRegionTap?.call(region);
   }
 
-  /// Flies in until the whole region fills the globe's view, never out:
-  /// a region tapped while zoomed in further stays as close.
-  GlobeCamera _regionCamera(GlobeRegion region) {
+  /// Flies until the whole region fills the globe's view. A region tapped
+  /// while zoomed in further stays as close ([keepCloser]); one found by
+  /// search is always fitted, or a large region reached from a small one
+  /// (Kakheti after Tokaj) opens zoomed in past its own edges.
+  GlobeCamera _regionCamera(GlobeRegion region, {bool keepCloser = true}) {
     final camera = _camera.value;
     final fit = fitGlobeCamera(
       region.extent,
       fallback: camera,
       singlePointZoom: _regionMaxZoom,
     );
+    if (!keepCloser) return fit;
     return fit.copyWith(
       zoom: math.max(fit.zoom, math.min(camera.zoom, _regionMaxZoom)),
     );
