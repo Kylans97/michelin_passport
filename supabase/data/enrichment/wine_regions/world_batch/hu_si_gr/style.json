@@ -1,0 +1,580 @@
+[
+ {
+  "slug": "tokaj",
+  "name": "Tokaj",
+  "country": "HU",
+  "aliases": [
+   "Tokaji"
+  ],
+  "summary": "Volcanic hills on the southern edge of the Zemplén range, where the Bodrog meets the Tisza. Autumn mists from the rivers encourage noble rot. Furmint leads, making high acid wines from dry whites to sweet Aszú.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Sweet Aszú with foie gras.",
+  "label_note": "Aszú must reach at least 120 g/l of residual sugar and may be labelled 3, 4, 5 or 6 puttonyos, but \"6 puttonyos\" only from 150 g/l. The vintage must be shown, with at least 85% of the grapes from that year.",
+  "grapes": [
+   {
+    "name": "Furmint",
+    "local_note": "The most planted grape and the base of Aszú."
+   },
+   {
+    "name": "Hárslevelű",
+    "local_note": "Used alone or blended with Furmint, dry and sweet."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Sárga Muskotály in Hungarian."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Tokaj",
+    "colour": "white",
+    "note": "PDO for dry, late harvest and sweet wines from six permitted white grapes, among them Szamorodni, Fordítás, Máslás and Eszencia."
+   },
+   {
+    "name": "Tokaji Aszú",
+    "colour": "white",
+    "note": "Sweet wine type of the Tokaj PDO, made with hand picked botrytised berries and released no earlier than 1 January of the third year after harvest."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://boraszat.kormany.hu/download/b/85/53000/TOKAJ%20term%C3%A9kle%C3%ADr%C3%A1s%20%2810%20v%C3%A1ltozat%29%20kn.pdf",
+    "https://bor.hu/en/tokaji-wine-district/",
+    "https://www.guildsomm.com/stay_current/features/b/eric-danch/posts/tokaj-part-one",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/",
+    "https://wineanorak.com/2022/04/02/exploring-hungarian-wine-the-hungarian-wine-summit-2022/"
+   ],
+   "pairing": [
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/",
+    "https://vinepair.com/articles/what-goes-with-sweet-wine/"
+   ],
+   "label_note": [
+    "https://boraszat.kormany.hu/download/b/85/53000/TOKAJ%20term%C3%A9kle%C3%ADr%C3%A1s%20%2810%20v%C3%A1ltozat%29%20kn.pdf",
+    "http://data.europa.eu/eli/C/2026/1380/oj"
+   ],
+   "grapes": [
+    "https://boraszat.kormany.hu/download/b/85/53000/TOKAJ%20term%C3%A9kle%C3%ADr%C3%A1s%20%2810%20v%C3%A1ltozat%29%20kn.pdf",
+    "https://www.guildsomm.com/stay_current/features/b/eric-danch/posts/tokaj-part-one",
+    "https://bor.hu/en/furmint/",
+    "https://bor.hu/en/harslevelu/"
+   ],
+   "appellations": [
+    "https://boraszat.kormany.hu/download/b/85/53000/TOKAJ%20term%C3%A9kle%C3%ADr%C3%A1s%20%2810%20v%C3%A1ltozat%29%20kn.pdf",
+    "http://data.europa.eu/eli/C/2026/1380/oj"
+   ]
+  }
+ },
+ {
+  "slug": "villany",
+  "name": "Villány",
+  "country": "HU",
+  "aliases": [
+   "Villányi"
+  ],
+  "summary": "Slopes facing south on the limestone Villány Hills in southern Hungary, where a warm climate with Mediterranean influence favours red wine. Cabernet Franc is the flagship, beside Cabernet Sauvignon, Merlot and fresh Portugieser.",
+  "red_body": 4,
+  "red_acidity": 2,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "Premium and Super Premium wines from Cabernet Franc may only be sold as \"Villányi Franc\"; Super Premium must be 100% Cabernet Franc, aged at least two years, one of them in wood.",
+  "grapes": [
+   {
+    "name": "Cabernet Franc",
+    "local_note": "The flagship, sold as Villányi Franc in the top tiers."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": "The most planted grape."
+   },
+   {
+    "name": "Portugieser",
+    "local_note": "Second most planted; the base of Redy."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Kékfrankos in Hungarian."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Villány",
+    "colour": "mixed",
+    "note": "PDO for white, rosé and red wines in Classicus, Premium and Super Premium tiers, plus late harvest wines."
+   },
+   {
+    "name": "Villányi Franc",
+    "colour": "red",
+    "note": "Required name for Premium and Super Premium Cabernet Franc; Super Premium is 100% Cabernet Franc."
+   },
+   {
+    "name": "Redy",
+    "colour": "red",
+    "note": "Classicus red of the Villány PDO with 51 to 66% Portugieser (Kékoportó), sold without a grape name."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://boraszat.kormany.hu/download/f/12/a3000/VILL%C3%81NY_term%C3%A9kle%C3%ADr%C3%A1s_2026_7_v%C3%A1ltozat_kn.pdf",
+    "https://bor.hu/en/villanyi-wine-district/",
+    "https://wineanorak.com/2025/09/11/hungarys-red-grape-varieties-a-masterclass-in-budapest/",
+    "https://tastehungary.com/journal/villany-pdo-a-guide-to-the-wine-region/",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "red_body": [
+    "https://boraszat.kormany.hu/download/f/12/a3000/VILL%C3%81NY_term%C3%A9kle%C3%ADr%C3%A1s_2026_7_v%C3%A1ltozat_kn.pdf",
+    "https://tastehungary.com/journal/villany-pdo-a-guide-to-the-wine-region/",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "red_acidity": [
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/",
+    "https://tastehungary.com/journal/villany-pdo-a-guide-to-the-wine-region/"
+   ],
+   "red_tannin": [
+    "https://boraszat.kormany.hu/download/f/12/a3000/VILL%C3%81NY_term%C3%A9kle%C3%ADr%C3%A1s_2026_7_v%C3%A1ltozat_kn.pdf",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/",
+    "https://tastehungary.com/journal/villany-pdo-a-guide-to-the-wine-region/"
+   ],
+   "label_note": [
+    "https://boraszat.kormany.hu/download/f/12/a3000/VILL%C3%81NY_term%C3%A9kle%C3%ADr%C3%A1s_2026_7_v%C3%A1ltozat_kn.pdf"
+   ],
+   "grapes": [
+    "https://boraszat.kormany.hu/download/f/12/a3000/VILL%C3%81NY_term%C3%A9kle%C3%ADr%C3%A1s_2026_7_v%C3%A1ltozat_kn.pdf",
+    "https://bor.hu/en/portugieser/",
+    "https://tastehungary.com/journal/villany-pdo-a-guide-to-the-wine-region/",
+    "https://wineanorak.com/2025/09/11/hungarys-red-grape-varieties-a-masterclass-in-budapest/",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "appellations": [
+    "https://boraszat.kormany.hu/download/f/12/a3000/VILL%C3%81NY_term%C3%A9kle%C3%ADr%C3%A1s_2026_7_v%C3%A1ltozat_kn.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "eger",
+  "name": "Eger",
+  "country": "HU",
+  "aliases": [
+   "Egri"
+  ],
+  "summary": "Hills between the Mátra and Bükk mountains in northern Hungary, largely on volcanic rhyolite tuff. Cool night air from the Bükk keeps acidity fresh. Known for blends: red Egri Bikavér, led by Kékfrankos, and white Egri Csillag.",
+  "red_body": 4,
+  "red_acidity": 4,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A bull, a bull's head or the word Bikavér may appear only on Egri Bikavér, and a star or the word Csillag only on Egri Csillag.",
+  "grapes": [
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Kékfrankos; 30 to 65% of every Egri Bikavér and its largest part."
+   },
+   {
+    "name": "Kadarka",
+    "local_note": "Grown here since the Ottoman era; a Bikavér component."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Eger",
+    "colour": "mixed",
+    "note": "PDO for white, rosé, siller and red wines in Classicus, Superior and Grand Superior tiers."
+   },
+   {
+    "name": "Egri Bikavér",
+    "colour": "red",
+    "note": "Red blend of at least four grapes, each over 5%, led by Kékfrankos; at least 6 months in wood for Classicus and 12 for Superior and Grand Superior. Hungarian PDO, EU registration applied for."
+   },
+   {
+    "name": "Egri Csillag",
+    "colour": "white",
+    "note": "White blend of at least four grapes, each over 5% and none over 50%. Hungarian PDO, EU registration applied for."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://boraszat.kormany.hu/download/e/82/23000/Eger_OEM_term%C3%A9kle%C3%ADr%C3%A1s_v6_KN.pdf",
+    "https://bor.hu/en/egri-wine-district/",
+    "https://wineanorak.com/2022/04/02/exploring-hungarian-wine-the-hungarian-wine-summit-2022/",
+    "https://wineanorak.com/2025/09/11/hungarys-red-grape-varieties-a-masterclass-in-budapest/",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/",
+    "https://gi.kormany.hu/download/2/30/73000/EGRI%20BIKAV%C3%89R%20term%C3%A9kle%C3%ADr%C3%A1s_honlapra.pdf"
+   ],
+   "red_body": [
+    "https://gi.kormany.hu/download/2/30/73000/EGRI%20BIKAV%C3%89R%20term%C3%A9kle%C3%ADr%C3%A1s_honlapra.pdf",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "red_acidity": [
+    "https://boraszat.kormany.hu/download/e/82/23000/Eger_OEM_term%C3%A9kle%C3%ADr%C3%A1s_v6_KN.pdf",
+    "https://bor.hu/en/egri-wine-district/",
+    "https://wineanorak.com/2022/04/02/exploring-hungarian-wine-the-hungarian-wine-summit-2022/"
+   ],
+   "label_note": [
+    "https://boraszat.kormany.hu/download/e/82/23000/Eger_OEM_term%C3%A9kle%C3%ADr%C3%A1s_v6_KN.pdf"
+   ],
+   "grapes": [
+    "https://gi.kormany.hu/download/2/30/73000/EGRI%20BIKAV%C3%89R%20term%C3%A9kle%C3%ADr%C3%A1s_honlapra.pdf",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/",
+    "https://bor.hu/en/egri-wine-district/",
+    "https://hungary.guides.winefolly.com/wines/kadarka/"
+   ],
+   "appellations": [
+    "https://boraszat.kormany.hu/download/e/82/23000/Eger_OEM_term%C3%A9kle%C3%ADr%C3%A1s_v6_KN.pdf",
+    "https://gi.kormany.hu/download/2/30/73000/EGRI%20BIKAV%C3%89R%20term%C3%A9kle%C3%ADr%C3%A1s_honlapra.pdf",
+    "https://gi.kormany.hu/download/4/30/73000/EGRI%20CSILLAG%20term%C3%A9kle%C3%ADr%C3%A1s_honlapra.pdf",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/geographical-indications?countries=HU&productTypes=WINE"
+   ]
+  }
+ },
+ {
+  "slug": "somlo",
+  "name": "Somló",
+  "country": "HU",
+  "aliases": [
+   "Somlói"
+  ],
+  "summary": "A lone extinct volcano rising from the Marcal basin in western Hungary, with the smaller Ság and Kis-Somlyó hills. Basalt soils give concentrated white wines with firm acidity and a salty, mineral character, notably from Juhfark.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Juhfark",
+    "local_note": "Somló is its home; about a fifth of the vineyard."
+   },
+   {
+    "name": "Furmint",
+    "local_note": null
+   },
+   {
+    "name": "Hárslevelű",
+    "local_note": null
+   },
+   {
+    "name": "Graševina",
+    "local_note": "Olaszrizling in Hungarian."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Somló",
+    "colour": "mixed",
+    "note": "PDO, mainly white, also orange, rosé, red and sparkling. Since 2024 it also covers the former Nagy-Somló area."
+   },
+   {
+    "name": "Somló Superior",
+    "colour": "white",
+    "note": "Superior type of the Somló PDO, from Furmint, Hárslevelű, Juhfark and Olaszrizling only; at least half aged five months in barrel or amphora; released from 1 February of the second year after harvest."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://boraszat.kormany.hu/download/a/d5/43000/SOML%C3%93%20term%C3%A9kle%C3%ADr%C3%A1s%20(2%20v%C3%A1ltozat)%20kn.pdf",
+    "https://bor.hu/en/somloi-wine-district/",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/",
+    "https://bor.hu/en/juhfark/",
+    "https://www.decanterchina.com/en/knowledge/grapes/juhfark-white"
+   ],
+   "grapes": [
+    "https://boraszat.kormany.hu/download/a/d5/43000/SOML%C3%93%20term%C3%A9kle%C3%ADr%C3%A1s%20(2%20v%C3%A1ltozat)%20kn.pdf",
+    "https://bor.hu/en/juhfark/",
+    "https://bor.hu/en/furmint/",
+    "https://winefolly.com/deep-dive/hungarian-wines-for-the-win/"
+   ],
+   "appellations": [
+    "https://boraszat.kormany.hu/download/a/d5/43000/SOML%C3%93%20term%C3%A9kle%C3%ADr%C3%A1s%20(2%20v%C3%A1ltozat)%20kn.pdf",
+    "https://bor.hu/en/somloi-wine-district/"
+   ]
+  }
+ },
+ {
+  "slug": "goriska-brda",
+  "name": "Goriška Brda",
+  "country": "SI",
+  "aliases": [
+   "Brda"
+  ],
+  "summary": "Terraced hills on the Italian border between the Julian Alps and the Adriatic, with a Mediterranean climate tempered by the Alps. Marl and sandstone soils (opoka) give fresh, mineral whites led by Rebula, and Merlot leads the reds.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Ribolla Gialla",
+    "local_note": "Rebula; about a quarter of plantings."
+   },
+   {
+    "name": "Merlot",
+    "local_note": "The second most planted grape."
+   },
+   {
+    "name": "Friulano",
+    "local_note": "Zeleni sauvignon in Slovenia."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Goriška Brda",
+    "colour": "mixed",
+    "note": "PDO (also \"Brda\") for still and sparkling wines; quality levels include wines from dried grapes."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.gov.si/assets/ministrstva/MKGP/DOKUMENTI/HRANA/VINO/ZOP/S_Goriska_Brda-1.doc",
+    "https://www.decanter.com/wine-news/slovenia-a-wine-lovers-guide-517554/",
+    "https://wineanorak.com/2022/05/26/in-slovenia-2-visiting-edi-simcic-goriska-brda-slovenia/",
+    "https://www.brda.si/en/taste/wine/"
+   ],
+   "grapes": [
+    "https://wineanorak.com/2022/05/26/in-slovenia-2-visiting-edi-simcic-goriska-brda-slovenia/",
+    "https://www.brda.si/en/taste/wine/",
+    "https://www.gov.si/assets/ministrstva/MKGP/DOKUMENTI/HRANA/VINO/ZOP/S_Goriska_Brda-1.doc",
+    "https://www.decanter.com/wine-news/slovenia-a-wine-lovers-guide-517554/"
+   ],
+   "appellations": [
+    "https://www.gov.si/assets/ministrstva/MKGP/DOKUMENTI/HRANA/VINO/ZOP/S_Goriska_Brda-1.doc"
+   ]
+  }
+ },
+ {
+  "slug": "vipavska-dolina",
+  "name": "Vipavska dolina",
+  "country": "SI",
+  "aliases": [
+   "Vipava",
+   "Vipava Valley"
+  ],
+  "summary": "A valley in western Slovenia caught between Mediterranean influence from the west and cold winds from the Alps. Its whites are fresh and fruity, from Rebula, Malvazija and the local Zelen and Pinela; Merlot leads the reds.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Ribolla Gialla",
+    "local_note": "Rebula; the leading white."
+   },
+   {
+    "name": "Merlot",
+    "local_note": "The leading red."
+   },
+   {
+    "name": "Malvazija Istarska",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Vipavska dolina",
+    "colour": "mixed",
+    "note": "PDO (also \"Vipava\") for still and sparkling wines, with two subdistricts, Zgornja and Spodnja Vipavska dolina."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.gov.si/assets/ministrstva/MKGP/DOKUMENTI/HRANA/VINO/ZOP/S_vipavska-dolina.doc",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/slovenia-in-midstride",
+    "https://www.vipavskadolina.si/en/okusaj/vino/vipavska-vina",
+    "https://www.decanter.com/wine-news/slovenia-a-wine-lovers-guide-517554/"
+   ],
+   "grapes": [
+    "https://www.vipavskadolina.si/en/okusaj/vino/vipavska-vina",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/slovenia-in-midstride",
+    "https://www.gov.si/assets/ministrstva/MKGP/DOKUMENTI/HRANA/VINO/ZOP/S_vipavska-dolina.doc"
+   ],
+   "appellations": [
+    "https://www.gov.si/assets/ministrstva/MKGP/DOKUMENTI/HRANA/VINO/ZOP/S_vipavska-dolina.doc"
+   ]
+  }
+ },
+ {
+  "slug": "santorini",
+  "name": "Santorini",
+  "country": "GR",
+  "aliases": [
+   "Σαντορίνη"
+  ],
+  "summary": "A volcanic Aegean island with little rain and strong winds, where vines are trained low in basket shapes. Assyrtiko gives powerful dry whites with high acidity and a saline edge, and sweet Vinsanto from sun dried grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Grilled fish and seafood.",
+  "label_note": "Vinsanto may state a vintage once it has aged at least two years, or \"aged for x years\" in steps of four years (4, 8, 12 and so on).",
+  "grapes": [
+   {
+    "name": "Assyrtiko",
+    "local_note": "At least 85% of dry Santorini, at least 51% of the sweet wines."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Santorini",
+    "colour": "white",
+    "note": "PDO for dry white wine, wine from sun dried grapes and liqueur wine from Santorini and Thirasia; dry wines with at least 85% Assyrtiko, topped up with Aidani and Athiri."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-santorini/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.decanter.com/wine-news/historic-santorini-vineyards-struggle-against-climate-change-and-tourism-570872/",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2022.143.01.0012.01.ENG"
+   ],
+   "pairing": [
+    "https://winesofgreece.org/varieties/assyrtiko/",
+    "https://www.decanter.com/learn/pairing-wine-with-fish-what-to-choose-440973/"
+   ],
+   "label_note": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2022.143.01.0012.01.ENG"
+   ],
+   "grapes": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2022.143.01.0012.01.ENG",
+    "https://winesofgreece.org/pdo/pdo-santorini/"
+   ],
+   "appellations": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2022.143.01.0012.01.ENG",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10656"
+   ]
+  }
+ },
+ {
+  "slug": "naoussa",
+  "name": "Naoussa",
+  "country": "GR",
+  "aliases": [
+   "Νάουσα"
+  ],
+  "summary": "Vineyards on the southeastern slopes of Mount Vermio in Macedonia, with cold winters and hot summers. Only Xinomavro is used, giving pale reds with high acidity and firm tannins that need time and can age well past a decade.",
+  "red_body": 4,
+  "red_acidity": 4,
+  "red_tannin": 5,
+  "pairing": null,
+  "label_note": "Dry reds labelled Réserve need two years of ageing, at least 12 months in oak and 6 in bottle; Grande Réserve needs four years, at least 18 months in oak and 18 in bottle.",
+  "grapes": [
+   {
+    "name": "Xinomavro",
+    "local_note": "The only grape allowed."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Naoussa",
+    "colour": "red",
+    "note": "PDO for dry, medium dry and medium sweet red wines from 100% Xinomavro."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-naoussa/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098"
+   ],
+   "red_body": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098",
+    "https://winesofgreece.org/varieties/xinomavro/"
+   ],
+   "red_acidity": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098",
+    "https://winesofgreece.org/pdo/pdo-naoussa/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "red_tannin": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098",
+    "https://winesofgreece.org/pdo/pdo-naoussa/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098",
+    "https://winesofgreece.org/pdo/pdo-naoussa/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11098"
+   ]
+  }
+ },
+ {
+  "slug": "nemea",
+  "name": "Nemea",
+  "country": "GR",
+  "aliases": [
+   "Νεμέα"
+  ],
+  "summary": "Hills in Corinthia, with a little of Argolida, in the northeast Peloponnese, rising from about 200 to 850 metres. Agiorgitiko alone makes the wines, from fresh, fruity reds with soft tannins to fuller, oak aged wines that keep.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": 3,
+  "pairing": null,
+  "label_note": "Dry reds labelled Réserve need two years of ageing, at least 12 months in oak and 6 in bottle; Grande Réserve needs four years, at least 18 months in oak and 18 in bottle.",
+  "grapes": [
+   {
+    "name": "Agiorgitiko",
+    "local_note": "The only grape allowed."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Nemea",
+    "colour": "red",
+    "note": "PDO for dry and medium sweet reds, plus sweet and liqueur wines, all from 100% Agiorgitiko."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://winesofgreece.org/pdo/pdo-nemea/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10693",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "red_body": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10693",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/"
+   ],
+   "red_tannin": [
+    "https://winesofgreece.org/varieties/agiorgitiko/",
+    "https://winefolly.com/deep-dive/the-wine-regions-of-greece-map/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/the-ultimate-guide-to-greek-wine/"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10693"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10693",
+    "https://winesofgreece.org/pdo/pdo-nemea/"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10693",
+    "https://winesofgreece.org/pdo/pdo-nemea/"
+   ]
+  }
+ }
+]

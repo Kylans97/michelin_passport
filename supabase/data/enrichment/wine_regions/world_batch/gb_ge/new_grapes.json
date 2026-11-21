@@ -1,0 +1,155 @@
+[
+  {
+    "name": "Saperavi",
+    "aliases": [],
+    "colour": "red",
+    "summary": "Georgia's most planted dark grape, a teinturier with red flesh. It gives deeply coloured reds, dry or semi-sweet, with high acidity and firm tannin.",
+    "tastes": [
+      "dark berries",
+      "liquorice",
+      "dark chocolate",
+      "tobacco"
+    ],
+    "aged_note": "Dry wines can taste tart when young and gain from bottle age.",
+    "body": 4,
+    "acidity": 4,
+    "tannin": 4,
+    "similar": {
+      "name": "Syrah",
+      "note": "Dark fruit and spice on a firm frame."
+    },
+    "sources": {
+      "summary": [
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://www.decanter.com/wine/grape-varieties/saperavi-52204/",
+        "https://daily.sevenfifty.com/regions/georgia/"
+      ],
+      "tastes": [
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://timatkin.com/red-varietals/saperavi/"
+      ],
+      "aged_note": [
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://www.decanter.com/wine/grape-varieties/saperavi-52204/",
+        "https://daily.sevenfifty.com/regions/georgia/"
+      ],
+      "body": [
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/4dcca59d-cad4-43d3-8f34-a7ee250dbc6e.pdf"
+      ],
+      "acidity": [
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://www.decanter.com/wine/grape-varieties/saperavi-52204/",
+        "https://timatkin.com/red-varietals/saperavi/"
+      ],
+      "tannin": [
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://www.decanter.com/wine/grape-varieties/saperavi-52204/"
+      ],
+      "similar": [
+        "https://winecompanion.com.au/resources/varieties/saperavi",
+        "https://www.decanter.com/wine-news/opinion/jefford-on-monday/tasting-georgian-wine-387746/"
+      ]
+    }
+  },
+  {
+    "name": "Rkatsiteli",
+    "aliases": [],
+    "colour": "white",
+    "summary": "Georgia's most planted grape. It makes fresh dry whites and, fermented on its skins in qvevri, amber wines with tannin and notes of dried apricot and walnut.",
+    "tastes": [
+      "apple",
+      "dried apricot",
+      "walnut"
+    ],
+    "aged_note": "Amber versions from Kakheti can age for years.",
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://www.decanter.com/wine/from-qvevri-to-glass-the-fascinating-journey-of-georgian-orange-wine-570301/",
+        "https://www.decanter.com/learn/georgias-indigenous-grapes-reviving-hidden-treasures-488731/",
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://winefolly.com/grapes/rkatsiteli/"
+      ],
+      "tastes": [
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://winefolly.com/grapes/rkatsiteli/",
+        "https://www.decanter.com/wine-reviews-tastings/qvevri-wines-from-georgia-a-winemaking-story-and-12-wines-to-try-498954/",
+        "https://www.decanter.com/wine-news/opinion/jefford-on-monday/tasting-georgian-wine-387746/"
+      ],
+      "aged_note": [
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://winefolly.com/grapes/rkatsiteli/"
+      ]
+    }
+  },
+  {
+    "name": "Mtsvane Kakhuri",
+    "aliases": [
+      "Kakhuri Mtsvane",
+      "Mtsvane"
+    ],
+    "colour": "white",
+    "summary": "A white grape of Kakheti, often just called Mtsvane and distinct from Goruli Mtsvane. It is made alone or with Rkatsiteli, as a dry white or an amber wine.",
+    "tastes": [
+      "citrus",
+      "floral"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://www.decanter.com/wine-news/opinion/jefford-on-monday/tasting-georgian-wine-387746/",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/bd82db3d-8c5f-4e66-8e44-b44cafdb3064.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-18/a1143eeb-092b-4935-bbae-0652d6122707.pdf",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/0f8fdee1-c9e3-4185-ab0d-1d94e6838b7c.pdf",
+        "https://www.decanter.com/wine/from-qvevri-to-glass-the-fascinating-journey-of-georgian-orange-wine-570301/"
+      ],
+      "tastes": [
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://www.decanter.com/wine-reviews-tastings/qvevri-wines-from-georgia-a-winemaking-story-and-12-wines-to-try-498954/",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/0f8fdee1-c9e3-4185-ab0d-1d94e6838b7c.pdf"
+      ]
+    }
+  },
+  {
+    "name": "Kisi",
+    "aliases": [
+      "Kisi Magraani"
+    ],
+    "colour": "white",
+    "summary": "A white grape native to Kakheti. It makes aromatic dry whites and layered amber wines fermented on the skins in qvevri.",
+    "tastes": [
+      "stone fruit",
+      "citrus",
+      "walnut",
+      "tea"
+    ],
+    "aged_note": null,
+    "body": null,
+    "acidity": null,
+    "tannin": null,
+    "similar": null,
+    "sources": {
+      "summary": [
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://www.decanter.com/learn/georgias-indigenous-grapes-reviving-hidden-treasures-488731/",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/ad8d46f7-6da3-4b89-82d6-4de26ee54c71.pdf"
+      ],
+      "tastes": [
+        "https://daily.sevenfifty.com/regions/georgia/",
+        "https://www.decanter.com/wine-news/opinion/jefford-on-monday/tasting-georgian-wine-387746/",
+        "https://www.decanter.com/wine-reviews-tastings/qvevri-wines-from-georgia-a-winemaking-story-and-12-wines-to-try-498954/",
+        "https://www.sakpatenti.gov.ge/media/django-summernote/2025-11-19/ad8d46f7-6da3-4b89-82d6-4de26ee54c71.pdf"
+      ]
+    }
+  }
+]

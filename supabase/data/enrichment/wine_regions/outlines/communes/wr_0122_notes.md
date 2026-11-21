@@ -1,0 +1,15 @@
+# Goriška Brda (SI) — boundary notes
+
+**Official text:** Specifikacija proizvoda "Goriška Brda" ali "Brda" (MKGP, file dated 16.7.2019), "Opredelitev geografskega območja". https://www.gov.si/assets/ministrstva/MKGP/DOKUMENTI/HRANA/VINO/ZOP/S_Goriska_Brda-1.doc (raw/si_brda.doc/.txt). eAmbrosia EUGI00000005684 / PDO-SI-A0270; its 2013 technical file is raw/si_brda_ts.pdf. Supporting: annex "Priloga 1" of the current national rulebook (smaller geographical units within districts), PISRS file https://pisrs.si/api/datoteke/integracije/351458730 (raw/si_pisrs_351458730.pdf, created 12.2.2022), section 6.
+
+**Important: the district is defined by a boundary line, not by a list of units.** Wording: "Meja vinorodnega okoliša Goriška Brda poteka od jugozahodnega pobočja Sabotina po državni meji z Italijo proti zahodu in severu, se nad naseljem Golo Brdo usmeri proti vzhodu preko hriba Čipca, poteka po potoku proti jugu, po cesti Senik-Vrhovlje pri Kojskem, po cesti Plave-Dobrovo do odcepa ceste za Sabotin pred naseljem Gonjače, po cesti proti Sabotinu nad zaselki Figovica, Vamorje in Dol ter poteka proti jugu po plastnici 300 m do državne meje z Italijo nad sabotinsko cesto."
+
+The 2007 rulebook (Uradni list RS 49/2007) could not be read: uradni-list.si served an expired TLS certificate and pisrs.si is not reachable from this environment; the line above is the one in the EU-registered specification.
+
+**Units:** 1 LAU, SI_007 Brda, marked partial.
+
+**Method and judgement:** every settlement the line names, and every "vinorodni kraj" in Priloga 1 §6, was located in the SURS settlement list (SiStat 05C5006S, codes MMMSSS nested under municipality code MMM = the LAU code; raw/si_sistat_05C5006S_meta.json). Golo Brdo, Senik, Vrhovlje pri Kojskem, Gonjače, Dobrovo, Hum, Snežatno, Kojsko, Vipolže, Kozana, Šmartno, Zali Breg, Šlovrenc, Drnovk, Vedrijan, Višnjevik, Neblo, Fojana, Barbana, Medana, Biljana and Podsabotin are all in Občina Brda (007) (for duplicate names, e.g. Golo Brdo/Medvode, the Brda one is the only one near the line). Plave (Kanal) is only the name of a road the line follows inside Brda; Sabotin straddles Brda and Nova Gorica, and any Nova Gorica part above the Sabotin road would be a small strip, so Nova Gorica is left out. "Cerovo" (Priloga 1) is not a SURS settlement in Brda; it is a locality name and was not needed. Brda is marked partial because the line runs inside the municipality on its eastern side (along the Senik–Vrhovlje and Plave–Dobrovo roads and the 300 m contour under Sabotin), so the land beyond it is outside the district. The exact share outside was not measured.
+
+**Held back:** none, but note the unit is a municipality approximation of a line-described district.
+
+**Style notes:** grapes: Rebula about 25% and Merlot second most planted (wineanorak 2022), Sauvignonasse (Friulano) next (wineanorak; brda.si "Green Sauvignon"); the national grape list in the spec names "Zeleni sauvignon". Red fields left null (white-led district: Decanter, 70% white). Ribolla Gialla and Friulano come from the Italy batch (classics/it/new_grapes.json); not duplicated here.

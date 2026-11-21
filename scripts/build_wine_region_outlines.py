@@ -96,6 +96,11 @@ def main(lau_path):
         simple_by_code[code] = merged.simplify(
             tolerance, preserve_topology=True).buffer(0)
 
+    # The country of a region: the prefix of its units' ids (FR_, AU_GI_,
+    # NZ_TA_, ...).
+    country_of = {code: rows[0]['gisco_id'].split('_')[0]
+                  for code, rows in regions.items()}
+
     # 2. Neighbours, simplified separately, overlap in thin slivers along
     # their shared border, which paint darker at close zoom. The later
     # region gives the overlap up, so they meet edge to edge. A larger
@@ -107,7 +112,12 @@ def main(lau_path):
             if not ga.intersects(gb):
                 continue
             overlap = ga.intersection(gb).area
-            if overlap == 0 or overlap > SLIVER_SHARE * min(ga.area, gb.area):
+            # Across a national border an overlap is never a legal one, so
+            # it is always a sliver (the Mosel against the Luxembourg
+            # Moselle, Brda against Friuli).
+            cross_border = country_of[a] != country_of[b]
+            if overlap == 0 or (not cross_border and overlap >
+                                SLIVER_SHARE * min(ga.area, gb.area)):
                 continue
             simple_by_code[b] = gb.difference(ga).buffer(0)
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Round 1 of more wine regions (product owner, 2026-11-21: "ja begin daar
+"""Rounds 1 and 2 of more wine regions (product owner, 2026-11-21: "ja begin daar
 maar mee", on completing the classics plus Lebanon and Uruguay): Germany,
 Italy, Spain, Portugal and France beyond the regions already in the app,
 and Lebanon and Uruguay, whose estates are in The World's 50 Best
@@ -16,6 +16,15 @@ lists, the Spanish pliegos, the Italian disciplinari, the Portuguese
 specifications); Uruguay's Canelones and Maldonado from INE Uruguay's
 departments. Lebanon has no legally defined wine region: the Bekaa Valley
 is a point (GeoNames 280281).
+
+Round 2: Hungary (Tokaj, Villány, Eger, Somló), Slovenia (Goriška Brda,
+Vipavska dolina, approximated by municipalities since their texts draw a
+line), Greece (Santorini, Naoussa, Nemea), Belgium (Hageland, Haspengouw,
+Heuvelland, Côtes de Sambre et Meuse), Luxembourg (Moselle
+Luxembourgeoise), England (Sussex: East and West Sussex from ONS, with
+Brighton and Hove, which the specification's map includes) and Georgia
+(Kakheti: its eight municipalities, from OCHA COD-AB / Geostat; needs
+20261101620000_add_ge_country.sql).
 """
 
 import importlib.util
@@ -50,6 +59,17 @@ bw.BATCH = [
         'cahors', 'savoie'])),
     ('UY', 'classics/lb_uy', 'lb_uy_units.geojson', codes(115, [
         'bekaa-valley', 'canelones', 'maldonado'])),
+    # Round 2, "Europa breder" (product owner, 2026-11-21: "kunnen we al
+    # met 2: Europa breder?"), in the same file so its grapes reuse round
+    # 1's (Ribolla Gialla, Friulano).
+    ('HU', 'europe2/hu_si_gr', None, codes(118, [
+        'tokaj', 'villany', 'eger', 'somlo', 'goriska-brda',
+        'vipavska-dolina', 'santorini', 'naoussa', 'nemea'])),
+    ('BE', 'europe2/be_lu', None, codes(127, [
+        'hagelandse_wijn', 'haspengouwse_wijn', 'heuvellandse_wijn',
+        'cotes_de_sambre_et_meuse', 'moselle_luxembourgeoise'])),
+    ('GB', 'europe2/gb_ge', 'gb_ge_units.geojson', codes(132, [
+        'sussex', 'kakheti'])),
 ]
 bw.AT = ('AT', 'classics/at', None, [])
 bw.POINTS = {
