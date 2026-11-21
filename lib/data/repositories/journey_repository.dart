@@ -118,23 +118,25 @@ class JourneyRepository {
     return [for (final row in rows as List) JourneyRouteStop.fromMap(row)];
   }
 
-  /// Catalogue restaurants linked as dining partners — id and name only;
-  /// the detail screen loads the full restaurant when one is tapped.
-  Future<List<({String id, String name})>> getDiningPartners(
-    String journeyId,
-  ) async {
-    final rows = await _client
+  /// Catalogue restaurants linked as dining partners, with the city and
+  /// stars their row on the page shows, alphabetical. Two queries: the
+  /// links, then those restaurants from restaurants_full; the detail
+  /// screen loads the full restaurant only when one is tapped.
+  Future<List<JourneyDiningPartner>> getDiningPartners(String journeyId) async {
+    final links = await _client
         .from('journey_restaurants')
-        .select('restaurant_id, restaurants(name)')
+        .select('restaurant_id')
         .eq('journey_id', journeyId);
-    return [
-      for (final row in rows as List)
-        if (row['restaurants'] != null)
-          (
-            id: row['restaurant_id'] as String,
-            name: (row['restaurants'] as Map)['name'] as String,
-          ),
+    final ids = [
+      for (final row in links as List) row['restaurant_id'] as String,
     ];
+    if (ids.isEmpty) return [];
+    final rows = await _client
+        .from('restaurants_full')
+        .select('id, name, city_name, michelin_stars')
+        .inFilter('id', ids);
+    return [for (final row in rows as List) JourneyDiningPartner.fromMap(row)]
+      ..sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
   }
 
   // ── Confirmed travel (Passport) ────────────────────────────────────────

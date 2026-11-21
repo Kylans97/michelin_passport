@@ -242,6 +242,31 @@ Map<String, List<JourneyRouteStop>> drawableRouteStops(
   };
 }
 
+/// A catalogue restaurant linked to a journey as its dining partner
+/// (`journey_restaurants`), as the journey page lists it. [michelinStars]
+/// is the restaurant's own current award; 0 or null draws none.
+class JourneyDiningPartner {
+  final String id;
+  final String name;
+  final String? cityName;
+  final int? michelinStars;
+
+  const JourneyDiningPartner({
+    required this.id,
+    required this.name,
+    this.cityName,
+    this.michelinStars,
+  });
+
+  factory JourneyDiningPartner.fromMap(Map<String, dynamic> map) =>
+      JourneyDiningPartner(
+        id: map['id'] as String,
+        name: map['name'] as String,
+        cityName: map['city_name'] as String?,
+        michelinStars: (map['michelin_stars'] as num?)?.toInt(),
+      );
+}
+
 enum JourneyTravelVisibility {
   private,
   friends;

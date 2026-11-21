@@ -8,6 +8,18 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Train and ship pages, round two** (product owner, 2026-11-21: "kan je met een paar visualisaties komen om deze pagina's van ships en trains nog mooier te maken? Die onboard cabins met die vierkantjes en rondjes doen ook niet zoveel voor mij"; on the canvas https://claude.ai/artifact/1CJcQx1zLaMjXSxMyPCAH5: "Bouw A (reisroute), B1 (manifest in plaats van de vierkantjes), C (de tafel aan boord) en D (de stempel). E laten we weg."). All from data the journeys already have; no schema or data change.
+  - **The itinerary:** under the globe, the selected route stop by stop as a vertical rail (`JourneyItinerary`): Depart, every stop the operator names, Arrive or Return. Where a route crosses a border, a stop carries its country (from `countries`, one lookup, only when a route spans more than one). A journey with one drawn route no longer repeats it in a Routes list.
+  - **The cabin manifest replaces the squares and portholes** (`JourneyCabinManifest`, `JourneyCabins` removed): when the cabins text names its types with counts, a menu card with dotted leaders and the total; any other cabins text stays the operator's sentence.
+  - **The table aboard** (`JourneyDining`, was "Dining"): the dining text as an italic pull quote between two brass rules, and the dining partners as a short list with city and their own MICHELIN stars (gold, as everywhere a star is drawn), each opening the restaurant. `getDiningPartners` now reads name, city and stars from `restaurants_full`.
+  - **The stamp you travel for** (`JourneyPassportStamps`): after a confirmed travel, the Passport's own stamp for it (same design, ink and tilt, all derived from the travel id); before, an uninked dashed outline with the journey's name and "Not yet in your Passport.", never a drawn stamp, since a real one carries a date there is none of yet.
+  - A travel spanning two days now reads "19 Nov 2026 to 21 Nov 2026" instead of using a dash.
+  Tests: `test/journey_visuals_test.dart` (manifest, itinerary borders and round trip, the table aboard, the uninked stamp). Checked in the simulator on the Andean Explorer (itinerary, inked stamp), the Royal Scotsman (round trip, three partner restaurants, uninked stamp) and the Venice Simplon-Orient-Express (border labels, manifest).
+
+### Fixed
+- **Manifest counts not flush right**, caught in the simulator before commit: the cabin name and the dotted leader were both flexible and split the line in half, so a long name ("L'Observatoire Suite") wrapped and every count sat at a different place. The name now takes its own width up to most of the line and the leader fills the rest.
+
 ---
 
 ## v1.7.1 (38) — 2026-11-20

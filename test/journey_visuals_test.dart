@@ -10,7 +10,10 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/features/journeys/journey_visuals.dart';
-import 'package:michelin_passport/features/journeys/widgets/journey_cabins.dart';
+import 'package:michelin_passport/features/journeys/widgets/journey_cabin_manifest.dart';
+import 'package:michelin_passport/features/journeys/widgets/journey_dining.dart';
+import 'package:michelin_passport/features/journeys/widgets/journey_itinerary.dart';
+import 'package:michelin_passport/features/journeys/widgets/journey_passport_stamps.dart';
 import 'package:michelin_passport/features/journeys/widgets/journey_route_globe.dart';
 import 'package:michelin_passport/features/map/globe/globe_camera.dart';
 import 'package:michelin_passport/features/map/globe/globe_outlines.dart';
@@ -255,24 +258,120 @@ void main() {
     });
   });
 
-  testWidgets('one mark per cabin, grouped by name', (tester) async {
+  testWidgets('the manifest lists each cabin type and the total', (
+    tester,
+  ) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
-          body: JourneyCabins(
+          body: JourneyCabinManifest(
             layout: parseCabins(
               'Presidential Suites (2), State Cabins (20), Pullman Cabins (10)',
             )!,
-            kind: JourneyKind.train,
+            title: 'Eastern & Oriental Express',
           ),
         ),
       ),
     );
     expect(find.text('State Cabins'), findsOneWidget);
     expect(find.text('20'), findsOneWidget);
-    expect(
-      find.descendant(of: find.byType(Wrap), matching: find.byType(Container)),
-      findsNWidgets(32),
+    expect(find.text('IN ALL'), findsOneWidget);
+    expect(find.text('32'), findsOneWidget);
+  });
+
+  group('itinerary', () {
+    Future<void> pump(WidgetTester tester, List<JourneyRouteStop> stops) =>
+        tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              body: SingleChildScrollView(
+                child: JourneyItinerary(
+                  route: _route('r', nights: 5),
+                  stops: stops,
+                  countryNames: const {
+                    'TR': 'Türkiye',
+                    'RO': 'Romania',
+                    'FR': 'France',
+                  },
+                ),
+              ),
+            ),
+          ),
+        );
+
+    testWidgets('names a country only where the route crosses a border', (
+      tester,
+    ) async {
+      await pump(tester, [
+        _stop('r', 1, 'Istanbul Sirkeci', 41.0, 28.9, 'TR'),
+        _stop('r', 2, 'Bucharest', 44.4, 26.1, 'RO'),
+        _stop('r', 3, 'Sinaia', 45.3, 25.5, 'RO'),
+        _stop('r', 4, "Paris Gare de l'Est", 48.8, 2.3, 'FR'),
+      ]);
+      expect(find.text('TÜRKIYE'), findsOneWidget);
+      expect(find.text('ROMANIA'), findsOneWidget);
+      expect(find.text('FRANCE'), findsOneWidget);
+      expect(find.text('DEPART'), findsOneWidget);
+      expect(find.text('ARRIVE'), findsOneWidget);
+      expect(find.text('5 NIGHTS'), findsOneWidget);
+    });
+
+    testWidgets('one country names none; a round trip returns', (tester) async {
+      await pump(tester, [
+        _stop('r', 1, 'Edinburgh', 55.9, -3.2, 'GB'),
+        _stop('r', 2, 'Keith', 57.5, -2.9, 'GB'),
+        _stop('r', 3, 'Edinburgh', 55.9, -3.2, 'GB'),
+      ]);
+      expect(find.text('GB'), findsNothing);
+      expect(find.text('RETURN'), findsOneWidget);
+    });
+  });
+
+  testWidgets('the table aboard quotes the text and lists the partners', (
+    tester,
+  ) async {
+    String? opened;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: JourneyDining(
+            diningText: 'Menus curated by Simon Rogan.',
+            partners: [
+              JourneyDiningPartner.fromMap(const {
+                'id': 'r1',
+                'name': "L'Enclume",
+                'city_name': 'Cartmel',
+                'michelin_stars': 3,
+              }),
+            ],
+            onOpenRestaurant: (id) => opened = id,
+          ),
+        ),
+      ),
     );
+    expect(find.text('Menus curated by Simon Rogan.'), findsOneWidget);
+    expect(find.text('Cartmel'), findsOneWidget);
+    expect(find.byIcon(Icons.star_rounded), findsNWidgets(3));
+    await tester.tap(find.text("L'Enclume"));
+    expect(opened, 'r1');
+  });
+
+  testWidgets('before a travel the stamp is an uninked outline', (
+    tester,
+  ) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: JourneyPassportStamps(
+            journey: _journey(),
+            routes: const [],
+            travels: const [],
+          ),
+        ),
+      ),
+    );
+    expect(find.text('TRAIN'), findsOneWidget);
+    expect(find.text('J'), findsOneWidget);
+    expect(find.bySemanticsLabel('Not yet in your Passport'), findsOneWidget);
   });
 }
