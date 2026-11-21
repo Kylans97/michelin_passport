@@ -1,0 +1,333 @@
+[
+ {
+  "slug": "vale-dos-vinhedos",
+  "name": "Vale dos Vinhedos",
+  "country": "BR",
+  "aliases": [
+   "DO Vale dos Vinhedos"
+  ],
+  "summary": "A small valley in the Serra Gaúcha hills by Bento Gonçalves, and the first protected wine origin in Brazil. Merlot leads its reds and Chardonnay its whites, and sparkling wine is made here too.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Red blends must be led by Merlot, with only Cabernet Sauvignon, Cabernet Franc or Tannat beside it. White wines must contain Chardonnay, blended only with Riesling Itálico.",
+  "grapes": [
+   {
+    "name": "Merlot",
+    "local_note": "The red grape chosen to represent the DO; about 138 ha in 2013, the largest variety here."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": "Allowed in DO red blends beside Merlot."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": "The white grape chosen to represent the DO."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Used for the DO's sparkling wines."
+   },
+   {
+    "name": "Graševina",
+    "local_note": "Called Riesling Itálico here; allowed beside Chardonnay."
+   },
+   {
+    "name": "Tannat",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Vale dos Vinhedos",
+    "colour": "mixed",
+    "note": "Denominação de Origem since 2012 (INPI IG201008) for red, white and sparkling wines. It followed the first Brazilian Indicação de Procedência, granted here in 2002."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASINDICAESDEPROCEDNCIARECONHECIDAS.At27Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASDENOMINAESDEORIGEMRECONHECIDAS.At20Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedosVinhedosDO.pdf",
+    "https://www.cnpuv.embrapa.br/cadastro-viticola/do-vale-dos-vinhedos/site/pdf/capituloI.pdf",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-brazilian-wine"
+   ],
+   "label_note": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedosVinhedosDO.pdf",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf",
+    "https://www.cnpuv.embrapa.br/cadastro-viticola/do-vale-dos-vinhedos/site/pdf/capituloI.pdf"
+   ],
+   "grapes": [
+    "https://www.cnpuv.embrapa.br/cadastro-viticola/do-vale-dos-vinhedos/site/pdf/capituloI.pdf",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedosVinhedosDO.pdf"
+   ],
+   "grapes.Merlot": [
+    "https://www.cnpuv.embrapa.br/cadastro-viticola/do-vale-dos-vinhedos/site/pdf/capituloI.pdf",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-brazilian-wine"
+   ],
+   "grapes.Chardonnay": [
+    "https://www.cnpuv.embrapa.br/cadastro-viticola/do-vale-dos-vinhedos/site/pdf/capituloI.pdf",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf"
+   ],
+   "grapes.Pinot Noir": [
+    "https://www.cnpuv.embrapa.br/cadastro-viticola/do-vale-dos-vinhedos/site/pdf/capituloI.pdf",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf"
+   ],
+   "grapes.Graševina": [
+    "https://www.cnpuv.embrapa.br/cadastro-viticola/do-vale-dos-vinhedos/site/pdf/capituloI.pdf",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf"
+   ],
+   "appellations": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASDENOMINAESDEORIGEMRECONHECIDAS.At20Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASINDICAESDEPROCEDNCIARECONHECIDAS.At27Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedosVinhedosDO.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "campanha-gaucha",
+  "name": "Campanha Gaúcha",
+  "country": "BR",
+  "aliases": [
+   "Campanha"
+  ],
+  "summary": "A wide stretch of Pampa grassland in the far south of Brazil, on the borders with Uruguay and Argentina. Warmer and drier than the Serra Gaúcha, it grows Chardonnay, Cabernet Sauvignon, Tannat and Merlot.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wines under the IP must come wholly from grapes grown in the delimited area. A wine naming a grape or a vintage must be at least 85% that grape or vintage.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": "The largest variety in the Campanha Central microregion in 2015, about 201 ha."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": "About 175 ha in the Campanha Central microregion in 2015."
+   },
+   {
+    "name": "Tannat",
+    "local_note": "About 110 ha in the Campanha Central microregion in 2015."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Campanha Gaúcha",
+    "colour": "mixed",
+    "note": "Indicação de Procedência since 2020 (INPI BR402017000009-1), amended in 2025, for white, rosé, red and sparkling wines."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf",
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1129621/1/Indications-geographiques-des-vins-du-Bresil.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/CampanhaGachaalteracao27maio25.pdf",
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1084013/1/DadoscadastraisCAP1ebookA45.pdf",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-brazilian-wine"
+   ],
+   "label_note": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/CampanhaGachaalteracao27maio25.pdf"
+   ],
+   "grapes": [
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1084013/1/DadoscadastraisCAP1ebookA45.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/CampanhaGachaalteracao27maio25.pdf"
+   ],
+   "grapes.Tannat": [
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1084013/1/DadoscadastraisCAP1ebookA45.pdf",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-brazilian-wine"
+   ],
+   "appellations": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASINDICAESDEPROCEDNCIARECONHECIDAS.At27Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/CampanhaGachaalteracao27maio25.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "vale-do-sao-francisco",
+  "name": "Vale do São Francisco",
+  "country": "BR",
+  "aliases": [],
+  "summary": "The tropical wine region of Brazil, on irrigated land along the São Francisco river in the semi-arid north east. Vines can crop twice a year, for sparkling wines, sweet Moscatel sparkling, Syrah reds and Chenin Blanc whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": "Used for still whites and for dry and off-dry sparkling wine."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Grown here as Moscato Canelli, with Moscato Itália, for sweet Moscatel sparkling wine."
+   },
+   {
+    "name": "Tempranillo",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Vale do São Francisco",
+    "colour": "mixed",
+    "note": "Indicação de Procedência since 2022 (INPI BR402020000021-3) for fine wines, sparkling wine and Moscatel sparkling wine, across five whole municipalities in Pernambuco and Bahia."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedoSoFrancisco.pdf",
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1128435/1/Vins-tropicaux-de-la-region-semi-aride-du-Bresil.pdf",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-brazilian-wine",
+    "https://www.gov.br/agricultura/pt-br/assuntos/sustentabilidade/indicacao-geografica/arquivos-publicacoes-ig/livreto-vinho.pdf"
+   ],
+   "grapes": [
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1128435/1/Vins-tropicaux-de-la-region-semi-aride-du-Bresil.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedoSoFrancisco.pdf",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-brazilian-wine"
+   ],
+   "grapes.Muscat Blanc à Petits Grains": [
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1128435/1/Vins-tropicaux-de-la-region-semi-aride-du-Bresil.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedoSoFrancisco.pdf",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8193"
+   ],
+   "grapes.Chenin Blanc": [
+    "https://www.alice.cnptia.embrapa.br/alice/bitstream/doc/1128435/1/Vins-tropicaux-de-la-region-semi-aride-du-Bresil.pdf",
+    "https://daily.sevenfifty.com/what-you-need-to-know-about-brazilian-wine"
+   ],
+   "appellations": [
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/status-pedidos/LISTADASINDICAESDEPROCEDNCIARECONHECIDAS.At27Outubro2026.pdf",
+    "https://www.gov.br/inpi/pt-br/servicos/indicacoes-geograficas/arquivos/fichas-tecnicas-de-indicacoes-geograficas/ValedoSoFrancisco.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "queretaro",
+  "name": "Querétaro",
+  "country": "MX",
+  "aliases": [
+   "Vinos de la Región Vitivinícola de Querétaro"
+  ],
+  "summary": "Wine country on the high plateau of central Mexico, with vineyards at about 1,900 metres or more. Best known for sparkling wine, it became the first protected wine geographical indication in Mexico in 2025.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wine under the indication must be made only from Vitis vinifera grapes, and no sweeteners or flavourings may be used at any stage.",
+  "grapes": [
+   {
+    "name": "Macabeo",
+    "local_note": "Used for sparkling wine."
+   },
+   {
+    "name": "Xarel·lo",
+    "local_note": "Used for sparkling wine."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Vinos de la Región Vitivinícola de Querétaro",
+    "colour": "mixed",
+    "note": "Indicación geográfica declared by IMPI in 2025, covering the whole state, for still and sparkling wines."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://dof.gob.mx/nota_detalle_popup.php?codigo=5751385",
+    "https://mexiconewsdaily.com/food/state-by-plate-queretaro-wine/",
+    "https://queretaro.travel/lugares/get-to-know-the-wine-region/?lang=en",
+    "https://intellectual-property-helpdesk.ec.europa.eu/news-events/news/mexico-recognizes-its-first-wine-geographical-indication-2025-03-13_en"
+   ],
+   "label_note": [
+    "https://dof.gob.mx/nota_detalle_popup.php?codigo=5751385"
+   ],
+   "grapes": [
+    "https://mexiconewsdaily.com/food/state-by-plate-queretaro-wine/",
+    "https://queretaro.travel/lugares/get-to-know-the-wine-region/?lang=en"
+   ],
+   "appellations": [
+    "https://dof.gob.mx/nota_detalle_popup.php?codigo=5751385",
+    "https://intellectual-property-helpdesk.ec.europa.eu/news-events/news/mexico-recognizes-its-first-wine-geographical-indication-2025-03-13_en"
+   ]
+  }
+ },
+ {
+  "slug": "valle-de-guadalupe",
+  "name": "Valle de Guadalupe",
+  "country": "MX",
+  "aliases": [
+   "Guadalupe Valley"
+  ],
+  "summary": "The main wine valley of Baja California, the state that makes most Mexican wine. Hot days, cool nights and the nearby ocean shape its wines, and salty water can leave a saline note.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Nebbiolo",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://daily.sevenfifty.com/valle-de-guadalupes-groundbreaking-winemakers-are-passing-the-baton",
+    "https://guiapenin.wine/en-baja-california"
+   ],
+   "grapes": [
+    "https://daily.sevenfifty.com/valle-de-guadalupes-groundbreaking-winemakers-are-passing-the-baton",
+    "https://guiapenin.wine/en-baja-california"
+   ]
+  }
+ }
+]

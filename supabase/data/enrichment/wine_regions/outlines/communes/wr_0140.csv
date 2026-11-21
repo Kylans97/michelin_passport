@@ -1,0 +1,2 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0140,US_AVA_long_island,Long Island,Long Island,NY,,https://tigerweb.geo.census.gov/arcgis/rest/services/Generalized_ACS2024/State_County/MapServer/11/query?where=GEOID+IN+%28%2736059%27%2C%2736103%27%29&outFields=%2A&outSR=4326&f=geojson

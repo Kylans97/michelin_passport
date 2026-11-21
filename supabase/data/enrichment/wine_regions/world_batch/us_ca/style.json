@@ -1,0 +1,780 @@
+[
+ {
+  "slug": "sta-rita-hills",
+  "name": "Sta. Rita Hills",
+  "country": "US",
+  "aliases": [
+   "Santa Rita Hills"
+  ],
+  "summary": "A cool AVA in western Santa Barbara County, where hills running east to west let Pacific fog and wind reach the vines. About two thirds of the vineyard is Pinot Noir, followed by Chardonnay.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Sta._Rita_Hills_AVA",
+    "https://www.guildsomm.com/stay_current/features/b/fred-swan/posts/santa-barbara-feature",
+    "https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0/query?where=OBJECTID%3D145&outFields=Note&f=json"
+   ],
+   "summary": [
+    "https://www.staritahills.com/about",
+    "https://en.wikipedia.org/wiki/Sta._Rita_Hills_AVA",
+    "https://www.guildsomm.com/stay_current/features/b/fred-swan/posts/santa-barbara-feature",
+    "https://winefolly.com/deep-dive/an-intro-to-santa-barbara-wine-country"
+   ],
+   "grapes": [
+    "https://www.guildsomm.com/stay_current/features/b/fred-swan/posts/santa-barbara-feature",
+    "https://winefolly.com/deep-dive/an-intro-to-santa-barbara-wine-country",
+    "https://www.staritahills.com/about",
+    "https://en.wikipedia.org/wiki/Sta._Rita_Hills_AVA"
+   ],
+   "grapes.Syrah": [
+    "https://www.guildsomm.com/stay_current/features/b/fred-swan/posts/santa-barbara-feature",
+    "https://en.wikipedia.org/wiki/Sta._Rita_Hills_AVA"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ]
+  }
+ },
+ {
+  "slug": "santa-maria-valley",
+  "name": "Santa Maria Valley",
+  "country": "US",
+  "aliases": [],
+  "summary": "A funnel shaped valley opening west to the Pacific, where morning fog and afternoon wind keep it cool and the growing season long. Pinot Noir and Chardonnay lead, with some Syrah, and the grapes keep plenty of acidity.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Santa_Maria_Valley_AVA",
+    "https://winefolly.com/deep-dive/an-intro-to-santa-barbara-wine-country",
+    "https://www.guildsomm.com/stay_current/features/b/fred-swan/posts/santa-barbara-feature"
+   ],
+   "grapes": [
+    "https://www.guildsomm.com/stay_current/features/b/fred-swan/posts/santa-barbara-feature",
+    "https://winefolly.com/deep-dive/an-intro-to-santa-barbara-wine-country",
+    "https://en.wikipedia.org/wiki/Santa_Maria_Valley_AVA"
+   ],
+   "grapes.Syrah": [
+    "https://www.guildsomm.com/stay_current/features/b/fred-swan/posts/santa-barbara-feature",
+    "https://winefolly.com/deep-dive/an-intro-to-santa-barbara-wine-country"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ]
+  }
+ },
+ {
+  "slug": "russian-river-valley",
+  "name": "Russian River Valley",
+  "country": "US",
+  "aliases": [],
+  "summary": "A cool Sonoma County valley that begins about 10 miles from the Pacific, where morning fog and a wide swing between day and night keep acidity in the grapes. Chardonnay and Pinot Noir make up over 70% of the harvest.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Zinfandel",
+    "local_note": "Old vines on the Santa Rosa Plain."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Chalk Hill",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 1983 rule (27 CFR 9.52)."
+   },
+   {
+    "name": "Green Valley of Russian River Valley",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 1983 rule (27 CFR 9.57)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://russianrivervalley.org/about/climate/",
+    "https://russianrivervalley.org/about/varietals/",
+    "https://en.wikipedia.org/wiki/Russian_River_Valley_AVA"
+   ],
+   "grapes": [
+    "https://russianrivervalley.org/about/varietals/",
+    "https://en.wikipedia.org/wiki/Russian_River_Valley_AVA",
+    "https://sonomawinegrape.org/russian-river-valleys-pinot-noir-neighborhoods/"
+   ],
+   "grapes.Zinfandel": [
+    "https://russianrivervalley.org/about/varietals/",
+    "https://sonomawinegrape.org/russian-river-valleys-pinot-noir-neighborhoods/"
+   ],
+   "appellations": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.52",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.57",
+    "https://en.wikipedia.org/wiki/Russian_River_Valley_AVA"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ]
+  }
+ },
+ {
+  "slug": "columbia-valley",
+  "name": "Columbia Valley",
+  "country": "US",
+  "aliases": [],
+  "summary": "Washington's largest AVA, a dry basin in the rain shadow of the Cascades that holds over 99% of the state's vineyards. Warm days and cool nights on loess over flood deposits give ripe fruit while keeping natural acidity.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Yakima Valley",
+    "colour": "mixed",
+    "note": "Washington's first AVA, first set out in a 1983 rule (27 CFR 9.69)."
+   },
+   {
+    "name": "Red Mountain",
+    "colour": "mixed",
+    "note": "Sub-AVA within Yakima Valley, first set out in a 2001 rule (27 CFR 9.167)."
+   },
+   {
+    "name": "Horse Heaven Hills",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2005 rule (27 CFR 9.188)."
+   },
+   {
+    "name": "Wahluke Slope",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2005 rule (27 CFR 9.192)."
+   },
+   {
+    "name": "Rattlesnake Hills",
+    "colour": "mixed",
+    "note": "Sub-AVA within Yakima Valley, first set out in a 2006 rule (27 CFR 9.193)."
+   },
+   {
+    "name": "Snipes Mountain",
+    "colour": "mixed",
+    "note": "Sub-AVA within Yakima Valley, first set out in a 2009 rule (27 CFR 9.213)."
+   },
+   {
+    "name": "Lake Chelan",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2009 rule (27 CFR 9.215)."
+   },
+   {
+    "name": "Naches Heights",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2011 rule (27 CFR 9.222)."
+   },
+   {
+    "name": "Ancient Lakes of Columbia Valley",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2012 rule (27 CFR 9.227)."
+   },
+   {
+    "name": "Walla Walla Valley",
+    "colour": "mixed",
+    "note": "Sub-AVA shared with Oregon, first set out in a 1984 rule (27 CFR 9.91)."
+   },
+   {
+    "name": "The Rocks District of Milton-Freewater",
+    "colour": "mixed",
+    "note": "Sub-AVA in Oregon, within Walla Walla Valley, first set out in a 2015 rule (27 CFR 9.249)."
+   },
+   {
+    "name": "Royal Slope",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2020 rule (27 CFR 9.271)."
+   },
+   {
+    "name": "Candy Mountain",
+    "colour": "mixed",
+    "note": "Sub-AVA within Yakima Valley, first set out in a 2020 rule (27 CFR 9.272)."
+   },
+   {
+    "name": "White Bluffs",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2021 rule (27 CFR 9.275)."
+   },
+   {
+    "name": "The Burn of Columbia Valley",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2021 rule (27 CFR 9.276)."
+   },
+   {
+    "name": "Goose Gap",
+    "colour": "mixed",
+    "note": "Sub-AVA within Yakima Valley, first set out in a 2021 rule (27 CFR 9.277)."
+   },
+   {
+    "name": "Rocky Reach",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2022 rule (27 CFR 9.287)."
+   },
+   {
+    "name": "Beverly, Washington",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2024 rule (27 CFR 9.297)."
+   },
+   {
+    "name": "Columbia Hills",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 2026 rule (27 CFR 9.301)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.washingtonwine.org/resource/columbia-valley-ava/",
+    "https://www.washingtonwine.org/grapes-soil-sun/",
+    "https://en.wikipedia.org/wiki/Columbia_Valley_AVA"
+   ],
+   "grapes": [
+    "https://www.washingtonwine.org/press_release/washington-reports-high-quality-for-2025-wine-harvest/",
+    "https://www.washingtonwine.org/resource/columbia-valley-ava/",
+    "https://en.wikipedia.org/wiki/Columbia_Valley_AVA"
+   ],
+   "appellations": [
+    "https://www.washingtonwine.org/regions-and-avas/",
+    "https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.74",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.69",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.167",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.188",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.192",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.193",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.213",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.215",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.222",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.227",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.91",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.249",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.271",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.272",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.275",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.276",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.277",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.287",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.297",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.301"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ]
+  }
+ },
+ {
+  "slug": "walla-walla-valley",
+  "name": "Walla Walla Valley",
+  "country": "US",
+  "aliases": [],
+  "summary": "A valley shared by Washington and Oregon at the foot of the Blue Mountains, cooler and wetter than much of Washington, with loess over flood deposits and basalt cobbles in the south. Cabernet Sauvignon, Syrah and Merlot lead.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": "Close to half the vineyard in The Rocks District."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "The Rocks District of Milton-Freewater",
+    "colour": "mixed",
+    "note": "Sub-AVA in Oregon, on basalt cobblestones, first set out in a 2015 rule (27 CFR 9.249)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.washingtonwine.org/resource/walla-walla-valley-ava/",
+    "https://www.wallawallawine.com/wine-region/about-the-ava/",
+    "https://www.wallawallawine.com/wine-region/terroir/",
+    "https://en.wikipedia.org/wiki/Walla_Walla_Valley_AVA"
+   ],
+   "grapes": [
+    "https://www.wallawallawine.com/wine-region/",
+    "https://www.washingtonwine.org/resource/walla-walla-valley-ava/",
+    "https://en.wikipedia.org/wiki/Walla_Walla_Valley_AVA"
+   ],
+   "grapes.Syrah": [
+    "https://www.wallawallawine.com/wine-region/",
+    "https://en.wikipedia.org/wiki/Walla_Walla_Valley_AVA"
+   ],
+   "appellations": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.249",
+    "https://www.wallawallawine.com/wine-region/",
+    "https://www.washingtonwine.org/resource/walla-walla-valley-ava/"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ]
+  }
+ },
+ {
+  "slug": "santa-cruz-mountains",
+  "name": "Santa Cruz Mountains",
+  "country": "US",
+  "aliases": [],
+  "summary": "A cool mountain AVA between the Pacific and San Francisco Bay, the first in California defined by its mountain topography, much of it above the fog line. Plantings are split about evenly among Pinot Noir, Cabernet Sauvignon and Chardonnay.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Ben Lomond Mountain",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 1987 rule (27 CFR 9.118)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://winesofthesantacruzmountains.com/about",
+    "https://en.wikipedia.org/wiki/Santa_Cruz_Mountains_AVA",
+    "https://www.decanter.com/wine/california-wine-region/discover-pacific-coast-precision-in-the-santa-cruz-mountains/"
+   ],
+   "grapes": [
+    "https://winesofthesantacruzmountains.com/about",
+    "https://en.wikipedia.org/wiki/Santa_Cruz_Mountains_AVA",
+    "https://www.decanter.com/wine/california-wine-region/discover-pacific-coast-precision-in-the-santa-cruz-mountains/"
+   ],
+   "appellations": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.118"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ]
+  }
+ },
+ {
+  "slug": "long-island",
+  "name": "Long Island",
+  "country": "US",
+  "aliases": [],
+  "summary": "An AVA covering Nassau and Suffolk counties, where the Atlantic, Long Island Sound and Peconic Bay temper the climate over sandy glacial soils. Merlot is the most planted grape, and the wines tend to be restrained and crisp.",
+  "red_body": null,
+  "red_acidity": 4,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in New York.",
+  "grapes": [
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "North Fork of Long Island",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 1986 rule (27 CFR 9.113)."
+   },
+   {
+    "name": "The Hamptons, Long Island",
+    "colour": "mixed",
+    "note": "Sub-AVA, first set out in a 1985 rule (27 CFR 9.101)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://liwines.com/about/",
+    "https://liwines.com/trade/",
+    "https://en.wikipedia.org/wiki/Long_Island_AVA",
+    "https://newyorkwines.org/wp-content/uploads/2023/08/NYW-One-Sheet-Long-Island-M3-HR.pdf",
+    "https://newyork.guides.winefolly.com/regions/long-island/"
+   ],
+   "red_acidity": [
+    "https://newyork.guides.winefolly.com/regions/long-island/",
+    "https://liwines.com/trade/"
+   ],
+   "grapes": [
+    "https://newyorkwines.org/wp-content/uploads/2023/08/NYW-One-Sheet-Long-Island-M3-HR.pdf",
+    "https://liwines.com/faq/",
+    "https://newyork.guides.winefolly.com/regions/long-island/"
+   ],
+   "appellations": [
+    "https://liwines.com/about/",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.113",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.101"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25",
+    "https://liwines.com/about/"
+   ]
+  }
+ },
+ {
+  "slug": "niagara-peninsula",
+  "name": "Niagara Peninsula",
+  "country": "CA",
+  "aliases": [],
+  "summary": "Canada's largest viticultural area, on the south shore of Lake Ontario and crossed by the Niagara Escarpment, whose slopes and lake breezes shape the climate. Riesling, Chardonnay and Cabernet Franc lead, and Icewine is mostly made from Vidal.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A VQA wine naming Niagara Peninsula needs at least 85% of its grapes from there, all from Ontario, and vinifera grapes only, except Vidal for Icewine. Icewine grapes must freeze on the vine and be picked at minus 8°C or colder.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": "Also made as Icewine."
+   },
+   {
+    "name": "Vidal Blanc",
+    "local_note": "The main Icewine grape."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Gamay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Niagara Escarpment",
+    "colour": "mixed",
+    "note": "Regional appellation made up of the Beamsville Bench, Twenty Mile Bench, Short Hills Bench and St. David's Bench."
+   },
+   {
+    "name": "Niagara-on-the-Lake",
+    "colour": "mixed",
+    "note": "Regional appellation made up of Niagara River, Niagara Lakeshore, Four Mile Creek and St. David's Bench."
+   },
+   {
+    "name": "West Niagara",
+    "colour": "mixed",
+    "note": "Regional appellation made up of the Beamsville Bench, Twenty Mile Bench, Short Hills Bench, Creek Shores, Lincoln Lakeshore and Vinemount Ridge."
+   },
+   {
+    "name": "Beamsville Bench",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of Niagara Escarpment and West Niagara."
+   },
+   {
+    "name": "Twenty Mile Bench",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of Niagara Escarpment and West Niagara."
+   },
+   {
+    "name": "Short Hills Bench",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of Niagara Escarpment and West Niagara."
+   },
+   {
+    "name": "St. David's Bench",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of Niagara Escarpment and Niagara-on-the-Lake."
+   },
+   {
+    "name": "Niagara River",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of Niagara-on-the-Lake."
+   },
+   {
+    "name": "Niagara Lakeshore",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of Niagara-on-the-Lake."
+   },
+   {
+    "name": "Four Mile Creek",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of Niagara-on-the-Lake."
+   },
+   {
+    "name": "Creek Shores",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of West Niagara."
+   },
+   {
+    "name": "Lincoln Lakeshore",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of West Niagara."
+   },
+   {
+    "name": "Vinemount Ridge",
+    "colour": "mixed",
+    "note": "Sub-appellation, part of West Niagara."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://vqaontario.ca/appellations/niagara-peninsula/",
+    "https://www.decanter.com/wine/wine-travel/niagara-a-wine-lovers-indispensable-guide/",
+    "https://vqaontario.ca/wp-content/uploads/2025/07/OWAA-ANNUAL_REPORT_STATISTICS-2025.pdf"
+   ],
+   "grapes": [
+    "https://vqaontario.ca/appellations/niagara-peninsula/",
+    "https://www.decanter.com/wine/wine-travel/niagara-a-wine-lovers-indispensable-guide/",
+    "https://vqaontario.ca/wp-content/uploads/2025/07/OWAA-ANNUAL_REPORT_STATISTICS-2025.pdf"
+   ],
+   "grapes.Vidal Blanc": [
+    "https://vqaontario.ca/wp-content/uploads/2025/07/OWAA-ANNUAL_REPORT_STATISTICS-2025.pdf",
+    "https://www.decanter.com/wine/wine-travel/niagara-a-wine-lovers-indispensable-guide/",
+    "https://www.ontario.ca/laws/regulation/000406"
+   ],
+   "grapes.Gamay": [
+    "https://vqaontario.ca/appellations/niagara-peninsula/",
+    "https://www.decanter.com/wine/wine-travel/niagara-a-wine-lovers-indispensable-guide/"
+   ],
+   "appellations": [
+    "https://www.ontario.ca/laws/regulation/000406",
+    "https://vqaontario.ca/appellations/niagara-peninsula/"
+   ],
+   "label_note": [
+    "https://www.ontario.ca/laws/regulation/000406"
+   ]
+  }
+ },
+ {
+  "slug": "okanagan-valley",
+  "name": "Okanagan Valley",
+  "country": "CA",
+  "aliases": [],
+  "summary": "British Columbia's largest wine region, running over 250 km from the US border to Armstrong along Okanagan Lake. Summers are hot and dry with cool nights; the cooler north suits aromatic whites and the hot south bold reds.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A BC VQA wine may name Okanagan Valley when at least 85% of its grapes come from it and the rest from elsewhere in British Columbia.",
+  "grapes": [
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Okanagan Falls",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 4 June 2018."
+   },
+   {
+    "name": "Skaha Bench",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 1 March 2019."
+   },
+   {
+    "name": "Naramata Bench",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 4 March 2019."
+   },
+   {
+    "name": "Golden Mile Bench",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 29 January 2021."
+   },
+   {
+    "name": "Golden Mile Slopes",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 29 January 2021."
+   },
+   {
+    "name": "Lake Country",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 9 June 2021."
+   },
+   {
+    "name": "East Kelowna Slopes",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 21 November 2021."
+   },
+   {
+    "name": "South Kelowna Slopes",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 21 November 2021."
+   },
+   {
+    "name": "Summerland Bench",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 1 December 2021."
+   },
+   {
+    "name": "Summerland Lakefront",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 1 December 2021."
+   },
+   {
+    "name": "Summerland Valleys",
+    "colour": "mixed",
+    "note": "Sub-geographical indication, defined by a map dated 1 December 2021."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://bcvqa.ca/geo_indication/okanagan-valley/",
+    "https://winebc.com/regions/okanagan-valley/",
+    "https://en.wikipedia.org/wiki/Okanagan_Valley_(wine_region)"
+   ],
+   "red_body": [
+    "https://bcvqa.ca/geo_indication/okanagan-valley/",
+    "https://winebc.com/regions/okanagan-valley/"
+   ],
+   "grapes": [
+    "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/agriculture-and-seafood/animal-and-crops/crop-production/2025-grape-acreage-and-production-report.pdf",
+    "https://winebc.com/regions/okanagan-valley/",
+    "https://bcvqa.ca/geo_indication/okanagan-valley/"
+   ],
+   "grapes.Cabernet Franc": [
+    "https://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/agriculture-and-seafood/animal-and-crops/crop-production/2025-grape-acreage-and-production-report.pdf",
+    "https://winebc.com/regions/okanagan-valley/"
+   ],
+   "appellations": [
+    "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/168_2018",
+    "https://bcvqa.ca/geo_indication/okanagan-valley/"
+   ],
+   "label_note": [
+    "https://www.bclaws.gov.bc.ca/civix/document/id/complete/statreg/168_2018"
+   ]
+  }
+ }
+]

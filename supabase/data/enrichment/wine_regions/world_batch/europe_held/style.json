@@ -1,0 +1,762 @@
+[
+ {
+  "slug": "wuerttemberg",
+  "name": "Württemberg",
+  "country": "DE",
+  "aliases": [],
+  "summary": "Vineyards along the Neckar and its side valleys around Stuttgart and Heilbronn, many on steep slopes of Keuper marl and shell limestone. A traditional red wine region with about two thirds red vines, though Riesling is the most planted grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein, and every wine must pass an official test. Schillerwein, a pale red made from white and red grapes together, is a Württemberg term. From the 2026 vintage village and single vineyard names are reserved for estate bottlings, and from 2030 a dry wine may no longer carry a Prädikat.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": "Called Lemberger here."
+   },
+   {
+    "name": "Schiava",
+    "local_note": "Called Trollinger here; the region's classic light red."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Called Spätburgunder here."
+   },
+   {
+    "name": "Meunier",
+    "local_note": "Called Schwarzriesling here."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Württembergisch Unterland",
+    "colour": "mixed",
+    "note": "Bereich of Württemberg, by far the largest."
+   },
+   {
+    "name": "Kocher-Jagst-Tauber",
+    "colour": "mixed",
+    "note": "Bereich of Württemberg."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/W%C3%BCrttemberg_(wine_region)",
+    "https://winesofgermany.co.uk/regions/wurttemberg/",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/76/w%C3%BCrttemberg",
+    "http://data.europa.eu/eli/C/2025/5177/oj",
+    "https://www.statistik-bw.de/fileadmin/user_upload/Service/Veroeff/Statistisches_Monatsheft/PDF/Beitrag_26_08_03.pdf",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes": [
+    "https://www.statistik-bw.de/fileadmin/user_upload/Service/Veroeff/Statistisches_Monatsheft/PDF/Beitrag_26_08_03.pdf",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/W%C3%BCrttemberg_(wine_region)"
+   ],
+   "grapes.Blaufränkisch.local_note": [
+    "http://data.europa.eu/eli/C/2025/5177/oj",
+    "https://en.wikipedia.org/wiki/W%C3%BCrttemberg_(wine_region)"
+   ],
+   "grapes.Schiava.local_note": [
+    "http://data.europa.eu/eli/C/2025/5177/oj",
+    "https://en.wikipedia.org/wiki/Trollinger",
+    "https://winesofgermany.co.uk/regions/wurttemberg/"
+   ],
+   "grapes.Pinot Noir.local_note": [
+    "http://data.europa.eu/eli/C/2025/5177/oj",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes.Meunier.local_note": [
+    "http://data.europa.eu/eli/C/2025/5177/oj",
+    "https://winesofgermany.co.uk/regions/wurttemberg/",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/76/w%C3%BCrttemberg"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2025/5177/oj",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/76/w%C3%BCrttemberg",
+    "https://en.wikipedia.org/wiki/German_wine_classification"
+   ],
+   "appellations": [
+    "https://www.statistik-bw.de/fileadmin/user_upload/Service/Veroeff/Statistisches_Monatsheft/PDF/Beitrag_26_08_03.pdf",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/76/w%C3%BCrttemberg",
+    "http://data.europa.eu/eli/C/2025/5177/oj"
+   ]
+  }
+ },
+ {
+  "slug": "vulkanland-steiermark",
+  "name": "Vulkanland Steiermark",
+  "country": "AT",
+  "aliases": [
+   "Südoststeiermark"
+  ],
+  "summary": "Hill vineyards in southeast Styria around extinct volcanoes, on basalt and tuff among other soils, where the dry Pannonian and humid Illyrian climates meet. The DAC is white only, and Klöch is known for Traminer.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Vulkanland Steiermark DAC is white only, from hand-picked grapes of eight varieties, at most 4 g/l sugar with Riesling and Traminer dry, and the vintage on the label. It has three levels: Gebietswein, Ortswein (nine areas, each with set lead varieties) and Riedenwein. Klöch Traminer may also be off dry or a Prädikatswein; reds are sold as Steiermark.",
+  "grapes": [
+   {
+    "name": "Graševina",
+    "local_note": "Called Welschriesling here."
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Called Weissburgunder here."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "A lead variety in every Ortswein area."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": "Called Morillon here."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Called Gelber Muskateller here."
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Called Grauburgunder here; the lead variety in Straden."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Vulkanland Steiermark DAC",
+    "colour": "white",
+    "note": "Gebietswein; also Riedenwein with a registered vineyard name."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC Oststeiermark",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Weissburgunder."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC Riegersburg",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Weissburgunder."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC Gleichenberg",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Chardonnay (Morillon)."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC Kapfenstein",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Weissburgunder."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC St. Anna",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Morillon."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC Straden",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Grauburgunder."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC St. Peter",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Weissburgunder."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC Tieschen",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and a Pinot family blend (Burgundercuvée)."
+   },
+   {
+    "name": "Vulkanland Steiermark DAC Klöch",
+    "colour": "white",
+    "note": "Ortswein; lead varieties Sauvignon Blanc and Traminer; Traminer may also be off dry or a Prädikatswein."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://info.bml.gv.at/dam/jcr:9bcf7647-c1cb-4809-aa5c-6d0ef56e3ed0/Vulkanland%20Steiermark_Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/",
+    "https://www.steiermark.com/en/Thermen-Vulkanland/Region/Culinary-treasures/Wine/Vulkanland-Steiermark-DAC",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "aliases": [
+    "https://www.steiermark.com/en/Thermen-Vulkanland/Region/Culinary-treasures/Wine/Vulkanland-Steiermark-DAC",
+    "https://eur-lex.europa.eu/eli/reg_impl/2024/3227/oj/eng"
+   ],
+   "grapes": [
+    "https://info.bml.gv.at/dam/jcr:9bcf7647-c1cb-4809-aa5c-6d0ef56e3ed0/Vulkanland%20Steiermark_Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/",
+    "https://en.wikipedia.org/wiki/Austrian_wine",
+    "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20010439"
+   ],
+   "grapes.Graševina.local_note": [
+    "https://info.bml.gv.at/dam/jcr:9bcf7647-c1cb-4809-aa5c-6d0ef56e3ed0/Vulkanland%20Steiermark_Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/"
+   ],
+   "grapes.Pinot Blanc.local_note": [
+    "https://info.bml.gv.at/dam/jcr:9bcf7647-c1cb-4809-aa5c-6d0ef56e3ed0/Vulkanland%20Steiermark_Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/"
+   ],
+   "grapes.Sauvignon Blanc.local_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241671/NOR40241671.html",
+    "https://steiermark.wine/en/ortsweingebiete-vulkanland/",
+    "https://www.steiermark.com/en/Thermen-Vulkanland/Region/Culinary-treasures/Wine/Vulkanland-Steiermark-DAC"
+   ],
+   "grapes.Chardonnay.local_note": [
+    "https://info.bml.gv.at/dam/jcr:9bcf7647-c1cb-4809-aa5c-6d0ef56e3ed0/Vulkanland%20Steiermark_Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "grapes.Muscat Blanc à Petits Grains.local_note": [
+    "https://info.bml.gv.at/dam/jcr:9bcf7647-c1cb-4809-aa5c-6d0ef56e3ed0/Vulkanland%20Steiermark_Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/",
+    "https://en.wikipedia.org/wiki/Austrian_wine"
+   ],
+   "grapes.Pinot Gris.local_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241671/NOR40241671.html",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/",
+    "https://steiermark.wine/en/ortsweingebiete-vulkanland/"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20010439",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241671/NOR40241671.html",
+    "https://info.bml.gv.at/dam/jcr:9bcf7647-c1cb-4809-aa5c-6d0ef56e3ed0/Vulkanland%20Steiermark_Produktspezifikation.pdf",
+    "https://steiermark.wine/en/original/winegrowing-regions/vulkanland-steiermark/"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/GeltendeFassung.wxe?Abfrage=Bundesnormen&Gesetzesnummer=20010439",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40241671/NOR40241671.html",
+    "https://steiermark.wine/en/ortsweingebiete-vulkanland/"
+   ]
+  }
+ },
+ {
+  "slug": "badacsony",
+  "name": "Badacsony",
+  "country": "HU",
+  "aliases": [
+   "Badacsonyi"
+  ],
+  "summary": "Basalt hills rising from the Tapolca Basin on the north shore of Lake Balaton, which tempers the climate. Mostly white wines, led by Olaszrizling and Pinot Gris, with rounded acidity and a salty, mineral note.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A grape named on the label must make up at least 85% of the wine. A white wine named after a hill, such as Szent György-hegy, must come entirely from that hill, and if it names a grape, entirely from that grape; it is aged at least six months, three of them in wood, and never sweetened.",
+  "grapes": [
+   {
+    "name": "Graševina",
+    "local_note": "Olaszrizling in Hungarian; the most planted grape."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Szürkebarát in Hungarian."
+   },
+   {
+    "name": "Kéknyelű",
+    "local_note": "Native to Badacsony and grown almost nowhere else."
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Rajnai rizling in Hungarian."
+   },
+   {
+    "name": "Furmint",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Badacsony",
+    "colour": "mixed",
+    "note": "PDO, mainly white, also rosé and red, late harvest, ice wine, wine from dried grapes and sparkling."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "http://data.europa.eu/eli/C/2024/7443/oj",
+    "https://en.wikipedia.org/wiki/Badacsony_wine_region",
+    "https://bor.hu/en/badacsonyi-wine-district/"
+   ],
+   "summary": [
+    "http://data.europa.eu/eli/C/2024/7443/oj",
+    "https://boraszat.kormany.hu/download/1/74/12000/Badacsony%20OEM%202-v%C3%A1ltozat%20kn.pdf",
+    "https://bor.hu/en/badacsonyi-wine-district/",
+    "https://tastehungary.com/journal/badacsony-pdo-a-guide-to-the-wine-region/",
+    "https://en.wikipedia.org/wiki/Badacsony_wine_region"
+   ],
+   "label_note": [
+    "https://boraszat.kormany.hu/download/1/74/12000/Badacsony%20OEM%202-v%C3%A1ltozat%20kn.pdf",
+    "http://data.europa.eu/eli/C/2024/7443/oj"
+   ],
+   "grapes": [
+    "https://boraszat.kormany.hu/download/1/74/12000/Badacsony%20OEM%202-v%C3%A1ltozat%20kn.pdf",
+    "https://bor.hu/en/badacsonyi-wine-district/",
+    "https://tastehungary.com/journal/badacsony-pdo-a-guide-to-the-wine-region/",
+    "https://en.wikipedia.org/wiki/Badacsony_wine_region",
+    "https://bor.hu/en/keknyelu/",
+    "https://worldoffinewine.com/news-features/wine-hungary-keknyelu"
+   ],
+   "appellations": [
+    "https://boraszat.kormany.hu/download/1/74/12000/Badacsony%20OEM%202-v%C3%A1ltozat%20kn.pdf",
+    "http://data.europa.eu/eli/C/2024/7443/oj"
+   ]
+  }
+ },
+ {
+  "slug": "amyndeon",
+  "name": "Amyndeon",
+  "country": "GR",
+  "aliases": [
+   "Amynteo",
+   "Αμύνταιο"
+  ],
+  "summary": "A high plateau in Florina, northwest Greece, about 600 metres up, ringed by mountains and with lakes. Sandy soils have kept many old vines on their own roots. Only Xinomavro is used, for dry red, rosé and sparkling rosé.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Dry reds labelled Réserve need two years of ageing, at least 12 months in oak and 6 in bottle; Grande Réserve needs four years, at least 18 months in oak and 18 in bottle.",
+  "grapes": [
+   {
+    "name": "Xinomavro",
+    "local_note": "The only grape allowed."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Amyndeon",
+    "colour": "mixed",
+    "note": "PDO for dry red and dry rosé, and sparkling rosé, dry or medium dry, all from 100% Xinomavro."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/11299",
+    "https://winesofgreece.org/?p=1070",
+    "https://guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/11299",
+    "https://winesofgreece.org/?p=1070",
+    "https://guildsomm.com/public_content/features/articles/b/kelli-white/posts/xinomavro-northern-greece"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/11299"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/11299",
+    "https://winesofgreece.org/?p=1070"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/11299",
+    "https://winesofgreece.org/?p=1070"
+   ]
+  }
+ },
+ {
+  "slug": "friuli-colli-orientali",
+  "name": "Friuli Colli Orientali",
+  "country": "IT",
+  "aliases": [
+   "Colli Orientali del Friuli"
+  ],
+  "summary": "Hills east of Udine, sheltered by the Alps to the north, on layered marl and sandstone known locally as ponca. Whites from Friulano and Ribolla Gialla sit beside native reds such as Schioppettino and Refosco, and sweet Picolit.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Friulano with Prosciutto di San Daniele.",
+  "label_note": "Riserva may be used two years after the harvest; for Pignolo only after four years, counted from 1 November of the harvest year. Pinot Bianco, Sauvignon and Pinot Nero may also be labelled Pinot Blanc, Sauvignon Blanc and Pinot Noir.",
+  "grapes": [
+   {
+    "name": "Friulano",
+    "local_note": "Base of the Savorgnano subzone wine, with 10 to 20% Picolit."
+   },
+   {
+    "name": "Ribolla Gialla",
+    "local_note": "Has its own subzone, Ribolla Gialla di Rosazzo."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Pinot Grigio; a copper tinted ramato version is allowed."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Picolit",
+    "local_note": "Sweet wines; Colli Orientali del Friuli Picolit is its own DOCG."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Schioppettino",
+    "local_note": "Native to the area, with its own subzone, Schioppettino di Prepotto."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Friuli Colli Orientali",
+    "colour": "mixed",
+    "note": "DOC for mostly varietal whites and reds, plus Bianco, Rosso and sweet Dolce, and since 2026 a copper tinted Pinot Grigio ramato. Picolit, Ramandolo and Rosazzo are separate DOCGs."
+   },
+   {
+    "name": "Cialla",
+    "colour": "mixed",
+    "note": "Subzone for Ribolla Gialla, Verduzzo Friulano, Refosco dal Peduncolo Rosso and Schioppettino, and a Bianco and Rosso."
+   },
+   {
+    "name": "Ribolla Gialla di Rosazzo",
+    "colour": "white",
+    "note": "Subzone for Ribolla Gialla."
+   },
+   {
+    "name": "Pignolo di Rosazzo",
+    "colour": "red",
+    "note": "Subzone for Pignolo."
+   },
+   {
+    "name": "Schioppettino di Prepotto",
+    "colour": "red",
+    "note": "Subzone for Schioppettino."
+   },
+   {
+    "name": "Refosco di Faedis",
+    "colour": "red",
+    "note": "Subzone for Refosco Nostrano."
+   },
+   {
+    "name": "Savorgnano",
+    "colour": "white",
+    "note": "Subzone added in 2026, for a white of 80 to 90% Friulano and 10 to 20% Picolit."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://italianwinecentral.com/denomination/friuli-colli-orientali-doc/",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "https://www.colliorientali.com/en/"
+   ],
+   "summary": [
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "http://data.europa.eu/eli/C/2026/988/oj",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli",
+    "https://www.colliorientali.com/en/map-of-the-soils/",
+    "https://www.vinetur.com/en/20260902106218/colli-orientali-draws-fresh-attention-for-native-red-wines.html",
+    "https://vinepair.com/articles/italian-wine-schioppettino-explainer",
+    "https://www.colliorientali.com/en/"
+   ],
+   "pairing": [
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2026/988/oj"
+   ],
+   "grapes": [
+    "http://data.europa.eu/eli/C/2026/988/oj",
+    "https://italianwinecentral.com/denomination/friuli-colli-orientali-doc/",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli",
+    "https://www.vinetur.com/en/20260902106218/colli-orientali-draws-fresh-attention-for-native-red-wines.html",
+    "https://www.colliorientali.com/en/",
+    "https://www.colliorientali.com/en/ramandolo/",
+    "https://www.awri.com.au/s2389-alternative-varieties-picolit",
+    "https://en.wikipedia.org/wiki/Verduzzo"
+   ],
+   "appellations": [
+    "http://data.europa.eu/eli/C/2026/988/oj",
+    "https://italianwinecentral.com/denomination/friuli-colli-orientali-doc/",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli",
+    "https://www.colliorientali.com/en/",
+    "https://www.colliorientali.com/en/ramandolo/"
+   ]
+  }
+ },
+ {
+  "slug": "colares",
+  "name": "Colares",
+  "country": "PT",
+  "aliases": [],
+  "summary": "A tiny appellation between the Sintra hills and the Atlantic, where vines grow ungrafted in deep sand that phylloxera could not cross. Ramisco reds have hard tannins and high acidity and need long ageing.",
+  "red_body": null,
+  "red_acidity": 4,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "Reds must be at least 80% Ramisco and age 18 months in cask and 6 in bottle before sale; whites at least 80% Malvasia, with 6 months in cask and 3 in bottle.",
+  "grapes": [
+   {
+    "name": "Malvasia de Colares",
+    "local_note": "at least 80% of every Colares white"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Colares",
+    "colour": "mixed",
+    "note": "Vines planted on their own roots in sand (chão de areia), close to the sea and trained low against the wind. Up to 10% may come from firmer clay and limestone ground (chão rijo)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924",
+    "https://winesofportugal.com/en/portuguese-wines/grape-varieties/ramisco",
+    "https://www.guildsomm.com/public_content/features/articles/b/jens-peter-nebsbjerg/posts/colares-wines-by-the-waves",
+    "https://en.wikipedia.org/wiki/Colares_DOC",
+    "https://wineanorak.com/2020/05/20/viuva-gomes-the-future-of-colares-one-of-portugals-historic-wine-regions/",
+    "https://www.nationalgeographic.com/travel/article/sandy-vines-subtle-wines-lisbons-underrated-wine-region"
+   ],
+   "red_acidity": [
+    "https://winesofportugal.com/en/portuguese-wines/grape-varieties/ramisco",
+    "https://www.guildsomm.com/public_content/features/articles/b/jens-peter-nebsbjerg/posts/colares-wines-by-the-waves",
+    "https://www.nationalgeographic.com/travel/article/sandy-vines-subtle-wines-lisbons-underrated-wine-region"
+   ],
+   "red_tannin": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924",
+    "https://winesofportugal.com/en/portuguese-wines/grape-varieties/ramisco",
+    "https://www.guildsomm.com/public_content/features/articles/b/jens-peter-nebsbjerg/posts/colares-wines-by-the-waves",
+    "https://en.wikipedia.org/wiki/Colares_DOC"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924",
+    "https://wineanorak.com/2020/05/20/viuva-gomes-the-future-of-colares-one-of-portugals-historic-wine-regions/",
+    "https://www.guildsomm.com/public_content/features/articles/b/jens-peter-nebsbjerg/posts/colares-wines-by-the-waves"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924",
+    "https://winesofportugal.com/en/portuguese-wines/grape-varieties/ramisco",
+    "https://www.guildsomm.com/public_content/features/articles/b/jens-peter-nebsbjerg/posts/colares-wines-by-the-waves",
+    "https://wineanorak.com/2020/05/20/viuva-gomes-the-future-of-colares-one-of-portugals-historic-wine-regions/"
+   ]
+  }
+ },
+ {
+  "slug": "alentejo",
+  "name": "Alentejo",
+  "country": "PT",
+  "aliases": [],
+  "summary": "Portugal's broad southern plains, with a Mediterranean and continental climate of hot, dry summers. Reds are ripe and full bodied, often blends of Aragonez, Trincadeira and Alicante Bouschet, while Antão Vaz is the base of the whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A label may add the name of one of the eight sub-regions. Wine made in clay talha pots under the DO rules must say Vinho de Talha.",
+  "grapes": [
+   {
+    "name": "Tempranillo",
+    "local_note": "called Aragonez here"
+   },
+   {
+    "name": "Trincadeira",
+    "local_note": null
+   },
+   {
+    "name": "Alicante Bouschet",
+    "local_note": "French in origin, long settled here"
+   },
+   {
+    "name": "Antão Vaz",
+    "local_note": "the base of the region's best whites"
+   },
+   {
+    "name": "Touriga Nacional",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Alentejo",
+    "colour": "mixed",
+    "note": "One DO over eight sub-regions: Borba, Évora, Granja-Amareleja, Moura, Portalegre, Redondo, Reguengos and Vidigueira. Wines may carry the sub-region's name on the label."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/1282",
+    "https://www.winesofportugal.com/en/discover/wine-regions/alentejo/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://www.winalist.com/blog/portugal/alentejo",
+    "https://www.wineandspiritsmagazine.com/inside-the-tasting-reports/focus-on-alentejo",
+    "https://www.vinhosdoalentejo.pt/en/wines/grape-varieties/"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/1282"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/1282",
+    "https://www.winesofportugal.com/en/discover/wine-regions/alentejo/",
+    "https://winefolly.com/videos/mapped-alentejo-part-1/",
+    "https://vinepair.com/articles/alentejo-portuguese-wine/",
+    "https://www.winalist.com/blog/portugal/alentejo",
+    "https://www.wineandspiritsmagazine.com/inside-the-tasting-reports/focus-on-alentejo",
+    "https://www.vinhosdoalentejo.pt/en/wines/grape-varieties/"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/1282",
+    "https://www.vinhosdoalentejo.pt/en/wines/alentejo-pdo-protected-designation-of-origin/",
+    "https://en.wikipedia.org/wiki/Alentejo_wine"
+   ]
+  }
+ },
+ {
+  "slug": "stajerska-slovenija",
+  "name": "Štajerska Slovenija",
+  "country": "SI",
+  "aliases": [
+   "Slovenska Štajerska"
+  ],
+  "summary": "Hill vineyards in northeast Slovenia toward the Pannonian plain, where white grapes fill over nine in ten vineyards. Laški rizling, Šipon and Sauvignon are mainstays, alongside late harvest sweet wines and a long sparkling tradition at Gornja Radgona.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine must score at least 16 points at an official tasting to carry the PDO. The name may be followed by a smaller unit, such as one of six sub-districts, and an estate name; sweet wines use the predikat terms pozna trgatev, izbor, jagodni izbor, suhi jagodni izbor and ledeno vino.",
+  "grapes": [
+   {
+    "name": "Graševina",
+    "local_note": "Called Laški rizling here."
+   },
+   {
+    "name": "Furmint",
+    "local_note": "Called Šipon here."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": "Called Renski rizling here."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Called Sivi pinot here."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Called Rumeni muškat here."
+   },
+   {
+    "name": "Gewürztraminer",
+    "local_note": "Called Dišeči traminec here."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Štajerska Slovenija",
+    "colour": "mixed",
+    "note": "PDO for still and sparkling wines, dry to sweet."
+   },
+   {
+    "name": "Maribor",
+    "colour": "mixed",
+    "note": "Sub-district (podokoliš); the name may follow Štajerska Slovenija on the label."
+   },
+   {
+    "name": "Radgona-Kapela",
+    "colour": "mixed",
+    "note": "Sub-district (podokoliš); the name may follow Štajerska Slovenija on the label."
+   },
+   {
+    "name": "Srednje Slovenske gorice",
+    "colour": "mixed",
+    "note": "Sub-district (podokoliš); the name may follow Štajerska Slovenija on the label."
+   },
+   {
+    "name": "Ljutomer-Ormož",
+    "colour": "mixed",
+    "note": "Sub-district (podokoliš); the name may follow Štajerska Slovenija on the label."
+   },
+   {
+    "name": "Haloze",
+    "colour": "mixed",
+    "note": "Sub-district (podokoliš); the name may follow Štajerska Slovenija on the label."
+   },
+   {
+    "name": "Šmarje-Virštanj",
+    "colour": "mixed",
+    "note": "Sub-district (podokoliš); the name may follow Štajerska Slovenija on the label."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://gov.si/en/topics/slovenian-wines",
+    "https://en.wikipedia.org/wiki/Slovenian_wine",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/slovenia-in-midstride",
+    "https://slovenia-wines.squarespace.com"
+   ],
+   "aliases": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://slovenia-wines.squarespace.com"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/slovenia-in-midstride",
+    "https://slovenia-wines.squarespace.com",
+    "https://gov.si/en/topics/slovenian-wines",
+    "https://en.wikipedia.org/wiki/Slovenian_wine"
+   ],
+   "grapes.Graševina.local_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://slovenia-wines.squarespace.com"
+   ],
+   "grapes.Furmint.local_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://en.wikipedia.org/wiki/Slovenian_wine"
+   ],
+   "grapes.Riesling.local_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://slovenia-wines.squarespace.com"
+   ],
+   "grapes.Pinot Gris.local_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://gov.si/en/topics/slovenian-wines"
+   ],
+   "grapes.Muscat Blanc à Petits Grains.local_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://slovenia-wines.squarespace.com",
+    "https://gov.si/en/topics/slovenian-wines"
+   ],
+   "grapes.Gewürztraminer.local_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://en.wikipedia.org/wiki/Slovenian_wine"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://pisrs.si/api/datoteke/integracije/351458730"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10327",
+    "https://pisrs.si/api/datoteke/integracije/351458730"
+   ]
+  }
+ }
+]

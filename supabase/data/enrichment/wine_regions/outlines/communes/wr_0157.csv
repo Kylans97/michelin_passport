@@ -1,0 +1,4 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0157,PT_111105,freguesia de Colares,Colares,Sintra (Lisboa),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924
+wr_0157,PT_CAOP2012_111111,freguesia de São Martinho,"São Martinho (Sintra), freguesia as drawn in CAOP 2012.1",Sintra (Lisboa),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924
+wr_0157,PT_CAOP2012_111110,freguesia de São João das Lampas,"São João das Lampas (Sintra), freguesia as drawn in CAOP 2012.1",Sintra (Lisboa),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6924
