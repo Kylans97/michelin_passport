@@ -13,7 +13,11 @@ interface Props {
 }
 const { title, description, current, noindex = false } = Astro.props;
 const fullTitle = title ? `${title} | Mantelier` : 'Mantelier | Restaurant guides and gastronomy events';
-const canonical = new URL(Astro.url.pathname, Astro.site);
+// build.format 'file' gives paths like /app.html and /index.html, which
+// Cloudflare Pages redirects to /app and /. The canonical names the
+// address that is actually served.
+const canonicalPath = Astro.url.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
+const canonical = new URL(canonicalPath, Astro.site);
 ---
 <!doctype html>
 <html lang="en">

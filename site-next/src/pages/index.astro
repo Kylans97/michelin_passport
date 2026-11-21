@@ -9,6 +9,7 @@ import HideEnded from '../components/HideEnded.astro';
 import { loadArticles } from '../lib/news';
 import { guideCount, loadCatalogue, place } from '../lib/restaurants';
 import { loadEvents } from '../lib/events';
+import { APP_FEATURES } from '../lib/app-features';
 
 // Layout B (product owner, 2026-11-16): the lead story as a green panel
 // beside its photo, then what's coming up beside the latest stories, then
@@ -63,6 +64,27 @@ const featured = catalogue.restaurants
     </aside>
   </section>
 
+  <section class="app-band" aria-labelledby="in-the-app">
+    <div class="wrap">
+      <div class="app-head">
+        <div>
+          <p class="eyebrow app-kicker" id="in-the-app">In the app · Free for iPhone</p>
+          <p class="display app-title">Discover, plan, attend, and keep it in your Passport.</p>
+        </div>
+        <AppCta label="Download on the App Store" variant="ivory" />
+      </div>
+      <ul class="app-grid">
+        {APP_FEATURES.map((f) => (
+          <li>
+            <span class="eyebrow app-kicker">{f.kicker}</span>
+            <span class="display app-item">{f.title}</span>
+          </li>
+        ))}
+      </ul>
+      <a class="app-more" href="/app">What the app does →</a>
+    </div>
+  </section>
+
   {featured && (
     <section class="wrap" aria-labelledby="every-guide">
       <div class="compare">
@@ -112,6 +134,16 @@ const featured = catalogue.restaurants
   .row-link:hover .row-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
   .row-title { font-size: 20px; line-height: 1.2; }
 
+  .app-band { background: var(--green); color: var(--ivory); margin-top: 72px; padding: 52px 0 44px; }
+  .app-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .app-kicker { color: var(--on-green-accent); }
+  .app-title { font-size: clamp(30px, 3.6vw, 44px); margin-top: 10px; max-width: 22ch; }
+  .app-grid { list-style: none; margin: 36px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 40px; }
+  .app-grid li { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid var(--on-green-rule); }
+  .app-item { font-size: 24px; }
+  .app-more { display: inline-block; margin-top: 22px; font-size: 13px; color: var(--on-green-muted); }
+  .app-more:hover { color: var(--ivory); }
+
   .compare {
     margin-top: 64px;
     background: var(--paper);
@@ -133,7 +165,12 @@ const featured = catalogue.restaurants
   @media (max-width: 900px) {
     .now { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-top: 36px; }
   }
+  @media (max-width: 900px) {
+    .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 760px) {
+    .app-band { margin-top: 56px; padding: 40px 0 32px; }
+    .app-grid { grid-template-columns: minmax(0, 1fr); }
     .grid3 { grid-template-columns: minmax(0, 1fr); }
     .compare { padding: 20px; }
   }

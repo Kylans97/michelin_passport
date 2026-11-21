@@ -8,20 +8,22 @@ import { gaultMillauText, type Restaurant } from '../lib/restaurants';
 
 interface Props { restaurant: Restaurant; w50bYear: number | null; }
 const { restaurant: r, w50bYear } = Astro.props;
+// The empty value: a middle dot, not a dash (product owner: no dashes).
+const NONE = '·';
 const others = r.otherGuides.filter((g) => g.current !== null);
 
 const w50b = r.w50bRank !== null
   ? { value: `#${r.w50bRank}`, note: w50bYear ? `${w50bYear} list` : 'Current list' }
   : r.w50bHallOfFame
     ? { value: 'Hall of Fame', note: 'Out of the ranking' }
-    : { value: '—', note: 'Not ranked' };
+    : { value: NONE, note: 'Not ranked' };
 ---
 <dl class="scores">
   <div class="cell">
     <dt>MICHELIN</dt>
     {r.stars !== null && r.stars > 0
       ? <dd class="stars" aria-label={`${r.stars} MICHELIN star${r.stars === 1 ? '' : 's'}`}>{'★'.repeat(r.stars)}</dd>
-      : <dd class="value">—</dd>}
+      : <dd class="value">{NONE}</dd>}
     <dd class="note">{r.stars !== null && r.stars > 0 ? `${r.stars} star${r.stars === 1 ? '' : 's'}` : 'No star'}</dd>
   </div>
   <div class="cell">
@@ -31,12 +33,12 @@ const w50b = r.w50bRank !== null
   </div>
   <div class="cell">
     <dt>Gault&amp;Millau</dt>
-    <dd class="value">{r.gaultMillau ? gaultMillauText(r.gaultMillau) : '—'}</dd>
+    <dd class="value">{r.gaultMillau ? gaultMillauText(r.gaultMillau) : NONE}</dd>
     <dd class="note">{r.gaultMillau ? `${r.gaultMillau.year} edition` : 'Not in our data'}</dd>
   </div>
   <div class="cell">
     <dt>Mantelier Selection</dt>
-    <dd class="value">{r.inSelection ? 'Selected' : '—'}</dd>
+    <dd class="value">{r.inSelection ? 'Selected' : NONE}</dd>
     <dd class="note">{r.inSelection ? 'Our own choice' : 'Not selected'}</dd>
   </div>
 </dl>

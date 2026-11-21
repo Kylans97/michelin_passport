@@ -1,4 +1,2 @@
-# Hidden until launch: no page of this site may be indexed. Remove this
-# block (and robots.txt's Disallow) on the day the site replaces site/.
-/*
-  X-Robots-Tag: noindex, nofollow
+/.well-known/apple-app-site-association
+  Content-Type: application/json

@@ -1,0 +1,76 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import AppCta from '../components/AppCta.astro';
+import { APP_FEATURES } from '../lib/app-features';
+
+// What the app does, up to 1.7 (product owner, 2026-11-21: "daar wel
+// gewoon alles al opzetten tot 1.7"). Every line names something that
+// exists in the app; no counts, since those change and none is published.
+---
+<Base title="The app" description="Events, guides, wine regions, a wishlist by place and a Passport that keeps every evening. Mantelier for iPhone, free on the App Store.">
+  <PageHeader
+    eyebrow="The app · Free for iPhone"
+    title="Some evenings only happen once."
+    intro="Mantelier keeps track of them, and tells you in time to book a table, catch a flight and tell your friends. Then it keeps every evening you attend."
+  >
+    <div slot="aside"><AppCta label="Download on the App Store" variant="ivory" /></div>
+  </PageHeader>
+
+  <section class="wrap features" aria-label="In the app">
+    <ol>
+      {APP_FEATURES.map((f) => (
+        <li>
+          <p class="eyebrow">{f.kicker}</p>
+          <h2 class="display">{f.title}</h2>
+          <p class="text">{f.text}</p>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="wrap more">
+    <a class="card" href="/journey">
+      <span class="eyebrow">A story in four stamps</span>
+      <span class="display card-title">Follow Lotte from Amsterdam to Tokyo</span>
+      <span class="go">Take the journey →</span>
+    </a>
+    <a class="card" href="/hosts">
+      <span class="eyebrow">For restaurants, hotels and private chefs</span>
+      <span class="display card-title">Your page, in your hands</span>
+      <span class="go">For hosts →</span>
+    </a>
+  </section>
+
+  <section class="wrap close">
+    <p class="display close-title">Start your own journey.</p>
+    <AppCta label="Download on the App Store" variant="solid" />
+  </section>
+</Base>
+
+<style>
+  .features ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; }
+  .features li { padding: 32px 0 30px; border-bottom: 1px solid var(--rule); }
+  .features h2 { font-size: clamp(28px, 3vw, 36px); margin-top: 8px; }
+  .text { margin: 12px 0 0; color: var(--ink-soft); max-width: 52ch; font-size: 17px; }
+
+  .more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 64px; }
+  .card {
+    display: flex; flex-direction: column; gap: 8px;
+    background: var(--green); color: var(--ivory); border-radius: 6px; padding: 28px;
+  }
+  .card .eyebrow { color: var(--on-green-accent); }
+  .card:hover { text-decoration: none; }
+  .card:hover .card-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .card-title { font-size: 28px; }
+  .go { font-size: 13px; color: var(--on-green-muted); margin-top: 6px; }
+
+  .close { display: flex; flex-direction: column; align-items: flex-start; gap: 18px; margin-top: 72px; }
+  .close-title { font-size: clamp(32px, 4vw, 44px); }
+
+  @media (max-width: 760px) {
+    .features ol, .more { grid-template-columns: minmax(0, 1fr); }
+    .features li { padding: 24px 0 22px; }
+    .card { padding: 22px; }
+  }
+</style>

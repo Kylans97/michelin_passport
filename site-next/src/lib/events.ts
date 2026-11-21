@@ -174,7 +174,7 @@ export function formatWhen(e: SiteEvent): string {
   const range = formatDateRange(e);
   if (!e.startTime) return range;
   if (!e.endTime) return `${range} · ${e.startTime}`;
-  return `${range} · ${e.startTime}–${e.endTime}`;
+  return `${range} · ${e.startTime} to ${e.endTime}`;
 }
 
 export const monthKey = (e: SiteEvent) => e.startDate.slice(0, 7);

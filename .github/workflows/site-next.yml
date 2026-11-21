@@ -1,7 +1,14 @@
-# Builds the hidden new public site (site-next/) from live Supabase data
-# and deploys it to the `next` preview of the Cloudflare Pages project,
-# https://next.mantelier.pages.dev. Never to `main`: that is mantelier.app,
-# which still serves site/ until launch.
+# Builds the public site (site-next/) from live Supabase data and deploys
+# it to the production branch of the Cloudflare Pages project, which is
+# mantelier.app. Until 2026-11-21 this went to the hidden `next` preview
+# while mantelier.app served site/; the product owner then chose to make
+# this site mantelier.app and to publish it automatically every three
+# hours ("inclusief automatisch publiceren naar mantelier.app elke drie
+# uur"). site/ is kept only as a fallback: deploying it by hand would
+# replace this site until the next run.
+#
+# A push to main that touches site-next/ deploys at once, so merging a
+# change to the site is publishing it.
 #
 # Every three hours a new article or event appears without anyone
 # deploying. A run whose output is identical to the last deployed one
@@ -9,7 +16,7 @@
 #
 # Scheduled and manual runs only exist once this file is on the default
 # branch (GitHub's rule); until then a push to the site branch runs it.
-name: Hidden site (site-next)
+name: Public site (site-next)
 
 on:
   schedule:
@@ -39,6 +46,10 @@ jobs:
       # build still runs as a check, and the deploy is skipped.
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: def0797bc70e73b89f2ce9e4c365f20d
+      # The Pages branch to deploy to: `main` is mantelier.app, `next` the
+      # preview. Part of the "already deployed" key too, so an output sent
+      # to the preview is never taken as already live on mantelier.app.
+      PAGES_BRANCH: ${{ github.ref == 'refs/heads/main' && 'main' || 'next' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -69,12 +80,15 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: site-next/.deployed
-          key: site-next-deployed-${{ steps.fingerprint.outputs.hash }}
+          key: site-next-deployed-${{ env.PAGES_BRANCH }}-${{ steps.fingerprint.outputs.hash }}
           lookup-only: true
 
-      - name: Deploy to the hidden preview
+      # Production only from main. A run on another branch (the site's
+      # feature branch) still deploys to the `next` preview, never to
+      # mantelier.app.
+      - name: Deploy (mantelier.app from main, else the next preview)
         if: env.CLOUDFLARE_API_TOKEN != '' && steps.deployed.outputs.cache-hit != 'true'
-        run: npx --yes wrangler@3 pages deploy dist --project-name mantelier --branch next --commit-dirty=true
+        run: npx --yes wrangler@3 pages deploy dist --project-name mantelier --branch "$PAGES_BRANCH" --commit-dirty=true
 
       - name: Remember this output as deployed
         if: env.CLOUDFLARE_API_TOKEN != '' && steps.deployed.outputs.cache-hit != 'true'
@@ -84,7 +98,7 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: site-next/.deployed
-          key: site-next-deployed-${{ steps.fingerprint.outputs.hash }}
+          key: site-next-deployed-${{ env.PAGES_BRANCH }}-${{ steps.fingerprint.outputs.hash }}
 
       - name: Note a skipped deploy
         if: env.CLOUDFLARE_API_TOKEN == '' || steps.deployed.outputs.cache-hit == 'true'

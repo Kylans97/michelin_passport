@@ -1,7 +1,8 @@
 # site-next
 
-The new public Mantelier site, hidden until it replaces `site/` at
-mantelier.app on the day the app launches. Astro, built to static HTML.
+The public Mantelier site at mantelier.app. Astro, built to static HTML.
+It replaced the old static `site/` once the app was on the App Store
+(prepared 2026-11-21; it goes live when this is merged into `main`).
 
 ## Run and build
 
@@ -11,25 +12,40 @@ npm run dev        # http://localhost:4321
 npm run build      # into dist/
 ```
 
-## Deploy (hidden preview only)
+## Deploy
 
 Automatic: `.github/workflows/site-next.yml` builds from live Supabase
-data every three hours (and on every push to this folder) and deploys to
-the `next` preview when the output changed. It needs the repository
-secret `CLOUDFLARE_API_TOKEN` (Cloudflare → My Profile → API Tokens, a
-custom token with Account · Cloudflare Pages · Edit); without it the
-workflow only builds. Schedules run only once the workflow is on `main`.
+data every three hours (and on every push to this folder) and deploys
+when the output changed: from `main` to the production branch, which is
+mantelier.app; from any other branch to the `next` preview,
+https://next.mantelier.pages.dev. So merging a change to this folder into
+`main` publishes it. It needs the repository secret
+`CLOUDFLARE_API_TOKEN` (Cloudflare → My Profile → API Tokens, a custom
+token with Account · Cloudflare Pages · Edit); without it the workflow
+only builds.
 
-By hand:
+By hand, from a checkout whose HEAD equals `origin/main`:
 
 ```
 npm run build
-npx wrangler@3 pages deploy dist --project-name mantelier --branch next
+npx wrangler@3 pages deploy dist --project-name mantelier --branch main
 ```
 
-This updates https://next.mantelier.pages.dev only. Never deploy this
-folder with `--branch main`: that is mantelier.app, which still serves
-`site/`.
+Verify afterwards with curl: every changed page, and its images as
+`image/*`.
+
+`site/` is the old static site, kept only as a fallback. Deploying it
+(`pages deploy site --branch main`) replaces this site until the next
+scheduled run puts this one back.
+
+## Static pages
+
+`public/` carries the pages that came over from `site/` as they were, with
+their own styling: `privacy`, `terms`, `support`, `hosts`, `journey`,
+`venue-guide` and `lookbook` (with their screenshots), `auth/` (the email
+links the app opens), `.well-known/` (Apple's app-site association; served
+as JSON by `public/_headers`), `brand/`, and `_redirects`. Edit them here,
+not in `site/`.
 
 ## Signing in
 
@@ -53,12 +69,10 @@ followed restaurant. The
 catalogue pages still come from production; wishlist rows hold ids only,
 so they match.
 
-## Launch checklist
+## Launch (done 2026-11-21)
 
-1. Move `privacy`, `terms`, `support`, `hosts`, `auth/` and
-   `.well-known/` from `site/` into this site, and point the footer links
-   back to relative paths.
-2. Set `HIDDEN = false` in `src/config.ts`, remove the block in
-   `public/_headers` and the `Disallow` in `public/robots.txt`.
-3. Set `APP_STORE_URL` in `src/config.ts`.
-4. Deploy with `--branch main`.
+The static pages moved into `public/`, the footer links became relative,
+`HIDDEN` is false, `public/_headers` and `public/robots.txt` no longer
+block indexing, `APP_STORE_URL` is set, and the workflow deploys `main`
+to mantelier.app. To hide the site again, set `HIDDEN = true` and put the
+noindex header and `Disallow: /` back.
