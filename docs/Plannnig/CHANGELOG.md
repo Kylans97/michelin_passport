@@ -9,7 +9,7 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Changed
-- **The website in direction B, "Keynote"** (product owner, 2026-11-21: "Mantelier x Art gallery x Apple design"; from four concepts on the design canvas, "Werk richting B (Keynote) verder uit", then "Ja, bouw richting B in site-next/ op een eigen branch, eerst als preview op next.mantelier.pages.dev, nog niet naar main"). Branch `claude/site-visuals-20cbbb`; **preview only, not merged and not live**.
+- **The website in direction B, "Keynote"** (product owner, 2026-11-21: "Mantelier x Art gallery x Apple design"; from four concepts on the design canvas, "Werk richting B (Keynote) verder uit", then "Ja, bouw richting B in site-next/ op een eigen branch, eerst als preview op next.mantelier.pages.dev, nog niet naar main"; after the preview, "Ja dit is top, zet maar live"). Branch `claude/site-visuals-20cbbb`, **merged into `main` on 2026-11-21**, which publishes it to mantelier.app.
   - **Type:** the app's own fonts, Spectral and Hanken Grotesk, replace Cormorant Garamond and IBM Plex across `site-next/src`. Large headlines are Spectral Light. The static pages in `public/` (Privacy, Terms, Journey, the guides for hosts) keep their own styling for now.
   - **Navigation:** a slim glass bar that stays at the top while scrolling. The footer is the deepest green.
   - **Home:** a centred hero with three app screenshots from the lookbook (demo content), a sideways row of the next eight events as cards, a Passport story where the phone holds still while three steps scroll by, one restaurant across every guide (same rule as before), a claret wine section with a drawn globe, tiles for the wishlist, friends and the latest interview, the latest stories, and a closing call to the App Store.
