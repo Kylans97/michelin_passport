@@ -1,0 +1,588 @@
+[
+ {
+  "slug": "priorat",
+  "name": "Priorat",
+  "aliases": [
+   "Priorato",
+   "DOQ Priorat",
+   "DOCa Priorat"
+  ],
+  "summary": "Steep Catalan hills where Garnacha and Cariñena grow on llicorella, a dark slate soil. The region is known above all for full-bodied red wines.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wines from one village may say 'vino de vila de' and the village name. Single sites may be labelled Paraje, Viña Clasificada or Gran Viña Clasificada, and estate wines 'vino de finca'.",
+  "grapes": [
+   {
+    "name": "Grenache",
+    "local_note": "Garnacha tinta; a recommended red variety in the pliego"
+   },
+   {
+    "name": "Carignan",
+    "local_note": "Cariñena or Samsó; a recommended red variety in the pliego"
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Bellmunt",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Bellmunt'."
+   },
+   {
+    "name": "Escaladei",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Escaladei'."
+   },
+   {
+    "name": "Gratallops",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Gratallops'."
+   },
+   {
+    "name": "El Lloar",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de El Lloar'."
+   },
+   {
+    "name": "La Morera",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de La Morera'."
+   },
+   {
+    "name": "Poboleda",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Poboleda'."
+   },
+   {
+    "name": "Porrera",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Porrera'."
+   },
+   {
+    "name": "Torroja",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Torroja'."
+   },
+   {
+    "name": "La Vilella Alta",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de La Vilella Alta'."
+   },
+   {
+    "name": "La Vilella Baixa",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de La Vilella Baixa'."
+   },
+   {
+    "name": "Masos de Falset",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Masos de Falset'."
+   },
+   {
+    "name": "Solanes del Molar",
+    "colour": "mixed",
+    "note": "Vila (village unit) in the pliego; label mention 'vino de vila de Solanes del Molar'."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.doqpriorat.org/en/varietals/",
+    "https://www.doqpriorat.org/en/territory/",
+    "https://www.winespectator.com/articles/tasting-highlights-spains-priorat-3178",
+    "https://winefolly.com/deep-dive/in-search-of-the-best-wines-from-priorat/",
+    "https://www.decanter.com/spanish-fine-wine/priorat-profile-learn-about-the-priorat-region-383564"
+   ],
+   "red_body": [
+    "https://www.decanter.com/spanish-fine-wine/priorat-profile-learn-about-the-priorat-region-383564",
+    "https://winefolly.com/wines/priorat/"
+   ],
+   "label_note": [
+    "https://incavi.gencat.cat/content/dam/incavi/home/normativa/plecs-de-condicions-de-les-do-catalanes/do-priorat/PRIORAT_DOQ_ETIQUETATGE_canvis_juny_2026_061026.pdf"
+   ],
+   "grapes": [
+    "https://incavi.gencat.cat/content/dam/incavi/home/normativa/plecs-de-condicions-de-les-do-catalanes/do-priorat/PRIORAT_DOQ_ETIQUETATGE_canvis_juny_2026_061026.pdf",
+    "https://www.doqpriorat.org/en/varietals/",
+    "https://www.winespectator.com/articles/tasting-highlights-spains-priorat-3178",
+    "https://winefolly.com/wines/priorat/"
+   ],
+   "appellations": [
+    "https://incavi.gencat.cat/content/dam/incavi/home/normativa/plecs-de-condicions-de-les-do-catalanes/do-priorat/PRIORAT_DOQ_ETIQUETATGE_canvis_juny_2026_061026.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "rias_baixas",
+  "name": "Rías Baixas",
+  "aliases": [
+   "Rias Baixas",
+   "DO Rías Baixas"
+  ],
+  "summary": "Galicia's Atlantic coast, where Albariño makes almost all the wine. The whites are light, fresh and high in acidity, often with a saline edge, from vines on granite.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Seafood.",
+  "label_note": "'Rías Baixas Albariño' is 100% Albariño. Oak aged whites are sold as 'Rías Baixas barrica'. Subzone names may be used for wines of the subzone.",
+  "grapes": [
+   {
+    "name": "Albariño",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Val do Salnés",
+    "colour": "white",
+    "note": "Subzone; label 'Rías Baixas Salnés', at least 70% Albariño, Loureira, Treixadura or Caíño blanco."
+   },
+   {
+    "name": "Condado do Tea",
+    "colour": "white",
+    "note": "Subzone; label 'Rías Baixas Condado do Tea', at least 70% Albariño and Treixadura."
+   },
+   {
+    "name": "O Rosal",
+    "colour": "white",
+    "note": "Subzone; label 'Rías Baixas Rosal', at least 70% Albariño, Loureira or Caíño blanco."
+   },
+   {
+    "name": "Soutomaior",
+    "colour": "white",
+    "note": "Subzone of Rías Baixas."
+   },
+   {
+    "name": "Ribeira do Ulla",
+    "colour": "white",
+    "note": "Subzone; label 'Rías Baixas Ribeira do Ulla'."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://doriasbaixas.com/en/our-wines/",
+    "https://doriasbaixas.com/en/about-us/",
+    "https://winefolly.com/deep-dive/all-about-albarino-wine/",
+    "https://www.decanter.com/wine/grape-varieties/albarino/",
+    "https://www.decanter.com/features/r-as-baixas-grows-up-245821/"
+   ],
+   "pairing": [
+    "https://winefolly.com/deep-dive/all-about-albarino-wine/",
+    "https://www.decanter.com/wine/grape-varieties/albarino/"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/rias_baixas_2024_09_30.pdf"
+   ],
+   "grapes": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/rias_baixas_2024_09_30.pdf",
+    "https://doriasbaixas.com/en/our-wines/",
+    "https://winefolly.com/deep-dive/all-about-albarino-wine/"
+   ],
+   "appellations": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/rias_baixas_2024_09_30.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "jerez",
+  "name": "Jerez-Xérès-Sherry",
+  "aliases": [
+   "Sherry",
+   "Jerez",
+   "Xérès"
+  ],
+  "summary": "Fortified wines from the Cádiz coast, made mainly from Palomino grown on white albariza soil and aged in soleras, either under a veil of flor yeast or exposed to air.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Fino and Manzanilla with fish and seafood.",
+  "label_note": "Dry styles are Fino, Amontillado, Palo Cortado and Oloroso; sweet ones Pedro Ximénez and Moscatel; blends Pale Dry, Pale Cream, Medium and Cream. Age statements: 12 and 15 years, VOS (20) and VORS (30).",
+  "grapes": [
+   {
+    "name": "Palomino",
+    "local_note": "Palomino Fino or Listán Blanco; the base of the dry styles"
+   },
+   {
+    "name": "Pedro Ximénez",
+    "local_note": "Sun dried for the sweet wine of the same name"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Fino",
+    "colour": "white",
+    "note": "Dry; aged only under flor (crianza biológica)."
+   },
+   {
+    "name": "Amontillado",
+    "colour": "white",
+    "note": "Dry; aged under flor, then with exposure to air."
+   },
+   {
+    "name": "Palo Cortado",
+    "colour": "white",
+    "note": "Dry; mainly oxidative ageing after the flor disappears."
+   },
+   {
+    "name": "Oloroso",
+    "colour": "white",
+    "note": "Dry; oxidative ageing only."
+   },
+   {
+    "name": "Pedro Ximénez",
+    "colour": "white",
+    "note": "Naturally sweet, at least 85% sun dried Pedro Ximénez, aged oxidatively."
+   },
+   {
+    "name": "Moscatel",
+    "colour": "white",
+    "note": "Naturally sweet, at least 85% Moscatel."
+   },
+   {
+    "name": "Pale Dry",
+    "colour": "white",
+    "note": "Blend based on flor aged wine, under 50 g/l sugar."
+   },
+   {
+    "name": "Pale Cream",
+    "colour": "white",
+    "note": "Sweetened blend based on flor aged wine."
+   },
+   {
+    "name": "Medium",
+    "colour": "white",
+    "note": "Medium sweet blend."
+   },
+   {
+    "name": "Cream",
+    "colour": "white",
+    "note": "Sweet blend, 115 to 140 g/l sugar."
+   },
+   {
+    "name": "Manzanilla-Sanlúcar de Barrameda",
+    "colour": "white",
+    "note": "Separate DO with the same vineyard zone; wines aged only in Sanlúcar de Barrameda, where the flor stays all year."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.sherry.wine/sherry-wine/production/viticulture",
+    "https://www.winespectator.com/articles/wine-tip-not-grandmother-sherry",
+    "https://www.sherry.wine/sherry-wine/production/ageing",
+    "https://www.decanter.com/wine/sherry-and-tapas-a-pairing-guide-509376/",
+    "https://www.decanter.com/magazine/its-not-just-a-drink-249956/"
+   ],
+   "pairing": [
+    "https://www.sherry.wine/sherry-wine/dry-sherry-wines/manzanilla",
+    "https://www.decanter.com/wine/sherry-and-tapas-a-pairing-guide-509376/",
+    "https://www.winespectator.com/articles/wine-tip-not-grandmother-sherry"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/jerez_2026_08_26.pdf"
+   ],
+   "grapes": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/jerez_2026_08_26.pdf",
+    "https://www.sherry.wine/sherry-wine/production/viticulture",
+    "https://www.winespectator.com/articles/wine-tip-not-grandmother-sherry"
+   ],
+   "appellations": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/jerez_2026_08_26.pdf",
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/manzanilla_san_lucar_2026_05_27.pdf",
+    "https://www.sherry.wine/sherry-wine/dry-sherry-wines/manzanilla",
+    "https://www.winespectator.com/articles/wine-tip-not-grandmother-sherry"
+   ]
+  }
+ },
+ {
+  "slug": "penedes",
+  "name": "Penedès",
+  "aliases": [
+   "Penedés",
+   "DO Penedès"
+  ],
+  "summary": "Catalan region south west of Barcelona, best known for white and sparkling wines from Xarel·lo, Macabeo and Parellada. Most of Spain's Cava is made here.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Whites and sparkling wines with fish and seafood.",
+  "label_note": "Clàssic Penedès is the DO's own traditional method sparkling wine, from organic grapes with at least 15 months on the lees in bottle. 'Vino de Mas' and 'Gran Vino de Mas' mark single estate wines.",
+  "grapes": [
+   {
+    "name": "Xarel·lo",
+    "local_note": null
+   },
+   {
+    "name": "Macabeo",
+    "local_note": "Macabeu"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Cava",
+    "colour": "sparkling",
+    "note": "Separate DO spread across several Spanish regions; most of it is made in Penedès, but it is not part of DO Penedès."
+   },
+   {
+    "name": "Clàssic Penedès",
+    "colour": "sparkling",
+    "note": "Penedès's own traditional method sparkling wine, organic, at least 15 months from tirage to disgorgement."
+   },
+   {
+    "name": "Alts d'Ancosa",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Conca del Foix",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Costers de l'Anoia",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Costers de Lavernó",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Costers del Montmell",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Marina del Garraf",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Massís del Garraf",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Muntanyes d'Ordal",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Turons de Vilafrana",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   },
+   {
+    "name": "Vall Bitlles-Anoia",
+    "colour": "mixed",
+    "note": "Unidad geográfica menor, an optional label mention."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://dopenedes.cat/en/dopenedes/",
+    "https://winefolly.com/deep-dive/on-finding-great-cava-sparkling-wines/",
+    "https://www.cava.wine/en/origin-cava/authorised-grape-varieties",
+    "https://www.decanter.com/wine-travel/spain-portugal/decanter-travel-guide-cava-country-spain-294890/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/penedes-article"
+   ],
+   "pairing": [
+    "https://dopenedes.cat/en/dopenedes/",
+    "https://winefolly.com/grapes/xarel-lo/"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/penedes_2026_02_20.pdf"
+   ],
+   "grapes": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/penedes_2026_02_20.pdf",
+    "https://dopenedes.cat/en/dopenedes/"
+   ],
+   "appellations": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/penedes_2026_02_20.pdf",
+    "https://www.decanter.com/wine-travel/spain-portugal/decanter-travel-guide-cava-country-spain-294890/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/penedes-article"
+   ]
+  }
+ },
+ {
+  "slug": "rueda",
+  "name": "Rueda",
+  "aliases": [
+   "DO Rueda"
+  ],
+  "summary": "High, flat plateau in Castilla y León where Verdejo makes most of the wine: crisp, herbal whites from deep, well drained soils and a harsh climate.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Seafood.",
+  "label_note": "'Gran Vino de Rueda' and 'Fermentado en barrica' are regulated label terms. Dorado and Pálido are the traditional fortified wines.",
+  "grapes": [
+   {
+    "name": "Verdejo",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Macabeo",
+    "local_note": "Viura"
+   },
+   {
+    "name": "Palomino",
+    "local_note": "Palomino Fino"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Dorado",
+    "colour": "white",
+    "note": "Traditional fortified wine (vino generoso) of Rueda."
+   },
+   {
+    "name": "Pálido",
+    "colour": "white",
+    "note": "Traditional fortified wine aged under flor (crianza biológica)."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.decanter.com/wine/wine-regions/rueda-wines/the-verdejo-grape-rueda-373802/",
+    "https://winefolly.com/review/the-wines-of-rueda-spain/",
+    "https://dorueda.com/variedades-de-uva/",
+    "https://vinepair.com/wine-blog/why-verdejo-should-make-your-summer-drinking-list/",
+    "https://www.spain.info/en/oenology/wine-route-rueda/"
+   ],
+   "pairing": [
+    "https://dorueda.com/vinos/blancos/verdejo/",
+    "https://vinepair.com/wine-blog/why-verdejo-should-make-your-summer-drinking-list/"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/rueda_2025_06_12.pdf"
+   ],
+   "grapes": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/rueda_2025_06_12.pdf",
+    "https://www.decanter.com/wine/wine-regions/rueda-wines/the-verdejo-grape-rueda-373802/",
+    "https://www.spain.info/en/oenology/wine-route-rueda/",
+    "https://dorueda.com/variedades-de-uva/"
+   ],
+   "appellations": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/rueda_2025_06_12.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "bierzo",
+  "name": "Bierzo",
+  "aliases": [
+   "El Bierzo",
+   "DO Bierzo"
+  ],
+  "summary": "In the west of León, Bierzo is known for fragrant, medium-bodied reds from Mencía, often from old vines on slate soils. Godello is the leading white grape.",
+  "red_body": 3,
+  "red_acidity": 4,
+  "red_tannin": 3,
+  "pairing": "Hearty stews.",
+  "label_note": "Vino de Villa, Vino de Paraje, Viña Clasificada and Gran Viña Clasificada mark wines from one village, one site or one classified vineyard, at lower yields. Crianza, Reserva and Gran Reserva are also used.",
+  "grapes": [
+   {
+    "name": "Mencía",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://vinepair.com/buy-this-booze/7-best-mencia-wines-spain/",
+    "https://www.spain.info/en/oenology/wine-route-bierzo/",
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/articles/wine-101-spain-bierzo/",
+    "https://vinepair.com/articles/what-is-mencia/"
+   ],
+   "red_body": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/buy-this-booze/7-best-mencia-wines-spain/",
+    "https://vinepair.com/articles/wine-101-spain-bierzo/"
+   ],
+   "red_acidity": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain"
+   ],
+   "red_tannin": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/buy-this-booze/7-best-mencia-wines-spain/"
+   ],
+   "pairing": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://punchdrink.com/articles/crib-sheet-best-spanish-red-wine-galicia/"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/bierzo_2021_07_23.pdf"
+   ],
+   "grapes": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/bierzo_2021_07_23.pdf",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://www.spain.info/en/oenology/wine-route-bierzo/"
+   ]
+  }
+ },
+ {
+  "slug": "toro",
+  "name": "Toro",
+  "aliases": [
+   "DO Toro"
+  ],
+  "summary": "On the Duero in Zamora, a hot, dry continental climate gives red wines made mainly from Tinta de Toro, the local form of Tempranillo. Garnacha plays a smaller part.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Barrel aged reds may carry Roble, Crianza, Reserva or Gran Reserva. A red named after its grape needs at least 85% of it.",
+  "grapes": [
+   {
+    "name": "Tempranillo",
+    "local_note": "Tinta de Toro"
+   },
+   {
+    "name": "Grenache",
+    "local_note": "Garnacha Tinta, a secondary variety"
+   },
+   {
+    "name": "Verdejo",
+    "local_note": "Main white variety with Malvasía Castellana"
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://dotoro.com/en/grapes/",
+    "https://dotoro.com/en/wines/",
+    "https://dotoro.com/en/location/",
+    "https://winefolly.com/wine-regions/spain/",
+    "https://winefolly.com/grapes/tempranillo/",
+    "https://vinepair.com/articles/is-your-wine-actually-tempranillo-in-disguise/"
+   ],
+   "label_note": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/toro_2025_01_03.pdf"
+   ],
+   "grapes": [
+    "https://www.mapa.gob.es/dam/mapa/contenido/alimentacion/temas/calidad-agroalimentaria/2017-calidad-diferenciada/nuevo_denominaciones/pliegos-de-condiciones/pliego-condiciones-vinos/dops/toro_2025_01_03.pdf",
+    "https://dotoro.com/en/grapes/",
+    "https://dotoro.com/en/wines/"
+   ]
+  }
+ }
+]

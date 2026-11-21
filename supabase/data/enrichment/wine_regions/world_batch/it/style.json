@@ -1,0 +1,644 @@
+[
+ {
+  "slug": "valpolicella",
+  "name": "Valpolicella",
+  "aliases": [],
+  "summary": "A Veneto red wine zone in the hills north of Verona, with vineyards on largely calcareous soils. Styles run from fresh, light reds with high acidity to Amarone, made from partly dried grapes.",
+  "red_body": 2,
+  "red_acidity": 4,
+  "red_tannin": 2,
+  "pairing": "Simple Valpolicella suits burgers and roast or grilled chicken.",
+  "label_note": "Classico: only from the historic zone of Negrar, Marano, Fumane, Sant'Ambrogio and San Pietro in Cariano. Valpantena: from that valley. Superiore: at least one year of ageing from 1 January after the harvest. Amarone needs at least two years, and four for Riserva.",
+  "grapes": [
+   {
+    "name": "Corvina",
+    "local_note": "With Corvinone it makes up 45 to 95 percent of the blend; Rondinella adds 5 to 30 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Valpolicella",
+    "colour": "red",
+    "note": "DOC; may add Classico, Valpantena and Superiore."
+   },
+   {
+    "name": "Valpolicella Classico",
+    "colour": "red",
+    "note": "The historic zone in Negrar, Marano, Fumane, Sant'Ambrogio and San Pietro in Cariano."
+   },
+   {
+    "name": "Valpolicella Valpantena",
+    "colour": "red",
+    "note": "Geographic mention for the Valpantena valley."
+   },
+   {
+    "name": "Valpolicella Ripasso",
+    "colour": "red",
+    "note": "DOC over the same comuni; may add Superiore."
+   },
+   {
+    "name": "Amarone della Valpolicella",
+    "colour": "red",
+    "note": "DOCG from dried grapes; also Classico, Valpantena and Riserva."
+   },
+   {
+    "name": "Recioto della Valpolicella",
+    "colour": "red",
+    "note": "Sweet DOCG from dried grapes, also as spumante."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://winefolly.com/wine-styles/valpolicella",
+    "https://vinepair.com/wine-101/valpolicella-101/",
+    "https://guildsomm.com/public_content/features/articles/b/bryce-wiatrak/posts/decoding-amarone",
+    "https://www.italianwinecentral.com/denomination/valpolicella-doc/"
+   ],
+   "red_body": [
+    "https://winefolly.com/deep-dives/corvina/",
+    "https://vinepair.com/good-wine-reviews/best-valpolicella-wines-from-italy/"
+   ],
+   "red_acidity": [
+    "https://winefolly.com/wine-styles/valpolicella",
+    "https://vinepair.com/good-wine-reviews/best-valpolicella-wines-from-italy/"
+   ],
+   "red_tannin": [
+    "https://winefolly.com/wine-styles/valpolicella",
+    "https://vinepair.com/good-wine-reviews/best-valpolicella-wines-from-italy/"
+   ],
+   "pairing": [
+    "https://winefolly.com/wine-styles/valpolicella",
+    "https://vinepair.com/good-wine-reviews/best-valpolicella-wines-from-italy/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valpolicella.pdf",
+    "https://www.italianwinecentral.com/denomination/valpolicella-doc/",
+    "https://www.consorziovalpolicella.it/en/the-varieties/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valpolicella.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Amarone_della_Valpolicella.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valpolicella.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Valpolicella_Ripasso.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Amarone_della_Valpolicella.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Recioto_della_Valpolicella.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "soave",
+  "name": "Soave",
+  "aliases": [],
+  "summary": "Hills east of Verona where volcanic basalt and limestone soils meet. Garganega gives dry, crisp whites with good acidity, often with an almond note on the finish.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Soave suits fish, from lighter fish dishes to tuna sashimi.",
+  "label_note": "Classico: only from the historic zone in part of Soave and Monteforte d'Alpone, recognised in 1931. Colli Scaligeri is a hill sub zone. Soave Superiore and Recioto di Soave are separate DOCGs.",
+  "grapes": [
+   {
+    "name": "Garganega",
+    "local_note": "At least 70 percent of the blend, with Trebbiano di Soave and Chardonnay up to 30 percent."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Soave",
+    "colour": "white",
+    "note": "DOC, still and spumante."
+   },
+   {
+    "name": "Soave Classico",
+    "colour": "white",
+    "note": "The historic hill zone between Soave and Monteforte d'Alpone."
+   },
+   {
+    "name": "Soave Colli Scaligeri",
+    "colour": "white",
+    "note": "Sub zone with its own delimited area."
+   },
+   {
+    "name": "Soave Superiore",
+    "colour": "white",
+    "note": "DOCG over the same hills, also Classico and Riserva."
+   },
+   {
+    "name": "Recioto di Soave",
+    "colour": "white",
+    "note": "Sweet DOCG from dried grapes, mainly Garganega; also Classico and spumante."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://italianwinecentral.com/profile-soave/",
+    "https://www.ilsoave.com/en/soils/",
+    "https://www.ilsoave.com/en/the-grapes/",
+    "https://vinepair.com/articles/italy-region-deep-dives-soave/",
+    "https://winefolly.com/grapes/garganega/"
+   ],
+   "pairing": [
+    "https://winefolly.com/grapes/garganega/",
+    "https://www.ilsoave.com/en/food/soave-loves-sushi/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Soave.pdf",
+    "https://www.italianwinecentral.com/denomination/soave-doc/",
+    "https://italianwinecentral.com/profile-soave/",
+    "https://www.ilsoave.com/en/the-grapes/",
+    "https://vinepair.com/articles/italy-region-deep-dives-soave/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Soave.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Soave_Superiore.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Recioto_di_Soave.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Soave.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Soave_Superiore.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Recioto_di_Soave.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "prosecco",
+  "name": "Prosecco",
+  "aliases": [],
+  "summary": "Prosecco DOC spans nine provinces across Veneto and Friuli Venezia Giulia in northeast Italy. Made mainly from Glera, with the second fermentation in tank, the wines are fruity, with green apple and pear notes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Prosecco suits Italian cured meats and spicy noodle dishes.",
+  "label_note": "Made as Prosecco, Prosecco spumante, spumante rosé and frizzante. \"Treviso\" or \"Trieste\" may appear when all grapes come from, and the wine is made and bottled in, that province.",
+  "grapes": [
+   {
+    "name": "Glera",
+    "local_note": "At least 85 percent of the blend."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Required at 10 to 15 percent in Prosecco Rosé."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Prosecco",
+    "colour": "sparkling",
+    "note": "DOC over nine provinces of Veneto and Friuli Venezia Giulia."
+   },
+   {
+    "name": "Prosecco Rosé",
+    "colour": "sparkling",
+    "note": "Spumante rosé from Glera with Pinot Nero."
+   },
+   {
+    "name": "Conegliano Valdobbiadene Prosecco",
+    "colour": "sparkling",
+    "note": "Separate DOCG in the province of Treviso."
+   },
+   {
+    "name": "Asolo Prosecco",
+    "colour": "sparkling",
+    "note": "Separate DOCG in the province of Treviso."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.prosecco.wine/en",
+    "https://winefolly.com/deep-dive/the-prosecco-wine-guide/",
+    "https://vinepair.com/explore/category-type/prosecco/",
+    "https://www.italianwinecentral.com/denomination/prosecco-doc/"
+   ],
+   "pairing": [
+    "https://winefolly.com/deep-dive/the-prosecco-wine-guide/",
+    "https://vinepair.com/explore/category-type/prosecco/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf",
+    "https://www.italianwinecentral.com/denomination/prosecco-doc/",
+    "https://www.prosecco.wine/en",
+    "https://vinepair.com/explore/category-type/prosecco/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Conegliano_Valdobbiadene_-_Prosecco.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Asolo_Prosecco_o_Asolo.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "alto_adige",
+  "name": "Alto Adige",
+  "aliases": [
+   "Südtirol",
+   "dell'Alto Adige"
+  ],
+  "summary": "Alpine valleys in Italy's far north, with vineyards from warm low sites around Bolzano to cool high slopes. About two thirds of the wine is white, beside light Schiava and darker, firmer Lagrein reds.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "The German \"Südtirol\" or \"Südtiroler\" may be used. Riserva needs at least two years of ageing from 1 October of the harvest year. Six sub zones may be named on the label.",
+  "grapes": [
+   {
+    "name": "Pinot Gris",
+    "local_note": "Pinot Grigio; the most planted variety."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Gewürztraminer",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Pinot Bianco, Weissburgunder."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Pinot Nero, Blauburgunder; the most planted red."
+   },
+   {
+    "name": "Lagrein",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Schiava",
+    "local_note": "Vernatsch; once most of the vineyard area, now about eighth."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Alto Adige",
+    "colour": "mixed",
+    "note": "DOC for the whole wine growing area of the province of Bolzano."
+   },
+   {
+    "name": "Alto Adige Colli di Bolzano",
+    "colour": "red",
+    "note": "Sub zone, Bozner Leiten in German."
+   },
+   {
+    "name": "Alto Adige Meranese",
+    "colour": "red",
+    "note": "Sub zone, Meraner in German."
+   },
+   {
+    "name": "Alto Adige Santa Maddalena",
+    "colour": "red",
+    "note": "Sub zone, St. Magdalener in German."
+   },
+   {
+    "name": "Alto Adige Terlano",
+    "colour": "white",
+    "note": "Sub zone, Terlaner in German."
+   },
+   {
+    "name": "Alto Adige Valle Isarco",
+    "colour": "white",
+    "note": "Sub zone, Eisacktaler in German."
+   },
+   {
+    "name": "Alto Adige Valle Venosta",
+    "colour": "mixed",
+    "note": "Sub zone, Vinschgau in German."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Alto_Adige_o_dell'Alto_Adige.pdf",
+    "https://italianwinecentral.com/denomination/alto-adige-sudtirol-doc/",
+    "https://www.suedtirolwein.com/en/",
+    "https://winefolly.com/deep-dive/alto-adige-wine-region/"
+   ],
+   "summary": [
+    "https://winefolly.com/deep-dive/alto-adige-wine-region/",
+    "https://www.suedtirolwein.com/en/",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige",
+    "https://www.tt.com/artikel/30931096/suedtirol-vereint-topqualitaet-und-sortenvielfalt"
+   ],
+   "grapes": [
+    "https://winefolly.com/deep-dive/alto-adige-wine-region/",
+    "https://www.tt.com/artikel/30931096/suedtirol-vereint-topqualitaet-und-sortenvielfalt",
+    "https://italianwinecentral.com/denomination/alto-adige-sudtirol-doc/",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Alto_Adige_o_dell'Alto_Adige.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Alto_Adige_o_dell'Alto_Adige.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "friuli",
+  "name": "Friuli",
+  "aliases": [
+   "Friuli Venezia Giulia",
+   "Furlanija"
+  ],
+  "summary": "Hills and stony plains of Friuli Venezia Giulia, sheltered by the Alps to the north and tempered by the Adriatic. Most of its types are named after one grape, whites such as Friulano and Ribolla Gialla beside reds such as Merlot.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Friulano suits prosciutto.",
+  "label_note": "Varietal wines need at least 85 percent of the named grape. No type may use Riserva. The Slovenian names Furlanija and Furlanija Julijska krajina may be used.",
+  "grapes": [
+   {
+    "name": "Friulano",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Pinot Grigio."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Ribolla Gialla",
+    "local_note": "Also made as spumante."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Friuli",
+    "colour": "mixed",
+    "note": "DOC across the comuni of the region listed in its text; also labelled Friuli Venezia Giulia."
+   },
+   {
+    "name": "Friuli Colli Orientali",
+    "colour": "mixed",
+    "note": "DOC within the area, with sub zones such as Cialla and Ribolla Gialla di Rosazzo."
+   },
+   {
+    "name": "Colli Orientali del Friuli Picolit",
+    "colour": "white",
+    "note": "DOCG for Picolit, amabile or dolce."
+   },
+   {
+    "name": "Friuli Grave",
+    "colour": "mixed",
+    "note": "DOC within the area."
+   },
+   {
+    "name": "Friuli Isonzo",
+    "colour": "mixed",
+    "note": "DOC within the area."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_o_Friuli_Venezia_Giulia.pdf",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/"
+   ],
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_o_Friuli_Venezia_Giulia.pdf",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "https://italianwinecentral.com/denomination/friuli-doc/"
+   ],
+   "pairing": [
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/guest_blog/posts/the-wines-of-central-friuli"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_o_Friuli_Venezia_Giulia.pdf"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_o_Friuli_Venezia_Giulia.pdf",
+    "https://italianwinecentral.com/denomination/friuli-doc/",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_o_Friuli_Venezia_Giulia.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_Colli_Orientali.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_A-D/Colli_Orientali_del_Friuli_Picolit.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_Grave.pdf",
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Friuli_Isonzo_o_Isonzo_del_Friuli.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "etna",
+  "name": "Etna",
+  "aliases": [],
+  "summary": "Vineyards on the slopes of Mount Etna in Sicily, on volcanic soils. Reds from Nerello Mascalese are pale in colour and light in body, yet tannic.",
+  "red_body": 2,
+  "red_acidity": null,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "Rosso Riserva needs at least four years of ageing, twelve months in wood. Bianco Superiore comes only from Milo. Spumante is bottle fermented with at least 18 months on the lees. A listed contrada may follow the name.",
+  "grapes": [
+   {
+    "name": "Nerello Mascalese",
+    "local_note": "At least 80 percent of Etna Rosso and Rosato, with Nerello Cappuccio up to 20 percent."
+   },
+   {
+    "name": "Carricante",
+    "local_note": "At least 60 percent of Etna Bianco and 80 percent of Bianco Superiore."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Etna Rosso",
+    "colour": "red",
+    "note": "Also Riserva."
+   },
+   {
+    "name": "Etna Bianco",
+    "colour": "white",
+    "note": "Bianco Superiore from Milo only."
+   },
+   {
+    "name": "Etna Rosato",
+    "colour": "rose",
+    "note": null
+   },
+   {
+    "name": "Etna Spumante",
+    "colour": "sparkling",
+    "note": "White or rosé, mainly Nerello Mascalese."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://vinepair.com/wine-101/nerello-mascalese/",
+    "https://winefolly.com/grapes/nerello-mascalese/",
+    "https://italianwinecentral.com/variety/nerello-mascalese/",
+    "https://italianwinecentral.com/region-province/sicilia/"
+   ],
+   "red_body": [
+    "https://winefolly.com/grapes/nerello-mascalese/",
+    "https://vinepair.com/wine-101/nerello-mascalese/"
+   ],
+   "red_tannin": [
+    "https://italianwinecentral.com/variety/nerello-mascalese/",
+    "https://vinepair.com/wine-101/nerello-mascalese/"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Etna.pdf",
+    "https://italianwinecentral.com/denomination/etna-doc/",
+    "https://vinepair.com/wine-101/nerello-mascalese/",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Etna.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Etna.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "franciacorta",
+  "name": "Franciacorta",
+  "aliases": [],
+  "summary": "Morainic hills just south of Lake Iseo, near Brescia in Lombardy. The sparkling wines get their second fermentation in the bottle and age at least 18 months on the lees.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Franciacorta suits cheese, including soft cheeses.",
+  "label_note": "Minimum time on the lees: 18 months, 24 for Satèn and Rosé, 30 for Millesimato, 60 for Riserva, which must also show the vintage.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": "Over three quarters of the vineyard area."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Pinot Nero; about 17 percent of the area, at least 35 percent of a rosé."
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Pinot Bianco; about 3 percent of the area, at most 50 percent of a blend."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Franciacorta",
+    "colour": "sparkling",
+    "note": "DOCG, bottle fermented."
+   },
+   {
+    "name": "Franciacorta Satèn",
+    "colour": "sparkling",
+    "note": "White grapes only."
+   },
+   {
+    "name": "Franciacorta Rosé",
+    "colour": "sparkling",
+    "note": null
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://franciacorta.wine/en/wine/geology-climate/",
+    "https://franciacorta.wine/en/wine/method/",
+    "https://vinepair.com/wine-101/franciacorta/",
+    "https://italianwinecentral.com/denomination/franciacorta-docg/"
+   ],
+   "grapes": [
+    "https://franciacorta.wine/en/wine/vitigni-modello/",
+    "https://italianwinecentral.com/denomination/franciacorta-docg/",
+    "https://vinepair.com/wine-101/franciacorta/"
+   ],
+   "pairing": [
+    "https://franciacorta.wine/en/wine/types-pairings/franciacorta/",
+    "https://winefolly.com/deep-dive/franciacorta/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Franciacorta.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_E-N/Franciacorta.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "taurasi",
+  "name": "Taurasi",
+  "aliases": [],
+  "summary": "Hills of Irpinia in the province of Avellino, inland Campania, with volcanic soils in places. Taurasi is made mostly from Aglianico, a tannic red with high acidity that is built for long ageing.",
+  "red_body": 5,
+  "red_acidity": 4,
+  "red_tannin": 4,
+  "pairing": null,
+  "label_note": "At least three years of ageing, one in wood, before release. Riserva needs four years, eighteen months in wood.",
+  "grapes": [
+   {
+    "name": "Aglianico",
+    "local_note": "At least 85 percent."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Taurasi",
+    "colour": "red",
+    "note": "DOCG in 17 comuni of Avellino province."
+   },
+   {
+    "name": "Taurasi Riserva",
+    "colour": "red",
+    "note": null
+   }
+  ],
+  "sources": {
+   "red_acidity": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://italianwinecentral.com/variety/aglianico/"
+   ],
+   "red_tannin": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://italianwinecentral.com/variety/aglianico/"
+   ],
+   "summary": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Taurasi.pdf",
+    "https://italianwinecentral.com/denomination/taurasi-docg/",
+    "https://italianwinecentral.com/variety/aglianico/",
+    "https://winefolly.com/grapes/aglianico/"
+   ],
+   "red_body": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico"
+   ],
+   "grapes": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Taurasi.pdf",
+    "https://italianwinecentral.com/denomination/taurasi-docg/"
+   ],
+   "label_note": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Taurasi.pdf"
+   ],
+   "appellations": [
+    "https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Taurasi.pdf"
+   ]
+  }
+ }
+]

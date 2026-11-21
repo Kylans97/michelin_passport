@@ -1,0 +1,416 @@
+[
+ {
+  "name": "Albariño",
+  "aliases": [
+   "Alvarinho"
+  ],
+  "colour": "white",
+  "summary": "White grape of Galicia's Rías Baixas and Portugal's Vinho Verde, where it is called Alvarinho. It makes aromatic, high acid whites, usually without oak.",
+  "tastes": [
+   "Citrus",
+   "Peach",
+   "Honeysuckle",
+   "Saline"
+  ],
+  "aged_note": "Usually unoaked; a few producers use oak.",
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": {
+   "name": "Riesling",
+   "note": "Dry Riesling is a common comparison."
+  },
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/albarino/",
+    "https://www.winespectator.com/whatamitasting/answer/41947",
+    "https://vinepair.com/articles/albarino-and-alvarinho-theyre-the-same-thing/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/spain-great-grapes"
+   ],
+   "aliases": [
+    "https://winefolly.com/grapes/albarino/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/spain-great-grapes",
+    "https://www.winespectator.com/whatamitasting/answer/41947",
+    "https://vinepair.com/articles/albarino-and-alvarinho-theyre-the-same-thing/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/albarino/",
+    "https://www.winespectator.com/whatamitasting/answer/41947",
+    "https://vinepair.com/articles/albarino-and-alvarinho-theyre-the-same-thing/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/spain-great-grapes"
+   ],
+   "aged_note": [
+    "https://www.winespectator.com/whatamitasting/answer/41947",
+    "https://vinepair.com/articles/albarino-and-alvarinho-theyre-the-same-thing/",
+    "https://winefolly.com/grapes/albarino/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/albarino/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/spain-great-grapes",
+    "https://www.winespectator.com/whatamitasting/answer/41947"
+   ],
+   "similar": [
+    "https://winefolly.com/deep-dive/all-about-albarino-wine/",
+    "https://vinepair.com/articles/albarino-and-alvarinho-theyre-the-same-thing/"
+   ]
+  }
+ },
+ {
+  "name": "Palomino",
+  "aliases": [
+   "Palomino Fino",
+   "Listán Blanco"
+  ],
+  "colour": "white",
+  "summary": "White grape behind almost all sherry, grown on the chalky albariza soils of Jerez. Neutral and low in acidity itself, it is the base of fino, manzanilla, amontillado and oloroso.",
+  "tastes": [
+   "Almond",
+   "Saline",
+   "Fresh dough"
+  ],
+  "aged_note": "As fino it ages under a veil of flor yeast that protects it from air.",
+  "body": 2,
+  "acidity": 2,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/palomino-fino/",
+    "https://www.sherry.wine/news/palomino-the-defining-grape-of-sherry",
+    "https://guiapenin.wine/en-palomino",
+    "https://www.sherry.wine/sherry-wine/production/viticulture"
+   ],
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8888",
+    "https://guiapenin.wine/en-palomino"
+   ],
+   "tastes": [
+    "http://www.sherry.wine/sherry-wine/dry-sherry-wines/fino",
+    "https://winefolly.com/palomino-fino/",
+    "https://vinepair.com/articles/fino-sherry-explained-through-food/"
+   ],
+   "aged_note": [
+    "http://www.sherry.wine/sherry-wine/dry-sherry-wines/fino",
+    "https://vinepair.com/articles/fino-sherry-explained-through-food/"
+   ],
+   "body": [
+    "http://www.sherry.wine/sherry-wine/dry-sherry-wines/fino",
+    "https://winefolly.com/palomino-fino/",
+    "https://vinepair.com/articles/fino-sherry-explained-through-food/"
+   ],
+   "acidity": [
+    "https://www.sherry.wine/sherry-wine/production/viticulture",
+    "https://vinepair.com/articles/fino-sherry-explained-through-food/"
+   ]
+  }
+ },
+ {
+  "name": "Pedro Ximénez",
+  "aliases": [
+   "PX"
+  ],
+  "colour": "white",
+  "summary": "Andalusian white grape, dried in the sun after picking to make very sweet wines, mainly in Montilla-Moriles and Jerez.",
+  "tastes": [
+   "Fig",
+   "Raisin",
+   "Date",
+   "Coffee"
+  ],
+  "aged_note": "Aged oxidatively, in contact with air.",
+  "body": 5,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/pedro-ximenez/",
+    "https://www.sherry.wine/sherry-wine/naturally-sweet/pedro-ximenez",
+    "https://guiapenin.wine/en-pedro-ximenez",
+    "https://www.cellartours.com/blog/spain/pedro-ximenezs-sweet-embrace"
+   ],
+   "aliases": [
+    "https://guiapenin.wine/en-pedro-ximenez",
+    "https://vinepair.com/articles/ultimate-guide-dessert-wines-infographic/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/pedro-ximenez/",
+    "https://www.sherry.wine/wines/vino-dulce-natural/pedro-ximenez",
+    "https://vinepair.com/articles/ultimate-guide-dessert-wines-infographic/",
+    "https://www.cellartours.com/blog/spain/pedro-ximenezs-sweet-embrace"
+   ],
+   "aged_note": [
+    "https://www.sherry.wine/sherry-wine/naturally-sweet/pedro-ximenez",
+    "https://vinepair.com/articles/ultimate-guide-dessert-wines-infographic/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/pedro-ximenez/",
+    "https://www.sherry.wine/wines/vino-dulce-natural/pedro-ximenez"
+   ]
+  }
+ },
+ {
+  "name": "Verdejo",
+  "aliases": [],
+  "colour": "white",
+  "summary": "White grape grown mostly in Rueda, making crisp, herbal whites, often with a light bitter almond finish.",
+  "tastes": [
+   "Fennel",
+   "Citrus",
+   "White peach",
+   "Bitter almond"
+  ],
+  "aged_note": "Lees ageing and barrel fermentation give richer versions.",
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": {
+   "name": "Sauvignon Blanc",
+   "note": "Its usual blending partner in Rueda."
+  },
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/verdejo/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/spain-great-grapes",
+    "https://www.winespectator.com/articles/wine-tip-thomas-matthews-suggests-wines-to-discover-in-2014-49548",
+    "https://dorueda.com/vinos/blancos/verdejo/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/verdejo/",
+    "https://dorueda.com/vinos/blancos/verdejo/",
+    "https://vinepair.com/wine-blog/why-verdejo-should-make-your-summer-drinking-list/",
+    "https://www.winespectator.com/articles/wine-tip-thomas-matthews-suggests-wines-to-discover-in-2014-49548",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/spain-great-grapes",
+    "https://www.decanter.com/wine/wine-regions/rueda-wines/the-verdejo-grape-rueda-373802/"
+   ],
+   "aged_note": [
+    "https://www.winespectator.com/articles/wine-tip-thomas-matthews-suggests-wines-to-discover-in-2014-49548",
+    "https://vinepair.com/wine-blog/why-verdejo-should-make-your-summer-drinking-list/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/verdejo/",
+    "https://dorueda.com/vinos/blancos/verdejo/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/verdejo/",
+    "https://vinepair.com/wine-blog/why-verdejo-should-make-your-summer-drinking-list/"
+   ]
+  }
+ },
+ {
+  "name": "Mencía",
+  "aliases": [
+   "Jaen"
+  ],
+  "colour": "red",
+  "summary": "Red grape of north west Spain, mainly Bierzo, Ribeira Sacra and Valdeorras, called Jaen in Portugal. It makes fragrant, medium-bodied reds.",
+  "tastes": [
+   "Sour cherry",
+   "Floral",
+   "Pepper",
+   "Herbs"
+  ],
+  "aged_note": "Oak adds smoky spice and softens the tannins.",
+  "body": 3,
+  "acidity": 4,
+  "tannin": 3,
+  "similar": {
+   "name": "Pinot Noir",
+   "note": "Often suggested to Pinot Noir drinkers; Mencía is more peppery and savoury."
+  },
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://vinepair.com/articles/what-is-mencia/"
+   ],
+   "aliases": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/articles/what-is-mencia/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain",
+    "https://vinepair.com/articles/what-is-mencia/",
+    "https://punchdrink.com/articles/crib-sheet-best-spanish-red-wine-galicia/"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/articles/what-is-mencia/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/buy-this-booze/7-best-mencia-wines-spain/",
+    "https://vinepair.com/articles/wine-101-spain-bierzo/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/miquel_hudin/posts/godello-mencia-northwest-spain"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/buy-this-booze/7-best-mencia-wines-spain/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/mencia/",
+    "https://vinepair.com/articles/what-is-mencia/"
+   ]
+  }
+ },
+ {
+  "name": "Carignan",
+  "aliases": [
+   "Cariñena",
+   "Carinyena",
+   "Samsó",
+   "Mazuelo",
+   "Mazuela",
+   "Carignano"
+  ],
+  "colour": "red",
+  "summary": "Red grape of Spanish origin, grown widely in southern France, Catalonia and Sardinia and often blended with Grenache and Syrah. In Spain it is Cariñena, Mazuelo or Samsó.",
+  "tastes": [
+   "Red fruit",
+   "Baking spice",
+   "Herbs"
+  ],
+  "aged_note": "Takes well to oak, which adds spice.",
+  "body": null,
+  "acidity": 4,
+  "tannin": 4,
+  "similar": {
+   "name": "Zinfandel",
+   "note": "Lighter Carignan is often compared with Zinfandel."
+  },
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/carignan/",
+    "https://winefolly.com/deep-dive/carignan-guide-food-wine/",
+    "https://www.vins-rhone.com/en/carignan-grape-variety",
+    "https://guiapenin.wine/en-samso"
+   ],
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=2098",
+    "https://guiapenin.wine/en-samso",
+    "https://riojawine.com/en-us/the-designation/grape-varieties/mazuelo/",
+    "https://www.vins-rhone.com/en/carignan-grape-variety"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/carignan/",
+    "https://vinepair.com/articles/carignan-underrated-wine/",
+    "https://www.cellartours.com/blog/france/carignan-grape-from-zero-to-hero"
+   ],
+   "aged_note": [
+    "https://winefolly.com/deep-dive/carignan-guide-food-wine/",
+    "https://www.cellartours.com/blog/france/carignan-grape-from-zero-to-hero"
+   ],
+   "acidity": [
+    "https://www.vins-rhone.com/en/carignan-grape-variety",
+    "https://riojawine.com/en-us/the-designation/grape-varieties/mazuelo/"
+   ],
+   "tannin": [
+    "https://riojawine.com/en-us/the-designation/grape-varieties/mazuelo/",
+    "https://www.vins-rhone.com/en/carignan-grape-variety"
+   ],
+   "similar": [
+    "https://winefolly.com/deep-dive/carignan-guide-food-wine/",
+    "https://vinepair.com/articles/carignan-underrated-wine/"
+   ]
+  }
+ },
+ {
+  "name": "Xarel·lo",
+  "aliases": [
+   "Xarel-lo",
+   "Pansa Blanca"
+  ],
+  "colour": "white",
+  "summary": "Catalan white grape, mainly from Penedès. One of the three main Cava grapes, it is also made as a still wine.",
+  "tastes": [
+   "Citrus",
+   "Peach",
+   "Herbs"
+  ],
+  "aged_note": "Ages well and adds longevity to sparkling blends.",
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/xarel-lo/",
+    "https://guiapenin.wine/en-xarello",
+    "https://www.cava.wine/en/origin-cava/authorised-grape-varieties"
+   ],
+   "aliases": [
+    "https://guiapenin.wine/en-xarello",
+    "https://cellartours.com/blog/spain/a-change-of-pace-xarel-lo-grape-variety"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/xarel-lo/",
+    "https://guiapenin.wine/en-xarello",
+    "https://cellartours.com/blog/spain/a-change-of-pace-xarel-lo-grape-variety"
+   ],
+   "aged_note": [
+    "https://guiapenin.wine/en-xarello",
+    "https://www.cava.wine/en/news-articles/cava-grapes-types-and-varieties-of-cava-grapes/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/xarel-lo/",
+    "https://guiapenin.wine/en-xarello"
+   ]
+  }
+ },
+ {
+  "name": "Macabeo",
+  "aliases": [
+   "Viura",
+   "Macabeu"
+  ],
+  "colour": "white",
+  "summary": "Spanish white grape, the main white of Rioja as Viura and a main Cava grape. It makes light, floral whites that can age well.",
+  "tastes": [
+   "Citrus",
+   "Floral",
+   "Hazelnut",
+   "Almond paste"
+  ],
+  "aged_note": "Can age for years; barrel aged versions gain structure.",
+  "body": 2,
+  "acidity": 3,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/viura/",
+    "https://guiapenin.wine/en-macabeo",
+    "https://www.cava.wine/en/origin-cava/authorised-grape-varieties"
+   ],
+   "aliases": [
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=13127",
+    "https://guiapenin.wine/en-macabeo",
+    "https://winefolly.com/deep-dive/on-finding-great-cava-sparkling-wines/",
+    "https://vinepair.com/articles/wine-101-summer-sparkling-cava/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/viura/",
+    "https://www.cellartours.com/blog/spain/spains-most-versatile-grape-viura",
+    "https://www.cava.wine/en/origin-cava/authorised-grape-varieties",
+    "https://winefolly.com/deep-dive/on-finding-great-cava-sparkling-wines/"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/viura/",
+    "https://www.cava.wine/en/origin-cava/authorised-grape-varieties",
+    "https://guiapenin.wine/en-macabeo"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/viura/",
+    "https://www.cava.wine/en/origin-cava/authorised-grape-varieties"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/viura/",
+    "https://www.cava.wine/en/origin-cava/authorised-grape-varieties"
+   ]
+  }
+ }
+]

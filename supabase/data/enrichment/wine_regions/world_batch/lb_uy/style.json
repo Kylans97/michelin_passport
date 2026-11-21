@@ -1,0 +1,195 @@
+[
+ {
+  "slug": "bekaa-valley",
+  "name": "Bekaa Valley",
+  "country": "LB",
+  "aliases": [
+   "Beqaa Valley",
+   "Bekaa",
+   "Beqaa"
+  ],
+  "summary": "Lebanon's main wine region, a high valley at around 1,000 metres where most of the country's vines grow. Summers are long, sunny and dry, and reds are built on Bordeaux and Rhône grapes.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Lebanon has no legal appellation system, so Bekaa Valley on a label is a place name, not a protected appellation.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Cinsault",
+    "local_note": "Old vines are also bottled on their own as a lighter red."
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Grenache",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "aliases": [
+    "https://www.geonames.org/280281"
+   ],
+   "summary": [
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/red-wines-lebanon-bekaa-350774/",
+    "https://www.decanter.com/features/regional-profile-lebanon-245998/",
+    "https://www.decanter.com/features/lebanon-a-new-chapter-246613/",
+    "https://daily.sevenfifty.com/exploring-the-world-of-lebanese-wine-beyond-chateau-musar/",
+    "https://www.jancisrobinson.com/learn/wine-regions/lebanon",
+    "https://en.wikipedia.org/wiki/Lebanese_wine"
+   ],
+   "red_body": [
+    "https://www.decanter.com/features/regional-profile-lebanon-245998/2/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/red-wines-lebanon-bekaa-350774/",
+    "https://daily.sevenfifty.com/exploring-the-world-of-lebanese-wine-beyond-chateau-musar/"
+   ],
+   "label_note": [
+    "https://daily.sevenfifty.com/exploring-the-world-of-lebanese-wine-beyond-chateau-musar/",
+    "https://www.economy.gov.lb/public/uploads/files/6019_7484_3314.pdf",
+    "https://www.decanter.com/features/lebanon-a-new-chapter-246613/",
+    "https://www.oiv.int/lebanons-vitivinicultural-sector-in-the-spotlight"
+   ],
+   "grapes": [
+    "https://www.decanter.com/features/regional-profile-lebanon-245998/",
+    "https://daily.sevenfifty.com/exploring-the-world-of-lebanese-wine-beyond-chateau-musar/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/red-wines-lebanon-bekaa-350774/"
+   ],
+   "grapes.Cinsault": [
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/red-wines-lebanon-bekaa-350774/",
+    "https://daily.sevenfifty.com/exploring-the-world-of-lebanese-wine-beyond-chateau-musar/"
+   ]
+  }
+ },
+ {
+  "slug": "canelones",
+  "name": "Canelones",
+  "country": "UY",
+  "aliases": [],
+  "summary": "Uruguay's largest wine region, with about two thirds of the national vineyard, on gently rolling land next to Montevideo. The climate is mild, the soils fertile, and Tannat is the leading grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Canelones may appear on a label only if the grapes were grown there, and the wine needs an INAVI certificate of geographical indication.",
+  "grapes": [
+   {
+    "name": "Tannat",
+    "local_note": "About 1,060 ha here in 2023, two thirds of all Tannat in Uruguay."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Canelones",
+    "colour": "mixed",
+    "note": "Listed in a 2019 MIEM bulletin among the wine geographical indications recognised before INAVI; its registered limits were not found."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.inavi.com.uy/regiones/",
+    "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf",
+    "https://daily.sevenfifty.com/exploring-the-wines-of-uruguay/",
+    "https://winefolly.com/wine-regions/uruguay/",
+    "https://www.decanter.com/wine-travel/south-america/uruguayan-coast-travel-guide-9255/"
+   ],
+   "label_note": [
+    "https://www.impo.com.uy/bases/decretos/283-1993",
+    "https://www.argentina.gob.ar/sites/default/files/2024/04/uruguay_para_web.pdf"
+   ],
+   "grapes": [
+    "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf",
+    "https://daily.sevenfifty.com/exploring-the-wines-of-uruguay/"
+   ],
+   "grapes.Tannat": [
+    "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf"
+   ],
+   "appellations": [
+    "https://www.prosurproyecta.org/uruguay/wp-content/uploads/2019/05/Bolet%C3%ADn-Indicaci%C3%B3n-Geogr%C3%A1fica-copia.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "maldonado",
+  "name": "Maldonado",
+  "country": "UY",
+  "aliases": [],
+  "summary": "Uruguay's emerging wine region on the Atlantic coast around Punta del Este. It is cooler, with poor, rocky soils on ancient granite; Tannat leads the reds and Albariño the whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Maldonado, or a smaller place such as Garzón, may appear on a label only if the grapes were grown there, and the wine needs an INAVI certificate of geographical indication.",
+  "grapes": [
+   {
+    "name": "Tannat",
+    "local_note": null
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   },
+   {
+    "name": "Albariño",
+    "local_note": "The most planted white grape in Maldonado."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Garzón",
+    "colour": "mixed",
+    "note": "Listed in a 2019 MIEM bulletin among the wine geographical indications recognised before INAVI; its registered limits were not found."
+   },
+   {
+    "name": "José Ignacio",
+    "colour": "mixed",
+    "note": "Listed in a 2019 MIEM bulletin among the wine geographical indications recognised before INAVI; its registered limits were not found."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.inavi.com.uy/regiones/",
+    "https://daily.sevenfifty.com/exploring-the-wines-of-uruguay/",
+    "https://daily.sevenfifty.com/regions/uruguay/",
+    "https://www.decanter.com/wine-travel/south-america/uruguayan-coast-travel-guide-9255/",
+    "https://winefolly.com/wine-regions/uruguay/",
+    "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf"
+   ],
+   "red_acidity": [
+    "https://daily.sevenfifty.com/regions/uruguay/",
+    "https://www.decanter.com/wine-travel/south-america/uruguayan-coast-travel-guide-9255/"
+   ],
+   "label_note": [
+    "https://www.impo.com.uy/bases/decretos/283-1993",
+    "https://www.argentina.gob.ar/sites/default/files/2024/04/uruguay_para_web.pdf",
+    "https://www.prosurproyecta.org/uruguay/wp-content/uploads/2019/05/Bolet%C3%ADn-Indicaci%C3%B3n-Geogr%C3%A1fica-copia.pdf"
+   ],
+   "grapes": [
+    "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf",
+    "https://www.decanter.com/wine-travel/south-america/uruguayan-coast-travel-guide-9255/"
+   ],
+   "grapes.Albariño": [
+    "https://www.inavi.com.uy/uploads/vinedo/b001699f9585532cfd1fa06a35756544f917eda5.pdf"
+   ],
+   "appellations": [
+    "https://www.prosurproyecta.org/uruguay/wp-content/uploads/2019/05/Bolet%C3%ADn-Indicaci%C3%B3n-Geogr%C3%A1fica-copia.pdf",
+    "https://www.decanter.com/wine-travel/south-america/uruguayan-coast-travel-guide-9255/",
+    "https://daily.sevenfifty.com/exploring-the-wines-of-uruguay/"
+   ]
+  }
+ }
+]

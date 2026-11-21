@@ -1,0 +1,495 @@
+[
+ {
+  "name": "Corvina",
+  "aliases": [
+   "Corvina Veronese"
+  ],
+  "colour": "red",
+  "summary": "The leading red grape of Valpolicella and Bardolino near Verona in the Veneto. Fresh, light reds with sour cherry and bitter almond, and the backbone of Amarone.",
+  "tastes": [
+   "Sour cherry",
+   "Bitter almond",
+   "Herbs",
+   "Violet"
+  ],
+  "aged_note": "Its thick skins suit drying for Amarone, which turns it into a full bodied, tannic red.",
+  "body": 2,
+  "acidity": 4,
+  "tannin": 2,
+  "similar": {
+   "name": "Gamay",
+   "note": "Fresh Valpolicella is often likened to Beaujolais."
+  },
+  "sources": {
+   "aliases": [
+    "https://winefolly.com/grapes/corvina/",
+    "https://winecompanion.com.au/resources/varieties/corvina",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/corvina/",
+    "https://winecompanion.com.au/resources/varieties/corvina",
+    "https://italianwinecentral.com/variety/corvina/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/corvina/",
+    "https://winefolly.com/deep-dives/corvina/",
+    "https://winecompanion.com.au/resources/varieties/corvina",
+    "https://italianwinecentral.com/variety/corvina/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "aged_note": [
+    "https://winefolly.com/deep-dives/corvina/",
+    "https://winecompanion.com.au/resources/varieties/corvina",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines",
+    "https://italianwinecentral.com/variety/corvina/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/corvina/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines",
+    "https://winecompanion.com.au/resources/varieties/corvina"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/corvina/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/corvina/",
+    "https://italianwinecentral.com/variety/corvina/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines",
+    "https://winecompanion.com.au/resources/varieties/corvina"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/corvina/",
+    "https://winecompanion.com.au/resources/varieties/corvina"
+   ]
+  }
+ },
+ {
+  "name": "Garganega",
+  "aliases": [
+   "Grecanico Dorato"
+  ],
+  "colour": "white",
+  "summary": "The main white grape of Soave in the Veneto and one of Italy's oldest varieties. Dry, delicate whites with citrus, white flower and almond notes.",
+  "tastes": [
+   "Citrus",
+   "White flowers",
+   "Apricot",
+   "Almond"
+  ],
+  "aged_note": "Good Soave can age for around a decade, gaining richer and more complex notes.",
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://italianwinecentral.com/variety/garganega/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/garganega/",
+    "https://italianwinecentral.com/variety/garganega/",
+    "https://www.ilsoave.com/en/the-grapes/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/garganega/",
+    "https://italianwinecentral.com/variety/garganega/",
+    "https://www.ilsoave.com/en/the-grapes/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "aged_note": [
+    "https://www.ilsoave.com/en/the-grapes/",
+    "https://winefolly.com/grapes/garganega/",
+    "https://italianwinecentral.com/variety/garganega/"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/garganega/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ]
+  }
+ },
+ {
+  "name": "Glera",
+  "aliases": [
+   "Prosecco"
+  ],
+  "colour": "white",
+  "summary": "The grape behind Prosecco, grown in the Veneto and Friuli Venezia Giulia. It makes light, fresh sparkling wines with apple, pear and white flower notes.",
+  "tastes": [
+   "Green apple",
+   "Pear",
+   "White peach",
+   "White flowers"
+  ],
+  "aged_note": null,
+  "body": 1,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://winefolly.com/grapes/prosecco/",
+    "https://italianwinecentral.com/variety/glera/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/prosecco/",
+    "https://italianwinecentral.com/variety/glera/",
+    "https://www.prosecco.wine/en/?p=8164",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/prosecco/",
+    "https://italianwinecentral.com/variety/glera/",
+    "https://www.prosecco.wine/en/?p=8164",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/prosecco/",
+    "https://www.winescholarguild.com/blog/insights-and-opinions/italian-wine-course-demo/italian-grapes-varieties-veneto-wines"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/prosecco/",
+    "https://italianwinecentral.com/variety/glera/",
+    "https://www.prosecco.wine/en/?p=8164"
+   ]
+  }
+ },
+ {
+  "name": "Nerello Mascalese",
+  "aliases": [],
+  "colour": "red",
+  "summary": "The main red grape of Etna in Sicily, grown on the volcano's slopes. Pale, light bodied reds with cherry, herbs and a mineral edge, and noticeable tannin.",
+  "tastes": [
+   "Cherry",
+   "Dried herbs",
+   "Mineral",
+   "Spice"
+  ],
+  "aged_note": "The best Etna reds from this grape can age for many years.",
+  "body": 2,
+  "acidity": null,
+  "tannin": 4,
+  "similar": {
+   "name": "Pinot Noir",
+   "note": "Pale, light bodied and fragrant reds that are often likened to it."
+  },
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/nerello-mascalese/",
+    "https://italianwinecentral.com/variety/nerello-mascalese/",
+    "https://vinepair.com/articles/nerello-mascalese-better-pinot-noir/",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/nerello-mascalese/",
+    "https://italianwinecentral.com/variety/nerello-mascalese/",
+    "https://vinepair.com/articles/nerello-mascalese-better-pinot-noir/",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/nerello-mascalese/",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites",
+    "https://vinepair.com/articles/nerello-mascalese-better-pinot-noir/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/nerello-mascalese/",
+    "https://vinepair.com/articles/nerello-mascalese-better-pinot-noir/"
+   ],
+   "tannin": [
+    "https://italianwinecentral.com/variety/nerello-mascalese/",
+    "https://vinepair.com/articles/nerello-mascalese-better-pinot-noir/",
+    "https://winefolly.com/grapes/nerello-mascalese/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/nerello-mascalese/",
+    "https://vinepair.com/articles/nerello-mascalese-better-pinot-noir/"
+   ]
+  }
+ },
+ {
+  "name": "Carricante",
+  "aliases": [],
+  "colour": "white",
+  "summary": "The main white grape of Etna Bianco, grown high on the volcanic soils of Mount Etna in Sicily. Dry, mineral whites with citrus, green apple and high acidity.",
+  "tastes": [
+   "Citrus",
+   "Green apple",
+   "Saline"
+  ],
+  "aged_note": "It has good ageing potential.",
+  "body": null,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://sicily.guides.winefolly.com/wines/carricante/",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites",
+    "https://italianwinecentral.com/variety/carricante/",
+    "https://vinepair.com/good-wine-reviews/good-wine-tornatore-etna-bianco"
+   ],
+   "tastes": [
+    "https://sicily.guides.winefolly.com/wines/carricante/",
+    "https://vinepair.com/good-wine-reviews/good-wine-tornatore-etna-bianco",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites"
+   ],
+   "aged_note": [
+    "https://sicily.guides.winefolly.com/wines/carricante/",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites"
+   ],
+   "acidity": [
+    "https://sicily.guides.winefolly.com/wines/carricante/",
+    "https://www.winescholarguild.com/blog/wine-fundamentals/ten-sicilian-grape-varieties-to-know-5-reds-5-whites"
+   ]
+  }
+ },
+ {
+  "name": "Aglianico",
+  "aliases": [],
+  "colour": "red",
+  "summary": "A red grape of southern Italy, mainly Campania and Basilicata, behind Taurasi and Aglianico del Vulture. Full bodied, tannic and fresh, with black cherry and smoke.",
+  "tastes": [
+   "Black cherry",
+   "Plum",
+   "Smoke",
+   "Leather"
+  ],
+  "aged_note": "Its high tannin and acidity make it a wine for long ageing.",
+  "body": 5,
+  "acidity": 4,
+  "tannin": 5,
+  "similar": {
+   "name": "Nebbiolo",
+   "note": "Often called the Barolo of the south for its structure and depth."
+  },
+  "sources": {
+   "summary": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico",
+    "https://italianwinecentral.com/variety/aglianico/"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico",
+    "https://italianwinecentral.com/variety/aglianico/"
+   ],
+   "aged_note": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico",
+    "https://italianwinecentral.com/variety/aglianico/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico",
+    "https://italianwinecentral.com/variety/aglianico/"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico",
+    "https://italianwinecentral.com/variety/aglianico/"
+   ],
+   "similar": [
+    "https://winefolly.com/grapes/aglianico/",
+    "https://winecompanion.com.au/resources/varieties/aglianico"
+   ]
+  }
+ },
+ {
+  "name": "Lagrein",
+  "aliases": [],
+  "colour": "red",
+  "summary": "A native red of Alto Adige, at home on warm, low sites around Bolzano. Full bodied reds with black cherry, dark berry and violet notes and firm tannins.",
+  "tastes": [
+   "Black cherry",
+   "Dark berries",
+   "Violet",
+   "Cocoa"
+  ],
+  "aged_note": "It has mid term ageing potential, with the best wines evolving over about ten years.",
+  "body": 4,
+  "acidity": null,
+  "tannin": 4,
+  "similar": null,
+  "sources": {
+   "summary": [
+    "https://altoadige.guides.winefolly.com/wines/lagrein/",
+    "https://www.suedtirolwein.com/weinsorten/lagrein",
+    "https://italianwinecentral.com/variety/lagrein/"
+   ],
+   "tastes": [
+    "https://altoadige.guides.winefolly.com/wines/lagrein/",
+    "https://www.suedtirolwein.com/weinsorten/lagrein",
+    "https://italianwinecentral.com/variety/lagrein/",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige"
+   ],
+   "aged_note": [
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige",
+    "https://winefolly.com/episode/best-value-lagrein-wine-video/",
+    "https://altoadige.guides.winefolly.com/wines/lagrein/"
+   ],
+   "body": [
+    "https://italianwinecentral.com/variety/lagrein/",
+    "https://www.suedtirolwein.com/weinsorten/lagrein",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige"
+   ],
+   "tannin": [
+    "https://altoadige.guides.winefolly.com/wines/lagrein/",
+    "https://italianwinecentral.com/variety/lagrein/"
+   ]
+  }
+ },
+ {
+  "name": "Schiava",
+  "aliases": [
+   "Vernatsch"
+  ],
+  "colour": "red",
+  "summary": "A red grape of Alto Adige, called Vernatsch in German, at home around Lake Kaltern and Santa Maddalena. Pale, light reds with red berry and violet notes.",
+  "tastes": [
+   "Strawberry",
+   "Raspberry",
+   "Red cherry",
+   "Violet"
+  ],
+  "aged_note": "Better examples, such as Santa Maddalena Classico, can improve over a few years in bottle.",
+  "body": 2,
+  "acidity": 4,
+  "tannin": 2,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://altoadige.guides.winefolly.com/wines/schiava/",
+    "https://italianwinecentral.com/variety/schiava/",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige"
+   ],
+   "summary": [
+    "https://altoadige.guides.winefolly.com/wines/schiava/",
+    "https://italianwinecentral.com/variety/schiava/",
+    "https://www.suedtirolwein.com/weinsorten/vernatsch"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/schiava/",
+    "https://italianwinecentral.com/variety/schiava/",
+    "https://www.suedtirolwein.com/weinsorten/vernatsch",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige"
+   ],
+   "aged_note": [
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige",
+    "https://altoadige.guides.winefolly.com/wines/schiava/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/schiava/",
+    "https://italianwinecentral.com/variety/schiava/",
+    "https://www.suedtirolwein.com/weinsorten/vernatsch",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/schiava/",
+    "https://italianwinecentral.com/variety/schiava/"
+   ],
+   "tannin": [
+    "https://winefolly.com/grapes/schiava/",
+    "https://worldoffinewine.com/news-features/schiava-lagrein-red-spirit-alto-adige",
+    "https://www.suedtirolwein.com/weinsorten/vernatsch"
+   ]
+  }
+ },
+ {
+  "name": "Friulano",
+  "aliases": [
+   "Tocai Friulano",
+   "Sauvignonasse"
+  ],
+  "colour": "white",
+  "summary": "The flagship white of Friuli Venezia Giulia, formerly called Tocai Friulano. Dry whites with herbal and floral notes and a typical almond finish.",
+  "tastes": [
+   "Almond",
+   "Herbs",
+   "White flowers",
+   "Peach"
+  ],
+  "aged_note": null,
+  "body": null,
+  "acidity": null,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://italianwinecentral.com/variety/friulano/",
+    "https://www.turismofvg.it/vini/friulano-ex-tocai-friulano",
+    "https://www.guildsomm.com/public_content/features/articles/b/stacy-ladenburger/posts/friuli-white-wines",
+    "https://winefolly.com/grapes/friulano/"
+   ],
+   "summary": [
+    "https://www.turismofvg.it/vini/friulano-ex-tocai-friulano",
+    "https://italianwinecentral.com/variety/friulano/",
+    "https://www.guildsomm.com/public_content/features/articles/b/stacy-ladenburger/posts/friuli-white-wines",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/"
+   ],
+   "tastes": [
+    "https://italianwinecentral.com/variety/friulano/",
+    "https://www.turismofvg.it/vini/friulano-ex-tocai-friulano",
+    "https://winefolly.com/grapes/friulano/",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/",
+    "https://www.guildsomm.com/public_content/features/articles/b/stacy-ladenburger/posts/friuli-white-wines"
+   ]
+  }
+ },
+ {
+  "name": "Ribolla Gialla",
+  "aliases": [
+   "Rebula"
+  ],
+  "colour": "white",
+  "summary": "An ancient white of Friuli Venezia Giulia, on the border with Slovenia where it is called Rebula. Light, crisp whites with lemon and white pepper notes.",
+  "tastes": [
+   "Lemon",
+   "Tangerine",
+   "White pepper"
+  ],
+  "aged_note": "It is also made as orange wine, with long contact on the skins.",
+  "body": 2,
+  "acidity": 4,
+  "tannin": null,
+  "similar": null,
+  "sources": {
+   "aliases": [
+    "https://italianwinecentral.com/variety/ribolla-gialla/",
+    "https://www.wineandspiritsmagazine.com/?p=4251"
+   ],
+   "summary": [
+    "https://winefolly.com/grapes/ribolla-gialla/",
+    "https://italianwinecentral.com/variety/ribolla-gialla/",
+    "https://www.wineandspiritsmagazine.com/?p=4251",
+    "https://www.guildsomm.com/public_content/features/articles/b/stacy-ladenburger/posts/friuli-white-wines"
+   ],
+   "tastes": [
+    "https://winefolly.com/grapes/ribolla-gialla/",
+    "https://italianwinecentral.com/variety/ribolla-gialla/",
+    "https://www.wineandspiritsmagazine.com/?p=4251"
+   ],
+   "aged_note": [
+    "https://italianwinecentral.com/variety/ribolla-gialla/",
+    "https://www.wineandspiritsmagazine.com/?p=4251",
+    "https://winefolly.com/deep-dive/italian-white-wines-friuli-venezia-giulia/"
+   ],
+   "body": [
+    "https://winefolly.com/grapes/ribolla-gialla/",
+    "https://www.wineandspiritsmagazine.com/?p=4251"
+   ],
+   "acidity": [
+    "https://winefolly.com/grapes/ribolla-gialla/",
+    "https://italianwinecentral.com/variety/ribolla-gialla/"
+   ]
+  }
+ }
+]

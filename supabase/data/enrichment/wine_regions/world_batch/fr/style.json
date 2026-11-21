@@ -1,0 +1,849 @@
+[
+  {
+    "slug": "alsace",
+    "name": "Alsace",
+    "aliases": [
+      "Vin d'Alsace"
+    ],
+    "summary": "Alsace, on the foothills of the Vosges, makes mostly dry white wines, usually sold under the name of the grape. It also makes red and rosé from Pinot Noir and the sparkling Crémant d'Alsace.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "A grape name on an Alsace label means the wine comes only from that grape, two grape names may not share a label, and the still wines go in the tall Vin du Rhin flute bottle. Grand cru wines are mostly single variety Riesling, Gewurztraminer, Pinot Gris or Muscat, and Vendanges Tardives or Sélection de Grains Nobles must show the vintage and one of five grape names.",
+    "grapes": [
+      {
+        "name": "Riesling",
+        "local_note": null
+      },
+      {
+        "name": "Gewürztraminer",
+        "local_note": null
+      },
+      {
+        "name": "Pinot Gris",
+        "local_note": null
+      },
+      {
+        "name": "Pinot Blanc",
+        "local_note": "A wine labelled Pinot Blanc may also be made from Auxerrois."
+      },
+      {
+        "name": "Sylvaner",
+        "local_note": null
+      },
+      {
+        "name": "Muscat Blanc à Petits Grains",
+        "local_note": "Muscat d'Alsace is most often a blend of Muscat à petits grains and Muscat Ottonel."
+      },
+      {
+        "name": "Pinot Noir",
+        "local_note": "The only grape for Alsace red and rosé."
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Alsace",
+        "colour": "mixed",
+        "note": "Also called Vin d'Alsace; may add one of 13 village or area names, or a lieu-dit."
+      },
+      {
+        "name": "Alsace Grand Cru",
+        "colour": "mixed",
+        "note": "51 separate grand cru appellations, white only except Hengst, Kirchberg de Barr and Vorbourg, which also allow Pinot Noir reds."
+      },
+      {
+        "name": "Crémant d'Alsace",
+        "colour": "sparkling",
+        "note": "White or rosé made by second fermentation in bottle; the rosé is Pinot Noir only."
+      }
+    ],
+    "sources": {
+      "aliases": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-6fe90f2b-ac49-4fec-a13f-309ce19ef3e7/telechargement"
+      ],
+      "summary": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/76/alsace/",
+        "https://www.vinsalsace.com/en/tastes-and-colours/aoc/",
+        "https://www.inao.gouv.fr/node/6425",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-6fe90f2b-ac49-4fec-a13f-309ce19ef3e7/telechargement"
+      ],
+      "label_note": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-6fe90f2b-ac49-4fec-a13f-309ce19ef3e7/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-47631e47-a913-4910-9868-ad1c4b70bb3d/telechargement"
+      ],
+      "grapes": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/76/alsace/",
+        "https://www.vinsalsace.com/en/tastes-and-colours/grapes-varieties/",
+        "https://www.inao.gouv.fr/node/6425",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-6fe90f2b-ac49-4fec-a13f-309ce19ef3e7/telechargement",
+        "https://www.vinsalsace.com/en/gouts-et-couleurs/cepages/frais-et-secs/muscat-dalsace/"
+      ],
+      "appellations": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-6fe90f2b-ac49-4fec-a13f-309ce19ef3e7/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-47631e47-a913-4910-9868-ad1c4b70bb3d/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-66812bef-7786-448c-b312-f2d22e1c5a5b/telechargement"
+      ]
+    }
+  },
+  {
+    "slug": "beaujolais",
+    "name": "Beaujolais",
+    "aliases": [
+      "Vin du Beaujolais"
+    ],
+    "summary": "Beaujolais is Gamay country, making mostly light, fruity reds that range from early drinking Beaujolais Nouveau to the ten crus. A little white wine is made from Chardonnay.",
+    "red_body": 2,
+    "red_acidity": null,
+    "red_tannin": 2,
+    "pairing": "A versatile red that suits meat dishes and fish alike.",
+    "label_note": "AOC Beaujolais may be followed by Villages or by the name of the commune the grapes come from, printed as large as the appellation name; primeur or nouveau is for red and rosé only and must show the vintage. The ten crus are labelled under their own names and may add Cru du Beaujolais.",
+    "grapes": [
+      {
+        "name": "Gamay",
+        "local_note": null
+      },
+      {
+        "name": "Chardonnay",
+        "local_note": "The only grape for white Beaujolais."
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Beaujolais",
+        "colour": "mixed",
+        "note": "Red, rosé and white; reds may add supérieur, and reds and rosés primeur or nouveau."
+      },
+      {
+        "name": "Beaujolais Villages",
+        "colour": "mixed",
+        "note": "A mention within AOC Beaujolais for wines from the northern half of the area, in red, rosé and white."
+      },
+      {
+        "name": "Brouilly",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Côte de Brouilly",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Chénas",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Chiroubles",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Fleurie",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Juliénas",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Morgon",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Moulin-à-Vent",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Régnié",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      },
+      {
+        "name": "Saint-Amour",
+        "colour": "red",
+        "note": "One of the ten Beaujolais crus; still red wine only, from Gamay."
+      }
+    ],
+    "sources": {
+      "aliases": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-fc518a15-dce5-4d62-b5f6-18cdbc38c8f2/telechargement",
+        "https://www.beaujolais.com/"
+      ],
+      "summary": [
+        "https://winefolly.com/deep-dive/beaujolais/",
+        "https://www.beaujolais.com/couleur/rouge/",
+        "https://www.beaujolais.com/cepage/gamay/",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-fc518a15-dce5-4d62-b5f6-18cdbc38c8f2/telechargement",
+        "https://www.beaujolais.com/"
+      ],
+      "red_body": [
+        "https://winefolly.com/deep-dive/beaujolais/",
+        "https://winefolly.com/grapes/gamay/",
+        "https://www.beaujolais.com/couleur/rouge/",
+        "https://www.beaujolais.com/cepage/gamay/",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-fc518a15-dce5-4d62-b5f6-18cdbc38c8f2/telechargement"
+      ],
+      "red_tannin": [
+        "https://winefolly.com/deep-dive/beaujolais/",
+        "https://winefolly.com/grapes/gamay/",
+        "https://www.beaujolais.com/couleur/rouge/",
+        "https://www.beaujolais.com/cepage/gamay/"
+      ],
+      "pairing": [
+        "https://winefolly.com/deep-dive/beaujolais/",
+        "https://www.beaujolais.com/",
+        "https://www.beaujolais.com/couleur/rouge/"
+      ],
+      "label_note": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-fc518a15-dce5-4d62-b5f6-18cdbc38c8f2/telechargement",
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-2617e4f4-e428-45e2-b2e6-4f98c00ff528/telechargement",
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-9a5daa4c-32de-4338-85f4-fb9e498f7eef/telechargement",
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-e19a7353-03e0-4111-96ae-77d5a9c68a9c/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-0aafbc7f-1531-462d-98d6-e38ad256458d/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-ae856647-fb0e-4e7f-ab5c-5f019d04abf7/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-422ba4b6-770d-49ec-b732-5f1cd355262f/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-afe56bd1-3c93-4eb5-87f8-7e9b8674c3c0/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-3e52072d-1333-410e-8072-13a856496259/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-325ca43d-881a-4b3a-b1ef-b1a8d920292d/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-1c62365f-4b31-4968-ae2c-015eba7aba0d/telechargement"
+      ],
+      "grapes": [
+        "https://www.beaujolais.com/cepage/gamay/",
+        "https://winefolly.com/grapes/gamay/",
+        "https://www.beaujolais.com/",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-fc518a15-dce5-4d62-b5f6-18cdbc38c8f2/telechargement"
+      ],
+      "appellations": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-fc518a15-dce5-4d62-b5f6-18cdbc38c8f2/telechargement",
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-2617e4f4-e428-45e2-b2e6-4f98c00ff528/telechargement",
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-9a5daa4c-32de-4338-85f4-fb9e498f7eef/telechargement",
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-e19a7353-03e0-4111-96ae-77d5a9c68a9c/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-0aafbc7f-1531-462d-98d6-e38ad256458d/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-ae856647-fb0e-4e7f-ab5c-5f019d04abf7/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-422ba4b6-770d-49ec-b732-5f1cd355262f/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-afe56bd1-3c93-4eb5-87f8-7e9b8674c3c0/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-3e52072d-1333-410e-8072-13a856496259/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-325ca43d-881a-4b3a-b1ef-b1a8d920292d/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-1c62365f-4b31-4968-ae2c-015eba7aba0d/telechargement",
+        "https://www.beaujolais.com/decouvrir/nos-12-appellations/"
+      ]
+    }
+  },
+  {
+    "slug": "languedoc",
+    "name": "Languedoc",
+    "aliases": [],
+    "summary": "A broad Mediterranean region across Aude, Gard and Hérault making red, rosé and white wines, plus sparkling Limoux and sweet Muscats. Most reds blend Grenache, Syrah, Carignan and Mourvèdre.",
+    "red_body": 4,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": "Picpoul de Pinet whites suit oysters.",
+    "label_note": null,
+    "grapes": [
+      {
+        "name": "Grenache",
+        "local_note": null
+      },
+      {
+        "name": "Syrah",
+        "local_note": null
+      },
+      {
+        "name": "Carignan",
+        "local_note": null
+      },
+      {
+        "name": "Mourvèdre",
+        "local_note": null
+      },
+      {
+        "name": "Cinsault",
+        "local_note": null
+      },
+      {
+        "name": "Grenache Blanc",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Languedoc",
+        "colour": "mixed",
+        "note": "Regional AOC for red, rosé and white; its area also covers much of Pyrénées-Orientales."
+      },
+      {
+        "name": "Corbières",
+        "colour": "mixed",
+        "note": "Red, rosé and white from Aude."
+      },
+      {
+        "name": "Minervois",
+        "colour": "mixed",
+        "note": "Red, rosé and white from Aude and Hérault, below the Montagne Noire."
+      },
+      {
+        "name": "Faugères",
+        "colour": "mixed",
+        "note": "Red, rosé and white from schist slopes in northern Hérault."
+      },
+      {
+        "name": "Saint-Chinian",
+        "colour": "mixed",
+        "note": "Mostly reds, with some rosé and a little white, from northwest Hérault."
+      },
+      {
+        "name": "Pic Saint-Loup",
+        "colour": "mixed",
+        "note": "Reds and rosés near Montpellier; its own AOC since 2017."
+      },
+      {
+        "name": "Terrasses du Larzac",
+        "colour": "red",
+        "note": "Red only, from 32 communes of Hérault."
+      },
+      {
+        "name": "La Clape",
+        "colour": "mixed",
+        "note": "Reds and whites from a limestone massif by Narbonne."
+      },
+      {
+        "name": "Fitou",
+        "colour": "red",
+        "note": "Red only, from the Corbières hills in Aude, where Carignan is a key grape."
+      },
+      {
+        "name": "Picpoul de Pinet",
+        "colour": "white",
+        "note": "Crisp whites from the Picpoul grape around the Étang de Thau."
+      },
+      {
+        "name": "Crémant de Limoux",
+        "colour": "sparkling",
+        "note": "Traditional method sparkling white and rosé, led by Chardonnay."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/98/languedoc/",
+        "https://www.languedoc-wines.com/en/",
+        "https://languedoc-wines.com/en/appellations/pdo-languedoc/",
+        "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/"
+      ],
+      "red_body": [
+        "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/270/languedoc",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/98/languedoc/"
+      ],
+      "pairing": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/9055/picpoul-de-pinet",
+        "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/"
+      ],
+      "grapes": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/98/languedoc/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/270/languedoc",
+        "https://languedoc-wines.com/en/appellations/pdo-languedoc/",
+        "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/"
+      ],
+      "appellations": [
+        "https://languedoc-wines.com/en/appellations/pdo-languedoc/",
+        "https://languedoc-wines.com/en/appellations/terrasses-du-larzac-pdo/",
+        "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/",
+        "https://www.data.gouv.fr/datasets/aires-geographiques-des-aoc-aop",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/268/corbieres",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/27/cremant-de-limoux",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/270/languedoc",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/271/faugeres",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/272/fitou",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/273/minervois",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/274/saint-chinian",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/558/pic-saint-loup",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/9055/picpoul-de-pinet",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/9257/la-clape",
+        "https://www.languedoc-wines.com/en/"
+      ]
+    }
+  },
+  {
+    "slug": "roussillon",
+    "name": "Roussillon",
+    "aliases": [],
+    "summary": "The wine region of Pyrénées-Orientales, best known for vins doux naturels such as Banyuls, Maury and Rivesaltes. Its dry reds blend Grenache, Carignan, Syrah and Mourvèdre.",
+    "red_body": 4,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": "Red Banyuls suits chocolate desserts.",
+    "label_note": "Red Côtes du Roussillon must come from at least two grapes, with Syrah and Mourvèdre together at least 25% of the grower's plantings and Carignan no more than 50%.",
+    "grapes": [
+      {
+        "name": "Grenache",
+        "local_note": null
+      },
+      {
+        "name": "Carignan",
+        "local_note": null
+      },
+      {
+        "name": "Syrah",
+        "local_note": null
+      },
+      {
+        "name": "Mourvèdre",
+        "local_note": null
+      },
+      {
+        "name": "Grenache Blanc",
+        "local_note": null
+      },
+      {
+        "name": "Macabeo",
+        "local_note": "Called Macabeu locally."
+      },
+      {
+        "name": "Muscat Blanc à Petits Grains",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Côtes du Roussillon",
+        "colour": "mixed",
+        "note": "Dry red, rosé and white from across Pyrénées-Orientales."
+      },
+      {
+        "name": "Côtes du Roussillon Villages",
+        "colour": "red",
+        "note": "Dry reds only; Caramany, Latour-de-France, Lesquerde, Tautavel and Les Aspres may add their name."
+      },
+      {
+        "name": "Collioure",
+        "colour": "mixed",
+        "note": "Dry red, rosé and white from the same coastal schist terraces as Banyuls."
+      },
+      {
+        "name": "Maury",
+        "colour": "mixed",
+        "note": "Vin doux naturel from Grenache on black schist; dry reds also carry the name since 2011."
+      },
+      {
+        "name": "Banyuls",
+        "colour": "mixed",
+        "note": "Vin doux naturel from Grenache on the Côte Vermeille; Banyuls Grand Cru is red only."
+      },
+      {
+        "name": "Rivesaltes",
+        "colour": "mixed",
+        "note": "Vin doux naturel in several styles, from grenat to ambré and tuilé; the area reaches into Aude."
+      },
+      {
+        "name": "Muscat de Rivesaltes",
+        "colour": "white",
+        "note": "Vin doux naturel from Muscat Blanc à Petits Grains and Muscat d'Alexandrie."
+      },
+      {
+        "name": "Languedoc",
+        "colour": "mixed",
+        "note": "The regional Languedoc AOC also covers much of Pyrénées-Orientales."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/100/roussillon/",
+        "https://roussillon.wine/vins-et-terroirs/nos-cepages/",
+        "https://www.roussillon.wine/vins-et-terroirs/nos-singularites/",
+        "https://www.roussillon.wine/vins-et-terroirs/nos-aoc-et-igp/",
+        "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/",
+        "https://winefolly.com/wines/banyuls/",
+        "BO du MAA 21/12/2017: cahier des charges AOC Côtes du Roussillon (arrêté du 15 décembre 2017); local copy classics/fr/raw/cdc_cdr.pdf, download URL not recorded"
+      ],
+      "red_body": [
+        "https://winefolly.com/deep-dive/languedoc-roussillon-wine-region/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/278/cotes-du-roussillon",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/279/cotes-du-roussillon-villages"
+      ],
+      "pairing": [
+        "https://winefolly.com/wines/banyuls/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/345/banyuls"
+      ],
+      "label_note": [
+        "BO du MAA 21/12/2017: cahier des charges AOC Côtes du Roussillon (arrêté du 15 décembre 2017); local copy classics/fr/raw/cdc_cdr.pdf, download URL not recorded"
+      ],
+      "grapes": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/100/roussillon/",
+        "https://roussillon.wine/vins-et-terroirs/nos-cepages/",
+        "BO du MAA 21/12/2017: cahier des charges AOC Côtes du Roussillon (arrêté du 15 décembre 2017); local copy classics/fr/raw/cdc_cdr.pdf, download URL not recorded",
+        "https://winefolly.com/wines/banyuls/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/349/muscat-de-rivesaltes"
+      ],
+      "appellations": [
+        "BO du MAA 21/12/2017: cahier des charges AOC Côtes du Roussillon (arrêté du 15 décembre 2017); local copy classics/fr/raw/cdc_cdr.pdf, download URL not recorded",
+        "https://languedoc-wines.com/en/appellations/pdo-languedoc/",
+        "https://www.data.gouv.fr/datasets/aires-geographiques-des-aoc-aop",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/270/languedoc",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/278/cotes-du-roussillon",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/279/cotes-du-roussillon-villages",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/280/collioure",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/345/banyuls",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/346/banyuls-grand-cru",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/347/rivesaltes",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/348/maury",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/349/muscat-de-rivesaltes",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/9022/maury-sec",
+        "https://www.roussillon.wine/vins-et-terroirs/nos-aoc-et-igp/"
+      ]
+    }
+  },
+  {
+    "slug": "provence",
+    "name": "Provence",
+    "aliases": [],
+    "summary": "Rosé makes up close to 90% of Provence wine, mostly in a dry style and from Grenache, Cinsault and Syrah. Bandol stands apart for long-lived reds built on Mourvèdre.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": "Provence rosé suits charcuterie and cold starters.",
+    "label_note": "Red Bandol comes from plantings of 50 to 95% Mourvèdre and is aged at least 18 months in cask or foudre. Côtes de Provence may add one of five terroir names: Sainte-Victoire, Fréjus, La Londe, Pierrefeu or Notre-Dame des Anges.",
+    "grapes": [
+      {
+        "name": "Grenache",
+        "local_note": null
+      },
+      {
+        "name": "Cinsault",
+        "local_note": null
+      },
+      {
+        "name": "Syrah",
+        "local_note": null
+      },
+      {
+        "name": "Mourvèdre",
+        "local_note": "Leads the reds of Bandol."
+      },
+      {
+        "name": "Vermentino",
+        "local_note": "Called Rolle in Provence."
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Côtes de Provence",
+        "colour": "mixed",
+        "note": "Rosé is about 89% of its output."
+      },
+      {
+        "name": "Coteaux d'Aix-en-Provence",
+        "colour": "mixed",
+        "note": "Red, rosé and white around Aix; rosé leads."
+      },
+      {
+        "name": "Coteaux Varois en Provence",
+        "colour": "mixed",
+        "note": "Red, rosé and white from the Var; rosé leads."
+      },
+      {
+        "name": "Bandol",
+        "colour": "mixed",
+        "note": "Red, rosé and white from eight Var communes; the reds are built on Mourvèdre."
+      },
+      {
+        "name": "Cassis",
+        "colour": "mixed",
+        "note": "Best known for its dry whites, from the commune of Cassis."
+      },
+      {
+        "name": "Bellet",
+        "colour": "mixed",
+        "note": "A small AOC in the hills of Nice; Rolle leads the whites."
+      },
+      {
+        "name": "Palette",
+        "colour": "mixed",
+        "note": "A small AOC just southeast of Aix-en-Provence."
+      },
+      {
+        "name": "Les Baux de Provence",
+        "colour": "mixed",
+        "note": "Red, rosé and white below the Alpilles; mostly red."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/102/provence/",
+        "https://winefolly.com/deep-dive/provence-wine-region-guide-with-maps/",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-04ce000c-981e-4fb0-8009-c0266d331c79/telechargement",
+        "https://winefolly.com/wines/provence-rose/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/281/cotes-de-provence",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-5dba9fe2-3426-4f86-90e1-84267bdbae56/telechargement"
+      ],
+      "pairing": [
+        "https://winefolly.com/wines/provence-rose/",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/281/cotes-de-provence"
+      ],
+      "label_note": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-5dba9fe2-3426-4f86-90e1-84267bdbae56/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-04ce000c-981e-4fb0-8009-c0266d331c79/telechargement"
+      ],
+      "grapes": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-04ce000c-981e-4fb0-8009-c0266d331c79/telechargement",
+        "https://www.vinsdeprovence.com/en/les-appellations/cotes-de-provence",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/102/provence/",
+        "https://winefolly.com/deep-dive/provence-wine-region-guide-with-maps/",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-5dba9fe2-3426-4f86-90e1-84267bdbae56/telechargement"
+      ],
+      "appellations": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-04ce000c-981e-4fb0-8009-c0266d331c79/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-1af2db8a-21e0-4d2e-b0c9-f58e249a1c7a/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-56db90a9-1adb-44fb-806d-d89e584cfdf9/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-5dba9fe2-3426-4f86-90e1-84267bdbae56/telechargement",
+        "https://winefolly.com/deep-dive/provence-wine-region-guide-with-maps/",
+        "https://www.data.gouv.fr/datasets/aires-geographiques-des-aoc-aop",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/282/cassis",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/283/bellet",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/285/palette",
+        "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/286/coteaux-d-aix-en-provence",
+        "https://www.vinsdeprovence.com/en",
+        "https://www.vinsdeprovence.com/en/les-appellations/cotes-de-provence"
+      ]
+    }
+  },
+  {
+    "slug": "jura",
+    "name": "Jura",
+    "aliases": [],
+    "summary": "The Jura is one of France's smaller wine regions and makes mostly white wine from Chardonnay and Savagnin. Its best known style is vin jaune, Savagnin aged for more than six years in oak under a veil of yeast.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": "Vin jaune goes well with Comté cheese.",
+    "label_note": "Vin jaune is made from Savagnin and aged in oak without topping up until 15 December of the sixth year after harvest, at least 60 months of it under a veil of yeast. Only vin jaune may be sold in the clavelin, a bottle of about 62 cl.",
+    "grapes": [
+      {
+        "name": "Chardonnay",
+        "local_note": null
+      },
+      {
+        "name": "Savagnin",
+        "local_note": "The grape of vin jaune."
+      },
+      {
+        "name": "Poulsard",
+        "local_note": "Called Ploussard locally."
+      },
+      {
+        "name": "Pinot Noir",
+        "local_note": null
+      },
+      {
+        "name": "Trousseau",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Côtes du Jura",
+        "colour": "mixed",
+        "note": "The regional appellation for white, red and rosé, including vin jaune and vin de paille."
+      },
+      {
+        "name": "Arbois",
+        "colour": "mixed",
+        "note": "White, red and rosé around Arbois; may add the village name Pupillin."
+      },
+      {
+        "name": "Château-Chalon",
+        "colour": "white",
+        "note": "Vin jaune only, from four communes."
+      },
+      {
+        "name": "L'Etoile",
+        "colour": "white",
+        "note": "A small village appellation for white wines, including vin jaune and vin de paille."
+      },
+      {
+        "name": "Crémant du Jura",
+        "colour": "sparkling",
+        "note": "White or rosé sparkling wine from across the region."
+      },
+      {
+        "name": "Macvin du Jura",
+        "colour": "mixed",
+        "note": "A vin de liqueur of white, red or rosé, made from grape must and Marc du Jura brandy."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://france.fr/en/article/5-minutes-wines-jura",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/",
+        "https://www.jura-vins.com/le-mysterieux-vin-jaune.htm",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-40d171ab-4187-40be-86f4-fcc155a4eca8/telechargement"
+      ],
+      "pairing": [
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.jura-vins.com/quel-plat-avec-mon-vin-du-jura.htm",
+        "https://www.saq.com/en/content/inspiration/profiles/grape-variety-savagnin"
+      ],
+      "label_note": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-40d171ab-4187-40be-86f4-fcc155a4eca8/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-80d3d5a7-3798-4166-b191-9373c5690bbb/telechargement"
+      ],
+      "grapes": [
+        "https://www.guildsomm.com/public_content/features/articles/b/wink-lorch/posts/jura-wine-styles",
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/94/jura/",
+        "https://france.fr/en/article/5-minutes-wines-jura",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-40d171ab-4187-40be-86f4-fcc155a4eca8/telechargement"
+      ],
+      "appellations": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-40d171ab-4187-40be-86f4-fcc155a4eca8/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-f3ff41c6-ac5a-4378-aec8-0837f4d9d8d6/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-80d3d5a7-3798-4166-b191-9373c5690bbb/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-7d79e5e4-950e-4bc4-828a-bb758d105de6/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-3639eb82-2655-461f-a811-87ed70ec6303/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-3fdd2783-bf35-4696-b8c4-358c810709ee/telechargement"
+      ]
+    }
+  },
+  {
+    "slug": "cahors",
+    "name": "Cahors",
+    "aliases": [
+      "AOC Cahors",
+      "Vin de Cahors"
+    ],
+    "summary": "Cahors makes only red wine, on both banks of the Lot river, from Malbec, known locally as Côt, with some Merlot and Tannat. The wines are dark in colour and made to age.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "AOC Cahors is reserved for still red wine, with Côt at least 70% of each estate's plantings. Labels may add the broader unit Sud-Ouest, in letters no larger than the appellation name.",
+    "grapes": [
+      {
+        "name": "Malbec",
+        "local_note": "Called Côt in the cahier; at least 70% of each estate's Cahors plantings."
+      },
+      {
+        "name": "Merlot",
+        "local_note": "Accessory grape."
+      },
+      {
+        "name": "Tannat",
+        "local_note": "Accessory grape."
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Cahors",
+        "colour": "red",
+        "note": "Still red wine only, led by Côt (Malbec)."
+      }
+    ],
+    "sources": {
+      "aliases": [
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement",
+        "https://www.inao.gouv.fr/node/2108"
+      ],
+      "summary": [
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement",
+        "https://vindecahors.fr/fr/le-vignoble-de-cahors/",
+        "https://vindecahors.fr/en/cahors-vineyard",
+        "https://www.tourisme-lot.com/produits-du-terroir/le-vin-de-cahors/",
+        "https://www.inao.gouv.fr/node/2108"
+      ],
+      "label_note": [
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement"
+      ],
+      "grapes": [
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement",
+        "https://vindecahors.fr/fr/le-vignoble-de-cahors/",
+        "https://vindecahors.fr/en/cahors-vineyard",
+        "https://www.tourisme-lot.com/produits-du-terroir/le-vin-de-cahors/"
+      ],
+      "appellations": [
+        "https://info.agriculture.gouv.fr/gedei/site/bo-agri/document_administratif-302391de-0e09-4b5c-95d4-ddadcaf4ebeb/telechargement",
+        "https://www.inao.gouv.fr/node/2108"
+      ]
+    }
+  },
+  {
+    "slug": "savoie",
+    "name": "Savoie",
+    "aliases": [],
+    "summary": "Savoie's vineyards sit on the first slopes of the Alps, and about 70 percent of the wine is white, mostly dry. Jacquère is the most planted grape and Mondeuse is the local red.",
+    "red_body": null,
+    "red_acidity": null,
+    "red_tannin": null,
+    "pairing": null,
+    "label_note": "Vin de Savoie may add one of 16 cru names, such as Apremont, Chignin-Bergeron or Arbin, each with its own grape rules, and a grape name only when the wine comes from that grape alone. Its white sparkling wine must carry the word Crémant before the appellation name.",
+    "grapes": [
+      {
+        "name": "Jacquère",
+        "local_note": null
+      },
+      {
+        "name": "Altesse",
+        "local_note": "Also called Roussette; Roussette de Savoie is made from Altesse alone."
+      },
+      {
+        "name": "Mondeuse",
+        "local_note": "Reds from the Arbin and Saint-Jean-de-la-Porte crus are Mondeuse only."
+      },
+      {
+        "name": "Chasselas",
+        "local_note": "Grown mainly in Haute-Savoie."
+      },
+      {
+        "name": "Gamay",
+        "local_note": null
+      },
+      {
+        "name": "Pinot Noir",
+        "local_note": null
+      }
+    ],
+    "appellations": [
+      {
+        "name": "Vin de Savoie",
+        "colour": "mixed",
+        "note": "Also called Savoie; white, red, rosé and Crémant, with 16 named crus."
+      },
+      {
+        "name": "Roussette de Savoie",
+        "colour": "white",
+        "note": "Altesse only; may add Frangy, Marestel, Monterminod or Monthoux."
+      },
+      {
+        "name": "Seyssel",
+        "colour": "white",
+        "note": "Still and sparkling whites from Seyssel and Corbonod, led by Altesse."
+      }
+    ],
+    "sources": {
+      "summary": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/340/savoie-et-bugey/",
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps"
+      ],
+      "label_note": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-1713c806-226b-49c7-b55f-d02eee72b717/telechargement"
+      ],
+      "grapes": [
+        "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/340/savoie-et-bugey/",
+        "https://winefolly.com/deep-dive/savoie-wine-guide/",
+        "https://www.guildsomm.com/public_content/features/articles/b/charles_neal/posts/savoie-faire-the-wines-of-the-french-alps",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-1713c806-226b-49c7-b55f-d02eee72b717/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-6439ab55-354d-4ff9-80b9-9aa41578f181/telechargement"
+      ],
+      "appellations": [
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-1713c806-226b-49c7-b55f-d02eee72b717/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-6439ab55-354d-4ff9-80b9-9aa41578f181/telechargement",
+        "https://info.agriculture.gouv.fr/boagri/document_administratif-968b93cb-91d7-41f0-b0ee-ee15c763b1af/telechargement"
+      ]
+    }
+  }
+]

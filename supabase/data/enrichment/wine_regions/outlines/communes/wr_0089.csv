@@ -1,0 +1,631 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0089,IT_025001,provincia di Belluno,Agordo,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025002,provincia di Belluno,Alano di Piave,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025003,provincia di Belluno,Alleghe,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025072,provincia di Belluno,Alpago,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025004,provincia di Belluno,Arsiè,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025005,provincia di Belluno,Auronzo di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025006,provincia di Belluno,Belluno,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025007,provincia di Belluno,Borca di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025074,provincia di Belluno,Borgo Valbelluna,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025008,provincia di Belluno,Calalzo di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025023,provincia di Belluno,Canale d'Agordo,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025010,provincia di Belluno,Cencenighe Agordino,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025011,provincia di Belluno,Cesiomaggiore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025012,provincia di Belluno,Chies d'Alpago,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025013,provincia di Belluno,Cibiana di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025014,provincia di Belluno,Colle Santa Lucia,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025015,provincia di Belluno,Comelico Superiore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025016,provincia di Belluno,Cortina d'Ampezzo,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025017,provincia di Belluno,Danta di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025018,provincia di Belluno,Domegge di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025019,provincia di Belluno,Falcade,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025021,provincia di Belluno,Feltre,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025022,provincia di Belluno,Fonzaso,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025025,provincia di Belluno,Gosaldo,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025027,provincia di Belluno,La Valle Agordina,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025026,provincia di Belluno,Lamon,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025029,provincia di Belluno,Limana,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025030,provincia di Belluno,Livinallongo del Col di Lana,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025071,provincia di Belluno,Longarone,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025032,provincia di Belluno,Lorenzago di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025033,provincia di Belluno,Lozzo di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025035,provincia di Belluno,Ospitale di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025036,provincia di Belluno,Pedavena,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025037,provincia di Belluno,Perarolo di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025039,provincia di Belluno,Pieve di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025040,provincia di Belluno,Ponte nelle Alpi,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025070,provincia di Belluno,Quero Vas,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025043,provincia di Belluno,Rivamonte Agordino,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025044,provincia di Belluno,Rocca Pietore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025045,provincia di Belluno,San Gregorio nelle Alpi,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025046,provincia di Belluno,San Nicolò di Comelico,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025047,provincia di Belluno,San Pietro di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025049,provincia di Belluno,San Tomaso Agordino,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025051,provincia di Belluno,San Vito di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025048,provincia di Belluno,Santa Giustina,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025050,provincia di Belluno,Santo Stefano di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025053,provincia di Belluno,Sedico,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025054,provincia di Belluno,Selva di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025055,provincia di Belluno,Seren del Grappa,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025056,provincia di Belluno,Sospirolo,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025057,provincia di Belluno,Soverzene,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025058,provincia di Belluno,Sovramonte,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025059,provincia di Belluno,Taibon Agordino,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025060,provincia di Belluno,Tambre,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025073,provincia di Belluno,Val di Zoldo,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025062,provincia di Belluno,Vallada Agordina,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025063,provincia di Belluno,Valle di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025065,provincia di Belluno,Vigo di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025066,provincia di Belluno,Vodo Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025067,provincia di Belluno,Voltago Agordino,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_025069,provincia di Belluno,Zoppè di Cadore,Belluno,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031001,provincia di Gorizia,Capriva del Friuli,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031002,provincia di Gorizia,Cormons,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031003,provincia di Gorizia,Doberdò del Lago-Doberdob,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031004,provincia di Gorizia,Dolegna del Collio,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031005,provincia di Gorizia,Farra d'Isonzo,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031006,provincia di Gorizia,Fogliano Redipuglia,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031007,provincia di Gorizia,Gorizia,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031008,provincia di Gorizia,Gradisca d'Isonzo,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031009,provincia di Gorizia,Grado,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031010,provincia di Gorizia,Mariano del Friuli,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031011,provincia di Gorizia,Medea,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031012,provincia di Gorizia,Monfalcone,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031013,provincia di Gorizia,Moraro,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031014,provincia di Gorizia,Mossa,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031015,provincia di Gorizia,Romans d'Isonzo,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031016,provincia di Gorizia,Ronchi dei Legionari,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031017,provincia di Gorizia,Sagrado,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031018,provincia di Gorizia,San Canzian d'Isonzo,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031019,provincia di Gorizia,San Floriano del Collio-Števerjan,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031020,provincia di Gorizia,San Lorenzo Isontino,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031021,provincia di Gorizia,San Pier d'Isonzo,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031022,provincia di Gorizia,Savogna d'Isonzo-Sovodnje ob Soči,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031023,provincia di Gorizia,Staranzano,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031024,provincia di Gorizia,Turriaco,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_031025,provincia di Gorizia,Villesse,Gorizia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028001,provincia di Padova,Abano Terme,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028002,provincia di Padova,Agna,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028003,provincia di Padova,Albignasego,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028004,provincia di Padova,Anguillara Veneta,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028005,provincia di Padova,Arquà Petrarca,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028006,provincia di Padova,Arre,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028007,provincia di Padova,Arzergrande,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028008,provincia di Padova,Bagnoli di Sopra,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028009,provincia di Padova,Baone,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028010,provincia di Padova,Barbona,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028011,provincia di Padova,Battaglia Terme,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028012,provincia di Padova,Boara Pisani,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028107,provincia di Padova,Borgo Veneto,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028013,provincia di Padova,Borgoricco,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028014,provincia di Padova,Bovolenta,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028015,provincia di Padova,Brugine,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028016,provincia di Padova,Cadoneghe,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028020,provincia di Padova,Campo San Martino,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028017,provincia di Padova,Campodarsego,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028018,provincia di Padova,Campodoro,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028019,provincia di Padova,Camposampiero,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028021,provincia di Padova,Candiana,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028022,provincia di Padova,Carceri,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028023,provincia di Padova,Carmignano di Brenta,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028026,provincia di Padova,Cartura,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028027,provincia di Padova,Casale di Scodosia,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028028,provincia di Padova,Casalserugo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028029,provincia di Padova,Castelbaldo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028030,provincia di Padova,Cervarese Santa Croce,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028031,provincia di Padova,Cinto Euganeo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028032,provincia di Padova,Cittadella,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028033,provincia di Padova,Codevigo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028034,provincia di Padova,Conselve,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028035,provincia di Padova,Correzzola,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028036,provincia di Padova,Curtarolo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028106,provincia di Padova,Due Carrare,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028037,provincia di Padova,Este,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028038,provincia di Padova,Fontaniva,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028039,provincia di Padova,Galliera Veneta,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028040,provincia di Padova,Galzignano Terme,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028041,provincia di Padova,Gazzo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028042,provincia di Padova,Grantorto,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028043,provincia di Padova,Granze,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028044,provincia di Padova,Legnaro,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028045,provincia di Padova,Limena,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028046,provincia di Padova,Loreggia,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028047,provincia di Padova,Lozzo Atestino,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028048,provincia di Padova,Maserà di Padova,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028049,provincia di Padova,Masi,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028050,provincia di Padova,Massanzago,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028052,provincia di Padova,Megliadino San Vitale,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028053,provincia di Padova,Merlara,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028054,provincia di Padova,Mestrino,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028055,provincia di Padova,Monselice,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028056,provincia di Padova,Montagnana,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028057,provincia di Padova,Montegrotto Terme,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028058,provincia di Padova,Noventa Padovana,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028059,provincia di Padova,Ospedaletto Euganeo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028060,provincia di Padova,Padova,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028061,provincia di Padova,Pernumia,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028062,provincia di Padova,Piacenza d'Adige,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028063,provincia di Padova,Piazzola sul Brenta,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028064,provincia di Padova,Piombino Dese,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028065,provincia di Padova,Piove di Sacco,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028066,provincia di Padova,Polverara,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028067,provincia di Padova,Ponso,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028069,provincia di Padova,Ponte San Nicolò,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028068,provincia di Padova,Pontelongo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028070,provincia di Padova,Pozzonovo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028071,provincia di Padova,Rovolon,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028072,provincia di Padova,Rubano,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028073,provincia di Padova,Saccolongo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028075,provincia di Padova,San Giorgio delle Pertiche,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028076,provincia di Padova,San Giorgio in Bosco,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028077,provincia di Padova,San Martino di Lupari,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028079,provincia di Padova,San Pietro Viminario,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028078,provincia di Padova,San Pietro in Gu,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028082,provincia di Padova,Sant'Angelo di Piove di Sacco,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028083,provincia di Padova,Sant'Elena,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028084,provincia di Padova,Sant'Urbano,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028080,provincia di Padova,Santa Giustina in Colle,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028085,provincia di Padova,Saonara,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028086,provincia di Padova,Selvazzano Dentro,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028087,provincia di Padova,Solesino,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028088,provincia di Padova,Stanghella,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028089,provincia di Padova,Teolo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028090,provincia di Padova,Terrassa Padovana,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028091,provincia di Padova,Tombolo,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028092,provincia di Padova,Torreglia,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028093,provincia di Padova,Trebaseleghe,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028094,provincia di Padova,Tribano,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028095,provincia di Padova,Urbana,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028096,provincia di Padova,Veggiano,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028097,provincia di Padova,Vescovana,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028098,provincia di Padova,Vighizzolo d'Este,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028099,provincia di Padova,Vigodarzere,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028100,provincia di Padova,Vigonza,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028102,provincia di Padova,Villa Estense,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028101,provincia di Padova,Villa del Conte,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028103,provincia di Padova,Villafranca Padovana,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028104,provincia di Padova,Villanova di Camposampiero,Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_028105,provincia di Padova,Vo',Padova,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093001,provincia di Pordenone,Andreis,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093002,provincia di Pordenone,Arba,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093004,provincia di Pordenone,Aviano,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093005,provincia di Pordenone,Azzano Decimo,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093006,provincia di Pordenone,Barcis,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093007,provincia di Pordenone,Brugnera,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093008,provincia di Pordenone,Budoia,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093009,provincia di Pordenone,Caneva,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093010,provincia di Pordenone,Casarsa della Delizia,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093011,provincia di Pordenone,Castelnovo del Friuli,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093012,provincia di Pordenone,Cavasso Nuovo,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093013,provincia di Pordenone,Chions,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093014,provincia di Pordenone,Cimolais,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093015,provincia di Pordenone,Claut,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093016,provincia di Pordenone,Clauzetto,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093017,provincia di Pordenone,Cordenons,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093018,provincia di Pordenone,Cordovado,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093019,provincia di Pordenone,Erto e Casso,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093020,provincia di Pordenone,Fanna,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093021,provincia di Pordenone,Fiume Veneto,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093022,provincia di Pordenone,Fontanafredda,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093024,provincia di Pordenone,Frisanco,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093025,provincia di Pordenone,Maniago,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093026,provincia di Pordenone,Meduno,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093027,provincia di Pordenone,Montereale Valcellina,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093028,provincia di Pordenone,Morsano al Tagliamento,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093029,provincia di Pordenone,Pasiano di Pordenone,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093030,provincia di Pordenone,Pinzano al Tagliamento,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093031,provincia di Pordenone,Polcenigo,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093032,provincia di Pordenone,Porcia,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093033,provincia di Pordenone,Pordenone,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093034,provincia di Pordenone,Prata di Pordenone,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093035,provincia di Pordenone,Pravisdomini,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093036,provincia di Pordenone,Roveredo in Piano,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093037,provincia di Pordenone,Sacile,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093038,provincia di Pordenone,San Giorgio della Richinvelda,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093039,provincia di Pordenone,San Martino al Tagliamento,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093040,provincia di Pordenone,San Quirino,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093041,provincia di Pordenone,San Vito al Tagliamento,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093042,provincia di Pordenone,Sequals,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093043,provincia di Pordenone,Sesto al Reghena,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093044,provincia di Pordenone,Spilimbergo,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093045,provincia di Pordenone,Tramonti di Sopra,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093046,provincia di Pordenone,Tramonti di Sotto,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093047,provincia di Pordenone,Travesio,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093052,provincia di Pordenone,Vajont,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093053,provincia di Pordenone,Valvasone Arzene,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093049,provincia di Pordenone,Vito d'Asio,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093050,provincia di Pordenone,Vivaro,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_093051,provincia di Pordenone,Zoppola,Pordenone,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026001,provincia di Treviso,Altivole,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026002,provincia di Treviso,Arcade,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026003,provincia di Treviso,Asolo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026004,provincia di Treviso,Borso del Grappa,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026005,provincia di Treviso,Breda di Piave,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026006,provincia di Treviso,Caerano di San Marco,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026007,provincia di Treviso,Cappella Maggiore,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026008,provincia di Treviso,Carbonera,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026009,provincia di Treviso,Casale sul Sile,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026010,provincia di Treviso,Casier,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026011,provincia di Treviso,Castelcucco,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026012,provincia di Treviso,Castelfranco Veneto,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026013,provincia di Treviso,Castello di Godego,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026014,provincia di Treviso,Cavaso del Tomba,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026015,provincia di Treviso,Cessalto,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026016,provincia di Treviso,Chiarano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026017,provincia di Treviso,Cimadolmo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026018,provincia di Treviso,Cison di Valmarino,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026019,provincia di Treviso,Codognè,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026020,provincia di Treviso,Colle Umberto,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026021,provincia di Treviso,Conegliano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026022,provincia di Treviso,Cordignano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026023,provincia di Treviso,Cornuda,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026025,provincia di Treviso,Crocetta del Montello,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026026,provincia di Treviso,Farra di Soligo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026027,provincia di Treviso,Follina,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026028,provincia di Treviso,Fontanelle,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026029,provincia di Treviso,Fonte,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026030,provincia di Treviso,Fregona,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026031,provincia di Treviso,Gaiarine,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026032,provincia di Treviso,Giavera del Montello,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026033,provincia di Treviso,Godega di Sant'Urbano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026034,provincia di Treviso,Gorgo al Monticano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026035,provincia di Treviso,Istrana,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026036,provincia di Treviso,Loria,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026037,provincia di Treviso,Mansuè,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026038,provincia di Treviso,Mareno di Piave,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026039,provincia di Treviso,Maser,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026040,provincia di Treviso,Maserada sul Piave,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026041,provincia di Treviso,Meduna di Livenza,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026042,provincia di Treviso,Miane,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026043,provincia di Treviso,Mogliano Veneto,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026044,provincia di Treviso,Monastier di Treviso,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026045,provincia di Treviso,Monfumo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026046,provincia di Treviso,Montebelluna,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026047,provincia di Treviso,Morgano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026048,provincia di Treviso,Moriago della Battaglia,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026049,provincia di Treviso,Motta di Livenza,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026050,provincia di Treviso,Nervesa della Battaglia,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026051,provincia di Treviso,Oderzo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026052,provincia di Treviso,Ormelle,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026053,provincia di Treviso,Orsago,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026055,provincia di Treviso,Paese,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026056,provincia di Treviso,Pederobba,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026096,provincia di Treviso,Pieve del Grappa,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026057,provincia di Treviso,Pieve di Soligo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026058,provincia di Treviso,Ponte di Piave,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026059,provincia di Treviso,Ponzano Veneto,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026060,provincia di Treviso,Portobuffolè,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026061,provincia di Treviso,Possagno,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026062,provincia di Treviso,Povegliano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026063,provincia di Treviso,Preganziol,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026064,provincia di Treviso,Quinto di Treviso,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026065,provincia di Treviso,Refrontolo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026066,provincia di Treviso,Resana,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026067,provincia di Treviso,Revine Lago,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026068,provincia di Treviso,Riese Pio X,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026069,provincia di Treviso,Roncade,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026070,provincia di Treviso,Salgareda,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026071,provincia di Treviso,San Biagio di Callalta,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026072,provincia di Treviso,San Fior,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026073,provincia di Treviso,San Pietro di Feletto,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026074,provincia di Treviso,San Polo di Piave,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026076,provincia di Treviso,San Vendemiano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026077,provincia di Treviso,San Zenone degli Ezzelini,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026075,provincia di Treviso,Santa Lucia di Piave,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026078,provincia di Treviso,Sarmede,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026079,provincia di Treviso,Segusino,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026080,provincia di Treviso,Sernaglia della Battaglia,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026081,provincia di Treviso,Silea,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026082,provincia di Treviso,Spresiano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026083,provincia di Treviso,Susegana,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026084,provincia di Treviso,Tarzo,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026085,provincia di Treviso,Trevignano,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026086,provincia di Treviso,Treviso,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026087,provincia di Treviso,Valdobbiadene,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026088,provincia di Treviso,Vazzola,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026089,provincia di Treviso,Vedelago,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026090,provincia di Treviso,Vidor,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026091,provincia di Treviso,Villorba,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026092,provincia di Treviso,Vittorio Veneto,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026093,provincia di Treviso,Volpago del Montello,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026094,provincia di Treviso,Zenson di Piave,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_026095,provincia di Treviso,Zero Branco,Treviso,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_032001,provincia di Trieste,Duino Aurisina-Devin Nabrežina,Trieste,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_032002,provincia di Trieste,Monrupino-Repentabor,Trieste,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_032003,provincia di Trieste,Muggia,Trieste,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_032004,provincia di Trieste,San Dorligo della Valle-Dolina,Trieste,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_032005,provincia di Trieste,Sgonico-Zgonik,Trieste,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_032006,provincia di Trieste,Trieste,Trieste,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030001,provincia di Udine,Aiello del Friuli,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030002,provincia di Udine,Amaro,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030003,provincia di Udine,Ampezzo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030004,provincia di Udine,Aquileia,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030005,provincia di Udine,Arta Terme,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030006,provincia di Udine,Artegna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030007,provincia di Udine,Attimis,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030008,provincia di Udine,Bagnaria Arsa,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030009,provincia di Udine,Basiliano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030010,provincia di Udine,Bertiolo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030011,provincia di Udine,Bicinicco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030012,provincia di Udine,Bordano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030013,provincia di Udine,Buja,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030014,provincia di Udine,Buttrio,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030015,provincia di Udine,Camino al Tagliamento,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030016,provincia di Udine,Campoformido,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030138,provincia di Udine,Campolongo Tapogliano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030018,provincia di Udine,Carlino,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030019,provincia di Udine,Cassacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030020,provincia di Udine,Castions di Strada,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030021,provincia di Udine,Cavazzo Carnico,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030022,provincia di Udine,Cercivento,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030023,provincia di Udine,Cervignano del Friuli,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030024,provincia di Udine,Chiopris-Viscone,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030025,provincia di Udine,Chiusaforte,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030026,provincia di Udine,Cividale del Friuli,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030027,provincia di Udine,Codroipo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030028,provincia di Udine,Colloredo di Monte Albano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030029,provincia di Udine,Comeglians,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030030,provincia di Udine,Corno di Rosazzo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030031,provincia di Udine,Coseano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030032,provincia di Udine,Dignano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030033,provincia di Udine,Dogna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030034,provincia di Udine,Drenchia,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030035,provincia di Udine,Enemonzo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030036,provincia di Udine,Faedis,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030037,provincia di Udine,Fagagna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030190,provincia di Udine,Fiumicello Villa Vicentina,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030039,provincia di Udine,Flaibano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030137,provincia di Udine,Forgaria nel Friuli,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030040,provincia di Udine,Forni Avoltri,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030041,provincia di Udine,Forni di Sopra,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030042,provincia di Udine,Forni di Sotto,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030043,provincia di Udine,Gemona del Friuli,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030044,provincia di Udine,Gonars,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030045,provincia di Udine,Grimacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030046,provincia di Udine,Latisana,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030047,provincia di Udine,Lauco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030048,provincia di Udine,Lestizza,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030049,provincia di Udine,Lignano Sabbiadoro,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030051,provincia di Udine,Lusevera,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030052,provincia di Udine,Magnano in Riviera,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030053,provincia di Udine,Majano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030054,provincia di Udine,Malborghetto Valbruna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030055,provincia di Udine,Manzano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030056,provincia di Udine,Marano Lagunare,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030057,provincia di Udine,Martignacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030058,provincia di Udine,Mereto di Tomba,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030059,provincia di Udine,Moggio Udinese,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030060,provincia di Udine,Moimacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030061,provincia di Udine,Montenars,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030062,provincia di Udine,Mortegliano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030063,provincia di Udine,Moruzzo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030064,provincia di Udine,Muzzana del Turgnano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030065,provincia di Udine,Nimis,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030066,provincia di Udine,Osoppo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030067,provincia di Udine,Ovaro,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030068,provincia di Udine,Pagnacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030069,provincia di Udine,Palazzolo dello Stella,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030070,provincia di Udine,Palmanova,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030071,provincia di Udine,Paluzza,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030072,provincia di Udine,Pasian di Prato,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030073,provincia di Udine,Paularo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030074,provincia di Udine,Pavia di Udine,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030075,provincia di Udine,Pocenia,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030076,provincia di Udine,Pontebba,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030077,provincia di Udine,Porpetto,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030078,provincia di Udine,Povoletto,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030079,provincia di Udine,Pozzuolo del Friuli,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030080,provincia di Udine,Pradamano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030081,provincia di Udine,Prato Carnico,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030082,provincia di Udine,Precenicco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030083,provincia di Udine,Premariacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030084,provincia di Udine,Preone,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030085,provincia di Udine,Prepotto,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030086,provincia di Udine,Pulfero,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030087,provincia di Udine,Ragogna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030088,provincia di Udine,Ravascletto,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030089,provincia di Udine,Raveo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030090,provincia di Udine,Reana del Rojale,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030091,provincia di Udine,Remanzacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030092,provincia di Udine,Resia,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030093,provincia di Udine,Resiutta,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030094,provincia di Udine,Rigolato,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030095,provincia di Udine,Rive d'Arcano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030188,provincia di Udine,Rivignano Teor,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030097,provincia di Udine,Ronchis,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030098,provincia di Udine,Ruda,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030099,provincia di Udine,San Daniele del Friuli,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030100,provincia di Udine,San Giorgio di Nogaro,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030101,provincia di Udine,San Giovanni al Natisone,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030102,provincia di Udine,San Leonardo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030103,provincia di Udine,San Pietro al Natisone,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030105,provincia di Udine,San Vito al Torre,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030106,provincia di Udine,San Vito di Fagagna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030104,provincia di Udine,Santa Maria la Longa,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030189,provincia di Udine,Sappada,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030107,provincia di Udine,Sauris,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030108,provincia di Udine,Savogna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030109,provincia di Udine,Sedegliano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030110,provincia di Udine,Socchieve,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030111,provincia di Udine,Stregna,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030112,provincia di Udine,Sutrio,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030113,provincia di Udine,Taipana,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030114,provincia di Udine,Talmassons,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030116,provincia di Udine,Tarcento,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030117,provincia di Udine,Tarvisio,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030118,provincia di Udine,Tavagnacco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030120,provincia di Udine,Terzo d'Aquileia,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030121,provincia di Udine,Tolmezzo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030122,provincia di Udine,Torreano,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030123,provincia di Udine,Torviscosa,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030124,provincia di Udine,Trasaghis,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030126,provincia di Udine,Treppo Grande,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030191,provincia di Udine,Treppo Ligosullo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030127,provincia di Udine,Tricesimo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030128,provincia di Udine,Trivignano Udinese,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030129,provincia di Udine,Udine,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030130,provincia di Udine,Varmo,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030131,provincia di Udine,Venzone,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030132,provincia di Udine,Verzegnis,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030133,provincia di Udine,Villa Santina,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030135,provincia di Udine,Visco,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_030136,provincia di Udine,Zuglio,Udine,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027001,provincia di Venezia,Annone Veneto,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027002,provincia di Venezia,Campagna Lupia,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027003,provincia di Venezia,Campolongo Maggiore,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027004,provincia di Venezia,Camponogara,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027005,provincia di Venezia,Caorle,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027044,provincia di Venezia,Cavallino-Treporti,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027006,provincia di Venezia,Cavarzere,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027007,provincia di Venezia,Ceggia,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027008,provincia di Venezia,Chioggia,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027009,provincia di Venezia,Cinto Caomaggiore,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027010,provincia di Venezia,Cona,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027011,provincia di Venezia,Concordia Sagittaria,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027012,provincia di Venezia,Dolo,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027013,provincia di Venezia,Eraclea,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027014,provincia di Venezia,Fiesso d'Artico,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027015,provincia di Venezia,Fossalta di Piave,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027016,provincia di Venezia,Fossalta di Portogruaro,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027017,provincia di Venezia,Fossò,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027018,provincia di Venezia,Gruaro,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027019,provincia di Venezia,Jesolo,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027020,provincia di Venezia,Marcon,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027021,provincia di Venezia,Martellago,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027022,provincia di Venezia,Meolo,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027023,provincia di Venezia,Mira,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027024,provincia di Venezia,Mirano,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027025,provincia di Venezia,Musile di Piave,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027026,provincia di Venezia,Noale,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027027,provincia di Venezia,Noventa di Piave,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027028,provincia di Venezia,Pianiga,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027029,provincia di Venezia,Portogruaro,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027030,provincia di Venezia,Pramaggiore,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027031,provincia di Venezia,Quarto d'Altino,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027032,provincia di Venezia,Salzano,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027033,provincia di Venezia,San Donà di Piave,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027034,provincia di Venezia,San Michele al Tagliamento,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027036,provincia di Venezia,San Stino di Livenza,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027035,provincia di Venezia,Santa Maria di Sala,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027037,provincia di Venezia,Scorzè,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027038,provincia di Venezia,Spinea,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027039,provincia di Venezia,Stra,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027040,provincia di Venezia,Teglio Veneto,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027041,provincia di Venezia,Torre di Mosto,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027042,provincia di Venezia,Venezia,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_027043,provincia di Venezia,Vigonovo,Venezia,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024001,provincia di Vicenza,Agugliaro,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024002,provincia di Vicenza,Albettone,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024003,provincia di Vicenza,Alonte,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024004,provincia di Vicenza,Altavilla Vicentina,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024005,provincia di Vicenza,Altissimo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024006,provincia di Vicenza,Arcugnano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024007,provincia di Vicenza,Arsiero,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024008,provincia di Vicenza,Arzignano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024009,provincia di Vicenza,Asiago,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024010,provincia di Vicenza,Asigliano Veneto,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024124,provincia di Vicenza,Barbarano Mossano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024012,provincia di Vicenza,Bassano del Grappa,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024013,provincia di Vicenza,Bolzano Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024014,provincia di Vicenza,Breganze,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024015,provincia di Vicenza,Brendola,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024016,provincia di Vicenza,Bressanvido,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024017,provincia di Vicenza,Brogliano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024018,provincia di Vicenza,Caldogno,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024019,provincia di Vicenza,Caltrano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024020,provincia di Vicenza,Calvene,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024021,provincia di Vicenza,Camisano Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024022,provincia di Vicenza,Campiglia dei Berici,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024024,provincia di Vicenza,Carrè,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024025,provincia di Vicenza,Cartigliano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024026,provincia di Vicenza,Cassola,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024027,provincia di Vicenza,Castegnero,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024028,provincia di Vicenza,Castelgomberto,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024029,provincia di Vicenza,Chiampo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024030,provincia di Vicenza,Chiuppano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024032,provincia di Vicenza,Cogollo del Cengio,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024126,provincia di Vicenza,Colceresa,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024034,provincia di Vicenza,Cornedo Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024035,provincia di Vicenza,Costabissara,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024036,provincia di Vicenza,Creazzo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024037,provincia di Vicenza,Crespadoro,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024038,provincia di Vicenza,Dueville,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024039,provincia di Vicenza,Enego,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024040,provincia di Vicenza,Fara Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024041,provincia di Vicenza,Foza,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024042,provincia di Vicenza,Gallio,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024043,provincia di Vicenza,Gambellara,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024044,provincia di Vicenza,Gambugliano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024046,provincia di Vicenza,Grisignano di Zocco,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024047,provincia di Vicenza,Grumolo delle Abbadesse,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024048,provincia di Vicenza,Isola Vicentina,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024049,provincia di Vicenza,Laghi,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024050,provincia di Vicenza,Lastebasse,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024051,provincia di Vicenza,Longare,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024052,provincia di Vicenza,Lonigo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024053,provincia di Vicenza,Lugo di Vicenza,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024127,provincia di Vicenza,Lusiana Conco,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024055,provincia di Vicenza,Malo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024056,provincia di Vicenza,Marano Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024057,provincia di Vicenza,Marostica,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024063,provincia di Vicenza,Monte di Malo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024060,provincia di Vicenza,Montebello Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024061,provincia di Vicenza,Montecchio Maggiore,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024062,provincia di Vicenza,Montecchio Precalcino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024064,provincia di Vicenza,Montegalda,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024065,provincia di Vicenza,Montegaldella,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024066,provincia di Vicenza,Monteviale,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024067,provincia di Vicenza,Monticello Conte Otto,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024068,provincia di Vicenza,Montorso Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024070,provincia di Vicenza,Mussolente,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024071,provincia di Vicenza,Nanto,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024072,provincia di Vicenza,Nogarole Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024073,provincia di Vicenza,Nove,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024074,provincia di Vicenza,Noventa Vicentina,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024075,provincia di Vicenza,Orgiano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024076,provincia di Vicenza,Pedemonte,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024077,provincia di Vicenza,Pianezze,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024078,provincia di Vicenza,Piovene Rocchette,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024079,provincia di Vicenza,Pojana Maggiore,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024080,provincia di Vicenza,Posina,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024081,provincia di Vicenza,Pove del Grappa,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024082,provincia di Vicenza,Pozzoleone,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024083,provincia di Vicenza,Quinto Vicentino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024084,provincia di Vicenza,Recoaro Terme,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024085,provincia di Vicenza,Roana,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024086,provincia di Vicenza,Romano d'Ezzelino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024088,provincia di Vicenza,Rossano Veneto,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024087,provincia di Vicenza,Rosà,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024089,provincia di Vicenza,Rotzo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024090,provincia di Vicenza,Salcedo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024094,provincia di Vicenza,San Pietro Mussolino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024096,provincia di Vicenza,San Vito di Leguzzano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024091,provincia di Vicenza,Sandrigo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024095,provincia di Vicenza,Santorso,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024097,provincia di Vicenza,Sarcedo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024098,provincia di Vicenza,Sarego,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024099,provincia di Vicenza,Schiavon,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024100,provincia di Vicenza,Schio,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024101,provincia di Vicenza,Solagna,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024102,provincia di Vicenza,Sossano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024103,provincia di Vicenza,Sovizzo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024104,provincia di Vicenza,Tezze sul Brenta,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024105,provincia di Vicenza,Thiene,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024106,provincia di Vicenza,Tonezza del Cimone,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024107,provincia di Vicenza,Torrebelvicino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024108,provincia di Vicenza,Torri di Quartesolo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024110,provincia di Vicenza,Trissino,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024123,provincia di Vicenza,Val Liona,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024125,provincia di Vicenza,Valbrenta,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024111,provincia di Vicenza,Valdagno,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024112,provincia di Vicenza,Valdastico,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024113,provincia di Vicenza,Valli del Pasubio,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024115,provincia di Vicenza,Velo d'Astico,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024116,provincia di Vicenza,Vicenza,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024117,provincia di Vicenza,Villaga,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024118,provincia di Vicenza,Villaverla,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024119,provincia di Vicenza,Zanè,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024120,provincia di Vicenza,Zermeghedo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024121,provincia di Vicenza,Zovencedo,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf
+wr_0089,IT_024122,provincia di Vicenza,Zugliano,Vicenza,,https://www.masaf.gov.it/flex/cm/pages/ServeBLOB.php/L/IT/IDPagina/4625#Disciplinari_DOP_O-Z/Prosecco.pdf

@@ -1,0 +1,55 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0105,PT_310101,município de Calheta (whole municipality),Arco da Calheta,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310102,município de Calheta (whole municipality),Calheta,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310103,município de Calheta (whole municipality),Estreito da Calheta,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310104,município de Calheta (whole municipality),Fajã da Ovelha,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310105,município de Calheta (whole municipality),Jardim do Mar,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310106,município de Calheta (whole municipality),Paul do Mar,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310107,município de Calheta (whole municipality),Ponta do Pargo,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310108,município de Calheta (whole municipality),Prazeres,Calheta (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310201,município de Câmara de Lobos (whole municipality),Câmara de Lobos,Câmara de Lobos (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310202,município de Câmara de Lobos (whole municipality),Curral das Freiras,Câmara de Lobos (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310203,município de Câmara de Lobos (whole municipality),Estreito de Câmara de Lobos,Câmara de Lobos (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310204,município de Câmara de Lobos (whole municipality),Quinta Grande,Câmara de Lobos (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310205,município de Câmara de Lobos (whole municipality),Jardim da Serra,Câmara de Lobos (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310301,município de Funchal (whole municipality),Imaculado Coração de Maria,Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310302,município de Funchal (whole municipality),Monte,Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310303,município de Funchal (whole municipality),Funchal (Santa Luzia),Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310304,município de Funchal (whole municipality),Funchal (Santa Maria Maior),Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310305,município de Funchal (whole municipality),Santo António,Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310306,município de Funchal (whole municipality),São Gonçalo,Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310307,município de Funchal (whole municipality),São Martinho,Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310308,município de Funchal (whole municipality),Funchal (São Pedro),Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310309,município de Funchal (whole municipality),São Roque,Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310310,município de Funchal (whole municipality),Funchal (Sé),Funchal (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310401,município de Machico (whole municipality),Água de Pena,Machico (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310402,município de Machico (whole municipality),Caniçal,Machico (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310403,município de Machico (whole municipality),Machico,Machico (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310404,município de Machico (whole municipality),Porto da Cruz,Machico (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310405,município de Machico (whole municipality),Santo António da Serra,Machico (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310501,município de Ponta do Sol (whole municipality),Canhas,Ponta do Sol (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310502,município de Ponta do Sol (whole municipality),Madalena do Mar,Ponta do Sol (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310503,município de Ponta do Sol (whole municipality),Ponta do Sol,Ponta do Sol (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310601,município de Porto Moniz (whole municipality),Achadas da Cruz,Porto Moniz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310602,município de Porto Moniz (whole municipality),Porto Moniz,Porto Moniz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310603,município de Porto Moniz (whole municipality),Ribeira da Janela,Porto Moniz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310604,município de Porto Moniz (whole municipality),Seixal,Porto Moniz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310701,município de Ribeira Brava (whole municipality),Campanário,Ribeira Brava (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310702,município de Ribeira Brava (whole municipality),Ribeira Brava,Ribeira Brava (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310703,município de Ribeira Brava (whole municipality),Serra de Água,Ribeira Brava (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310704,município de Ribeira Brava (whole municipality),Tabua,Ribeira Brava (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310802,município de Santa Cruz (whole municipality),Camacha,Santa Cruz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310803,município de Santa Cruz (whole municipality),Caniço,Santa Cruz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310804,município de Santa Cruz (whole municipality),Gaula,Santa Cruz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310805,município de Santa Cruz (whole municipality),Santa Cruz,Santa Cruz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310806,município de Santa Cruz (whole municipality),Santo António da Serra,Santa Cruz (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310901,município de Santana (whole municipality),Arco de São Jorge,Santana (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310902,município de Santana (whole municipality),Faial,Santana (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310903,município de Santana (whole municipality),Santana,Santana (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310904,município de Santana (whole municipality),São Jorge,Santana (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310905,município de Santana (whole municipality),São Roque do Faial,Santana (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_310906,município de Santana (whole municipality),Ilha,Santana (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_311001,município de São Vicente (whole municipality),Boa Ventura,São Vicente (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_311002,município de São Vicente (whole municipality),Ponta Delgada,São Vicente (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_311003,município de São Vicente (whole municipality),São Vicente,São Vicente (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001
+wr_0105,PT_320101,município de Porto Santo (whole municipality),Porto Santo,Porto Santo (Região Autónoma da Madeira),,https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/10001

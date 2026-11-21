@@ -41,8 +41,11 @@ OUT = ROOT / 'supabase/data/enrichment/wine_regions/outlines'
 TOLERANCE_DEG = 0.012  # ~1 km at these latitudes
 CLOSE_DEG = 0.015  # gaps and notches under ~1.5 km close up
 MIN_PART_KM2 = 4.0
-# An overlap larger than this share of the smaller region is nesting.
-NESTED_SHARE = 0.5
+# Only an overlap smaller than this share of the smaller region is a
+# simplification sliver. Anything larger is real: one region inside another
+# (Vijlen in Mergelland) or a legal overlap (the Beaujolais crus are also
+# inside AOC Bourgogne), and both regions keep it.
+SLIVER_SHARE = 0.06
 LAU_SOURCE = 'Eurostat GISCO LAU 2024 (© EuroGeographics)'
 KM2_PER_DEG2_AT_45N = 111.32 * 111.32 * 0.707
 
@@ -95,9 +98,8 @@ def main(lau_path):
 
     # 2. Neighbours, simplified separately, overlap in thin slivers along
     # their shared border, which paint darker at close zoom. The later
-    # region gives the overlap up, so they meet edge to edge. A region
-    # mostly inside another (Vijlen in Mergelland, Uco in Mendoza, Lavaux
-    # in Vaud) is nesting, not a sliver, and is left alone.
+    # region gives the overlap up, so they meet edge to edge. A larger
+    # overlap is real (nesting, or a legal overlap) and is left alone.
     codes = sorted(simple_by_code)
     for i, a in enumerate(codes):
         for b in codes[i + 1:]:
@@ -105,7 +107,7 @@ def main(lau_path):
             if not ga.intersects(gb):
                 continue
             overlap = ga.intersection(gb).area
-            if overlap == 0 or overlap > NESTED_SHARE * min(ga.area, gb.area):
+            if overlap == 0 or overlap > SLIVER_SHARE * min(ga.area, gb.area):
                 continue
             simple_by_code[b] = gb.difference(ga).buffer(0)
 

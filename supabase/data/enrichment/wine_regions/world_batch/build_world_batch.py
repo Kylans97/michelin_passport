@@ -77,6 +77,10 @@ AT = ('AT', 'alps_hr/at', None, [
     ('suedsteiermark', 'wr_0079')])
 FIRST_APPELLATION = 44  # after wa_0043
 FIRST_GRAPE = 32  # after gr_0031
+CATALOGUE = 'grapes_production_20261120.json'
+OUTPUT = 'wine_regions_seed_world_v1.sql'
+# Regions shown as a point: code -> (latitude, longitude, radius_km, source).
+POINTS = {}
 
 
 def regions():
@@ -91,10 +95,17 @@ def do_import(scratch):
     seen_units = set()
     for country, folder, units, slug, code, csv_name in regions():
         src = scratch / folder
+        if code in POINTS:
+            print(f'{code} {country} {slug}: point')
+            continue
         rows = list(csv.DictReader(open(src / f'{csv_name}.csv',
                                         encoding='utf-8')))
         for r in rows:
             r['region_code'] = code
+            # Some research wrote "no" rather than leaving it empty.
+            if (r.get('partial') or '').strip().lower() in (
+                    'no', 'false', 'none', 'n', '0'):
+                r['partial'] = ''
         with open(OUTLINES / 'communes' / f'{code}.csv', 'w', newline='',
                   encoding='utf-8') as f:
             w = csv.DictWriter(f, ['region_code', 'gisco_id', 'official_name',
@@ -110,7 +121,7 @@ def do_import(scratch):
             shutil.copy(src / units, OUTLINES / 'geometry' / units)
         print(f'{code} {country} {slug}: {len(rows)} units')
     for country, folder, *_ in BATCH + ([AT] if AT[3] else []):
-        dest = HERE / country.lower()
+        dest = HERE / pathlib.Path(folder).name
         dest.mkdir(exist_ok=True)
         for name in ('style.json', 'new_grapes.json'):
             if (scratch / folder / name).exists():
@@ -156,8 +167,7 @@ def cap(s):
 def do_sql():
     from shapely.geometry import MultiPolygon, Polygon
     outlines = json.load(open(OUTLINES / 'outlines.json', encoding='utf-8'))
-    catalogue = json.load(open(HERE / 'grapes_production_20261120.json',
-                               encoding='utf-8'))
+    catalogue = json.load(open(HERE / CATALOGUE, encoding='utf-8'))
     by_name = {}
     for g in catalogue:
         for n in [g['name']] + (g['aliases'] or []):
@@ -167,7 +177,7 @@ def do_sql():
     new_grapes, extra_aliases = [], {}
     next_grape = FIRST_GRAPE
     for country, folder, *_ in BATCH + ([AT] if AT[3] else []):
-        path = HERE / country.lower() / 'new_grapes.json'
+        path = HERE / pathlib.Path(folder).name / 'new_grapes.json'
         if not path.exists():
             continue
         for g in json.load(open(path, encoding='utf-8')):
@@ -192,14 +202,21 @@ def do_sql():
     region_rows, link_rows, app_rows, unmatched = [], [], [], []
     next_app = FIRST_APPELLATION
     for country, folder, units, slug, code, csv_name in regions():
-        style = {s['slug']: s for s in json.load(
-            open(HERE / country.lower() / 'style.json', encoding='utf-8'))}
+        style = {s['slug']: s for s in json.load(open(
+            HERE / pathlib.Path(folder).name / 'style.json', encoding='utf-8'))}
         s = style[slug]
-        polys = outlines[code]
-        mp = MultiPolygon([Polygon(p[0], p[1:]) for p in polys])
-        pt = mp.representative_point()
-        km2 = mp.area * 111.32 ** 2 * math.cos(math.radians(pt.y))
-        radius = min(400, max(5, round(math.sqrt(km2 / math.pi))))
+        country = s.get('country', country)
+        if code in POINTS:
+            lat, lng, radius, _ = POINTS[code]
+
+            class pt:  # noqa: N801 - a point's coordinates, like shapely's
+                x, y = lng, lat
+        else:
+            polys = outlines[code]
+            mp = MultiPolygon([Polygon(p[0], p[1:]) for p in polys])
+            pt = mp.representative_point()
+            km2 = mp.area * 111.32 ** 2 * math.cos(math.radians(pt.y))
+            radius = min(400, max(5, round(math.sqrt(km2 / math.pi))))
         source = next(iter(s.get('sources', {}).get('summary', [])), None)
         region_rows.append(
             f"  ({q(code)}, {q(s['name'])}, {arr(s.get('aliases', []))}, "
@@ -272,7 +289,7 @@ def do_sql():
                 ') as v(code, name, aliases, region, colour, note, ord)',
                 'join public.wine_regions r on r.region_code = v.region;', '']
     out += ['commit;', '']
-    (HERE.parent / 'wine_regions_seed_world_v1.sql').write_text(
+    (HERE.parent / OUTPUT).write_text(
         '\n'.join(out), encoding='utf-8')
     print(f'{len(region_rows)} regions, {len(new_grapes)} new grapes '
           f'({", ".join(g["name"] for _, g in new_grapes)}), '
