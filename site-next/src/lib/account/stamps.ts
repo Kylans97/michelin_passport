@@ -48,8 +48,8 @@ export const stampDate = (date: string) => {
   return `${p[2]} ${MONTHS[p[1] - 1].toUpperCase()} ${p[0]}`;
 };
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS = "'IBM Plex Sans', system-ui, sans-serif";
+const SERIF = "'Spectral', Georgia, serif";
+const SANS = "'Hanken Grotesk', system-ui, sans-serif";
 
 /** The venue name in one or two balanced lines, at the largest of three
  *  sizes that fits [maxWidth]; serif glyphs average about half an em. */

@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&display=swap">
 <style>
   /* Layout: one sticky stage (globe + itinerary + passport) that the scroll drives; the story text crossfades in place. Single dark look, as on mantelier.app. */
   :root {
@@ -31,9 +31,9 @@
     --ink-green: #2C574B;
     --ink-gold: #8E6935;
     --ink-deep: #6E5129;
-    --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-    --body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-    --util: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --display: "Spectral", Georgia, "Times New Roman", serif;
+    --body: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+    --util: "Hanken Grotesk", system-ui, sans-serif;
     --page-w: 196px;
     --page-h: 266px;
     color-scheme: dark;
@@ -589,7 +589,7 @@ function line(pts) {
 const STATIC_LABEL = [{ right: true, dy: -10 }, { right: false, dy: 4 }, { right: true, dy: 16 }, { right: false, dy: -10 }];
 function label(s, x, y, big) {
   const fs = big ? (W < 500 ? 17 : 20) : 13;
-  ctx.font = `500 ${fs}px "Cormorant Garamond", Georgia, serif`;
+  ctx.font = `500 ${fs}px "Spectral", Georgia, serif`;
   const tw = ctx.measureText(s.venue).width, fixed = !big && STATIC_LABEL[STOPS.indexOf(s)];
   let right = fixed ? fixed.right : x + 14 + tw < W - 8;
   if (!right && x - 14 - tw < 8) right = true;
@@ -603,7 +603,7 @@ function label(s, x, y, big) {
     const path = new Path2D(document.getElementById(s.stars ? "star-shape" : "key-shape").getAttribute("d"));
     ctx.fillStyle = GOLD;
     for (let i = 0; i < n; i++) { ctx.save(); ctx.translate(gx0 + i * (size + 2), ly + 5); ctx.scale(size / 24, size / 24); ctx.fill(path); ctx.restore(); }
-    ctx.font = `400 9px "IBM Plex Mono", ui-monospace, monospace`; ctx.fillStyle = `rgba(${IVORY},.6)`;
+    ctx.font = `400 9px "Hanken Grotesk", system-ui, sans-serif`; ctx.fillStyle = `rgba(${IVORY},.6)`;
     ctx.fillText(s.city, right ? gx0 + n * (size + 2) + 6 : gx0 - 6, ly + 14);
   }
   return tw;

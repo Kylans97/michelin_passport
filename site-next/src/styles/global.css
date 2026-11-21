@@ -15,9 +15,9 @@
   --on-green-accent: #C9B48A;
   --on-green-rule: rgba(244, 240, 231, 0.18);
 
-  --display: "Cormorant Garamond", Georgia, serif;
-  --body: "IBM Plex Sans", system-ui, sans-serif;
-  --util: "IBM Plex Mono", ui-monospace, monospace;
+  --display: "Spectral", Georgia, serif;
+  --body: "Hanken Grotesk", system-ui, sans-serif;
+  --util: "Hanken Grotesk", system-ui, sans-serif;
 
   --measure: 1320px;
   --gutter: clamp(16px, 4vw, 40px);
