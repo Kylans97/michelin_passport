@@ -8,6 +8,12 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.8.0 (39) — 2026-11-21
+
+Merged into main on 2026-11-21 from `claude/wine-regions` (wine regions rounds 1 to 7, the wine verdicts and wines kept without a visit, the wine-list search fixes), `claude/journey-visuals-2` (train and ship pages, round two) and `claude/relaxed-mirzakhani-0618b5` (stamp text inside its frame). Conflicts in this changelog only; both sides kept. `flutter analyze` clean and `flutter test` 3,075 passing on the merged tree. Order for the wine verdicts, as their migration requires: the privacy policy (`site-next/public/privacy.html`) published first, then `20261101640000_add_wine_verdicts_and_cellar_wines.sql`, then this build.
+
 ### Added
 - **Wine verdicts, and wines kept without a visit** (product owner, 2026-11-21: "Stel je kan bijhouden wat je echt lekker vond zou je later zelf die wijn kunnen bestellen"; plan with mockups at https://claude.ai/artifact/FR6GKmiV91PrSzmJ48XHJb, decisions the same day, then "jaa dat wine verdicts plan mag je bouwen"). Step 1 of three; step 2 links a wine to its estate's shop, step 3 is wine merchants.
   - **A verdict per wine:** Would drink again, It was fine or Not for me, and "A line to remember it by" (up to 280 characters), in the wine sheet on a visit and in the Cellar. All optional. Tapping the chosen verdict again clears it. Shown beside the wine as "Again" in claret, or a quieter "Fine" / "Not for me"; the note in italics under it. Never gold, never a score, never a stamp.
