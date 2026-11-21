@@ -13,30 +13,39 @@ const host = e.venues.find((v) => v.roles.includes('host'));
     <span class="when">{formatWhen(e)}</span>
     <span class="display name">{e.name}</span>
     <span class="meta">
-      {[e.type, host ? `Hosted by ${host.name}` : e.venueName, place(e)].filter(Boolean).join(' · ')}
+      {[host ? `Hosted by ${host.name}` : e.venueName, place(e)].filter(Boolean).join(' · ')}
       {e.cancelled && <span class="cancelled"> · Cancelled</span>}
     </span>
+    <span class="type">{e.type}</span>
   </a>
 </li>
 
 <style>
   .row { border-bottom: 1px solid var(--rule); }
-  .row a { display: grid; grid-template-columns: 13em minmax(0, 1fr); column-gap: 20px; padding: 14px 0; }
+  .row a { display: grid; grid-template-columns: 11em minmax(0, 1fr) auto; column-gap: 24px; align-items: baseline; padding: 22px 0; }
   .row a:hover { text-decoration: none; }
   .row a:hover .name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
-  .when { font-family: var(--util); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--taupe); padding-top: 6px; grid-row: span 2; }
-  .name { font-size: 21px; line-height: 1.2; }
-  .meta { font-size: 13px; color: var(--ink-soft); grid-column: 2; }
-  .cancelled { color: var(--green); font-weight: 500; }
+  .when { font-size: 14px; font-weight: 600; line-height: 1.4; grid-row: span 2; }
+  .name { font-size: 26px; line-height: 1.15; }
+  .meta { font-size: 14px; color: var(--ink-soft); grid-column: 2; margin-top: 4px; }
+  .type {
+    grid-column: 3; grid-row: 1 / span 2; align-self: center;
+    font-size: 13px; font-weight: 600; color: var(--forest);
+    border: 1px solid #C9BFA8; border-radius: 999px; padding: 5px 14px; white-space: nowrap;
+  }
+  .cancelled { color: var(--green); font-weight: 600; }
 
   .on-green { border-bottom-color: rgba(244, 240, 231, 0.18); }
   .on-green .when { color: var(--on-green-accent); }
   .on-green .meta { color: var(--on-green-muted); }
+  .on-green .type { color: var(--ivory); border-color: var(--on-green-rule); }
   .on-green .cancelled { color: var(--ivory); }
 
   @media (max-width: 760px) {
-    .row a { grid-template-columns: minmax(0, 1fr); row-gap: 2px; }
-    .when { grid-row: auto; padding-top: 0; }
-    .meta { grid-column: 1; }
+    .row a { grid-template-columns: minmax(0, 1fr); row-gap: 4px; padding: 18px 0; }
+    .when { grid-row: auto; }
+    .name { font-size: 23px; }
+    .meta { grid-column: 1; margin-top: 0; }
+    .type { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 6px; }
   }
 </style>

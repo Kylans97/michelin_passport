@@ -41,19 +41,30 @@ const { current } = Astro.props;
 </script>
 
 <style>
-  .nav { background: var(--green); color: var(--ivory); border-bottom: 1px solid var(--on-green-rule); }
+  /* Keynote: a slim glass bar that stays at the top while the page scrolls. */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(14, 33, 28, 0.82);
+    -webkit-backdrop-filter: saturate(160%) blur(18px);
+    backdrop-filter: saturate(160%) blur(18px);
+    color: var(--ivory);
+    border-bottom: 1px solid rgba(244, 240, 231, 0.08);
+  }
   .bar {
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 24px;
-    min-height: 68px;
+    min-height: 52px;
+    max-width: 1200px;
   }
   .wordmark {
     font-family: var(--display);
-    font-size: 24px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
   }
   .wordmark:hover { text-decoration: none; }
   ul {
@@ -66,15 +77,17 @@ const { current } = Astro.props;
     font-size: 13px;
     color: var(--on-green-muted);
   }
-  ul a:hover { color: var(--ivory); }
+  ul a:hover { color: var(--ivory); text-decoration: none; }
   .end { display: flex; align-items: center; gap: 18px; }
-  .account { font-size: 13px; color: var(--ivory); white-space: nowrap; }
+  .account { font-size: 13px; color: var(--on-green-muted); white-space: nowrap; }
+  .account:hover { color: var(--ivory); text-decoration: none; }
   .name { display: block; max-width: 16ch; overflow: hidden; text-overflow: ellipsis; }
   .initial { display: none; }
-  a[aria-current='page'] { color: var(--ivory); text-decoration: underline; text-underline-offset: 6px; }
+  .end :global(.cta) { font-weight: 600; }
+  a[aria-current='page'] { color: var(--ivory); }
 
   @media (max-width: 760px) {
-    .bar { grid-template-columns: 1fr auto; row-gap: 0; padding-top: 12px; }
+    .bar { grid-template-columns: 1fr auto; row-gap: 0; padding-top: 10px; }
     .end { gap: 12px; }
     .member .name { display: none; }
     .member .initial {
@@ -90,6 +103,6 @@ const { current } = Astro.props;
     .member:hover { text-decoration: none; }
     nav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; scrollbar-width: none; }
     nav::-webkit-scrollbar { display: none; }
-    ul { justify-content: flex-start; gap: 22px; padding: 12px 0 14px; white-space: nowrap; }
+    ul { justify-content: flex-start; gap: 22px; padding: 10px 0 12px; white-space: nowrap; }
   }
 </style>

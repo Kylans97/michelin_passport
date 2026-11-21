@@ -1,5 +1,8 @@
 /* Mantelier public site: the app's palette and type, on paper.
-   Ivory page, forest-green ink, gold only for MICHELIN stars and Keys. */
+   Ivory page, forest-green ink, gold only for MICHELIN stars and Keys.
+   Direction B, "Keynote" (product owner, 2026-11-21): the app's own
+   fonts, Spectral and Hanken Grotesk, large light headlines, one idea
+   per section, deep green, ivory and claret bands. */
 
 :root {
   --ivory: #F4F0E7;
@@ -11,13 +14,18 @@
   --rule: #D6CFBF;
   --placeholder: #DCD5C4;
   --gold: #AC8244;
+  --deep: #0E211C;
+  --forest: #23473D;
+  --claret: #6B2E36;
+  --on-claret-accent: #E8C9C5;
+  --card: #FFFFFF;
   --on-green-muted: rgba(244, 240, 231, 0.68);
   --on-green-accent: #C9B48A;
   --on-green-rule: rgba(244, 240, 231, 0.18);
 
-  --display: "Cormorant Garamond", Georgia, serif;
-  --body: "IBM Plex Sans", system-ui, sans-serif;
-  --util: "IBM Plex Mono", ui-monospace, monospace;
+  --display: "Spectral", Georgia, serif;
+  --body: "Hanken Grotesk", system-ui, sans-serif;
+  --util: "Hanken Grotesk", system-ui, sans-serif;
 
   --measure: 1320px;
   --gutter: clamp(16px, 4vw, 40px);
@@ -47,7 +55,18 @@ img { max-width: 100%; display: block; }
   padding: 0 var(--gutter);
 }
 
-.display { font-family: var(--display); font-weight: 500; line-height: 1.12; margin: 0; }
+.display { font-family: var(--display); font-weight: 400; line-height: 1.12; margin: 0; }
+
+/* Keynote headlines: big, light, tight. */
+.headline {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(40px, 5.4vw, 76px);
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.kicker-k { font-size: 17px; font-weight: 600; margin: 0 0 12px; }
 
 .eyebrow {
   font-family: var(--body);

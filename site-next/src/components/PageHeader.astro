@@ -19,14 +19,14 @@ const hasAside = Astro.slots.has('aside');
 
 <style>
   .band { background: var(--green); color: var(--ivory); }
-  .inner { padding-top: 56px; padding-bottom: 52px; }
+  .inner { padding-top: 88px; padding-bottom: 80px; max-width: 1200px; }
   .split { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; }
   .kicker { color: var(--on-green-accent); margin-bottom: 12px; }
   .kicker :global(a) { text-decoration: underline; text-underline-offset: 3px; }
-  h1 { font-size: clamp(40px, 5.6vw, 68px); }
-  .intro { color: var(--on-green-muted); max-width: 58ch; margin: 14px 0 0; font-size: 17px; }
+  h1 { font-weight: 300; font-size: clamp(44px, 6.4vw, 92px); line-height: 1; letter-spacing: -0.02em; }
+  .intro { color: var(--on-green-muted); max-width: 52ch; margin: 22px 0 0; font-size: 19px; line-height: 1.55; }
   @media (max-width: 760px) {
-    .inner { padding-top: 36px; padding-bottom: 36px; }
+    .inner { padding-top: 48px; padding-bottom: 44px; }
     .split { grid-template-columns: minmax(0, 1fr); align-items: start; }
   }
 </style>

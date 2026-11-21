@@ -7,13 +7,15 @@ import { APP_STORE_URL } from '../config';
 interface Props {
   label: string;
   variant?: 'outline' | 'solid' | 'on-green' | 'ivory';
+  /** large: the Keynote pill for a section's one call to action. */
+  size?: 'small' | 'large';
 }
-const { label, variant = 'outline' } = Astro.props;
+const { label, variant = 'outline', size = 'small' } = Astro.props;
 const href = APP_STORE_URL;
 ---
 {href
-  ? <a class={`cta ${variant}`} href={href}>{label}</a>
-  : <span class={`cta ${variant} pending`} title="Coming to the App Store">{label}</span>}
+  ? <a class={`cta ${variant} ${size}`} href={href}>{label}</a>
+  : <span class={`cta ${variant} ${size} pending`} title="Coming to the App Store">{label}</span>}
 
 <style>
   .cta {
@@ -32,5 +34,6 @@ const href = APP_STORE_URL;
   .solid { background: var(--green); color: var(--ivory); border: 1px solid var(--green); }
   .on-green { border: 1px solid var(--on-green-accent); color: var(--ivory); }
   .ivory { background: var(--ivory); color: var(--green); border: 1px solid var(--ivory); }
+  .large { font-size: 16px; font-weight: 600; letter-spacing: 0; padding: 14px 26px; }
   .pending { cursor: default; }
 </style>
