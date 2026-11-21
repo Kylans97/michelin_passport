@@ -1,9 +1,10 @@
-// Guards that the text on a double frame or oval stamp stays inside its
-// border. The welcome flow's third sample stamp ("Four hands",
+// Guards that the text on a double frame, oval or lozenge stamp stays
+// inside its border. The welcome flow's third sample stamp ("Four hands",
 // Copenhagen, a dinner) once laid its name out on 2 lines at the largest
 // size, which made the stack taller than the frame: the city sat on the
 // top border and the date on the bottom one. The oval did the same with
-// any short name that wraps. Every width was already capped, nothing
+// any short name that wraps, and the lozenge pushed its date over its
+// banderole's lower rule. Every width was already capped, nothing
 // capped the height, and the existing painter tests only asserted that
 // painting didn't throw.
 //
@@ -74,6 +75,22 @@ bool _inOvalGap(double x, double y) {
   }
 
   return inside(2.25 + _margin) && !inside(7 - _margin);
+}
+
+/// Lozenge: the banderole's 1.4pt outer rule on the band's edge (ends
+/// 0.7pt in), its 0.6pt inner rule 3pt in (starts 2.7pt in). The band is
+/// [LozengePainter.width] - 4 wide and 50pt tall, centred.
+bool _inLozengeBandGap(double x, double y) {
+  const w = LozengePainter.width, h = LozengePainter.height;
+  const left = 2.0, right = w - 2, top = (h - 50) / 2, bottom = (h + 50) / 2;
+  if (x < left || x > right || y < top || y > bottom) return false;
+  final edge = [
+    x - left,
+    y - top,
+    right - x,
+    bottom - y,
+  ].reduce((a, b) => a < b ? a : b);
+  return edge > 0.7 + _margin && edge < 2.7 - _margin;
 }
 
 Future<List<String>> _inkInGap(
@@ -147,6 +164,7 @@ void main() {
   const variants = {
     StampVariant.doubleFrame: _inDoubleFrameGap,
     StampVariant.oval: _inOvalGap,
+    StampVariant.lozenge: _inLozengeBandGap,
   };
   for (final MapEntry(key: variant, value: inGap) in variants.entries) {
     for (final MapEntry(key: label, value: data) in cases.entries) {

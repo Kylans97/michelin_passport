@@ -1369,6 +1369,8 @@ class LozengePainter extends CustomPainter {
   static const width = 184.0;
   static const height = 148.0;
   static const _bandHeight = 50.0;
+  static const _gap = 2.0;
+  static const _verticalPadding = 3.0;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -1404,6 +1406,20 @@ class LozengePainter extends CustomPainter {
       canvas.drawRect(band, rule);
       canvas.drawRect(band.deflate(3), rule..strokeWidth = 0.6);
 
+      final datePainter = _plainText(
+        _fullDateLabel(data.date),
+        CsFonts.sans(
+          color: ink,
+          fontSize: 7,
+          letterSpacing: 1.4,
+          fontWeight: FontWeight.w600,
+        ),
+      );
+
+      // The name gets only the height the inner rule leaves once the date
+      // and the gap are in, so a short name that wraps never pushes the
+      // date over the banderole's lower rule.
+      final others = datePainter.height + _gap;
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
         styleFor: (fontSize) => CsFonts.serif(
@@ -1414,18 +1430,10 @@ class LozengePainter extends CustomPainter {
           height: 1.0,
         ),
         maxWidth: band.width - 20,
+        maxHeight: band.deflate(3).height - _verticalPadding * 2 - others,
         sizeL: 19,
         sizeM: 15.5,
         sizeS: 12,
-      );
-      final datePainter = _plainText(
-        _fullDateLabel(data.date),
-        CsFonts.sans(
-          color: ink,
-          fontSize: 7,
-          letterSpacing: 1.4,
-          fontWeight: FontWeight.w600,
-        ),
       );
       _paintCenteredStack(
         canvas,
@@ -1440,7 +1448,7 @@ class LozengePainter extends CustomPainter {
           ),
         ],
         center.dy,
-        2,
+        _gap,
       );
 
       // The upper point: how wide the diamond is halfway up it bounds
