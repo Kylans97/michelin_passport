@@ -214,7 +214,7 @@ class _ClaimVenueDetailsScreenState extends State<ClaimVenueDetailsScreen> {
           ),
           const SizedBox(height: CsSpacing.xs),
           Text(
-            "Preferably on the venue's own domain — it helps us verify faster.",
+            "Preferably on the venue's own domain. It helps us verify faster.",
             style: CsTypography.metadata.copyWith(color: AppColors.taupe),
           ),
           const SizedBox(height: CsSpacing.md),
@@ -261,7 +261,7 @@ class _ClaimVenueDetailsScreenState extends State<ClaimVenueDetailsScreen> {
                 ),
                 const SizedBox(height: CsSpacing.sm),
                 Text(
-                  "We review every request by hand — we may reach out to verify your "
+                  "We review every request by hand, and we may reach out to verify your "
                   "connection to this venue before deciding. You'll be notified here "
                   "either way. We can't promise a specific timeline.",
                   style: CsTypography.body.copyWith(color: AppColors.forestGreen, height: 1.5),

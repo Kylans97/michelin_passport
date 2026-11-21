@@ -26,6 +26,7 @@ The format follows Keep a Changelog.
   - `site/` stays in the repository as a fallback only; deploying it by hand would replace the new site until the next scheduled run.
 
 ### Fixed
+- **No dashes in the claim form** (product owner, 2026-11-21: "kan je gelijk die streepjes aanpassen in het claimformulier?"; the rule is theirs, dashes read as machine written). `ClaimVenueDetailsScreen`: "Preferably on the venue's own domain. It helps us verify faster." and "We review every request by hand, and we may reach out to verify your connection to this venue before deciding." Seen on the fresh venue guide screenshot, which still shows the old text until a build with this change is out; the screen is captured again then. Not changed here, though seen with the same dash: the photo framing screen ("Changes go live as soon as you save — no new review needed") and the profile text screen ("you'll see the outcome here — either way"). `flutter analyze` clean on the claims feature; the three claim test files pass (17 tests). App code: ships with the next build.
 - **Canonical links pointed at `.html` addresses** (`https://mantelier.app/app.html`, `/index.html`), which Pages redirects. Harmless while the site was hidden (it had noindex instead), wrong the moment it is indexed. `Base.astro` now drops `.html` and a trailing `index`. Near miss: it only showed because launching turned the canonical on.
 
 ### Checked
