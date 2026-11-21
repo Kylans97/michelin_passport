@@ -8,6 +8,9 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Everyone sees the welcome flow once more** (product owner, 2026-11-21, after 1.6.0 went live in the App Store: "reset alles maar nu"). `profiles.has_seen_welcome` set back to false for all 23 profiles that had it (28 profiles; 0 seen afterwards), so members opening 1.7.x see the new six-page welcome. Accepted trade-off, named to the product owner beforehand: members still on 1.6.0 from the App Store see the old welcome again once, since that build reads the same flag. Data only, no migration.
+
 ---
 
 ## v1.7.1 (38) — 2026-11-20
