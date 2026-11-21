@@ -27,7 +27,11 @@ StampNameTier stampNameTierFor(String name) {
 ///
 /// [styleFor] builds the text style for a given resolved font size (so
 /// callers can bake in weight/italic/letterSpacing/color/uppercase
-/// transforms specific to their own variant) — [text] passed in should
+/// transforms specific to their own variant). [maxHeight], when given, is
+/// the room the name has once the rest of the stamp is laid out: the name
+/// steps down through the smaller sizes until it fits that as well, so a
+/// short name that wraps never pushes the stamp's other lines out of its
+/// frame. [text] passed in should
 /// already be whatever case the variant wants (e.g. DoubleFramePainter
 /// upper-cases it before calling this).
 TextPainter fitStampNameBalanced({
@@ -37,6 +41,7 @@ TextPainter fitStampNameBalanced({
   required double sizeL,
   required double sizeM,
   required double sizeS,
+  double? maxHeight,
 }) {
   final tier = stampNameTierFor(text);
   final baseSize = switch (tier) {
@@ -66,8 +71,27 @@ TextPainter fitStampNameBalanced({
   }
 
   final atBaseSize = layoutAt(baseSize);
-  if (!atBaseSize.didExceedMaxLines) return atBaseSize;
-  return layoutAt(baseSize * 0.85);
+  if (maxHeight == null) {
+    if (!atBaseSize.didExceedMaxLines) return atBaseSize;
+    return layoutAt(baseSize * 0.85);
+  }
+
+  // With a height to keep within, step down through the smaller tiers'
+  // sizes too: a short name that wraps to 2 lines at its own L size can
+  // stand taller than the stamp it sits in, and one line at the M size
+  // is the better answer than two at L.
+  final sizes = <double>{
+    baseSize,
+    baseSize * 0.85,
+    for (final size in [sizeM, sizeS, sizeS * 0.85])
+      if (size < baseSize) size,
+  }.toList()..sort((a, b) => b.compareTo(a));
+  TextPainter? last;
+  for (final size in sizes) {
+    last = size == baseSize ? atBaseSize : layoutAt(size);
+    if (!last.didExceedMaxLines && last.height <= maxHeight) return last;
+  }
+  return last!;
 }
 
 double _measureWidth(String text, TextStyle style) {
