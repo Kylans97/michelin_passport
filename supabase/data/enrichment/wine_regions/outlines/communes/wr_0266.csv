@@ -1,0 +1,2 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0266,US_AVA_anderson_valley,Anderson Valley,Anderson Valley,CA,,https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0/query?where=OBJECTID%3D65&outFields=%2A&outSR=4326&f=geojson

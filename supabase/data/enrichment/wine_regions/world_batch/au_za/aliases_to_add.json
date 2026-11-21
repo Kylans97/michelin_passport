@@ -1,0 +1,20 @@
+[
+ {
+  "grape": "Chenin Blanc",
+  "alias": "Steen",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=2527",
+   "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/White-Wine-Varieties/",
+   "https://winefolly.com/wine-basics/chenin-blanc/",
+   "https://www.decanter.com/features/full-steen-ahead-chenin-blanc-248904/"
+  ]
+ },
+ {
+  "grape": "Muscat of Alexandria",
+  "alias": "Hanepoot",
+  "source": [
+   "https://www.vivc.de/index.php?r=passport%2Fview&id=8241",
+   "https://www.wosa.co.za/The-Industry/Varieties-and-Styles/White-Wine-Varieties/"
+  ]
+ }
+]

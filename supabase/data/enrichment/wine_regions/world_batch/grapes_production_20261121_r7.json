@@ -1,0 +1,1230 @@
+[
+ {
+  "aliases": [
+   "Spätburgunder",
+   "Pinot Nero",
+   "Rulandské modré"
+  ],
+  "grape_code": "gr_0001",
+  "name": "Pinot Noir"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0002",
+  "name": "Chardonnay"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0003",
+  "name": "Cabernet Sauvignon"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0004",
+  "name": "Merlot"
+ },
+ {
+  "aliases": [
+   "Shiraz"
+  ],
+  "grape_code": "gr_0005",
+  "name": "Syrah"
+ },
+ {
+  "aliases": [
+   "Garnacha",
+   "Cannonau"
+  ],
+  "grape_code": "gr_0006",
+  "name": "Grenache"
+ },
+ {
+  "aliases": [
+   "Tinto Fino",
+   "Tinta del País",
+   "Tinta Roriz",
+   "Aragonez",
+   "Aragonês"
+  ],
+  "grape_code": "gr_0007",
+  "name": "Tempranillo"
+ },
+ {
+  "aliases": [
+   "Ryzlink rýnský"
+  ],
+  "grape_code": "gr_0008",
+  "name": "Riesling"
+ },
+ {
+  "aliases": [
+   "Chiavennasca"
+  ],
+  "grape_code": "gr_0009",
+  "name": "Nebbiolo"
+ },
+ {
+  "aliases": [
+   "Nielluccio",
+   "Niellucciu"
+  ],
+  "grape_code": "gr_0010",
+  "name": "Sangiovese"
+ },
+ {
+  "aliases": [
+   "Sauvignon"
+  ],
+  "grape_code": "gr_0011",
+  "name": "Sauvignon Blanc"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0012",
+  "name": "Chenin Blanc"
+ },
+ {
+  "aliases": [
+   "Bouchy"
+  ],
+  "grape_code": "gr_0013",
+  "name": "Cabernet Franc"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0014",
+  "name": "Gamay"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0015",
+  "name": "Touriga Nacional"
+ },
+ {
+  "aliases": [
+   "Pinot Meunier"
+  ],
+  "grape_code": "gr_0016",
+  "name": "Meunier"
+ },
+ {
+  "aliases": [
+   "Monastrell",
+   "Mataro"
+  ],
+  "grape_code": "gr_0017",
+  "name": "Mourvèdre"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0018",
+  "name": "Solaris"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0019",
+  "name": "Johanniter"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0020",
+  "name": "Souvignier Gris"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0021",
+  "name": "Regent"
+ },
+ {
+  "aliases": [
+   "Auxerrois Blanc"
+  ],
+  "grape_code": "gr_0022",
+  "name": "Auxerrois"
+ },
+ {
+  "aliases": [
+   "Rivaner"
+  ],
+  "grape_code": "gr_0023",
+  "name": "Müller-Thurgau"
+ },
+ {
+  "aliases": [
+   "Pinot Grigio",
+   "Grauburgunder",
+   "Rulandské šedé"
+  ],
+  "grape_code": "gr_0024",
+  "name": "Pinot Gris"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0025",
+  "name": "Cabernet Cortis"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0026",
+  "name": "Pinotin"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0027",
+  "name": "Cabernet Blanc"
+ },
+ {
+  "aliases": [
+   "Primitivo"
+  ],
+  "grape_code": "gr_0028",
+  "name": "Zinfandel"
+ },
+ {
+  "aliases": [
+   "Côt"
+  ],
+  "grape_code": "gr_0029",
+  "name": "Malbec"
+ },
+ {
+  "aliases": [
+   "Carmenere"
+  ],
+  "grape_code": "gr_0030",
+  "name": "Carménère"
+ },
+ {
+  "aliases": [
+   "Torrontes"
+  ],
+  "grape_code": "gr_0031",
+  "name": "Torrontés"
+ },
+ {
+  "aliases": [
+   "Sémillon",
+   "Wyndruif"
+  ],
+  "grape_code": "gr_0032",
+  "name": "Semillon"
+ },
+ {
+  "aliases": [
+   "Cinsaut",
+   "Hermitage"
+  ],
+  "grape_code": "gr_0033",
+  "name": "Cinsault"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0034",
+  "name": "Pinotage"
+ },
+ {
+  "aliases": [
+   "Malvazija",
+   "Vrbić",
+   "Očenaš"
+  ],
+  "grape_code": "gr_0035",
+  "name": "Malvazija Istarska"
+ },
+ {
+  "aliases": [
+   "Istrijanac"
+  ],
+  "grape_code": "gr_0036",
+  "name": "Teran"
+ },
+ {
+  "aliases": [
+   "Plavac mali crni",
+   "Plavac veliki",
+   "Crljenak mali"
+  ],
+  "grape_code": "gr_0037",
+  "name": "Plavac Mali"
+ },
+ {
+  "aliases": [
+   "Pošip bijeli",
+   "Pošipak",
+   "Pošipica"
+  ],
+  "grape_code": "gr_0038",
+  "name": "Pošip"
+ },
+ {
+  "aliases": [
+   "Welschriesling",
+   "Laški rizling",
+   "Riesling Italico",
+   "Olasz Rizling",
+   "Olaszrizling",
+   "Riesling Italian",
+   "Ryzlink vlašský",
+   "Grašac",
+   "Italijanski rizling"
+  ],
+  "grape_code": "gr_0039",
+  "name": "Graševina"
+ },
+ {
+  "aliases": [
+   "Frankovka",
+   "Kékfrankos",
+   "Lemberger",
+   "Frankinja",
+   "Modra Frankinja",
+   "Burgund Mare"
+  ],
+  "grape_code": "gr_0040",
+  "name": "Blaufränkisch"
+ },
+ {
+  "aliases": [
+   "Traminac",
+   "Traminac crveni",
+   "Traminac mirisavi",
+   "Roter Traminer",
+   "Tramín červený"
+  ],
+  "grape_code": "gr_0041",
+  "name": "Gewürztraminer"
+ },
+ {
+  "aliases": [
+   "Fendant",
+   "Gutedel"
+  ],
+  "grape_code": "gr_0042",
+  "name": "Chasselas"
+ },
+ {
+  "aliases": [
+   "Arvine"
+  ],
+  "grape_code": "gr_0043",
+  "name": "Petite Arvine"
+ },
+ {
+  "aliases": [
+   "Rouge du Pays",
+   "Cornalin du Valais",
+   "Landroter"
+  ],
+  "grape_code": "gr_0044",
+  "name": "Cornalin"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0045",
+  "name": "Humagne Rouge"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0046",
+  "name": "Gamaret"
+ },
+ {
+  "aliases": [
+   "Veltlínské zelené"
+  ],
+  "grape_code": "gr_0047",
+  "name": "Grüner Veltliner"
+ },
+ {
+  "aliases": [
+   "Blauer Zweigelt",
+   "Rotburger",
+   "Zweigeltrebe"
+  ],
+  "grape_code": "gr_0048",
+  "name": "Zweigelt"
+ },
+ {
+  "aliases": [
+   "Weissburgunder",
+   "Weißburgunder",
+   "Klevner",
+   "Pinot Bianco",
+   "Rulandské bílé"
+  ],
+  "grape_code": "gr_0049",
+  "name": "Pinot Blanc"
+ },
+ {
+  "aliases": [
+   "Gelber Muskateller",
+   "Muskateller",
+   "Muscat Blanc",
+   "Muscat of Spina",
+   "Moschato Aspro",
+   "Tămâioasă Românească",
+   "White Muscat",
+   "Moschoudi",
+   "Muscat Samos"
+  ],
+  "grape_code": "gr_0050",
+  "name": "Muscat Blanc à Petits Grains"
+ },
+ {
+  "aliases": [
+   "Grüner Silvaner",
+   "Sylvaner"
+  ],
+  "grape_code": "gr_0051",
+  "name": "Silvaner"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0052",
+  "name": "Dornfelder"
+ },
+ {
+  "aliases": [
+   "Sämling 88"
+  ],
+  "grape_code": "gr_0053",
+  "name": "Scheurebe"
+ },
+ {
+  "aliases": [
+   "Corvina Veronese"
+  ],
+  "grape_code": "gr_0054",
+  "name": "Corvina"
+ },
+ {
+  "aliases": [
+   "Grecanico Dorato"
+  ],
+  "grape_code": "gr_0055",
+  "name": "Garganega"
+ },
+ {
+  "aliases": [
+   "Prosecco"
+  ],
+  "grape_code": "gr_0056",
+  "name": "Glera"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0057",
+  "name": "Nerello Mascalese"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0058",
+  "name": "Carricante"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0059",
+  "name": "Aglianico"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0060",
+  "name": "Lagrein"
+ },
+ {
+  "aliases": [
+   "Vernatsch"
+  ],
+  "grape_code": "gr_0061",
+  "name": "Schiava"
+ },
+ {
+  "aliases": [
+   "Tocai Friulano",
+   "Sauvignonasse"
+  ],
+  "grape_code": "gr_0062",
+  "name": "Friulano"
+ },
+ {
+  "aliases": [
+   "Rebula"
+  ],
+  "grape_code": "gr_0063",
+  "name": "Ribolla Gialla"
+ },
+ {
+  "aliases": [
+   "Alvarinho"
+  ],
+  "grape_code": "gr_0064",
+  "name": "Albariño"
+ },
+ {
+  "aliases": [
+   "Palomino Fino",
+   "Listán Blanco"
+  ],
+  "grape_code": "gr_0065",
+  "name": "Palomino"
+ },
+ {
+  "aliases": [
+   "PX"
+  ],
+  "grape_code": "gr_0066",
+  "name": "Pedro Ximénez"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0067",
+  "name": "Verdejo"
+ },
+ {
+  "aliases": [
+   "Jaen"
+  ],
+  "grape_code": "gr_0068",
+  "name": "Mencía"
+ },
+ {
+  "aliases": [
+   "Cariñena",
+   "Carinyena",
+   "Samsó",
+   "Mazuelo",
+   "Mazuela",
+   "Carignano",
+   "Carignan Noir"
+  ],
+  "grape_code": "gr_0069",
+  "name": "Carignan"
+ },
+ {
+  "aliases": [
+   "Xarel-lo",
+   "Pansa Blanca"
+  ],
+  "grape_code": "gr_0070",
+  "name": "Xarel·lo"
+ },
+ {
+  "aliases": [
+   "Viura",
+   "Macabeu"
+  ],
+  "grape_code": "gr_0071",
+  "name": "Macabeo"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0072",
+  "name": "Loureiro"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0073",
+  "name": "Baga"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0074",
+  "name": "Encruzado"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0075",
+  "name": "Alicante Bouschet"
+ },
+ {
+  "aliases": [
+   "Tinta Amarela",
+   "Trincadeira Preta"
+  ],
+  "grape_code": "gr_0076",
+  "name": "Trincadeira"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0077",
+  "name": "Antão Vaz"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0078",
+  "name": "Touriga Franca"
+ },
+ {
+  "aliases": [
+   "Esgana Cão"
+  ],
+  "grape_code": "gr_0079",
+  "name": "Sercial"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0080",
+  "name": "Verdelho"
+ },
+ {
+  "aliases": [
+   "Tinta Negra Mole"
+  ],
+  "grape_code": "gr_0081",
+  "name": "Tinta Negra"
+ },
+ {
+  "aliases": [
+   "Moscatel de Setúbal",
+   "Moscatel Graúdo",
+   "Moscatel de Alejandría",
+   "Zibibbo"
+  ],
+  "grape_code": "gr_0082",
+  "name": "Muscat of Alexandria"
+ },
+ {
+  "aliases": [
+   "Savagnin Blanc",
+   "Naturé"
+  ],
+  "grape_code": "gr_0083",
+  "name": "Savagnin"
+ },
+ {
+  "aliases": [
+   "Ploussard"
+  ],
+  "grape_code": "gr_0084",
+  "name": "Poulsard"
+ },
+ {
+  "aliases": [
+   "Bastardo",
+   "Merenzao"
+  ],
+  "grape_code": "gr_0085",
+  "name": "Trousseau"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0086",
+  "name": "Jacquère"
+ },
+ {
+  "aliases": [
+   "Mondeuse Noire"
+  ],
+  "grape_code": "gr_0087",
+  "name": "Mondeuse"
+ },
+ {
+  "aliases": [
+   "Roussette"
+  ],
+  "grape_code": "gr_0088",
+  "name": "Altesse"
+ },
+ {
+  "aliases": [
+   "Rolle",
+   "Vermentinu",
+   "Malvoisie de Corse"
+  ],
+  "grape_code": "gr_0089",
+  "name": "Vermentino"
+ },
+ {
+  "aliases": [
+   "Harriague"
+  ],
+  "grape_code": "gr_0090",
+  "name": "Tannat"
+ },
+ {
+  "aliases": [
+   "Garnacha Blanca"
+  ],
+  "grape_code": "gr_0091",
+  "name": "Grenache Blanc"
+ },
+ {
+  "aliases": [
+   "Šipon"
+  ],
+  "grape_code": "gr_0092",
+  "name": "Furmint"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0093",
+  "name": "Hárslevelű"
+ },
+ {
+  "aliases": [
+   "Skadarka",
+   "Gamza"
+  ],
+  "grape_code": "gr_0094",
+  "name": "Kadarka"
+ },
+ {
+  "aliases": [
+   "Kékoportó",
+   "Blauer Portugieser",
+   "Modrý Portugal"
+  ],
+  "grape_code": "gr_0095",
+  "name": "Portugieser"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0096",
+  "name": "Juhfark"
+ },
+ {
+  "aliases": [
+   "Ασύρτικο"
+  ],
+  "grape_code": "gr_0097",
+  "name": "Assyrtiko"
+ },
+ {
+  "aliases": [
+   "Ξινόμαυρο"
+  ],
+  "grape_code": "gr_0098",
+  "name": "Xinomavro"
+ },
+ {
+  "aliases": [
+   "Αγιωργίτικο"
+  ],
+  "grape_code": "gr_0099",
+  "name": "Agiorgitiko"
+ },
+ {
+  "aliases": [
+   "Weißer Elbling"
+  ],
+  "grape_code": "gr_0100",
+  "name": "Elbling"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0101",
+  "name": "Saperavi"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0102",
+  "name": "Rkatsiteli"
+ },
+ {
+  "aliases": [
+   "Kakhuri Mtsvane",
+   "Mtsvane"
+  ],
+  "grape_code": "gr_0103",
+  "name": "Mtsvane Kakhuri"
+ },
+ {
+  "aliases": [
+   "Kisi Magraani"
+  ],
+  "grape_code": "gr_0104",
+  "name": "Kisi"
+ },
+ {
+  "aliases": [
+   "Vidal"
+  ],
+  "grape_code": "gr_0105",
+  "name": "Vidal Blanc"
+ },
+ {
+  "aliases": [
+   "甲州"
+  ],
+  "grape_code": "gr_0106",
+  "name": "Koshu"
+ },
+ {
+  "aliases": [
+   "マスカット・ベーリーA"
+  ],
+  "grape_code": "gr_0107",
+  "name": "Muscat Bailey A"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0108",
+  "name": "Kerner"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0109",
+  "name": "Marselan"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0110",
+  "name": "Kéknyelű"
+ },
+ {
+  "aliases": [
+   "Ribolla Nera",
+   "Pocalza"
+  ],
+  "grape_code": "gr_0111",
+  "name": "Schioppettino"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0112",
+  "name": "Picolit"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0113",
+  "name": "Malvasia de Colares"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0114",
+  "name": "Montepulciano"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0115",
+  "name": "Verdicchio"
+ },
+ {
+  "aliases": [
+   "Trebbiano di Lugana",
+   "Trebbiano di Soave"
+  ],
+  "grape_code": "gr_0116",
+  "name": "Turbiana"
+ },
+ {
+  "aliases": [
+   "Calabrese"
+  ],
+  "grape_code": "gr_0117",
+  "name": "Nero d'Avola"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0118",
+  "name": "Frappato"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0119",
+  "name": "Grillo"
+ },
+ {
+  "aliases": [
+   "Catarratto Bianco"
+  ],
+  "grape_code": "gr_0120",
+  "name": "Catarratto"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0121",
+  "name": "Lambrusco di Sorbara"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0122",
+  "name": "Lambrusco Grasparossa"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0123",
+  "name": "Sagrantino"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0124",
+  "name": "Fiano"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0125",
+  "name": "Greco"
+ },
+ {
+  "aliases": [
+   "Gouveio",
+   "Agudelo"
+  ],
+  "grape_code": "gr_0126",
+  "name": "Godello"
+ },
+ {
+  "aliases": [
+   "Trajadura",
+   "Verdello Rubio"
+  ],
+  "grape_code": "gr_0127",
+  "name": "Treixadura"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0128",
+  "name": "Hondarrabi Zuri"
+ },
+ {
+  "aliases": [
+   "Montonec",
+   "Martorella",
+   "Verda Grossa"
+  ],
+  "grape_code": "gr_0129",
+  "name": "Parellada"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0130",
+  "name": "Listán Negro"
+ },
+ {
+  "aliases": [
+   "Wildbacher"
+  ],
+  "grape_code": "gr_0131",
+  "name": "Blauer Wildbacher"
+ },
+ {
+  "aliases": [
+   "Sankt Laurent",
+   "Saint Laurent",
+   "Svatovavřinecké"
+  ],
+  "grape_code": "gr_0132",
+  "name": "St. Laurent"
+ },
+ {
+  "aliases": [
+   "Pedernã"
+  ],
+  "grape_code": "gr_0133",
+  "name": "Arinto"
+ },
+ {
+  "aliases": [
+   "Maria Gomes"
+  ],
+  "grape_code": "gr_0134",
+  "name": "Fernão Pires"
+ },
+ {
+  "aliases": [
+   "Periquita"
+  ],
+  "grape_code": "gr_0135",
+  "name": "Castelão"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0136",
+  "name": "Petit Manseng"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0137",
+  "name": "Gros Manseng"
+ },
+ {
+  "aliases": [
+   "Braucol",
+   "Fer",
+   "Pinenc"
+  ],
+  "grape_code": "gr_0138",
+  "name": "Fer Servadou"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0139",
+  "name": "Duras"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0140",
+  "name": "Mauzac"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0141",
+  "name": "Muscadelle"
+ },
+ {
+  "aliases": [
+   "Sciaccarello",
+   "Sciacarello"
+  ],
+  "grape_code": "gr_0142",
+  "name": "Sciaccarellu"
+ },
+ {
+  "aliases": [
+   "Βηλάνα"
+  ],
+  "grape_code": "gr_0143",
+  "name": "Vilana"
+ },
+ {
+  "aliases": [
+   "Βιδιανό"
+  ],
+  "grape_code": "gr_0144",
+  "name": "Vidiano"
+ },
+ {
+  "aliases": [
+   "Λιάτικο"
+  ],
+  "grape_code": "gr_0145",
+  "name": "Liatiko"
+ },
+ {
+  "aliases": [
+   "Δαφνί"
+  ],
+  "grape_code": "gr_0146",
+  "name": "Dafni"
+ },
+ {
+  "aliases": [
+   "Păsărească Neagră",
+   "Coada Rândunicii",
+   "Poama Fetei Neagră",
+   "Schwarze Mädchentraube"
+  ],
+  "grape_code": "gr_0147",
+  "name": "Fetească Neagră"
+ },
+ {
+  "aliases": [
+   "Păsărească Albă",
+   "Poama Fetei",
+   "Leányka",
+   "Mädchentraube"
+  ],
+  "grape_code": "gr_0148",
+  "name": "Fetească Albă"
+ },
+ {
+  "aliases": [
+   "Dănășană",
+   "Galbenă de Ardeal",
+   "Királyleányka",
+   "Königliche Mädchentraube"
+  ],
+  "grape_code": "gr_0149",
+  "name": "Fetească Regală"
+ },
+ {
+  "aliases": [
+   "Grasă",
+   "Kövérszőlő",
+   "Dicktraube"
+  ],
+  "grape_code": "gr_0150",
+  "name": "Grasă de Cotnari"
+ },
+ {
+  "aliases": [
+   "Mustoasă de Moldova",
+   "Vinoasă",
+   "Poamă Creață",
+   "Mildweisser"
+  ],
+  "grape_code": "gr_0151",
+  "name": "Frâncușă"
+ },
+ {
+  "aliases": [
+   "Rară Neagră",
+   "Căldărușă",
+   "Crăcană",
+   "Serecsia",
+   "Grossmuttertraube"
+  ],
+  "grape_code": "gr_0152",
+  "name": "Băbească Neagră"
+ },
+ {
+  "aliases": [
+   "Muscat Ottonel Blanc",
+   "Muskotály",
+   "Misket Ottonel"
+  ],
+  "grape_code": "gr_0153",
+  "name": "Muscat Ottonel"
+ },
+ {
+  "aliases": [
+   "Nema",
+   "Veverka"
+  ],
+  "grape_code": "gr_0154",
+  "name": "Pálava"
+ },
+ {
+  "aliases": [
+   "Moravian Muscat",
+   "Mopr"
+  ],
+  "grape_code": "gr_0155",
+  "name": "Muškát moravský"
+ },
+ {
+  "aliases": [
+   "Shiroka Melnishka Loza",
+   "Melnik",
+   "Broadleaf Melnik"
+  ],
+  "grape_code": "gr_0156",
+  "name": "Shiroka Melnishka"
+ },
+ {
+  "aliases": [
+   "Melnik 55",
+   "Early Melnik"
+  ],
+  "grape_code": "gr_0157",
+  "name": "Ranna Melnishka Loza"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0158",
+  "name": "Moschofilero"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0159",
+  "name": "Roditis"
+ },
+ {
+  "aliases": [
+   "Mavrodafni",
+   "Μαυροδάφνη"
+  ],
+  "grape_code": "gr_0160",
+  "name": "Mavrodaphne"
+ },
+ {
+  "aliases": [
+   "Popolka"
+  ],
+  "grape_code": "gr_0161",
+  "name": "Negoska"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0162",
+  "name": "Malagousia"
+ },
+ {
+  "aliases": [
+   "Monemvassia"
+  ],
+  "grape_code": "gr_0163",
+  "name": "Monemvasia"
+ },
+ {
+  "aliases": [
+   "Mandilari",
+   "Amorgiano"
+  ],
+  "grape_code": "gr_0164",
+  "name": "Mandilaria"
+ },
+ {
+  "aliases": [
+   "Xinisteri",
+   "Ξυνιστέρι"
+  ],
+  "grape_code": "gr_0165",
+  "name": "Xynisteri"
+ },
+ {
+  "aliases": [
+   "Local Mavro"
+  ],
+  "grape_code": "gr_0166",
+  "name": "Mavro"
+ },
+ {
+  "aliases": [
+   "Vamvakada"
+  ],
+  "grape_code": "gr_0167",
+  "name": "Maratheftiko"
+ },
+ {
+  "aliases": [
+   "Areni Noir",
+   "Areni Noire",
+   "Sev Areni"
+  ],
+  "grape_code": "gr_0168",
+  "name": "Areni"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0169",
+  "name": "Voskehat"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0170",
+  "name": "Petit Verdot"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0171",
+  "name": "Öküzgözü"
+ },
+ {
+  "aliases": [
+   "Bogazkere"
+  ],
+  "grape_code": "gr_0172",
+  "name": "Boğazkere"
+ },
+ {
+  "aliases": [
+   "Kalecik Karasi"
+  ],
+  "grape_code": "gr_0173",
+  "name": "Kalecik Karası"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0174",
+  "name": "Narince"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0175",
+  "name": "Emir"
+ },
+ {
+  "aliases": [
+   "Papaskarasi"
+  ],
+  "grape_code": "gr_0176",
+  "name": "Papazkarası"
+ },
+ {
+  "aliases": [],
+  "grape_code": "gr_0177",
+  "name": "Kınalı Yapıncak"
+ }
+]

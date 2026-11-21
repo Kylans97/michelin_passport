@@ -1,0 +1,664 @@
+[
+ {
+  "slug": "santa-lucia-highlands",
+  "name": "Santa Lucia Highlands",
+  "country": "US",
+  "aliases": [
+   "SLH"
+  ],
+  "summary": "Terraces on the east facing slopes of the Santa Lucia Mountains above the Salinas Valley, cooled by fog and strong afternoon winds from Monterey Bay. Pinot Noir and Chardonnay make up most of the vineyard.",
+  "red_body": null,
+  "red_acidity": 4,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.santaluciahighlands.com/about/climate",
+    "https://wineindustryadvisor.com/2020/01/09/what-makes-wine-from-slh-distinctive/",
+    "https://en.wikipedia.org/wiki/Santa_Lucia_Highlands_AVA",
+    "https://www.decanter.com/wine/california-wine-region/the-santa-lucia-highlands-wild-winds-and-pinot-noir-heritage"
+   ],
+   "red_acidity": [
+    "https://www.santaluciahighlands.com/about/in-the-glass",
+    "https://wineindustryadvisor.com/2020/01/09/what-makes-wine-from-slh-distinctive/"
+   ],
+   "grapes": [
+    "https://wineindustryadvisor.com/2020/01/09/what-makes-wine-from-slh-distinctive/",
+    "https://www.santaluciahighlands.com/about/in-the-glass",
+    "https://en.wikipedia.org/wiki/Santa_Lucia_Highlands_AVA"
+   ],
+   "aliases": [
+    "https://wineindustryadvisor.com/2020/01/09/what-makes-wine-from-slh-distinctive/",
+    "https://www.santaluciahighlands.com/"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ],
+   "official_name": [
+    "https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.139"
+   ]
+  }
+ },
+ {
+  "slug": "anderson-valley",
+  "name": "Anderson Valley",
+  "country": "US",
+  "aliases": [],
+  "summary": "A narrow valley in western Mendocino County that opens towards the Pacific along the Navarro River, so sea fog and breezes keep it cool. Pinot Noir dominates, with Chardonnay, sparkling wine and aromatic whites such as Gewürztraminer.",
+  "red_body": null,
+  "red_acidity": 4,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Gewürztraminer",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://wineanorak.com/2023/07/03/anderson-valley-california-1-where-the-california-meets-the-pacific-northwest/",
+    "https://www.northbaybusinessjournal.com/article/lifestyle/anderson-valley-remains-a-haven-for-remarkable-white-wines/",
+    "https://www.decanter.com/wine-travel/north-america/decanter-travel-guide-anderson-valley-california-6452/",
+    "https://avwines.com/"
+   ],
+   "red_acidity": [
+    "https://avwines.com/",
+    "https://www.northbaybusinessjournal.com/article/lifestyle/anderson-valley-remains-a-haven-for-remarkable-white-wines/",
+    "https://www.decanter.com/wine-travel/north-america/decanter-travel-guide-anderson-valley-california-6452/"
+   ],
+   "grapes": [
+    "https://wineanorak.com/2023/07/03/anderson-valley-california-1-where-the-california-meets-the-pacific-northwest/",
+    "https://www.northbaybusinessjournal.com/article/lifestyle/anderson-valley-remains-a-haven-for-remarkable-white-wines/",
+    "https://www.decanter.com/wine-travel/north-america/decanter-travel-guide-anderson-valley-california-6452/"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ],
+   "official_name": [
+    "https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.86"
+   ]
+  }
+ },
+ {
+  "slug": "lodi",
+  "name": "Lodi",
+  "country": "US",
+  "aliases": [],
+  "summary": "A large AVA in California's Central Valley, southeast of Sacramento, where breezes from the Sacramento River Delta temper warm summers. Zinfandel defines it, and it holds more old vines than anywhere else in the country.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Zinfandel",
+    "local_note": "Lodi has many old vines, most of them in the Mokelumne River sub AVA."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Mokelumne River",
+    "colour": "red",
+    "note": "Sub AVA around the town of Lodi, on sandy soils, home to most of its oldest Zinfandel vines."
+   },
+   {
+    "name": "Alta Mesa",
+    "colour": "mixed",
+    "note": "Sub AVA of Lodi."
+   },
+   {
+    "name": "Borden Ranch",
+    "colour": "mixed",
+    "note": "Sub AVA of Lodi."
+   },
+   {
+    "name": "Clements Hills",
+    "colour": "mixed",
+    "note": "Sub AVA of Lodi."
+   },
+   {
+    "name": "Cosumnes River",
+    "colour": "mixed",
+    "note": "Sub AVA of Lodi."
+   },
+   {
+    "name": "Jahant",
+    "colour": "mixed",
+    "note": "Sub AVA of Lodi."
+   },
+   {
+    "name": "Sloughhouse",
+    "colour": "mixed",
+    "note": "Sub AVA of Lodi."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/lodi",
+    "https://winefolly.com/review/guide-lodi-wine-ca/",
+    "https://www.lodiwine.com/blog/Lodi-101--for-true-blue-Lodi-wine-lovers-",
+    "https://en.wikipedia.org/wiki/Lodi_AVA"
+   ],
+   "grapes": [
+    "https://winefolly.com/review/guide-lodi-wine-ca/",
+    "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/lodi"
+   ],
+   "grapes.Zinfandel.local_note": [
+    "https://winefolly.com/review/guide-lodi-wine-ca/",
+    "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/lodi",
+    "https://www.lodiwine.com/blog/Lodi-101--for-true-blue-Lodi-wine-lovers-"
+   ],
+   "appellations": [
+    "https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.107",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.195",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.196",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.197",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.198",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.199",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.200",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.201"
+   ],
+   "appellations.Mokelumne River.note": [
+    "https://winefolly.com/review/guide-lodi-wine-ca/",
+    "https://www.guildsomm.com/public_content/features/articles/b/stamp/posts/lodi"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ]
+  }
+ },
+ {
+  "slug": "sierra-foothills",
+  "name": "Sierra Foothills",
+  "country": "US",
+  "aliases": [],
+  "summary": "A long belt of the western Sierra Nevada foothills east of Sacramento, first planted during the Gold Rush. Days are warm and nights cool, and Zinfandel is the main grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Zinfandel",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": null
+   },
+   {
+    "name": "Barbera",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "California Shenandoah Valley",
+    "colour": "red",
+    "note": "Sub AVA in Amador and El Dorado counties, also usable as Shenandoah Valley of California."
+   },
+   {
+    "name": "Fiddletown",
+    "colour": "red",
+    "note": "Sub AVA in Amador County."
+   },
+   {
+    "name": "Fair Play",
+    "colour": "mixed",
+    "note": "Sub AVA in El Dorado County."
+   },
+   {
+    "name": "North Yuba",
+    "colour": "mixed",
+    "note": "Sub AVA in Yuba County."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Sierra_Foothills_AVA",
+    "https://www.decanter.com/features/gold-rush-country-sierra-foothills-249125/"
+   ],
+   "grapes": [
+    "https://en.wikipedia.org/wiki/Sierra_Foothills_AVA",
+    "https://www.decanter.com/features/gold-rush-country-sierra-foothills-249125/"
+   ],
+   "grapes.Barbera": [
+    "https://www.decanter.com/features/gold-rush-country-sierra-foothills-249125/",
+    "https://www.palatepress.com/taking-barbera-beyond-blends-in-california/"
+   ],
+   "appellations": [
+    "https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.37",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.81",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.168",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.106"
+   ],
+   "appellations.California Shenandoah Valley.colour": [
+    "https://www.decanter.com/features/gold-rush-country-sierra-foothills-249125/",
+    "https://en.wikipedia.org/wiki/Sierra_Foothills_AVA"
+   ],
+   "appellations.Fiddletown.colour": [
+    "https://www.decanter.com/features/gold-rush-country-sierra-foothills-249125/",
+    "https://en.wikipedia.org/wiki/Sierra_Foothills_AVA"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ],
+   "official_name": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.120"
+   ]
+  }
+ },
+ {
+  "slug": "monticello",
+  "name": "Monticello",
+  "country": "US",
+  "aliases": [
+   "Monticello AVA"
+  ],
+  "summary": "Rolling country around Charlottesville on the eastern slopes of the Blue Ridge Mountains, where Thomas Jefferson tried to grow vines in the 1770s. Cool air through gaps in the mountains helps lengthen the season.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Under federal rules, at least 85% of the wine must come from grapes grown in the AVA named on the label, and the wine must be finished in the state, or one of the states, where the AVA lies.",
+  "grapes": [
+   {
+    "name": "Cabernet Franc",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Viognier",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://en.wikipedia.org/wiki/Monticello_AVA",
+    "https://winefolly.com/wine-regions/united-states/virginia/"
+   ],
+   "grapes": [
+    "https://en.wikipedia.org/wiki/Monticello_AVA",
+    "https://winefolly.com/wine-regions/united-states/virginia/"
+   ],
+   "grapes.Viognier": [
+    "https://en.wikipedia.org/wiki/Monticello_AVA",
+    "https://winefolly.com/wine-regions/united-states/virginia/",
+    "https://wtop.com/business-finance/2023/11/charlottsville-area-named-wine-region-of-the-year"
+   ],
+   "label_note": [
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-4/subpart-C/section-4.25"
+   ],
+   "official_name": [
+    "https://services7.arcgis.com/ykuAbKu9MbV93nAe/arcgis/rest/services/AVAs_Production/FeatureServer/0",
+    "https://www.ecfr.gov/current/title-27/chapter-I/subchapter-A/part-9/subpart-C/section-9.48"
+   ]
+  }
+ },
+ {
+  "slug": "prince-edward-county",
+  "name": "Prince Edward County",
+  "country": "CA",
+  "aliases": [
+   "The County",
+   "PEC"
+  ],
+  "summary": "Ontario's most northerly appellation, a near island in Lake Ontario on limestone bedrock. Winters are so cold that vines are buried or covered each autumn. Chardonnay and Pinot Noir lead, and sparkling wine is made too.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A VQA Prince Edward County wine must come at least 85% from grapes grown in the appellation and 100% from Ontario, be made only from vinifera grapes, and be fermented and finished in Ontario.",
+  "grapes": [
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://vqaontario.ca/appellations/prince-edward-county/",
+    "https://www.wineanorak.com/wineblog/?p=23819",
+    "https://www.lcbo.com/content/lcbo/en/food-and-drink/ontario-wine-country.html",
+    "https://www.decanter.com/wine/andrew-jefford-the-wine-was-so-refined-and-choice-that-i-swallowed-greedily-514846"
+   ],
+   "grapes": [
+    "https://vqaontario.ca/appellations/prince-edward-county/",
+    "https://www.lcbo.com/content/lcbo/en/food-and-drink/ontario-wine-country.html",
+    "https://www.decanter.com/wine/andrew-jefford-the-wine-was-so-refined-and-choice-that-i-swallowed-greedily-514846",
+    "https://www.wineanorak.com/wineblog/?p=23819"
+   ],
+   "aliases": [
+    "https://vqaontario.ca/appellations/prince-edward-county/",
+    "https://www.lcbo.com/content/lcbo/en/food-and-drink/ontario-wine-country.html",
+    "https://en.wikipedia.org/wiki/Prince_Edward_County_wine"
+   ],
+   "label_note": [
+    "https://www.ontario.ca/laws/regulation/000406"
+   ]
+  }
+ },
+ {
+  "slug": "nova-scotia",
+  "name": "Nova Scotia",
+  "country": "CA",
+  "aliases": [
+   "Wines of Nova Scotia"
+  ],
+  "summary": "Canada's Atlantic wine province, where vineyards lie close to the sea and the Bay of Fundy tempers a cool climate. It is known for crisp whites such as Tidal Bay and for traditional method sparkling wine.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": "Tidal Bay with Atlantic seafood.",
+  "label_note": "Wine labelled Nova Scotia Wine must come at least 85% from grapes grown in the province; the Wines of Nova Scotia designation requires 100% Nova Scotia grapes.",
+  "grapes": [
+   {
+    "name": "L'Acadie Blanc",
+    "local_note": "The leading grape, used for still whites, Tidal Bay and sparkling wine."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.decanter.com/premium/regional-profile-nova-scotia-wines-426262/",
+    "https://winesofnovascotia.ca/",
+    "https://en.wikipedia.org/wiki/Nova_Scotia_wine",
+    "https://circleofwinewriters.org/?p=52686",
+    "https://www.novascotia.com/trip-ideas/stories/nova-scotia-glass-tidal-bay-wine"
+   ],
+   "pairing": [
+    "https://winesofnovascotia.ca/tidal-bay/",
+    "https://www.novascotia.com/trip-ideas/stories/nova-scotia-glass-tidal-bay-wine"
+   ],
+   "grapes": [
+    "https://www.decanter.com/premium/regional-profile-nova-scotia-wines-426262/",
+    "https://en.wikipedia.org/wiki/Nova_Scotia_wine",
+    "https://circleofwinewriters.org/?p=52686"
+   ],
+   "grapes.L'Acadie Blanc.local_note": [
+    "https://www.decanter.com/premium/regional-profile-nova-scotia-wines-426262/",
+    "https://circleofwinewriters.org/?p=52686",
+    "https://en.wikipedia.org/wiki/Nova_Scotia_wine"
+   ],
+   "label_note": [
+    "https://novascotia.ca/just/regulations/regs/amwinestds.htm"
+   ],
+   "aliases": [
+    "https://novascotia.ca/just/regulations/regs/amwinestds.htm"
+   ]
+  }
+ },
+ {
+  "slug": "yamagata",
+  "name": "Yamagata",
+  "country": "JP",
+  "aliases": [
+   "山形",
+   "GI Yamagata"
+  ],
+  "summary": "A fruit growing prefecture in northern Honshu with large swings between day and night temperatures. Muscat Bailey A, Delaware and Chardonnay lead, and Takahata town is among Japan's leading Delaware growers.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled GI Yamagata must be made only from listed grape varieties harvested in Yamagata, then produced, stored and bottled in the prefecture, and confirmed by the GI control body.",
+  "grapes": [
+   {
+    "name": "Muscat Bailey A",
+    "local_note": null
+   },
+   {
+    "name": "Delaware",
+    "local_note": "Takahata town is among Japan's leading growers of it."
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_3.htm",
+    "https://serai.jp/gourmet/1236557",
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf",
+    "https://www.tohokukanko.jp/en/attractions/print_1011496.html",
+    "https://www.visityamagata.jp/en/takahata-winery-en/"
+   ],
+   "grapes": [
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf",
+    "https://serai.jp/gourmet/1236557",
+    "https://www.tohokukanko.jp/en/attractions/print_1011496.html",
+    "https://www.visityamagata.jp/en/takahata-winery-en/"
+   ],
+   "grapes.Delaware.local_note": [
+    "https://www.tohokukanko.jp/en/attractions/print_1011496.html",
+    "https://www.visityamagata.jp/en/takahata-winery-en/",
+    "https://serai.jp/gourmet/1236557"
+   ],
+   "label_note": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_3.htm"
+   ],
+   "aliases": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/geographical/02.htm",
+    "https://www.nta.go.jp/taxes/sake/hyoji/chiri/ichiran.htm"
+   ]
+  }
+ },
+ {
+  "slug": "osaka",
+  "name": "Osaka",
+  "country": "JP",
+  "aliases": [
+   "大阪",
+   "GI Osaka"
+  ],
+  "summary": "Vineyards on the hills of southern Osaka, around Kashiwara and Habikino, in an area that was once Japan's largest grape growing district. Much of the wine comes from table grapes such as Delaware.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "A wine labelled GI Osaka must be made only from listed grape varieties harvested in Osaka, then produced, stored and bottled in the prefecture, and confirmed by the GI control body.",
+  "grapes": [
+   {
+    "name": "Delaware",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_15.htm",
+    "https://osaka-info.jp/en/gourmet/gastronomy-osakawine/",
+    "https://wineanorak.com/2024/02/04/exploring-japanese-wine-8-visiting-katashimo-winery-osaka/",
+    "https://wineanorak.com/?p=20216"
+   ],
+   "grapes": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_15.htm",
+    "https://wineanorak.com/?p=20216",
+    "https://www.nta.go.jp/taxes/sake/shiori-gaikyo/seizo_oroshiuri/r07/pdf/06.pdf"
+   ],
+   "label_note": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/02_15.htm"
+   ],
+   "aliases": [
+    "https://www.nta.go.jp/english/taxes/liquor_administration/geographical/02.htm",
+    "https://www.nta.go.jp/taxes/sake/hyoji/chiri/ichiran.htm"
+   ]
+  }
+ },
+ {
+  "slug": "nashik",
+  "name": "Nashik",
+  "country": "IN",
+  "aliases": [
+   "Nashik Valley",
+   "Nashik Valley Wine",
+   "Nasik"
+  ],
+  "summary": "India's main wine region, northeast of Mumbai, with vineyards at about 600 to 700 metres. Pruning is timed so grapes ripen in the dry, cooler winter, with warm days and cool nights, and harvest falls early in the year.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Nashik Valley Wine must come at least 80% from grapes grown in Nashik district and be made and bottled there by a winery based in the region.",
+  "grapes": [
+   {
+    "name": "Chenin Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Syrah",
+    "local_note": "Usually labelled Shiraz."
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/123",
+    "https://www.decanter.com/premium/an-introduction-to-indian-wine-533603/",
+    "https://en.wikipedia.org/wiki/Nashik_valley_wine"
+   ],
+   "grapes": [
+    "https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/123",
+    "https://www.decanter.com/premium/an-introduction-to-indian-wine-533603/",
+    "https://en.wikipedia.org/wiki/Nashik_valley_wine"
+   ],
+   "grapes.Syrah.local_note": [
+    "https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/123",
+    "https://www.decanter.com/premium/an-introduction-to-indian-wine-533603/"
+   ],
+   "label_note": [
+    "https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/123"
+   ],
+   "aliases": [
+    "https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/123",
+    "https://en.wikipedia.org/wiki/Nashik_valley_wine"
+   ]
+  }
+ },
+ {
+  "slug": "yantai",
+  "name": "Yantai",
+  "country": "CN",
+  "aliases": [
+   "烟台",
+   "Yantai Wine",
+   "烟台葡萄酒"
+  ],
+  "summary": "A coastal region on the Shandong Peninsula with a maritime climate, mild enough that vines need not be buried in winter. Modern Chinese winemaking began here when Changyu was founded in 1892.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Yantai Wine, a protected geographical indication, must be made from at least 85% grapes grown in Yantai, with growing and winemaking inside the Yantai administrative area.",
+  "grapes": [
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": null
+   },
+   {
+    "name": "Carménère",
+    "local_note": "Grown here as Cabernet Gernischt, brought to Yantai by Changyu in 1892."
+   },
+   {
+    "name": "Merlot",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/65627",
+    "https://www.wynnresortsmacau.com/en/wynn-palace/whats-on/chinese-wine-shandong",
+    "https://winefolly.com/deep-dive/a-primer-to-chinese-wine-regional-guide-with-maps/",
+    "https://en.wikipedia.org/wiki/Cabernet_Gernischt"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/65627",
+    "https://winefolly.com/deep-dive/a-primer-to-chinese-wine-regional-guide-with-maps/"
+   ],
+   "grapes.Carménère.local_note": [
+    "https://en.wikipedia.org/wiki/Cabernet_Gernischt",
+    "https://winefolly.com/deep-dive/a-primer-to-chinese-wine-regional-guide-with-maps/",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/65627"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/65627"
+   ],
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/65627"
+   ]
+  }
+ }
+]

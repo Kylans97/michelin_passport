@@ -1,0 +1,2 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0271,CA_PR_12,Nova Scotia,Nova Scotia,NS,,https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0/query?where=PRUID%3D%2712%27&outFields=%2A&outSR=4326&f=geojson
