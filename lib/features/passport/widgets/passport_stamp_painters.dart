@@ -559,6 +559,8 @@ class DoubleFramePainter extends CustomPainter {
 
   static const width = 196.0;
   static const height = 140.0;
+  static const _gap = 8.0;
+  static const _verticalPadding = 6.0;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -590,6 +592,25 @@ class DoubleFramePainter extends CustomPainter {
         maxWidth: maxWidth,
       );
 
+      final datePainter = _plainText(
+        _fullDateLabel(data.date),
+        CsFonts.serif(
+          color: ink,
+          fontSize: 12,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w600,
+        ),
+      );
+
+      // The name gets whatever height the frame has left once every other
+      // line and the gaps between them are in, so a name that wraps to 2
+      // lines can never push the city and the date onto the frame.
+      final others =
+          cityPainter.height +
+          (data.award != null ? 15 + _gap : 0) +
+          1 +
+          datePainter.height +
+          _gap * 3;
       final namePainter = fitStampNameBalanced(
         text: data.venueName.toUpperCase(),
         styleFor: (fontSize) => CsFonts.serif(
@@ -599,19 +620,10 @@ class DoubleFramePainter extends CustomPainter {
           letterSpacing: fontSize * 0.06,
         ),
         maxWidth: maxWidth,
+        maxHeight: inner.height - _verticalPadding * 2 - others,
         sizeL: 30,
         sizeM: 21,
         sizeS: 15,
-      );
-
-      final datePainter = _plainText(
-        _fullDateLabel(data.date),
-        CsFonts.serif(
-          color: ink,
-          fontSize: 12,
-          fontStyle: FontStyle.italic,
-          fontWeight: FontWeight.w600,
-        ),
       );
 
       final pieces = <_StackPiece>[
@@ -644,7 +656,7 @@ class DoubleFramePainter extends CustomPainter {
           paint: (top) => _paintCentered(canvas, datePainter, centerX, top),
         ),
       ];
-      _paintCenteredStack(canvas, pieces, inner.center.dy, 8);
+      _paintCenteredStack(canvas, pieces, inner.center.dy, _gap);
     });
   }
 
@@ -665,6 +677,10 @@ class OvalPainter extends CustomPainter {
 
   static const width = 228.0;
   static const height = 132.0;
+  static const _gap = 6.0;
+  // More than the double frame's: the oval narrows towards its top and
+  // bottom, where the city and the date sit.
+  static const _verticalPadding = 10.0;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -704,6 +720,24 @@ class OvalPainter extends CustomPainter {
         maxWidth: maxWidth,
       );
 
+      final datePainter = _plainText(
+        _fullDateLabel(data.date),
+        CsFonts.serif(
+          color: ink,
+          fontSize: 10,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w600,
+        ),
+      );
+
+      // As on the double frame: the name gets only the height the inner
+      // oval has left, so a name that wraps never pushes the city and the
+      // date onto the border.
+      final others =
+          cityPainter.height +
+          (data.award != null ? 14 + _gap : 0) +
+          datePainter.height +
+          _gap * 2;
       final namePainter = fitStampNameBalanced(
         text: data.venueName,
         styleFor: (fontSize) => CsFonts.serif(
@@ -713,19 +747,10 @@ class OvalPainter extends CustomPainter {
           fontWeight: FontWeight.w600,
         ),
         maxWidth: maxWidth,
+        maxHeight: inner.height - _verticalPadding * 2 - others,
         sizeL: 28,
         sizeM: 20,
         sizeS: 17,
-      );
-
-      final datePainter = _plainText(
-        _fullDateLabel(data.date),
-        CsFonts.serif(
-          color: ink,
-          fontSize: 10,
-          fontStyle: FontStyle.italic,
-          fontWeight: FontWeight.w600,
-        ),
       );
 
       final pieces = <_StackPiece>[
@@ -748,7 +773,7 @@ class OvalPainter extends CustomPainter {
           paint: (top) => _paintCentered(canvas, datePainter, centerX, top),
         ),
       ];
-      _paintCenteredStack(canvas, pieces, size.height / 2, 6);
+      _paintCenteredStack(canvas, pieces, size.height / 2, _gap);
     });
   }
 
