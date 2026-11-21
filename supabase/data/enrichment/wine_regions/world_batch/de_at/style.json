@@ -1,0 +1,806 @@
+[
+ {
+  "slug": "mittelrhein",
+  "name": "Mittelrhein",
+  "country": "DE",
+  "aliases": [
+   "Middle Rhine"
+  ],
+  "summary": "Steep, mostly terraced vineyards on slate along the Rhine between Bingen and Bonn, much of it inside the Rhine Gorge World Heritage area. Riesling covers close to two thirds of the vineyard.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Labels show Qualitätswein or Prädikatswein. From the 2026 vintage a single vineyard (Einzellage) name may appear only on Riesling, Pinot Blanc, Pinot Gris or Pinot Noir.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Called Spätburgunder here; the main red grape."
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Loreley",
+    "colour": "mixed",
+    "note": "Bereich of Mittelrhein in Rhineland-Palatinate, with most of the vineyard."
+   },
+   {
+    "name": "Siebengebirge",
+    "colour": "mixed",
+    "note": "Bereich of Mittelrhein in North Rhine-Westphalia, around Königswinter."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Mittelrhein_(wine_region)",
+    "https://winesofgermany.co.uk/regions/mittelrhein/"
+   ],
+   "summary": [
+    "http://data.europa.eu/eli/C/2026/738/oj",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/71/mittelrhein",
+    "https://winesofgermany.co.uk/regions/mittelrhein/",
+    "https://en.wikipedia.org/wiki/Mittelrhein_(wine_region)",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Mittelrhein_(wine_region)"
+   ],
+   "grapes.Pinot Noir.local_note": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Mittelrhein_(wine_region)",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/71/mittelrhein"
+   ],
+   "appellations": [
+    "https://en.wikipedia.org/wiki/Mittelrhein_(wine_region)",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/71/mittelrhein"
+   ],
+   "label_note": [
+    "http://data.europa.eu/eli/C/2026/738/oj"
+   ]
+  }
+ },
+ {
+  "slug": "saale-unstrut",
+  "name": "Saale-Unstrut",
+  "country": "DE",
+  "aliases": [],
+  "summary": "Vineyards on the slopes of the Saale and Unstrut valleys, mostly in Saxony-Anhalt with a smaller part in Thuringia, many on stone terraces and shell limestone. One of the northernmost traditional wine regions in Europe, making mostly dry white wine.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Called Weißburgunder here."
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Dornfelder",
+    "local_note": null
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "summary": [
+    "http://data.europa.eu/eli/C/2024/5342/oj",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/74/saale-unstrut",
+    "https://winesofgermany.co.uk/regions/saale-unstrut/",
+    "https://en.wikipedia.org/wiki/Saale-Unstrut",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Saale-Unstrut"
+   ],
+   "grapes.Pinot Blanc.local_note": [
+    "https://en.wikipedia.org/wiki/Saale-Unstrut",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/74/saale-unstrut"
+   ]
+  }
+ },
+ {
+  "slug": "sachsen",
+  "name": "Sachsen",
+  "country": "DE",
+  "aliases": [
+   "Saxony"
+  ],
+  "summary": "Vineyards on steep slopes of the Elbe valley between Pirna and Diesbar-Seußlitz, around Dresden, Radebeul and Meissen, many on granite and gneiss. Most of the vineyard is planted with white grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Müller-Thurgau",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": "Called Weißburgunder here."
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Called Grauburgunder here."
+   }
+  ],
+  "appellations": [],
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Saxony_(wine_region)",
+    "https://winesofgermany.co.uk/regions/sachsen/"
+   ],
+   "summary": [
+    "http://data.europa.eu/eli/C/2026/5718/oj",
+    "https://ch.deutscheweine.de/regionen/anbaugebiet/75/sachsen",
+    "https://en.wikipedia.org/wiki/Saxony_(wine_region)",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Saxony_(wine_region)",
+    "https://ch.deutscheweine.de/regionen/anbaugebiet/75/sachsen"
+   ],
+   "grapes.Pinot Blanc.local_note": [
+    "https://en.wikipedia.org/wiki/Saxony_(wine_region)",
+    "https://ch.deutscheweine.de/regionen/anbaugebiet/75/sachsen"
+   ],
+   "grapes.Pinot Gris.local_note": [
+    "https://en.wikipedia.org/wiki/Saxony_(wine_region)",
+    "https://ch.deutscheweine.de/regionen/anbaugebiet/75/sachsen"
+   ]
+  }
+ },
+ {
+  "slug": "hessische-bergstrasse",
+  "name": "Hessische Bergstraße",
+  "country": "DE",
+  "aliases": [
+   "Hessische Bergstrasse"
+  ],
+  "summary": "Vineyards on the western slopes of the Odenwald facing the Rhine plain, from Seeheim-Jugenheim south to Heppenheim, with an outlying area around Groß-Umstadt. Spring comes early here, and Riesling is the leading grape.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": null,
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Gris",
+    "local_note": "Called Grauburgunder here."
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Called Spätburgunder here."
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Starkenburg",
+    "colour": "mixed",
+    "note": "Bereich of Hessische Bergstraße along the Bergstraße, around Bensheim and Heppenheim."
+   },
+   {
+    "name": "Umstadt",
+    "colour": "mixed",
+    "note": "Bereich of Hessische Bergstraße around Groß-Umstadt, apart from the main area."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://en.wikipedia.org/wiki/Hessische_Bergstra%C3%9Fe",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/67/hessische-bergstra%C3%9Fe"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6412",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/67/hessische-bergstra%C3%9Fe",
+    "https://en.wikipedia.org/wiki/Hessische_Bergstra%C3%9Fe",
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf"
+   ],
+   "grapes": [
+    "https://www.deutscheweine.de/fileadmin/DWI/News_Medien/Publikationen/Deutscher_Wein_Statistik/Statistik_2025.pdf",
+    "https://en.wikipedia.org/wiki/Hessische_Bergstra%C3%9Fe",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/67/hessische-bergstra%C3%9Fe"
+   ],
+   "grapes.Pinot Gris.local_note": [
+    "https://en.wikipedia.org/wiki/Hessische_Bergstra%C3%9Fe",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/67/hessische-bergstra%C3%9Fe"
+   ],
+   "grapes.Pinot Noir.local_note": [
+    "https://en.wikipedia.org/wiki/Hessische_Bergstra%C3%9Fe",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/67/hessische-bergstra%C3%9Fe"
+   ],
+   "appellations": [
+    "https://en.wikipedia.org/wiki/Hessische_Bergstra%C3%9Fe",
+    "https://www.ch.deutscheweine.de/regionen/anbaugebiet/67/hessische-bergstra%C3%9Fe",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6412"
+   ]
+  }
+ },
+ {
+  "slug": "wien",
+  "name": "Wien",
+  "country": "AT",
+  "aliases": [
+   "Vienna"
+  ],
+  "summary": "Vineyards inside the city of Vienna, with limestone soils in the west and darker soils in the south. Mostly white wine; Wiener Gemischter Satz, a field blend of several varieties grown and picked together, is the city's own DAC.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Wiener Gemischter Satz DAC is a dry white from at least three varieties picked and pressed together. Without a smaller origin than Wien it may show no marked oak, and it may not be sold to consumers before 1 December of the harvest year.",
+  "grapes": [
+   {
+    "name": "Riesling",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": null
+   },
+   {
+    "name": "Grüner Veltliner",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Wiener Gemischter Satz DAC",
+    "colour": "white",
+    "note": "Field blend from one Vienna vineyard, at least three white varieties; the largest at most 50%, the third at least 10%."
+   },
+   {
+    "name": "Wiener Gemischter Satz DAC Nußberg",
+    "colour": "white",
+    "note": "Smaller origin allowed on the label: vineyards in the Katastralgemeinden Nußdorf and Heiligenstadt."
+   },
+   {
+    "name": "Wiener Gemischter Satz DAC Grinzing",
+    "colour": "white",
+    "note": "Smaller origin allowed on the label: vineyards in the Katastralgemeinde Grinzing."
+   },
+   {
+    "name": "Wiener Gemischter Satz DAC Sievering",
+    "colour": "white",
+    "note": "Smaller origin allowed on the label: vineyards in Obersievering and Untersievering."
+   },
+   {
+    "name": "Wiener Gemischter Satz DAC Neustift",
+    "colour": "white",
+    "note": "Smaller origin allowed on the label: vineyards in Neustift and Salmannsdorf."
+   },
+   {
+    "name": "Wiener Gemischter Satz DAC Maurerberg",
+    "colour": "white",
+    "note": "Smaller origin allowed on the label: vineyards in Mauer, Kalksburg, Rodaun and Liesing; \"Mauer\" may be used instead."
+   },
+   {
+    "name": "Wiener Gemischter Satz DAC Oberlaa",
+    "colour": "white",
+    "note": "Smaller origin allowed on the label: vineyards in Oberlaa Stadt."
+   },
+   {
+    "name": "Wiener Gemischter Satz DAC Bisamberg",
+    "colour": "white",
+    "note": "Smaller origin allowed on the label: vineyards in Strebersdorf, Stammersdorf and Groß-Jedlersdorf."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.wine-searcher.com/regions-vienna",
+    "https://www.bmluk.gv.at/dam/jcr:957f1ca1-1a73-4005-8350-3171d2b7ea3b/Wien%20Produktspezifikation.pdf"
+   ],
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:957f1ca1-1a73-4005-8350-3171d2b7ea3b/Wien%20Produktspezifikation.pdf",
+    "https://www.wine-searcher.com/regions-vienna",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265199/NOR40265199.html"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:957f1ca1-1a73-4005-8350-3171d2b7ea3b/Wien%20Produktspezifikation.pdf",
+    "https://www.wine-searcher.com/regions-vienna"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265199/NOR40265199.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265200/NOR40265200.html",
+    "https://www.wine-searcher.com/regions-vienna"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265199/NOR40265199.html",
+    "https://www.bmluk.gv.at/dam/jcr:bf0621b6-9128-4995-bc3a-3a2b68e2a4a0/Wiener%20Gemischter%20Satz%20Produktspezifikation.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "carnuntum",
+  "name": "Carnuntum",
+  "country": "AT",
+  "aliases": [],
+  "summary": "Rolling hills east of Vienna between the Danube and the Leitha hills, reaching the Slovak border. A warm Pannonian climate, tempered by the Danube and Lake Neusiedl, suits Zweigelt and Blaufränkisch; Grüner Veltliner, Chardonnay and Pinot Blanc are the white grapes.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Carnuntum DAC is dry. It comes as a regional wine, a village wine (Ortswein) from one of six listed villages, or a single vineyard wine (Riedenwein).",
+  "grapes": [
+   {
+    "name": "Zweigelt",
+    "local_note": "The region's main red speciality."
+   },
+   {
+    "name": "Blaufränkisch",
+    "local_note": null
+   },
+   {
+    "name": "Grüner Veltliner",
+    "local_note": null
+   },
+   {
+    "name": "Chardonnay",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Blanc",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Carnuntum DAC",
+    "colour": "mixed",
+    "note": "White from Chardonnay, Pinot Blanc or Grüner Veltliner, red from Zweigelt or Blaufränkisch; blends at least two thirds of these."
+   },
+   {
+    "name": "Carnuntum DAC Göttlesbrunn",
+    "colour": "mixed",
+    "note": "Ortswein from Arbesthal and Göttlesbrunn."
+   },
+   {
+    "name": "Carnuntum DAC Hainburg",
+    "colour": "mixed",
+    "note": "Ortswein from Bad Deutsch-Altenburg, Hainburg and Wolfsthal."
+   },
+   {
+    "name": "Carnuntum DAC Höflein",
+    "colour": "mixed",
+    "note": "Ortswein from Höflein."
+   },
+   {
+    "name": "Carnuntum DAC Petronell-Carnuntum",
+    "colour": "mixed",
+    "note": "Ortswein from Hollern, Petronell-Carnuntum, Wildungsmauer, Haslau, Maria Ellend and Regelsbrunn."
+   },
+   {
+    "name": "Carnuntum DAC Prellenkirchen",
+    "colour": "mixed",
+    "note": "Ortswein from Berg, Deutsch Haslau, Hundsheim, Prellenkirchen and Schönabrunn."
+   },
+   {
+    "name": "Carnuntum DAC Stixneusiedl",
+    "colour": "mixed",
+    "note": "Ortswein from Enzersdorf, Sarasdorf, Gallbrunn and Stixneusiedl."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:fdf5300e-ebc1-485a-b585-8032f7edd862/Carnuntum%20Produktspezifikation.pdf",
+    "https://www.wine-searcher.com/regions-carnuntum"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:fdf5300e-ebc1-485a-b585-8032f7edd862/Carnuntum%20Produktspezifikation.pdf",
+    "https://www.wine-searcher.com/regions-carnuntum"
+   ],
+   "grapes.Zweigelt.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:fdf5300e-ebc1-485a-b585-8032f7edd862/Carnuntum%20Produktspezifikation.pdf",
+    "https://www.wine-searcher.com/regions-carnuntum"
+   ],
+   "appellations": [
+    "https://www.bmluk.gv.at/dam/jcr:fdf5300e-ebc1-485a-b585-8032f7edd862/Carnuntum%20Produktspezifikation.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40217696/NOR40217696.html",
+    "https://www.wine-searcher.com/regions-carnuntum"
+   ],
+   "label_note": [
+    "https://www.bmluk.gv.at/dam/jcr:fdf5300e-ebc1-485a-b585-8032f7edd862/Carnuntum%20Produktspezifikation.pdf",
+    "https://www.wine-searcher.com/regions-carnuntum"
+   ]
+  }
+ },
+ {
+  "slug": "thermenregion",
+  "name": "Thermenregion",
+  "country": "AT",
+  "aliases": [],
+  "summary": "South of Vienna along the eastern edge of the Vienna Woods, which shelter the vineyards and keep them warm. Its signatures are Zierfandler and Rotgipfler, two local white grapes grown around Gumpoldskirchen and often blended together.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Thermenregion DAC comes as regional, village (Ortswein) and single vineyard (Riedenwein) wine. Regional and village wines are dry with at least 12.0% vol; single vineyard wines need at least 12.5% vol. Village and single vineyard wines may not be rosé.",
+  "grapes": [
+   {
+    "name": "Zweigelt",
+    "local_note": null
+   },
+   {
+    "name": "Pinot Noir",
+    "local_note": "Called Blauburgunder here."
+   },
+   {
+    "name": "St. Laurent",
+    "local_note": null
+   },
+   {
+    "name": "Portugieser",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Thermenregion DAC",
+    "colour": "mixed",
+    "note": "Whites from Rotgipfler, Zierfandler, Pinot Blanc, Pinot Gris, Chardonnay or Neuburger; reds from Pinot Noir, St. Laurent, Portugieser or Zweigelt."
+   },
+   {
+    "name": "Thermenregion DAC Perchtoldsdorf",
+    "colour": "mixed",
+    "note": "Ortswein from Perchtoldsdorf, Brunn am Gebirge, Maria Enzersdorf and Gießhübl."
+   },
+   {
+    "name": "Thermenregion DAC Gumpoldskirchen",
+    "colour": "mixed",
+    "note": "Ortswein from Mödling, Gumpoldskirchen, Guntramsdorf, Pfaffstätten and Traiskirchen."
+   },
+   {
+    "name": "Thermenregion DAC Tattendorf",
+    "colour": "mixed",
+    "note": "Ortswein from Tattendorf and neighbouring villages."
+   },
+   {
+    "name": "Thermenregion DAC Wiener Neustadt",
+    "colour": "mixed",
+    "note": "Ortswein from villages around Wiener Neustadt."
+   },
+   {
+    "name": "Thermenregion DAC Bad Vöslau",
+    "colour": "mixed",
+    "note": "Ortswein from Kottingbrunn, Berndorf and Bad Vöslau."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:61dee9ab-713f-40c7-9f7e-16ed7cd15d16/Produktspezifikation_Thermenregion.pdf",
+    "https://www.wine-searcher.com/regions-thermenregion"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:61dee9ab-713f-40c7-9f7e-16ed7cd15d16/Produktspezifikation_Thermenregion.pdf",
+    "https://www.wine-searcher.com/regions-thermenregion"
+   ],
+   "grapes.Pinot Noir.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:61dee9ab-713f-40c7-9f7e-16ed7cd15d16/Produktspezifikation_Thermenregion.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265208/NOR40265208.html"
+   ],
+   "appellations": [
+    "https://www.bmluk.gv.at/dam/jcr:61dee9ab-713f-40c7-9f7e-16ed7cd15d16/Produktspezifikation_Thermenregion.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265208/NOR40265208.html"
+   ],
+   "label_note": [
+    "https://www.bmluk.gv.at/dam/jcr:61dee9ab-713f-40c7-9f7e-16ed7cd15d16/Produktspezifikation_Thermenregion.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265208/NOR40265208.html"
+   ]
+  }
+ },
+ {
+  "slug": "traisental",
+  "name": "Traisental",
+  "country": "AT",
+  "aliases": [],
+  "summary": "A small area along the Traisen river south of the Danube, between Traismauer and St. Pölten. Grüner Veltliner dominates, with Riesling the other DAC grape; warm Pannonian days and cool nights shape the wines.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Traisental DAC is dry Grüner Veltliner or Riesling, with up to 15% of other quality grapes. The Reserve is a fuller style in which slight botrytis and oak are allowed.",
+  "grapes": [
+   {
+    "name": "Grüner Veltliner",
+    "local_note": null
+   },
+   {
+    "name": "Riesling",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Traisental DAC",
+    "colour": "white",
+    "note": "Grüner Veltliner or Riesling, dry, without dominant botrytis."
+   },
+   {
+    "name": "Traisental DAC Reserve",
+    "colour": "white",
+    "note": "Fuller style; slight botrytis and oak notes allowed."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:4542c2d0-2f92-4fa7-ae67-07189dffffa3/Traisental%20Produktspezifikation.pdf",
+    "https://www.wine-searcher.com/regions-traisental",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253620/NOR40253620.html"
+   ],
+   "grapes": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253620/NOR40253620.html",
+    "https://www.wine-searcher.com/regions-traisental"
+   ],
+   "appellations": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253620/NOR40253620.html",
+    "https://www.wine-searcher.com/regions-traisental"
+   ],
+   "label_note": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253620/NOR40253620.html",
+    "https://www.wine-searcher.com/regions-traisental"
+   ]
+  }
+ },
+ {
+  "slug": "weststeiermark",
+  "name": "Weststeiermark",
+  "country": "AT",
+  "aliases": [
+   "West Styria",
+   "Schilcherland"
+  ],
+  "summary": "Hilly vineyards in western Styria around Deutschlandsberg. Most of the vineyard is Blauer Wildbacher, made into Schilcher, a pale dry rosé with crisp acidity and red berry fruit.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Schilcher is a traditional term for rosé made only from Blauer Wildbacher grown in Styria. The Schilcherland DAC of 2017 was repealed in November 2018 and replaced by Weststeiermark DAC.",
+  "grapes": [
+   {
+    "name": "Blauer Wildbacher",
+    "local_note": "Made into Schilcher, a pale dry rosé."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Weststeiermark DAC",
+    "colour": "mixed",
+    "note": "Regional, village and single vineyard wines; Blauer Wildbacher must be made as Schilcher."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.wine-searcher.com/regions-weststeiermark",
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher"
+   ],
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:cb24a50b-f6c9-4d93-ba60-38ecdccc04ac/Weststeiermark%20Produktspezifikation.pdf",
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher",
+    "https://vinovoss.com/grapes/blauer-wildbacher"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:cb24a50b-f6c9-4d93-ba60-38ecdccc04ac/Weststeiermark%20Produktspezifikation.pdf",
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher"
+   ],
+   "grapes.Blauer Wildbacher.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:cb24a50b-f6c9-4d93-ba60-38ecdccc04ac/Weststeiermark%20Produktspezifikation.pdf",
+    "https://en.wikipedia.org/wiki/Blauer_Wildbacher"
+   ],
+   "appellations": [
+    "https://www.bmluk.gv.at/dam/jcr:cb24a50b-f6c9-4d93-ba60-38ecdccc04ac/Weststeiermark%20Produktspezifikation.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40265204/NOR40265204.html"
+   ],
+   "label_note": [
+    "https://www.bmluk.gv.at/dam/jcr:cb24a50b-f6c9-4d93-ba60-38ecdccc04ac/Weststeiermark%20Produktspezifikation.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40198122/NOR40198122.html",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40209773/NOR40209773.html"
+   ]
+  }
+ },
+ {
+  "slug": "rosalia",
+  "name": "Rosalia",
+  "country": "AT",
+  "aliases": [],
+  "summary": "Vineyards in Burgenland's Mattersburg district. A red wine area for Blaufränkisch and Zweigelt, with a rosé category, Rosalia DAC Rosé, written into its rules.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Rosalia DAC is red from Blaufränkisch or Zweigelt with at least 12.0% vol; Reserve needs at least 13.0% vol. Rosalia DAC Rosé may use any red quality grape.",
+  "grapes": [
+   {
+    "name": "Blaufränkisch",
+    "local_note": null
+   },
+   {
+    "name": "Zweigelt",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Rosalia DAC",
+    "colour": "red",
+    "note": "Blaufränkisch or Zweigelt, or a blend of the two."
+   },
+   {
+    "name": "Rosalia DAC Reserve",
+    "colour": "red",
+    "note": "At least 13.0% vol; a single vineyard name is allowed."
+   },
+   {
+    "name": "Rosalia DAC Rosé",
+    "colour": "rose",
+    "note": "Rosé from one or more red quality grapes."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:62236139-a815-48fe-839f-6f3ad6db4f45/Rosalia%20Produktspezifikation.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40200891/NOR40200891.html",
+    "https://glossary.wein.plus/rosalia-dac-2",
+    "https://www.burgenland.info/en/the-central-burgenland-wine-region"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:62236139-a815-48fe-839f-6f3ad6db4f45/Rosalia%20Produktspezifikation.pdf",
+    "https://glossary.wein.plus/rosalia-dac-2"
+   ],
+   "appellations": [
+    "https://www.bmluk.gv.at/dam/jcr:62236139-a815-48fe-839f-6f3ad6db4f45/Rosalia%20Produktspezifikation.pdf",
+    "https://glossary.wein.plus/rosalia-dac-2"
+   ],
+   "label_note": [
+    "https://www.bmluk.gv.at/dam/jcr:62236139-a815-48fe-839f-6f3ad6db4f45/Rosalia%20Produktspezifikation.pdf",
+    "https://glossary.wein.plus/rosalia-dac-2"
+   ]
+  }
+ },
+ {
+  "slug": "mittelburgenland",
+  "name": "Mittelburgenland",
+  "country": "AT",
+  "aliases": [
+   "Blaufränkischland"
+  ],
+  "summary": "The Oberpullendorf district of central Burgenland, around Deutschkreutz, Horitschon and Neckenmarkt. Heavy clay and loam soils that hold water suit Blaufränkisch, the only grape of Mittelburgenland DAC.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Mittelburgenland DAC is Blaufränkisch, with up to 15% of other quality grapes. It may carry Classic, a single vineyard name, or Reserve (at least 13.0% vol).",
+  "grapes": [
+   {
+    "name": "Blaufränkisch",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Mittelburgenland DAC",
+    "colour": "red",
+    "note": "Blaufränkisch; may add Classic."
+   },
+   {
+    "name": "Mittelburgenland DAC Reserve",
+    "colour": "red",
+    "note": "Blaufränkisch, at least 13.0% vol, often oak aged."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.winewithseth.com/winewiki/mittelburgenland-dac-blaufrankischland/",
+    "https://magazine.wein.plus/the-land-of-blaufraenkisch-wine-growing-regions-in-austria-mittelburgenland"
+   ],
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:3f3b609e-e45f-455c-b0ed-c5f94b49c931/Mittelburgenland%20Produktspezifikation.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40205555/NOR40205555.html",
+    "https://www.falstaff.com/en/regions/austria-central-burgenland",
+    "https://www.winewithseth.com/winewiki/deutschkreutz-horitschon-neckenmarkt-austrias-blaufrankisch-heartland/"
+   ],
+   "grapes": [
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40205555/NOR40205555.html",
+    "https://www.falstaff.com/en/regions/austria-central-burgenland"
+   ],
+   "appellations": [
+    "https://www.bmluk.gv.at/dam/jcr:3f3b609e-e45f-455c-b0ed-c5f94b49c931/Mittelburgenland%20Produktspezifikation.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40205555/NOR40205555.html"
+   ],
+   "label_note": [
+    "https://www.bmluk.gv.at/dam/jcr:3f3b609e-e45f-455c-b0ed-c5f94b49c931/Mittelburgenland%20Produktspezifikation.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40205555/NOR40205555.html"
+   ]
+  }
+ },
+ {
+  "slug": "eisenberg",
+  "name": "Eisenberg",
+  "country": "AT",
+  "aliases": [],
+  "summary": "Southern Burgenland, in the Oberwart, Güssing and Jennersdorf districts, around the Eisenberg and Deutsch Schützen hills. Slate on the slopes and iron-rich loam below; Blaufränkisch is the main grape, with Welschriesling for village and single vineyard wines.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Eisenberg DAC regional wine is 100% Blaufränkisch. With a village (Ortswein) or single vineyard (Riedenwein) name it may be 100% Blaufränkisch or 100% Welschriesling; no blending.",
+  "grapes": [
+   {
+    "name": "Blaufränkisch",
+    "local_note": null
+   },
+   {
+    "name": "Graševina",
+    "local_note": "Called Welschriesling here; Eisenberg DAC only with a village or vineyard name."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Eisenberg DAC",
+    "colour": "mixed",
+    "note": "Regional wine is pure Blaufränkisch; village and single vineyard wines may also be pure Welschriesling."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://www.bmluk.gv.at/dam/jcr:93568321-4323-437d-ae96-d206eec1339c/Produktspezifikation_Eisenberg.pdf",
+    "https://www.ris.bka.gv.at/Dokumente/Bundesnormen/NOR40253635/NOR40253635.html",
+    "https://wineanorak.com/2024/12/12/eisenberg-masterclass-welschriesling-and-blaufrankisch-from-this-special-region-in-austrias-burgenland/",
+    "https://magazine.wein.plus/wines-with-a-special-flavour-wine-growing-regions-in-austria-eisenberg"
+   ],
+   "grapes": [
+    "https://www.bmluk.gv.at/dam/jcr:93568321-4323-437d-ae96-d206eec1339c/Produktspezifikation_Eisenberg.pdf",
+    "https://wineanorak.com/2024/12/12/eisenberg-masterclass-welschriesling-and-blaufrankisch-from-this-special-region-in-austrias-burgenland/"
+   ],
+   "grapes.Graševina.local_note": [
+    "https://www.bmluk.gv.at/dam/jcr:93568321-4323-437d-ae96-d206eec1339c/Produktspezifikation_Eisenberg.pdf",
+    "https://magazine.wein.plus/news/welschriesling-from-eisenberg-receives-dac-status-single-vineyard-wines-available-from-2024"
+   ],
+   "appellations": [
+    "https://www.bmluk.gv.at/dam/jcr:93568321-4323-437d-ae96-d206eec1339c/Produktspezifikation_Eisenberg.pdf"
+   ],
+   "label_note": [
+    "https://www.bmluk.gv.at/dam/jcr:93568321-4323-437d-ae96-d206eec1339c/Produktspezifikation_Eisenberg.pdf"
+   ]
+  }
+ }
+]

@@ -17,7 +17,7 @@ URL: http://data.europa.eu/eli/C/2026/5957/oj (retrieved 2026-11-21).
 - None.
 
 ## Held back
-- Malsch: two Gemeinden of this name lie in the Bereich Kraichgau Kreise (DE_08215046 Malsch, DE_08226046 Malsch); the text gives only Gemarkung number 3260, which cannot be resolved without a Gemarkung register.
+- Malsch: two Gemeinden of this name lie in the Bereich Kraichgau Kreise (DE_08215046 Malsch, DE_08226046 Malsch); the text gives only Gemarkung number 3260. Resolved 2026-11-21 (round 5) from LGL Baden-Württemberg's Gemarkung register: 3260 is Malsch in Gemeinde 8226046, Rhein-Neckar-Kreis, that Gemeinde's only Gemarkung, so DE_08226046 is drawn whole. The Malsch in Landkreis Karlsruhe has Gemarkungen 3600 to 3603, none of which the text lists.
 
 ## Matching notes
 - Matching was done per Bereich, inside the Kreise that Bereich lies in, so that same-named Gemeinden are kept apart: "Sasbach" in Bereich Ortenau is Sasbach (Ortenaukreis), "Sasbach" in Bereich Kaiserstuhl is Sasbach am Kaiserstuhl (Landkreis Emmendingen).

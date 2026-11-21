@@ -1,0 +1,964 @@
+[
+ {
+  "slug": "lisboa",
+  "name": "Lisboa",
+  "country": "PT",
+  "aliases": [
+   "Vinho Regional Lisboa",
+   "Estremadura"
+  ],
+  "summary": "A long strip of rolling hills running north from Lisbon along the Atlantic, where sea breezes keep the wines fresh. Arinto and Fernão Pires lead the whites; reds draw on Castelão, Aragonez and Touriga Nacional.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Bucelas is white only, from at least 75% Arinto. Carcavelos is a fortified wine aged at least two years in wood and six months in bottle. Vinho Regional Lisboa may be labelled Leve, a light wine of at most 10% alcohol.",
+  "grapes": [
+   {
+    "name": "Arinto",
+    "local_note": "the grape of Bucelas, at least 75% of its whites"
+   },
+   {
+    "name": "Fernão Pires",
+    "local_note": null
+   },
+   {
+    "name": "Castelão",
+    "local_note": null
+   },
+   {
+    "name": "Tempranillo",
+    "local_note": "called Aragonez here"
+   },
+   {
+    "name": "Touriga Nacional",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Bucelas",
+    "colour": "white",
+    "note": "Hillsides of the Trancão valley in Loures, on marl and hard limestone. Still and sparkling whites, at least 75% Arinto."
+   },
+   {
+    "name": "Alenquer",
+    "colour": "mixed",
+    "note": "Slopes and valleys of the Alenquer municipality, sheltered from the Atlantic by hills to the north and west. White and red."
+   },
+   {
+    "name": "Arruda",
+    "colour": "mixed",
+    "note": "Mostly hillside vineyards on clay and limestone, with an Atlantic influence. White and red."
+   },
+   {
+    "name": "Torres Vedras",
+    "colour": "mixed",
+    "note": "Uneven ground with a Mediterranean climate under Atlantic influence, on clay and limestone soils. White and red."
+   },
+   {
+    "name": "Óbidos",
+    "colour": "mixed",
+    "note": "Hills running north west from the Serra de Montejunto to Óbidos, across parts of Bombarral, Cadaval, Caldas da Rainha and Óbidos. White, red, rosé and sparkling."
+   },
+   {
+    "name": "Encostas d'Aire",
+    "colour": "mixed",
+    "note": "The northern end of the region, with the Alcobaça sub-region and the Medieval de Ourém designation for wines made by methods dating from the Middle Ages. Red, white and rosé."
+   },
+   {
+    "name": "Carcavelos",
+    "colour": "mixed",
+    "note": "A very small area near the mouth of the Tagus making only fortified wine, white or red, aged at least two years in wood and six months in bottle."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/22309",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202401215",
+    "https://wineanorak.com/2022/12/30/the-lisboa-wine-region-portugal-a-mini-study-with-six-wines/"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/22309",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202401215",
+    "https://winesofportugal.com/en/discover/wine-regions/lisboa/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://wineanorak.com/2022/12/30/the-lisboa-wine-region-portugal-a-mini-study-with-six-wines/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6161",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6141",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/22309",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202401215"
+   ],
+   "grapes": [
+    "https://winesofportugal.com/en/discover/wine-regions/lisboa/",
+    "https://wineanorak.com/2022/12/30/the-lisboa-wine-region-portugal-a-mini-study-with-six-wines/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6161"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6161",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/7295",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6912",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/17599",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/7355",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/16765",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/6141",
+    "https://winesofportugal.com/en/discover/wine-regions/lisboa/"
+   ]
+  }
+ },
+ {
+  "slug": "tejo",
+  "name": "Tejo",
+  "country": "PT",
+  "aliases": [
+   "Ribatejo",
+   "DoTejo",
+   "Do Tejo",
+   "Vinho Regional Tejo"
+  ],
+  "summary": "Both banks of the Tagus in central Portugal, formerly called Ribatejo. Riverside plains, clay hills and sandy heath give a wide range of good value wines; Fernão Pires leads the whites, Castelão and Trincadeira the reds.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "DoTejo wines may carry the name of one of six recognised sub-regions: Almeirim, Cartaxo, Chamusca, Coruche, Santarém or Tomar.",
+  "grapes": [
+   {
+    "name": "Fernão Pires",
+    "local_note": "the main white, above all on the riverside Campo"
+   },
+   {
+    "name": "Castelão",
+    "local_note": null
+   },
+   {
+    "name": "Trincadeira",
+    "local_note": null
+   },
+   {
+    "name": "Arinto",
+    "local_note": null
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Almeirim",
+    "colour": "mixed",
+    "note": "The municipalities of Almeirim, Alpiarça and Salvaterra de Magos, on riverside alluvium and sandy Charneca soils."
+   },
+   {
+    "name": "Cartaxo",
+    "colour": "mixed",
+    "note": "The municipalities of Azambuja and Cartaxo, from flat river alluvium to rolling clay and limestone hills."
+   },
+   {
+    "name": "Chamusca",
+    "colour": "mixed",
+    "note": "The municipalities of Chamusca, Golegã, Abrantes, Constância, Sardoal and Mação, on alluvium and sandy Charneca soils."
+   },
+   {
+    "name": "Coruche",
+    "colour": "mixed",
+    "note": "The municipalities of Benavente and Coruche, on alluvium and sandy Charneca soils."
+   },
+   {
+    "name": "Santarém",
+    "colour": "mixed",
+    "note": "The municipalities of Rio Maior and Santarém, on alluvium and limestone soils."
+   },
+   {
+    "name": "Tomar",
+    "colour": "mixed",
+    "note": "The municipalities of Tomar, Torres Novas, Alcanena, Entroncamento, Vila Nova da Barquinha and Ferreira do Zêzere, on limestone soils."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/3484",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/22336",
+    "https://winesofportugal.com/en/discover/wine-regions/tejo/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://wineanorak.com/?p=16799"
+   ],
+   "summary": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/3484",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202602136",
+    "https://winesofportugal.com/en/discover/wine-regions/tejo/",
+    "https://www.thewinesociety.com/discover/explore/regional-guides/portuguese-wine-ultimate-guide",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://wineanorak.com/?p=16799"
+   ],
+   "label_note": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/3484"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/3484",
+    "https://winesofportugal.com/en/discover/wine-regions/tejo/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://wineanorak.com/?p=16799",
+    "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/arinto/",
+    "https://www.winetraveler.com/grape/arinto/"
+   ],
+   "appellations": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/3484",
+    "https://www.cvrtejo.pt/Assets/Ficheiros/paginas/portaria-140-2010-do-do-tejo.pdf"
+   ]
+  }
+ },
+ {
+  "slug": "acores",
+  "name": "Açores",
+  "country": "PT",
+  "aliases": [
+   "Azores"
+  ],
+  "summary": "Volcanic islands in the mid Atlantic, where vines grow in small plots walled with lava stone against wind and sea spray. The whites, dry or fortified, are fresh, with marked acidity and a saline edge.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Pico, Biscoitos and Graciosa wines must take at least 85% of their must from Arinto dos Açores, Verdelho and Terrantez do Pico, and their fortified wines must age at least 36 months before bottling.",
+  "grapes": [
+   {
+    "name": "Verdelho",
+    "local_note": "the islands' best known grape, the same variety as on Madeira"
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Pico",
+    "colour": "white",
+    "note": "Vineyards below 100 m in stone walled plots on lava, mainly on the west of the island; the landscape is a UNESCO World Heritage Site since 2004. Dry, sparkling and fortified whites, and wines from overripe grapes."
+   },
+   {
+    "name": "Biscoitos",
+    "colour": "white",
+    "note": "Black basalt vineyards below 100 m in the parish of Biscoitos, on the north of Terceira. Dry, sparkling and fortified whites, and wines from overripe grapes."
+   },
+   {
+    "name": "Graciosa",
+    "colour": "white",
+    "note": "The flattest of the islands, with vines below 150 m in four parishes of Santa Cruz. Dry, sparkling and fortified whites."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/verdelho/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://www.cambridge.org/core/product/1D8A780317C586A218C446F31FBCE780"
+   ],
+   "summary": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202402366",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202401740",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.222.01.0057.01.ENG",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.200.01.0010.01.ENG",
+    "https://winesofportugal.com/en/discover/wine-regions/acores/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ],
+   "label_note": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202402366",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202401740",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.222.01.0057.01.ENG"
+   ],
+   "grapes": [
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/22327",
+    "https://winesofportugal.com/en/discover/wine-regions/acores/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region",
+    "https://www.winesofportugal.com/en/portuguese-wines/grape-varieties/verdelho/",
+    "https://www.cambridge.org/core/product/1D8A780317C586A218C446F31FBCE780"
+   ],
+   "appellations": [
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202402366",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C_202401740",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv%3AOJ.C_.2023.222.01.0057.01.ENG",
+    "https://webgate.ec.europa.eu/eambrosia-api/api/v1/attachments/22327",
+    "https://winesofportugal.com/en/discover/wine-regions/acores/",
+    "https://winefolly.com/deep-dive/what-wines-to-drink-from-portugal-by-region"
+   ]
+  }
+ },
+ {
+  "slug": "jurancon",
+  "name": "Jurançon",
+  "country": "FR",
+  "aliases": [
+   "Jurançon Sec"
+  ],
+  "summary": "Jurançon, in the Pyrenees foothills southwest of Pau, makes only white wine, from Petit and Gros Manseng. Long known for sweet wines kept fresh by high acidity, it also makes dry Jurançon Sec.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "AOC Jurançon is for still white wine only. Dry wines must carry the word sec right after the name and hold at most 4 g/L of sugar; sweet Jurançon holds more than 40 g/L. Vendanges tardives, from the two Mansengs only, needs more than 55 g/L and a vintage on the label.",
+  "grapes": [
+   {
+    "name": "Petit Manseng",
+    "local_note": "Principal grape; with Gros Manseng the only grape allowed for vendanges tardives. Leads the sweet wines."
+   },
+   {
+    "name": "Gros Manseng",
+    "local_note": "Principal grape; mainly behind dry Jurançon Sec."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Jurançon",
+    "colour": "white",
+    "note": "Still white only: sweet, or dry with the mention sec. Late harvest wines add vendanges tardives."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-d645c8b2-51ab-4b49-838c-4339610be9ac/telechargement",
+    "https://www.wine-searcher.com/regions-jurancon",
+    "https://www.decanter.com/wine/south-west/is-jurancon-the-next-jura-why-this-pyrenean-region-wields-a-seductive-power"
+   ],
+   "summary": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-d645c8b2-51ab-4b49-838c-4339610be9ac/telechargement",
+    "https://www.decanter.com/wine/south-west/is-jurancon-the-next-jura-why-this-pyrenean-region-wields-a-seductive-power",
+    "https://www.wine-searcher.com/regions-jurancon",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+   ],
+   "label_note": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-d645c8b2-51ab-4b49-838c-4339610be9ac/telechargement"
+   ],
+   "grapes": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-d645c8b2-51ab-4b49-838c-4339610be9ac/telechargement",
+    "https://www.decanter.com/wine/south-west/is-jurancon-the-next-jura-why-this-pyrenean-region-wields-a-seductive-power",
+    "https://www.wine-searcher.com/regions-jurancon",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/"
+   ],
+   "appellations": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-d645c8b2-51ab-4b49-838c-4339610be9ac/telechargement",
+    "https://www.inao.gouv.fr/node/35440"
+   ]
+  }
+ },
+ {
+  "slug": "madiran",
+  "name": "Madiran",
+  "country": "FR",
+  "aliases": [
+   "AOP Madiran"
+  ],
+  "summary": "Madiran, near the Adour in South West France, makes dark, tannic red wines led by Tannat and built to age. The same area makes white Pacherenc du Vic-Bilh, dry or sweet.",
+  "red_body": 4,
+  "red_acidity": null,
+  "red_tannin": 5,
+  "pairing": null,
+  "label_note": "Madiran is for still red wine only, with Tannat at least 60% of each estate's plantings and of the blend. Pacherenc du Vic-Bilh is white only: dry wines add the word sec (at most 4 g/L of sugar), sweet ones hold at least 45 g/L.",
+  "grapes": [
+   {
+    "name": "Tannat",
+    "local_note": "Principal grape of Madiran, at least 60% of plantings and of the blend."
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": "Accessory grape, historically called Bouchy here."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": "Accessory grape."
+   },
+   {
+    "name": "Fer Servadou",
+    "local_note": "Accessory grape, named Fer in the cahier and also called Pinenc."
+   },
+   {
+    "name": "Petit Manseng",
+    "local_note": "Principal grape of sweet Pacherenc du Vic-Bilh."
+   },
+   {
+    "name": "Gros Manseng",
+    "local_note": "Principal grape of dry Pacherenc du Vic-Bilh, accessory in the sweet."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "Accessory in Pacherenc du Vic-Bilh, at most 10% of plantings."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Madiran",
+    "colour": "red",
+    "note": "Still red only, led by Tannat."
+   },
+   {
+    "name": "Pacherenc du Vic-Bilh",
+    "colour": "white",
+    "note": "Same area as Madiran. Still white only, sweet or dry with the mention sec."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-394c9c74-735a-4ba0-a779-2e713e1a1801/telechargement",
+    "https://www.inao.gouv.fr/node/37689"
+   ],
+   "summary": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-394c9c74-735a-4ba0-a779-2e713e1a1801/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-f98a4f82-b5de-47fc-92b6-afed6141e44e/telechargement",
+    "https://www.decanter.com/premium/regional-profile-madiran-top-10-wines-worth-seeking-out-428232",
+    "https://neelburton.com/2017/10/16/the-wines-of-madiran-and-irouleguy/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://www.winetourism.com/wine-regions/france/south-west-france/madiran/"
+   ],
+   "red_body": [
+    "https://neelburton.com/2017/10/16/the-wines-of-madiran-and-irouleguy/",
+    "https://www.winetourism.com/wine-regions/france/south-west-france/madiran/"
+   ],
+   "red_tannin": [
+    "https://www.decanter.com/premium/regional-profile-madiran-top-10-wines-worth-seeking-out-428232",
+    "https://neelburton.com/2017/10/16/the-wines-of-madiran-and-irouleguy/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://www.winetourism.com/wine-regions/france/south-west-france/madiran/"
+   ],
+   "label_note": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-394c9c74-735a-4ba0-a779-2e713e1a1801/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-f98a4f82-b5de-47fc-92b6-afed6141e44e/telechargement"
+   ],
+   "grapes": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-394c9c74-735a-4ba0-a779-2e713e1a1801/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-f98a4f82-b5de-47fc-92b6-afed6141e44e/telechargement",
+    "https://neelburton.com/2017/10/16/the-wines-of-madiran-and-irouleguy/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://www.winetourism.com/wine-regions/france/south-west-france/madiran/"
+   ],
+   "appellations": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-394c9c74-735a-4ba0-a779-2e713e1a1801/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-f98a4f82-b5de-47fc-92b6-afed6141e44e/telechargement",
+    "https://neelburton.com/2017/10/16/the-wines-of-madiran-and-irouleguy/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/"
+   ]
+  }
+ },
+ {
+  "slug": "bergerac",
+  "name": "Bergerac",
+  "country": "FR",
+  "aliases": [],
+  "summary": "Bergerac, on the Dordogne east of Bordeaux, uses the Bordeaux grapes, with Merlot leading the reds. It makes reds, rosés and dry whites, and satellite appellations such as Monbazillac add sweet whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Bergerac whites must be labelled sec, and rosés above 4 g/L of sugar demi-sec. Côtes de Bergerac whites carry demi-sec, moelleux or doux. Monbazillac may add sélection de grains nobles for wines above 85 g/L of sugar.",
+  "grapes": [
+   {
+    "name": "Merlot",
+    "local_note": "Principal red grape and the most planted red."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": "Principal red grape."
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": "Principal red grape."
+   },
+   {
+    "name": "Malbec",
+    "local_note": "Called Cot in the cahiers; principal red grape."
+   },
+   {
+    "name": "Semillon",
+    "local_note": "Principal white grape, central to the sweet wines."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "Principal white grape."
+   },
+   {
+    "name": "Muscadelle",
+    "local_note": "Principal white grape, notably in Monbazillac."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Bergerac",
+    "colour": "mixed",
+    "note": "Still red, rosé and dry white."
+   },
+   {
+    "name": "Côtes de Bergerac",
+    "colour": "mixed",
+    "note": "Still red, and white with more than 4 g/L of sugar."
+   },
+   {
+    "name": "Monbazillac",
+    "colour": "white",
+    "note": "Sweet white, more than 45 g/L of sugar."
+   },
+   {
+    "name": "Saussignac",
+    "colour": "white",
+    "note": "Sweet white, more than 68 g/L of sugar."
+   },
+   {
+    "name": "Pécharmant",
+    "colour": "red",
+    "note": "Still red only."
+   },
+   {
+    "name": "Rosette",
+    "colour": "white",
+    "note": "Medium sweet white, 25 to 51 g/L of sugar."
+   },
+   {
+    "name": "Montravel",
+    "colour": "mixed",
+    "note": "Dry white, and red led by Merlot."
+   },
+   {
+    "name": "Côtes de Montravel",
+    "colour": "white",
+    "note": "Medium sweet white, 25 to 54 g/L of sugar."
+   },
+   {
+    "name": "Haut-Montravel",
+    "colour": "white",
+    "note": "Sweet white, more than 85 g/L of sugar."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-a078cfed-a9b4-4684-997f-6fc1ea003699/telechargement",
+    "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/sous-region/213/le-bergeracois-et-duras",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/dordogne/",
+    "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+   ],
+   "label_note": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-a078cfed-a9b4-4684-997f-6fc1ea003699/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-521ebcc1-feea-4119-855c-51d4a3536e48/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-4eee4c20-00dc-49ee-891f-c06429e09e9a/telechargement"
+   ],
+   "grapes": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-a078cfed-a9b4-4684-997f-6fc1ea003699/telechargement",
+    "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/sous-region/213/le-bergeracois-et-duras",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/dordogne/"
+   ],
+   "appellations": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-a078cfed-a9b4-4684-997f-6fc1ea003699/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-521ebcc1-feea-4119-855c-51d4a3536e48/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-4eee4c20-00dc-49ee-891f-c06429e09e9a/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-6a5d3731-1560-48ca-a560-7732e9120ca7/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-9cdce70f-bbd3-41fb-9381-f9256945b383/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-2568e39b-7c7f-42c2-bf89-cd74a0bf2ac7/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-0d52a671-4b5e-4158-ab9f-a37fc2394688/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-5500ea63-2b9c-4dd7-b0ec-a955e3fe09b8/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-c142e23c-3854-4c0e-bdb3-97c3b983b620/telechargement",
+    "https://www.hachette-vins.com/tout-sur-le-vin/regions-vins/sous-region/213/le-bergeracois-et-duras",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/dordogne/",
+    "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+   ]
+  }
+ },
+ {
+  "slug": "gaillac",
+  "name": "Gaillac",
+  "country": "FR",
+  "aliases": [],
+  "summary": "Gaillac, on the Tarn in South West France, works with its own grapes: Mauzac and Len de l'El for whites, Duras, Fer Servadou and Syrah for reds. Wines run from dry to sweet, plus sparkling.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Gaillac covers red, rosé, white and sparkling wine. Dry whites hold at most 4 g/L of sugar; doux whites at least 45 g/L; vendanges tardives at least 100 g/L with a vintage. Méthode ancestrale sparkling comes from Mauzac alone, and primeur reds from Gamay and Duras.",
+  "grapes": [
+   {
+    "name": "Mauzac",
+    "local_note": "Principal white grape and the only grape of méthode ancestrale sparkling."
+   },
+   {
+    "name": "Duras",
+    "local_note": "Principal red grape."
+   },
+   {
+    "name": "Fer Servadou",
+    "local_note": "Called Braucol locally and Fer in the cahier; principal red grape."
+   },
+   {
+    "name": "Syrah",
+    "local_note": "Principal red grape."
+   },
+   {
+    "name": "Muscadelle",
+    "local_note": "Principal white grape, often in sweet wines."
+   },
+   {
+    "name": "Sauvignon Blanc",
+    "local_note": "Accessory white grape."
+   },
+   {
+    "name": "Gamay",
+    "local_note": "Accessory red grape; with Duras the only grape of primeur reds."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Gaillac",
+    "colour": "mixed",
+    "note": "Red, rosé, white from dry to sweet, and sparkling, including méthode ancestrale."
+   },
+   {
+    "name": "Gaillac premières côtes",
+    "colour": "white",
+    "note": "White only, from 11 communes on the right bank of the Tarn."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-b13c44bb-b1f8-4c56-8b41-5fd2d69659cb/telechargement",
+    "https://www.vins-gaillac.com/notre-vignoble/nos-cepages-millenaires/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+   ],
+   "label_note": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-b13c44bb-b1f8-4c56-8b41-5fd2d69659cb/telechargement"
+   ],
+   "grapes": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-b13c44bb-b1f8-4c56-8b41-5fd2d69659cb/telechargement",
+    "https://www.vins-gaillac.com/notre-vignoble/nos-cepages-millenaires/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/"
+   ],
+   "appellations": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-b13c44bb-b1f8-4c56-8b41-5fd2d69659cb/telechargement",
+    "https://www.inao.gouv.fr/node/4681",
+    "http://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000024810279",
+    "https://www.vins-gaillac.com/notre-vignoble/nos-vins-aop-igp/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://winefolly.com/deep-dive/wines-of-southwest-france/"
+   ]
+  }
+ },
+ {
+  "slug": "irouleguy",
+  "name": "Irouléguy",
+  "country": "FR",
+  "aliases": [],
+  "summary": "Irouléguy is the only appellation of the French Basque Country, with terraced vines in the Pyrenees foothills around Saint-Étienne-de-Baïgorry. It makes reds from Tannat and Cabernet Franc, plus rosés and whites.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Irouléguy covers still red, rosé and white wine. In red plantings Tannat and Cabernet Franc together make at least 50%, neither above 90%. Whites come only from Courbu, Gros Manseng, Petit Courbu and Petit Manseng.",
+  "grapes": [
+   {
+    "name": "Tannat",
+    "local_note": "Principal red grape."
+   },
+   {
+    "name": "Cabernet Franc",
+    "local_note": "Principal red grape."
+   },
+   {
+    "name": "Cabernet Sauvignon",
+    "local_note": "Accessory in reds, principal in rosés."
+   },
+   {
+    "name": "Gros Manseng",
+    "local_note": "White grape."
+   },
+   {
+    "name": "Petit Manseng",
+    "local_note": "White grape."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Irouléguy",
+    "colour": "mixed",
+    "note": "Still red, rosé and white."
+   }
+  ],
+  "sources": {
+   "summary": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-90b99013-a98c-483b-8dd1-07c72e57536b/telechargement",
+    "https://www.decanter.com/wine/france/forgotten-france-the-electric-wines-of-irouleguy/",
+    "https://winefolly.com/deep-dive/wines-of-southwest-france/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://www.tourisme64.com/vos-envies/gastronomie/vignoble/irouleguy/",
+    "https://www.hachette-vins.com/tout-sur-le-vin/appellations-vins/303/irouleguy/page"
+   ],
+   "label_note": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-90b99013-a98c-483b-8dd1-07c72e57536b/telechargement"
+   ],
+   "grapes": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-90b99013-a98c-483b-8dd1-07c72e57536b/telechargement",
+    "https://www.decanter.com/wine/france/forgotten-france-the-electric-wines-of-irouleguy/",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/sydvastra-frankrike/",
+    "https://www.tourisme64.com/vos-envies/gastronomie/vignoble/irouleguy/"
+   ],
+   "appellations": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-90b99013-a98c-483b-8dd1-07c72e57536b/telechargement",
+    "https://www.decanter.com/wine/france/forgotten-france-the-electric-wines-of-irouleguy/",
+    "https://www.tourisme64.com/vos-envies/gastronomie/vignoble/irouleguy/"
+   ]
+  }
+ },
+ {
+  "slug": "corsica",
+  "name": "Corsica",
+  "country": "FR",
+  "aliases": [
+   "Corse",
+   "Vin de Corse"
+  ],
+  "summary": "Corsica's mountainous vineyards make mostly rosé, with reds from Niellucciu, Sciaccarellu and Grenache and whites from Vermentinu. Patrimonio is led by Niellucciu, Ajaccio by Sciaccarellu.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "Vin de Corse, also labelled Corse, may add one of five place names: Calvi, Coteaux du Cap Corse, Figari, Porto-Vecchio or Sartène. Patrimonio reds need at least 90% Nielluccio in the plantings, Ajaccio reds at least 40% Sciaccarello. Muscat du Cap Corse is a fortified sweet Muscat (vin doux naturel).",
+  "grapes": [
+   {
+    "name": "Sangiovese",
+    "local_note": "Called Nielluccio or Niellucciu; at least 90% of Patrimonio red plantings."
+   },
+   {
+    "name": "Sciaccarellu",
+    "local_note": "Spelled Sciaccarello in the cahiers; at least 40% of Ajaccio red plantings."
+   },
+   {
+    "name": "Vermentino",
+    "local_note": "Called Vermentinu or Malvoisie de Corse; the main white grape of Vin de Corse, Patrimonio and Ajaccio."
+   },
+   {
+    "name": "Grenache",
+    "local_note": "Principal red grape of Vin de Corse."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "The only grape of Muscat du Cap Corse."
+   },
+   {
+    "name": "Syrah",
+    "local_note": "Accessory red grape of Vin de Corse."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Vin de Corse",
+    "colour": "mixed",
+    "note": "Also labelled Corse. Still red, rosé and white across the island."
+   },
+   {
+    "name": "Vin de Corse Calvi",
+    "colour": "mixed",
+    "note": "Geographic name added to Vin de Corse or Corse."
+   },
+   {
+    "name": "Vin de Corse Coteaux du Cap Corse",
+    "colour": "mixed",
+    "note": "Geographic name added to Vin de Corse or Corse."
+   },
+   {
+    "name": "Vin de Corse Figari",
+    "colour": "mixed",
+    "note": "Geographic name added to Vin de Corse or Corse."
+   },
+   {
+    "name": "Vin de Corse Porto-Vecchio",
+    "colour": "mixed",
+    "note": "Geographic name added to Vin de Corse or Corse."
+   },
+   {
+    "name": "Vin de Corse Sartène",
+    "colour": "mixed",
+    "note": "Geographic name added to Vin de Corse or Corse."
+   },
+   {
+    "name": "Patrimonio",
+    "colour": "mixed",
+    "note": "Reds and rosés led by Nielluccio; whites from Vermentino only."
+   },
+   {
+    "name": "Ajaccio",
+    "colour": "mixed",
+    "note": "Reds and rosés led by Sciaccarello; whites mainly Vermentino."
+   },
+   {
+    "name": "Muscat du Cap Corse",
+    "colour": "white",
+    "note": "Fortified sweet white (vin doux naturel) from Muscat à petits grains."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-e04c94be-3623-4c86-890a-ab1dbfd4ab59/telechargement",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/korsika/",
+    "https://www.decanter.com/wine/france/corsicas-wild-edge-the-elemental-wines-of-the-islands-far-south/"
+   ],
+   "summary": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-e04c94be-3623-4c86-890a-ab1dbfd4ab59/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-ef16a4b1-5277-4772-9bf6-0d315936c90c/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-67402288-bcc8-4d92-a8e1-44aff8a7266e/telechargement",
+    "https://www.visit-corsica.com/en/Explore-Corsica/Our-inspirations/Wine-inspirations/The-island-s-hidden-treasures-discovering-Corsican-grape-varieties",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/korsika/",
+    "https://www.decanter.com/wine/france/corsicas-wild-edge-the-elemental-wines-of-the-islands-far-south/"
+   ],
+   "label_note": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-e04c94be-3623-4c86-890a-ab1dbfd4ab59/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-ef16a4b1-5277-4772-9bf6-0d315936c90c/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-67402288-bcc8-4d92-a8e1-44aff8a7266e/telechargement",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10480"
+   ],
+   "grapes": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-e04c94be-3623-4c86-890a-ab1dbfd4ab59/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-ef16a4b1-5277-4772-9bf6-0d315936c90c/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-67402288-bcc8-4d92-a8e1-44aff8a7266e/telechargement",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10480",
+    "https://www.visit-corsica.com/en/Explore-Corsica/Our-inspirations/Wine-inspirations/The-island-s-hidden-treasures-discovering-Corsican-grape-varieties",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/korsika/",
+    "https://ojs.openagrar.de/index.php/VITIS/article/view/4331/4282",
+    "https://www.vinmonopolet.no/fag/drueleksikon?id=nielluccio"
+   ],
+   "appellations": [
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-e04c94be-3623-4c86-890a-ab1dbfd4ab59/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-ef16a4b1-5277-4772-9bf6-0d315936c90c/telechargement",
+    "https://info.agriculture.gouv.fr/boagri/document_administratif-67402288-bcc8-4d92-a8e1-44aff8a7266e/telechargement",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10480",
+    "https://www.inao.gouv.fr/node/1751",
+    "https://www.systembolaget.se/vin/varldens-vinlander/europa/frankrike/korsika/",
+    "https://www.visit-corsica.com/en/Explore-Corsica/Our-inspirations/Wine-inspirations/The-island-s-hidden-treasures-discovering-Corsican-grape-varieties",
+    "https://www.decanter.com/wine/france/corsicas-wild-edge-the-elemental-wines-of-the-islands-far-south/"
+   ]
+  }
+ },
+ {
+  "slug": "crete",
+  "name": "Crete",
+  "country": "GR",
+  "aliases": [
+   "Κρήτη"
+  ],
+  "summary": "Greece's largest island, with most vineyards on the north side, sheltered by a mountain spine and often planted high. Native grapes lead: Vilana and Vidiano for whites; Kotsifali, Mandilaria and Liatiko for reds.",
+  "red_body": null,
+  "red_acidity": null,
+  "red_tannin": null,
+  "pairing": null,
+  "label_note": "In the dry PDOs, Réserve whites need a year of ageing, six months in oak and three in bottle, and Réserve reds two years, twelve months in oak and six in bottle. Grande Réserve needs two years for whites and four for reds.",
+  "grapes": [
+   {
+    "name": "Vilana",
+    "local_note": "The only grape of white Peza, and the main white of Sitia, blended with Thrapsathiri."
+   },
+   {
+    "name": "Liatiko",
+    "local_note": "The only grape of Dafnes and the main red of Sitia, made dry or sweet from sun dried grapes."
+   },
+   {
+    "name": "Vidiano",
+    "local_note": "A minor partner in Handakas - Candia dry whites and one of the main grapes of Malvasia Handakas - Candia."
+   },
+   {
+    "name": "Assyrtiko",
+    "local_note": "A minor partner in Handakas - Candia dry whites and one of the main grapes of both Malvasia PDOs."
+   },
+   {
+    "name": "Muscat Blanc à Petits Grains",
+    "local_note": "Grown here as Muscat of Spina; with Malvasia di Candia Aromatica it may make up at most 15% of the two Malvasia PDOs."
+   },
+   {
+    "name": "Dafni",
+    "local_note": "Rare; permitted for PGI Crete."
+   }
+  ],
+  "appellations": [
+   {
+    "name": "Peza",
+    "colour": "mixed",
+    "note": "PDO for dry white from Vilana alone and dry red from Kotsifali with Mandilaria."
+   },
+   {
+    "name": "Archanes",
+    "colour": "red",
+    "note": "PDO for dry red from Kotsifali and Mandilaria."
+   },
+   {
+    "name": "Dafnes",
+    "colour": "red",
+    "note": "PDO for Liatiko: dry red, sweet fortified red and sweet red from sun dried grapes."
+   },
+   {
+    "name": "Sitia",
+    "colour": "mixed",
+    "note": "PDO for dry white from Vilana and Thrapsathiri, dry red from Liatiko with Mandilaria, and sweet Liatiko, fortified or from sun dried grapes."
+   },
+   {
+    "name": "Handakas - Candia",
+    "colour": "mixed",
+    "note": "PDO for dry white from Vilana with Vidiano, Assyrtiko, Athiri and Thrapsathiri, and dry red from Kotsifali and Mandilaria."
+   },
+   {
+    "name": "Malvasia Handakas - Candia",
+    "colour": "white",
+    "note": "Sweet white from sun dried grapes, natural or fortified, from Assyrtiko, Athiri, Vidiano, Thrapsathiri and Liatiko, with at most 15% Muscat and Malvasia di Candia Aromatica. At least two years of oxidative ageing."
+   },
+   {
+    "name": "Malvasia Sitia",
+    "colour": "white",
+    "note": "Sweet white from sun dried grapes, natural or fortified, from Assyrtiko, Athiri, Thrapsathiri and Liatiko, with at most 15% Muscat and Malvasia di Candia Aromatica. At least two years of oxidative ageing."
+   }
+  ],
+  "sources": {
+   "aliases": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11872",
+    "https://winesofgreece.org/pgi/pgi-crete/"
+   ],
+   "summary": [
+    "https://winesofgreece.org/pgi/pgi-crete/",
+    "https://www.decanter.com/wine/get-a-taste-of-the-ancient-mediterranean-with-these-cretan-wines/",
+    "https://www.decanter.com/wine-news/opinion/jefford-on-monday/jefford-on-monday-the-call-of-crete-295571/"
+   ],
+   "label_note": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11095",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11305",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11308",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10701",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/15904"
+   ],
+   "grapes": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11095",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11308",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10701",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/15904",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/15927",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/19219",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11872",
+    "https://winesofgreece.org/pdo/pdo-peza/",
+    "https://winesofgreece.org/pdo/pdo-dafnes/",
+    "https://winesofgreece.org/pdo/pdo-sitia/",
+    "https://winesofgreece.org/pdo/pdo-handakas-candia/",
+    "https://winesofgreece.org/pdo/pdo-malvasia-handakas-candia/",
+    "https://winesofgreece.org/pdo/pdo-malvasia-sitia/",
+    "https://winesofgreece.org/pgi/pgi-crete/",
+    "https://winesofgreece.org/varieties/dafni/",
+    "https://www.winesofcrete.gr/en/varieties/dafni/",
+    "https://www.decanter.com/wine/get-a-taste-of-the-ancient-mediterranean-with-these-cretan-wines/",
+    "https://www.vivc.de/index.php?r=passport%2Fview&id=8193"
+   ],
+   "appellations": [
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11095",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11305",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/11308",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/10701",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/15904",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/15927",
+    "https://ec.europa.eu/geographical-indications-register/eambrosia-public-api/api/v1/attachments/19219",
+    "https://winesofgreece.org/pdo/pdo-peza/",
+    "https://winesofgreece.org/pdo/pdo-archanes/",
+    "https://winesofgreece.org/pdo/pdo-dafnes/",
+    "https://winesofgreece.org/pdo/pdo-sitia/",
+    "https://winesofgreece.org/pdo/pdo-handakas-candia/",
+    "https://winesofgreece.org/pdo/pdo-malvasia-handakas-candia/",
+    "https://winesofgreece.org/pdo/pdo-malvasia-sitia/"
+   ]
+  }
+ }
+]

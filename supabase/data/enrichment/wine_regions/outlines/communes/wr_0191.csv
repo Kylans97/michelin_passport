@@ -1,0 +1,51 @@
+region_code,gisco_id,official_name,lau_name,province,partial,source_url
+wr_0191,DE_07339003,Bacharach: Gemarkung Bacharach (3503); Bacharach: Gemarkung Steeg (3502),"Bacharach, Stadt",Mainz-Bingen (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141006,Bad Ems (0950),"Bad Ems, Stadt",Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_05382008,Stadt Bad Honnef: Gemarkung Honnef (Rhöndorf),"Bad Honnef, Stadt",Rhein-Sieg-Kreis (Nordrhein-Westfalen),yes: only Gemarkung Honnef; Gemeinde also has Aegidienberg,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138004,Bad Hönningen (0326),"Bad Hönningen, Stadt",Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_05314000,Stadt Bonn: Gemarkung Kessenich,"Bonn, Stadt",Bonn (kreisfreie Stadt) (Nordrhein-Westfalen),"yes: only Gemarkung Kessenich, a small part of Bonn",http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07140501,Boppard: Gemarkung Boppard (1820); Boppard: Gemarkung Hirzenach (1824),"Boppard, Stadt",Rhein-Hunsrück-Kreis (Rheinland-Pfalz),"yes: only Gemarkung(en) Boppard (1820), Hirzenach (1824); Gemeinde also has e.g. Udenhausen",http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141016,Bornich (0905),Bornich,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141501,Braubach (0934),"Braubach, Stadt",Rhein-Lahn-Kreis (Rheinland-Pfalz),yes: only Gemarkung(en) Braubach (0934); Gemeinde also has e.g. Hinterwald,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07137204,Brey (1388),Brey,Mayen-Koblenz (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07140025,Damscheid (1845),Damscheid,Rhein-Hunsrück-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138009,Dattenberg (0315),Dattenberg,Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141025,Dausenau (0947),Dausenau,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141031,Dörscheid (0904),Dörscheid,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141041,Fachbach (0951),Fachbach,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141042,Filsen (0932),Filsen,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138024,Hammerstein: Gemarkung Niederhammerstein (0328); Hammerstein: Gemarkung Oberhammerstein (0329),Hammerstein,Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141066,Kamp-Bornhofen (0931),Kamp-Bornhofen,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138501,Kasbach-Ohlenberg (0307),Kasbach-Ohlenberg,Neuwied (Rheinland-Pfalz),yes: only Gemarkung(en) Niederkasbach (0307); Gemeinde also has e.g. Oberkasbach,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141069,Kaub (0902),"Kaub, Stadt",Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141072,Kestert (0918),Kestert,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07111000,Koblenz: Gemarkung Ehrenbreitstein (1416); Koblenz: Gemarkung Koblenz (1401); Koblenz: Gemarkung Niederberg (1413),"Koblenz, Stadt",Koblenz (kreisfreie Stadt) (Rheinland-Pfalz),"yes: only Gemarkung(en) Ehrenbreitstein (1416), Koblenz (1401), Niederberg (1413); Gemeinde also has e.g. Moselweiß",http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_05382024,"Stadt Königswinter: Gemarkungen Oberdollendorf, Niederdollendorf, Königswinter","Königswinter, Stadt",Rhein-Sieg-Kreis (Nordrhein-Westfalen),"yes: only Gemarkungen Oberdollendorf, Niederdollendorf and Königswinter; Gemeinde also has e.g. Ittenbach",http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141075,Lahnstein (0961),"Lahnstein, Stadt",Rhein-Lahn-Kreis (Rheinland-Pfalz),yes: only Gemarkung(en) Oberlahnstein (0961); Gemeinde also has e.g. Niederlahnstein,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138037,Leubsdorf (0316),Leubsdorf,Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138038,Leutesdorf (0330),Leutesdorf,Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138041,Linz am Rhein (0310),"Linz am Rhein, Stadt",Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07339036,Manubach (3504),Manubach,Mainz-Bingen (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141091,Nassau (0837),"Nassau, Stadt",Rhein-Lahn-Kreis (Rheinland-Pfalz),yes: only Gemarkung(en) Nassau (0837); Gemeinde also has e.g. Bergnassau-Scheuern,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07140104,Niederburg (1840),Niederburg,Rhein-Hunsrück-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07339040,Niederheimbach (3507),Niederheimbach,Mainz-Bingen (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141099,Nochern (0914),Nochern,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07339044,Oberdiebach (3505),Oberdiebach,Mainz-Bingen (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07339045,Oberheimbach (3506),Oberheimbach,Mainz-Bingen (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141103,Obernhof (0832),Obernhof,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07140112,Langscheid (1843): Gemarkung Langscheid of Oberwesel; Oberwesel: Gemarkung Dellhofen (1842); Oberwesel: Gemarkung Oberwesel (1841),"Oberwesel, Stadt",Rhein-Hunsrück-Kreis (Rheinland-Pfalz),yes: only Gemarkung(en) Langscheid (1843); Gemeinde also has e.g. Oberwesel,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141108,Osterspai (0933),Osterspai,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141109,Patersberg (0909),Patersberg,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07140116,Perscheid (1844),Perscheid,Rhein-Hunsrück-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138062,Rheinbreitbach (0291),Rheinbreitbach,Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138063,Rheinbrohl (0327),Rheinbrohl,Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07137221,Rhens (1387),"Rhens, Stadt",Mayen-Koblenz (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07140133,Sankt Goar: Gemarkung Sankt Goar (1837); Sankt Goar: Gemarkung Werlau (1836),"Sankt Goar, Stadt",Rhein-Hunsrück-Kreis (Rheinland-Pfalz),"yes: only Gemarkung(en) Sankt Goar (1837), Werlau (1836); Gemeinde also has e.g. Biebernheim",http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141121,Sankt Goarshausen: Gemarkung Ehrenthal (0908); Sankt Goarshausen: Gemarkung Sankt Goarshausen (0906); Sankt Goarshausen: Gemarkung Wellmich (0907),"Sankt Goarshausen, Loreleystadt, Stadt",Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07137223,Spay (1390),Spay,Mayen-Koblenz (Rheinland-Pfalz),yes: only Gemarkung(en) Oberspay (1390); Gemeinde also has e.g. Niederspay,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07339058,Trechtingshausen (3508),Trechtingshausen,Mainz-Bingen (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07138073,Unkel: Gemarkung Heister (0294); Unkel: Gemarkung Scheuren (0292); Unkel: Gemarkung Unkel (0293),"Unkel, Stadt",Neuwied (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07137224,Urbar: Gemarkung Urbar (1355),Urbar,Mayen-Koblenz (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07140155,Urbar: Gemarkung Urbar (1839),Urbar,Rhein-Hunsrück-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07137226,Vallendar (1352),"Vallendar, Stadt",Mayen-Koblenz (Rheinland-Pfalz),yes: only Gemarkung(en) Vallendar (1352); Gemeinde also has e.g. Mallendar,http://data.europa.eu/eli/C/2026/738/oj
+wr_0191,DE_07141135,Weinähr (0833),Weinähr,Rhein-Lahn-Kreis (Rheinland-Pfalz),,http://data.europa.eu/eli/C/2026/738/oj

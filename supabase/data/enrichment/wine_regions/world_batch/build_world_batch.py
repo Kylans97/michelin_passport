@@ -252,7 +252,7 @@ def do_sql():
             rows.append(
                 f"  ({q(code)}, {q(g['name'])}, {arr(g.get('aliases', []))}, "
                 f"{q(g['colour'])},\n   {q(g['summary'])},\n   "
-                f"{arr([cap(t) for t in g.get('tastes', [])])}, "
+                f"{arr([cap(t) for t in g.get('tastes') or []])}, "
                 f"{q(g.get('aged_note'))}, {num(g.get('body'))}, "
                 f"{num(g.get('acidity'))}, {num(g.get('tannin'))}, "
                 "'published')")
