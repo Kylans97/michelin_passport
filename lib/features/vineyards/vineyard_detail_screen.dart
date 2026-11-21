@@ -334,8 +334,9 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
   );
 }
 
-/// The member's own wines from this estate, newest first, and how many
-/// evenings they came from.
+/// The member's own wines from this estate, newest first, how many there
+/// are and, when there are any, how many they would drink again: the line
+/// that later leads to the estate's own shop.
 class _MyWinesCard extends StatelessWidget {
   final List<CellarWine> wines;
 
@@ -343,10 +344,16 @@ class _MyWinesCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final evenings = {for (final w in wines) w.visitId}.length;
-    final count =
-        '${wines.length} ${wines.length == 1 ? 'wine' : 'wines'} · '
-        '$evenings ${evenings == 1 ? 'evening' : 'evenings'}';
+    final again = wines.where((w) => w.wine.wouldDrinkAgain).length;
+    final latest = wines
+        .map((w) => w.date)
+        .nonNulls
+        .fold<DateTime?>(null, (a, b) => a == null || b.isAfter(a) ? b : a);
+    final count = [
+      '${wines.length} ${wines.length == 1 ? 'wine' : 'wines'}',
+      if (latest != null)
+        'last on ${MaterialLocalizations.of(context).formatMediumDate(latest)}',
+    ].join(' · ');
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(CsSpacing.base),
@@ -358,11 +365,18 @@ class _MyWinesCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          if (again > 0) ...[
+            Text(
+              wouldDrinkAgainLine(again),
+              style: CsTypography.placeTitle.copyWith(color: AppColors.claret),
+            ),
+            const SizedBox(height: 2),
+          ],
           Text(
             count,
             style: CsTypography.metadata.copyWith(
-              color: AppColors.claret,
-              fontWeight: FontWeight.w600,
+              color: again > 0 ? AppColors.taupe : AppColors.claret,
+              fontWeight: again > 0 ? FontWeight.w400 : FontWeight.w600,
             ),
           ),
           const SizedBox(height: CsSpacing.sm),
@@ -372,3 +386,8 @@ class _MyWinesCard extends StatelessWidget {
     );
   }
 }
+
+/// "You'd drink 2 of their wines again", for an estate's page.
+String wouldDrinkAgainLine(int count) => count == 1
+    ? "You'd drink one of their wines again"
+    : "You'd drink $count of their wines again";

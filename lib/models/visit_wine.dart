@@ -21,9 +21,50 @@ enum WineSize {
   }
 }
 
-/// One wine noted on a visit or stay. Every field is optional. [vintage]
-/// null with [nonVintage] false means the year wasn't noted; [nonVintage]
-/// means the wine has none, like NV Champagne.
+/// What the member thought of a wine (`verdict`, 20261101630000). Three
+/// plain answers, never a score; a verdict never makes a stamp.
+enum WineVerdict {
+  again('again', 'Would drink again'),
+  fine('fine', 'It was fine'),
+  notForMe('not_for_me', 'Not for me');
+
+  const WineVerdict(this.dbValue, this.label);
+
+  final String dbValue;
+  final String label;
+
+  static WineVerdict? fromDb(String? value) {
+    for (final verdict in values) {
+      if (verdict.dbValue == value) return verdict;
+    }
+    return null;
+  }
+}
+
+/// Where a wine kept without a visit was drunk (`cellar_wines.setting`,
+/// 20261101630000).
+enum WineSetting {
+  home('home', 'At home'),
+  estate('estate', 'At an estate'),
+  elsewhere('elsewhere', 'Somewhere else');
+
+  const WineSetting(this.dbValue, this.label);
+
+  final String dbValue;
+  final String label;
+
+  static WineSetting? fromDb(String? value) {
+    for (final setting in values) {
+      if (setting.dbValue == value) return setting;
+    }
+    return null;
+  }
+}
+
+/// One wine noted on a visit or stay, or kept in the Cellar without one.
+/// Every field is optional. [vintage] null with [nonVintage] false means
+/// the year wasn't noted; [nonVintage] means the wine has none, like NV
+/// Champagne.
 class VisitWine {
   final String? id;
   final String? producer;
@@ -40,6 +81,16 @@ class VisitWine {
   /// The picked estate itself, when it was read along with the wine.
   final Vineyard? vineyard;
 
+  /// What the member thought of it, and one line to remember it by.
+  final WineVerdict? verdict;
+  final String? tastingNote;
+
+  /// Only for a wine kept without a visit (`cellar_wines`): where and when
+  /// it was drunk. Null on a visit's wine.
+  final WineSetting? setting;
+  final String? place;
+  final DateTime? drunkOn;
+
   const VisitWine({
     this.id,
     this.producer,
@@ -49,6 +100,11 @@ class VisitWine {
     this.size,
     this.vineyardId,
     this.vineyard,
+    this.verdict,
+    this.tastingNote,
+    this.setting,
+    this.place,
+    this.drunkOn,
   });
 
   factory VisitWine.fromJson(Map<String, dynamic> json) => VisitWine(
@@ -60,18 +116,51 @@ class VisitWine {
     size: WineSize.fromDb(json['bottle_size'] as String?),
     vineyardId: json['vineyard_id'] as String?,
     vineyard: _embeddedVineyard(json['vineyards']),
+    verdict: WineVerdict.fromDb(json['verdict'] as String?),
+    tastingNote: json['tasting_note'] as String?,
+    setting: WineSetting.fromDb(json['setting'] as String?),
+    place: json['place'] as String?,
+    drunkOn: switch (json['drunk_on']) {
+      final String day => DateTime.tryParse(day),
+      _ => null,
+    },
   );
 
-  /// The row to write. `vineyard_id` is only sent when there is a link to
-  /// write or to clear ([withVineyard]), so saving an unlinked wine still
-  /// works against a database without the column (before 20261101550000).
-  Map<String, Object?> toRow({bool withVineyard = false}) => {
+  /// The row to write to `visit_wines`. `vineyard_id` is only sent when
+  /// there is a link to write or to clear ([withVineyard]), and the verdict
+  /// and note only when there is one to write or to clear ([withVerdict]),
+  /// so saving a plain wine still works against a database without those
+  /// columns (before 20261101550000 and 20261101630000).
+  Map<String, Object?> toRow({
+    bool withVineyard = false,
+    bool withVerdict = false,
+  }) => {
     'producer': producer,
     'wine_name': wineName,
     'vintage': vintage,
     'non_vintage': nonVintage,
     'bottle_size': size?.dbValue,
     if (withVineyard || vineyardId != null) 'vineyard_id': vineyardId,
+    if (withVerdict || verdict != null || tastingNote != null) ...{
+      'verdict': verdict?.dbValue,
+      'tasting_note': tastingNote,
+    },
+  };
+
+  /// The row to write to `cellar_wines`: every column, since that table
+  /// only exists with all of them.
+  Map<String, Object?> toCellarRow() => {
+    'producer': producer,
+    'wine_name': wineName,
+    'vintage': vintage,
+    'non_vintage': nonVintage,
+    'bottle_size': size?.dbValue,
+    'vineyard_id': vineyardId,
+    'verdict': verdict?.dbValue,
+    'tasting_note': tastingNote,
+    'setting': (setting ?? WineSetting.home).dbValue,
+    'place': place,
+    'drunk_on': drunkOn == null ? null : _day(drunkOn!),
   };
 
   VisitWine copyWith({String? id}) => VisitWine(
@@ -83,7 +172,15 @@ class VisitWine {
     size: size,
     vineyardId: vineyardId,
     vineyard: vineyard,
+    verdict: verdict,
+    tastingNote: tastingNote,
+    setting: setting,
+    place: place,
+    drunkOn: drunkOn,
   );
+
+  /// The verdict the Cellar's filter keeps.
+  bool get wouldDrinkAgain => verdict == WineVerdict.again;
 
   /// The database refuses a row that says nothing.
   bool get isEmpty =>
@@ -101,9 +198,12 @@ class VisitWine {
 
   /// What's left for the line under [title].
   String? get subtitle {
+    final kept = setting;
     final parts = [
       if (wineName != null && producer != null) producer!,
       if ((wineName != null || producer != null) && size != null) size!.label,
+      // A wine kept without a visit says where it was drunk.
+      if (kept != null) place ?? kept.label,
     ];
     return parts.isEmpty ? null : parts.join(' · ');
   }
@@ -154,3 +254,8 @@ List<String> matchingWineNames(
   }
   return out;
 }
+
+String _day(DateTime d) =>
+    '${d.year.toString().padLeft(4, '0')}-'
+    '${d.month.toString().padLeft(2, '0')}-'
+    '${d.day.toString().padLeft(2, '0')}';
