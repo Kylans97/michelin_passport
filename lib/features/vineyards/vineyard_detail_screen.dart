@@ -402,8 +402,7 @@ class _MyWinesCard extends StatelessWidget {
         .fold<DateTime?>(null, (a, b) => a == null || b.isAfter(a) ? b : a);
     final count = [
       '${wines.length} ${wines.length == 1 ? 'wine' : 'wines'}',
-      if (latest != null)
-        'last on ${MaterialLocalizations.of(context).formatMediumDate(latest)}',
+      if (latest != null) 'last on ${formatVenueVisitDate(latest)}',
     ].join(' · ');
     return Container(
       width: double.infinity,

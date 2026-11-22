@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/l10n/app_locale.dart';
 import 'package:michelin_passport/data/repositories/journey_repository.dart';
 import 'package:michelin_passport/features/journeys/widgets/confirm_travel_sheet.dart';
 import 'package:michelin_passport/features/passport/widgets/own_passport_entry_row.dart';
@@ -286,5 +287,34 @@ void main() {
     await tester.tap(find.text('Delete visit'));
     await tester.pumpAndSettle();
     expect(answer, isTrue);
+  });
+
+  testWidgets('the app date picker reads day month year', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: appLocale,
+        supportedLocales: appSupportedLocales,
+        localizationsDelegates: appLocalizationsDelegates,
+        home: Builder(
+          builder: (context) => Scaffold(
+            body: TextButton(
+              onPressed: () => showDatePicker(
+                context: context,
+                initialDate: DateTime(2019, 6, 2),
+                firstDate: DateTime(2006),
+                lastDate: DateTime(2026, 11, 22),
+                initialEntryMode: DatePickerEntryMode.input,
+              ),
+              child: const Text('open'),
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('open'));
+    await tester.pumpAndSettle();
+    // The typed date is day first, never the American month first.
+    expect(find.text('02/06/2019'), findsOneWidget);
+    expect(find.text('06/02/2019'), findsNothing);
   });
 }

@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../../data/repositories/vineyard_repository.dart';
 import '../../../data/repositories/visit_wine_repository.dart';
 import '../../../models/vineyard.dart';
@@ -710,9 +711,7 @@ class _WineSheetState extends State<WineSheet> {
                   child: _Chip(
                     label: _drunkOn == null
                         ? 'Pick a day'
-                        : MaterialLocalizations.of(
-                            context,
-                          ).formatMediumDate(_drunkOn!),
+                        : formatVenueVisitDate(_drunkOn!),
                     selected: _drunkOn != null,
                     onTap: _pickDay,
                   ),

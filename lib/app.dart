@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'core/constants/app_colors.dart';
+import 'core/l10n/app_locale.dart';
 import 'core/navigation/route_observer.dart';
 import 'core/theme/app_theme.dart';
 import 'core/widgets/floating_nav_bar.dart';
@@ -27,6 +28,10 @@ class TablePassportApp extends StatelessWidget {
       theme: AppTheme.mantelier,
       navigatorKey: PushService.instance.navigatorKey,
       navigatorObservers: [appRouteObserver],
+      // Day month year in every date picker: see app_locale.dart.
+      locale: appLocale,
+      supportedLocales: appSupportedLocales,
+      localizationsDelegates: appLocalizationsDelegates,
       // AuthGate shows LoginScreen when there is no session,
       // and the tab scaffold when the user is authenticated.
       // UpdateGate sits above everything, the entrance included: a version
