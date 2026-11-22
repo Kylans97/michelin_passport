@@ -7,6 +7,13 @@
 // No sign-up and no password reset here, by decision (2026-11-16): accounts
 // are made in the app, and a reset link only works on the device that asked
 // for it, so the site points to the app's own "Forgot password?".
+//
+// Since 2026-11-22 also Continue with Apple and Continue with email (a six
+// digit code), the two ways the app now makes accounts, so those members
+// can sign in here too. Still no sign-up: a code goes only to an address
+// that already has an account (shouldCreateUser false), and an Apple
+// account without a username (never set up in the app) is signed out
+// again with a pointer to the app.
 import { createClient, type Session, type SupabaseClient } from '@supabase/supabase-js';
 import { SUPABASE_ANON_KEY, SUPABASE_URL } from '../supabase';
 import { NAME_KEY, SESSION_KEY, sessionNeedsTwoStep } from './peek';
@@ -20,7 +27,9 @@ let client: SupabaseClient | null = null;
 
 export function supabase(): SupabaseClient {
   client ??= createClient(url, key, {
-    auth: { storageKey: SESSION_KEY, persistSession: true, autoRefreshToken: true, detectSessionInUrl: false },
+    // pkce: Apple's sign-in comes back with a ?code= this page exchanges
+    // itself (completeAppleSignIn), never tokens in the address bar.
+    auth: { storageKey: SESSION_KEY, persistSession: true, autoRefreshToken: true, detectSessionInUrl: false, flowType: 'pkce' },
   });
   return client;
 }
@@ -36,6 +45,65 @@ export async function signIn(email: string, password: string): Promise<SignInRes
   if (error) {
     if (error.code === 'email_not_confirmed') return 'unconfirmed';
     throw new Error(error.code === 'invalid_credentials' ? 'That email and password don’t match an account.' : error.message);
+  }
+  return sessionNeedsTwoStep(data.session) ? 'needs-two-step' : 'signed-in';
+}
+
+/** Where Apple sends the member back to. It must be in the project's
+ *  Authentication > URL Configuration > Redirect URLs. */
+const APPLE_RETURN_URL = 'https://mantelier.app/account/sign-in';
+const NEXT_KEY = 'mantelier-sign-in-next';
+
+/** Leaves for Apple's sign-in page; [next] is kept for the way back. */
+export async function startAppleSignIn(next: string): Promise<void> {
+  try { sessionStorage.setItem(NEXT_KEY, next); } catch { /* back to the account page */ }
+  const returnUrl = location.hostname === 'mantelier.app' ? APPLE_RETURN_URL : `${location.origin}/account/sign-in`;
+  const { error } = await supabase().auth.signInWithOAuth({ provider: 'apple', options: { redirectTo: returnUrl } });
+  if (error) throw new Error('Signing in with Apple didn’t work. Please try again.');
+}
+
+export type AppleReturn = { result: SignInResult | 'not-set-up'; next: string | null } | null;
+
+/** On the way back from Apple: exchanges the ?code= for a session. Null
+ *  when this page wasn't opened by Apple. An account never set up in the
+ *  app (no username) is signed out again: accounts are made in the app. */
+export async function completeAppleSignIn(): Promise<AppleReturn> {
+  const params = new URLSearchParams(location.search);
+  const code = params.get('code');
+  const appleError = params.get('error_description') ?? params.get('error');
+  if (!code && !appleError) return null;
+  let next: string | null = null;
+  try { next = sessionStorage.getItem(NEXT_KEY); sessionStorage.removeItem(NEXT_KEY); } catch { /* none kept */ }
+  history.replaceState(null, '', location.pathname);
+  if (!code) throw new Error('Signing in with Apple didn’t work. Please try again.');
+  const { data, error } = await supabase().auth.exchangeCodeForSession(code);
+  if (error || !data.session) throw new Error('Signing in with Apple didn’t work. Please try again.');
+  const { data: profile } = await supabase()
+    .from('profiles').select('username').eq('id', data.session.user.id).maybeSingle();
+  if (!profile?.username) {
+    await signOut();
+    return { result: 'not-set-up', next };
+  }
+  return { result: sessionNeedsTwoStep(data.session) ? 'needs-two-step' : 'signed-in', next };
+}
+
+/** Sends a sign-in code, only to an address that has an account. Whether
+ *  it has one is never said: the same answer either way, as in the app. */
+export async function sendEmailCode(email: string): Promise<void> {
+  const { error } = await supabase().auth.signInWithOtp({ email, options: { shouldCreateUser: false } });
+  if (!error) return;
+  // Supabase refuses an unknown address; say nothing different for it.
+  if (error.code === 'otp_disabled' || /signups? not allowed/i.test(error.message)) return;
+  if (error.status === 429 || error.code === 'over_email_send_rate_limit') {
+    throw new Error('A code was sent a moment ago. Wait a minute, then ask for a new one.');
+  }
+  throw new Error(error.message);
+}
+
+export async function verifyEmailCode(email: string, code: string): Promise<SignInResult> {
+  const { data, error } = await supabase().auth.verifyOtp({ email, token: code.replace(/[^0-9]/g, ''), type: 'email' });
+  if (error || !data.session) {
+    throw new Error('That code didn’t work. Check it, or send a new one; a code works for a limited time.');
   }
   return sessionNeedsTwoStep(data.session) ? 'needs-two-step' : 'signed-in';
 }

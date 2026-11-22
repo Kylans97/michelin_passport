@@ -8,6 +8,13 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **The website signs in with Apple and with an email code too** (product owner, 2026-11-22: "we moeten op de website ook kunnen inloggen met apple nu toch? Anders kunnen mensen met die nieuwe accounts daar straks niet inloggen"). `site-next/` only; no migration.
+  - `/account/sign-in`: Continue with Apple and Continue with email above the password form ("or with your password"). The email step sends a six digit code and signs in on the sixth digit; two-step sign-in follows where the account has it, as before.
+  - Still no sign-up on the site (decision of 2026-11-16): a code is sent only to an address with an account (`shouldCreateUser: false`), and the answer is the same either way ("If … has a Mantelier account, a code is on its way"). An Apple account without a username, never set up in the app, is signed out again with "Make yours in the Mantelier app first". Supabase does create the bare account in that case; the app picks it up at setup with the same Apple ID.
+  - Apple's sign-in returns with a `?code=` the page exchanges itself (`flowType: 'pkce'`), to `https://mantelier.app/account/sign-in`, which has to be in the production project's Redirect URLs (Authentication > URL Configuration); added to `config.toml` for the local stack. Production takes it from the dashboard.
+  - Checked: `astro build` clean; in the browser at phone width the buttons and the email step open and go back. Not tried: a real code or a real Apple sign-in, both need production and a real account.
+
 ---
 
 ## v1.9.0 (42) — 2026-11-22

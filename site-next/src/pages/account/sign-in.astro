@@ -1,8 +1,9 @@
 ---
-// Sign in with a Mantelier app account: email and password, then the code
-// from the authenticator app for an account with two-step sign-in on, as
-// the app's LoginScreen and TwoStepSignInScreen. The page itself is static;
-// everything happens in the browser.
+// Sign in with a Mantelier app account: with Apple, with a six digit code
+// by email, or with email and password; then the code from the
+// authenticator app for an account with two-step sign-in on, as the app's
+// entrance and TwoStepSignInScreen. The page itself is static; everything
+// happens in the browser.
 import Base from '../../layouts/Base.astro';
 import { CONTACT_EMAIL } from '../../config';
 import '../../styles/account.css';
@@ -17,6 +18,12 @@ import '../../styles/account.css';
       </div>
       <div class="card">
       <form class="form" data-step="password" novalidate>
+        <button class="apple-button" type="button" data-apple>
+          <svg width="16" height="19" viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.1 10.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.1 1-4 2.4-1.7 3-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.4.9-1.3 1.3-2.6 1.3-2.7 0 0-2.5-1-2.4-3.9zM11.7 3.4c.7-.8 1.1-1.9 1-3-1 0-2.1.6-2.8 1.4-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>
+          Continue with Apple
+        </button>
+        <button class="outline-button" type="button" data-email-code>Continue with email</button>
+        <p class="divider"><span>or with your password</span></p>
         <div class="field">
           <label for="email">Email</label>
           <input id="email" name="email" type="email" autocomplete="username" required>
@@ -31,6 +38,23 @@ import '../../styles/account.css';
         <button class="button" type="submit">Sign in</button>
         <p class="help">Forgot your password? Reset it in the Mantelier app: on its sign-in screen, tap “Forgot password?”.</p>
         <p class="help">No account yet? Accounts are made in the Mantelier app.</p>
+      </form>
+
+      <form class="form" data-step="email" novalidate hidden>
+        <p class="lead" data-email-title>Your email</p>
+        <p class="help" data-email-help>We send a six digit code to the address of your Mantelier account.</p>
+        <div class="field" data-address>
+          <label for="code-email">Email</label>
+          <input id="code-email" name="email" type="email" autocomplete="username" required>
+        </div>
+        <div class="field" data-code hidden>
+          <label for="email-code">Code</label>
+          <input class="code" id="email-code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="7" placeholder="123456">
+        </div>
+        <p class="notice error" data-error hidden></p>
+        <button class="button" type="submit" data-send>Send code</button>
+        <button class="text-button" type="button" data-again hidden>Send a new code</button>
+        <button class="text-button" type="button" data-back>Back</button>
       </form>
 
       <form class="form" data-step="code" novalidate hidden>
@@ -63,6 +87,15 @@ import '../../styles/account.css';
   }
   .card :global(.button[type='submit']) { align-self: stretch; margin-top: 6px; }
   .card :global(.help) { font-size: 14px; line-height: 1.55; }
+  .apple-button, .outline-button {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 48px; border-radius: 999px; font: inherit; font-size: 16px; font-weight: 500; cursor: pointer;
+  }
+  .apple-button { background: #000; color: #fff; border: 0; }
+  .outline-button { background: transparent; color: var(--green); border: 1px solid currentColor; }
+  .apple-button:disabled, .outline-button:disabled { opacity: 0.5; cursor: default; }
+  .divider { display: flex; align-items: center; gap: 12px; margin: 6px 0 0; font-size: 13px; opacity: 0.7; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: currentColor; opacity: 0.3; }
   @media (max-width: 760px) {
     .stage { padding: 48px 0 64px; }
     .stage-grid { gap: 36px; }
@@ -71,10 +104,13 @@ import '../../styles/account.css';
 </style>
 
 <script>
-  import { loadName, resendConfirmation, signIn, signOut, supabase, verifyTwoStep } from '../../lib/account/client';
+  import {
+    completeAppleSignIn, loadName, resendConfirmation, sendEmailCode, signIn, signOut, startAppleSignIn,
+    supabase, verifyEmailCode, verifyTwoStep,
+  } from '../../lib/account/client';
   import { peek, safeNext } from '../../lib/account/peek';
 
-  const next = safeNext(new URLSearchParams(location.search).get('next'));
+  let next = safeNext(new URLSearchParams(location.search).get('next'));
   const passwordForm = document.querySelector<HTMLFormElement>('[data-step="password"]')!;
   const codeForm = document.querySelector<HTMLFormElement>('[data-step="code"]')!;
   const resend = passwordForm.querySelector<HTMLButtonElement>('[data-resend]')!;
@@ -102,10 +138,122 @@ import '../../styles/account.css';
     codeForm.querySelector<HTMLInputElement>('#code')!.focus();
   }
 
-  // Already signed in, or signed in with the password but not the code.
-  const state = peek();
-  if (state === 'signed-in') location.replace(next);
-  else if (state === 'needs-two-step') showCodeStep();
+  // Back from Apple, already signed in, or signed in but not past the code.
+  (async () => {
+    try {
+      const back = await completeAppleSignIn();
+      if (back) {
+        if (back.next) next = safeNext(back.next);
+        if (back.result === 'not-set-up') {
+          showError(passwordForm, 'This Apple account has no Mantelier account yet. Make yours in the Mantelier app first, then sign in here.');
+        } else if (back.result === 'needs-two-step') showCodeStep();
+        else await finish();
+        return;
+      }
+    } catch (e) {
+      showError(passwordForm, e instanceof Error && e.message ? e.message : 'Something went wrong. Please try again.');
+      return;
+    }
+    const state = peek();
+    if (state === 'signed-in') location.replace(next);
+    else if (state === 'needs-two-step') showCodeStep();
+  })();
+
+  const appleButton = passwordForm.querySelector<HTMLButtonElement>('[data-apple]')!;
+  appleButton.addEventListener('click', async () => {
+    appleButton.disabled = true;
+    showError(passwordForm, null);
+    try {
+      await startAppleSignIn(next);
+    } catch (e) {
+      showError(passwordForm, e instanceof Error ? e.message : 'Something went wrong. Please try again.');
+      appleButton.disabled = false;
+    }
+  });
+
+  // Continue with email: the address, then the six digit code.
+  const emailForm = document.querySelector<HTMLFormElement>('[data-step="email"]')!;
+  const emailInput = emailForm.querySelector<HTMLInputElement>('#code-email')!;
+  const emailCodeInput = emailForm.querySelector<HTMLInputElement>('#email-code')!;
+  const sendButton = emailForm.querySelector<HTMLButtonElement>('[data-send]')!;
+  const againButton = emailForm.querySelector<HTMLButtonElement>('[data-again]')!;
+  let sentTo: string | null = null;
+
+  function showAddressStep() {
+    sentTo = null;
+    emailForm.querySelector<HTMLElement>('[data-email-title]')!.textContent = 'Your email';
+    emailForm.querySelector<HTMLElement>('[data-email-help]')!.textContent = 'We send a six digit code to the address of your Mantelier account.';
+    emailForm.querySelector<HTMLElement>('[data-address]')!.hidden = false;
+    emailForm.querySelector<HTMLElement>('[data-code]')!.hidden = true;
+    sendButton.hidden = false;
+    againButton.hidden = true;
+    emailCodeInput.value = '';
+    showError(emailForm, null);
+  }
+
+  passwordForm.querySelector('[data-email-code]')!.addEventListener('click', () => {
+    passwordForm.hidden = true;
+    emailForm.hidden = false;
+    showAddressStep();
+    const typed = (passwordForm.elements.namedItem('email') as HTMLInputElement).value.trim();
+    if (typed) emailInput.value = typed;
+    emailInput.focus();
+  });
+
+  emailForm.querySelector('[data-back]')!.addEventListener('click', () => {
+    if (sentTo) return showAddressStep();
+    emailForm.hidden = true;
+    passwordForm.hidden = false;
+  });
+
+  async function send(email: string) {
+    showError(emailForm, null);
+    sendButton.disabled = againButton.disabled = true;
+    try {
+      await sendEmailCode(email);
+      sentTo = email;
+      emailForm.querySelector<HTMLElement>('[data-email-title]')!.textContent = 'Check your mail';
+      emailForm.querySelector<HTMLElement>('[data-email-help]')!.textContent =
+        `If ${email} has a Mantelier account, a six digit code is on its way.`;
+      emailForm.querySelector<HTMLElement>('[data-address]')!.hidden = true;
+      emailForm.querySelector<HTMLElement>('[data-code]')!.hidden = false;
+      sendButton.hidden = true;
+      againButton.hidden = false;
+      emailCodeInput.focus();
+    } catch (e) {
+      showError(emailForm, e instanceof Error && e.message ? e.message : 'Something went wrong. Please try again.');
+    }
+    sendButton.disabled = againButton.disabled = false;
+  }
+
+  emailForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (sentTo) return;
+    const email = emailInput.value.trim();
+    if (!email.includes('@')) return showError(emailForm, 'Enter a valid email.');
+    send(email);
+  });
+  againButton.addEventListener('click', () => { if (sentTo) send(sentTo); });
+
+  let checkingCode = false;
+  emailCodeInput.addEventListener('input', async () => {
+    if (!sentTo || checkingCode || emailCodeInput.value.replace(/[^0-9]/g, '').length !== 6) return;
+    checkingCode = true;
+    showError(emailForm, null);
+    try {
+      const result = await verifyEmailCode(sentTo, emailCodeInput.value);
+      if (result === 'needs-two-step') {
+        emailForm.hidden = true;
+        showCodeStep();
+      } else {
+        await finish();
+        return;
+      }
+    } catch (e) {
+      showError(emailForm, e instanceof Error && e.message ? e.message : 'Something went wrong. Please try again.');
+    }
+    checkingCode = false;
+  });
 
   passwordForm.addEventListener('submit', async (event) => {
     event.preventDefault();
