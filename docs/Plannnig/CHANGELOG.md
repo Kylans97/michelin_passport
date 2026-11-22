@@ -9,7 +9,8 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
-- **Asking members to update** (product owner, 2026-11-22: "oke bouw maar", after choosing versions kept in Supabase over asking the App Store). Branch `claude/update-prompt`. **Not applied to production and not in a build yet.**
+- **Asking members to update** (product owner, 2026-11-22: "oke bouw maar", after choosing versions kept in Supabase over asking the App Store). Branch `claude/update-prompt`, merged into main 2026-11-22. Not in a build yet.
+  - **Applied to production 2026-11-22** (product owner: "Ja, zet migratie 20261101680000 op productie en push claude/update-prompt naar main"). Checked after: one row, 1.6.0 and 1.0.0, so nobody is asked anything yet; RLS on; anon and authenticated hold SELECT only; a REST read with the app's public key returns the row. `supabase migration list --linked`: local and remote agree, 174/174.
   - New migration `20261101680000_add_app_release.sql`: one row, `latest_version` and `minimum_version`, edited by hand in the dashboard after each App Store release. RLS on, readable by anon and authenticated (the entrance too), no client writes, no function. Seeded at 1.6.0 and 1.0.0, so applying it asks nobody anything until the row is edited.
   - `UpdateGate` above `AuthGate` in `app.dart`: below `minimum_version` a deep green "Time for an update" screen with only Update, over everything; below `latest_version` a sheet "A new version of Mantelier" with Update and Later, once per version (shared_preferences). Checked at launch and on return to the app, at most hourly unless blocked. Versions compare part by part as numbers (1.10.0 is newer than 1.9.0); a missing row, a failed read or an unreadable version asks nothing. Update opens the App Store listing.
   - Works only from the build that carries it; older installs never see it.
