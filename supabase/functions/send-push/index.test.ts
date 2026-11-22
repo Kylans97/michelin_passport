@@ -16,6 +16,8 @@ import {
   formatEventDate,
   friendRequestCopy,
   handleRequest,
+  type InviteLinkContent,
+  inviteLinkCopy,
   type NotificationRow,
   type PreferenceRow,
   type PushStore,
@@ -75,6 +77,16 @@ class FakeStore implements PushStore {
   }
   bookingReminderContent(_id: string) {
     return Promise.resolve(this.reminder);
+  }
+  inviteLink: InviteLinkContent | null = {
+    otherName: 'Julien Martens',
+    kind: 'visit',
+    venueName: 'Hof van Cleve',
+    tripTitle: null,
+    visitCopied: true,
+  };
+  inviteLinkContent(_id: string) {
+    return Promise.resolve(this.inviteLink);
   }
   deleteDevice(token: string) {
     this.deleted.push(token);
@@ -408,6 +420,51 @@ Deno.test('a booking reminder whose row is gone is skipped, not sent blank', asy
   store.reminder = null;
   const apns = recordingApns();
   const res = await handleRequest(req({ body: { notification_ids: ['b2'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(res.status, 200);
+  assertEquals(apns.sent.length, 0);
+});
+
+Deno.test('an accepted invite link is pushed on the friends toggle, with what it brought', async () => {
+  const store = new FakeStore();
+  store.notifications = [{ id: 'i1', recipient_id: 'u1', type: 'invite_link_accepted', subject_id: 'r1' }];
+  store.devices = [DEVICE];
+  let apns = recordingApns();
+  await handleRequest(req({ body: { notification_ids: ['i1'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(apns.sent.length, 1);
+  const payload = apns.sent[0].payload as Record<string, unknown>;
+  assertEquals((payload.aps as { alert: unknown }).alert, {
+    body: 'Julien Martens accepted your invitation. Hof van Cleve is in their Passport too.',
+  });
+  assertEquals(payload.type, 'invite_link_accepted');
+
+  store.preferences = [{ user_id: 'u1', push_friend_requests: false, push_followed_venue_events: true }];
+  apns = recordingApns();
+  await handleRequest(req({ body: { notification_ids: ['i1'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(apns.sent.length, 0);
+});
+
+Deno.test('invite link copy: a join request, a trip, a plain friend link', () => {
+  const trip: InviteLinkContent = {
+    otherName: 'Anna Verbeek', kind: 'trip', venueName: null, tripTitle: 'Piemonte in May', visitCopied: false,
+  };
+  assertEquals(inviteLinkCopy('invite_link_join_request', trip).body, 'Anna Verbeek wants to join Piemonte in May.');
+  assertEquals(
+    inviteLinkCopy('invite_link_accepted', trip).body,
+    'Anna Verbeek accepted your invitation and is coming on Piemonte in May.',
+  );
+  assertEquals(
+    inviteLinkCopy('invite_link_accepted', { ...trip, kind: 'friend', tripTitle: null }).body,
+    'Anna Verbeek accepted your invitation. You are friends now.',
+  );
+});
+
+Deno.test('an invite link use whose row is gone is skipped, not sent blank', async () => {
+  const store = new FakeStore();
+  store.notifications = [{ id: 'i2', recipient_id: 'u1', type: 'invite_link_join_request', subject_id: 'gone' }];
+  store.devices = [DEVICE];
+  store.inviteLink = null;
+  const apns = recordingApns();
+  const res = await handleRequest(req({ body: { notification_ids: ['i2'] } }), store, apns.send, SECRET, NOW);
   assertEquals(res.status, 200);
   assertEquals(apns.sent.length, 0);
 });

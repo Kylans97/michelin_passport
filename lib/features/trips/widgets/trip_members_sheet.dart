@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../models/invite_link.dart';
+import '../../invites/share_invite_sheet.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -336,6 +338,32 @@ class _TripMembersSheetState extends State<_TripMembersSheet> {
                   icon: const Icon(Icons.person_add_alt_1_outlined, size: 18),
                   label: Text(
                     'Invite a friend',
+                    style: CsTypography.bodyMedium.copyWith(fontSize: 14.5),
+                  ),
+                  style: TextButton.styleFrom(
+                    foregroundColor: AppColors.forestGreen,
+                    padding: EdgeInsets.zero,
+                    minimumSize: const Size(0, 44),
+                  ),
+                ),
+              ),
+              // Someone not on Mantelier yet (20261101670000): a link that
+              // makes them a friend and puts them on the trip, or for a
+              // group, asks the sender to let each of them in.
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton.icon(
+                  onPressed: _picking
+                      ? null
+                      : () => showShareInviteSheet(
+                          context,
+                          kind: InviteLinkKind.trip,
+                          tripId: widget.tripId,
+                          subtitle: 'For someone who is not on Mantelier yet',
+                        ),
+                  icon: const Icon(Icons.ios_share_rounded, size: 18),
+                  label: Text(
+                    'Invite with a link',
                     style: CsTypography.bodyMedium.copyWith(fontSize: 14.5),
                   ),
                   style: TextButton.styleFrom(

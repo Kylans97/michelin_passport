@@ -6,6 +6,7 @@ import '../../../core/widgets/cs_editorial_glyphs.dart' show CsCountryLabel;
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/events_repository.dart';
 import '../../../data/repositories/hotel_repository.dart';
+import '../../../data/repositories/invite_link_repository.dart';
 import '../../../data/repositories/photo_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
 import '../../../data/repositories/visit_wine_repository.dart';
@@ -228,6 +229,14 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
         _menuType = visit.menuType;
         _friendsVisible = visit.visibility == VisitVisibility.friends;
         _notesCtrl.text = visit.notes ?? '';
+        // A visit shared through an invite link keeps the sender's date
+        // (20261101670000); the server refuses a change, so the picker
+        // explains instead of offering one.
+        InviteLinkRepository(Supabase.instance.client)
+            .isSharedCopy(visit.id)
+            .then((shared) {
+              if (mounted && shared) setState(() => _dateLocked = true);
+            });
       }
       return; // no venue picker, so no shortcuts to load
     }
@@ -348,7 +357,17 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
 
   void _backToStep1() => setState(() => _step = 1);
 
+  bool _dateLocked = false;
+
   Future<void> _pickDate() async {
+    if (_dateLocked) {
+      setState(
+        () => _error =
+            'This visit was shared with you, so its date follows the original. '
+            'Whoever shared it can change it.',
+      );
+      return;
+    }
     final now = DateTime.now();
     final picked = await showDatePicker(
       context: context,

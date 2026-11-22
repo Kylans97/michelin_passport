@@ -11,6 +11,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/utils/mailto_uri.dart';
 import '../../data/repositories/friendship_repository.dart';
+import '../../data/repositories/invite_link_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
@@ -78,6 +79,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   );
   late final _friendRepo = FriendshipRepository(Supabase.instance.client);
   late final _venueInviteRepo = VenueInviteRepository(Supabase.instance.client);
+  late final _inviteLinkRepo = InviteLinkRepository(Supabase.instance.client);
   late final _tripsRepo = PlannedTripsRepository(Supabase.instance.client);
   late final AnalyticsService _analytics =
       widget.analytics ?? SupabaseAnalyticsService(Supabase.instance.client);
@@ -183,6 +185,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             memberId: n.subjectId,
             accept: true,
           );
+        case AppNotificationType.inviteLinkJoinRequest:
+          await _inviteLinkRepo.decideJoin(n.subjectId, approve: true);
         default:
           return;
       }
@@ -212,6 +216,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             memberId: n.subjectId,
             accept: false,
           );
+        case AppNotificationType.inviteLinkJoinRequest:
+          await _inviteLinkRepo.decideJoin(n.subjectId, approve: false);
         default:
           return;
       }
@@ -669,7 +675,58 @@ class _NotificationRow extends StatelessWidget {
               ? null
               : () => _openRestaurant(context, n.bookingRestaurantId!),
         );
+      case AppNotificationType.inviteLinkAccepted:
+      case AppNotificationType.inviteLinkJoinRequest:
+      case AppNotificationType.inviteLinkJoinApproved:
+      case AppNotificationType.inviteLinkJoinDeclined:
+        return _inviteLink();
     }
+  }
+
+  // Invite links (20261101670000). The sender hears who accepted, and for
+  // a trip through a group link answers the request here or under
+  // Friends; the person who used the link hears whether they were let in.
+  Widget _inviteLink() {
+    final n = notification;
+    final trip = n.linkTripTitle ?? 'the trip';
+    final friends = n.linkBecameFriends == false ? '' : ' You are friends now.';
+    final String description;
+    Widget? status;
+    switch (n.type) {
+      case AppNotificationType.inviteLinkJoinRequest:
+        description = 'Wants to join $trip through your group link.';
+        status = n.linkRedemptionStatus == 'awaiting_approval'
+            ? _answerButtons(
+                onDecline: onDecline,
+                onAccept: onAccept,
+                acceptLabel: 'Let in',
+              )
+            : _statusText(switch (n.linkRedemptionStatus) {
+                'approved' => 'Let in',
+                'declined' => 'Not let in',
+                _ => 'No longer open',
+              });
+      case AppNotificationType.inviteLinkJoinApproved:
+        description = 'Let you in on $trip.';
+      case AppNotificationType.inviteLinkJoinDeclined:
+        description = 'Your request to join $trip was not accepted.';
+      default:
+        description = switch (n.linkKind) {
+          'visit' when n.linkVisitId != null =>
+            'Accepted your invitation.$friends '
+                '${n.linkVenueName ?? 'Your visit'} is in their Passport too.',
+          'trip' => 'Accepted your invitation and is coming on $trip.',
+          _ => 'Accepted your invitation.$friends',
+        };
+    }
+    return _NotificationTile(
+      unread: _unread,
+      leading: _avatar,
+      title: n.otherLabel,
+      description: description,
+      footer: status,
+      onTap: onTapOther,
+    );
   }
 
   // An expired invite is never hidden — only its buttons give way to a

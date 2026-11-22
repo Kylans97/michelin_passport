@@ -32,7 +32,9 @@ export type PushType =
   | 'friend_request_received'
   | 'followed_venue_event'
   | 'birthday'
-  | 'booking_window_opening';
+  | 'booking_window_opening'
+  | 'invite_link_accepted'
+  | 'invite_link_join_request';
 export type ApnsEnvironment = 'sandbox' | 'production';
 
 export interface NotificationRow {
@@ -65,6 +67,16 @@ export interface EventContent {
 /// A booking reminder (booking_reminders, 20261101400000), as fixed when
 /// the reminder job sent it. Dates and times are local to
 /// restaurantTimezone; openTime is null when the time is not known.
+/// Who used one of the recipient's invite links (20261101670000), and for
+/// what.
+export interface InviteLinkContent {
+  otherName: string | null;
+  kind: 'friend' | 'visit' | 'trip';
+  venueName: string | null;
+  tripTitle: string | null;
+  visitCopied: boolean;
+}
+
 export interface BookingReminderContent {
   restaurantName: string;
   plannedMonth: string; // yyyy-mm-01
@@ -84,6 +96,7 @@ export interface PushStore {
   friendRequesterName(friendshipId: string): Promise<string | null>;
   eventContent(eventId: string): Promise<EventContent | null>;
   bookingReminderContent(reminderId: string): Promise<BookingReminderContent | null>;
+  inviteLinkContent(redemptionId: string): Promise<InviteLinkContent | null>;
   deleteDevice(token: string): Promise<void>;
   setDeviceEnvironment(token: string, environment: ApnsEnvironment): Promise<void>;
   /// Records that APNs accepted the push for at least one device
@@ -110,6 +123,8 @@ const PUSH_TYPES: ReadonlySet<string> = new Set([
   'followed_venue_event',
   'birthday',
   'booking_window_opening',
+  'invite_link_accepted',
+  'invite_link_join_request',
 ]);
 
 function jsonResponse(body: unknown, status: number): Response {
@@ -126,7 +141,10 @@ function wantsPush(type: PushType, pref: PreferenceRow | undefined): boolean {
   // No row means the defaults, which are on.
   if (!pref) return true;
   if (type === 'booking_window_opening') return pref.push_booking_reminders ?? true;
-  return type === 'friend_request_received'
+  // Someone using an invite link is a new friend: the friends toggle.
+  return type === 'friend_request_received' ||
+      type === 'invite_link_accepted' ||
+      type === 'invite_link_join_request'
     ? pref.push_friend_requests
     : pref.push_followed_venue_events;
 }
@@ -158,6 +176,20 @@ export function followedVenueEventCopy(event: EventContent, now: Date = new Date
     title: event.hostName ?? 'A new event',
     body: `${event.eventName} · ${formatEventDate(event.startDate, now)}`,
   };
+}
+
+export function inviteLinkCopy(type: PushType, c: InviteLinkContent): PushCopy {
+  const name = c.otherName ?? 'Someone';
+  if (type === 'invite_link_join_request') {
+    return { body: `${name} wants to join ${c.tripTitle ?? 'your trip'}.` };
+  }
+  if (c.kind === 'visit' && c.visitCopied && c.venueName) {
+    return { body: `${name} accepted your invitation. ${c.venueName} is in their Passport too.` };
+  }
+  if (c.kind === 'trip' && c.tripTitle) {
+    return { body: `${name} accepted your invitation and is coming on ${c.tripTitle}.` };
+  }
+  return { body: `${name} accepted your invitation. You are friends now.` };
 }
 
 export function birthdayCopy(): PushCopy {
@@ -346,6 +378,13 @@ export async function handleRequest(
       copy = friendRequestCopy(await store.friendRequesterName(n.subject_id));
     } else if (type === 'birthday') {
       copy = birthdayCopy();
+    } else if (type === 'invite_link_accepted' || type === 'invite_link_join_request') {
+      const link = await store.inviteLinkContent(n.subject_id);
+      if (!link) {
+        console.error('send-push: invite link use not found for notification', { notificationId: n.id });
+        continue;
+      }
+      copy = inviteLinkCopy(type, link);
     } else if (type === 'booking_window_opening') {
       const reminder = await store.bookingReminderContent(n.subject_id);
       if (!reminder) {
@@ -529,6 +568,40 @@ function supabaseStore(): PushStore {
         opensTime: (r.opens_time as string | null) ?? null,
         restaurantTimezone: r.restaurant_timezone as string,
         memberTimezone: r.member_timezone as string,
+      };
+    },
+    async inviteLinkContent(redemptionId) {
+      const { data: r, error } = await admin.from('invite_link_redemptions')
+        .select('redeemed_by, visit_id, invite_links(kind, visit_id, trip_id)')
+        .eq('id', redemptionId).maybeSingle();
+      if (error || !r) return null;
+      const link = (r as Record<string, unknown>).invite_links as
+        { kind: 'friend' | 'visit' | 'trip'; visit_id: string | null; trip_id: string | null } | null;
+      if (!link) return null;
+      const { data: p } = await admin.from('profiles')
+        .select('display_name, username').eq('id', r.redeemed_by).maybeSingle();
+      let venueName: string | null = null;
+      if (link.visit_id) {
+        const { data: v } = await admin.from('visits')
+          .select('entity_type, entity_id').eq('id', link.visit_id).maybeSingle();
+        if (v) {
+          const { data: venue } = await admin.from(v.entity_type === 'hotel' ? 'hotels' : 'restaurants')
+            .select('name').eq('id', v.entity_id).maybeSingle();
+          venueName = (venue?.name as string | undefined) ?? null;
+        }
+      }
+      let tripTitle: string | null = null;
+      if (link.trip_id) {
+        const { data: t } = await admin.from('planned_trips')
+          .select('title').eq('id', link.trip_id).maybeSingle();
+        tripTitle = (t?.title as string | undefined) ?? null;
+      }
+      return {
+        otherName: (p?.display_name as string | undefined) ?? (p?.username as string | undefined) ?? null,
+        kind: link.kind,
+        venueName,
+        tripTitle,
+        visitCopied: r.visit_id != null,
       };
     },
     async deleteDevice(token) {

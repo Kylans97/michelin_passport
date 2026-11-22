@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'app.dart';
 import 'core/supabase/supabase_config.dart';
+import 'features/invites/pending_invite.dart';
 import 'features/notifications/push_service.dart';
 import 'core/widgets/app_network_image.dart';
 
@@ -59,6 +61,10 @@ void main() async {
   // Registers this device for push once a session exists, and routes
   // taps. Never asks for permission here — see PushService.
   PushService.instance.start();
+
+  // An invitation link that opened the app, or one kept from before a
+  // restart, waits here until the member answers it (InviteLinkGate).
+  unawaited(PendingInvite.instance.start());
 
   enableImageDiskCache();
   runApp(const TablePassportApp());

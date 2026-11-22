@@ -230,6 +230,8 @@ class PushService {
       // restaurant (the push carries the reminder's id, not the venue's).
       case 'friend_request_received':
       case 'booking_window_opening':
+      case 'invite_link_accepted':
+      case 'invite_link_join_request':
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
       default:
         return null;

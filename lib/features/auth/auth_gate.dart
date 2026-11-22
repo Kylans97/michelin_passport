@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/widgets/branded_splash.dart';
 import '../../data/repositories/two_step_repository.dart';
+import '../invites/invite_link_gate.dart';
 import '../onboarding/onboarding_gate.dart';
 import 'auth_link_notice.dart';
 import 'login_screen.dart';
@@ -144,11 +145,16 @@ class _AuthGateState extends State<AuthGate> {
       userId: session.user.id,
       suggestedName: session.user.userMetadata?['apple_name'] as String?,
       needsSetup: widget.needsProfileSetup,
-      child: OnboardingGate(
-        userId: session.user.id,
-        hasSeenWelcome: widget.hasSeenWelcome,
-        markWelcomeSeen: widget.markWelcomeSeen,
-        child: widget.child,
+      // An invitation link waiting on this phone opens first: for a new
+      // member right after "Your Passport is ready", before the welcome
+      // flow (20261101670000).
+      child: InviteLinkGate(
+        child: OnboardingGate(
+          userId: session.user.id,
+          hasSeenWelcome: widget.hasSeenWelcome,
+          markWelcomeSeen: widget.markWelcomeSeen,
+          child: widget.child,
+        ),
       ),
     );
   }

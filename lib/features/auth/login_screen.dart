@@ -7,6 +7,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../data/repositories/auth_repository.dart';
+import '../invites/invite_link_banner.dart';
 import 'email_code_screen.dart';
 import 'password_sign_in_screen.dart';
 import 'widgets/auth_presentation.dart';
@@ -115,6 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         if (widget.notice != null)
                           AuthNoticeBanner(message: widget.notice!),
+                        const InviteLinkBanner(),
                         const Spacer(),
                         const AuthBrandLockup(),
                         const Spacer(),

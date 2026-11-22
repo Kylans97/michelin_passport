@@ -1,1 +1,2 @@
 /auth/confirmed /auth/confirm 200
+/i/* /i 200

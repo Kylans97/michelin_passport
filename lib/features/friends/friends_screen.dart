@@ -16,6 +16,7 @@ import 'widgets/identity_row.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/screen_usage.dart';
 import '../notifications/push_prompt_sheet.dart';
+import '../invites/invite_links_section.dart';
 import '../notifications/push_service.dart';
 
 /// Friends — accepted friends plus incoming/outgoing requests. Deliberately
@@ -343,37 +344,49 @@ class _FriendsTab extends StatelessWidget {
         );
       }
       final friends = snap.data ?? [];
+      // Invite links (20261101670000) sit above the list, and above the
+      // empty state, where a first friend is most likely to come from.
+      const invites = InviteLinksSection();
       if (friends.isEmpty) {
-        return Center(
-          child: Padding(
-            padding: const EdgeInsets.all(CsSpacing.xxl),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Find friends and discover the places they loved',
-                  textAlign: TextAlign.center,
-                  style: CsTypography.placeTitle.copyWith(
-                    color: AppColors.forestGreen,
-                    fontSize: 18,
-                  ),
-                ),
-                const SizedBox(height: CsSpacing.sm),
-                Text(
-                  'Search for people you know by username.',
-                  textAlign: TextAlign.center,
-                  style: CsTypography.body.copyWith(color: AppColors.taupe),
-                ),
-                const SizedBox(height: CsSpacing.xl),
-                CsPrimaryButton(
-                  label: 'Find friends',
-                  icon: Icons.person_add_alt_1_rounded,
-                  onTap: onFindFriends,
-                  surface: CsSurface.light,
-                ),
-              ],
-            ),
+        return ListView(
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.pageHorizontal,
+            CsSpacing.md,
+            CsSpacing.pageHorizontal,
+            CsSpacing.section,
           ),
+          children: [
+            invites,
+            Padding(
+              padding: const EdgeInsets.all(CsSpacing.xl),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Find friends and discover the places they loved',
+                    textAlign: TextAlign.center,
+                    style: CsTypography.placeTitle.copyWith(
+                      color: AppColors.forestGreen,
+                      fontSize: 18,
+                    ),
+                  ),
+                  const SizedBox(height: CsSpacing.sm),
+                  Text(
+                    'Search for people you know by username.',
+                    textAlign: TextAlign.center,
+                    style: CsTypography.body.copyWith(color: AppColors.taupe),
+                  ),
+                  const SizedBox(height: CsSpacing.xl),
+                  CsPrimaryButton(
+                    label: 'Find friends',
+                    icon: Icons.person_add_alt_1_rounded,
+                    onTap: onFindFriends,
+                    surface: CsSurface.light,
+                  ),
+                ],
+              ),
+            ),
+          ],
         );
       }
       return ListView.builder(
@@ -383,9 +396,10 @@ class _FriendsTab extends StatelessWidget {
           CsSpacing.pageHorizontal,
           CsSpacing.section,
         ),
-        itemCount: friends.length,
+        itemCount: friends.length + 1,
         itemBuilder: (context, i) {
-          final friend = friends[i];
+          if (i == 0) return invites;
+          final friend = friends[i - 1];
           return IdentityRow(
             label: friend.label,
             username: friend.username,

@@ -5,11 +5,14 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/star_row.dart';
+import '../../data/repositories/invite_link_repository.dart';
 import '../../data/repositories/visited_repository.dart';
+import '../../models/invite_link.dart';
 import '../../models/restaurant.dart';
 import '../../models/passport_venue.dart';
 import '../../models/visit.dart';
 import '../passport/widgets/add_visit_flow.dart';
+import '../invites/share_invite_sheet.dart';
 import '../photos/widgets/visit_photos_section.dart';
 import 'widgets/visit_wines.dart';
 import '../restaurants/restaurant_detail_screen.dart';
@@ -76,6 +79,32 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
   // failed rather than a restricted one. Gated on the view instead.
   bool get _isOwner =>
       Supabase.instance.client.auth.currentUser?.id == _visit.userId;
+
+  // A visit someone shared with this member through an invite link
+  // (20261101670000): its date follows theirs, so this says so and offers
+  // no link of its own. Read on its own so the visit columns don't depend
+  // on the migration.
+  bool _sharedCopy = false;
+
+  @override
+  void initState() {
+    super.initState();
+    if (_isOwner) {
+      InviteLinkRepository(Supabase.instance.client)
+          .isSharedCopy(_visit.id)
+          .then((shared) {
+            if (mounted && shared) setState(() => _sharedCopy = true);
+          });
+    }
+  }
+
+  void _inviteWithLink() => showShareInviteSheet(
+    context,
+    kind: InviteLinkKind.visit,
+    visitId: _visit.id,
+    subtitle:
+        '${widget.restaurant.name}, ${_formatVisitDate(_visit.visitedOn)}',
+  );
 
   void _showSnack(String message, {bool isError = true}) {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -380,6 +409,17 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                   ),
                 ],
               ),
+              if (_sharedCopy) ...[
+                const SizedBox(height: 6),
+                Text(
+                  'Shared with you. The date follows the original visit.',
+                  style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+                ),
+              ],
+              if (_isOwner && !_sharedCopy) ...[
+                const SizedBox(height: 24),
+                _InviteCard(onTap: _inviteWithLink),
+              ],
               const SizedBox(height: 32),
 
               Text(
@@ -466,6 +506,59 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
       ),
     );
   }
+}
+
+/// "Who was with you?": shares this visit through an invite link, so
+/// whoever accepts gets it in their own Passport and becomes a friend.
+class _InviteCard extends StatelessWidget {
+  const _InviteCard({required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(CsSpacing.base),
+    decoration: BoxDecoration(
+      color: AppColors.card,
+      border: Border.all(color: AppColors.cardBorder),
+      borderRadius: BorderRadius.circular(16),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Who was with you?',
+                style: CsTypography.bodyMedium.copyWith(
+                  color: AppColors.forestGreen,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                'Send them a link. When they join, this visit goes into '
+                'their Passport too, and you are friends straight away.',
+                style: CsTypography.metadata,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: CsSpacing.md),
+        TextButton(
+          onPressed: onTap,
+          style: TextButton.styleFrom(
+            backgroundColor: AppColors.deepGreen,
+            foregroundColor: AppColors.textOnDark,
+            shape: const StadiumBorder(),
+            padding: const EdgeInsets.symmetric(horizontal: CsSpacing.base),
+            minimumSize: const Size(44, 44),
+          ),
+          child: const Text('Invite'),
+        ),
+      ],
+    ),
+  );
 }
 
 /// The restaurant name as the screen title. With [onTap], it opens the restaurant's

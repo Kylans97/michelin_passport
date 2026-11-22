@@ -50,7 +50,16 @@ enum AppNotificationType {
 
   // Bookings for a month the member planned open tomorrow
   // (20261101400000). Only get_notifications_v6 returns it.
-  bookingWindowOpening;
+  bookingWindowOpening,
+
+  // Invite links (20261101670000). To the sender: someone accepted their
+  // link; someone asks to join their trip through a group link. To the
+  // person who used it: let in on the trip, or not. Only
+  // get_notifications_v7 returns these.
+  inviteLinkAccepted,
+  inviteLinkJoinRequest,
+  inviteLinkJoinApproved,
+  inviteLinkJoinDeclined;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -73,6 +82,10 @@ enum AppNotificationType {
     'followed_venue_event' => AppNotificationType.followedVenueEvent,
     'birthday' => AppNotificationType.birthday,
     'booking_window_opening' => AppNotificationType.bookingWindowOpening,
+    'invite_link_accepted' => AppNotificationType.inviteLinkAccepted,
+    'invite_link_join_request' => AppNotificationType.inviteLinkJoinRequest,
+    'invite_link_join_approved' => AppNotificationType.inviteLinkJoinApproved,
+    'invite_link_join_declined' => AppNotificationType.inviteLinkJoinDeclined,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 
@@ -193,6 +206,21 @@ class AppNotification {
   final String? bookingOpensTime;
   final String? bookingTimezone;
 
+  // subjectId is the invite_link_redemptions id when subjectType ==
+  // 'invite_link_redemption' (get_notifications_v7): what
+  // decide_invite_link_join takes. linkRedemptionStatus is its CURRENT
+  // status ('approved'/'awaiting_approval'/'declined'/'removed').
+  // linkVisitId is the visit copied into the other person's Passport, null
+  // when they left it out.
+  final String? linkKind;
+  final String? linkVenueName;
+  final DateTime? linkVisitedOn;
+  final String? linkTripId;
+  final String? linkTripTitle;
+  final String? linkRedemptionStatus;
+  final bool? linkBecameFriends;
+  final String? linkVisitId;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -241,6 +269,14 @@ class AppNotification {
     this.bookingOpensOn,
     this.bookingOpensTime,
     this.bookingTimezone,
+    this.linkKind,
+    this.linkVenueName,
+    this.linkVisitedOn,
+    this.linkTripId,
+    this.linkTripTitle,
+    this.linkRedemptionStatus,
+    this.linkBecameFriends,
+    this.linkVisitId,
   });
 
   /// A booking reminder's line: "Bookings for March 2027 at Le Pré
@@ -327,6 +363,16 @@ class AppNotification {
         : DateTime.parse(row['booking_opens_on'] as String),
     bookingOpensTime: row['booking_opens_time'] as String?,
     bookingTimezone: row['booking_timezone'] as String?,
+    linkKind: row['link_kind'] as String?,
+    linkVenueName: row['link_venue_name'] as String?,
+    linkVisitedOn: row['link_visited_on'] == null
+        ? null
+        : DateTime.parse(row['link_visited_on'] as String),
+    linkTripId: row['link_trip_id'] as String?,
+    linkTripTitle: row['link_trip_title'] as String?,
+    linkRedemptionStatus: row['link_redemption_status'] as String?,
+    linkBecameFriends: row['link_became_friends'] as bool?,
+    linkVisitId: row['link_visit_id'] as String?,
   );
 
   /// Whether a friend_request_received row should still offer

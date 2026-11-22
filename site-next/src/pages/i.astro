@@ -1,0 +1,203 @@
+---
+// An invitation from a member: mantelier.app/i/<token>, rewritten to this
+// one static page by public/_redirects. With the app installed the link
+// opens the app instead (apple-app-site-association lists /i/*), so this
+// page is for someone who doesn't have it yet.
+//
+// It reads get_invite_link_preview with the public anon key: the sender's
+// name, the place and the date, or a trip's name and months (product
+// owner, 2026-11-22), and nothing else. The App Store button copies the
+// link on that tap, so the app can offer to paste it after installing;
+// nothing is read or written without a tap. Accepting happens in the app
+// only: a first sign-in can't happen on the website yet.
+import Base from '../layouts/Base.astro';
+import Mark from '../components/Mark.astro';
+import { APP_STORE_URL } from '../config';
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../lib/supabase';
+import '../styles/account.css';
+---
+<Base title="You are invited" description="A Mantelier member invited you. Open the link to see the invitation." noindex>
+  <section class="invite">
+    <div class="wrap invite-wrap">
+      <div class="card" data-card aria-live="polite">
+        <div class="loading" data-loading>
+          <Mark size={44} color="var(--green)" />
+          <p class="help">Opening your invitation</p>
+        </div>
+
+        <div class="open" data-open hidden>
+          <div class="avatar big" data-initials aria-hidden="true"></div>
+          <h1 class="title" data-title></h1>
+          <div class="target" data-target hidden>
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="target-text">
+              <p class="target-name" data-target-name></p>
+              <p class="gold" data-target-award hidden></p>
+              <p class="target-meta" data-target-meta></p>
+            </div>
+          </div>
+          <p class="sub" data-sub></p>
+          {APP_STORE_URL && (
+            <div class="cta">
+              <a class="button" href={APP_STORE_URL} data-store>Get Mantelier on the App Store</a>
+              <p class="help">Tapping this copies your invitation, so the app can find it after you install it.</p>
+            </div>
+          )}
+          <p class="help">Already have the app? Tap the link in your message again and it opens there.</p>
+          <div class="code-box" data-code-box hidden>
+            <p class="kicker">Or enter this code in the app, under Friends</p>
+            <p class="code" data-code></p>
+          </div>
+        </div>
+
+        <div class="closed" data-closed hidden>
+          <div class="avatar big muted" data-closed-initials aria-hidden="true"></div>
+          <h1 class="title" data-closed-title></h1>
+          <p class="sub" data-closed-sub></p>
+          {APP_STORE_URL && <a class="button" href={APP_STORE_URL}>Get Mantelier on the App Store</a>}
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .invite { background: var(--ivory); padding: 72px 0 120px; }
+  .invite-wrap { display: flex; justify-content: center; }
+  .card { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--rule); border-radius: 24px; padding: 40px 32px; }
+  .loading, .open, .closed { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+  .avatar.big { width: 72px; height: 72px; font-size: 28px; }
+  .avatar.muted { opacity: 0.6; }
+  .title { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; margin: 0; text-wrap: balance; color: var(--green); }
+  .sub { font-size: 16px; color: var(--ink-soft); margin: 0; max-width: 36ch; }
+  .target { display: flex; gap: 14px; align-items: center; text-align: left; width: 100%; border: 1px solid var(--rule); border-radius: 16px; padding: 14px; }
+  .thumb { width: 60px; height: 60px; flex: none; border-radius: 12px; background: linear-gradient(160deg, #6E5A3C, #1A211C); }
+  .target-text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .target-name { font-weight: 600; margin: 0; color: var(--green); overflow-wrap: anywhere; }
+  .target-meta { font-size: 14px; color: var(--ink-soft); margin: 0; }
+  .gold { color: var(--gold); letter-spacing: 0.12em; font-size: 13px; margin: 0; }
+  .cta { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+  .cta .button { display: block; text-align: center; }
+  .code-box { display: flex; flex-direction: column; gap: 4px; padding-top: 8px; }
+  .kicker { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); margin: 0; }
+  .code { font-family: var(--util); font-size: 22px; letter-spacing: 0.2em; color: var(--green); margin: 0; }
+  @media (max-width: 480px) { .card { padding: 32px 20px; } .invite { padding-top: 40px; } }
+</style>
+
+<script define:vars={{ url: SUPABASE_URL, key: SUPABASE_ANON_KEY }}>
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+    'August', 'September', 'October', 'November', 'December'];
+  const $ = (s) => document.querySelector(s);
+  const show = (s) => { $(s).hidden = false; };
+  const text = (s, t) => { $(s).textContent = t; };
+
+  const initials = (name) => (name || '')
+    .split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join('') || 'M';
+  const firstName = (name) => (name || '').split(/\s+/)[0] || name;
+  const dateOf = (iso) => {
+    const [y, m, d] = iso.split('-').map(Number);
+    return `${d} ${MONTHS[m - 1]} ${y}`;
+  };
+  // "May 2027", or "May to June 2027", or "December 2026 to January 2027".
+  const months = (start, end) => {
+    const [sy, sm] = start.split('-').map(Number);
+    const [ey, em] = end.split('-').map(Number);
+    if (sy === ey && sm === em) return `${MONTHS[sm - 1]} ${sy}`;
+    if (sy === ey) return `${MONTHS[sm - 1]} to ${MONTHS[em - 1]} ${sy}`;
+    return `${MONTHS[sm - 1]} ${sy} to ${MONTHS[em - 1]} ${ey}`;
+  };
+
+  function closed(title, sub, name) {
+    $('[data-loading]').hidden = true;
+    text('[data-closed-initials]', name ? initials(name) : 'M');
+    text('[data-closed-title]', title);
+    text('[data-closed-sub]', sub);
+    show('[data-closed]');
+  }
+
+  function render(p) {
+    $('[data-loading]').hidden = true;
+    const name = p.sender_name || 'A member';
+    const first = firstName(name);
+    text('[data-initials]', initials(name));
+
+    if (p.kind === 'trip') {
+      text('[data-title]', `${name} invited you on a trip`);
+      text('[data-target-name]', p.trip_title || 'A trip');
+      text('[data-target-meta]', months(p.trip_start_date, p.trip_end_date));
+      text('[data-sub]', p.needs_approval
+        ? `Accept in the app and you two are friends. ${first} then lets you in on the trip.`
+        : 'Accept in the app and you two are friends, and you join the trip straight away.');
+      show('[data-target]');
+    } else if (p.kind === 'visit') {
+      text('[data-title]', `${name} invited you to Mantelier`);
+      text('[data-target-name]', p.venue_name || 'A table');
+      const where = p.venue_city ? `${p.venue_city}, ` : '';
+      const noun = p.venue_type === 'hotel' ? 'stay' : 'dinner';
+      text('[data-target-meta]', `${where}${noun} on ${dateOf(p.visited_on)}`);
+      const stars = p.michelin_stars || 0;
+      const keys = p.michelin_keys || 0;
+      if (stars > 0 || keys > 0) {
+        text('[data-target-award]', stars > 0 ? '★'.repeat(stars) : `${keys} MICHELIN Key${keys > 1 ? 's' : ''}`);
+        show('[data-target-award]');
+      }
+      text('[data-sub]', 'Accept in the app, and you two are friends and this goes straight into your Passport.');
+      show('[data-target]');
+    } else {
+      text('[data-title]', `${name} invited you to Mantelier`);
+      text('[data-sub]', 'Accept in the app and you two are friends straight away. Mantelier keeps the tables, stays and evenings worth keeping.');
+    }
+
+    if (p.code) {
+      text('[data-code]', `${p.code.slice(0, 4)} ${p.code.slice(4)}`);
+      show('[data-code-box]');
+    }
+    show('[data-open]');
+
+    // Copy on the tap itself, then go to the store whatever the copy did.
+    const store = $('[data-store]');
+    if (store) {
+      store.addEventListener('click', async (event) => {
+        event.preventDefault();
+        const href = store.href;
+        try { await navigator.clipboard.writeText(location.href.split('#')[0]); } catch (_) { /* the code is the fallback */ }
+        location.href = href;
+      });
+    }
+  }
+
+  async function load() {
+    const token = location.pathname.split('/').filter(Boolean)[1] || '';
+    if (!/^[A-Za-z0-9_-]{16,64}$/.test(token)) {
+      closed('This invitation is no longer available', 'Ask whoever sent it for a new link.');
+      return;
+    }
+    let row;
+    try {
+      const res = await fetch(`${url}/rest/v1/rpc/get_invite_link_preview`, {
+        method: 'POST',
+        headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_token: token }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      [row] = await res.json();
+    } catch (_) {
+      closed('This invitation could not be opened', 'Check your connection and reload the page.');
+      return;
+    }
+    if (!row || row.state === 'unavailable') {
+      closed('This invitation is no longer available', 'Ask whoever sent it for a new link.');
+    } else if (row.state === 'expired') {
+      const first = firstName(row.sender_name || '');
+      closed('This invitation has expired',
+        first
+          ? `Links from ${first} are open for 14 days. Ask for a new one, or find ${first} in the app and send a friend request.`
+          : 'Links are open for 14 days. Ask whoever sent it for a new one.',
+        row.sender_name);
+    } else {
+      render(row);
+    }
+  }
+
+  load();
+</script>
