@@ -173,9 +173,10 @@ async function load() {
   status.className = "note";
   status.textContent = "Loading…";
 
-  const [report, insights] = await Promise.all([
+  const [report, insights, features] = await Promise.all([
     supabase.rpc("admin_studio_report", { p_days: days }),
     supabase.rpc("admin_get_member_insights"),
+    supabase.rpc("admin_studio_features_report", { p_days: days }),
     loadCountries(),
   ]);
 
@@ -201,6 +202,115 @@ async function load() {
   renderEvents(r.top_events);
   renderInsights(insights.data ?? []);
   renderBars($("trips"), r.trip_countries.map((t) => ({ label: countryLabel(t.country), value: t.trips })), "No upcoming trips yet.");
+  renderFeatures(features, r.days);
+}
+
+// ------------------------------------------------- since the first report
+//
+// admin_studio_features_report (20261101660000): wine, estates, trains and
+// ships, wishlist kinds, sign-in, friends, reminders, push and news. If it
+// fails (not yet applied, say), these panels say so and the rest of the
+// overview stands.
+
+const featurePanels = [
+  "wine-verdicts", "wine-settings", "vineyards", "top-estates", "journeys",
+  "wishlist-kinds", "sign-in", "friends", "reach", "news",
+];
+
+function renderFeatures(res, days) {
+  if (res.error || !res.data) {
+    const msg = `Could not load: ${res.error?.message ?? "no data"}`;
+    $("wine-tiles").replaceChildren();
+    featurePanels.forEach((id) => $(id).replaceChildren(el("p", { class: "empty", text: msg })));
+    return;
+  }
+  const f = res.data;
+  const w = f.wine;
+  const tiles = [
+    ["Wines logged", w.logged_on_visits + w.kept_in_cellar, `${num(w.added_in_period)} in ${days} days`],
+    ["At a visit", w.logged_on_visits, "on a restaurant or hotel visit"],
+    ["In the Cellar", w.kept_in_cellar, "kept without a visit"],
+    ["Members logging wine", w.members, `${num(w.members_in_period)} in ${days} days`],
+    ["With a note", w.with_note, "a line to remember it by"],
+    ["Linked to an estate", w.linked_to_estate, null],
+  ];
+  $("wine-tiles").replaceChildren(
+    ...tiles.map(([k, v, d]) =>
+      el("div", { class: "tile" },
+        el("div", { class: "k", text: k }),
+        el("div", { class: "v", text: num(v) }),
+        d ? el("div", { class: "d", text: d }) : null,
+      ),
+    ),
+  );
+  const wines = w.logged_on_visits + w.kept_in_cellar;
+  renderBars($("wine-verdicts"), wines ? [
+    { label: "Would drink again", value: w.again },
+    { label: "It was fine", value: w.fine },
+    { label: "Not for me", value: w.not_for_me },
+    { label: "No verdict", value: w.no_verdict },
+  ] : [], "No wines logged yet.");
+  renderBars($("wine-settings"), w.kept_in_cellar ? [
+    { label: "At home", value: w.cellar_home },
+    { label: "At an estate", value: w.cellar_estate },
+    { label: "Somewhere else", value: w.cellar_elsewhere },
+  ] : [], "No wines kept without a visit yet.");
+  const v = f.vineyards;
+  renderBars($("vineyards"), [
+    { label: "Visits", value: v.visits, extra: `${num(v.visits_in_period)} in ${days} days` },
+    { label: "Visitors", value: v.visitors },
+    { label: "Wishlist saves", value: v.wishlist },
+  ]);
+  table($("top-estates"), [
+    { label: "Estate", value: (e) => {
+      const cell = document.createDocumentFragment();
+      cell.append(e.name, el("span", { class: "where", text: [e.region, countryLabel(e.country)].filter(Boolean).join(" · ") }));
+      return cell;
+    } },
+    { label: "Wines", value: (e) => e.wines },
+    { label: "Visits", value: (e) => e.visits },
+    { label: "Wishlist", value: (e) => e.wishlist },
+  ], f.top_estates, "No estate linked, visited or saved yet.");
+
+  const j = f.journeys;
+  renderBars($("journeys"), [
+    { label: "Travels", value: j.travels, extra: `${num(j.travels_in_period)} in ${days} days` },
+    { label: "Travellers", value: j.travellers },
+    { label: "Wishlist saves", value: j.wishlist },
+    ...j.top.map((t) => ({
+      label: t.name, value: t.travels + t.wishlist,
+      extra: `${num(t.travels)} travelled, ${num(t.wishlist)} saved`,
+    })),
+  ]);
+  const kindLabel = { restaurant: "Restaurants", hotel: "Hotels", event: "Events", journey: "Trains and ships", vineyard: "Estates" };
+  renderBars($("wishlist-kinds"), Object.entries(f.wishlist)
+    .sort((a, b) => b[1] - a[1])
+    .map(([k, n]) => ({ label: kindLabel[k] ?? titleCase(k), value: n })), "No wishlist saves yet.");
+
+  const s = f.sign_in;
+  renderBars($("sign-in"), [
+    { label: "Apple", value: s.apple, extra: `+${num(s.apple_in_period)}` },
+    { label: "Email code", value: s.email_code, extra: `+${num(s.email_code_in_period)}` },
+    { label: "Password", value: s.password, extra: `+${num(s.password_in_period)}` },
+  ]);
+  const fr = f.friends;
+  renderBars($("friends"), [
+    { label: "Friendships", value: fr.accepted, extra: `${num(fr.accepted_in_period)} in ${days} days` },
+    { label: "Members with a friend", value: fr.members_with_friends },
+    { label: "Requests waiting", value: fr.pending },
+  ]);
+  const b = f.booking, p = f.push;
+  renderBars($("reach"), [
+    { label: "Booking reminders", value: b.reminders, extra: `${num(b.upcoming)} still to come` },
+    { label: "Members with a reminder", value: b.members },
+    { label: "Devices for push", value: p.devices, extra: `${num(p.members)} members` },
+    { label: "Seen in this period", value: p.seen_in_period },
+  ]);
+  const n = f.news;
+  renderBars($("news"), [
+    { label: "Opens", value: n.opens, extra: `${num(n.readers)} readers` },
+    ...n.top.map((a) => ({ label: a.title, value: a.opens, extra: `${num(a.readers)} readers` })),
+  ], "No articles opened in this period.");
 }
 
 $("period").addEventListener("change", load);
