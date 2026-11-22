@@ -134,26 +134,67 @@ class Grape {
   );
 }
 
-/// A grape a region is known for, and what it becomes there.
+/// A grape a region is known for, and what it is there: the name on its
+/// labels, its role, and how it tastes there (20261101690000), each only
+/// when a source says so. [localNote] is the one free note builds up to
+/// 1.9.0 (48) show; this build reads it only for a link whose three
+/// fields are still empty.
 class RegionGrape {
   final String regionId;
   final String grapeId;
   final String? localNote;
+  final String? localName;
+  final String? roleNote;
+  final String? tasteNote;
   final int order;
 
   const RegionGrape({
     required this.regionId,
     required this.grapeId,
     this.localNote,
+    this.localName,
+    this.roleNote,
+    this.tasteNote,
     this.order = 0,
   });
 
   factory RegionGrape.fromMap(Map<String, dynamic> map) => RegionGrape(
     regionId: map['region_id'] as String,
     grapeId: map['grape_id'] as String,
-    localNote: map['local_note'] as String?,
+    localNote: _text(map['local_note']),
+    localName: _text(map['local_name']),
+    roleNote: _text(map['role_note']),
+    tasteNote: _text(map['taste_note']),
     order: (map['display_order'] as num?)?.toInt() ?? 0,
   );
+
+  bool get _hasFields =>
+      localName != null || roleNote != null || tasteNote != null;
+
+  /// The region's own words for this grape, the most telling first: how it
+  /// tastes there, else the name it goes by, else its role. Null when the
+  /// region says nothing; before the three fields are filled, the old note.
+  String? get lead {
+    if (!_hasFields) return localNote;
+    if (tasteNote != null) return tasteNote;
+    if (localName != null) return 'Called $localName here.';
+    return roleNote;
+  }
+
+  /// What follows [lead] in smaller type: the name and role it didn't use.
+  String? get detail {
+    if (!_hasFields) return null;
+    final parts = [
+      if (tasteNote != null && localName != null) 'Called $localName here.',
+      if (lead != roleNote) ?roleNote,
+    ];
+    return parts.isEmpty ? null : parts.join(' ');
+  }
+}
+
+String? _text(Object? value) {
+  final s = (value as String?)?.trim();
+  return (s == null || s.isEmpty) ? null : s;
 }
 
 /// A name as it appears on a wine list — Chablis, Barolo — and its region.
@@ -255,26 +296,32 @@ class WineAtlas {
       if (r.parentId == null) r,
   ];
 
-  /// The grapes [region] is known for, in order, with what each becomes
-  /// there.
-  List<(Grape, String?)> grapesOf(WineRegion region) {
+  /// The grapes [region] is known for, in order, with what each is there.
+  List<(Grape, RegionGrape)> grapesOf(WineRegion region) {
     final links = [
       for (final l in regionGrapes)
         if (l.regionId == region.id) l,
     ]..sort((a, b) => a.order.compareTo(b.order));
     return [
       for (final l in links)
-        if (_grapeById[l.grapeId] != null)
-          (_grapeById[l.grapeId]!, l.localNote),
+        if (_grapeById[l.grapeId] != null) (_grapeById[l.grapeId]!, l),
     ];
   }
 
-  /// The regions where [grape] grows, with what it becomes in each.
-  List<(WineRegion, String?)> regionsOf(Grape grape) => [
+  /// The regions where [grape] grows, by name.
+  List<WineRegion> regionsOf(Grape grape) => [
     for (final l in regionGrapes)
       if (l.grapeId == grape.id && _regionById[l.regionId] != null)
-        (_regionById[l.regionId]!, l.localNote),
-  ];
+        _regionById[l.regionId]!,
+  ]..sort((a, b) => a.name.compareTo(b.name));
+
+  /// What [grape] is in [region], or null when the region doesn't list it.
+  RegionGrape? linkOf(WineRegion region, Grape grape) {
+    for (final l in regionGrapes) {
+      if (l.regionId == region.id && l.grapeId == grape.id) return l;
+    }
+    return null;
+  }
 
   List<WineAppellation> appellationsOf(WineRegion region) => [
     for (final a in appellations)

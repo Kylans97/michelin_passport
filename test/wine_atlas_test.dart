@@ -128,7 +128,7 @@ void main() {
   test('a region lists its grapes in order, with what they become there', () {
     final grapes = _atlas().grapesOf(_burgundy);
     expect(grapes.map((g) => g.$1.name), ['Pinot Noir', 'Chardonnay']);
-    expect(grapes.first.$2, 'earthy, elegant');
+    expect(grapes.first.$2.localNote, 'earthy, elegant');
   });
 
   test('only top-level regions are drawn on the globe', () {

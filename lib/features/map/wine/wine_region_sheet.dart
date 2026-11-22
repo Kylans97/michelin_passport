@@ -52,7 +52,8 @@ class WineRegionDetail extends StatelessWidget {
   void _openGrape(BuildContext context, Grape grape) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => GrapeScreen(atlas: atlas, grape: grape),
+      builder: (_) =>
+          GrapeScreen(atlas: atlas, grape: grape, fromRegion: region),
     ),
   );
 
@@ -99,12 +100,10 @@ class WineRegionDetail extends StatelessWidget {
         ),
         if (grapes.isNotEmpty) ...[
           const _SectionLabel('THE GRAPES'),
-          for (final (grape, note) in grapes)
-            _GrapeRow(
-              grape: grape,
-              note: note,
-              onTap: () => _openGrape(context, grape),
-            ),
+          // Names only (product owner, 2026-11-22): what the grape is here
+          // leads its own screen, one tap away.
+          for (final (grape, _) in grapes)
+            _GrapeRow(grape: grape, onTap: () => _openGrape(context, grape)),
         ],
         if (region.hasRedProfile) ...[
           const _SectionLabel('A RED FROM HERE, IN THE GLASS'),
@@ -181,15 +180,32 @@ class WineRegionDetail extends StatelessWidget {
 
 /// A grape's own page: what you taste, how it feels, where it grows and
 /// what that changes ("Wine regions globe" canvas, screen 4).
+///
+/// Opened from a region ([fromRegion]), it leads with what the grape is
+/// there, in the region's own words, and lists that region first.
 class GrapeScreen extends StatelessWidget {
   final WineAtlas atlas;
   final Grape grape;
+  final WineRegion? fromRegion;
 
-  const GrapeScreen({super.key, required this.atlas, required this.grape});
+  const GrapeScreen({
+    super.key,
+    required this.atlas,
+    required this.grape,
+    this.fromRegion,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final regions = atlas.regionsOf(grape);
+    // Only a region that lists this grape: a similar grape opened from
+    // here may not grow there.
+    final link = fromRegion == null ? null : atlas.linkOf(fromRegion!, grape);
+    final from = link == null ? null : fromRegion;
+    final regions = [
+      ?from,
+      for (final r in atlas.regionsOf(grape))
+        if (r.id != from?.id) r,
+    ];
     final similar = atlas.grape(grape.similarGrapeId);
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -266,6 +282,7 @@ class GrapeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (from != null) _InRegion(region: from, link: link!),
                 if (grape.tastes.isNotEmpty || grape.agedNote != null) ...[
                   const _SectionLabel('WHAT YOU TASTE'),
                   Wrap(
@@ -300,13 +317,15 @@ class GrapeScreen extends StatelessWidget {
                     word: tanninWord(grape.tannin!),
                   ),
                 if (regions.isNotEmpty) ...[
-                  const _SectionLabel('WHERE IT GROWS, AND WHAT THAT CHANGES'),
+                  const _SectionLabel('WHERE IT GROWS'),
                   _Card(
                     children: [
-                      for (final (region, note) in regions)
+                      for (final region in regions)
                         _CardRow(
                           title: region.name,
-                          trailing: note ?? '',
+                          trailing: region.id == from?.id
+                              ? 'Where you came from'
+                              : (region.countryName ?? region.countryCode),
                           onTap: () => showWineRegionSheet(
                             context,
                             atlas: atlas,
@@ -322,8 +341,11 @@ class GrapeScreen extends StatelessWidget {
                     onTap: () => Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (_) =>
-                            GrapeScreen(atlas: atlas, grape: similar),
+                        builder: (_) => GrapeScreen(
+                          atlas: atlas,
+                          grape: similar,
+                          fromRegion: fromRegion,
+                        ),
                       ),
                     ),
                     borderRadius: BorderRadius.circular(CsRadius.medium),
@@ -442,14 +464,9 @@ class _SectionLabel extends StatelessWidget {
 
 class _GrapeRow extends StatelessWidget {
   final Grape grape;
-  final String? note;
   final VoidCallback onTap;
 
-  const _GrapeRow({
-    required this.grape,
-    required this.note,
-    required this.onTap,
-  });
+  const _GrapeRow({required this.grape, required this.onTap});
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -480,27 +497,12 @@ class _GrapeRow extends StatelessWidget {
               ),
               const SizedBox(width: CsSpacing.md),
               Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      grape.name,
-                      style: CsTypography.placeTitle.copyWith(
-                        fontSize: 17,
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                    Text(
-                      [
-                        if ((note ?? '').isNotEmpty) note!,
-                        if (grape.tastes.isNotEmpty)
-                          grape.tastes.take(3).join(', '),
-                      ].join(' · '),
-                      style: CsTypography.metadata.copyWith(
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                  ],
+                child: Text(
+                  grape.name,
+                  style: CsTypography.placeTitle.copyWith(
+                    fontSize: 17,
+                    color: AppColors.textPrimary,
+                  ),
                 ),
               ),
               const Icon(
@@ -513,6 +515,72 @@ class _GrapeRow extends StatelessWidget {
       ),
     ),
   );
+}
+
+/// What the grape is in the region the member came from, in the region's
+/// own words: [RegionGrape.lead] in serif, [RegionGrape.detail] below.
+/// When the region says nothing, one quiet line instead, never made up.
+class _InRegion extends StatelessWidget {
+  final WineRegion region;
+  final RegionGrape link;
+
+  const _InRegion({required this.region, required this.link});
+
+  @override
+  Widget build(BuildContext context) {
+    final lead = link.lead;
+    final detail = link.detail;
+    if (lead == null) {
+      return Container(
+        margin: const EdgeInsets.only(top: CsSpacing.lg),
+        padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
+        decoration: const BoxDecoration(
+          border: Border.symmetric(
+            horizontal: BorderSide(color: AppColors.cardBorder),
+          ),
+        ),
+        child: Text(
+          'Grown in ${region.name}.',
+          style: CsTypography.metadata.copyWith(color: AppColors.textSecondary),
+        ),
+      );
+    }
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.only(top: CsSpacing.lg),
+      padding: const EdgeInsets.all(CsSpacing.base),
+      decoration: BoxDecoration(
+        color: AppColors.claretTint,
+        borderRadius: BorderRadius.circular(CsRadius.medium),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'IN ${region.name.toUpperCase()}',
+            style: CsTypography.eyebrow.copyWith(color: AppColors.claret),
+          ),
+          const SizedBox(height: CsSpacing.sm),
+          Text(
+            lead,
+            style: CsTypography.placeTitle.copyWith(
+              fontSize: 19,
+              color: AppColors.textPrimary,
+            ),
+          ),
+          if (detail != null) ...[
+            const SizedBox(height: CsSpacing.sm),
+            Text(
+              detail,
+              style: CsTypography.metadata.copyWith(
+                color: AppColors.textSecondary,
+              ),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
 }
 
 class _NameList extends StatelessWidget {

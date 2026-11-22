@@ -26,9 +26,7 @@ class WineAtlasRepository {
   Future<WineAtlas> load() async {
     final regions = _loadRegions();
     final grapes = _client.from('grapes').select(_grapeColumns);
-    final links = _client
-        .from('wine_region_grapes')
-        .select('region_id, grape_id, local_note, display_order');
+    final links = _loadLinks();
     final appellations = _client
         .from('wine_appellations')
         .select(_appellationColumns);
@@ -51,6 +49,21 @@ class WineAtlasRepository {
           WineAppellation.fromMap(row as Map<String, dynamic>),
       ],
     );
+  }
+
+  /// The region grapes with their three fields (20261101690000). Until
+  /// that migration is applied the columns don't exist (42703): the links
+  /// then load with the one free note, which the app shows instead.
+  Future<List<dynamic>> _loadLinks() async {
+    const base = 'region_id, grape_id, local_note, display_order';
+    try {
+      return await _client
+          .from('wine_region_grapes')
+          .select('$base, local_name, role_note, taste_note');
+    } on PostgrestException catch (e) {
+      if (e.code != '42703') rethrow;
+      return await _client.from('wine_region_grapes').select(base);
+    }
   }
 
   /// The regions with their outlines (20261101590000). Until that
