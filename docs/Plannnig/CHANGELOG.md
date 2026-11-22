@@ -8,8 +8,14 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.9.0 (46) — 2026-11-22
+
+1.9.0 (45) plus the friend link's new message (product owner: "Push f6e4429 naar main en maak een build 46."). No migration since 44 (ledger 173/173), so 44's schema diff stands. `flutter analyze` clean, `flutter test` 3,105 passing. Archived with `flutter build ipa --release` in the `claude/invite-links` worktree, which matches main (the export fails without a command-line Apple account, as expected): `~/Library/Developer/Xcode/Archives/2026-11-22/Runner 1.9.0 (46).xcarchive`, version checked with PlistBuddy, entitlements carrying `com.apple.developer.applesignin` and `applinks:mantelier.app`, for upload from the Organizer. Supersedes 45.
+
 ### Changed
-- **The friend link's message** (product owner, 2026-11-22, on the text the share sheet starts with: "het moet worden. Find unique events, experience impeccable hospitality, share memories with friends"). Now "{name} invited you to Mantelier. Find unique events, experience impeccable hospitality, share memories with friends." followed by the link; the invite page on the site uses the same line for a friend link. The visit and trip messages are unchanged. In the app from the next build after 1.9.0 (45); the site once it reaches main.
+- **The friend link's message** (product owner, 2026-11-22, on the text the share sheet starts with: "het moet worden. Find unique events, experience impeccable hospitality, share memories with friends"). Now "{name} invited you to Mantelier. Find unique events, experience impeccable hospitality, share memories with friends." followed by the link; the invite page on the site uses the same line for a friend link. The visit and trip messages are unchanged. On the site since main reached it on 2026-11-22 (deploy succeeded).
 
 ---
 
