@@ -8,6 +8,12 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.9.0 (47) — 2026-11-22
+
+1.9.0 (46) plus asking members to update (product owner: "oke krijgen we een nieuwe build?"). One migration since 46, `20261101680000_add_app_release.sql`, applied to production before this build; ledger 174/174. **Schema diff for this bump**, as in `NEW_MACHINE_SETUP.md` §4: a full replay on a scratch stack, then `supabase db dump` of both: the same single quoting difference as for 44 (`EXTRACT(day ...)` against `EXTRACT("day" ...)`), `app_release` identical on both sides; storage and auth identical apart from the same three platform `storage.buckets` triggers. `MAPTILER_KEY` present. `flutter analyze` clean, `flutter test` 3,111 passing. Archived with `flutter build ipa --release` in the `claude/update-prompt` worktree, which matches main (the export fails without a command-line Apple account, as expected): `~/Library/Developer/Xcode/Archives/2026-11-22/Runner 1.9.0 (47).xcarchive`, version checked with PlistBuddy, entitlements carrying `com.apple.developer.applesignin` and `applinks:mantelier.app`, for upload from the Organizer. Supersedes 46.
+
 ### Added
 - **Asking members to update** (product owner, 2026-11-22: "oke bouw maar", after choosing versions kept in Supabase over asking the App Store). Branch `claude/update-prompt`, merged into main 2026-11-22. Not in a build yet.
   - **Applied to production 2026-11-22** (product owner: "Ja, zet migratie 20261101680000 op productie en push claude/update-prompt naar main"). Checked after: one row, 1.6.0 and 1.0.0, so nobody is asked anything yet; RLS on; anon and authenticated hold SELECT only; a REST read with the app's public key returns the row. `supabase migration list --linked`: local and remote agree, 174/174.
