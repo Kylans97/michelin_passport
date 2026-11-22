@@ -6,6 +6,64 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-22 — MICHELIN Czechia 2027: four new Prague stars (QA-537–QA-539)
+
+| | |
+|---|---|
+| Applied | 2026-11-22, to production, at the product owner's request ("Ja, pas prepared_cz_2027.sql toe op productie."). One transaction, every guard and post-condition passed |
+| Migration | None. Data SQL only |
+| Data file | `supabase/data/enrichment/michelin_cz_2027/prepared_cz_2027.sql`. Evidence: `candidates.csv` in the same folder |
+
+**Why.** The product owner reported four new Prague one-stars on 2026-11-22. They come from MICHELIN's second national Czech selection, announced 2026-11-20, and MICHELIN dates every star in it 2027. So this is a new edition for all of Czechia, not four extra rows.
+
+**Source.** MICHELIN's live Czech list (`/en/cz/restaurants/all-starred`, read 2026-11-22) has 13 starred restaurants: Papilio with two stars and 12 with one. Every restaurant page carries `dateAwarded` 2027. The nine already in the catalogue keep their stars.
+
+**Changed.**
+- `rest_4100`–`rest_4108`: the 2026 star row was closed and a current 2027 row opened with the same value.
+- Added `rest_4212` Zlatá Praha, `rest_4213` Taro, `rest_4214` Salabka and `rest_4215` Reason. All are in Prague with one star and a 2027 award row, `announced_on` 2026-11-20.
+- For the new rows, address, phone and Instagram come from each venue's own site, and the coordinates are MICHELIN's pin. The Place IDs were taken from the Google records' feature ids and opened back in Google Maps to confirm each venue (3 to 53 m from the pin).
+- Zlatá Praha is linked to `hotel_3105` Fairmont Golden Prague (`exact`). It is the hotel's rooftop restaurant at the same address, 6 m away.
+
+**Before the write.** The nine were at their expected stars. Nothing in production was within 50 m of a new row, and none shared its code, Place ID or MICHELIN URL.
+
+**Checked after the apply.** Czechia is 1 two-star and 12 one-stars, each with exactly one current star row, from 2027. The 2026 rows remain as history. The hotel link is present. `restaurants_full` serves the four new rows to `anon`.
+
+**Still open.**
+- QA-538: Taro's phone has only MICHELIN as a source and is left NULL.
+- QA-539: `announced_on` is the press release date. The ceremony may have been the evening before.
+- None of the 13 Czech restaurants has MICHELIN cuisines yet. That is a separate pass.
+
+---
+
+# 2026-11-22 — Mantelier Selection: four Amsterdam restaurants (QA-534–QA-536)
+
+| | |
+|---|---|
+| Applied | 2026-11-22, to production, at the product owner's request ("Ja, schrijf alle vier naar productie als Mantelier Selection."). One statement |
+| Migration | None. Data SQL only |
+| Data file | `supabase/data/enrichment/editorial_selection/prepared_insert_20261122.sql`, step 1. Evidence: `candidates_20261122.csv` in the same folder |
+
+**Why.** The product owner asked on 2026-11-22 for Mont Blanc, Troef and Dame aan de Kade to join the Selection, then for Camarat (Amsterdam Noord).
+
+**Added.** `rest_4208` Mont Blanc, `rest_4209` Troef, `rest_4210` Dame aan de Kade and `rest_4211` Camarat. All four are in Amsterdam (`3736b37d-…`), NL, with `inclusion_reason` `editorial_selection`, `michelin_stars` NULL and `status` `open`. Each has a current `editorial_selections` row with `selected_on` 2026-11-22. Troef also has one `restaurant_cuisines` row, `michelin` position 1, Modern French (241).
+
+**Source.**
+- Name, phone, website and Instagram come from each venue's own site.
+- Each address is backed by a municipal licence notice that names the venue at that address. The coordinates are its BAG address point (PDOK).
+- Each Google record sits 2 to 20 m from the BAG point. Its Place ID was taken from the record's feature id and opened back in Google Maps to confirm the venue.
+- Mont Blanc and Troef are in the MICHELIN Guide without a star or Bib Gourmand (MICHELIN's own pages, 2026-11-22). They enter through the Selection only, with no `michelin_url`, like Tacite and Petit Péché.
+
+**Before the write.** Nothing was in production within 150 m, and no row had the same Place ID, website or phone. Never matched on name. The highest code was `rest_4207`. These codes were claimed in the shared notes before the write.
+
+**Checked after the write.** All six current Selection rows read back, the four new ones carrying exactly the staged values. `restaurants_full` returns them in Amsterdam, NL. The app's own Selection query, run as `anon` over REST, returns all six, newest first. Troef's `cuisine_id` is 241, set by the cuisine trigger. The restaurants total is 3641, up from 3637.
+
+**Still open.**
+- QA-536: Mont Blanc's cuisine is held back. MICHELIN's "Savoyard" is not in the cuisines vocabulary.
+
+**Near-miss.** QA-535: Google and every review site give Camarat's address as Gedempt Hamerkanaal 4, 1021 KL, and that address does not exist in BAG. Taking the consensus would have stored an address nobody can find. The municipality's permit gives Johan van Hasseltweg 51, 1021 KN.
+
+---
+
 # 2026-11-20 — Seed restaurant coordinates (QA-530–QA-533)
 
 | | |
