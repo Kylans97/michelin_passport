@@ -1,18 +1,21 @@
-// Signing in with Apple and with an email code (2026-11-22): the login
-// screen's new options, the code screen's two steps, the profile setup
-// for accounts made that way, and AuthGate showing it before the app.
+// The sign-up flow of 2026-11-22: the entrance's two ways in, the code
+// screen's six boxes, the three questions with the Passport filling in,
+// the Passport issued, and AuthGate showing the setup before the app.
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:michelin_passport/core/utils/username_rules.dart';
 import 'package:michelin_passport/features/auth/auth_gate.dart';
 import 'package:michelin_passport/features/auth/email_code_screen.dart';
 import 'package:michelin_passport/features/auth/login_screen.dart';
+import 'package:michelin_passport/features/auth/password_sign_in_screen.dart';
 import 'package:michelin_passport/features/auth/profile_setup_screen.dart';
+import 'package:michelin_passport/models/venue_country.dart';
 
 Widget _wrap(Widget child) => MaterialApp(home: child);
 
-/// A field holding [text] (the Name field's hint is also "Jane Doe").
+/// A field holding [text].
 Finder _typed(String text) => find.byWidgetPredicate(
   (w) => w is EditableText && w.controller.text == text,
 );
@@ -23,10 +26,40 @@ Session _session() => Session(
   user: User(
     id: 'user-1',
     appMetadata: const {},
-    userMetadata: const {'apple_name': 'Jane Doe'},
+    userMetadata: const {'apple_name': 'Elise Laurent'},
     aud: 'authenticated',
     createdAt: '2026-01-01T00:00:00Z',
   ),
+);
+
+const _countries = [
+  VenueCountry(name: 'Belgium', code: 'BE', flag: ''),
+  VenueCountry(name: 'France', code: 'FR', flag: ''),
+  VenueCountry(name: 'Germany', code: 'DE', flag: ''),
+  VenueCountry(name: 'Italy', code: 'IT', flag: ''),
+  VenueCountry(name: 'Luxembourg', code: 'LU', flag: ''),
+  VenueCountry(name: 'Netherlands', code: 'NL', flag: ''),
+];
+
+ProfileSetupScreen _setup({
+  String? suggestedName = 'Elise Laurent',
+  Set<String> taken = const {},
+  List<String>? saved,
+  VoidCallback? onSaved,
+  Future<void> Function()? failSave,
+}) => ProfileSetupScreen(
+  userId: 'user-1',
+  suggestedName: suggestedName,
+  onSaved: onSaved ?? () {},
+  deviceCountryCode: 'NL',
+  today: DateTime(2026, 11, 22),
+  loadCountries: () async => _countries,
+  isUsernameAvailable: (u) async => !taken.contains(u),
+  loadMemberNumber: () async => 31,
+  save: ({required displayName, required username, homeCountryCode}) async {
+    if (failSave != null) await failSave();
+    saved?.add('$displayName|$username|$homeCountryCode');
+  },
 );
 
 void main() {
@@ -37,7 +70,6 @@ void main() {
       await tester.pumpWidget(_wrap(const LoginScreen(showApple: false)));
       expect(find.text('Continue with Apple'), findsNothing);
       expect(find.text('Continue with email'), findsOneWidget);
-      expect(find.text('Or sign in with your password'), findsOneWidget);
 
       await tester.pumpWidget(_wrap(const LoginScreen(showApple: true)));
       await tester.pump();
@@ -79,17 +111,12 @@ void main() {
         findsOneWidget,
       );
     });
-
-    testWidgets('Continue with email opens the code screen', (tester) async {
-      await tester.pumpWidget(_wrap(const LoginScreen(showApple: false)));
-      await tester.tap(find.text('Continue with email'));
-      await tester.pumpAndSettle();
-      expect(find.byType(EmailCodeScreen), findsOneWidget);
-    });
   });
 
   group('EmailCodeScreen', () {
-    testWidgets('sends a code, then verifies the six digits', (tester) async {
+    testWidgets('sends a code, and the sixth digit verifies it', (
+      tester,
+    ) async {
       final sent = <String>[];
       final verified = <String>[];
       await tester.pumpWidget(
@@ -101,31 +128,32 @@ void main() {
           ),
         ),
       );
-      await tester.enterText(find.byType(TextFormField), 'jane@example.com');
+      expect(find.text('Your email'), findsOneWidget);
+      await tester.enterText(find.byType(TextFormField), 'elise@example.com');
       await tester.tap(find.text('Send code'));
       await tester.pump();
-      expect(sent, ['jane@example.com']);
+      expect(sent, ['elise@example.com']);
+      expect(find.text('Check your mail'), findsOneWidget);
       expect(
-        find.text('We sent a six digit code to jane@example.com.'),
+        find.text('A six digit code is on its way to elise@example.com.'),
         findsOneWidget,
       );
+      expect(find.text('Send a new code in 1:00'), findsOneWidget);
 
-      await tester.enterText(find.byType(TextFormField), '12345');
-      await tester.tap(find.text('Continue'));
+      await tester.enterText(find.byType(TextField), '12345');
       await tester.pump();
       expect(verified, isEmpty);
-      expect(
-        find.text('Enter the six digit code from the email.'),
-        findsOneWidget,
-      );
+      expect(find.text('5'), findsOneWidget); // drawn in its box
 
-      await tester.enterText(find.byType(TextFormField), '123456');
-      await tester.tap(find.text('Continue'));
+      await tester.enterText(find.byType(TextField), '123456');
       await tester.pump();
-      expect(verified, ['jane@example.com:123456']);
+      expect(verified, ['elise@example.com:123456']);
+      await tester.pumpWidget(const SizedBox());
     });
 
-    testWidgets('a wrong code says so and can be sent again', (tester) async {
+    testWidgets('a wrong code says so, and a new one comes after a minute', (
+      tester,
+    ) async {
       final sent = <String>[];
       await tester.pumpWidget(
         _wrap(
@@ -136,19 +164,33 @@ void main() {
           ),
         ),
       );
-      await tester.enterText(find.byType(TextFormField), 'jane@example.com');
+      await tester.enterText(find.byType(TextFormField), 'elise@example.com');
       await tester.tap(find.text('Send code'));
       await tester.pump();
-      await tester.enterText(find.byType(TextFormField), '000000');
-      await tester.tap(find.text('Continue'));
+      await tester.enterText(find.byType(TextField), '000000');
       await tester.pump();
       expect(find.textContaining("That code didn't work"), findsOneWidget);
 
-      await tester.ensureVisible(find.text('Send a new code'));
+      expect(find.text('Send a new code'), findsNothing);
+      await tester.pump(const Duration(seconds: 61));
       await tester.tap(find.text('Send a new code'));
       await tester.pump();
-      expect(sent, ['jane@example.com', 'jane@example.com']);
+      expect(sent, ['elise@example.com', 'elise@example.com']);
       expect(find.text('A new code is on its way.'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
+    });
+
+    testWidgets('Other address goes back to the email step', (tester) async {
+      await tester.pumpWidget(
+        _wrap(EmailCodeScreen(sendCode: (email) async {})),
+      );
+      await tester.enterText(find.byType(TextFormField), 'elise@example.com');
+      await tester.tap(find.text('Send code'));
+      await tester.pump();
+      await tester.tap(find.text('Other address'));
+      await tester.pump();
+      expect(find.text('Your email'), findsOneWidget);
+      await tester.pumpWidget(const SizedBox());
     });
 
     testWidgets('an address without @ is not sent', (tester) async {
@@ -156,71 +198,173 @@ void main() {
       await tester.pumpWidget(
         _wrap(EmailCodeScreen(sendCode: (email) async => sent.add(email))),
       );
-      await tester.enterText(find.byType(TextFormField), 'jane');
+      await tester.enterText(find.byType(TextFormField), 'elise');
       await tester.tap(find.text('Send code'));
       await tester.pump();
       expect(sent, isEmpty);
       expect(find.text('Enter a valid email'), findsOneWidget);
     });
+
+    testWidgets('Use my password instead swaps to the password sign-in', (
+      tester,
+    ) async {
+      await tester.pumpWidget(_wrap(const EmailCodeScreen()));
+      await tester.tap(find.text('Use my password instead'));
+      await tester.pumpAndSettle();
+      expect(find.byType(PasswordSignInScreen), findsOneWidget);
+      expect(find.byType(EmailCodeScreen), findsNothing);
+    });
+  });
+
+  group('UsernameRules.suggestionsFor', () {
+    test('first.last, firstlast, first.l, flast', () {
+      expect(UsernameRules.suggestionsFor('Elise Laurent'), [
+        'elise.laurent',
+        'eliselaurent',
+        'elise.l',
+        'elaurent',
+      ]);
+    });
+
+    test('accents dropped and a family name of several words joined', () {
+      expect(
+        UsernameRules.suggestionsFor('Mathilde Van den Broeck').first,
+        'mathilde.vandenbroeck',
+      );
+      expect(UsernameRules.suggestionsFor('Zoë').first, 'zoe');
+      expect(UsernameRules.suggestionsFor('  '), isEmpty);
+    });
   });
 
   group('ProfileSetupScreen', () {
-    testWidgets('offers Apple\'s name and saves name and username', (
-      tester,
-    ) async {
+    testWidgets('three questions, then the Passport issued', (tester) async {
       final saved = <String>[];
       var done = false;
       await tester.pumpWidget(
-        _wrap(
-          ProfileSetupScreen(
-            userId: 'user-1',
-            suggestedName: 'Jane Doe',
-            onSaved: () => done = true,
-            save:
-                ({
-                  required displayName,
-                  required username,
-                  homeCountryCode,
-                }) async => saved.add('$displayName|$username'),
-          ),
-        ),
+        _wrap(_setup(saved: saved, onSaved: () => done = true)),
       );
-      expect(_typed('Jane Doe'), findsOneWidget);
-      await tester.enterText(find.byType(TextFormField).at(1), 'Jane.Doe');
-      await tester.ensureVisible(find.text('Continue'));
-      await tester.tap(find.text('Continue'));
       await tester.pump();
-      expect(saved, ['Jane Doe|jane.doe']);
+
+      // 1: the name, Apple's offered, on the Passport already.
+      expect(find.text('What should we call you?'), findsOneWidget);
+      expect(_typed('Elise Laurent'), findsOneWidget);
+      expect(
+        find.text('From your Apple Account. Change it if you like.'),
+        findsOneWidget,
+      );
+      expect(find.text('not chosen yet'), findsNWidgets(2));
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+
+      // 2: a username made from it, checked, with free alternatives.
+      expect(find.text('Pick a username'), findsOneWidget);
+      expect(_typed('elise.laurent'), findsOneWidget);
+      expect(find.text('Available'), findsOneWidget);
+      expect(find.text('eliselaurent'), findsOneWidget);
+      expect(find.text('@elise.laurent'), findsOneWidget);
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+
+      // 3: home, preselected from the device region.
+      expect(find.text('Where is home?'), findsOneWidget);
+      expect(find.text('From your iPhone settings'), findsOneWidget);
+      await tester.tap(find.text('Belgium'));
+      await tester.pump();
+      await tester.tap(find.text('Issue my Passport'));
+      await tester.pumpAndSettle();
+
+      expect(saved, ['Elise Laurent|elise.laurent|BE']);
+      expect(find.text('Your Passport is ready, Elise'), findsOneWidget);
+      expect(find.text('NO. 31'), findsOneWidget);
+      expect(find.text('22 XI 26'), findsOneWidget);
+      expect(done, isFalse);
+      await tester.tap(find.text('Show me around'));
       expect(done, isTrue);
     });
 
-    testWidgets('a taken username keeps the screen with the message', (
+    testWidgets('a taken username is said, and an alternative is offered', (
       tester,
     ) async {
-      var done = false;
+      await tester.pumpWidget(_wrap(_setup(taken: {'elise.laurent'})));
+      await tester.pump();
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      expect(find.text('That username is already taken'), findsOneWidget);
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      expect(find.text('Pick a username'), findsOneWidget);
+      await tester.ensureVisible(find.text('eliselaurent'));
+      await tester.tap(find.text('eliselaurent'));
+      await tester.pump();
+      expect(_typed('eliselaurent'), findsOneWidget);
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      expect(find.text('Where is home?'), findsOneWidget);
+    });
+
+    testWidgets('Skip saves without a home', (tester) async {
+      final saved = <String>[];
+      await tester.pumpWidget(_wrap(_setup(saved: saved)));
+      await tester.pump();
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Skip'));
+      await tester.pumpAndSettle();
+      expect(saved, ['Elise Laurent|elise.laurent|null']);
+      expect(find.text('Your Passport is ready, Elise'), findsOneWidget);
+    });
+
+    testWidgets('a refused save returns to the username with the reason', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(
-          ProfileSetupScreen(
-            userId: 'user-1',
-            onSaved: () => done = true,
-            save:
-                ({
-                  required displayName,
-                  required username,
-                  homeCountryCode,
-                }) async => throw const AuthException(
-                  'That username is already taken.',
-                ),
+          _setup(
+            failSave: () async =>
+                throw const AuthException('That username is already taken.'),
           ),
         ),
       );
-      await tester.enterText(find.byType(TextFormField).at(0), 'Jane');
-      await tester.enterText(find.byType(TextFormField).at(1), 'jane');
-      await tester.ensureVisible(find.text('Continue'));
-      await tester.tap(find.text('Continue'));
       await tester.pump();
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Issue my Passport'));
+      await tester.pumpAndSettle();
+      expect(find.text('Pick a username'), findsOneWidget);
       expect(find.text('That username is already taken.'), findsOneWidget);
-      expect(done, isFalse);
+    });
+
+    testWidgets('no name means no Continue past the first question', (
+      tester,
+    ) async {
+      await tester.pumpWidget(_wrap(_setup(suggestedName: null)));
+      await tester.pump();
+      expect(
+        find.text('From your Apple Account. Change it if you like.'),
+        findsNothing,
+      );
+      await tester.tap(find.text('Continue'));
+      await tester.pumpAndSettle();
+      expect(find.text('Enter your name'), findsOneWidget);
+    });
+
+    testWidgets('fits a short phone at a large text size', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(320, 568));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: const MediaQueryData(textScaler: TextScaler.linear(1.4)),
+            child: _setup(),
+          ),
+        ),
+      );
+      await tester.pump();
+      expect(tester.takeException(), isNull);
+      await tester.binding.setSurfaceSize(null);
     });
   });
 
@@ -242,9 +386,10 @@ void main() {
         ),
       );
       controller.add(AuthState(AuthChangeEvent.signedIn, _session()));
-      await tester.pumpAndSettle();
+      await tester.pump();
+      await tester.pump();
       expect(find.byType(ProfileSetupScreen), findsOneWidget);
-      expect(_typed('Jane Doe'), findsOneWidget);
+      expect(_typed('Elise Laurent'), findsOneWidget);
       expect(find.text('App'), findsNothing);
     });
 

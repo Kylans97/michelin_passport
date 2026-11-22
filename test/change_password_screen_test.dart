@@ -93,7 +93,7 @@ void main() {
     });
 
     testWidgets('a new password shorter than 6 characters is rejected by '
-        'the same rule SignupScreen uses, without calling changePassword', (
+        'the shared PasswordRules, without calling changePassword', (
       tester,
     ) async {
       var calls = 0;

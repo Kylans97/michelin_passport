@@ -47,7 +47,7 @@ void main() {
     });
 
     testWidgets('a new password shorter than 6 characters is rejected by '
-        "the same PasswordRules SignupScreen/ChangePasswordScreen use, "
+        "the same PasswordRules ChangePasswordScreen uses, "
         'without calling completePasswordRecovery', (tester) async {
       var calls = 0;
       await tester.pumpWidget(

@@ -28,4 +28,45 @@ class UsernameRules {
     }
     return null;
   }
+
+  static const _plain = {
+    'à': 'a', 'á': 'a', 'â': 'a', 'ã': 'a', 'ä': 'a', 'å': 'a', //
+    'ç': 'c', 'è': 'e', 'é': 'e', 'ê': 'e', 'ë': 'e', 'ì': 'i', //
+    'í': 'i', 'î': 'i', 'ï': 'i', 'ñ': 'n', 'ò': 'o', 'ó': 'o', //
+    'ô': 'o', 'õ': 'o', 'ö': 'o', 'ø': 'o', 'ù': 'u', 'ú': 'u', //
+    'û': 'u', 'ü': 'u', 'ý': 'y', 'ÿ': 'y', 'ß': 'ss', 'æ': 'ae', //
+    'œ': 'oe',
+  };
+
+  /// Usernames made from a display name, best first, each one valid: for
+  /// "Elise Laurent", elise.laurent, eliselaurent, elise.l and elaurent.
+  /// Accents are dropped and a family name of several words is joined
+  /// ("Van den Broeck" gives vandenbroeck). Availability is not checked
+  /// here; the caller asks the database.
+  static List<String> suggestionsFor(String name) {
+    final words = name
+        .toLowerCase()
+        .split('')
+        .map((c) => _plain[c] ?? c)
+        .join()
+        .split(RegExp(r'[^a-z0-9]+'))
+        .where((w) => w.isNotEmpty)
+        .toList();
+    if (words.isEmpty) return const [];
+    final first = words.first;
+    final last = words.skip(1).join();
+    final candidates = last.isEmpty
+        ? [first]
+        : [
+            '$first.$last',
+            '$first$last',
+            '$first.${last[0]}',
+            '${first[0]}$last',
+          ];
+    final seen = <String>{};
+    return [
+      for (final c in candidates)
+        if (validate(c) == null && seen.add(c)) c,
+    ];
+  }
 }

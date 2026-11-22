@@ -24,6 +24,7 @@ import 'package:michelin_passport/data/repositories/auth_repository.dart';
 import 'package:michelin_passport/features/auth/auth_gate.dart';
 import 'package:michelin_passport/features/auth/auth_link_notice.dart';
 import 'package:michelin_passport/features/auth/login_screen.dart';
+import 'package:michelin_passport/features/auth/password_sign_in_screen.dart';
 
 class _MemoryStorage extends GotrueAsyncStorage {
   final _items = <String, String>{};
@@ -259,6 +260,9 @@ void main() {
       );
       await tester.pump();
       await tester.pump();
+      // ProfileSetupGate, then OnboardingGate, each settle in a frame of
+      // their own; three frames since the sign-up flow of 2026-11-22.
+      await tester.pump();
       expect(find.text('App'), findsOneWidget);
       controller.add(const AuthState(AuthChangeEvent.signedOut, null));
       await tester.pump();
@@ -270,13 +274,13 @@ void main() {
     });
   });
 
-  group('LoginScreen unconfirmed email', () {
+  group('PasswordSignInScreen unconfirmed email', () {
     testWidgets('email_not_confirmed offers a new link and sends it to the '
         'typed address', (tester) async {
       final resentTo = <String>[];
       await tester.pumpWidget(
         MaterialApp(
-          home: LoginScreen(
+          home: PasswordSignInScreen(
             signIn: ({required email, required password}) async =>
                 throw AuthApiException(
                   'Email not confirmed',
@@ -292,8 +296,6 @@ void main() {
         'new@example.com',
       );
       await tester.enterText(find.byType(TextFormField).at(1), 'secret123');
-      // The sign-in button sits below Apple and email since 2026-11-22.
-      await tester.ensureVisible(find.text('Sign in'));
       await tester.tap(find.text('Sign in'));
       await tester.pump();
 
@@ -313,7 +315,7 @@ void main() {
     testWidgets('any other sign-in error offers no resend', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: LoginScreen(
+          home: PasswordSignInScreen(
             signIn: ({required email, required password}) async =>
                 throw AuthApiException(
                   'Invalid login credentials',
@@ -325,8 +327,6 @@ void main() {
       );
       await tester.enterText(find.byType(TextFormField).at(0), 'a@example.com');
       await tester.enterText(find.byType(TextFormField).at(1), 'secret123');
-      // The sign-in button sits below Apple and email since 2026-11-22.
-      await tester.ensureVisible(find.text('Sign in'));
       await tester.tap(find.text('Sign in'));
       await tester.pump();
       expect(find.text('Invalid login credentials'), findsOneWidget);

@@ -1,20 +1,26 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/cs_fonts.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
-import '../../core/widgets/detail_hero.dart' show HeroIconButton;
 import '../../data/repositories/auth_repository.dart';
+import 'password_sign_in_screen.dart';
 import 'widgets/auth_presentation.dart';
 
 /// Sign in, or create an account, with a six digit code sent by email: no
-/// password. Two steps on one screen: the address, then the code. A new
-/// address becomes a new account; AuthGate then asks for a username
-/// before the app opens (ProfileSetupScreen). On success AuthGate's own
-/// session listener takes over, so this screen only pops itself.
+/// password. Two steps on one screen: the address, then the code, in six
+/// boxes that iOS can fill from Mail in one tap (one-time-code autofill);
+/// the sixth digit sends it, no button. A new address becomes a new
+/// account; AuthGate then asks for name, username and home country
+/// (ProfileSetupScreen). On success AuthGate's own session listener takes
+/// over, so this screen only pops back to the root. A new code can be
+/// sent after a minute, Supabase's own wait between two codes to one
+/// address.
 ///
 /// [sendCode] and [verifyCode] are DI seams for tests, defaulting to
 /// AuthRepository.
@@ -30,6 +36,8 @@ class EmailCodeScreen extends StatefulWidget {
 }
 
 class _EmailCodeScreenState extends State<EmailCodeScreen> {
+  static const _resendWait = 60;
+
   final _emailCtrl = TextEditingController();
   final _codeCtrl = TextEditingController();
   final _codeFocus = FocusNode();
@@ -40,13 +48,26 @@ class _EmailCodeScreenState extends State<EmailCodeScreen> {
   bool _loading = false;
   bool _resent = false;
   String? _error;
+  int _secondsLeft = 0;
+  Timer? _countdown;
 
   @override
   void dispose() {
+    _countdown?.cancel();
     _emailCtrl.dispose();
     _codeCtrl.dispose();
     _codeFocus.dispose();
     super.dispose();
+  }
+
+  void _startCountdown() {
+    _countdown?.cancel();
+    setState(() => _secondsLeft = _resendWait);
+    _countdown = Timer.periodic(const Duration(seconds: 1), (t) {
+      if (!mounted) return t.cancel();
+      setState(() => _secondsLeft--);
+      if (_secondsLeft <= 0) t.cancel();
+    });
   }
 
   Future<void> _send({bool again = false}) async {
@@ -66,7 +87,9 @@ class _EmailCodeScreenState extends State<EmailCodeScreen> {
       setState(() {
         _sentTo = email;
         _resent = again;
+        _codeCtrl.clear();
       });
+      _startCountdown();
       _codeFocus.requestFocus();
     } on AuthException catch (e) {
       if (mounted) setState(() => _error = e.message);
@@ -77,6 +100,11 @@ class _EmailCodeScreenState extends State<EmailCodeScreen> {
     } finally {
       if (mounted) setState(() => _loading = false);
     }
+  }
+
+  void _onCodeChanged(String code) {
+    setState(() => _error = null);
+    if (code.length == 6) _verify();
   }
 
   Future<void> _verify() async {
@@ -114,130 +142,214 @@ class _EmailCodeScreenState extends State<EmailCodeScreen> {
     }
   }
 
+  void _backToAddress() {
+    _countdown?.cancel();
+    setState(() {
+      _sentTo = null;
+      _codeCtrl.clear();
+      _error = null;
+      _resent = false;
+      _secondsLeft = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final sentTo = _sentTo;
-    return Scaffold(
-      backgroundColor: AppColors.deepGreen,
-      body: SafeArea(
-        child: Stack(
-          children: [
-            SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.xxl,
-                CsSpacing.section,
-                CsSpacing.xxl,
-                CsSpacing.xxl,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  AuthBrandHeader(
-                    compact: true,
-                    tagline: sentTo == null
-                        ? 'Continue with email.'
-                        : 'Check your email.',
-                  ),
-                  const SizedBox(height: CsSpacing.xxl),
-                  if (sentTo == null) ...[
-                    Text(
-                      'We\'ll send you a code to sign in. No password '
-                      'needed. New here? The same code creates your account.',
-                      style: CsTypography.body.copyWith(
-                        color: AppColors.secondaryOnDark,
-                      ),
-                    ),
-                    const SizedBox(height: CsSpacing.xl),
-                    CsTextField(
-                      label: 'Email',
-                      controller: _emailCtrl,
-                      hintText: 'you@example.com',
-                      keyboardType: TextInputType.emailAddress,
-                      autofillHints: const [AutofillHints.email],
-                      textInputAction: TextInputAction.send,
-                      onFieldSubmitted: (_) => _send(),
-                    ),
-                  ] else ...[
-                    Text(
-                      'We sent a six digit code to $sentTo.',
-                      style: CsTypography.body.copyWith(
-                        color: AppColors.secondaryOnDark,
-                      ),
-                    ),
-                    const SizedBox(height: CsSpacing.xl),
-                    CsTextField(
-                      label: 'Code',
-                      controller: _codeCtrl,
-                      focusNode: _codeFocus,
-                      hintText: '123456',
-                      keyboardType: TextInputType.number,
-                      autofillHints: const [AutofillHints.oneTimeCode],
-                      inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
-                        LengthLimitingTextInputFormatter(6),
-                      ],
-                      textInputAction: TextInputAction.done,
-                      onFieldSubmitted: (_) => _verify(),
-                    ),
-                    if (_resent) ...[
-                      const SizedBox(height: CsSpacing.base),
-                      AuthNoticeBanner(message: 'A new code is on its way.'),
-                    ],
-                  ],
-                  if (_error != null) ...[
-                    const SizedBox(height: CsSpacing.base),
-                    AuthErrorBanner(message: _error!),
-                  ],
-                  const SizedBox(height: CsSpacing.xl),
-                  CsPrimaryButton(
-                    label: sentTo == null ? 'Send code' : 'Continue',
-                    onTap: sentTo == null ? _send : _verify,
-                    loading: _loading,
-                  ),
-                  if (sentTo != null) ...[
-                    const SizedBox(height: CsSpacing.base),
-                    TextButton(
-                      onPressed: _loading ? null : () => _send(again: true),
-                      child: Text(
-                        'Send a new code',
-                        style: CsTypography.metadata.copyWith(
-                          color: AppColors.secondaryOnDark,
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: _loading
-                          ? null
-                          : () => setState(() {
-                              _sentTo = null;
-                              _codeCtrl.clear();
-                              _error = null;
-                              _resent = false;
-                            }),
-                      child: Text(
-                        'Use another email address',
-                        style: CsTypography.metadata.copyWith(
-                          color: AppColors.secondaryOnDark,
-                        ),
-                      ),
-                    ),
-                  ],
-                  const SizedBox(height: CsSpacing.xl),
-                  const AuthTermsAgreement(
-                    lead: 'By continuing you agree to the ',
-                  ),
-                ],
+    if (sentTo == null) {
+      return AuthStepLayout(
+        leading: AuthBackButton(onTap: () => Navigator.maybePop(context)),
+        title: 'Your email',
+        subtitle:
+            'We send you a six digit code. New to Mantelier? The same code '
+            'opens your account.',
+        children: [
+          CsTextField(
+            label: 'Email',
+            controller: _emailCtrl,
+            hintText: 'you@example.com',
+            keyboardType: TextInputType.emailAddress,
+            autofillHints: const [AutofillHints.email],
+            textInputAction: TextInputAction.send,
+            onFieldSubmitted: (_) => _send(),
+          ),
+          if (_error != null) ...[
+            const SizedBox(height: CsSpacing.base),
+            AuthErrorBanner(message: _error!),
+          ],
+          const SizedBox(height: CsSpacing.xl),
+          CsPrimaryButton(label: 'Send code', onTap: _send, loading: _loading),
+          const SizedBox(height: CsSpacing.xs),
+          Center(
+            child: AuthQuietAction(
+              label: 'Use my password instead',
+              onTap: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => const PasswordSignInScreen()),
               ),
             ),
-            Positioned(
-              left: CsSpacing.base,
-              top: CsSpacing.sm,
-              child: HeroIconButton(
-                icon: Icons.arrow_back_ios_new_rounded,
-                onTap: () => Navigator.maybePop(context),
+          ),
+        ],
+      );
+    }
+    final waiting = _secondsLeft > 0;
+    return AuthStepLayout(
+      leading: AuthBackButton(onTap: _backToAddress),
+      title: 'Check your mail',
+      subtitle: 'A six digit code is on its way to $sentTo.',
+      children: [
+        CodeBoxes(
+          controller: _codeCtrl,
+          focusNode: _codeFocus,
+          enabled: !_loading,
+          onChanged: _onCodeChanged,
+        ),
+        if (_loading) ...[
+          const SizedBox(height: CsSpacing.base),
+          const Center(
+            child: SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                color: AppColors.textOnDark,
+              ),
+            ),
+          ),
+        ],
+        if (_resent) ...[
+          const SizedBox(height: CsSpacing.base),
+          const AuthNoticeBanner(message: 'A new code is on its way.'),
+        ],
+        if (_error != null) ...[
+          const SizedBox(height: CsSpacing.base),
+          AuthErrorBanner(message: _error!),
+        ],
+        const SizedBox(height: CsSpacing.md),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            waiting
+                ? Text(
+                    'Send a new code in ${_secondsLeft ~/ 60}:'
+                    '${(_secondsLeft % 60).toString().padLeft(2, '0')}',
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.secondaryOnDark,
+                    ),
+                  )
+                : Transform.translate(
+                    offset: const Offset(-8, 0),
+                    child: AuthQuietAction(
+                      label: 'Send a new code',
+                      onTap: _loading ? null : () => _send(again: true),
+                    ),
+                  ),
+            Transform.translate(
+              offset: const Offset(8, 0),
+              child: AuthQuietAction(
+                label: 'Other address',
+                onTap: _loading ? null : _backToAddress,
               ),
             ),
           ],
+        ),
+      ],
+    );
+  }
+}
+
+/// Six boxes for a six digit code. One real, invisible text field lies
+/// over them, so typing, pasting and iOS's "From Mail" one-time-code
+/// suggestion all work as in any field; the boxes only draw its digits,
+/// with the next one to fill outlined brighter.
+class CodeBoxes extends StatelessWidget {
+  const CodeBoxes({
+    super.key,
+    required this.controller,
+    required this.focusNode,
+    required this.onChanged,
+    this.enabled = true,
+  });
+
+  final TextEditingController controller;
+  final FocusNode focusNode;
+  final ValueChanged<String> onChanged;
+  final bool enabled;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 62,
+      child: Stack(
+        children: [
+          ListenableBuilder(
+            listenable: Listenable.merge([controller, focusNode]),
+            builder: (context, _) {
+              final code = controller.text;
+              return Row(
+                children: [
+                  for (var i = 0; i < 6; i++) ...[
+                    if (i > 0) const SizedBox(width: CsSpacing.sm),
+                    Expanded(
+                      child: _box(
+                        i < code.length ? code[i] : '',
+                        active: focusNode.hasFocus && i == code.length,
+                        filled: i < code.length,
+                      ),
+                    ),
+                  ],
+                ],
+              );
+            },
+          ),
+          Positioned.fill(
+            child: Semantics(
+              label: 'Six digit code',
+              child: TextField(
+                controller: controller,
+                focusNode: focusNode,
+                enabled: enabled,
+                autofocus: true,
+                onChanged: onChanged,
+                keyboardType: TextInputType.number,
+                autofillHints: const [AutofillHints.oneTimeCode],
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly,
+                  LengthLimitingTextInputFormatter(6),
+                ],
+                showCursor: false,
+                enableInteractiveSelection: false,
+                style: const TextStyle(color: Colors.transparent, fontSize: 1),
+                // No decoration: the boxes beneath are the whole look.
+                decoration: null,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _box(String digit, {required bool active, required bool filled}) {
+    final border = active
+        ? Border.all(color: AppColors.textOnDark, width: 1.5)
+        : Border.all(
+            color: AppColors.textOnDark.withValues(alpha: filled ? 0.55 : 0.22),
+          );
+    return ExcludeSemantics(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 160),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          border: border,
+          color: AppColors.textOnDark.withValues(
+            alpha: active ? 0.10 : (filled ? 0.06 : 0),
+          ),
+        ),
+        child: Text(
+          digit,
+          style: CsFonts.serif(fontSize: 28, color: AppColors.textOnDark),
         ),
       ),
     );

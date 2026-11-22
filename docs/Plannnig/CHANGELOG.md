@@ -8,6 +8,22 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+For 1.9.0 (41): 1.9.0 (40) was archived before this and is superseded, so `pubspec.yaml` is at `1.9.0+41`. Not yet archived.
+
+### Changed
+- **A new sign-up flow: one way in, then the Passport filled in one question at a time** (product owner, 2026-11-22: "Ik denk dat we nieuw account aanmaken veel mooier en vloeiender kunnen maken"; canvas at https://claude.ai/artifact/52X3JjNRkYriERiRx2odGe; then "bouw deze aanmeldflow in de app voor 1.9.0, met dezelfde keuzes als op het canvas"). Client only: no migration, no Edge Function, no new data.
+  - **The entrance** (`LoginScreen`): the official lockup (`assets/branding/wordmark-ivory.svg`, which already carries the emblem and the tagline; product owner: "you're using the wrong Mantelier Logo"), Continue with Apple, Continue with email, "New or returning, it is the same step" with the terms, and a quiet "I have a password". Sign-in and sign-up are no longer two doors.
+  - **Signing in with a password** moved, unchanged, to its own `PasswordSignInScreen`: the form, the unconfirmed-email resend and Forgot password?.
+  - **Making an account with a password is gone**: `SignupScreen` and its test are deleted, so no new member waits on a confirmation link. Existing password accounts keep working, and the confirmation link handling in `AuthGate` stays for links already sent.
+  - **Continue with email** (`EmailCodeScreen`): "Your email", then "Check your mail" with six boxes over one invisible field, so typing, pasting and iOS's one-time-code suggestion from Mail all work; the sixth digit verifies, no button; "Send a new code" after a minute (Supabase's own wait between codes), "Other address", and "Use my password instead".
+  - **Setting up** (`ProfileSetupScreen`), one question per screen with the Passport's data page filling in above (`PassportPreviewCard`): the name (Apple's, said so), a username made from it (`UsernameRules.suggestionsFor`: first.last, firstlast, first.l, flast, accents dropped) checked at once with up to three free alternatives, and home, preselected from the device region with the Benelux and neighbours listed and a search for the rest, or Skip. A refused save returns to the username with the reason.
+  - **Passport issued**: the page with the member number, the issue date and a green welcome stamp (stamp ink, not gold), on the leather cover; "Show me around" opens the welcome flow as before. Its last page also says "Your Passport is ready"; left as it is for now.
+  - The shared step layout (`AuthStepLayout`, `AuthBackButton`, `AuthStepProgress`, `AuthQuietAction`) is in `auth_presentation.dart`.
+  - Tests: `sign_in_options_test.dart` rewritten for the flow (the code boxes and the minute, the three questions, Skip, a refused save, a short phone at 1.4x text), `auth_screens_test.dart` for the entrance and the password screen, the unconfirmed-email tests now on `PasswordSignInScreen`. `flutter analyze` clean, `flutter test` 3,079 passing. Seen as rendered screenshots with the bundled fonts rather than in the simulator: driving the simulator's input was unreliable this time, and the product owner's own simulator is signed in.
+
+### Fixed
+- **A test that only passed on timing** (`signup_confirmation_link_test.dart`, "a later session clears the notice"): it expected the app two frames after sign-in, but the gate chain (ProfileSetupGate, then OnboardingGate) needs three. It began failing with this change without any gate changing; why the extra frame appeared now was not found. Now pumps three frames, with a comment.
+
 ---
 
 ## v1.9.0 (40) — 2026-11-22

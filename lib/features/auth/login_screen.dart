@@ -6,53 +6,34 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
-import '../../core/widgets/cs_primary_button.dart';
-import '../../core/widgets/cs_text_field.dart';
 import '../../data/repositories/auth_repository.dart';
 import 'email_code_screen.dart';
-import 'forgot_password_screen.dart';
-import 'signup_screen.dart';
+import 'password_sign_in_screen.dart';
 import 'widgets/auth_presentation.dart';
 
-/// The entrance to Mantelier — Step 4A of the visual redesign. Every
-/// piece of authentication behavior below (form/validation, the Supabase
-/// call, error/loading state, AuthGate's own session listener picking up
-/// the new session automatically) is UNCHANGED from before this pass; only
-/// what [build] renders is new.
-///
-/// Password recovery — "Forgot password?" below, pushing
-/// [ForgotPasswordScreen] — added later, once Universal Links (iOS
-/// Associated Domains + AASA) and the Android App Link scaffold existed to
-/// carry a recovery link back into the app; see AuthRepository.
-/// resetPasswordForEmail()/AuthGate's own passwordRecovery handling.
+/// The entrance to Mantelier. Since the sign-up flow of 2026-11-22 (the
+/// canvas at https://claude.ai/artifact/52X3JjNRkYriERiRx2odGe, product
+/// owner: "bouw deze aanmeldflow in de app voor 1.9.0, met dezelfde
+/// keuzes als op het canvas") there is one way in for new and returning
+/// members alike: Continue with Apple (iOS only, Apple's own button) or
+/// Continue with email (a six digit code, EmailCodeScreen). An account
+/// made either way gets its name, username and home country next
+/// (ProfileSetupScreen). Members with a password sign in behind the quiet
+/// "I have a password" (PasswordSignInScreen); a new account is no longer
+/// made with a password, so nobody waits on a confirmation link.
 ///
 /// [notice] is what AuthGate passes when an emailed link opened the app but
-/// didn't sign anyone in (see auth_link_notice.dart). A sign-in refused
-/// with `email_not_confirmed` offers to send a new confirmation link, so an
-/// expired one is never a dead end. [signIn] and [resendConfirmation] are
-/// optional DI seams (same convention as ChangePasswordScreen's
-/// `changePassword`), defaulting to the real AuthRepository calls.
-///
-/// Above the password form: Continue with Apple (iOS only, Apple's own
-/// button) and Continue with email (a six digit code, EmailCodeScreen).
-/// The password form stays for members who have one.
+/// didn't sign anyone in (see auth_link_notice.dart). [signInWithApple] and
+/// [showApple] are DI seams for tests.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
     super.key,
     this.notice,
-    this.signIn,
-    this.resendConfirmation,
     this.signInWithApple,
     this.showApple,
   });
 
   final String? notice;
-  final Future<void> Function({
-    required String email,
-    required String password,
-  })?
-  signIn;
-  final Future<void> Function(String email)? resendConfirmation;
 
   /// Returns false when the member cancelled Apple's sheet.
   final Future<bool> Function()? signInWithApple;
@@ -65,87 +46,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _emailCtrl = TextEditingController();
-  final _passCtrl = TextEditingController();
-  final _passFocus = FocusNode();
-  bool _loading = false;
   String? _error;
-  // The address a sign-in was just refused for as unconfirmed — non-null
-  // shows "Send a new confirmation link" under the error.
-  String? _unconfirmedEmail;
-  bool _resending = false;
-  bool _resent = false;
   bool _appleLoading = false;
 
   late final AuthRepository _auth = AuthRepository(Supabase.instance.client);
-
-  @override
-  void dispose() {
-    _emailCtrl.dispose();
-    _passCtrl.dispose();
-    _passFocus.dispose();
-    super.dispose();
-  }
-
-  Future<void> _submit() async {
-    if (_loading) return; // guards against a duplicate submit mid-flight
-    if (!_formKey.currentState!.validate()) return;
-    setState(() {
-      _loading = true;
-      _error = null;
-      _unconfirmedEmail = null;
-      _resent = false;
-    });
-    final email = _emailCtrl.text.trim();
-    try {
-      await (widget.signIn ?? _auth.signIn)(
-        email: email,
-        password: _passCtrl.text,
-      );
-      // AuthGate's StreamBuilder will navigate automatically on session change.
-    } on AuthException catch (e) {
-      if (e.code == 'email_not_confirmed') {
-        setState(() {
-          _error =
-              'Your email isn\'t confirmed yet. Use the link in the email '
-              'we sent you, or send a new one.';
-          _unconfirmedEmail = email;
-        });
-      } else {
-        setState(() => _error = e.message);
-      }
-    } catch (e) {
-      setState(() => _error = 'Something went wrong. Please try again.');
-    } finally {
-      if (mounted) setState(() => _loading = false);
-    }
-  }
-
-  Future<void> _resendConfirmation() async {
-    final email = _unconfirmedEmail;
-    if (email == null || _resending) return;
-    setState(() => _resending = true);
-    try {
-      await (widget.resendConfirmation ?? _auth.resendSignupConfirmation)(
-        email,
-      );
-      if (mounted) {
-        setState(() {
-          _resent = true;
-          _error = null;
-        });
-      }
-    } on AuthException catch (e) {
-      if (mounted) setState(() => _error = e.message);
-    } catch (_) {
-      if (mounted) {
-        setState(() => _error = 'Something went wrong. Please try again.');
-      }
-    } finally {
-      if (mounted) setState(() => _resending = false);
-    }
-  }
 
   Future<void> _continueWithApple() async {
     if (_appleLoading) return;
@@ -170,171 +74,110 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  void _push(Widget screen) =>
+      Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+
   @override
   Widget build(BuildContext context) {
     final showApple = widget.showApple ?? Platform.isIOS;
-    // A real Scaffold (not a bare ColoredBox) — unlike Passport/Explore,
-    // LoginScreen is used directly as MaterialApp.home via AuthGate's
-    // session-null branch, with no enclosing Scaffold anywhere above it,
-    // so it must provide its own Material ancestor for TextField/InkWell.
+    // A real Scaffold: LoginScreen is MaterialApp.home via AuthGate's
+    // session-null branch, with no Material ancestor above it.
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(
-            CsSpacing.xxl,
-            CsSpacing.xxl,
-            CsSpacing.xxl,
-            CsSpacing.xxl,
+      body: DecoratedBox(
+        decoration: const BoxDecoration(
+          gradient: RadialGradient(
+            center: Alignment(0, -0.6),
+            radius: 1.2,
+            colors: [
+              AppColors.forestGreen,
+              AppColors.deepGreen,
+              AppColors.darkGreen,
+            ],
+            stops: [0, 0.55, 1],
           ),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const AuthBrandHeader(
-                  tagline: 'Some evenings only happen once',
-                ),
-                const SizedBox(height: CsSpacing.section),
-
-                if (widget.notice != null) ...[
-                  AuthNoticeBanner(message: widget.notice!),
-                  const SizedBox(height: CsSpacing.xl),
-                ],
-
-                if (showApple) ...[
-                  SizedBox(
-                    height: 52,
-                    child: SignInWithAppleButton(
-                      text: 'Continue with Apple',
-                      style: SignInWithAppleButtonStyle.white,
-                      borderRadius: const BorderRadius.all(Radius.circular(26)),
-                      onPressed: _appleLoading ? () {} : _continueWithApple,
+        ),
+        child: SafeArea(
+          child: LayoutBuilder(
+            builder: (context, constraints) => SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                child: IntrinsicHeight(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.xl,
+                      CsSpacing.xxl,
+                      CsSpacing.xl,
+                      CsSpacing.xl,
                     ),
-                  ),
-                  const SizedBox(height: CsSpacing.md),
-                ],
-                SizedBox(
-                  height: 52,
-                  child: OutlinedButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const EmailCodeScreen(),
-                      ),
-                    ),
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: AppColors.textOnDark,
-                      side: const BorderSide(color: AppColors.subtleBorderDark),
-                      shape: const StadiumBorder(),
-                    ),
-                    child: Text(
-                      'Continue with email',
-                      style: CsTypography.bodyMedium.copyWith(
-                        color: AppColors.textOnDark,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: CsSpacing.xl),
-                Text(
-                  'Or sign in with your password',
-                  textAlign: TextAlign.center,
-                  style: CsTypography.metadata.copyWith(
-                    color: AppColors.secondaryOnDark,
-                  ),
-                ),
-                const SizedBox(height: CsSpacing.lg),
-                CsTextField(
-                  label: 'Email',
-                  controller: _emailCtrl,
-                  hintText: 'you@example.com',
-                  keyboardType: TextInputType.emailAddress,
-                  autofillHints: const [AutofillHints.email],
-                  textInputAction: TextInputAction.next,
-                  onFieldSubmitted: (_) => _passFocus.requestFocus(),
-                  validator: (v) => (v == null || !v.contains('@'))
-                      ? 'Enter a valid email'
-                      : null,
-                ),
-                const SizedBox(height: CsSpacing.lg),
-                CsTextField(
-                  label: 'Password',
-                  controller: _passCtrl,
-                  focusNode: _passFocus,
-                  obscureText: true,
-                  showVisibilityToggle: true,
-                  hintText: '••••••••',
-                  autofillHints: const [AutofillHints.password],
-                  textInputAction: TextInputAction.done,
-                  onFieldSubmitted: (_) => _submit(),
-                  validator: (v) => (v == null || v.length < 6)
-                      ? 'Minimum 6 characters'
-                      : null,
-                ),
-                const SizedBox(height: CsSpacing.xs),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const ForgotPasswordScreen(),
-                      ),
-                    ),
-                    child: Text(
-                      'Forgot password?',
-                      style: CsTypography.metadata.copyWith(
-                        color: AppColors.secondaryOnDark,
-                      ),
-                    ),
-                  ),
-                ),
-
-                if (_error != null) ...[
-                  const SizedBox(height: CsSpacing.base),
-                  AuthErrorBanner(message: _error!),
-                ],
-                if (_resent) ...[
-                  const SizedBox(height: CsSpacing.base),
-                  AuthNoticeBanner(
-                    message:
-                        'A new confirmation link is on its way to '
-                        '$_unconfirmedEmail. Open it, then sign in here.',
-                  ),
-                ] else if (_unconfirmedEmail != null)
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: _resending ? null : _resendConfirmation,
-                      child: Text(
-                        _resending
-                            ? 'Sending…'
-                            : 'Send a new confirmation link',
-                        style: CsTypography.metadata.copyWith(
-                          color: AppColors.secondaryOnDark,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (widget.notice != null)
+                          AuthNoticeBanner(message: widget.notice!),
+                        const Spacer(),
+                        const AuthBrandLockup(),
+                        const Spacer(),
+                        const SizedBox(height: CsSpacing.section),
+                        if (_error != null) ...[
+                          AuthErrorBanner(message: _error!),
+                          const SizedBox(height: CsSpacing.base),
+                        ],
+                        if (showApple) ...[
+                          SizedBox(
+                            height: 54,
+                            child: SignInWithAppleButton(
+                              text: 'Continue with Apple',
+                              style: SignInWithAppleButtonStyle.white,
+                              borderRadius: const BorderRadius.all(
+                                Radius.circular(27),
+                              ),
+                              onPressed: _appleLoading
+                                  ? () {}
+                                  : _continueWithApple,
+                            ),
+                          ),
+                          const SizedBox(height: CsSpacing.md),
+                        ],
+                        SizedBox(
+                          height: 54,
+                          child: OutlinedButton(
+                            onPressed: () => _push(const EmailCodeScreen()),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: AppColors.textOnDark,
+                              side: BorderSide(
+                                color: AppColors.textOnDark.withValues(
+                                  alpha: 0.35,
+                                ),
+                              ),
+                              shape: const StadiumBorder(),
+                            ),
+                            child: Text(
+                              'Continue with email',
+                              style: CsTypography.bodyMedium.copyWith(
+                                color: AppColors.textOnDark,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        const SizedBox(height: CsSpacing.base),
+                        const AuthTermsAgreement(
+                          lead:
+                              'New or returning, it is the same step. By '
+                              'continuing you agree to the ',
+                        ),
+                        const SizedBox(height: CsSpacing.xs),
+                        Center(
+                          child: AuthQuietAction(
+                            label: 'I have a password',
+                            onTap: () => _push(const PasswordSignInScreen()),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-
-                const SizedBox(height: CsSpacing.xl),
-                CsPrimaryButton(
-                  label: 'Sign in',
-                  onTap: _submit,
-                  loading: _loading,
                 ),
-                const SizedBox(height: CsSpacing.xxl),
-
-                SecondaryAuthLink(
-                  question: 'New to Mantelier?',
-                  actionLabel: 'Create an account',
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const SignupScreen()),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

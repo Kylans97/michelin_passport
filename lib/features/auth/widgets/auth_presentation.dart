@@ -235,3 +235,207 @@ class AuthTermsAgreement extends StatelessWidget {
     );
   }
 }
+
+/// The official ivory lockup: the emblem, "Mantelier" and the line
+/// "Some evenings only happen once", in one drawing.
+const String csWordmarkAssetPath = 'assets/branding/wordmark-ivory.svg';
+
+/// The entrance's brand moment since 2026-11-22: the official lockup on
+/// its own (product owner: "you're using the wrong Mantelier Logo, please
+/// use the right one"), which already carries the emblem and the tagline.
+class AuthBrandLockup extends StatelessWidget {
+  const AuthBrandLockup({super.key});
+
+  @override
+  Widget build(BuildContext context) => SvgPicture.asset(
+    csWordmarkAssetPath,
+    width: 300,
+    height: 100,
+    fit: BoxFit.contain,
+    semanticsLabel: 'Mantelier. Some evenings only happen once',
+  );
+}
+
+/// The 44pt back chevron at the top left of every step of signing in and
+/// setting up (the canvas of 2026-11-22: one quiet control, no pill).
+class AuthBackButton extends StatelessWidget {
+  const AuthBackButton({super.key, required this.onTap});
+
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: 44,
+    height: 44,
+    child: IconButton(
+      onPressed: onTap,
+      tooltip: 'Back',
+      padding: EdgeInsets.zero,
+      icon: const Icon(
+        Icons.arrow_back_ios_new_rounded,
+        size: 18,
+        color: AppColors.textOnDark,
+      ),
+    ),
+  );
+}
+
+/// "Step 2 of 3" as three short ivory bars, the filled ones solid.
+class AuthStepProgress extends StatelessWidget {
+  const AuthStepProgress({super.key, required this.step, this.of = 3});
+
+  /// 1-based.
+  final int step;
+  final int of;
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    label: 'Step $step of $of',
+    child: ExcludeSemantics(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          for (var i = 1; i <= of; i++) ...[
+            if (i > 1) const SizedBox(width: 6),
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 240),
+              width: 28,
+              height: 3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(2),
+                color: i <= step
+                    ? AppColors.textOnDark
+                    : AppColors.textOnDark.withValues(alpha: 0.22),
+              ),
+            ),
+          ],
+        ],
+      ),
+    ),
+  );
+}
+
+/// One question per screen: a top row (back, progress, a quiet action),
+/// a serif title and a line under it, the step's own content, and the
+/// primary button at the foot, above the keyboard when it is open. Short
+/// screens scroll rather than overflow.
+class AuthStepLayout extends StatelessWidget {
+  const AuthStepLayout({
+    super.key,
+    this.leading,
+    this.center,
+    this.trailing,
+    required this.title,
+    this.subtitle,
+    this.header,
+    required this.children,
+    this.footer = const [],
+  });
+
+  final Widget? leading;
+  final Widget? center;
+  final Widget? trailing;
+  final String title;
+  final String? subtitle;
+
+  /// Above the title (the Passport being filled in).
+  final Widget? header;
+  final List<Widget> children;
+
+  /// Pinned to the bottom: the primary button and anything under it.
+  final List<Widget> footer;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.deepGreen,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.xl,
+            CsSpacing.sm,
+            CsSpacing.xl,
+            CsSpacing.xl,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                height: 44,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    if (leading != null)
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Transform.translate(
+                          offset: const Offset(-12, 0),
+                          child: leading,
+                        ),
+                      ),
+                    ?center,
+                    if (trailing != null)
+                      Align(alignment: Alignment.centerRight, child: trailing),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.only(top: CsSpacing.xl),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      if (header != null) ...[
+                        header!,
+                        const SizedBox(height: CsSpacing.xxl),
+                      ],
+                      Text(
+                        title,
+                        style: CsTypography.screenTitle.copyWith(
+                          color: AppColors.textOnDark,
+                        ),
+                      ),
+                      if (subtitle != null) ...[
+                        const SizedBox(height: CsSpacing.sm),
+                        Text(
+                          subtitle!,
+                          style: CsTypography.body.copyWith(
+                            color: AppColors.secondaryOnDark,
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: CsSpacing.xl),
+                      ...children,
+                    ],
+                  ),
+                ),
+              ),
+              if (footer.isNotEmpty) ...[
+                const SizedBox(height: CsSpacing.base),
+                ...footer,
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A quiet text action on the green ground, at least 44pt tall.
+class AuthQuietAction extends StatelessWidget {
+  const AuthQuietAction({super.key, required this.label, this.onTap});
+
+  final String label;
+  final VoidCallback? onTap;
+
+  @override
+  Widget build(BuildContext context) => TextButton(
+    onPressed: onTap,
+    style: TextButton.styleFrom(minimumSize: const Size(44, 44)),
+    child: Text(
+      label,
+      style: CsTypography.metadata.copyWith(color: AppColors.secondaryOnDark),
+    ),
+  );
+}
