@@ -22,6 +22,8 @@ export interface EventVenueLink {
   href: string | null;
   kind: 'Restaurant' | 'Hotel';
   roles: LinkRole[];
+  /** A restaurant's current MICHELIN stars, for the gold on its row. */
+  stars: number | null;
 }
 
 export interface SiteEvent {
@@ -39,6 +41,7 @@ export interface SiteEvent {
   timezone: string | null;
   city: string | null;
   country: string | null;
+  countryCode: string | null;
   venueName: string | null;
   address: string | null;
   officialUrl: string | null;
@@ -90,7 +93,7 @@ export function loadEvents(): Promise<SiteEvent[]> {
     const rows = await selectAll<EventRow>(
       'events',
       'select=id,name,description,event_type,start_date,end_date,start_time,end_time,end_at,timezone,city,country_code,venue_name,address,official_url,ticket_url,cancelled_at,admission_type,admission_note'
-        + `&moderation_status=eq.published&end_date=gte.${from}&order=start_date,id`,
+        + `&moderation_status=eq.published&end_date=gte.${from}&order=start_date,start_time.asc.nullsfirst,id`,
     );
     const ids = rows.map((r) => r.id);
     if (ids.length === 0) return [];
@@ -127,11 +130,11 @@ export function loadEvents(): Promise<SiteEvent[]> {
       const venues: EventVenueLink[] = [];
       for (const l of restaurantLinks.filter((x) => x.event_id === r.id)) {
         const rest = restaurantById.get(l.restaurant_id);
-        if (rest) venues.push({ name: rest.name, href: `/restaurants/${rest.slug}`, kind: 'Restaurant', roles: roles(l) });
+        if (rest) venues.push({ name: rest.name, href: `/restaurants/${rest.slug}`, kind: 'Restaurant', roles: roles(l), stars: rest.stars });
       }
       for (const l of hotelLinks.filter((x) => x.event_id === r.id)) {
         const name = hotelName.get(l.hotel_id);
-        if (name) venues.push({ name, href: null, kind: 'Hotel', roles: roles(l) });
+        if (name) venues.push({ name, href: null, kind: 'Hotel', roles: roles(l), stars: null });
       }
       return {
         id: r.id,
@@ -147,6 +150,7 @@ export function loadEvents(): Promise<SiteEvent[]> {
         timezone: r.timezone,
         city: r.city,
         country: countryName(r.country_code),
+        countryCode: r.country_code,
         venueName: r.venue_name,
         address: r.address,
         officialUrl: httpUrl(r.official_url),
@@ -184,3 +188,17 @@ export const monthLabel = (key: string) => {
 };
 
 export const place = (e: SiteEvent) => [e.city, e.country].filter(Boolean).join(', ');
+
+/** The calendar days set large, as on the featured card: "22" over
+ *  "November 2026", "3 to 13" over "December 2026", or both months
+ *  written into the figure when the event crosses one. */
+export function dateFigure(e: SiteEvent): { big: string; rest: string } {
+  const [sy, sm, sd] = e.startDate.split('-').map(Number);
+  const [ey, em, ed] = e.endDate.split('-').map(Number);
+  if (e.startDate === e.endDate) return { big: `${sd}`, rest: `${MONTHS_LONG[sm - 1]} ${sy}` };
+  if (sy === ey && sm === em) return { big: `${sd} to ${ed}`, rest: `${MONTHS_LONG[sm - 1]} ${sy}` };
+  return { big: `${sd} ${MONTHS_LONG[sm - 1].slice(0, 3)} to ${ed} ${MONTHS_LONG[em - 1].slice(0, 3)}`, rest: `${ey}` };
+}
+
+/** The Benelux, where Mantelier starts. */
+export const BENELUX = new Set(['NL', 'BE', 'LU']);

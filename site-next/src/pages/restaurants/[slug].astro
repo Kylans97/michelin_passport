@@ -30,126 +30,191 @@ const links = [
   r.w50bUrl && { href: r.w50bUrl, label: 'At The World’s 50 Best' },
   r.gaultMillau?.url && { href: r.gaultMillau.url, label: 'At Gault&Millau' },
 ].filter(Boolean) as { href: string; label: string }[];
+
+// The band's figure: the restaurant's strongest current recognition, set
+// large. Gold only when it is MICHELIN stars; nothing when no guide lists it.
+const figure = r.stars !== null && r.stars > 0
+  ? { kind: 'stars' as const, big: '★'.repeat(r.stars), label: `${r.stars} MICHELIN star${r.stars === 1 ? '' : 's'}` }
+  : r.w50bRank !== null
+    ? { kind: 'text' as const, big: `#${r.w50bRank}`, label: `The World’s 50 Best${w50bYear ? ` ${w50bYear}` : ''}` }
+    : r.gaultMillau
+      ? { kind: 'text' as const, big: gaultMillauText(r.gaultMillau), label: `Gault&Millau ${r.gaultMillau.year}` }
+      : r.inSelection
+        ? { kind: 'text' as const, big: 'Selected', label: 'Mantelier Selection' }
+        : null;
 ---
 <Base title={r.name} description={description} current="guides">
-  <article class="wrap">
-    <header class="head">
-      <p class="eyebrow">{[r.cuisine, where].filter(Boolean).join(' · ')}</p>
-      <h1 class="display">{r.name}</h1>
-      {(r.hotelName || r.propertyName) && <p class="at">At {r.hotelName ?? r.propertyName}</p>}
-      {r.closed && <p class="closed">Permanently closed</p>}
-    </header>
+  <header class="band">
+    <div class="wrap inner">
+      <div class="title-block">
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/guides">Guides</a></nav>
+        <h1>{r.name}</h1>
+        {[r.cuisine, where].some(Boolean) && <p class="byline">{[r.cuisine, where].filter(Boolean).join(' · ')}</p>}
+        {(r.hotelName || r.propertyName) && <p class="at">At {r.hotelName ?? r.propertyName}</p>}
+        {r.closed && <p class="closed">Permanently closed</p>}
+      </div>
+      {figure && (
+        <p class="figure">
+          <span class:list={['figure-big', { stars: figure.kind === 'stars' }]} aria-hidden={figure.kind === 'stars' ? 'true' : undefined}>{figure.big}</span>
+          <span class="figure-label">{figure.label}</span>
+        </p>
+      )}
+    </div>
+  </header>
 
-    <section aria-labelledby="every-guide">
-      <h2 class="eyebrow section-title" id="every-guide">Every guide</h2>
-      <GuideScores restaurant={r} w50bYear={w50bYear} />
-      {!r.closed && <div class="cta"><SaveControls type="restaurant" id={r.id} appLabel="Add to wishlist in the app" /></div>}
-    </section>
+  <div class="wrap layout">
+    <article class="main">
+      <section aria-labelledby="every-guide">
+        <h2 id="every-guide">Every guide</h2>
+        <GuideScores restaurant={r} w50bYear={w50bYear} />
+      </section>
 
-    {hasHistory && (
-      <section class="history" aria-labelledby="history">
-        <h2 class="eyebrow section-title" id="history">Over the years</h2>
-        <div class="columns">
-          {r.michelinHistory.length > 0 && (
-            <div>
-              <h3 class="col-title">MICHELIN</h3>
-              <ul>
-                {r.michelinHistory.map((h) => (
-                  <li><span class="year">{h.year}</span>
-                    {h.stars !== null && h.stars > 0
-                      ? <span class="gold" aria-label={`${h.stars} stars`}>{'★'.repeat(h.stars)}</span>
-                      : <span class="muted">No star</span>}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {r.w50bHistory.length > 0 && (
-            <div>
-              <h3 class="col-title">The World’s 50 Best</h3>
-              <ul>{r.w50bHistory.map((h) => <li><span class="year">{h.year}</span><span>{listLabel(h)}</span></li>)}</ul>
-            </div>
-          )}
-          {r.gaultMillau && (
-            <div>
-              <h3 class="col-title">Gault&amp;Millau</h3>
-              <ul><li><span class="year">{r.gaultMillau.year}</span><span>{gaultMillauText(r.gaultMillau)}</span></li></ul>
-            </div>
-          )}
-          {r.otherGuides.map((g) => (
-            <div>
-              <h3 class="col-title">{g.name}</h3>
-              <ul>{g.history.map((h) => <li><span class="year">{h.year}</span><span>{h.value}</span></li>)}</ul>
-            </div>
-          ))}
+      {hasHistory && (
+        <section aria-labelledby="history">
+          <h2 id="history">Over the years</h2>
+          <div class="columns">
+            {r.michelinHistory.length > 0 && (
+              <div>
+                <h3 class="col-title">MICHELIN</h3>
+                <ul>
+                  {r.michelinHistory.map((h) => (
+                    <li><span class="year">{h.year}</span>
+                      {h.stars !== null && h.stars > 0
+                        ? <span class="gold" aria-label={`${h.stars} stars`}>{'★'.repeat(h.stars)}</span>
+                        : <span class="muted">No star</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {r.w50bHistory.length > 0 && (
+              <div>
+                <h3 class="col-title">The World’s 50 Best</h3>
+                <ul>{r.w50bHistory.map((h) => <li><span class="year">{h.year}</span><span>{listLabel(h)}</span></li>)}</ul>
+              </div>
+            )}
+            {r.gaultMillau && (
+              <div>
+                <h3 class="col-title">Gault&amp;Millau</h3>
+                <ul><li><span class="year">{r.gaultMillau.year}</span><span>{gaultMillauText(r.gaultMillau)}</span></li></ul>
+              </div>
+            )}
+            {r.otherGuides.map((g) => (
+              <div>
+                <h3 class="col-title">{g.name}</h3>
+                <ul>{g.history.map((h) => <li><span class="year">{h.year}</span><span>{h.value}</span></li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {events.length > 0 && (
+        <section aria-labelledby="events" data-events-scope>
+          <div data-event-group>
+            <h2 id="events">Coming up</h2>
+            <ul class="event-list">{events.map((e) => <EventRow event={e} />)}</ul>
+          </div>
+        </section>
+      )}
+
+      {news.length > 0 && (
+        <section aria-labelledby="in-the-news">
+          <h2 id="in-the-news">In the news</h2>
+          <ul class="news">
+            {news.map((a) => (
+              <li>
+                <a class="news-row" href={`/news/${a.slug}`}>
+                  <span class="news-title">{a.shortTitle}</span>
+                  <span class="news-meta">{sectionLabel(a.section)} · {formatNewsDate(a.publishedAt)}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </article>
+
+    <aside class="details-card" aria-label="Details">
+      {r.address && (
+        <div class="detail">
+          <p class="detail-label">Address</p>
+          <p class="address">{r.address}</p>
         </div>
-      </section>
-    )}
-
-    {events.length > 0 && (
-      <section class="events" aria-labelledby="events" data-events-scope>
-        <div data-event-group>
-          <h2 class="eyebrow section-title" id="events">Coming up</h2>
-          <ul>{events.map((e) => <EventRow event={e} />)}</ul>
-        </div>
-      </section>
-    )}
-
-    {news.length > 0 && (
-      <section class="news" aria-labelledby="in-the-news">
-        <h2 class="eyebrow section-title" id="in-the-news">In the news</h2>
-        {news.map((a) => (
-          <a class="news-row" href={`/news/${a.slug}`}>
-            <span class="display news-title">{a.shortTitle}</span>
-            <span class="news-meta">{sectionLabel(a.section)} · {formatNewsDate(a.publishedAt)}</span>
-          </a>
-        ))}
-      </section>
-    )}
-
-    {(r.address || links.length > 0) && (
-      <section class="details" aria-labelledby="details">
-        <h2 class="eyebrow section-title" id="details">Details</h2>
-        {r.address && <p class="address">{r.address}</p>}
-        {links.length > 0 && (
-          <ul class="links">{links.map((l) => <li><a href={l.href} rel="noopener">{l.label} →</a></li>)}</ul>
-        )}
-      </section>
-    )}
-  </article>
+      )}
+      {links.length > 0 && (
+        <ul class="links">{links.map((l) => <li><a href={l.href} rel="noopener">{l.label} →</a></li>)}</ul>
+      )}
+      {!r.closed && <div class="cta"><SaveControls type="restaurant" id={r.id} appLabel="Add to wishlist in the app" variant="solid" /></div>}
+    </aside>
+  </div>
   {events.length > 0 && <HideEnded />}
 </Base>
 
 <style>
-  .head { padding-top: 56px; padding-bottom: 32px; max-width: 820px; }
-  h1 { font-size: clamp(38px, 5.4vw, 60px); margin-top: 12px; }
-  .at { font-family: var(--display); font-style: italic; font-size: 21px; margin: 8px 0 0; color: var(--ink-soft); }
-  .closed { display: inline-block; margin: 14px 0 0; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--ink-soft); color: var(--ink-soft); padding: 3px 10px; border-radius: 999px; }
+  /* Keynote detail page, the same frame as an event's: a green band with
+     the name and the strongest current recognition set large, then the
+     guides in a reading column with the details card beside it. */
+  .band { background: var(--green); color: var(--ivory); }
+  .inner {
+    max-width: 1200px; padding-top: 72px; padding-bottom: 72px;
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: end;
+  }
+  .crumbs { font-size: 15px; color: var(--on-green-muted); margin-bottom: 18px; }
+  .crumbs a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--on-green-rule); }
+  .crumbs a:hover { color: var(--ivory); text-decoration-color: currentColor; }
+  h1 {
+    font-family: var(--display); font-weight: 300; margin: 0; max-width: 18ch; text-wrap: balance;
+    font-size: clamp(44px, 6.4vw, 92px); line-height: 1; letter-spacing: -0.02em;
+  }
+  .byline { margin: 20px 0 0; font-size: 18px; color: var(--on-green-muted); }
+  .at { font-family: var(--display); font-style: italic; font-size: 22px; margin: 8px 0 0; color: var(--ivory); }
+  .closed { display: inline-block; margin: 18px 0 0; font-size: 13px; font-weight: 500; border: 1px solid var(--on-green-rule); padding: 4px 12px; border-radius: 999px; }
 
-  section { max-width: 820px; }
-  .section-title { margin: 0 0 14px; }
-  .cta { margin-top: 18px; }
+  .figure { margin: 0; text-align: right; display: flex; flex-direction: column; gap: 8px; }
+  .figure-big { font-family: var(--display); font-weight: 300; font-size: clamp(56px, 6vw, 96px); line-height: 0.95; letter-spacing: -0.02em; white-space: nowrap; }
+  .figure-big.stars { color: var(--gold); letter-spacing: 0.06em; font-size: clamp(44px, 4.6vw, 72px); }
+  .figure-label { font-size: 15px; color: var(--on-green-muted); }
 
-  .history, .events, .news, .details { margin-top: 48px; }
-  .columns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  .layout {
+    max-width: 1200px; padding-top: 56px; padding-bottom: 104px;
+    display: grid; grid-template-columns: minmax(0, 1fr) 340px; column-gap: 72px; align-items: start;
+  }
+  .main { min-width: 0; display: grid; gap: 56px; }
+  .main h2 { font-family: var(--display); font-weight: 300; font-size: 34px; line-height: 1.1; margin: 0 0 16px; }
+
+  .details-card {
+    position: sticky; top: 84px; display: grid; gap: 20px;
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 18px; padding: 28px;
+  }
+  .detail-label { margin: 0; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+  .address { margin: 4px 0 0; font-family: var(--display); font-size: 20px; line-height: 1.35; }
+  .links { list-style: none; margin: 0; padding: 0; display: grid; font-size: 15px; }
+  .links a { display: inline-block; padding: 8px 0; text-decoration: underline; text-underline-offset: 3px; }
+  .cta { padding-top: 20px; border-top: 1px solid var(--rule); }
+  .cta :global(.sign-in) { font-size: 14px; padding: 12px 4px; }
+
+  .columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 28px; }
   .col-title { font-family: var(--display); font-weight: 500; font-size: 20px; margin: 0 0 8px; }
   ul { list-style: none; margin: 0; padding: 0; }
   .columns li { display: flex; gap: 14px; padding: 6px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
-  .year { font-family: var(--util); font-size: 12px; color: var(--taupe); width: 3.4em; padding-top: 2px; }
+  .year { font-size: 13px; color: var(--ink-soft); width: 3.4em; padding-top: 1px; font-variant-numeric: tabular-nums; }
   .gold { color: var(--gold); letter-spacing: 0.08em; }
-  .muted { color: var(--taupe); }
+  .muted { color: var(--ink-soft); }
 
-  .news-row { display: flex; flex-direction: column; gap: 2px; padding: 14px 18px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; margin-bottom: 10px; }
+  .event-list { border-top: 1px solid var(--green); }
+
+  .news { border-top: 1px solid var(--green); }
+  .news-row { display: flex; flex-direction: column; gap: 2px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
   .news-row:hover { text-decoration: none; }
-  .news-title { font-size: 21px; }
-  .news-meta { font-size: 12px; color: var(--ink-soft); }
+  .news-row:hover .news-title { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .news-title { font-family: var(--display); font-size: 24px; line-height: 1.2; }
+  .news-meta { font-size: 14px; color: var(--ink-soft); }
 
-  .address { margin: 0 0 10px; }
-  .links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; }
-  .links a { text-decoration: underline; text-underline-offset: 3px; }
-
-  @media (max-width: 760px) {
-    .head { padding-top: 36px; }
-    .columns { grid-template-columns: minmax(0, 1fr); }
+  @media (max-width: 960px) {
+    .inner { grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; padding-top: 44px; padding-bottom: 48px; }
+    .figure { text-align: left; }
+    .layout { grid-template-columns: minmax(0, 1fr); row-gap: 48px; padding-top: 40px; padding-bottom: 72px; }
+    .details-card { position: static; padding: 22px; }
   }
 </style>

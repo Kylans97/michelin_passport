@@ -12,10 +12,13 @@ export const APP_STORE_URL: string | null = 'https://apps.apple.com/app/mantelie
 
 export const CONTACT_EMAIL = 'hello@mantelier.app';
 
+/** Events first, the primary pillar. `nav: false` keeps a section's page
+ *  but leaves it out of the header until it has content (Trends, review
+ *  of 2026-11-21). */
 export const SECTIONS = [
-  { slug: 'news', label: 'News' },
-  { slug: 'guides', label: 'Guides' },
-  { slug: 'behind-the-pass', label: 'Behind the pass' },
-  { slug: 'events', label: 'Events' },
-  { slug: 'trends', label: 'Trends' },
+  { slug: 'events', label: 'Events', nav: true },
+  { slug: 'guides', label: 'Guides', nav: true },
+  { slug: 'news', label: 'News', nav: true },
+  { slug: 'behind-the-pass', label: 'Behind the pass', nav: true },
+  { slug: 'trends', label: 'Trends', nav: false },
 ] as const;

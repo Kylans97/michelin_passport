@@ -10,7 +10,7 @@ const { current } = Astro.props;
     <a class="wordmark" href="/" aria-label="Mantelier, home">MANTELIER</a>
     <nav aria-label="Sections">
       <ul>
-        {SECTIONS.map((s) => (
+        {SECTIONS.filter((s) => s.nav).map((s) => (
           <li>
             <a href={`/${s.slug}`} aria-current={current === s.slug ? 'page' : undefined}>{s.label}</a>
           </li>
@@ -103,6 +103,8 @@ const { current } = Astro.props;
     .member:hover { text-decoration: none; }
     nav { grid-column: 1 / -1; grid-row: 2; overflow-x: auto; scrollbar-width: none; }
     nav::-webkit-scrollbar { display: none; }
-    ul { justify-content: flex-start; gap: 22px; padding: 10px 0 12px; white-space: nowrap; }
+    ul { justify-content: flex-start; gap: 8px; padding: 0 0 2px; white-space: nowrap; font-size: 14px; }
+    ul a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; }
+    li:first-child a { padding-left: 0; }
   }
 </style>
