@@ -8,6 +8,9 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **The friend link's message** (product owner, 2026-11-22, on the text the share sheet starts with: "het moet worden. Find unique events, experience impeccable hospitality, share memories with friends"). Now "{name} invited you to Mantelier. Find unique events, experience impeccable hospitality, share memories with friends." followed by the link; the invite page on the site uses the same line for a friend link. The visit and trip messages are unchanged. In the app from the next build after 1.9.0 (45); the site once it reaches main.
+
 ---
 
 ## v1.9.0 (45) — 2026-11-22

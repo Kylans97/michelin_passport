@@ -117,8 +117,8 @@ class InviteLinkPreview {
             '${inviteMonths(tripStartDate!, tripEndDate ?? tripStartDate!)}. '
             'Join on Mantelier.\n$url',
       _ =>
-        '$name invited you to Mantelier, to keep the tables, stays and '
-            'evenings worth keeping.\n$url',
+        '$name invited you to Mantelier. Find unique events, experience '
+            'impeccable hospitality, share memories with friends.\n$url',
     };
   }
 

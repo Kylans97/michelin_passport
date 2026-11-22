@@ -92,6 +92,19 @@ void main() {
       );
     });
 
+    test('a friend link message', () {
+      final friend = InviteLinkPreview.fromRow({
+        'state': 'own',
+        'kind': 'friend',
+        'sender_name': 'Elise Laurent',
+      }, token: 'tok');
+      expect(
+        friend.shareMessage('u'),
+        'Elise Laurent invited you to Mantelier. Find unique events, '
+        'experience impeccable hospitality, share memories with friends.\nu',
+      );
+    });
+
     test('an unknown sender reads as a member', () {
       final p = InviteLinkPreview.fromRow({'state': 'unavailable'}, token: 't');
       expect(p.sender, 'A member');
