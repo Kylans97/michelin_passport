@@ -8,6 +8,9 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Privacy policy: the website's visit counts** (product owner, 2026-11-22: "Ja, pas het privacybeleid aan voor Cloudflare Web Analytics en zet het live via main. Ik zet daarna de analytics aan in Cloudflare"). `site-next/public/privacy.html` said "we use no third-party analytics", which turning on Cloudflare Web Analytics for the `mantelier` Pages project would make untrue, so the policy changes first, the same order as for every migration the policy has to cover. New section "When you visit this website" (pages, referring site, country, device and browser, load speed; no cookies, nothing stored on the device, totals only), the app's own sentence now says "the app uses no third-party analytics", the legitimate interest line names the website visit counts, and Cloudflare's processor line adds "and counting visits to it". Site text only; no code, no database change. Web Analytics itself is a switch in the Cloudflare dashboard, left to the product owner.
+
 ---
 
 ## v1.9.0 (43) — 2026-11-22
