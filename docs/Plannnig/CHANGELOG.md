@@ -8,6 +8,11 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **The Mantelier Selection invites suggestions** (product owner, 2026-11-22: "Miss a restaurant in our selection, let us know?", copy chosen: "Know a table that belongs here? Tell us."). The Selection catalogue on Guides ends with that one line, text only, in forest green. It opens the existing missing-listing sheet with Restaurant chosen, so suggestions land in the same `missing_listing_reports` table and review as Explore's empty search. No migration.
+  - Not tagged with where it came from: `missing_listing_reports` has no column for that, and adding one is a migration. A Selection suggestion and an Explore report read the same in review until then.
+  - Checked: a widget test (the line is there, tapping it opens the sheet with only Restaurant chosen); full suite 3091 passing; `flutter analyze` clean. Built for the simulator, but not looked at on it: a fresh simulator needs a production sign-in.
+
 ### Changed
 - **Grape notes, round 2: Benelux, France, Italy and Spain, strong part applied to production 2026-11-22** (product owner: "ja doe maar" on round 2, then after the review at https://claude.ai/artifact/QJTbMd9XjN5wUVxT76UDZj, "Pas alleen het sterke deel van ronde 2 toe op productie. Het zwakke deel houden we aan"). Data only, `supabase/data/enrichment/wine_regions/grape_notes_round2/`.
   - **Applied:** `grape_notes_round2_strong.sql` by `supabase db query --linked --file`: 201 empty region grape fields filled (136 roles, 62 tastes, 3 local names), each with two independent organisations as sources, and `local_note` rebuilt from the three fields for builds up to 1.9.0 (48); 30 grape fixes on 29 grapes (27 style only: hyphens out of summaries, aged and similar notes; Verdelho and Semillon tastes and the St. Laurent summary with two sources). The file fills only fields still empty and stops as a whole otherwise. Checked after: names 148 to 151, roles 245 to 381, tastes 42 to 104, no dashes in any `local_note`, 29 grapes updated, no hyphenated words left in grape text apart from proper names. Tested first on a scratch stack holding that day's production data, with the weak part on top.
@@ -21,6 +26,10 @@ The format follows Keep a Changelog.
   - **Data round 1, applied to production 2026-11-22** (`supabase/data/enrichment/wine_regions/grape_notes_round1/`, review page https://claude.ai/artifact/57MKeSSFxStkPpBsf1PcXr): all 434 written notes split into the three fields with the audit's fixes, no new facts (148 names, 245 roles, 42 tastes, 57 emptied as repeats, dated figures or off topic); 34 grape corrections with two independent sources each, 13 held back. `grape_notes_round1_v1.sql` keys on ids and checks the count before commit.
   - **How it was applied** (product owner, after reviewing the round: "Test de migratie en ronde 1 eerst op een scratch stack, pas ze dan toe op productie, en merge claude/grapes-by-region naar main voor de volgende build"): every migration replayed on a scratch stack (own project id and ports beside the other sessions' stacks); production's `wine_regions`, `grapes` and `wine_region_grapes` loaded into it read only; round 1 run there: 468 updates, each one row, the count check passed, no dashes, anon reads the new columns over REST. Then a read only check that production's 434 notes still matched the export (0 changed), `supabase db push --linked` (dry run listed only this migration), and the round by `supabase db query --linked --file`. Checked after on production: 377 links with a field set (148 names, 245 roles, 42 tastes), `local_note` rewritten on the same 377, 30 grapes updated (34 statements: some grapes got both tastes and summary), no dashes, Grenache Blanc no longer tastes of plum. `supabase migration list --linked`: local and remote agree, 175/175. Merged into main for the next build.
   - Tests: `test/grapes_by_region_test.dart`; `flutter analyze` clean, `flutter test` 3,130 passing. Seen as rendered screenshots, not on a device.
+
+
+### Fixed
+- The missing-listing sheet's thank-you read "Thank you — we'll take a look." with a dash; now "Thank you, we'll take a look." (no dashes in copy).
 
 ---
 

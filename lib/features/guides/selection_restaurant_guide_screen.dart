@@ -10,8 +10,10 @@ import '../../core/widgets/cs_search_field.dart';
 import '../../core/widgets/star_row.dart';
 import '../../data/repositories/editorial_selection_repository.dart';
 import '../../models/venue_country.dart';
+import '../../data/repositories/missing_listing_repository.dart';
 import '../explore/widgets/explore_discovery_cards.dart'
     show mantelierSelectionLabel;
+import '../reports/widgets/report_missing_listing_sheet.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
@@ -26,6 +28,10 @@ import '../../core/analytics/impressions.dart';
 /// The Selection is small and chosen one restaurant at a time, so it loads
 /// once and search/country narrow it on the device. The country list comes
 /// from the Selection itself (country codes), never a fixed market list.
+///
+/// The list ends with one quiet line inviting a suggestion, which opens
+/// the existing missing-listing sheet with "restaurant" chosen: the same
+/// report and review path as Explore's empty search, nothing new.
 class SelectionRestaurantGuideScreen extends StatefulWidget {
   /// Overridable for tests; production passes nothing.
   final Future<List<SelectionEntry>> Function()? load;
@@ -166,9 +172,12 @@ class _SelectionRestaurantGuideScreenState
                     )
                   : ListView.separated(
                       padding: const EdgeInsets.only(bottom: CsSpacing.xxl),
-                      itemCount: results.length,
+                      itemCount: results.length + 1,
                       separatorBuilder: (_, _) => const GuideVenueCardDivider(),
                       itemBuilder: (context, index) {
+                        if (index == results.length) {
+                          return const _SuggestRestaurantLine();
+                        }
                         final entry = results[index];
                         final r = entry.restaurant;
                         // A star is still a star — gold StarRow, the only
@@ -210,4 +219,30 @@ class _SelectionRestaurantGuideScreenState
       ),
     );
   }
+}
+
+/// "Know a table that belongs here? Tell us." Text, not a button or a
+/// banner: an invitation at the end of the list, in the guide's own
+/// restrained register.
+class _SuggestRestaurantLine extends StatelessWidget {
+  const _SuggestRestaurantLine();
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: CsSpacing.lg),
+    child: Center(
+      child: TextButton(
+        onPressed: () => showReportMissingListingSheet(
+          context,
+          initialQuery: '',
+          initialType: MissingListingSubjectType.restaurant,
+        ),
+        child: Text(
+          'Know a table that belongs here? Tell us.',
+          textAlign: TextAlign.center,
+          style: CsTypography.metadata.copyWith(color: AppColors.forestGreen),
+        ),
+      ),
+    ),
+  );
 }

@@ -63,7 +63,7 @@ Future<void> showReportMissingListingSheet(
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          "Thank you — we'll take a look.",
+          "Thank you, we'll take a look.",
           style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
         ),
         backgroundColor: AppColors.forestGreen,
