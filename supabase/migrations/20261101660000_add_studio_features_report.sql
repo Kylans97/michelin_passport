@@ -6,7 +6,8 @@
 -- 2026-11-22 on claude/signup-flow; the number is sort order: the next
 -- after 20261101650000, the highest on any branch.
 --
--- PREPARED -- NOT APPLIED until the product owner approves.
+-- Applied to production 2026-11-22 on the product owner's go ahead ("Ja,
+-- pas de Studio-migratie toe op productie, deploy Studio").
 --
 -- admin_studio_features_report(p_days) returns, for the last p_days days
 -- where a period applies:
