@@ -205,8 +205,8 @@ class _FriendProfileTogetherTabState extends State<FriendProfileTogetherTab> {
                 child: ElevatedButton(
                   onPressed: () => widget.onPlanDinner(null),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.gold600,
-                    foregroundColor: AppColors.textPrimary,
+                    backgroundColor: AppColors.ivory,
+                    foregroundColor: AppColors.deepGreen,
                     shape: const StadiumBorder(),
                     textStyle: CsTypography.editorialBody.copyWith(
                       fontWeight: FontWeight.w600,
@@ -326,7 +326,7 @@ class _PlanPill extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.gold600, width: 1),
+          border: Border.all(color: AppColors.secondaryOnDark, width: 1),
           borderRadius: BorderRadius.circular(17),
         ),
         child: Text(

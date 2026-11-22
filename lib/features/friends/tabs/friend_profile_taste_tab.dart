@@ -36,7 +36,7 @@ class FriendProfileTasteTab extends StatelessWidget {
       ..sort((a, b) => _verdictRank(a).compareTo(_verdictRank(b)));
     final countries = [
       for (final code in topCountryCodes(data.visits))
-        data.countryNameByCode[code] ?? code,
+        countryInSentence(code, data.countryNameByCode[code] ?? code),
     ];
 
     return ListView(
@@ -60,7 +60,7 @@ class FriendProfileTasteTab extends StatelessWidget {
         if (shared.isNotEmpty) ...[
           const FriendSectionLabel('Where your tastes meet'),
           const SizedBox(height: CsSpacing.xs),
-          _ScoreHeader(friendName: data.friendName),
+          _ScoreHeader(friendName: data.friendName.split(' ').first),
           for (final s in shared.take(_sharedPreviewCount))
             _SharedScoreRow(
               scores: s,

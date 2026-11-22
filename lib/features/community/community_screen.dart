@@ -830,8 +830,17 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
               children: [
                 for (final item in loved.take(_roundOnePreviewCount))
                   LovedByFriendsRow(item: item),
-                for (final wine in extras.wines.take(_winePreviewCount))
-                  FriendAgainWineRow(item: wine),
+                if (extras.wines.isNotEmpty) ...[
+                  if (loved.isNotEmpty) const SizedBox(height: CsSpacing.md),
+                  Text(
+                    'IN THEIR GLASS',
+                    style: CsTypography.editorialLabel().copyWith(
+                      color: AppColors.secondaryOnDark,
+                    ),
+                  ),
+                  for (final wine in extras.wines.take(_winePreviewCount))
+                    FriendAgainWineRow(item: wine),
+                ],
               ],
             );
           },

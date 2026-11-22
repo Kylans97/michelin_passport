@@ -304,7 +304,8 @@ class _OverflowButton extends StatelessWidget {
 }
 
 /// The PINNED tab row: `OVERVIEW · PASSPORT · TOGETHER · TASTE`, a
-/// 1px gold underline on the active tab, a hairline beneath the whole
+/// 1px ivory underline on the active tab (gold until 2026-11-22; the
+/// product owner found it odd, and gold is kept for stars and Keys), a hairline beneath the whole
 /// row. Sticks to the top once the scrolling header above it is gone —
 /// [SliverPersistentHeaderDelegate] is the standard Flutter mechanism for
 /// exactly this ("de tabrij wordt sticky zodra hij de bovenkant raakt").
@@ -338,7 +339,7 @@ class FriendProfileTabBarDelegate extends SliverPersistentHeaderDelegate {
             tabAlignment: TabAlignment.center,
             labelPadding: const EdgeInsets.symmetric(horizontal: 11),
             indicatorSize: TabBarIndicatorSize.label,
-            indicatorColor: AppColors.gold600,
+            indicatorColor: AppColors.textOnDark,
             indicatorWeight: 1,
             dividerColor: Colors.transparent,
             labelColor: AppColors.textOnDark,

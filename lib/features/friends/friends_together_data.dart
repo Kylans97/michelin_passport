@@ -389,3 +389,27 @@ List<PlannedTrip> tripsWithFriend({
         trip,
   ]..sort((a, b) => a.startDate.compareTo(b.startDate));
 }
+
+/// Country names that read with "the" in a sentence ("Most often in the
+/// Netherlands"), by ISO code.
+const _countriesWithThe = {
+  'NL',
+  'GB',
+  'US',
+  'AE',
+  'PH',
+  'CZ',
+  'MV',
+  'BS',
+  'DO',
+  'CF',
+  'KY',
+  'VA',
+};
+
+/// [name] as it reads inside a sentence: "the Netherlands", "Spain".
+String countryInSentence(String code, String name) =>
+    _countriesWithThe.contains(code.toUpperCase()) &&
+        !name.toLowerCase().startsWith('the ')
+    ? 'the $name'
+    : name;

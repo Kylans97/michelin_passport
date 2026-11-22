@@ -8,7 +8,7 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-From `claude/friends-together`, not yet merged. `flutter analyze` clean and `flutter test` 3,097 passing on the branch. Not yet checked in the simulator against real data.
+From `claude/friends-together`, not yet merged. `flutter analyze` clean and `flutter test` 3,097 passing on the branch.
 
 ### Added
 - **Friends round one** (product owner, 2026-11-22, on the Friends Ideas canvas https://claude.ai/artifact/YDgLjzkQhgQp75ANiLZjfV: "Je mag best een extra tab onder friends zetten ... 2 vind ik ook wel nice naast 1 en 3. Daarnaast vind ik 4 wellicht iets voor later"). Ideas 1, 2 and 3, the parts that need no migration; idea 4 is for later.
@@ -17,6 +17,8 @@ From `claude/friends-together`, not yet merged. `flutter analyze` clean and `flu
   - **Friend profile, Together:** "Events you could go to together" (events where you both have an intent) and "Trips together" (upcoming trips you're both on), above the shared wishlist.
   - **Friend profile, new Taste tab:** the countries they eat in most, "Where your tastes meet" (places you've both been, each one's latest score side by side, no overall match figure), their cities (each opens their visits there), and "In {name}'s glass" (their shared wines with verdict and note, Again first).
   - **Reads added, no migration:** `EventAttendanceRepository.getMyIntents`, `PlannedTripsRepository.loadAcceptedMemberIds`, `VenueInviteRepository.loadPlansInMotion` (direct read under the existing `venue_invites_select`), `VisitWineRepository.loadAgainWinesFor`, `VisitedRepository.loadVisitedVenueKeys`, `FriendActivityRepository.loadExtras`. Every one reads only what RLS already lets the viewer see.
+  - **No more decorative gold on the friend profile** (product owner, 2026-11-22, seeing it in the simulator: "the gold colour with together looks very odd. Also that gold line is odd"): the active tab's underline, the "Suggest going together" button (now ivory with deep-green text), the Suggest pill and the venue tiles' borders were gold; they are ivory or a hairline now, and gold stays on stars and Keys only, as the design register says.
+  - **Seen in the simulator against production data** (one test account with one friend): Loved by your friends with the wines, Recommended by, and the Taste tab all show real rows. Three things fixed from that look: "Most often in the Netherlands" (was "in Netherlands"), the score column headed with the first name only (the full name was cut off), and a small "In their glass" label above friends' wines. Not seen with real data: Plans in motion, Coming up, events together and trips together, since that account had no shared trips, invites or friend intents.
   - **Left out on purpose, pending the product owner:** saved events on a friend's wishlist (RLS lets a friend read them, but "saved" has never meant "shared") and visit notes (friend-readable by RLS, never shown so far). "Propose a few evenings" and inviting a friend to an event need a migration (`venue_invites` takes only restaurants and hotels, and has no dates) and are not built.
 
 ---

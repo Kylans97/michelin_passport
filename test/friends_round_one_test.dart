@@ -302,6 +302,8 @@ void main() {
       expect([for (final c in cities) c.cityName], ['Antwerp', 'Paris']);
       expect(cities.first.placeCount, 2);
       expect(topCountryCodes(visits), ['BE', 'FR']);
+      expect(countryInSentence('NL', 'Netherlands'), 'the Netherlands');
+      expect(countryInSentence('BE', 'Belgium'), 'Belgium');
     });
 
     test('tripsWithFriend keeps current trips the friend is on', () {
