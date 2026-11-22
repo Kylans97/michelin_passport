@@ -1,3 +1,4 @@
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/app_colors.dart';
@@ -185,4 +186,52 @@ class SecondaryAuthLink extends StatelessWidget {
       ),
     ),
   );
+}
+
+/// "By creating an account you agree to the Terms and the Privacy Policy",
+/// with both linked. App Review 1.2: members agree to the terms before they
+/// can post anything; every way of creating an account shows it.
+class AuthTermsAgreement extends StatelessWidget {
+  const AuthTermsAgreement({
+    super.key,
+    this.lead = 'By creating an account you agree to the ',
+  });
+
+  final String lead;
+
+  static Future<void> _open(String url) =>
+      launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+
+  @override
+  Widget build(BuildContext context) {
+    final base = CsTypography.metadata.copyWith(
+      color: AppColors.secondaryOnDark,
+    );
+    final link = base.copyWith(
+      color: AppColors.textOnDark,
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.secondaryOnDark,
+    );
+    WidgetSpan linkSpan(String label, String url) => WidgetSpan(
+      alignment: PlaceholderAlignment.baseline,
+      baseline: TextBaseline.alphabetic,
+      child: GestureDetector(
+        onTap: () => _open(url),
+        child: Text(label, style: link),
+      ),
+    );
+    return Text.rich(
+      TextSpan(
+        style: base,
+        children: [
+          TextSpan(text: lead),
+          linkSpan('Terms', 'https://mantelier.app/terms'),
+          const TextSpan(text: ' and the '),
+          linkSpan('Privacy Policy', 'https://mantelier.app/privacy'),
+          const TextSpan(text: '.'),
+        ],
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
 }

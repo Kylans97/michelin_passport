@@ -61,6 +61,7 @@
 // deleted at all — there is no window where auth deletion succeeds but
 // Storage cleanup didn't.
 
+import { appleConfig, revokeRefreshToken } from '../_shared/apple_sign_in.ts';
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
 // A narrow, structural dependency interface — only the operations this
@@ -247,6 +248,7 @@ async function purgeVenuePhotoSubmissions(
 export async function handleRequest(
   req: Request,
   admin: DeletionAdminClient,
+  revokeApple: (userId: string) => Promise<void> = async () => {},
 ): Promise<Response> {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: CORS_HEADERS });
@@ -299,6 +301,21 @@ export async function handleRequest(
     return jsonResponse({ error: 'Could not delete account. Please try again.' }, 500);
   }
 
+  // Sign in with Apple: revoke the account's Apple link first, as App
+  // Review requires (guideline 5.1.1(v)). Best-effort by design: a failed
+  // revoke is logged, never a reason to keep an account the member asked
+  // to delete; they can still remove the app under Settings, Apple
+  // Account, Sign in with Apple. Must run before deleteUser, whose cascade
+  // removes the stored token.
+  try {
+    await revokeApple(userId);
+  } catch (err) {
+    console.error('delete-account: Apple revoke failed', {
+      userId,
+      message: err instanceof Error ? err.message : String(err),
+    });
+  }
+
   try {
     const { error: deleteError } = await admin.auth.admin.deleteUser(userId);
     if (deleteError) {
@@ -330,5 +347,16 @@ Deno.serve((req) => {
   // Cast: matching the full SDK client against the narrow interface's
   // from().select().eq() chain is too deep for the type checker (TS2589).
   // The chain used is the SDK's documented one.
-  return handleRequest(req, admin as unknown as DeletionAdminClient);
+  return handleRequest(req, admin as unknown as DeletionAdminClient, async (userId) => {
+    const { data } = await admin.from('apple_sign_in_tokens')
+      .select('refresh_token').eq('user_id', userId).maybeSingle();
+    const token = data?.refresh_token as string | undefined;
+    if (!token) return;
+    const config = appleConfig((name) => Deno.env.get(name));
+    if (!config) {
+      console.error('delete-account: Apple key not configured, link not revoked', { userId });
+      return;
+    }
+    await revokeRefreshToken(config, token);
+  });
 });

@@ -88,6 +88,8 @@ void main() {
     testWidgets('submitting empty fields shows validation errors without '
         'touching Supabase', (tester) async {
       await tester.pumpWidget(_wrap(const LoginScreen()));
+      // The sign-in button sits below Apple and email since 2026-11-22.
+      await tester.ensureVisible(find.text('Sign in'));
       await tester.tap(find.text('Sign in'));
       await tester.pump();
       expect(find.text('Enter a valid email'), findsOneWidget);

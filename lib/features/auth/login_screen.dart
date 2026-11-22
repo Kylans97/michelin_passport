@@ -1,4 +1,7 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
@@ -6,6 +9,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
 import '../../data/repositories/auth_repository.dart';
+import 'email_code_screen.dart';
 import 'forgot_password_screen.dart';
 import 'signup_screen.dart';
 import 'widgets/auth_presentation.dart';
@@ -28,12 +32,18 @@ import 'widgets/auth_presentation.dart';
 /// expired one is never a dead end. [signIn] and [resendConfirmation] are
 /// optional DI seams (same convention as ChangePasswordScreen's
 /// `changePassword`), defaulting to the real AuthRepository calls.
+///
+/// Above the password form: Continue with Apple (iOS only, Apple's own
+/// button) and Continue with email (a six digit code, EmailCodeScreen).
+/// The password form stays for members who have one.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({
     super.key,
     this.notice,
     this.signIn,
     this.resendConfirmation,
+    this.signInWithApple,
+    this.showApple,
   });
 
   final String? notice;
@@ -43,6 +53,12 @@ class LoginScreen extends StatefulWidget {
   })?
   signIn;
   final Future<void> Function(String email)? resendConfirmation;
+
+  /// Returns false when the member cancelled Apple's sheet.
+  final Future<bool> Function()? signInWithApple;
+
+  /// Whether to offer Continue with Apple; defaults to iOS only.
+  final bool? showApple;
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -60,6 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _unconfirmedEmail;
   bool _resending = false;
   bool _resent = false;
+  bool _appleLoading = false;
 
   late final AuthRepository _auth = AuthRepository(Supabase.instance.client);
 
@@ -130,8 +147,32 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  Future<void> _continueWithApple() async {
+    if (_appleLoading) return;
+    setState(() {
+      _appleLoading = true;
+      _error = null;
+    });
+    try {
+      await (widget.signInWithApple ?? _auth.signInWithApple)();
+      // AuthGate picks up the new session.
+    } on AuthException catch (e) {
+      if (mounted) setState(() => _error = e.message);
+    } catch (_) {
+      if (mounted) {
+        setState(
+          () =>
+              _error = 'Signing in with Apple didn\'t work. Please try again.',
+        );
+      }
+    } finally {
+      if (mounted) setState(() => _appleLoading = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final showApple = widget.showApple ?? Platform.isIOS;
     // A real Scaffold (not a bare ColoredBox) — unlike Passport/Explore,
     // LoginScreen is used directly as MaterialApp.home via AuthGate's
     // session-null branch, with no enclosing Scaffold anywhere above it,
@@ -161,6 +202,49 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: CsSpacing.xl),
                 ],
 
+                if (showApple) ...[
+                  SizedBox(
+                    height: 52,
+                    child: SignInWithAppleButton(
+                      text: 'Continue with Apple',
+                      style: SignInWithAppleButtonStyle.white,
+                      borderRadius: const BorderRadius.all(Radius.circular(26)),
+                      onPressed: _appleLoading ? () {} : _continueWithApple,
+                    ),
+                  ),
+                  const SizedBox(height: CsSpacing.md),
+                ],
+                SizedBox(
+                  height: 52,
+                  child: OutlinedButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const EmailCodeScreen(),
+                      ),
+                    ),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.textOnDark,
+                      side: const BorderSide(color: AppColors.subtleBorderDark),
+                      shape: const StadiumBorder(),
+                    ),
+                    child: Text(
+                      'Continue with email',
+                      style: CsTypography.bodyMedium.copyWith(
+                        color: AppColors.textOnDark,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: CsSpacing.xl),
+                Text(
+                  'Or sign in with your password',
+                  textAlign: TextAlign.center,
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.secondaryOnDark,
+                  ),
+                ),
+                const SizedBox(height: CsSpacing.lg),
                 CsTextField(
                   label: 'Email',
                   controller: _emailCtrl,

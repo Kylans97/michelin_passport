@@ -292,10 +292,13 @@ void main() {
         'new@example.com',
       );
       await tester.enterText(find.byType(TextFormField).at(1), 'secret123');
+      // The sign-in button sits below Apple and email since 2026-11-22.
+      await tester.ensureVisible(find.text('Sign in'));
       await tester.tap(find.text('Sign in'));
       await tester.pump();
 
       expect(find.textContaining("isn't confirmed yet"), findsOneWidget);
+      await tester.ensureVisible(find.text('Send a new confirmation link'));
       await tester.tap(find.text('Send a new confirmation link'));
       await tester.pump();
 
@@ -322,6 +325,8 @@ void main() {
       );
       await tester.enterText(find.byType(TextFormField).at(0), 'a@example.com');
       await tester.enterText(find.byType(TextFormField).at(1), 'secret123');
+      // The sign-in button sits below Apple and email since 2026-11-22.
+      await tester.ensureVisible(find.text('Sign in'));
       await tester.tap(find.text('Sign in'));
       await tester.pump();
       expect(find.text('Invalid login credentials'), findsOneWidget);

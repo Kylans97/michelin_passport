@@ -87,6 +87,8 @@ dependencies:
   # Imported directly by app_network_image.dart for its CacheManager config;
   # already the transitive dependency cached_network_image builds on.
   flutter_cache_manager: ^3.4.1
+  sign_in_with_apple: ^8.2.0
+  crypto: ^3.0.8
 
 dev_dependencies:
   flutter_test:

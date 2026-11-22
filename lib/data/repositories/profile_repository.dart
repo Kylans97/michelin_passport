@@ -83,6 +83,19 @@ class ProfileRepository {
     await _client.from('profiles').update(payload).eq('id', userId);
   }
 
+  /// True when the member's profile has no username yet: an account made
+  /// by signing in with Apple or an email code, before ProfileSetupScreen.
+  /// Accounts made with the password form always have one.
+  Future<bool> needsProfileSetup({required String userId}) async {
+    final rows = await _client
+        .from('profiles')
+        .select('username')
+        .eq('id', userId)
+        .limit(1);
+    if ((rows as List).isEmpty) return false;
+    return rows.first['username'] == null;
+  }
+
   // ── Welcome flow ──────────────────────────────────────────────────────
   //
   // Server-tracked, not local storage — see the has_seen_welcome migration

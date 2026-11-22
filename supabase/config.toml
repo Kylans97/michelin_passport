@@ -261,6 +261,12 @@ content_path = "./supabase/templates/confirmation.html"
 subject = "Reset your Mantelier password"
 content_path = "./supabase/templates/recovery.html"
 
+# The six digit code for signing in by email (2026-11-22). New addresses
+# get the confirmation mail above, which carries the same code.
+[auth.email.template.magic_link]
+subject = "Your Mantelier sign-in code"
+content_path = "./supabase/templates/magic_link.html"
+
 # [auth.email.template.invite]
 # subject = "You have been invited"
 # content_path = "./supabase/templates/invite.html"

@@ -342,3 +342,29 @@ Deno.test('a venue submissions remove failure BLOCKS account deletion', async ()
   assertEquals(res.status, 500);
   assertEquals(deleteUserCalls, []);
 });
+
+Deno.test('the Apple link is revoked before the account is deleted', async () => {
+  const { admin, deleteUserCalls } = fakeAdmin({ validUserId: 'user-1' });
+  const order: string[] = [];
+  const res = await handleRequest(
+    req({ method: 'POST', authorization: 'Bearer valid' }),
+    admin,
+    async (userId) => {
+      order.push(`revoke:${userId}:deleted=${deleteUserCalls.length}`);
+    },
+  );
+  assertEquals(res.status, 200);
+  assertEquals(order, ['revoke:user-1:deleted=0']);
+  assertEquals(deleteUserCalls, ['user-1']);
+});
+
+Deno.test('a failed Apple revoke never keeps the account', async () => {
+  const { admin, deleteUserCalls } = fakeAdmin({ validUserId: 'user-1' });
+  const res = await handleRequest(
+    req({ method: 'POST', authorization: 'Bearer valid' }),
+    admin,
+    () => Promise.reject(new Error('apple down')),
+  );
+  assertEquals(res.status, 200);
+  assertEquals(deleteUserCalls, ['user-1']);
+});

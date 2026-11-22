@@ -1,3 +1,8 @@
+import 'dart:convert';
+import 'dart:math';
+
+import 'package:crypto/crypto.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 // AuthRepository wraps every Supabase Auth call so screens never import
@@ -104,6 +109,107 @@ class AuthRepository {
 
   Future<void> signIn({required String email, required String password}) async {
     await _client.auth.signInWithPassword(email: email, password: password);
+  }
+
+  // ── Sign in with Apple ──────────────────────────────────────────────────
+  //
+  // Native Sign in with Apple (sign_in_with_apple), then Supabase's
+  // signInWithIdToken: no browser, no web secret. The nonce Apple signs is
+  // the SHA-256 of a random value only this call knows; Supabase checks it
+  // against the raw value, so a stolen identity token can't be replayed.
+  //
+  // Returns false when the member cancelled the Apple sheet, so the screen
+  // can stay quiet instead of showing an error.
+  //
+  // Apple shares the name only the first time someone signs in to the app;
+  // it is written to the account's metadata then, so the profile setup
+  // step can offer it. The authorization code is handed to the
+  // apple-token function (best-effort) so the account's Apple link can be
+  // revoked when the account is deleted, as App Review requires.
+  Future<bool> signInWithApple() async {
+    final rawNonce = _randomNonce();
+    final hashedNonce = sha256.convert(utf8.encode(rawNonce)).toString();
+    final AuthorizationCredentialAppleID credential;
+    try {
+      credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        nonce: hashedNonce,
+      );
+    } on SignInWithAppleAuthorizationException catch (e) {
+      if (e.code == AuthorizationErrorCode.canceled) return false;
+      rethrow;
+    }
+    final idToken = credential.identityToken;
+    if (idToken == null) {
+      throw const AuthException('Apple did not return a sign-in token.');
+    }
+    await _client.auth.signInWithIdToken(
+      provider: OAuthProvider.apple,
+      idToken: idToken,
+      nonce: rawNonce,
+    );
+    final name = [
+      credential.givenName,
+      credential.familyName,
+    ].whereType<String>().where((s) => s.trim().isNotEmpty).join(' ').trim();
+    if (name.isNotEmpty) {
+      try {
+        await _client.auth.updateUser(
+          UserAttributes(data: {'apple_name': name}),
+        );
+      } catch (_) {
+        // Only a convenience for the profile setup step.
+      }
+    }
+    final code = credential.authorizationCode;
+    if (code.isNotEmpty) {
+      try {
+        await _client.functions.invoke(
+          'apple-token',
+          body: {'authorization_code': code},
+        );
+      } catch (_) {
+        // Best-effort: without it, deleting the account still deletes it,
+        // only the Apple link is left for the member to remove in Settings.
+      }
+    }
+    return true;
+  }
+
+  static String _randomNonce([int length = 32]) {
+    const chars =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+    return List.generate(
+      length,
+      (_) => chars[random.nextInt(chars.length)],
+    ).join();
+  }
+
+  // ── Sign in with a code by email ────────────────────────────────────────
+  //
+  // Passwordless: GoTrue emails a six digit code (the Magic Link and
+  // Confirm signup templates must contain {{ .Token }}), which the member
+  // types back in. shouldCreateUser: a new address becomes a new account;
+  // its profile has no username yet, so AuthGate asks for one before the
+  // app opens (ProfileSetupScreen). Like resetPasswordForEmail, this never
+  // reveals whether the address already had an account.
+  Future<void> sendEmailCode(String email) async {
+    await _client.auth.signInWithOtp(email: email, shouldCreateUser: true);
+  }
+
+  Future<void> verifyEmailCode({
+    required String email,
+    required String code,
+  }) async {
+    await _client.auth.verifyOTP(
+      email: email,
+      token: code,
+      type: OtpType.email,
+    );
   }
 
   // ── Resend sign-up confirmation ─────────────────────────────────────────

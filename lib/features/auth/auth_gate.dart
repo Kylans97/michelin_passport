@@ -6,6 +6,7 @@ import '../../data/repositories/two_step_repository.dart';
 import '../onboarding/onboarding_gate.dart';
 import 'auth_link_notice.dart';
 import 'login_screen.dart';
+import 'profile_setup_gate.dart';
 import 'reset_password_screen.dart';
 import 'two_step_sign_in_screen.dart';
 
@@ -33,6 +34,7 @@ class AuthGate extends StatefulWidget {
     this.markWelcomeSeen,
     this.needsTwoStep,
     this.twoStepRepository,
+    this.needsProfileSetup,
   });
 
   // The main app scaffold — shown (via OnboardingGate) when a session is
@@ -60,6 +62,9 @@ class AuthGate extends StatefulWidget {
   // overridable so a test can drive the code step without a real JWT.
   final bool Function(Session session)? needsTwoStep;
   final TwoStepRepository? twoStepRepository;
+
+  /// Test seam for ProfileSetupGate; defaults to the profile's username.
+  final Future<bool> Function(String userId)? needsProfileSetup;
 
   @override
   State<AuthGate> createState() => _AuthGateState();
@@ -135,11 +140,16 @@ class _AuthGateState extends State<AuthGate> {
     // OnboardingGate owns "has THIS account completed the welcome flow" —
     // a separate concern from auth state, kept out of this class so it
     // doesn't grow a third sticky flag alongside password recovery.
-    return OnboardingGate(
+    return ProfileSetupGate(
       userId: session.user.id,
-      hasSeenWelcome: widget.hasSeenWelcome,
-      markWelcomeSeen: widget.markWelcomeSeen,
-      child: widget.child,
+      suggestedName: session.user.userMetadata?['apple_name'] as String?,
+      needsSetup: widget.needsProfileSetup,
+      child: OnboardingGate(
+        userId: session.user.id,
+        hasSeenWelcome: widget.hasSeenWelcome,
+        markWelcomeSeen: widget.markWelcomeSeen,
+        child: widget.child,
+      ),
     );
   }
 }
