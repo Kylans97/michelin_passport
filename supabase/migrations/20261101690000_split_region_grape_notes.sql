@@ -5,6 +5,10 @@
 -- on claude/grapes-by-region; the number is sort order: the next after
 -- 20261101680000, the highest on any branch.
 --
+-- Applied to production 2026-11-22 on the product owner's go ahead ("Test
+-- de migratie en ronde 1 eerst op een scratch stack, pas ze dan toe op
+-- productie"), after a full replay on a scratch stack.
+--
 -- The audit found the one `local_note` doing four jobs at once: the name
 -- the grape goes by there, its role (main grape, share, minimum
 -- percentage), a wine style, and only in 55 of 434 notes how it tastes
