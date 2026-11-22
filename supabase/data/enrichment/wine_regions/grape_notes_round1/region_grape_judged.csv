@@ -1,0 +1,435 @@
+country,region,grape,local_note,kinds,repeats_general,issue
+AM,Vayots Dzor,Areni,Known locally as Sev Areni,name,no,fragment without full stop
+AR,Añelo,Malbec,More than a third of the province's vineyard.,role,no,"volatile share figure, undated"
+AR,Cafayate,Torrontés,floral and dry,taste,yes,lowercase fragment
+AR,Cafayate,Malbec,dark and concentrated,taste,partly,lowercase fragment
+AR,General Roca,Malbec,About a quarter of the province's vineyard.,role,no,"volatile share figure, undated"
+AR,General Roca,Semillon,Grown on old vines in the Alto Valle.,style+place,no,
+AR,Mendoza,Malbec,"plush, violet-scented",taste,yes,lowercase fragment; contains a hyphen
+AR,San Juan,Malbec,"Now the leading red, ahead of Syrah.",role,no,"volatile ranking, undated"
+AR,San Juan,Syrah,The province's traditional red.,role,no,
+AR,Valle de Uco,Malbec,fresher and more fragrant at altitude,taste+place,no,lowercase fragment
+AT,Carnuntum,Zweigelt,The region's main red speciality.,role,no,
+AT,Eisenberg,Graševina,Called Welschriesling here; Eisenberg DAC only with a village or vineyard name.,name+role,partly,
+AT,Kremstal,Grüner Veltliner,Rounder in style from the loess terraces east of Krems.,taste+place,no,
+AT,Kremstal,Riesling,Grown mainly on the primary rock soils in the north.,place,no,
+AT,Leithaberg,Blaufränkisch,The grape of red Leithaberg DAC.,role,no,
+AT,Leithaberg,Pinot Blanc,Called Weißburgunder here.,name,yes,"spelled Weißburgunder here, Weissburgunder in Südsteiermark and Vulkanland"
+AT,Neusiedlersee,Zweigelt,"Fruity, fresh style.",taste,partly,
+AT,Neusiedlersee,Graševina,"Used for sweet, botrytised wines.",style,partly,
+AT,Südsteiermark,Sauvignon Blanc,The leading grape.,role,no,
+AT,Südsteiermark,Pinot Blanc,Called Weissburgunder here.,name,yes,
+AT,Südsteiermark,Muscat Blanc à Petits Grains,Called Muskateller or Gelber Muskateller here.,name,yes,
+AT,Südsteiermark,Chardonnay,Called Morillon here.,name,no,
+AT,Thermenregion,Pinot Noir,Called Blauburgunder here.,name,no,
+AT,Vulkanland Steiermark,Graševina,Called Welschriesling here.,name,partly,
+AT,Vulkanland Steiermark,Pinot Blanc,Called Weissburgunder here.,name,yes,
+AT,Vulkanland Steiermark,Sauvignon Blanc,A lead variety in every Ortswein area.,role,no,
+AT,Vulkanland Steiermark,Chardonnay,Called Morillon here.,name,no,
+AT,Vulkanland Steiermark,Muscat Blanc à Petits Grains,Called Gelber Muskateller here.,name,yes,
+AT,Vulkanland Steiermark,Pinot Gris,Called Grauburgunder here; the lead variety in Straden.,name+role,no,
+AT,Wagram,Grüner Veltliner,Full and flavoursome from the deep loess.,taste+place,no,
+AT,Weinviertel,Grüner Veltliner,"Fruity and spicy, with a peppery note.",taste,yes,
+AT,Weststeiermark,Blauer Wildbacher,"Made into Schilcher, a pale dry rosé.",style,yes,
+AU,Adelaide Hills,Syrah,A cool climate style.,taste,partly,vague: says cool climate style but not what it tastes like
+AU,Barossa Valley,Syrah,Some vineyards are among the oldest Shiraz plantings in the world.,style,no,
+AU,Barossa Valley,Mourvèdre,Known locally as Mataro.,name,no,
+AU,Canberra District,Syrah,Often made as a Shiraz Viognier blend.,style+role,no,
+AU,Canberra District,Viognier,Mainly blended with Shiraz.,role,no,
+AU,Clare Valley,Riesling,"Made dry, with lime and citrus notes.",taste+style,partly,
+AU,Coonawarra,Cabernet Sauvignon,"The region's main grape, with blackcurrant and plum fruit.",role+taste,partly,
+AU,Coonawarra,Syrah,Lighter than Shiraz from warmer South Australian regions.,taste,partly,
+AU,Eden Valley,Riesling,"The region's best known wine and, in 2026, its largest variety by tonnes crushed.",role,no,dated figure: 2026 crush ranking
+AU,Great Southern,Riesling,"Ages well, often for ten years or more.",style,no,
+AU,Heathcote,Syrah,Known for an inky depth of colour.,taste,no,
+AU,Hunter,Semillon,"Picked early, low in alcohol and unoaked; can age for decades.",style+taste,no,
+AU,Hunter,Chardonnay,Stone fruit and peach flavours.,taste,no,
+AU,Hunter,Syrah,"Medium bodied, turning earthy with age.",taste+style,no,
+AU,Margaret River,Cabernet Sauvignon,"The flagship red, often blended with Merlot.",role,no,
+AU,Margaret River,Sauvignon Blanc,Often blended with Semillon.,role,no,
+AU,Margaret River,Chardonnay,"Much of it from the Gingin clone, with lime like acidity.",taste,no,mentions a clone (Gingin) without explaining it
+AU,Margaret River,Semillon,Often blended with Sauvignon Blanc.,role,no,
+AU,McLaren Vale,Syrah,Often shows dark chocolate and blue fruit notes.,taste,no,
+AU,McLaren Vale,Grenache,Prized from old vines on sandy soils.,place+style,no,
+AU,McLaren Vale,Chardonnay,The most planted white grape.,role,no,
+AU,Mudgee,Syrah,Described as robust; the leading red by tonnes crushed.,taste+role,no,"volatile ranking by tonnes crushed, undated; unattributed 'Described as'"
+AU,Orange,Syrah,"The most widely planted variety, though fifth by tonnes crushed in 2026.",role,no,dated figure: 2026 crush ranking
+AU,Rutherglen,Durif,"A regional speciality, grown here for over a century.",role,no,
+AU,Rutherglen,Muscat à Petits Grains Rouges,"Known locally as Rutherglen Brown Muscat; the only grape of Rutherglen Muscat, which is graded Rutherglen, Classic, Grand and Rare.",name+role+style,no,long; grading tiers are about the wine not the grape
+AU,Rutherglen,Muscadelle,"Used for Topaque, the fortified wine formerly sold as Tokay.",style,no,
+AU,Tasmania,Pinot Noir,"Fragrant and delicate, light to medium bodied; also a sparkling base.",taste+style,partly,
+AU,Tasmania,Chardonnay,High natural acidity; also a sparkling base.,taste+style,no,
+AU,Yarra Valley,Pinot Noir,Light to medium bodied.,taste,partly,
+AU,Yarra Valley,Syrah,"A lighter, more medium bodied style.",taste,no,
+BE,Hagelandse wijn,Chardonnay,The official text names Chardonnay wines that recall Burgundy as the first of three main types.,style,no,"about 'the official text', not the grape; mentions three types without naming them"
+BE,Hagelandse wijn,Müller-Thurgau,"The official text names Müller-Thurgau wines, recalling those of Luxembourg, as a third type.",style,no,contains a hyphen; about 'the official text'; 'a third type' with the others unnamed
+BG,Melnik,Shiroka Melnishka,Grown almost only in the Struma valley.,place,yes,
+BG,Melnik,Ranna Melnishka Loza,"Also sold as Melnik 55, a crossing of Shiroka Melnishka and Valdiguié.",name,partly,
+BR,Altos de Pinto Bandeira,Graševina,Called Riesling Itálico here; at most 25% of a blend.,name+role,no,
+BR,Campanha Gaúcha,Chardonnay,"The largest variety in the Campanha Central microregion in 2015, about 201 ha.",role,no,dated figure (2015 hectares)
+BR,Campanha Gaúcha,Cabernet Sauvignon,About 175 ha in the Campanha Central microregion in 2015.,role,no,dated figure (2015 hectares)
+BR,Campanha Gaúcha,Tannat,About 110 ha in the Campanha Central microregion in 2015.,role,no,dated figure (2015 hectares)
+BR,Vale do São Francisco,Chenin Blanc,Used for still whites and for dry and off-dry sparkling wine.,style,no,contains a hyphen
+BR,Vale do São Francisco,Muscat Blanc à Petits Grains,"Grown here as Moscato Canelli, with Moscato Itália, for sweet Moscatel sparkling wine.",name+style,no,
+BR,Vale dos Vinhedos,Merlot,"The red grape chosen to represent the DO; about 138 ha in 2013, the largest variety here.",role,no,dated figure (2013 hectares)
+BR,Vale dos Vinhedos,Cabernet Sauvignon,Allowed in DO red blends beside Merlot.,role,no,
+BR,Vale dos Vinhedos,Chardonnay,The white grape chosen to represent the DO.,role,no,
+BR,Vale dos Vinhedos,Pinot Noir,Used for the DO's sparkling wines.,style,no,
+BR,Vale dos Vinhedos,Graševina,Called Riesling Itálico here; allowed beside Chardonnay.,name+role,no,
+CA,Niagara Peninsula,Cabernet Franc,Also made as Icewine.,style,no,
+CA,Niagara Peninsula,Vidal Blanc,The main Icewine grape.,style+role,partly,
+CA,Nova Scotia,L'Acadie Blanc,"The leading grape, used for still whites, Tidal Bay and sparkling wine.",role+style,partly,
+CH,Genève,Chasselas,May be labelled Perlan.,name,no,
+CH,Graubünden,Pinot Noir,Called Blauburgunder.,name,no,
+CH,Neuchâtel,Chasselas,Also bottled unfiltered as Non filtré.,style,no,
+CH,Ticino,Merlot,"Also vinified as a white, Merlot bianco.",style,no,
+CH,Valais,Pinot Noir,"The base of Dôle, alone or blended with Gamay.",style+role,no,
+CH,Valais,Chasselas,Sold as Fendant.,name,yes,
+CH,Valais,Cornalin,Also called Rouge du Pays.,name,yes,
+CH,Vaud,Chasselas,May be sold under the traditional name Dorin.,name,no,
+CL,Valle de Casablanca,Sauvignon Blanc,crisp and herbal,taste,yes,lowercase fragment
+CL,Valle de Colchagua,Carménère,rich and ripe,taste,no,lowercase fragment
+CL,Valle del Aconcagua,Syrah,Interest has grown here since the 1990s.,role,no,"about interest in the region, says nothing about the grape"
+CL,Valle del Aconcagua,Chardonnay,"Grown mostly in the Quillota area, toward the coast.",place,no,
+CL,Valle del Aconcagua,Sauvignon Blanc,"Grown mostly in the Quillota area, toward the coast.",place,no,
+CL,Valle del Biobío,Muscat of Alexandria,Known locally as Moscatel de Alejandría.,name,no,
+CL,Valle del Elqui,Pedro Ximénez,Known in Chile as Pedro Jiménez.,name,no,
+CL,Valle del Itata,Muscat of Alexandria,Known locally as Moscatel de Alejandría.,name,no,
+CL,Valle del Itata,Cinsault,"Old, dry farmed bush vines give fresh, fruity reds.",style+taste,no,
+CL,Valle del Limarí,Chardonnay,"Fresh and mineral, notably from limestone soils.",taste+place,no,
+CL,Valle del Maipo,Cabernet Sauvignon,"ripe, with a minty edge",taste,no,lowercase fragment
+CL,Valle del Maule,País,Often from old vines.,style,yes,
+CL,Valle del Maule,Carignan,"Prized from old, dry farmed bush vines. VIGNO, a producers' association, sets its own rules for these wines; they are not part of the decree.",style+role,no,"half the note is about a producers' association (VIGNO), not the grape"
+CN,Helan Mountain East Foothill,Carménère,"Grown here as Cabernet Gernischt, a grape closely linked to Carménère.",name,no,identity hedged: listed as Carménère but note says only 'closely linked'
+CN,Yantai,Carménère,"Grown here as Cabernet Gernischt, brought to Yantai by Changyu in 1892.",name,no,identity hedged (see Helan Mountain row: 'closely linked'); mostly company history (Changyu 1892)
+CZ,Moravia,Grüner Veltliner,"Veltlínské zelené; about 1,365 ha in Morava at 31 Dec 2025, the most planted",name+role,no,fragment without full stop; dated figure (hectares at 31 Dec 2025); 'the most planted' unclear of what
+CZ,Moravia,Riesling,Ryzlink rýnský,name,no,fragment without full stop
+CZ,Moravia,Graševina,Ryzlink vlašský; strongest in the Mikulovská subregion,name+place,no,fragment without full stop
+CZ,Moravia,Pinot Gris,Rulandské šedé,name,no,fragment without full stop
+CZ,Moravia,Sauvignon Blanc,Sauvignon,name,no,fragment without full stop
+CZ,Moravia,Blaufränkisch,"Frankovka; the most planted red, strongest in Velkopavlovická",name+role+place,no,fragment without full stop
+CZ,Moravia,Pálava,A Moravian crossing,place,yes,"fragment without full stop; about the grape's origin, not this region; repeats summary"
+CZ,Moravia,Gewürztraminer,Tramín červený,name,no,fragment without full stop
+CZ,Moravia,Pinot Blanc,Rulandské bílé,name,no,fragment without full stop
+CZ,Moravia,St. Laurent,Svatovavřinecké,name,no,fragment without full stop
+CZ,Moravia,Pinot Noir,Rulandské modré,name,no,fragment without full stop
+CZ,Moravia,Zweigelt,Zweigeltrebe,name,no,fragment without full stop
+CZ,Moravia,Muškát moravský,"Moravian Muscat, a Moravian crossing",name,partly,fragment without full stop
+DE,Ahr,Pinot Noir,Spätburgunder,name,no,fragment without full stop
+DE,Baden,Pinot Noir,Spätburgunder,name,no,fragment without full stop
+DE,Baden,Pinot Gris,Grauburgunder,name,no,fragment without full stop
+DE,Baden,Pinot Blanc,Weißburgunder,name,no,fragment without full stop
+DE,Baden,Chasselas,Gutedel,name,no,fragment without full stop
+DE,Hessische Bergstraße,Pinot Gris,Called Grauburgunder here.,name,no,
+DE,Hessische Bergstraße,Pinot Noir,Called Spätburgunder here.,name,no,
+DE,Mittelrhein,Pinot Noir,Called Spätburgunder here; the main red grape.,name+role,no,
+DE,Mosel,Riesling,"light, fragrant, dry to sweet",taste+style,partly,lowercase fragment
+DE,Pfalz,Pinot Noir,Spätburgunder,name,no,fragment without full stop
+DE,Pfalz,Pinot Gris,Grauburgunder,name,no,fragment without full stop
+DE,Rheingau,Pinot Noir,Spätburgunder,name,no,fragment without full stop
+DE,Saale-Unstrut,Pinot Blanc,Called Weißburgunder here.,name,no,
+DE,Sachsen,Pinot Blanc,Called Weißburgunder here.,name,no,
+DE,Sachsen,Pinot Gris,Called Grauburgunder here.,name,no,
+DE,Württemberg,Blaufränkisch,Called Lemberger here.,name,yes,
+DE,Württemberg,Schiava,Called Trollinger here; the region's classic light red.,name+role,no,
+DE,Württemberg,Pinot Noir,Called Spätburgunder here.,name,no,
+DE,Württemberg,Meunier,Called Schwarzriesling here.,name,no,
+ES,Calatayud,Grenache,Garnacha Tinta,name,no,fragment without full stop
+ES,Campo de Borja,Grenache,Garnacha,name,no,fragment without full stop
+ES,Cava,Macabeo,Macabeu / Viura,name,partly,fragment without full stop; slash between names
+ES,Cigales,Tempranillo,Tinta del País; about 70% of the vineyard per the Consejo Regulador,name+role,no,fragment without full stop; share figure with source cited in the note text
+ES,Cigales,Grenache,Garnacha,name,no,fragment without full stop
+ES,Getariako Txakolina,Hondarrabi Zuri,about 90% of the vineyard per Guía Peñín,role,no,lowercase fragment; source (Guía Peñín) cited in the note text
+ES,Islas Canarias,Palomino,Listán Blanco,name,no,fragment without full stop
+ES,Jerez-Xérès-Sherry,Palomino,Palomino Fino or Listán Blanco; the base of the dry styles,name+style,no,fragment without full stop
+ES,Jerez-Xérès-Sherry,Pedro Ximénez,Sun dried for the sweet wine of the same name,style,yes,fragment without full stop
+ES,Jumilla,Mourvèdre,Monastrell,name,no,fragment without full stop
+ES,Monterrei,Mencía,main red grape,role,no,lowercase fragment
+ES,Montsant,Grenache,Garnacha / Garnatxa,name,no,fragment without full stop; slash between names
+ES,Montsant,Carignan,Cariñena / Samsó,name,yes,fragment without full stop; slash between names
+ES,Navarra,Grenache,Garnacha,name,no,fragment without full stop
+ES,Penedès,Macabeo,Macabeu,name,no,fragment without full stop
+ES,Priorat,Grenache,Garnacha tinta; a recommended red variety in the pliego,name+role,no,fragment without full stop; jargon: 'the pliego'
+ES,Priorat,Carignan,Cariñena or Samsó; a recommended red variety in the pliego,name+role,partly,fragment without full stop; jargon: 'the pliego'
+ES,Ribeira Sacra,Godello,main white grape,role,no,lowercase fragment
+ES,Ribera del Duero,Tempranillo,"as Tinto Fino: fuller, darker",name+taste,no,lowercase fragment
+ES,Rioja,Tempranillo,"cherry, and vanilla from oak",taste+style,yes,lowercase fragment
+ES,Rioja,Grenache,adds body and spice,taste+role,no,lowercase fragment
+ES,Rueda,Macabeo,Viura,name,partly,fragment without full stop
+ES,Rueda,Palomino,Palomino Fino,name,no,fragment without full stop
+ES,Toro,Tempranillo,Tinta de Toro,name,no,fragment without full stop
+ES,Toro,Grenache,"Garnacha Tinta, a secondary variety",name+role,no,fragment without full stop
+ES,Toro,Verdejo,Main white variety with Malvasía Castellana,role,no,fragment without full stop
+ES,Valdeorras,Mencía,main red grape,role,no,lowercase fragment
+FR,Alsace,Pinot Blanc,A wine labelled Pinot Blanc may also be made from Auxerrois.,name+role,no,about Auxerrois as much as Pinot Blanc
+FR,Alsace,Muscat Blanc à Petits Grains,Muscat d'Alsace is most often a blend of Muscat à petits grains and Muscat Ottonel.,role,no,
+FR,Alsace,Pinot Noir,The only grape for Alsace red and rosé.,role,no,
+FR,Beaujolais,Chardonnay,The only grape for white Beaujolais.,role,no,
+FR,Bergerac,Merlot,Principal red grape and the most planted red.,role,no,
+FR,Bergerac,Cabernet Sauvignon,Principal red grape.,role,no,
+FR,Bergerac,Cabernet Franc,Principal red grape.,role,no,
+FR,Bergerac,Malbec,Called Cot in the cahiers; principal red grape.,name+role,no,jargon: 'the cahiers'
+FR,Bergerac,Semillon,"Principal white grape, central to the sweet wines.",role+style,no,
+FR,Bergerac,Sauvignon Blanc,Principal white grape.,role,no,
+FR,Bergerac,Muscadelle,"Principal white grape, notably in Monbazillac.",role+place,partly,
+FR,Bordeaux,Merlot,"leads on the right bank: round, plummy",role+taste,yes,lowercase fragment
+FR,Bordeaux,Cabernet Sauvignon,"leads on the left bank: firm, cedar",role+taste,yes,lowercase fragment
+FR,Bordeaux,Cabernet Franc,"in the blend, adds freshness",role+taste,no,lowercase fragment
+FR,Bordeaux,Sauvignon Blanc,"dry whites, with Sémillon",style+role,no,lowercase fragment; spells Sémillon while the grape is named Semillon
+FR,Burgundy,Chardonnay,from steely Chablis to rich Meursault,taste+place,partly,lowercase fragment
+FR,Burgundy,Pinot Noir,"earthy, elegant",taste,no,lowercase fragment
+FR,Cahors,Malbec,Called Côt in the cahier; at least 70% of each estate's Cahors plantings.,name+role,no,jargon: 'the cahier'
+FR,Cahors,Merlot,Accessory grape.,role,no,
+FR,Cahors,Tannat,Accessory grape.,role,no,
+FR,Champagne,Pinot Noir,body and structure,taste+role,no,lowercase fragment
+FR,Champagne,Chardonnay,finesse and citrus,taste+role,partly,lowercase fragment
+FR,Champagne,Meunier,fruit and roundness,taste+role,yes,lowercase fragment
+FR,Corsica,Sangiovese,Called Nielluccio or Niellucciu; at least 90% of Patrimonio red plantings.,name+role,no,
+FR,Corsica,Sciaccarellu,Spelled Sciaccarello in the cahiers; at least 40% of Ajaccio red plantings.,name+role,no,jargon: 'the cahiers'
+FR,Corsica,Vermentino,"Called Vermentinu or Malvoisie de Corse; the main white grape of Vin de Corse, Patrimonio and Ajaccio.",name+role,no,
+FR,Corsica,Grenache,Principal red grape of Vin de Corse.,role,no,
+FR,Corsica,Muscat Blanc à Petits Grains,The only grape of Muscat du Cap Corse.,role,no,
+FR,Corsica,Syrah,Accessory red grape of Vin de Corse.,role,no,
+FR,Gaillac,Mauzac,Principal white grape and the only grape of méthode ancestrale sparkling.,role+style,partly,
+FR,Gaillac,Duras,Principal red grape.,role,no,
+FR,Gaillac,Fer Servadou,Called Braucol locally and Fer in the cahier; principal red grape.,name+role,partly,jargon: 'the cahier'
+FR,Gaillac,Syrah,Principal red grape.,role,no,
+FR,Gaillac,Muscadelle,"Principal white grape, often in sweet wines.",role+style,partly,
+FR,Gaillac,Sauvignon Blanc,Accessory white grape.,role,no,
+FR,Gaillac,Gamay,Accessory red grape; with Duras the only grape of primeur reds.,role+style,no,
+FR,Irouléguy,Tannat,Principal red grape.,role,no,
+FR,Irouléguy,Cabernet Franc,Principal red grape.,role,no,
+FR,Irouléguy,Cabernet Sauvignon,"Accessory in reds, principal in rosés.",role,no,
+FR,Irouléguy,Gros Manseng,White grape.,role,no,empty of content: 'White grape.'
+FR,Irouléguy,Petit Manseng,White grape.,role,no,empty of content: 'White grape.'
+FR,Jura,Savagnin,The grape of vin jaune.,style,yes,
+FR,Jura,Poulsard,Called Ploussard locally.,name,no,
+FR,Jurançon,Petit Manseng,Principal grape; with Gros Manseng the only grape allowed for vendanges tardives. Leads the sweet wines.,role+style,partly,
+FR,Jurançon,Gros Manseng,Principal grape; mainly behind dry Jurançon Sec.,role+style,yes,
+FR,Loire Valley,Sauvignon Blanc,"Sancerre: crisp, mineral",taste+place,yes,fragment without full stop; leads with an appellation name and colon
+FR,Loire Valley,Chenin Blanc,"Vouvray: dry to sweet, often sparkling",style+place,yes,fragment without full stop; leads with an appellation name and colon
+FR,Loire Valley,Cabernet Franc,"Chinon: fragrant, light to firm",taste+place,partly,fragment without full stop; leads with an appellation name and colon
+FR,Madiran,Tannat,"Principal grape of Madiran, at least 60% of plantings and of the blend.",role,no,
+FR,Madiran,Cabernet Franc,"Accessory grape, historically called Bouchy here.",role+name,no,
+FR,Madiran,Cabernet Sauvignon,Accessory grape.,role,no,
+FR,Madiran,Fer Servadou,"Accessory grape, named Fer in the cahier and also called Pinenc.",role+name,partly,jargon: 'the cahier'
+FR,Madiran,Petit Manseng,Principal grape of sweet Pacherenc du Vic-Bilh.,role+style,no,contains a hyphen
+FR,Madiran,Gros Manseng,"Principal grape of dry Pacherenc du Vic-Bilh, accessory in the sweet.",role+style,no,contains a hyphen
+FR,Madiran,Sauvignon Blanc,"Accessory in Pacherenc du Vic-Bilh, at most 10% of plantings.",role,no,contains a hyphen
+FR,Provence,Mourvèdre,Leads the reds of Bandol.,role+place,no,
+FR,Provence,Vermentino,Called Rolle in Provence.,name,yes,
+FR,Rhône Valley,Grenache,the south: warm and generous,taste+place,yes,lowercase fragment
+FR,Rhône Valley,Syrah,the north: peppery and dark,taste+place,partly,lowercase fragment
+FR,Rhône Valley,Mourvèdre,the south: structure,role+place,yes,lowercase fragment
+FR,Roussillon,Macabeo,Called Macabeu locally.,name,no,
+FR,Savoie,Altesse,Also called Roussette; Roussette de Savoie is made from Altesse alone.,name+role,partly,
+FR,Savoie,Mondeuse,Reds from the Arbin and Saint-Jean-de-la-Porte crus are Mondeuse only.,role+place,no,contains a hyphen
+FR,Savoie,Chasselas,Grown mainly in Haute-Savoie.,place,no,contains a hyphen
+GB,Sussex,Meunier,Listed as Pinot Meunier in the Sussex specification.,name,no,"about the specification's wording, not the grape"
+GE,Kakheti,Rkatsiteli,Made as a dry white or as an amber wine on its skins.,style,yes,
+GE,Kakheti,Saperavi,"The only grape of Mukuzani, Kvareli and Akhasheni.",role,no,
+GE,Kakheti,Mtsvane Kakhuri,Called Kakhuri Mtsvane in the appellation rules; often up to 15% beside Rkatsiteli.,name+role,partly,
+GE,Kakheti,Cabernet Sauvignon,Allowed for red and rosé Kakheti; the only grape of Teliani.,role,no,
+GR,Amyndeon,Xinomavro,The only grape allowed.,role,no,
+GR,Crete,Vilana,"The only grape of white Peza, and the main white of Sitia, blended with Thrapsathiri.",role,partly,
+GR,Crete,Liatiko,"The only grape of Dafnes and the main red of Sitia, made dry or sweet from sun dried grapes.",role+style,yes,
+GR,Crete,Vidiano,A minor partner in Handakas - Candia dry whites and one of the main grapes of Malvasia Handakas - Candia.,role,no,contains a dash
+GR,Crete,Assyrtiko,A minor partner in Handakas - Candia dry whites and one of the main grapes of both Malvasia PDOs.,role,no,contains a dash
+GR,Crete,Muscat Blanc à Petits Grains,Grown here as Muscat of Spina; with Malvasia di Candia Aromatica it may make up at most 15% of the two Malvasia PDOs.,name+role,no,
+GR,Crete,Dafni,Rare; permitted for PGI Crete.,role,partly,thin: only that it is rare and permitted
+GR,Drama,Sauvignon Blanc,"Most often blended with Assyrtiko, the region's best known white style.",role,no,
+GR,Drama,Assyrtiko,Made on its own and in blends with Sauvignon Blanc.,role,no,
+GR,Drama,Malagousia,"A native white on the rise, made alone or in blends.",role+style,partly,
+GR,Drama,Agiorgitiko,A native red permitted for PGI Drama reds and rosés.,role,no,
+GR,Goumenissa,Xinomavro,"The main grape, fermented together with Negoska.",role+style,no,
+GR,Goumenissa,Negoska,At least 20% of the blend; it adds colour and softens the wine.,role+taste,yes,
+GR,Mantinia,Moschofilero,"At least 85% of every Mantinia wine, with Asproudes allowed for the rest.",role,no,
+GR,Monemvasia,Monemvasia,At least 51% of the blend.,role,no,'the blend' without saying with what
+GR,Monemvasia,Assyrtiko,Allowed in the blend with the local Asproudes and Kydonitsa.,role,no,
+GR,Naoussa,Xinomavro,The only grape allowed.,role,no,
+GR,Nemea,Agiorgitiko,The only grape allowed.,role,no,
+GR,Paros,Monemvasia,"The grape of white Paros, part of the red, and at least 85% of Malvasia Paros.",role+style,no,
+GR,Paros,Mandilaria,"The red grape of PDO Paros, blended with the white Monemvasia.",role,no,
+GR,Paros,Assyrtiko,Allowed with Monemvasia in Malvasia Paros.,role,no,
+GR,Patras,Roditis,The grape of the dry PDO Patra whites.,role,yes,
+GR,Patras,Mavrodaphne,"More than half of every Mavrodaphni of Patra, with Black Corinth allowed for the rest.",role,no,
+GR,Patras,Muscat Blanc à Petits Grains,The only grape of both Muscat PDOs; called Moschato Aspro in the specifications and Moschoudi locally.,role+name,no,
+GR,Rapsani,Xinomavro,"The lead grape, always blended here with the local Krasato and Stavroto.",role,no,
+GR,Samos,Muscat Blanc à Petits Grains,The only grape of PDO Samos.,role,no,
+GR,Santorini,Assyrtiko,"At least 85% of dry Santorini, at least 51% of the sweet wines.",role,no,
+HR,Hrvatska Istra,Malvazija Istarska,the most important and most planted white in Istria,role,yes,lowercase fragment
+HR,Hrvatska Istra,Teran,native red; recommended for this region only,role,partly,lowercase fragment
+HR,Hrvatsko Podunavlje,Graševina,the most planted grape,role,partly,lowercase fragment
+HR,Hrvatsko Podunavlje,Riesling,Rajnski rizling locally,name,no,fragment without full stop
+HR,Hrvatsko Podunavlje,Gewürztraminer,Traminac crveni (Traminac) locally,name,partly,fragment without full stop; parenthesis inside the name
+HR,Hrvatsko Podunavlje,Pinot Gris,Pinot sivi locally,name,no,fragment without full stop
+HR,Hrvatsko Podunavlje,Blaufränkisch,Frankovka locally; the most planted red,name+role,no,fragment without full stop
+HR,Plešivica,Graševina,the most planted white,role,partly,lowercase fragment
+HR,Plešivica,Riesling,Rajnski rizling locally,name,no,fragment without full stop
+HR,Plešivica,Blaufränkisch,Frankovka locally,name,no,fragment without full stop
+HR,Plešivica,Pinot Noir,Pinot crni locally,name,no,fragment without full stop
+HR,Slavonija,Graševina,the most planted white,role,partly,lowercase fragment
+HR,Slavonija,Riesling,Rajnski rizling locally,name,no,fragment without full stop
+HR,Slavonija,Pinot Gris,Pinot sivi locally,name,no,fragment without full stop
+HR,Slavonija,Blaufränkisch,Frankovka locally; the most planted red,name+role,no,fragment without full stop
+HR,Srednja i Južna Dalmacija,Plavac Mali,"the most planted red; best on south facing slopes of islands, peninsulas and coast",role+place,no,lowercase fragment
+HR,Srednja i Južna Dalmacija,Pošip,the most planted white,role,yes,lowercase fragment
+HU,Badacsony,Graševina,Olaszrizling in Hungarian; the most planted grape.,name+role,no,
+HU,Badacsony,Pinot Gris,Szürkebarát in Hungarian.,name,no,
+HU,Badacsony,Kéknyelű,Native to Badacsony and grown almost nowhere else.,place,yes,
+HU,Badacsony,Riesling,Rajnai rizling in Hungarian.,name,no,
+HU,Eger,Blaufränkisch,Kékfrankos; 30 to 65% of every Egri Bikavér and its largest part.,name+role,no,
+HU,Eger,Kadarka,Grown here since the Ottoman era; a Bikavér component.,role,no,
+HU,Somló,Juhfark,Somló is its home; about a fifth of the vineyard.,role+place,partly,undated share figure
+HU,Somló,Graševina,Olaszrizling in Hungarian.,name,no,
+HU,Tokaj,Furmint,The most planted grape and the base of Aszú.,role+style,yes,
+HU,Tokaj,Hárslevelű,"Used alone or blended with Furmint, dry and sweet.",role+style,yes,
+HU,Tokaj,Muscat Blanc à Petits Grains,Sárga Muskotály in Hungarian.,name,no,
+HU,Villány,Cabernet Franc,"The flagship, sold as Villányi Franc in the top tiers.",role+name,no,
+HU,Villány,Cabernet Sauvignon,The most planted grape.,role,no,
+HU,Villány,Portugieser,Second most planted; the base of Redy.,role+style,yes,
+HU,Villány,Blaufränkisch,Kékfrankos in Hungarian.,name,yes,
+IL,Judean Hills,Petit Verdot,Used in blends by Castel and Tzora.,role,no,"names two producers (Castel, Tzora); about wineries, not the region"
+IN,Nashik,Syrah,Usually labelled Shiraz.,name,no,
+IT,Abruzzo,Montepulciano,"At least 85 percent of Montepulciano d'Abruzzo, 90 percent in Colline Teramane.",role,no,
+IT,Alto Adige,Pinot Gris,Pinot Grigio; the most planted variety.,name+role,no,
+IT,Alto Adige,Pinot Blanc,"Pinot Bianco, Weissburgunder.",name,no,two names run together with no verb
+IT,Alto Adige,Pinot Noir,"Pinot Nero, Blauburgunder; the most planted red.",name+role,no,
+IT,Alto Adige,Schiava,"Vernatsch; once most of the vineyard area, now about eighth.",name+role,partly,"volatile ranking ('now about eighth'), undated"
+IT,Castelli di Jesi,Verdicchio,At least 85 percent.,role,no,incomplete: 'At least 85 percent' without naming the wine
+IT,Cerasuolo di Vittoria,Nero d'Avola,50 to 70 percent.,role,no,incomplete: percentage without naming the wine
+IT,Cerasuolo di Vittoria,Frappato,30 to 50 percent.,role,no,incomplete: percentage without naming the wine
+IT,Etna,Nerello Mascalese,"At least 80 percent of Etna Rosso and Rosato, with Nerello Cappuccio up to 20 percent.",role,no,
+IT,Etna,Carricante,At least 60 percent of Etna Bianco and 80 percent of Bianco Superiore.,role,no,
+IT,Fiano di Avellino,Fiano,At least 85 percent.,role,no,incomplete: percentage without naming the wine
+IT,Franciacorta,Chardonnay,Over three quarters of the vineyard area.,role,no,undated share figure
+IT,Franciacorta,Pinot Noir,"Pinot Nero; about 17 percent of the area, at least 35 percent of a rosé.",name+role,no,undated share figure
+IT,Franciacorta,Pinot Blanc,"Pinot Bianco; about 3 percent of the area, at most 50 percent of a blend.",name+role,no,undated share figure
+IT,Friuli,Pinot Gris,Pinot Grigio.,name,no,
+IT,Friuli,Ribolla Gialla,Also made as spumante.,style,no,
+IT,Friuli Colli Orientali,Friulano,"Base of the Savorgnano subzone wine, with 10 to 20% Picolit.",role,no,
+IT,Friuli Colli Orientali,Ribolla Gialla,"Has its own subzone, Ribolla Gialla di Rosazzo.",role+place,no,
+IT,Friuli Colli Orientali,Pinot Gris,Pinot Grigio; a copper tinted ramato version is allowed.,name+style,no,
+IT,Friuli Colli Orientali,Picolit,Sweet wines; Colli Orientali del Friuli Picolit is its own DOCG.,style+role,partly,
+IT,Friuli Colli Orientali,Schioppettino,"Native to the area, with its own subzone, Schioppettino di Prepotto.",role+place,partly,
+IT,Gallura,Vermentino,At least 95 percent.,role,no,incomplete: percentage without naming the wine
+IT,Greco di Tufo,Greco,At least 85 percent.,role,no,incomplete: percentage without naming the wine
+IT,Lambrusco Grasparossa di Castelvetro,Lambrusco Grasparossa,At least 85 percent.,role,no,incomplete: percentage without naming the wine
+IT,Lambrusco di Sorbara,Lambrusco di Sorbara,At least 60 percent.,role,no,incomplete: percentage without naming the wine
+IT,Lugana,Turbiana,At least 90 percent.,role,no,incomplete: percentage without naming the wine
+IT,Marsala,Grillo,For Marsala oro and ambra.,style+role,no,
+IT,Marsala,Catarratto,For Marsala oro and ambra.,style+role,no,
+IT,Marsala,Nero d'Avola,Called Calabrese here; for Marsala rubino.,name+style,no,
+IT,Montefalco,Sagrantino,100 percent of Montefalco Sagrantino.,role,no,
+IT,Montefalco,Sangiovese,60 to 80 percent of Montefalco Rosso.,role,no,
+IT,Piedmont,Nebbiolo,Barolo and Barbaresco,role,no,fragment without full stop
+IT,Primitivo di Manduria,Zinfandel,Called Primitivo here; at least 85 percent.,name+role,no,
+IT,Prosecco,Glera,At least 85 percent of the blend.,role,no,
+IT,Prosecco,Pinot Noir,Required at 10 to 15 percent in Prosecco Rosé.,role+style,no,
+IT,Sardinia,Grenache,Called Cannonau here; at least 85 percent of Cannonau di Sardegna.,name+role,no,
+IT,Sardinia,Vermentino,At least 85 percent of Vermentino di Sardegna.,role,no,
+IT,Soave,Garganega,"At least 70 percent of the blend, with Trebbiano di Soave and Chardonnay up to 30 percent.",role,no,
+IT,Taurasi,Aglianico,At least 85 percent.,role,no,incomplete: percentage without naming the wine
+IT,Trentodoc,Pinot Noir,Called Pinot Nero here.,name,no,
+IT,Trentodoc,Pinot Blanc,Called Pinot Bianco here.,name,no,
+IT,Tuscany,Sangiovese,Chianti and Brunello,role,no,fragment without full stop
+IT,Tuscany,Cabernet Sauvignon,in the Super Tuscans,role,no,lowercase fragment
+IT,Tuscany,Merlot,in Bolgheri and Super Tuscan blends,role+place,no,lowercase fragment
+IT,Valpolicella,Corvina,With Corvinone it makes up 45 to 95 percent of the blend; Rondinella adds 5 to 30 percent.,role,no,
+IT,Valtellina,Nebbiolo,Called Chiavennasca here; at least 90 percent.,name+role,no,
+IT,Verdicchio di Matelica,Verdicchio,At least 85 percent.,role,no,incomplete: percentage without naming the wine
+JP,Hokkaido,Kerner,The leading European white grape here.,role,no,
+JP,Hokkaido,Pinot Noir,Yoichi has become known for it.,place,no,"about a town's reputation, not how the grape tastes"
+JP,Yamagata,Delaware,Takahata town is among Japan's leading growers of it.,place,no,"about a town's production, not the grape"
+JP,Yamanashi,Koshu,"The region's main grape, well over half of its wine grape harvest.",role,no,
+JP,Yamanashi,Muscat Bailey A,The main red grape here.,role,no,
+LB,Bekaa Valley,Cinsault,Old vines are also bottled on their own as a lighter red.,style,no,
+LU,Moselle Luxembourgeoise,Müller-Thurgau,Sold as Rivaner; about 19% of the vineyard in 2024.,name+role,no,dated figure (2024 share)
+LU,Moselle Luxembourgeoise,Pinot Gris,About 16% of the vineyard in 2024.,role,no,dated figure (2024 share)
+LU,Moselle Luxembourgeoise,Auxerrois,About 15% of the vineyard in 2024.,role,no,dated figure (2024 share)
+LU,Moselle Luxembourgeoise,Riesling,About 13% of the vineyard in 2024.,role,no,dated figure (2024 share)
+LU,Moselle Luxembourgeoise,Pinot Blanc,About 13% of the vineyard in 2024.,role,no,dated figure (2024 share)
+LU,Moselle Luxembourgeoise,Pinot Noir,"The main red grape, about 11% of the vineyard in 2024.",role,no,dated figure (2024 share)
+LU,Moselle Luxembourgeoise,Chardonnay,About 5% of the vineyard in 2024.,role,no,dated figure (2024 share)
+LU,Moselle Luxembourgeoise,Elbling,About 4% of the vineyard in 2024.,role,no,dated figure (2024 share)
+MA,Zenata,Syrah,full-bodied,taste,partly,lowercase fragment; contains a hyphen
+MD,Ștefan Vodă,Băbească Neagră,Known in Moldova as Rară Neagră.,name,yes,
+MX,Querétaro,Macabeo,Used for sparkling wine.,style,no,
+MX,Querétaro,Xarel·lo,Used for sparkling wine.,style,no,
+NL,Maasvallei Limburg,Pinot Noir,"white, rosé and red",style,no,lowercase fragment
+NL,Mergelland,Müller-Thurgau,as Rivaner,name,no,lowercase fragment
+NL,Mergelland,Pinot Noir,"red, rosé and blanc de noirs",style,no,lowercase fragment
+NL,Oolde,Cabernet Blanc,"dry, and the sparkling",style,no,lowercase fragment; garbled: 'and the sparkling' reads incomplete
+NL,Oolde,Solaris,"dry and full, or late-harvest",taste+style,partly,lowercase fragment; contains a hyphen
+NL,Schouwen-Duiveland,Müller-Thurgau,as Rivaner,name,no,lowercase fragment
+NZ,Central Otago,Pinot Noir,About four fifths of the vineyard area.,role,no,undated share figure
+NZ,Gisborne,Chardonnay,Rich and generously fruited.,taste,no,
+NZ,Hawke's Bay,Syrah,Aromatic and elegant.,taste,no,
+NZ,Marlborough,Sauvignon Blanc,"Pungent and aromatic, with tropical fruit and green herb notes.",taste,partly,
+NZ,North Canterbury,Riesling,Close to half of New Zealand's Riesling is planted here.,role,no,"national share figure, undated"
+NZ,Wairarapa,Pinot Noir,Martinborough's reputation rests on it.,role,no,"about Martinborough's reputation, not the grape's character"
+PT,Alentejo,Tempranillo,called Aragonez here,name,no,lowercase fragment
+PT,Alentejo,Alicante Bouschet,"French in origin, long settled here",role,yes,"fragment without full stop; about the grape's origin, repeats summary"
+PT,Alentejo,Antão Vaz,the base of the region's best whites,role,yes,lowercase fragment
+PT,Açores,Verdelho,"the islands' best known grape, the same variety as on Madeira",role+name,partly,lowercase fragment
+PT,Bairrada,Baga,the dominant red,role,yes,lowercase fragment
+PT,Colares,Malvasia de Colares,at least 80% of every Colares white,role,no,lowercase fragment
+PT,Douro,Touriga Nacional,port and dark dry reds,style,yes,lowercase fragment
+PT,Douro,Tempranillo,as Tinta Roriz: a main blending grape,name+role,no,lowercase fragment
+PT,Dão,Mencía,called Jaen here,name,yes,lowercase fragment
+PT,Dão,Tempranillo,called Tinta Roriz or Aragonez here,name,no,lowercase fragment
+PT,Dão,Encruzado,"the key white, grown almost only in Dão",role+place,yes,lowercase fragment
+PT,Lisboa,Arinto,"the grape of Bucelas, at least 75% of its whites",role,partly,lowercase fragment
+PT,Lisboa,Tempranillo,called Aragonez here,name,no,lowercase fragment
+PT,Madeira,Tinta Negra,"the most planted grape, used in every style",role+style,yes,lowercase fragment
+PT,Madeira,Sercial,gives the driest style,style,yes,lowercase fragment
+PT,Madeira,Verdelho,gives the medium dry style,style,yes,lowercase fragment
+PT,Setúbal,Muscat of Alexandria,called Moscatel de Setúbal or Moscatel Graúdo here,name,partly,lowercase fragment
+PT,Tejo,Fernão Pires,"the main white, above all on the riverside Campo",role+place,partly,lowercase fragment
+PT,Vinho Verde,Albariño,called Alvarinho here; the grape of Monção e Melgaço,name+role,partly,lowercase fragment
+PT,Vinho Verde,Loureiro,leads the whites of the Lima sub-region,role+place,no,lowercase fragment; contains a hyphen
+RO,Cotnari,Grasă de Cotnari,The grape behind the famous sweet wines.,style+role,yes,
+RO,Cotnari,Muscat Blanc à Petits Grains,Grown here as Tămâioasă Românească.,name,no,
+RO,Dealu Mare,Fetească Neagră,The grape the district is best known for.,role,yes,
+RO,Dealu Mare,Blaufränkisch,Grown here as Burgund Mare.,name,no,
+RO,Dealu Mare,Muscat Blanc à Petits Grains,Grown here as Tămâioasă Românească.,name,no,
+RO,Dealu Mare,Graševina,Grown here as Riesling italian.,name,no,
+RS,Fruška Gora,Graševina,Grašac or Italijanski rizling locally; recommended for Fruška gora in the official zoning rulebook,name+role,no,fragment without full stop; jargon: 'official zoning rulebook'; 'Fruška gora' capitalised differently from the region name
+SI,Goriška Brda,Ribolla Gialla,Rebula; about a quarter of plantings.,name+role,partly,undated share figure
+SI,Goriška Brda,Merlot,The second most planted grape.,role,no,
+SI,Goriška Brda,Friulano,Zeleni sauvignon in Slovenia.,name,no,
+SI,Vipavska dolina,Ribolla Gialla,Rebula; the leading white.,name+role,partly,
+SI,Vipavska dolina,Merlot,The leading red.,role,no,
+SI,Štajerska Slovenija,Graševina,Called Laški rizling here.,name,no,
+SI,Štajerska Slovenija,Furmint,Called Šipon here.,name,no,
+SI,Štajerska Slovenija,Riesling,Called Renski rizling here.,name,no,
+SI,Štajerska Slovenija,Pinot Gris,Called Sivi pinot here.,name,no,
+SI,Štajerska Slovenija,Muscat Blanc à Petits Grains,Called Rumeni muškat here.,name,no,
+SI,Štajerska Slovenija,Gewürztraminer,Called Dišeči traminec here.,name,no,
+TR,Cappadocia,Emir,The region's signature white grape,role,no,fragment without full stop
+TR,Cappadocia,Narince,"Native to Tokat, also grown here",place,yes,"fragment without full stop; about the grape's origin elsewhere (Tokat), not this region"
+TR,Cappadocia,Kalecik Karası,Native to Kalecik near Ankara,place,yes,"fragment without full stop; about the grape's origin elsewhere (Kalecik), not this region"
+TR,Cappadocia,Öküzgözü,Native to eastern Anatolia,place,yes,"fragment without full stop; about the grape's origin elsewhere (eastern Anatolia), not this region"
+TR,Thrace,Papazkarası,The local red grape of Turkish Thrace,role,yes,fragment without full stop
+TR,Thrace,Kınalı Yapıncak,Local white of Şarköy and Mürefte,place,yes,fragment without full stop
+US,Finger Lakes,Riesling,"racy, dry to sweet",taste+style,yes,lowercase fragment
+US,Lodi,Zinfandel,"Lodi has many old vines, most of them in the Mokelumne River sub AVA.",style+place,no,"about the region's old vines generally, not the grape"
+US,Napa Valley,Cabernet Sauvignon,"the valley's signature: ripe, dark, firm",taste+role,partly,lowercase fragment
+US,Napa Valley,Chardonnay,from the cooler south end,place,no,lowercase fragment
+US,Paso Robles,Cabernet Sauvignon,the most planted grape,role,no,lowercase fragment
+US,Paso Robles,Zinfandel,ripe and spicy,taste,yes,lowercase fragment
+US,Russian River Valley,Zinfandel,Old vines on the Santa Rosa Plain.,style+place,no,
+US,Sonoma County,Chardonnay,the county's most planted grape,role,no,lowercase fragment
+US,Sonoma County,Pinot Noir,near the cool coast,place,no,lowercase fragment
+US,Sonoma County,Cabernet Sauvignon,in the warm Alexander Valley,place,no,lowercase fragment
+US,Sonoma County,Zinfandel,"old vines, inland",style+place,no,lowercase fragment
+US,Walla Walla Valley,Syrah,Close to half the vineyard in The Rocks District.,role+place,no,undated share figure
+US,Willamette Valley,Pinot Noir,"elegant, earthy, red-fruited",taste,no,lowercase fragment; contains a hyphen
+UY,Canelones,Tannat,"About 1,060 ha here in 2023, two thirds of all Tannat in Uruguay.",role,no,dated figure (2023 hectares)
+UY,Maldonado,Albariño,The most planted white grape in Maldonado.,role,no,repeats the region name ('in Maldonado') inside the Maldonado note
+ZA,Elgin,Sauvignon Blanc,About 37 to 38 percent of vines,role,no,fragment without full stop; undated share figure
+ZA,Franschhoek,Semillon,"Old vines, some planted over a century ago",style,partly,fragment without full stop
+ZA,Hemel-en-Aarde,Pinot Noir,Noted for its structure.,taste,no,
+ZA,Robertson,Chardonnay,Much of it goes into Cap Classique sparkling wine.,style,no,
+ZA,Swartland,Chenin Blanc,Old bush vines,style,no,fragment without full stop
+ZA,Tulbagh,Chenin Blanc,The most planted variety.,role,no,

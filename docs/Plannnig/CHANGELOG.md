@@ -8,6 +8,13 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Grapes by region: names only on the region sheet, the region's own words on the grape screen** (product owner, 2026-11-22: "We kunnen beter onder 'the grapes' echt alleen de druif naam zetten en als je dan doorklikt de uitleg over die druif en de smaken van die druif als ze uit dat gebied komen"; after the audit at https://claude.ai/artifact/XuRXST3Vjxow9RhL5bqopi, "Kies voor drie velden (naam daar, rol, smaak daar)"). Branch `claude/grapes-by-region`, not merged.
+  - **Migration `20261101690000_split_region_grape_notes.sql`, not applied:** `wine_region_grapes` gets `local_name`, `role_note` and `taste_note` beside `local_note`, which builds up to 1.9.0 (48) still show and which the data round keeps correct. Columns only; the table's public read covers them.
+  - **App:** `THE GRAPES` lists names only. `GrapeScreen` opened from a region (`fromRegion`) leads with an "In {region}" block: the taste there in serif, else "Called {name} here.", else the role, with the rest below; a region that says nothing gets one quiet "Grown in {region}." line, never made up; a grape the region doesn't list gets no block. "Where it grows" lists names only, the region you came from first. Before the migration the repository falls back to the old note (42703), shown as the lead.
+  - **Data round 1, prepared for review, not applied** (`supabase/data/enrichment/wine_regions/grape_notes_round1/`, review page https://claude.ai/artifact/57MKeSSFxStkPpBsf1PcXr): all 434 written notes split into the three fields with the audit's fixes, no new facts (148 names, 245 roles, 42 tastes, 57 emptied as repeats, dated figures or off topic); 34 grape corrections with two independent sources each, 13 held back. `grape_notes_round1_v1.sql` keys on ids and checks the count before commit.
+  - Tests: `test/grapes_by_region_test.dart`; `flutter analyze` clean, `flutter test` 3,130 passing. Seen as rendered screenshots, not on a device.
+
 ---
 
 ## v1.9.0 (48) — 2026-11-22

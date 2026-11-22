@@ -1,0 +1,42 @@
+grape,colour,grape_tastes,flag
+Areni,red,"Cherry, Plum, Black pepper and spice","odd entry: ""Black pepper and spice"" joins two tastes in one"
+Chardonnay,white,"Lemon, Green apple, Butter, with oak, Hazelnut","odd entry: ""Butter, with oak"" splits into ""Butter"" and ""with oak"""
+Semillon,white,"Beeswax, Lemon, Peach","summary is South Africa specific (Cape, Franschhoek) though shown for every region"
+Bonarda,red,Spice,only one taste
+Pinot Blanc,white,"Lemon zest, Peach, Mineral","summary is Austria specific (""called Weissburgunder in Austria"")"
+Muscat Blanc à Petits Grains,white,,no tastes; summary is Austria specific
+St. Laurent,red,Blackberry,only one taste
+Portugieser,red,"Red berries, Spice, Floral","summary is Hungary specific (Villány, Redy)"
+Ranna Melnishka Loza,red,,no tastes
+Tempranillo,red,"Cherry, Plum, Dried fig, Vanilla, with oak","odd entry: ""Vanilla, with oak"" splits into ""Vanilla"" and ""with oak"""
+L'Acadie Blanc,white,Floral,only one taste
+Gamaret,red,Spice,only one taste
+Humagne Rouge,red,Violet,only one taste
+Muscat of Alexandria,white,"Lychee, Orange, Honey, Flowers",no fault in tastes; summary is Portugal specific (Setúbal) though shown for every region
+Gewürztraminer,white,"Lychee, Rose, Ginger, Grapefruit","summary is Croatia specific (""called Traminac in Croatia"")"
+Marselan,red,Dark berries,only one taste
+Mavro,red,Red fruit,only one taste
+Muškát moravský,white,Muscat,"only one taste, and it is ""Muscat"", the grape family rather than a taste"
+Parellada,white,,no tastes
+Mauzac,white,Apple,only one taste
+Duras,red,Pepper,only one taste
+Fer Servadou,red,Dark berries,only one taste
+Poulsard,red,Red berries,only one taste
+Grenache Blanc,white,Plum,white grape tasting of plum; only one taste
+Mandilaria,red,Leather,only one taste
+Negoska,red,Chocolate,only one taste
+Mavrodaphne,red,Dried fruit,only one taste
+Lambrusco Grasparossa,red,Black cherry,only one taste
+Lambrusco di Sorbara,red,Violet,only one taste
+Delaware,white,,no tastes
+Elbling,white,"Apple, Tart, Neutral","""Tart"" and ""Neutral"" are descriptors, not tastes; only one real taste (Apple)"
+Băbească Neagră,red,,no tastes
+Pinotin,red,Dark berries,only one taste
+Verdelho,white,"Caramel, Nuts, Spice","tastes (caramel, nuts) fit only Madeira, while the summary also describes dry aromatic Australian whites"
+Tinta Negra,red,,no tastes
+Grasă de Cotnari,white,,no tastes
+Frâncușă,white,,no tastes
+Fetească Regală,white,Floral,only one taste
+Muscat Ottonel,white,,no tastes
+Papazkarası,red,,no tastes
+Kınalı Yapıncak,white,Pear,only one taste
