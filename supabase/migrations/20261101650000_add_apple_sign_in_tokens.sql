@@ -9,8 +9,9 @@
 -- is sort order: the next after 20261101640000, the highest on any
 -- branch.
 --
--- PREPARED -- NOT APPLIED until the product owner approves, after the
--- privacy policy names Sign in with Apple.
+-- Applied to production 2026-11-22 on the product owner's go ahead ("apply
+-- the migration"), after the privacy policy naming Sign in with Apple went
+-- live on mantelier.app the same day.
 --
 -- The apple-token Edge Function writes a row after a native sign-in
 -- (exchanging the one-time authorization code for a refresh token with
