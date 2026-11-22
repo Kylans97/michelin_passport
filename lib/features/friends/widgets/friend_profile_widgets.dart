@@ -91,7 +91,8 @@ class _InitialGlyph extends StatelessWidget {
   );
 }
 
-/// A photo, or a dark-green fallback tile with a 1px gold border and the
+/// A photo, or a dark-green fallback tile with a 1px hairline border (gold
+/// until 2026-11-22, kept now for stars and Keys only) and the
 /// venue's own initial in Spectral italic ivory (never gold — that would
 /// be gold TEXT, which this redesign forbids; the border is ornament, the
 /// initial is text) — this screen's own photo fallback, never the old "M"
@@ -122,7 +123,7 @@ class PhotoOrTile extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           color: AppColors.green800,
-          border: Border.all(color: AppColors.gold600, width: 1),
+          border: Border.all(color: AppColors.hairlineOnGreen, width: 1),
         ),
         child: (photo != null && photo.isNotEmpty)
             ? AppNetworkImage(
@@ -183,7 +184,7 @@ class RoundVenueThumbnail extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: AppColors.green800,
-        border: Border.all(color: AppColors.gold600, width: 1),
+        border: Border.all(color: AppColors.hairlineOnGreen, width: 1),
       ),
       child: (photo != null && photo.isNotEmpty)
           ? AppNetworkImage(

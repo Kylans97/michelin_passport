@@ -6,11 +6,18 @@ import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_editorial_glyphs.dart';
 import '../../../data/repositories/wishlist_repository.dart';
 import '../../../models/passport_venue.dart';
+import '../../../models/planned_trip.dart';
+import '../../trips/trip_detail_screen.dart';
+import '../../trips/widgets/trip_card.dart' show formatTripDateRange;
 import '../friend_profile_data.dart';
 import '../friend_profile_screen.dart' show openFriendVenue;
+import '../widgets/friend_event_row.dart';
 import '../widgets/friend_profile_widgets.dart';
+import 'friend_profile_overview_tab.dart' show friendUpcomingRow;
 
-/// Tab 3: shared wishlist items (each with its own "Plan" pill), then the
+/// Tab 3: events you could go to together and trips you're both on
+/// (Friends round one, 2026-11-22; each only when it has something), then
+/// shared wishlist items (each with its own "Plan" pill), then the
 /// friend's own-only items (each with a "+" that saves it to the viewer's
 /// wishlist and moves it up into the shared section), then a sticky
 /// "Suggest going together" button pinned to the bottom of the tab — both
@@ -34,7 +41,8 @@ class FriendProfileTogetherTab extends StatefulWidget {
   });
 
   @override
-  State<FriendProfileTogetherTab> createState() => _FriendProfileTogetherTabState();
+  State<FriendProfileTogetherTab> createState() =>
+      _FriendProfileTogetherTabState();
 }
 
 class _FriendProfileTogetherTabState extends State<FriendProfileTogetherTab> {
@@ -62,7 +70,9 @@ class _FriendProfileTogetherTabState extends State<FriendProfileTogetherTab> {
       if (!mounted) return;
       HapticFeedback.lightImpact();
       setState(() {
-        _onlyTheirs = _onlyTheirs.where((v) => wishlistVenueKey(v) != key).toList();
+        _onlyTheirs = _onlyTheirs
+            .where((v) => wishlistVenueKey(v) != key)
+            .toList();
         _shared = [..._shared, venue];
         _addingKeys.remove(key);
       });
@@ -90,11 +100,24 @@ class _FriendProfileTogetherTabState extends State<FriendProfileTogetherTab> {
               96,
             ),
             children: [
+              if (widget.data.eventsTogether.isNotEmpty) ...[
+                const FriendSectionLabel('Events you could go to together'),
+                for (final e in widget.data.eventsTogether)
+                  friendUpcomingRow(context, e),
+                const SizedBox(height: CsSpacing.xl),
+              ],
+              if (widget.data.tripsTogether.isNotEmpty) ...[
+                const FriendSectionLabel('Trips together'),
+                for (final trip in widget.data.tripsTogether)
+                  _TripRow(trip: trip),
+                const SizedBox(height: CsSpacing.xl),
+              ],
               Text(
                 'Where you’d both go',
-                style: CsTypography.editorialTitle(size: 18, italic: true).copyWith(
-                  color: AppColors.textOnDark,
-                ),
+                style: CsTypography.editorialTitle(
+                  size: 18,
+                  italic: true,
+                ).copyWith(color: AppColors.textOnDark),
               ),
               const SizedBox(height: CsSpacing.lg),
               if (!hasAnything)
@@ -182,8 +205,8 @@ class _FriendProfileTogetherTabState extends State<FriendProfileTogetherTab> {
                 child: ElevatedButton(
                   onPressed: () => widget.onPlanDinner(null),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.gold600,
-                    foregroundColor: AppColors.textPrimary,
+                    backgroundColor: AppColors.ivory,
+                    foregroundColor: AppColors.deepGreen,
                     shape: const StadiumBorder(),
                     textStyle: CsTypography.editorialBody.copyWith(
                       fontWeight: FontWeight.w600,
@@ -205,7 +228,11 @@ class _SharedRow extends StatelessWidget {
   final VoidCallback onPlan;
   final VoidCallback onTap;
 
-  const _SharedRow({required this.venue, required this.onPlan, required this.onTap});
+  const _SharedRow({
+    required this.venue,
+    required this.onPlan,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +264,12 @@ class _SharedRow extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  PhotoOrTile(photoUrl: null, venueName: venue.name, width: 72, height: 72),
+                  PhotoOrTile(
+                    photoUrl: null,
+                    venueName: venue.name,
+                    width: 72,
+                    height: 72,
+                  ),
                   const SizedBox(width: CsSpacing.md),
                   Expanded(
                     child: Column(
@@ -247,11 +279,14 @@ class _SharedRow extends StatelessWidget {
                           venue.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: CsTypography.editorialTitle(size: 17.5).copyWith(
-                            color: AppColors.textOnDark,
-                          ),
+                          style: CsTypography.editorialTitle(
+                            size: 17.5,
+                          ).copyWith(color: AppColors.textOnDark),
                         ),
-                        if (award != null) ...[const SizedBox(height: 3), award],
+                        if (award != null) ...[
+                          const SizedBox(height: 3),
+                          award,
+                        ],
                         const SizedBox(height: 3),
                         CsCountryLabel(
                           cityName: cityName,
@@ -291,12 +326,14 @@ class _PlanPill extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.gold600, width: 1),
+          border: Border.all(color: AppColors.secondaryOnDark, width: 1),
           borderRadius: BorderRadius.circular(17),
         ),
         child: Text(
           'Suggest',
-          style: CsTypography.editorialLabel().copyWith(color: AppColors.textOnDark),
+          style: CsTypography.editorialLabel().copyWith(
+            color: AppColors.textOnDark,
+          ),
         ),
       ),
     ),
@@ -344,16 +381,18 @@ class _DimmedRow extends StatelessWidget {
                           venue.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: CsTypography.editorialTitle(size: 16.5).copyWith(
-                            color: AppColors.secondaryOnDark,
-                          ),
+                          style: CsTypography.editorialTitle(
+                            size: 16.5,
+                          ).copyWith(color: AppColors.secondaryOnDark),
                         ),
                         const SizedBox(height: 3),
                         CsCountryLabel(
                           cityName: cityName,
                           countryCode: venue.countryCode,
                           style: CsTypography.editorialBody.copyWith(
-                            color: AppColors.secondaryOnDark.withValues(alpha: 0.7),
+                            color: AppColors.secondaryOnDark.withValues(
+                              alpha: 0.7,
+                            ),
                             fontSize: 12.5,
                           ),
                         ),
@@ -392,7 +431,9 @@ class _AddButton extends StatelessWidget {
           height: 34,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: AppColors.hairlineOnGreen.withValues(alpha: 1)),
+            border: Border.all(
+              color: AppColors.hairlineOnGreen.withValues(alpha: 1),
+            ),
           ),
           alignment: Alignment.center,
           child: busy
@@ -404,7 +445,74 @@ class _AddButton extends StatelessWidget {
                     color: AppColors.textOnDark,
                   ),
                 )
-              : const Icon(Icons.add_rounded, color: AppColors.textOnDark, size: 18),
+              : const Icon(
+                  Icons.add_rounded,
+                  color: AppColors.textOnDark,
+                  size: 18,
+                ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// A trip both are on; opens the shared trip.
+class _TripRow extends StatelessWidget {
+  final PlannedTrip trip;
+  const _TripRow({required this.trip});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: '${trip.title}, ${formatTripDateRange(trip)}',
+    excludeSemantics: true,
+    child: Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => TripDetailScreen(trip: trip)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Container(height: 1, color: AppColors.hairlineOnGreen),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          trip.title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: CsTypography.editorialTitle(
+                            size: 17,
+                          ).copyWith(color: AppColors.textOnDark),
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          formatTripDateRange(trip),
+                          style: CsTypography.editorialBody.copyWith(
+                            color: AppColors.secondaryOnDark,
+                            fontSize: 12.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Icon(
+                    Icons.chevron_right_rounded,
+                    color: AppColors.secondaryOnDark,
+                    size: 20,
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     ),
