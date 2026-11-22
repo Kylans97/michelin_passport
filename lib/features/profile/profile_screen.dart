@@ -32,6 +32,7 @@ import '../review/member_insights_screen.dart';
 import '../review/review_queue_screen.dart';
 import 'change_avatar_sheet.dart';
 import 'change_password_screen.dart';
+import 'sign_in_methods_screen.dart';
 import 'delete_account_screen.dart';
 import 'journey_card.dart';
 import 'journey_metrics.dart';
@@ -185,6 +186,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _openDeleteAccount() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const DeleteAccountScreen()),
+  );
+
+  void _openSignInMethods() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const SignInMethodsScreen()),
   );
 
   void _openChangePassword() => Navigator.push(
@@ -428,6 +434,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.edit_outlined,
                     label: 'Edit profile',
                     onTap: () => _openEditProfile(user),
+                  ),
+                  _SettingsRow(
+                    icon: Icons.key_outlined,
+                    label: 'Ways to sign in',
+                    onTap: _openSignInMethods,
                   ),
                   _SettingsRow(
                     icon: Icons.lock_reset_outlined,

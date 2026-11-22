@@ -8,7 +8,15 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.9.0 (43) — 2026-11-22
+
+1.9.0 (42) plus Ways to sign in with Link Apple, and the website's Apple and email-code sign-in (site only, already live). The product owner asked for it in the same build ("Ja bouw dat maar, voeg het daarna toe aan die build 42, dan kunnen we die bouwen en daarna naar testflight pushen"); 42 was already archived, so this is 43 and 42 is superseded. No migration since 42; ledger 172/172. `flutter analyze` clean, `flutter test` 3,095 passing.
+
 ### Added
+- **Ways to sign in, with Link Apple** (product owner, 2026-11-22, after a hidden-email Apple sign-in on the website made a second, empty account: "Ja bouw dat maar"). A new row in Profile's ACCOUNT section opens `SignInMethodsScreen`: the account's email (a code sent there always works) and Apple, linked or not. "Continue with Apple" (one of the titles Apple's guidelines allow on its button) links Apple to the signed-in account with `linkIdentityWithIdToken` (`AuthRepository.linkApple`), so a member can sign in with Apple too, also when Apple hides their email; the authorization code goes to `apple-token` as at sign-in, so deleting the account revokes it. An Apple ID already on another account says so. No unlinking. **Needs "Allow manual linking" on** in the project's Auth settings, else linking answers that it isn't available yet. Tests: `test/sign_in_methods_test.dart`. Seen as a rendered screenshot; linking itself needs a phone and a real Apple ID.
+
 - **The website signs in with Apple and with an email code too** (product owner, 2026-11-22: "we moeten op de website ook kunnen inloggen met apple nu toch? Anders kunnen mensen met die nieuwe accounts daar straks niet inloggen"). `site-next/` only; no migration.
   - `/account/sign-in`: Continue with Apple and Continue with email above the password form ("or with your password"). The email step sends a six digit code and signs in on the sixth digit; two-step sign-in follows where the account has it, as before.
   - Still no sign-up on the site (decision of 2026-11-16): a code is sent only to an address with an account (`shouldCreateUser: false`), and the answer is the same either way ("If … has a Mantelier account, a code is on its way"). An Apple account without a username, never set up in the app, is signed out again with "Make yours in the Mantelier app first". Supabase does create the bare account in that case; the app picks it up at setup with the same Apple ID.
@@ -20,7 +28,7 @@ The format follows Keep a Changelog.
 
 ## v1.9.0 (42) — 2026-11-22
 
-1.9.0 (41) plus Friends round one: `claude/friends-together` (PR #15) merged into `claude/signup-flow` and from there into main on 2026-11-22 (product owner, after hearing PR #15 was not in 41: "oke kunnen we dat ook toevoegen?"). Merged without conflicts; no migration, so the schema diff of 41 stands (ledger 172/172). `flutter analyze` clean and `flutter test` 3,090 passing on the merged tree (3,097 on the Friends branch alone, which lacked the sign-up flow's test changes). 1.9.0 (41) was archived before this and is superseded; upload this one. Archived with `flutter build ipa --release` (the export step fails without a command-line Apple account, as expected): `~/Library/Developer/Xcode/Archives/2026-11-22/Runner 1.9.0 (42).xcarchive`, entitlements carrying `com.apple.developer.applesignin`, for upload from the Organizer. GitHub marks PR #15 merged.
+1.9.0 (41) plus Friends round one: `claude/friends-together` (PR #15) merged into `claude/signup-flow` and from there into main on 2026-11-22 (product owner, after hearing PR #15 was not in 41: "oke kunnen we dat ook toevoegen?"). Merged without conflicts; no migration, so the schema diff of 41 stands (ledger 172/172). `flutter analyze` clean and `flutter test` 3,090 passing on the merged tree (3,097 on the Friends branch alone, which lacked the sign-up flow's test changes). 1.9.0 (41) was archived before this and is superseded. Itself superseded by 1.9.0 (43). Archived with `flutter build ipa --release` (the export step fails without a command-line Apple account, as expected): `~/Library/Developer/Xcode/Archives/2026-11-22/Runner 1.9.0 (42).xcarchive`, entitlements carrying `com.apple.developer.applesignin`, for upload from the Organizer. GitHub marks PR #15 merged.
 
 ### Added
 - **Friends round one** (product owner, 2026-11-22, on the Friends Ideas canvas https://claude.ai/artifact/YDgLjzkQhgQp75ANiLZjfV: "Je mag best een extra tab onder friends zetten ... 2 vind ik ook wel nice naast 1 en 3. Daarnaast vind ik 4 wellicht iets voor later"). Ideas 1, 2 and 3, the parts that need no migration; idea 4 is for later.

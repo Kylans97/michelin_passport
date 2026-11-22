@@ -179,6 +179,73 @@ class AuthRepository {
     return true;
   }
 
+  // ── Link Apple to the signed-in account ──────────────────────────────────
+  //
+  // For a member who already has an account (a password, or an email code)
+  // and wants to sign in with Apple too, also when Apple hides their email
+  // (product owner, 2026-11-22, after a hidden-email Apple sign-in on the
+  // website made a second, empty account). linkIdentityWithIdToken adds the
+  // Apple identity to the current user; it needs "Allow manual linking" on
+  // in the project's Auth settings. The authorization code goes to
+  // apple-token as at sign-in, so deleting the account revokes Apple too.
+
+  /// Whether an Apple identity is linked to the signed-in account.
+  Future<bool> hasAppleLinked() async {
+    final identities = await _client.auth.getUserIdentities();
+    return identities.any((i) => i.provider == 'apple');
+  }
+
+  /// Returns false when the member cancelled Apple's sheet.
+  Future<bool> linkApple() async {
+    final rawNonce = _randomNonce();
+    final hashedNonce = sha256.convert(utf8.encode(rawNonce)).toString();
+    final AuthorizationCredentialAppleID credential;
+    try {
+      credential = await SignInWithApple.getAppleIDCredential(
+        scopes: const [],
+        nonce: hashedNonce,
+      );
+    } on SignInWithAppleAuthorizationException catch (e) {
+      if (e.code == AuthorizationErrorCode.canceled) return false;
+      rethrow;
+    }
+    final idToken = credential.identityToken;
+    if (idToken == null) {
+      throw const AuthException('Apple did not return a sign-in token.');
+    }
+    try {
+      await _client.auth.linkIdentityWithIdToken(
+        provider: OAuthProvider.apple,
+        idToken: idToken,
+        nonce: rawNonce,
+      );
+    } on AuthException catch (e) {
+      if (e.code == 'identity_already_exists') {
+        throw const AuthException(
+          'This Apple ID already belongs to another Mantelier account.',
+        );
+      }
+      if (e.code == 'manual_linking_disabled') {
+        throw const AuthException(
+          'Linking Apple isn\'t available yet. Please try again later.',
+        );
+      }
+      rethrow;
+    }
+    final code = credential.authorizationCode;
+    if (code.isNotEmpty) {
+      try {
+        await _client.functions.invoke(
+          'apple-token',
+          body: {'authorization_code': code},
+        );
+      } catch (_) {
+        // Best-effort, as at sign-in.
+      }
+    }
+    return true;
+  }
+
   static String _randomNonce([int length = 32]) {
     const chars =
         '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
