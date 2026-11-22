@@ -11,6 +11,7 @@ import 'features/explore/explore_screen.dart';
 import 'features/news/news_screen.dart';
 import 'features/passport/passport_screen.dart';
 import 'features/profile/profile_screen.dart';
+import 'features/update/update_gate.dart';
 import 'core/analytics/analytics_properties.dart';
 import 'core/analytics/screen_usage.dart';
 import 'features/notifications/push_service.dart';
@@ -28,7 +29,9 @@ class TablePassportApp extends StatelessWidget {
       navigatorObservers: [appRouteObserver],
       // AuthGate shows LoginScreen when there is no session,
       // and the tab scaffold when the user is authenticated.
-      home: const AuthGate(child: _MainNavigation()),
+      // UpdateGate sits above everything, the entrance included: a version
+      // too old to work is stopped before sign-in too (20261101680000).
+      home: const UpdateGate(child: AuthGate(child: _MainNavigation())),
     );
   }
 }

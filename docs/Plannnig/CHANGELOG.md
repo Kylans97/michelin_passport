@@ -8,6 +8,13 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Asking members to update** (product owner, 2026-11-22: "oke bouw maar", after choosing versions kept in Supabase over asking the App Store). Branch `claude/update-prompt`. **Not applied to production and not in a build yet.**
+  - New migration `20261101680000_add_app_release.sql`: one row, `latest_version` and `minimum_version`, edited by hand in the dashboard after each App Store release. RLS on, readable by anon and authenticated (the entrance too), no client writes, no function. Seeded at 1.6.0 and 1.0.0, so applying it asks nobody anything until the row is edited.
+  - `UpdateGate` above `AuthGate` in `app.dart`: below `minimum_version` a deep green "Time for an update" screen with only Update, over everything; below `latest_version` a sheet "A new version of Mantelier" with Update and Later, once per version (shared_preferences). Checked at launch and on return to the app, at most hourly unless blocked. Versions compare part by part as numbers (1.10.0 is newer than 1.9.0); a missing row, a failed read or an unreadable version asks nothing. Update opens the App Store listing.
+  - Works only from the build that carries it; older installs never see it.
+  - Checked: a full replay on a scratch stack with the new migration, then on it: anon reads the row, anon can't update, authenticated can't insert, a second row and a malformed version are refused. `flutter analyze` clean, `flutter test` 3,111 passing, new `test/update_gate_test.dart`. Not seen on a device.
+
 ---
 
 ## v1.9.0 (46) — 2026-11-22
