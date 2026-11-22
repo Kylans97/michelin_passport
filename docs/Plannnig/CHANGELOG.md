@@ -15,6 +15,12 @@ The format follows Keep a Changelog.
   - Apple's sign-in returns with a `?code=` the page exchanges itself (`flowType: 'pkce'`), to `https://mantelier.app/account/sign-in`, which has to be in the production project's Redirect URLs (Authentication > URL Configuration); added to `config.toml` for the local stack. Production takes it from the dashboard.
   - Checked: `astro build` clean; in the browser at phone width the buttons and the email step open and go back. Not tried: a real code or a real Apple sign-in, both need production and a real account.
   - **Live on main 2026-11-22** (product owner: "Ik heb https://mantelier.app/account/sign-in toegevoegd aan de Redirect URLs. Zet de website-inlog live via main"); the deploy succeeded and the live page shows both buttons. **Found on the live page:** Continue with Apple stopped at Supabase with `Unsupported provider: missing OAuth secret`. The Apple provider had the IDs but no Secret Key (for OAuth), which only the web flow needs; the app's native sign-in never did. New `scripts/apple-oauth-secret.mjs` makes that secret (an ES256 JWT from the Sign in with Apple key, valid six months at most, printed only into the clipboard), tested with a throwaway key. Until the product owner pastes it, the Apple button on the site fails; the email code and the password are unaffected. The secret has to be made again before it expires.
+- **The Mantelier Selection invites suggestions** (product owner, 2026-11-22: "Miss a restaurant in our selection, let us know?", copy chosen: "Know a table that belongs here? Tell us."). The Selection catalogue on Guides ends with that one line, text only, in forest green. It opens the existing missing-listing sheet with Restaurant chosen, so suggestions land in the same `missing_listing_reports` table and review as Explore's empty search. No migration.
+  - Not tagged with where it came from: `missing_listing_reports` has no column for that, and adding one is a migration. A Selection suggestion and an Explore report read the same in review until then.
+  - Checked: a widget test (the line is there, tapping it opens the sheet with only Restaurant chosen); full suite 3091 passing; `flutter analyze` clean. Built for the simulator, but not looked at on it: a fresh simulator needs a production sign-in.
+
+### Fixed
+- The missing-listing sheet's thank-you read "Thank you — we'll take a look." with a dash; now "Thank you, we'll take a look." (no dashes in copy).
 
 ---
 

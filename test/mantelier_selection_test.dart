@@ -135,8 +135,38 @@ void main() {
       await tester.enterText(find.byType(TextField), 'paris');
       await tester.pumpAndSettle();
       expect(find.text('1 place'), findsOneWidget);
-      expect(find.textContaining('Le Test', findRichText: true), findsOneWidget);
+      expect(
+        find.textContaining('Le Test', findRichText: true),
+        findsOneWidget,
+      );
       expect(find.text('Tacite'), findsNothing);
+    });
+
+    testWidgets('the list ends with a suggestion line that opens the '
+        'missing-listing sheet with Restaurant chosen', (tester) async {
+      tester.view.physicalSize = const Size(800, 1600);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: SelectionRestaurantGuideScreen(load: () async => entries),
+        ),
+      );
+      await tester.pumpAndSettle();
+      const line = 'Know a table that belongs here? Tell us.';
+      await tester.tap(find.text(line));
+      await tester.pumpAndSettle();
+      expect(find.text('Report a missing listing'), findsOneWidget);
+      // Restaurant is the only type pre-selected.
+      expect(find.byIcon(Icons.radio_button_checked_rounded), findsOneWidget);
+      final checked = find.ancestor(
+        of: find.byIcon(Icons.radio_button_checked_rounded),
+        matching: find.byType(Row),
+      );
+      expect(
+        find.descendant(of: checked.first, matching: find.text('Restaurant')),
+        findsOneWidget,
+      );
     });
 
     testWidgets('an empty Selection shows the empty state, not an error', (
