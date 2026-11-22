@@ -30,6 +30,9 @@ import 'community_rankings_screen.dart';
 import 'dining_together_screen.dart';
 import 'friends_activity.dart';
 import 'friends_activity_screen.dart';
+import 'friends_plans.dart';
+import '../friends/friends_together_data.dart';
+import 'widgets/friends_round_one_sections.dart';
 import 'widgets/friend_activity_row.dart';
 import 'widgets/community_events_preview.dart';
 import 'widgets/community_local_tab_bar.dart';
@@ -71,6 +74,8 @@ class CommunityScreen extends StatefulWidget {
   final Future<List<Friendship>> Function()? loadFriends;
   final Future<List<FriendActivity>> Function(List<Friendship> friends)?
   loadFriendActivity;
+  final Future<FriendsTabExtras> Function(List<Friendship> friends)?
+  loadFriendsExtras;
 
   const CommunityScreen({
     super.key,
@@ -80,6 +85,7 @@ class CommunityScreen extends StatefulWidget {
     this.loadGoingMemberCount,
     this.loadFriends,
     this.loadFriendActivity,
+    this.loadFriendsExtras,
   });
 
   @override
@@ -112,6 +118,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
             ? _FriendsTabBody(
                 loadFriends: widget.loadFriends,
                 loadFriendActivity: widget.loadFriendActivity,
+                loadFriendsExtras: widget.loadFriendsExtras,
               )
             : _CommunityTabBody(
                 loadCommunityRankings: widget.loadCommunityRankings,
@@ -571,7 +578,13 @@ class _FriendsTabBody extends StatefulWidget {
   final Future<List<Friendship>> Function()? loadFriends;
   final Future<List<FriendActivity>> Function(List<Friendship> friends)?
   loadFriendActivity;
-  const _FriendsTabBody({this.loadFriends, this.loadFriendActivity});
+  final Future<FriendsTabExtras> Function(List<Friendship> friends)?
+  loadFriendsExtras;
+  const _FriendsTabBody({
+    this.loadFriends,
+    this.loadFriendActivity,
+    this.loadFriendsExtras,
+  });
 
   @override
   State<_FriendsTabBody> createState() => _FriendsTabBodyState();
@@ -580,6 +593,15 @@ class _FriendsTabBody extends StatefulWidget {
 class _FriendsTabBodyState extends State<_FriendsTabBody> {
   late final Future<List<Friendship>> _friendsFuture = _load();
   late final Future<_FriendActivityData> _activityFuture = _loadActivity();
+  late final Future<FriendsTabExtras> _extrasFuture = _loadExtras();
+  late final Future<(_FriendActivityData, FriendsTabExtras)> _roundOneFuture = (
+    _activityFuture,
+    _extrasFuture,
+  ).wait;
+
+  /// How many plans, events and loved places the FRIENDS tab previews.
+  static const _roundOnePreviewCount = 3;
+  static const _winePreviewCount = 2;
 
   /// How many items the FRIENDS tab previews before "All activity →".
   static const _activityPreviewCount = 5;
@@ -617,6 +639,27 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
       return _FriendActivityData(activity, countryNameByCode);
     } catch (_) {
       return const _FriendActivityData([], {});
+    }
+  }
+
+  // Friends round one (2026-11-22): plans, the viewer's own intents and
+  // visited venues, and friends' wines. Never throws, like the activity
+  // load; a test that injects activity but no extras gets none, so it
+  // never reaches Supabase.
+  Future<FriendsTabExtras> _loadExtras() async {
+    final friends = await _friendsFuture;
+    if (friends.isEmpty) return FriendsTabExtras.empty;
+    final load = widget.loadFriendsExtras;
+    if (load == null && widget.loadFriendActivity != null) {
+      return FriendsTabExtras.empty;
+    }
+    try {
+      return await (load ??
+          FriendActivityRepository(Supabase.instance.client).loadExtras)(
+        friends,
+      );
+    } catch (_) {
+      return FriendsTabExtras.empty;
     }
   }
 
@@ -674,6 +717,52 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
             );
           },
         ),
+        FutureBuilder<(_FriendActivityData, FriendsTabExtras)>(
+          future: _roundOneFuture,
+          builder: (context, snap) {
+            if (snap.connectionState != ConnectionState.done) {
+              return const SizedBox.shrink();
+            }
+            final (data, extras) =
+                snap.data ??
+                (const _FriendActivityData([], {}), FriendsTabExtras.empty);
+            final events = eventsWithFriends(
+              activity: data.activity,
+              myIntents: extras.myIntents,
+            );
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (extras.plans.isNotEmpty) ...[
+                  const SizedBox(height: CsSpacing.section),
+                  CommunitySectionTitle('Plans in motion'),
+                  const SizedBox(height: CsSpacing.sm),
+                  for (final plan in extras.plans) FriendPlanRow(plan: plan),
+                ],
+                if (events.isNotEmpty) ...[
+                  const SizedBox(height: CsSpacing.section),
+                  CommunitySectionTitle('Coming up with friends'),
+                  const SizedBox(height: CsSpacing.sm),
+                  for (final item in events.take(_roundOnePreviewCount))
+                    EventWithFriendsRow(item: item),
+                  if (events.length > _roundOnePreviewCount) ...[
+                    const SizedBox(height: CsSpacing.xs),
+                    CommunityActionLink(
+                      label: 'All ${events.length} events',
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              EventsWithFriendsScreen(items: events),
+                        ),
+                      ),
+                    ),
+                  ],
+                ],
+              ],
+            );
+          },
+        ),
         const SizedBox(height: CsSpacing.section),
         CommunitySectionTitle("Friends' Activity"),
         const SizedBox(height: CsSpacing.sm),
@@ -712,13 +801,40 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
           },
         ),
         const SizedBox(height: CsSpacing.section),
-        CommunitySectionTitle("Friends' Top Visited"),
+        CommunitySectionTitle('Loved by your friends'),
         const SizedBox(height: CsSpacing.sm),
-        // Same reasoning as Friends' Activity — deriving "places popular
-        // with your friends" needs a new cross-friend aggregation this
-        // pass deliberately doesn't build.
-        const CommunityEmptyNote(
-          message: 'Places popular with your friends will appear here.',
+        // Friends round one (2026-11-22) fills what was a placeholder:
+        // places friends scored highly that the viewer hasn't been to,
+        // worked out from the same shared visits Friends' Activity already
+        // loads, then the wines friends would drink again.
+        FutureBuilder<(_FriendActivityData, FriendsTabExtras)>(
+          future: _roundOneFuture,
+          builder: (context, snap) {
+            if (snap.connectionState != ConnectionState.done) {
+              return const _SectionLoading();
+            }
+            final (data, extras) =
+                snap.data ??
+                (const _FriendActivityData([], {}), FriendsTabExtras.empty);
+            final loved = venuesLovedByFriends(
+              activity: data.activity,
+              myVisitedKeys: extras.myVisitedKeys,
+            );
+            if (loved.isEmpty && extras.wines.isEmpty) {
+              return const CommunityEmptyNote(
+                message: 'Places your friends loved will appear here.',
+              );
+            }
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final item in loved.take(_roundOnePreviewCount))
+                  LovedByFriendsRow(item: item),
+                for (final wine in extras.wines.take(_winePreviewCount))
+                  FriendAgainWineRow(item: wine),
+              ],
+            );
+          },
         ),
       ],
     ),

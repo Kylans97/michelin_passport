@@ -50,6 +50,23 @@ class EventAttendanceRepository {
     return EventAttendance.fromJson(list.first as Map<String, dynamic>);
   }
 
+  /// Every intent the caller has recorded, by event id — Friends uses it
+  /// to say "You're going too" beside a friend's event without a query per
+  /// event. Ended events are included; callers only look up the events
+  /// they show.
+  Future<Map<String, EventIntentStatus>> getMyIntents(String userId) async {
+    final rows = await _client
+        .from('event_attendance')
+        .select('event_id, status')
+        .eq('user_id', userId);
+    return {
+      for (final row in (rows as List).cast<Map<String, dynamic>>())
+        row['event_id'] as String: EventIntentStatus.fromDbValue(
+          row['status'] as String?,
+        ),
+    };
+  }
+
   /// Sets the caller's intent for [eventId] to [status] — covers every
   /// legal transition into INTERESTED or GOING (NONE→X or a switch away
   /// from whatever the current status was) with one method, never a

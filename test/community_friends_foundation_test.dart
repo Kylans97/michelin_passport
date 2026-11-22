@@ -152,7 +152,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Your Circle'), findsOneWidget);
       expect(find.text("Friends' Activity"), findsOneWidget);
-      expect(find.text("Friends' Top Visited"), findsOneWidget);
+      expect(find.text('Loved by your friends'), findsOneWidget);
       expect(
         tester.widget<IndexedStack>(find.byType(IndexedStack)).index,
         1,
@@ -205,9 +205,9 @@ void main() {
         findsOneWidget,
       );
 
-      expect(find.text("Friends' Top Visited"), findsOneWidget);
+      expect(find.text('Loved by your friends'), findsOneWidget);
       expect(
-        find.text('Places popular with your friends will appear here.'),
+        find.text('Places your friends loved will appear here.'),
         findsOneWidget,
       );
     });

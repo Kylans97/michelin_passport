@@ -7,6 +7,12 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/country_lookup.dart';
+import '../../data/repositories/event_attendance_repository.dart';
+import '../../data/repositories/planned_trips_repository.dart';
+import '../../data/repositories/visit_wine_repository.dart';
+import '../../models/event.dart';
+import '../../models/event_attendance.dart';
+import '../../models/planned_trip.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
@@ -24,7 +30,9 @@ import '../stays/stay_detail_screen.dart';
 import '../visits/visit_detail_screen.dart';
 import 'friend_profile_data.dart';
 import 'tabs/friend_profile_overview_tab.dart';
+import 'friends_together_data.dart';
 import 'tabs/friend_profile_passport_tab.dart';
+import 'tabs/friend_profile_taste_tab.dart';
 import 'tabs/friend_profile_together_tab.dart';
 import 'widgets/friend_profile_header.dart';
 import 'widgets/friend_profile_plan_dinner_sheet.dart';
@@ -133,8 +141,8 @@ void openFriendEvent(BuildContext context, String eventId) {
 /// [RelationshipStatus.accepted] is confirmed, the only case Friends' own
 /// list can ever navigate here from).
 ///
-/// ONE profile, three tabs (Overview / Passport / Together) plus a "Plan a
-/// dinner" sheet — replaces the earlier three-separate-layouts-behind-a-
+/// ONE profile, four tabs (Overview / Passport / Together / Taste; Taste
+/// added 2026-11-22, Friends round one) plus a "Plan a dinner" sheet — replaces the earlier three-separate-layouts-behind-a-
 /// debug-picker pass entirely (see
 /// docs/Architecture/EDITORIAL_REDESIGN_TRACKING.md for that history).
 ///
@@ -163,6 +171,11 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
+  late final _attendanceRepo = EventAttendanceRepository(
+    Supabase.instance.client,
+  );
+  late final _tripsRepo = PlannedTripsRepository(Supabase.instance.client);
+  late final _wineRepo = VisitWineRepository(Supabase.instance.client);
   // Constructed eagerly in initState, NOT as a `late final` field
   // initializer: `late final x = TabController(...)` only actually runs
   // the initializer the first time `x` is read, and this widget's own
@@ -184,7 +197,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
   void initState() {
     super.initState();
     trackScreenOpened(AnalyticsScreen.friendProfile);
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     _load();
   }
 
@@ -249,7 +262,13 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       countryNameByCode = {for (final c in countries) c.code: c.name};
     } catch (_) {}
 
+    final extras = await _loadRoundOneExtras(myId);
+
     return FriendProfileLayoutData(
+      upcomingEvents: extras.upcoming,
+      myVisitedEntries: extras.myVisited,
+      tripsTogether: extras.trips,
+      wines: extras.wines,
       identity: identity,
       myIdentity: myIdentity,
       visitedEntries: entries,
@@ -263,6 +282,66 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       stats: FriendProfileStats.from(entries),
       coverPhotoByVisitId: coverPhotos,
       countryNameByCode: countryNameByCode,
+    );
+  }
+
+  /// Friends round one (2026-11-22): the friend's events, the viewer's own
+  /// Passport and intents, trips both are on, and the friend's wines. Each
+  /// falls back to empty on its own, so a failure here only hides a
+  /// section and never the profile.
+  Future<
+    ({
+      List<FriendUpcomingEvent> upcoming,
+      List<VenueEntry> myVisited,
+      List<PlannedTrip> trips,
+      List<CellarWine> wines,
+    })
+  >
+  _loadRoundOneExtras(String myId) async {
+    Future<T> orElse<T>(Future<T> future, T fallback) =>
+        future.catchError((Object _) => fallback);
+
+    final (going, interested, myIntents, myVisited, myTrips, wines) = await (
+      orElse(
+        _attendanceRepo.getFriendUpcomingEvents(
+          userId: widget.userId,
+          status: EventIntentStatus.going,
+        ),
+        const <Event>[],
+      ),
+      orElse(
+        _attendanceRepo.getFriendUpcomingEvents(
+          userId: widget.userId,
+          status: EventIntentStatus.interested,
+        ),
+        const <Event>[],
+      ),
+      orElse(
+        _attendanceRepo.getMyIntents(myId),
+        const <String, EventIntentStatus>{},
+      ),
+      orElse(_visitedRepo.loadPassportVenues(myId), const <VenueEntry>[]),
+      orElse(_tripsRepo.loadTrips(myId), const <PlannedTrip>[]),
+      orElse(_wineRepo.loadCellar(widget.userId), const <CellarWine>[]),
+    ).wait;
+    final members = await orElse(
+      _tripsRepo.loadAcceptedMemberIds([for (final t in myTrips) t.id]),
+      const <String, Set<String>>{},
+    );
+    return (
+      upcoming: friendUpcomingEvents(
+        going: going,
+        interested: interested,
+        myIntents: myIntents,
+      ),
+      myVisited: myVisited,
+      trips: tripsWithFriend(
+        trips: myTrips,
+        membersByTrip: members,
+        friendId: widget.userId,
+        today: DateTime.now(),
+      ),
+      wines: wines,
     );
   }
 
@@ -537,6 +616,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
                             Supabase.instance.client.auth.currentUser?.id ?? '',
                         onPlanDinner: (venue) => _planDinner(data, venue),
                       ),
+                      FriendProfileTasteTab(data: data),
                     ],
                   ),
                 );

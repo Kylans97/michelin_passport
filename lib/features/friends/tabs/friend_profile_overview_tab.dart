@@ -2,16 +2,26 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../models/event_attendance.dart';
 import '../../../models/passport_venue.dart';
 import '../../map/visited_map_screen.dart';
 import '../friend_profile_all_visits_screen.dart';
 import '../friend_profile_data.dart';
-import '../friend_profile_screen.dart' show openVisitDetail;
+import '../friend_profile_screen.dart'
+    show openFriendEvent, openFriendVenue, openVisitDetail;
+import '../friends_together_data.dart';
+import '../widgets/friend_event_row.dart';
 import '../widgets/friend_profile_verdict_row.dart';
 import '../widgets/friend_profile_widgets.dart';
 
-/// Tab 1 (default): the "in common, one line" bar, the way into the
-/// friend's globe, then the friend's latest 3 verdicts.
+const _comingUpPreviewCount = 3;
+const _recommendedPreviewCount = 3;
+
+/// Tab 1 (default): what the friend has coming up (their Going and
+/// Interested events), the "in common, one line" bar, the way into the
+/// friend's globe, what they recommend, then the friend's latest 3
+/// verdicts. Coming up and Recommended were added in Friends round one
+/// (2026-11-22); each section only shows when it has something in it.
 class FriendProfileOverviewTab extends StatelessWidget {
   final FriendProfileLayoutData data;
   final VoidCallback onPlanTapped;
@@ -26,6 +36,8 @@ class FriendProfileOverviewTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final shared = data.sharedWishlistVenues;
     final recent = data.visits.take(friendVerdictPreviewCount).toList();
+    final upcoming = data.upcomingEvents;
+    final recommended = data.recommended;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(
@@ -35,6 +47,26 @@ class FriendProfileOverviewTab extends StatelessWidget {
         CsSpacing.xxl,
       ),
       children: [
+        if (upcoming.isNotEmpty) ...[
+          FriendSectionLabel(
+            'Coming up',
+            actionLabel: upcoming.length > _comingUpPreviewCount
+                ? 'All ${upcoming.length} →'
+                : null,
+            onAction: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => _FriendUpcomingScreen(
+                  friendName: data.friendName,
+                  events: upcoming,
+                ),
+              ),
+            ),
+          ),
+          for (final e in upcoming.take(_comingUpPreviewCount))
+            friendUpcomingRow(context, e),
+          const SizedBox(height: CsSpacing.lg),
+        ],
         if (shared.isNotEmpty) ...[
           _CommonBar(count: shared.length, venues: shared, onTap: onPlanTapped),
           const SizedBox(height: CsSpacing.sm),
@@ -52,6 +84,17 @@ class FriendProfileOverviewTab extends StatelessWidget {
             ),
           ),
         ),
+        if (recommended.isNotEmpty) ...[
+          const SizedBox(height: CsSpacing.xl),
+          FriendSectionLabel('Recommended by ${data.friendName}'),
+          const SizedBox(height: CsSpacing.sm),
+          for (final fv in recommended.take(_recommendedPreviewCount))
+            FriendVerdictRow(
+              visit: fv,
+              photoUrl: null,
+              onTap: () => openFriendVenue(context, fv.venue),
+            ),
+        ],
         const SizedBox(height: CsSpacing.xl),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,7 +155,11 @@ class _CommonBar extends StatelessWidget {
   final List<PassportVenue> venues;
   final VoidCallback onTap;
 
-  const _CommonBar({required this.count, required this.venues, required this.onTap});
+  const _CommonBar({
+    required this.count,
+    required this.venues,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +215,9 @@ class _CommonBar extends StatelessWidget {
               const SizedBox(width: CsSpacing.sm),
               Text(
                 'Plan →',
-                style: CsTypography.editorialLabel().copyWith(color: AppColors.textOnDark),
+                style: CsTypography.editorialLabel().copyWith(
+                  color: AppColors.textOnDark,
+                ),
               ),
             ],
           ),
@@ -258,6 +307,51 @@ class _MapBar extends StatelessWidget {
           ),
         ),
       ),
+    ),
+  );
+}
+
+/// One of the friend's upcoming events, with whether they're going or
+/// interested and the viewer's own intent.
+Widget friendUpcomingRow(BuildContext context, FriendUpcomingEvent e) =>
+    FriendEventRow(
+      event: e.event,
+      eyebrow: e.friendStatus == EventIntentStatus.going
+          ? 'Going'
+          : 'Interested',
+      ownLine: e.mineLine,
+      onTap: () => openFriendEvent(context, e.event.id),
+    );
+
+/// Every upcoming event of the friend's, from Overview's "All N →".
+class _FriendUpcomingScreen extends StatelessWidget {
+  final String friendName;
+  final List<FriendUpcomingEvent> events;
+
+  const _FriendUpcomingScreen({required this.friendName, required this.events});
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: AppColors.deepGreen,
+    appBar: AppBar(
+      backgroundColor: AppColors.deepGreen,
+      foregroundColor: AppColors.textOnDark,
+      elevation: 0,
+      title: Text(
+        "$friendName's events",
+        style: CsTypography.editorialTitle(
+          size: 20,
+        ).copyWith(color: AppColors.textOnDark),
+      ),
+    ),
+    body: ListView(
+      padding: const EdgeInsets.fromLTRB(
+        CsSpacing.pageHorizontal,
+        CsSpacing.sm,
+        CsSpacing.pageHorizontal,
+        CsSpacing.xxl,
+      ),
+      children: [for (final e in events) friendUpcomingRow(context, e)],
     ),
   );
 }

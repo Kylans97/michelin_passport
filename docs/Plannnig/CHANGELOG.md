@@ -8,6 +8,17 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+From `claude/friends-together`, not yet merged. `flutter analyze` clean and `flutter test` 3,097 passing on the branch. Not yet checked in the simulator against real data.
+
+### Added
+- **Friends round one** (product owner, 2026-11-22, on the Friends Ideas canvas https://claude.ai/artifact/YDgLjzkQhgQp75ANiLZjfV: "Je mag best een extra tab onder friends zetten ... 2 vind ik ook wel nice naast 1 en 3. Daarnaast vind ik 4 wellicht iets voor later"). Ideas 1, 2 and 3, the parts that need no migration; idea 4 is for later.
+  - **Community → Friends:** "Plans in motion" (your venue invites that are pending, or accepted in the last 30 days, and upcoming trips you share with friends), "Coming up with friends" (upcoming events friends are going to or interested in, one row per event, soonest first, with your own intent beside it), and "Loved by your friends" in place of the "Friends' Top Visited" placeholder (places friends scored 8.5 or higher that aren't in your Passport, then wines friends would drink again). Plans and Coming up show only when they have something; Loved keeps its quiet empty line.
+  - **Friend profile, Overview:** "Coming up" (their Going and Interested events, the event's own timezone, date-only events kept date-only) and "Recommended by {name}" (their best visit per place scored 8.5 or higher, at places you haven't been).
+  - **Friend profile, Together:** "Events you could go to together" (events where you both have an intent) and "Trips together" (upcoming trips you're both on), above the shared wishlist.
+  - **Friend profile, new Taste tab:** the countries they eat in most, "Where your tastes meet" (places you've both been, each one's latest score side by side, no overall match figure), their cities (each opens their visits there), and "In {name}'s glass" (their shared wines with verdict and note, Again first).
+  - **Reads added, no migration:** `EventAttendanceRepository.getMyIntents`, `PlannedTripsRepository.loadAcceptedMemberIds`, `VenueInviteRepository.loadPlansInMotion` (direct read under the existing `venue_invites_select`), `VisitWineRepository.loadAgainWinesFor`, `VisitedRepository.loadVisitedVenueKeys`, `FriendActivityRepository.loadExtras`. Every one reads only what RLS already lets the viewer see.
+  - **Left out on purpose, pending the product owner:** saved events on a friend's wishlist (RLS lets a friend read them, but "saved" has never meant "shared") and visit notes (friend-readable by RLS, never shown so far). "Propose a few evenings" and inviting a friend to an event need a migration (`venue_invites` takes only restaurants and hotels, and has no dates) and are not built.
+
 ---
 
 ## v1.9.0 (40) — 2026-11-22

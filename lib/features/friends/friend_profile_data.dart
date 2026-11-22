@@ -1,7 +1,10 @@
+import '../../data/repositories/visit_wine_repository.dart' show CellarWine;
 import '../../models/passport_venue.dart';
+import '../../models/planned_trip.dart';
 import '../../models/profile_identity.dart';
 import '../../models/venue_entry.dart';
 import 'friend_profile_screen.dart' show FriendVenueVisit;
+import 'friends_together_data.dart';
 
 /// City name for [FriendVenueVisit.venue] — [PassportVenue] itself only
 /// exposes [PassportVenue.countryCode] at the base-type level, not city
@@ -144,7 +147,7 @@ FriendVenueVisit? highestRatedVisit(List<FriendVenueVisit> visits) {
   return rated.first;
 }
 
-/// Everything the friend-profile screen's three tabs render from —
+/// Everything the friend-profile screen's four tabs render from —
 /// resolved once by [FriendProfileScreen] after every underlying future
 /// completes, so a tab widget is pure presentation over already-shaped
 /// data, not its own data-fetching state machine.
@@ -165,6 +168,23 @@ class FriendProfileLayoutData {
   // separate loading state inside the tab itself.
   final Map<String, String> countryNameByCode;
 
+  /// The friend's upcoming Going and Interested events, with the viewer's
+  /// own intent on each (Friends round one, idea 1). Empty when the load
+  /// failed: the rest of the profile never waits on it.
+  final List<FriendUpcomingEvent> upcomingEvents;
+
+  /// The viewer's own Passport, for "Recommended by" (skip what the viewer
+  /// already knows) and Taste's "Where your tastes meet".
+  final List<VenueEntry> myVisitedEntries;
+
+  /// Upcoming trips both are on (idea 2): only trips the viewer is on, so
+  /// a friend's own private trips never show.
+  final List<PlannedTrip> tripsTogether;
+
+  /// The friend's wines a friend may see: on shared visits, and every one
+  /// kept without a visit (idea 3, Taste).
+  final List<CellarWine> wines;
+
   const FriendProfileLayoutData({
     required this.identity,
     required this.myIdentity,
@@ -176,10 +196,13 @@ class FriendProfileLayoutData {
     required this.stats,
     required this.coverPhotoByVisitId,
     required this.countryNameByCode,
+    this.upcomingEvents = const [],
+    this.myVisitedEntries = const [],
+    this.tripsTogether = const [],
+    this.wines = const [],
   });
 
-  String get friendName =>
-      identity.displayName?.trim().isNotEmpty == true
+  String get friendName => identity.displayName?.trim().isNotEmpty == true
       ? identity.displayName!
       : identity.label;
 
@@ -192,4 +215,22 @@ class FriendProfileLayoutData {
   /// "ONLY ON {NAME}'S LIST".
   List<PassportVenue> get onlyTheirWishlistVenues =>
       wishlist.where((v) => !sharedKeys.contains(wishlistVenueKey(v))).toList();
+
+  /// Events where both have an intent: Together's "Events you could go to
+  /// together".
+  List<FriendUpcomingEvent> get eventsTogether =>
+      upcomingEvents.where((e) => e.isShared).toList();
+
+  /// Overview's "Recommended by {name}".
+  List<FriendVenueVisit> get recommended => recommendedByFriend(
+    visits: visits,
+    myVisitedKeys: visitedVenueKeys(myVisitedEntries),
+  );
+
+  /// Taste's "Where your tastes meet".
+  List<SharedVenueScores> get sharedScores =>
+      sharedVenueScores(theirs: visitedEntries, mine: myVisitedEntries);
+
+  /// Taste's cities.
+  List<FriendCity> get cities => friendCities(visits);
 }

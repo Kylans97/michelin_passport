@@ -230,6 +230,31 @@ class PlannedTripsRepository {
 
   // ── Members ──────────────────────────────────────────────────────────
 
+  /// The accepted members of each of [tripIds], by trip id — owners not
+  /// included (a trip's owner is [PlannedTrip.userId]). RLS returns members
+  /// only for trips the caller is on, which is all Friends asks about: the
+  /// trips you share with a friend, never a friend's own private trips.
+  Future<Map<String, Set<String>>> loadAcceptedMemberIds(
+    List<String> tripIds,
+  ) async {
+    if (tripIds.isEmpty || !sharedTripsAvailable) return {};
+    try {
+      final rows = await _client
+          .from('planned_trip_members')
+          .select('trip_id, user_id')
+          .inFilter('trip_id', tripIds)
+          .eq('status', 'accepted');
+      final result = <String, Set<String>>{};
+      for (final row in (rows as List).cast<Map<String, dynamic>>()) {
+        (result[row['trip_id'] as String] ??= {}).add(row['user_id'] as String);
+      }
+      return result;
+    } on PostgrestException catch (e) {
+      if (!_isMissingSchema(e)) rethrow;
+      return {};
+    }
+  }
+
   Future<List<TripMember>> loadTripMembers(String tripId) async {
     final rows = await _client.rpc(
       'get_trip_members',

@@ -17,6 +17,10 @@ import 'widgets/friend_profile_verdict_row.dart';
 /// of visits no longer costs hundreds of covers on opening their profile.
 class FriendProfileAllVisitsScreen extends StatefulWidget {
   final String friendName;
+
+  /// Replaces "{NAME}'S VERDICTS" in the heading, for a filtered list such
+  /// as one city from the Taste tab.
+  final String? title;
   final List<FriendVenueVisit> visits;
   final Map<String, String> coverPhotoByVisitId;
   final void Function(BuildContext context, FriendVenueVisit visit) onTapVisit;
@@ -30,6 +34,7 @@ class FriendProfileAllVisitsScreen extends StatefulWidget {
   const FriendProfileAllVisitsScreen({
     super.key,
     required this.friendName,
+    this.title,
     required this.visits,
     required this.coverPhotoByVisitId,
     required this.onTapVisit,
@@ -97,7 +102,7 @@ class _FriendProfileAllVisitsScreenState
               0,
             ),
             child: Text(
-              "${widget.friendName.toUpperCase()}'S VERDICTS",
+              (widget.title ?? "${widget.friendName}'s verdicts").toUpperCase(),
               style: CsTypography.editorialLabel().copyWith(
                 color: AppColors.secondaryOnDark,
               ),

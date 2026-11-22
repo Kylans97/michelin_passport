@@ -110,6 +110,55 @@ class VisitWineRepository {
       ..sort(_newestFirst);
   }
 
+  /// Wines the given friends would drink again, from shared visits and
+  /// kept without one, newest first, each with whose it is. RLS decides
+  /// which rows come back: a wine on a private visit never does, every
+  /// kept wine of a friend does (20261101640000). At most [limit].
+  Future<List<({String userId, CellarWine wine})>> loadAgainWinesFor(
+    List<String> userIds, {
+    int limit = 12,
+  }) async {
+    if (userIds.isEmpty) return const [];
+    final List<Map<String, dynamic>> visitRows;
+    try {
+      visitRows =
+          (await _client
+                  .from('visit_wines')
+                  .select(
+                    '$_wineColumns, user_id, visit_id, visits(visited_on)',
+                  )
+                  .inFilter('user_id', userIds)
+                  .eq('verdict', WineVerdict.again.dbValue)
+                  .order('created_at', ascending: false)
+                  .limit(limit))
+              .cast<Map<String, dynamic>>();
+    } on PostgrestException {
+      // Before the verdicts migration there is no verdict to filter on.
+      return const [];
+    }
+    List<Map<String, dynamic>> keptRows;
+    try {
+      keptRows =
+          (await _client
+                  .from('cellar_wines')
+                  .select('$_cellarWineColumns, user_id')
+                  .inFilter('user_id', userIds)
+                  .eq('verdict', WineVerdict.again.dbValue)
+                  .order('created_at', ascending: false)
+                  .limit(limit))
+              .cast<Map<String, dynamic>>();
+    } on PostgrestException {
+      keptRows = const [];
+    }
+    final all = [
+      for (final row in visitRows)
+        (userId: row['user_id'] as String, wine: _cellarWine(row)),
+      for (final row in keptRows)
+        (userId: row['user_id'] as String, wine: _keptWine(row)),
+    ]..sort((a, b) => _newestFirst(a.wine, b.wine));
+    return all.take(limit).toList();
+  }
+
   /// The member's wines kept without a visit, matching every column in
   /// [filters]. Empty before the verdicts migration is applied, never an
   /// error.

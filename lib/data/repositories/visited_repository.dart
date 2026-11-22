@@ -377,6 +377,21 @@ class VisitedRepository {
     return Visit.fromJson(list.first as Map<String, dynamic>);
   }
 
+  /// Every venue [userId] has visited or stayed at, as `r:<id>` / `h:<id>`
+  /// keys (the shape `wishlistVenueKey` uses), without loading the venues.
+  /// Community → Friends uses it to leave out of "Loved by your friends"
+  /// what the viewer already knows.
+  Future<Set<String>> loadVisitedVenueKeys(String userId) async {
+    final rows = await _client
+        .from('visits')
+        .select('entity_type, entity_id')
+        .eq('user_id', userId);
+    return {
+      for (final row in (rows as List).cast<Map<String, dynamic>>())
+        '${row['entity_type'] == _hotelEntity ? 'h' : 'r'}:${row['entity_id']}',
+    };
+  }
+
   // Every venue (restaurant or hotel) this user has visited/stayed at,
   // each paired with every visit/stay logged against it (newest first) —
   // one entry per unique venue. This is the data My Passport (All /
@@ -477,7 +492,10 @@ class VisitedRepository {
       if (venue == null) continue;
       grouped
           .putIfAbsent(visit.userId, () => {})
-          .putIfAbsent('${visit.entityType}:${visit.entityId}', () => (venue, []))
+          .putIfAbsent(
+            '${visit.entityType}:${visit.entityId}',
+            () => (venue, []),
+          )
           .$2
           .add(visit);
     }

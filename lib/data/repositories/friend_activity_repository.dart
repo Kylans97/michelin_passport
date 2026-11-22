@@ -1,11 +1,17 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/utils/event_time.dart';
 import '../../features/community/friends_activity.dart';
+import '../../features/community/friends_plans.dart';
+import '../../models/planned_trip.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance.dart';
 import '../../models/friendship.dart';
 import 'events_repository.dart' show publishedEventsOnly;
+import 'event_attendance_repository.dart';
 import 'friendship_repository.dart';
+import 'planned_trips_repository.dart';
+import 'venue_invite_repository.dart';
+import 'visit_wine_repository.dart';
 import 'visited_repository.dart';
 
 /// Loads Friends' Activity ([buildFriendActivity]) for the signed-in user.
@@ -91,6 +97,54 @@ class FriendActivityRepository {
   /// Same RLS as [load]: a friend counts only through a visit they marked
   /// `friends`, so this never reveals a private visit, and never a score
   /// (only `user_id` and the date are read).
+  /// Friends round one (2026-11-22): the viewer's own intents and visited
+  /// venues (to say "You're going too" and to leave out what they know),
+  /// their plans with friends, and wines friends would drink again. Each
+  /// part falls back to empty on its own; the tab never fails on it.
+  Future<FriendsTabExtras> loadExtras(List<Friendship> friends) async {
+    final viewerId = _client.auth.currentUser?.id;
+    if (viewerId == null) return FriendsTabExtras.empty;
+    Future<T> orElse<T>(Future<T> future, T fallback) =>
+        future.catchError((Object _) => fallback);
+
+    final trips = PlannedTripsRepository(_client);
+    final (myIntents, myVisited, invites, myTrips, wines) = await (
+      orElse(
+        EventAttendanceRepository(_client).getMyIntents(viewerId),
+        const <String, EventIntentStatus>{},
+      ),
+      orElse(_visits.loadVisitedVenueKeys(viewerId), const <String>{}),
+      orElse(
+        VenueInviteRepository(_client).loadPlansInMotion(viewerId),
+        const <VenueInvitePlan>[],
+      ),
+      orElse(trips.loadTrips(viewerId), const <PlannedTrip>[]),
+      orElse(
+        VisitWineRepository(
+          _client,
+        ).loadAgainWinesFor([for (final f in friends) f.friendId]),
+        const <({String userId, CellarWine wine})>[],
+      ),
+    ).wait;
+    final members = await orElse(
+      trips.loadAcceptedMemberIds([for (final t in myTrips) t.id]),
+      const <String, Set<String>>{},
+    );
+    return FriendsTabExtras(
+      myIntents: myIntents,
+      myVisitedKeys: myVisited,
+      plans: plansInMotion(
+        invites: invites,
+        trips: myTrips,
+        membersByTrip: members,
+        friends: friends,
+        viewerId: viewerId,
+        today: DateTime.now(),
+      ),
+      wines: friendAgainWines(wines: wines, friends: friends),
+    );
+  }
+
   Future<List<Friendship>> loadFriendsWhoVisited({
     required String entityType,
     required String entityId,

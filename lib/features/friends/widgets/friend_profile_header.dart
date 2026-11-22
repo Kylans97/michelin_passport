@@ -89,9 +89,9 @@ class FriendProfileHeaderTop extends StatelessWidget {
             Text(
               name,
               textAlign: TextAlign.center,
-              style: CsTypography.editorialTitle(size: 31).copyWith(
-                color: AppColors.textOnDark,
-              ),
+              style: CsTypography.editorialTitle(
+                size: 31,
+              ).copyWith(color: AppColors.textOnDark),
             ),
             const SizedBox(height: 4),
             Text(
@@ -182,7 +182,10 @@ class _Ring extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
     padding: const EdgeInsets.all(padding),
-    decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.deepGreen),
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      color: AppColors.deepGreen,
+    ),
     child: child,
   );
 }
@@ -252,7 +255,11 @@ class _OverflowButton extends StatelessWidget {
         value: 'remove',
         child: Row(
           children: [
-            Icon(Icons.person_remove_outlined, color: AppColors.textPrimary, size: 18),
+            Icon(
+              Icons.person_remove_outlined,
+              color: AppColors.textPrimary,
+              size: 18,
+            ),
             SizedBox(width: 10),
             Text('Remove friend'),
           ],
@@ -287,19 +294,23 @@ class _OverflowButton extends StatelessWidget {
         border: Border.all(color: AppColors.hairlineOnGreen),
       ),
       alignment: Alignment.center,
-      child: const Icon(Icons.more_horiz_rounded, color: AppColors.textOnDark, size: 20),
+      child: const Icon(
+        Icons.more_horiz_rounded,
+        color: AppColors.textOnDark,
+        size: 20,
+      ),
     ),
   );
 }
 
-/// The PINNED tab row: `OVERVIEW · PASSPORT · TOGETHER`, 28pt gaps, a
+/// The PINNED tab row: `OVERVIEW · PASSPORT · TOGETHER · TASTE`, a
 /// 1px gold underline on the active tab, a hairline beneath the whole
 /// row. Sticks to the top once the scrolling header above it is gone —
 /// [SliverPersistentHeaderDelegate] is the standard Flutter mechanism for
 /// exactly this ("de tabrij wordt sticky zodra hij de bovenkant raakt").
 class FriendProfileTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabController controller;
-  static const _labels = ['OVERVIEW', 'PASSPORT', 'TOGETHER'];
+  static const _labels = ['OVERVIEW', 'PASSPORT', 'TOGETHER', 'TASTE'];
 
   const FriendProfileTabBarDelegate({required this.controller});
 
@@ -311,7 +322,11 @@ class FriendProfileTabBarDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => _height;
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return ColoredBox(
       color: AppColors.deepGreen,
       child: Column(
@@ -321,7 +336,7 @@ class FriendProfileTabBarDelegate extends SliverPersistentHeaderDelegate {
             controller: controller,
             isScrollable: true,
             tabAlignment: TabAlignment.center,
-            labelPadding: const EdgeInsets.symmetric(horizontal: 14),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 11),
             indicatorSize: TabBarIndicatorSize.label,
             indicatorColor: AppColors.gold600,
             indicatorWeight: 1,
