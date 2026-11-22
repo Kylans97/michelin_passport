@@ -126,6 +126,30 @@ class VineyardRepository {
     return VineyardVisit.fromMap(row);
   }
 
+  /// Saves an edited visit; RLS lets only its own member change it.
+  Future<VineyardVisit> updateVisit({
+    required String visitId,
+    required DateTime visitedOn,
+    Set<VineyardActivity> activities = const {},
+    String? comment,
+    bool friendsVisible = false,
+  }) async {
+    final row = await _client
+        .from('vineyard_visits')
+        .update(
+          buildVineyardVisitUpdate(
+            visitedOn: visitedOn,
+            activities: activities,
+            comment: comment,
+            friendsVisible: friendsVisible,
+          ),
+        )
+        .eq('id', visitId)
+        .select(_visitColumns)
+        .single();
+    return VineyardVisit.fromMap(row);
+  }
+
   Future<void> deleteVisit(String visitId) =>
       _client.from('vineyard_visits').delete().eq('id', visitId);
 

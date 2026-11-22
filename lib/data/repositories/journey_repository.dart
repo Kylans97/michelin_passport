@@ -168,6 +168,30 @@ class JourneyRepository {
     return JourneyTravel.fromMap(row);
   }
 
+  /// Saves an edited travel; RLS lets only its own member change it.
+  Future<JourneyTravel> updateTravel({
+    required String travelId,
+    required DateTime departedOn,
+    String? routeId,
+    DateTime? arrivedOn,
+    JourneyTravelVisibility visibility = JourneyTravelVisibility.private,
+  }) async {
+    final row = await _client
+        .from('journey_travels')
+        .update(
+          buildJourneyTravelUpdate(
+            departedOn: departedOn,
+            routeId: routeId,
+            arrivedOn: arrivedOn,
+            visibility: visibility,
+          ),
+        )
+        .eq('id', travelId)
+        .select(_travelColumns)
+        .single();
+    return JourneyTravel.fromMap(row);
+  }
+
   Future<void> deleteTravel(String travelId) =>
       _client.from('journey_travels').delete().eq('id', travelId);
 
@@ -250,6 +274,21 @@ Map<String, dynamic> buildJourneyTravelInsert({
   if (arrivedOn != null) 'arrived_on': _isoDate(arrivedOn),
   'visibility': visibility.dbValue,
   'source': 'manual',
+};
+
+/// The update map for an edited travel: route, dates and visibility, a
+/// cleared route or arrival written as null. Never the journey, the
+/// member or how it was first recorded (`source`).
+Map<String, dynamic> buildJourneyTravelUpdate({
+  required DateTime departedOn,
+  String? routeId,
+  DateTime? arrivedOn,
+  JourneyTravelVisibility visibility = JourneyTravelVisibility.private,
+}) => {
+  'route_id': routeId,
+  'departed_on': _isoDate(departedOn),
+  'arrived_on': arrivedOn == null ? null : _isoDate(arrivedOn),
+  'visibility': visibility.dbValue,
 };
 
 String _isoDate(DateTime d) =>

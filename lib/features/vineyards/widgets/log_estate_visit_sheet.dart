@@ -5,6 +5,7 @@ import '../../../core/theme/cs_surface_context.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_filter_chip.dart';
 import '../../../core/widgets/cs_primary_button.dart';
+import '../../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../../models/vineyard.dart';
 import '../../../models/vineyard_visit.dart';
 
@@ -27,9 +28,12 @@ class EstateVisitInput {
 /// in the Passport, the shape of "I travelled on this" for a journey. The
 /// date is required and never in the future; what the member did there is
 /// a few fixed activities, all optional. Returns null when dismissed.
+///
+/// With [initial] it edits that visit instead: filled in, "Save changes".
 Future<EstateVisitInput?> showLogEstateVisitSheet(
   BuildContext context, {
   required Vineyard vineyard,
+  VineyardVisit? initial,
 }) => showModalBottomSheet<EstateVisitInput>(
   context: context,
   isScrollControlled: true,
@@ -37,23 +41,30 @@ Future<EstateVisitInput?> showLogEstateVisitSheet(
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.vertical(top: Radius.circular(CsRadius.large)),
   ),
-  builder: (_) => _LogEstateVisitSheet(vineyard: vineyard),
+  builder: (_) => _LogEstateVisitSheet(vineyard: vineyard, initial: initial),
 );
 
 class _LogEstateVisitSheet extends StatefulWidget {
   final Vineyard vineyard;
+  final VineyardVisit? initial;
 
-  const _LogEstateVisitSheet({required this.vineyard});
+  const _LogEstateVisitSheet({required this.vineyard, this.initial});
 
   @override
   State<_LogEstateVisitSheet> createState() => _LogEstateVisitSheetState();
 }
 
 class _LogEstateVisitSheetState extends State<_LogEstateVisitSheet> {
-  late DateTime _visitedOn = DateUtils.dateOnly(DateTime.now());
-  final Set<VineyardActivity> _activities = {};
-  final _commentCtrl = TextEditingController();
-  bool _shareWithFriends = false;
+  late DateTime _visitedOn = DateUtils.dateOnly(
+    widget.initial?.visitedOn ?? DateTime.now(),
+  );
+  late final Set<VineyardActivity> _activities = {
+    ...?widget.initial?.activities,
+  };
+  late final _commentCtrl = TextEditingController(
+    text: widget.initial?.comment ?? '',
+  );
+  late bool _shareWithFriends = widget.initial?.friendsVisible ?? false;
 
   @override
   void dispose() {
@@ -66,7 +77,10 @@ class _LogEstateVisitSheetState extends State<_LogEstateVisitSheet> {
     final picked = await showDatePicker(
       context: context,
       initialDate: _visitedOn,
-      firstDate: DateTime(now.year - 20),
+      // An older entry being edited keeps its own year reachable.
+      firstDate: _visitedOn.year < now.year - 20
+          ? _visitedOn
+          : DateTime(now.year - 20),
       lastDate: now, // future dates not allowed — this app's established rule
     );
     if (picked != null) setState(() => _visitedOn = picked);
@@ -93,7 +107,7 @@ class _LogEstateVisitSheetState extends State<_LogEstateVisitSheet> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'I visited this estate',
+              widget.initial == null ? 'I visited this estate' : 'Your visit',
               style: CsTypography.sectionTitle.copyWith(
                 color: AppColors.forestGreen,
               ),
@@ -111,12 +125,7 @@ class _LogEstateVisitSheetState extends State<_LogEstateVisitSheet> {
                 children: [
                   Text('WHEN', style: label),
                   const SizedBox(height: CsSpacing.sm),
-                  Text(
-                    MaterialLocalizations.of(
-                      context,
-                    ).formatMediumDate(_visitedOn),
-                    style: value,
-                  ),
+                  Text(formatVenueVisitDate(_visitedOn), style: value),
                   const SizedBox(height: CsSpacing.sm),
                   const Divider(height: 1, color: AppColors.subtleBorderLight),
                 ],
@@ -168,7 +177,9 @@ class _LogEstateVisitSheetState extends State<_LogEstateVisitSheet> {
             ),
             const SizedBox(height: CsSpacing.lg),
             CsPrimaryButton(
-              label: 'Add to my Passport',
+              label: widget.initial == null
+                  ? 'Add to my Passport'
+                  : 'Save changes',
               surface: CsSurface.light,
               onTap: () => Navigator.pop(
                 context,

@@ -89,6 +89,25 @@ Map<String, dynamic> buildVineyardVisitInsert({
   'visibility': friendsVisible ? 'friends' : 'private',
 };
 
+/// The update map for an edited visit: every field the sheet edits, an
+/// emptied note cleared to null. Never the estate or the member.
+Map<String, dynamic> buildVineyardVisitUpdate({
+  required DateTime visitedOn,
+  Set<VineyardActivity> activities = const {},
+  String? comment,
+  bool friendsVisible = false,
+}) => {
+  'visited_on': _isoDate(visitedOn),
+  'activities': [
+    for (final a in VineyardActivity.values)
+      if (activities.contains(a)) a.dbValue,
+  ],
+  'comment': (comment == null || comment.trim().isEmpty)
+      ? null
+      : comment.trim(),
+  'visibility': friendsVisible ? 'friends' : 'private',
+};
+
 String _isoDate(DateTime d) =>
     '${d.year.toString().padLeft(4, '0')}-'
     '${d.month.toString().padLeft(2, '0')}-'

@@ -11,12 +11,14 @@ import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/journey_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/journey.dart';
 import '../passport/stamp_ceremony.dart';
+import '../passport/widgets/own_passport_entry_row.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'journey_visuals.dart';
 import 'widgets/confirm_travel_sheet.dart';
@@ -214,6 +216,58 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
     setState(() => _travels = [saved, ..._travels]);
     HapticFeedback.mediumImpact();
     await celebrateNewStamp(context, EarnedStamp.travel(saved));
+  }
+
+  Future<void> _editTravel(JourneyTravel travel) async {
+    final journey = _journey;
+    if (journey == null) return;
+    final input = await showConfirmTravelSheet(
+      context,
+      journey: journey,
+      routes: _routes,
+      initial: travel,
+    );
+    if (input == null || !mounted) return;
+    try {
+      final saved = await _repo.updateTravel(
+        travelId: travel.id,
+        routeId: input.route?.id,
+        departedOn: input.departedOn,
+        arrivedOn: input.arrivedOn,
+        visibility: input.visibility,
+      );
+      if (!mounted) return;
+      setState(() {
+        _travels = [for (final t in _travels) t.id == saved.id ? saved : t]
+          ..sort((a, b) => b.departedOn.compareTo(a.departedOn));
+      });
+    } catch (_) {
+      _snack('Could not save. Please try again.', isError: true);
+    }
+  }
+
+  Future<void> _deleteTravel(JourneyTravel travel) async {
+    final confirmed = await confirmDeletePassportEntry(
+      context,
+      title: 'Delete this journey?',
+      body:
+          'This journey and its stamp leave your Passport. '
+          'Other times you travelled on it stay.',
+      actionLabel: 'Delete journey',
+    );
+    if (!confirmed || !mounted) return;
+    try {
+      await _repo.deleteTravel(travel.id);
+      if (!mounted) return;
+      setState(
+        () => _travels = [
+          for (final t in _travels)
+            if (t.id != travel.id) t,
+        ],
+      );
+    } catch (_) {
+      _snack('Could not delete journey. Please try again.', isError: true);
+    }
   }
 
   // Shows the tapped route on the globe, bringing the globe back into view
@@ -422,7 +476,14 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
                   ),
                 )
               else
-                for (final travel in _travels) _bodyLine(_travelLine(travel)),
+                for (final travel in _travels)
+                  OwnPassportEntryRow(
+                    text: _travelLine(travel),
+                    editLabel: 'Edit journey',
+                    deleteLabel: 'Delete journey',
+                    onEdit: () => _editTravel(travel),
+                    onDelete: () => _deleteTravel(travel),
+                  ),
               const SizedBox(height: CsSpacing.base),
               CsPrimaryButton(
                 label: 'I travelled on this',
@@ -448,15 +509,15 @@ class _JourneyDetailScreenState extends State<JourneyDetailScreen> {
   }
 
   String _travelLine(JourneyTravel travel) {
-    final loc = MaterialLocalizations.of(context);
     final route = _routes
         .where((r) => r.id == travel.routeId)
         .map((r) => r.name)
         .firstOrNull;
+    // With the year: a journey can be years back.
     final dates = travel.arrivedOn == null
-        ? loc.formatMediumDate(travel.departedOn)
-        : '${loc.formatMediumDate(travel.departedOn)} to '
-              '${loc.formatMediumDate(travel.arrivedOn!)}';
+        ? formatVenueVisitDate(travel.departedOn)
+        : '${formatVenueVisitDate(travel.departedOn)} to '
+              '${formatVenueVisitDate(travel.arrivedOn!)}';
     return route == null ? dates : '$route · $dates';
   }
 

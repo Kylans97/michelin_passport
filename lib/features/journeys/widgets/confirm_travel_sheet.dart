@@ -4,6 +4,7 @@ import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_surface_context.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_primary_button.dart';
+import '../../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../../models/journey.dart';
 
 /// What the member confirmed in [showConfirmTravelSheet].
@@ -26,10 +27,13 @@ class ConfirmedTravelInput {
 /// arrival are optional (a member may not remember the itinerary); the
 /// departure date is required and never in the future. Returns null when
 /// dismissed.
+///
+/// With [initial] it edits that travel instead: filled in, "Save changes".
 Future<ConfirmedTravelInput?> showConfirmTravelSheet(
   BuildContext context, {
   required Journey journey,
   required List<JourneyRoute> routes,
+  JourneyTravel? initial,
 }) => showModalBottomSheet<ConfirmedTravelInput>(
   context: context,
   isScrollControlled: true,
@@ -37,31 +41,45 @@ Future<ConfirmedTravelInput?> showConfirmTravelSheet(
   shape: const RoundedRectangleBorder(
     borderRadius: BorderRadius.vertical(top: Radius.circular(CsRadius.large)),
   ),
-  builder: (_) => _ConfirmTravelSheet(journey: journey, routes: routes),
+  builder: (_) =>
+      _ConfirmTravelSheet(journey: journey, routes: routes, initial: initial),
 );
 
 class _ConfirmTravelSheet extends StatefulWidget {
   final Journey journey;
   final List<JourneyRoute> routes;
+  final JourneyTravel? initial;
 
-  const _ConfirmTravelSheet({required this.journey, required this.routes});
+  const _ConfirmTravelSheet({
+    required this.journey,
+    required this.routes,
+    this.initial,
+  });
 
   @override
   State<_ConfirmTravelSheet> createState() => _ConfirmTravelSheetState();
 }
 
 class _ConfirmTravelSheetState extends State<_ConfirmTravelSheet> {
-  JourneyRoute? _route;
-  late DateTime _departedOn = DateUtils.dateOnly(DateTime.now());
-  DateTime? _arrivedOn;
-  bool _shareWithFriends = false;
+  late JourneyRoute? _route = widget.routes
+      .where((r) => r.id == widget.initial?.routeId)
+      .firstOrNull;
+  late DateTime _departedOn = DateUtils.dateOnly(
+    widget.initial?.departedOn ?? DateTime.now(),
+  );
+  late DateTime? _arrivedOn = widget.initial?.arrivedOn;
+  late bool _shareWithFriends =
+      widget.initial?.visibility == JourneyTravelVisibility.friends;
 
   Future<void> _pickDeparture() async {
     final now = DateTime.now();
     final picked = await showDatePicker(
       context: context,
       initialDate: _departedOn,
-      firstDate: DateTime(now.year - 20),
+      // An older entry being edited keeps its own year reachable.
+      firstDate: _departedOn.year < now.year - 20
+          ? _departedOn
+          : DateTime(now.year - 20),
       lastDate: now, // future dates not allowed — this app's established rule
     );
     if (picked == null) return;
@@ -82,8 +100,7 @@ class _ConfirmTravelSheetState extends State<_ConfirmTravelSheet> {
     if (picked != null) setState(() => _arrivedOn = picked);
   }
 
-  String _date(DateTime d) =>
-      MaterialLocalizations.of(context).formatMediumDate(d);
+  String _date(DateTime d) => formatVenueVisitDate(d);
 
   @override
   Widget build(BuildContext context) {
@@ -102,7 +119,7 @@ class _ConfirmTravelSheetState extends State<_ConfirmTravelSheet> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'I travelled on this',
+              widget.initial == null ? 'I travelled on this' : 'Your journey',
               style: CsTypography.sectionTitle.copyWith(
                 color: AppColors.forestGreen,
               ),
@@ -175,7 +192,9 @@ class _ConfirmTravelSheetState extends State<_ConfirmTravelSheet> {
             ),
             const SizedBox(height: CsSpacing.lg),
             CsPrimaryButton(
-              label: 'Add to my Passport',
+              label: widget.initial == null
+                  ? 'Add to my Passport'
+                  : 'Save changes',
               surface: CsSurface.light,
               onTap: () => Navigator.pop(
                 context,

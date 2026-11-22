@@ -9,6 +9,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/theme/cs_surface_context.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/vineyard_repository.dart';
 import '../../data/repositories/visit_wine_repository.dart';
@@ -18,8 +19,10 @@ import '../../models/vineyard.dart';
 import '../../models/vineyard_visit.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
+import '../passport/widgets/own_passport_entry_row.dart';
 import '../visits/widgets/visit_wines.dart';
 import 'log_estate_visit.dart';
+import 'widgets/log_estate_visit_sheet.dart';
 import 'widgets/vineyard_detail_hero.dart';
 
 /// A wine estate's own page: hero, its World's 50 Best Vineyards rank, the
@@ -167,10 +170,60 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
     setState(() => _myVisits = [saved, ..._myVisits]);
   }
 
-  String _visitLine(VineyardVisit visit) {
-    final date = MaterialLocalizations.of(
+  Future<void> _editVisit(VineyardVisit visit) async {
+    final vineyard = _vineyard;
+    if (vineyard == null) return;
+    final input = await showLogEstateVisitSheet(
       context,
-    ).formatMediumDate(visit.visitedOn);
+      vineyard: vineyard,
+      initial: visit,
+    );
+    if (input == null || !mounted) return;
+    try {
+      final saved = await _repo.updateVisit(
+        visitId: visit.id,
+        visitedOn: input.visitedOn,
+        activities: input.activities,
+        comment: input.comment,
+        friendsVisible: input.friendsVisible,
+      );
+      if (!mounted) return;
+      setState(() {
+        _myVisits = [for (final v in _myVisits) v.id == saved.id ? saved : v]
+          ..sort((a, b) => b.visitedOn.compareTo(a.visitedOn));
+      });
+    } catch (_) {
+      _snack('Could not save. Please try again.', isError: true);
+    }
+  }
+
+  Future<void> _deleteVisit(VineyardVisit visit) async {
+    final confirmed = await confirmDeletePassportEntry(
+      context,
+      title: 'Delete this visit?',
+      body:
+          'This visit and its stamp leave your Passport, with your note. '
+          'Other visits to this estate and the wines you noted stay.',
+      actionLabel: 'Delete visit',
+    );
+    if (!confirmed || !mounted) return;
+    try {
+      await _repo.deleteVisit(visit.id);
+      if (!mounted) return;
+      setState(
+        () => _myVisits = [
+          for (final v in _myVisits)
+            if (v.id != visit.id) v,
+        ],
+      );
+    } catch (_) {
+      _snack('Could not delete visit. Please try again.', isError: true);
+    }
+  }
+
+  String _visitLine(VineyardVisit visit) {
+    // With the year: a visit can be years back.
+    final date = formatVenueVisitDate(visit.visitedOn);
     final did = [
       for (final a in VineyardActivity.values)
         if (visit.activities.contains(a)) a.label.toLowerCase(),
@@ -272,14 +325,12 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
                 )
               else
                 for (final visit in _myVisits)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: CsSpacing.xs),
-                    child: Text(
-                      _visitLine(visit),
-                      style: CsTypography.body.copyWith(
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
+                  OwnPassportEntryRow(
+                    text: _visitLine(visit),
+                    editLabel: 'Edit visit',
+                    deleteLabel: 'Delete visit',
+                    onEdit: () => _editVisit(visit),
+                    onDelete: () => _deleteVisit(visit),
                   ),
               const SizedBox(height: CsSpacing.base),
               CsPrimaryButton(
