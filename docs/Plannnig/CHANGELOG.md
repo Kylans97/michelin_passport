@@ -8,6 +8,15 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Website: event and restaurant pages in the Keynote style, a Filters affordance on /events, and a calmer header** (product owner, 2026-11-22, after the design review of 2026-11-21 at https://claude.ai/artifact/BwQgmW2wd6Ed8zhtQ1UDem: "Begin met de event- en restaurantpagina's (1), daarna de eventfilter en sortering (2) en de navigatie (3)"). Branch `claude/site-detail-pages`, `site-next/` only, no database change. Previewed on next.mantelier.pages.dev, then **merged into `main` on 2026-11-22** (product owner: "Ja, merge PR #14 naar main zodat het live gaat op mantelier.app"), which publishes it.
+  - **Event and restaurant pages** (`src/pages/events/[slug].astro`, `src/pages/restaurants/[slug].astro`): a green band with a breadcrumb, the title, the host and place, and a figure set large (the event's days on a claret tile; the restaurant's strongest current recognition, gold only for MICHELIN stars), then a reading column with a sticky facts card beside it, on the header's edges (1200px) instead of a half-empty left column. Restaurants on an event show their stars. The Going call to action reads "Say you’re going in the app", "Event website" is left out when it is the ticket link, and the sign-in and ticket links have room to tap. No photo or about text yet: production holds no published venue photo, no approved about text and no event image (all three counted 0 on 2026-11-22), so the pages are typographic until they exist.
+  - **/events:** one Filters button (country and kind, each listed with its count) with a quiet summary of what is on and a Clear, kept in the address (`?country=NL&type=Dinner`); it runs in the browser after HideEnded, so an ended event stays hidden. The featured evening is now the next Benelux event that hasn't begun, else the next festival as before.
+  - **Header:** Events first; Trends leaves the header until it has content (its page stays). Phone header links are 44px tall. A short page keeps its footer at the bottom of the screen.
+
+### Fixed
+- **Events on one day were in id order, not time order** (`src/lib/events.ts`): the read ordered `start_date,id`, so on 22 Nov a 13:00 lunch came before a 12:30 dinner on /events and the home page. Now `start_date,start_time.asc.nullsfirst,id`: date-only events first, then by local start time. It recurs wherever an order names only the date; the app orders the same way and may want the same tiebreak.
+
 ---
 
 ## v1.8.0 (39) — 2026-11-21

@@ -3,8 +3,7 @@ import Base from '../layouts/Base.astro';
 import EventRow from '../components/EventRow.astro';
 import HideEnded from '../components/HideEnded.astro';
 import AppCta from '../components/AppCta.astro';
-import { formatWhen, loadEvents, monthKey, monthLabel, place, type SiteEvent } from '../lib/events';
-import { MONTHS_LONG } from '../lib/event-dates';
+import { BENELUX, dateFigure, formatWhen, loadEvents, monthKey, monthLabel, place, type SiteEvent } from '../lib/events';
 
 const events = await loadEvents();
 const months = new Map<string, SiteEvent[]>();
@@ -13,20 +12,27 @@ for (const e of events) {
   months.get(monthKey(e))!.push(e);
 }
 
-// The featured evening (Keynote, 2026-11-21): the next festival that
-// isn't cancelled and hasn't begun yet, else one already running, else
+// The featured evening: the next event in the Benelux that isn't
+// cancelled and hasn't begun yet (Benelux first, review of 2026-11-21),
+// else the next such festival anywhere, else one already running, else
 // nothing. Chosen by rule, never by hand, and shown in type only: we hold
 // no photo of the event itself. The site rebuilds every three hours.
 const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Amsterdam' }).format(new Date());
-const festivals = events.filter((e) => !e.cancelled && e.type === 'Festival');
-const featured = festivals.find((e) => e.startDate > today) ?? festivals[0];
-const days = (e: SiteEvent) => {
-  const [, sm, sd] = e.startDate.split('-').map(Number);
-  const [, em, ed] = e.endDate.split('-').map(Number);
-  if (e.startDate === e.endDate) return { big: `${sd}`, rest: MONTHS_LONG[sm - 1] };
-  if (sm === em) return { big: `${sd} to ${ed}`, rest: MONTHS_LONG[sm - 1] };
-  return { big: `${sd} ${MONTHS_LONG[sm - 1].slice(0, 3)} to ${ed} ${MONTHS_LONG[em - 1].slice(0, 3)}`, rest: '' };
+const open = events.filter((e) => !e.cancelled);
+const festivals = open.filter((e) => e.type === 'Festival');
+const featured = open.find((e) => e.startDate > today && BENELUX.has(e.countryCode ?? ''))
+  ?? festivals.find((e) => e.startDate > today) ?? festivals[0];
+
+// The one Filters affordance (CLAUDE.md, UI principle): country and kind,
+// each listed only when an upcoming event has it, most events first.
+const tally = (key: (e: SiteEvent) => string | null) => {
+  const counts = new Map<string, number>();
+  for (const e of events) { const k = key(e); if (k) counts.set(k, (counts.get(k) ?? 0) + 1); }
+  return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 };
+const countryNames = new Map(events.filter((e) => e.countryCode).map((e) => [e.countryCode!, e.country ?? e.countryCode!]));
+const countries = tally((e) => e.countryCode).map(([code, n]) => ({ value: code, label: countryNames.get(code) ?? code, n }));
+const types = tally((e) => e.type).map(([type, n]) => ({ value: type, label: type, n }));
 const teaser = (text: string | null) => {
   if (!text) return null;
   return text.length > 220 ? `${text.slice(0, 217).trimEnd()}…` : text;
@@ -40,16 +46,16 @@ const teaser = (text: string | null) => {
   </header>
 
   {featured && (() => {
-    const d = days(featured);
+    const d = dateFigure(featured);
     const host = featured.venues.find((v) => v.roles.includes('host'));
     const where = [host?.name ?? featured.venueName, place(featured)].filter(Boolean).join(' · ');
     return (
-      <section class="feature-wrap" data-end-date={featured.endDate} data-tz={featured.timezone ?? 'Europe/Amsterdam'}>
+      <section class="feature-wrap" data-featured data-end-date={featured.endDate} data-tz={featured.timezone ?? 'Europe/Amsterdam'}>
         <a class="feature" href={`/events/${featured.slug}`}>
           <div class="panel">
             <span class="panel-kicker">Featured</span>
             <span class="panel-days">{d.big}</span>
-            <span class="panel-month">{[d.rest, featured.startDate.slice(0, 4)].filter(Boolean).join(' ')}</span>
+            <span class="panel-month">{d.rest}</span>
           </div>
           <div class="feature-text">
             <span class="feature-type">{featured.type}</span>
@@ -65,6 +71,28 @@ const teaser = (text: string | null) => {
   })()}
 
   <section class="wrap list" data-events-scope>
+    <div class="filter-bar" data-filters hidden>
+      <details class="filters">
+        <summary>Filters</summary>
+        <div class="filter-panel">
+          <label>
+            <span>Country</span>
+            <select data-filter="country">
+              <option value="">Every country</option>
+              {countries.map((c) => <option value={c.value}>{c.label} ({c.n})</option>)}
+            </select>
+          </label>
+          <label>
+            <span>Kind</span>
+            <select data-filter="type">
+              <option value="">Every kind</option>
+              {types.map((t) => <option value={t.value}>{t.label} ({t.n})</option>)}
+            </select>
+          </label>
+        </div>
+      </details>
+      <p class="filter-summary" data-filter-summary aria-live="polite"></p>
+    </div>
     {[...months.entries()].map(([key, list]) => (
       <div class="month" data-event-group>
         <h2 class="month-title">{monthLabel(key)}</h2>
@@ -72,6 +100,7 @@ const teaser = (text: string | null) => {
       </div>
     ))}
     <p class="empty" data-events-empty hidden={events.length > 0}>No upcoming events right now.</p>
+    <p class="empty" data-filter-empty hidden>No upcoming events match these filters. <button type="button" class="clear" data-filter-clear>Clear filters</button></p>
   </section>
 
   <section class="close flush-end">
@@ -80,6 +109,58 @@ const teaser = (text: string | null) => {
     <AppCta label="Download on the App Store" variant="ivory" size="large" />
   </section>
   <HideEnded />
+  <script>
+    // Filters run in the browser over the rows the build wrote, after
+    // HideEnded: a row hidden because it ended stays hidden. The choice
+    // lives in the address (?country=NL&type=Dinner), so it can be shared.
+    const bar = document.querySelector<HTMLElement>('[data-filters]');
+    if (bar) {
+      bar.hidden = false;
+      const selects = [...bar.querySelectorAll<HTMLSelectElement>('[data-filter]')];
+      const summary = bar.querySelector<HTMLElement>('[data-filter-summary]')!;
+      const featured = document.querySelector<HTMLElement>('[data-featured]');
+      const noMatch = document.querySelector<HTMLElement>('[data-filter-empty]')!;
+      const rows = [...document.querySelectorAll<HTMLElement>('.list [data-end-date]')];
+      const params = new URLSearchParams(location.search);
+      for (const s of selects) {
+        const v = params.get(s.dataset.filter!);
+        if (v && [...s.options].some((o) => o.value === v)) s.value = v;
+      }
+
+      const apply = () => {
+        const chosen = Object.fromEntries(selects.map((s) => [s.dataset.filter!, s.value]));
+        const active = selects.filter((s) => s.value);
+        let shown = 0;
+        for (const row of rows) {
+          const match = (!chosen.country || row.dataset.country === chosen.country) && (!chosen.type || row.dataset.type === chosen.type);
+          row.classList.toggle('filtered-out', !match);
+          if (match && !row.hidden) shown++;
+        }
+        document.querySelectorAll<HTMLElement>('.list [data-event-group]').forEach((g) => {
+          g.classList.toggle('filtered-out', !g.querySelector('[data-end-date]:not([hidden]):not(.filtered-out)'));
+        });
+        if (featured) featured.classList.toggle('filtered-out', active.length > 0);
+        noMatch.hidden = active.length === 0 || shown > 0;
+        summary.replaceChildren();
+        if (active.length > 0) {
+          const text = active.map((s) => s.selectedOptions[0].text.replace(/\s*\(\d+\)$/, '')).join(' · ');
+          summary.append(`${text} · ${shown} ${shown === 1 ? 'event' : 'events'} `);
+          const clear = document.createElement('button');
+          clear.type = 'button'; clear.className = 'clear'; clear.textContent = 'Clear';
+          clear.addEventListener('click', reset);
+          summary.append(clear);
+        }
+        const next = new URLSearchParams();
+        for (const s of active) next.set(s.dataset.filter!, s.value);
+        const query = next.toString();
+        history.replaceState(null, '', query ? `?${query}` : location.pathname);
+      };
+      const reset = () => { for (const s of selects) s.value = ''; apply(); };
+      selects.forEach((s) => s.addEventListener('change', apply));
+      noMatch.querySelector('[data-filter-clear]')?.addEventListener('click', reset);
+      apply();
+    }
+  </script>
 </Base>
 
 <style>
@@ -111,6 +192,31 @@ const teaser = (text: string | null) => {
   .feature-go { margin-top: auto; padding-top: 12px; font-size: 16px; color: var(--forest); }
 
   .list { padding-top: 72px; padding-bottom: 120px; max-width: 1200px; }
+  .list :global(.filtered-out), :global(.feature-wrap.filtered-out) { display: none; }
+
+  .filter-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 40px; }
+  .filters { position: relative; }
+  .filters summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+    min-height: 44px; padding: 0 20px; border: 1px solid var(--green); border-radius: 999px;
+    font-size: 15px; font-weight: 600;
+  }
+  .filters summary::-webkit-details-marker { display: none; }
+  .filters summary::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); }
+  .filters[open] summary { background: var(--green); color: var(--ivory); }
+  .filters[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+  .filter-panel {
+    position: absolute; z-index: 5; top: calc(100% + 10px); left: 0; width: min(360px, calc(100vw - 2 * var(--gutter)));
+    display: grid; gap: 16px; padding: 22px; background: var(--paper); border: 1px solid var(--rule); border-radius: 18px;
+    box-shadow: 0 24px 48px -28px rgba(14, 33, 28, 0.45);
+  }
+  .filter-panel label { display: grid; gap: 6px; font-size: 13px; font-weight: 600; color: var(--ink-soft); }
+  .filter-panel select {
+    font: inherit; font-size: 16px; font-weight: 400; color: var(--green); min-height: 44px; padding: 0 12px;
+    background: var(--ivory); border: 1px solid var(--rule); border-radius: 10px;
+  }
+  .filter-summary { margin: 0; font-size: 15px; color: var(--ink-soft); }
+  .list :global(.clear) { font: inherit; color: var(--green); background: none; border: 0; padding: 10px 4px; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
   ul { list-style: none; margin: 0; padding: 0; }
   .month + .month { margin-top: 56px; }
   .month-title { font-family: var(--display); font-weight: 300; font-size: 44px; line-height: 1.1; margin: 0; padding-bottom: 6px; border-bottom: 1px solid var(--green); }

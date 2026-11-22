@@ -8,7 +8,7 @@ interface Props { event: SiteEvent; onGreen?: boolean; }
 const { event: e, onGreen = false } = Astro.props;
 const host = e.venues.find((v) => v.roles.includes('host'));
 ---
-<li class:list={['row', { 'on-green': onGreen }]} data-end-date={e.endDate} data-tz={e.timezone ?? 'Europe/Amsterdam'}>
+<li class:list={['row', { 'on-green': onGreen }]} data-end-date={e.endDate} data-tz={e.timezone ?? 'Europe/Amsterdam'} data-country={e.countryCode ?? ''} data-type={e.type}>
   <a href={`/events/${e.slug}`}>
     <span class="when">{formatWhen(e)}</span>
     <span class="display name">{e.name}</span>
