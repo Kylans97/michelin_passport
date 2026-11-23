@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
@@ -534,172 +535,177 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     final canAddPlaces =
         !widget._isFriend && !_wineMode && !_loading && _undatedAvailable;
 
-    return Scaffold(
-      backgroundColor: AppColors.deepGreen,
-      body: Column(
-        children: [
-          SafeArea(
-            bottom: false,
-            child: ColoredBox(
-              color: AppColors.deepGreen,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      CsSpacing.base,
-                      0,
-                      CsSpacing.base,
-                      0,
+    // Light status bar on the green map, also when coming back from the
+    // ivory Add places screens, which set it dark.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: Scaffold(
+        backgroundColor: AppColors.deepGreen,
+        body: Column(
+          children: [
+            SafeArea(
+              bottom: false,
+              child: ColoredBox(
+                color: AppColors.deepGreen,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        CsSpacing.base,
+                        0,
+                        CsSpacing.base,
+                        0,
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: EditorialBackButton(color: AppColors.ivory),
+                      ),
                     ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: EditorialBackButton(color: AppColors.ivory),
+                    if (!widget._isFriend && !_atlas.isEmpty)
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          CsSpacing.pageHorizontal,
+                          0,
+                          CsSpacing.pageHorizontal,
+                          CsSpacing.sm,
+                        ),
+                        child: _ModeToggle(
+                          wine: _wineMode,
+                          onChanged: _setWineMode,
+                        ),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.xs,
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.sm,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            _wineMode
+                                ? 'Wine regions'
+                                : widget._isFriend
+                                ? "$_ownerName's Map"
+                                : 'My Map',
+                            style: CsTypography.screenTitle.copyWith(
+                              color: AppColors.ivory,
+                            ),
+                          ),
+                          const SizedBox(height: CsSpacing.xs),
+                          Text(
+                            _wineMode
+                                ? 'Tap a region to see its grapes and how they taste.'
+                                : widget._isFriend
+                                ? 'Every place $_ownerName has shared with you.'
+                                : "Every place you've experienced.",
+                            style: CsTypography.body.copyWith(
+                              color: AppColors.secondaryOnDark,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  if (!widget._isFriend && !_atlas.isEmpty)
                     Padding(
                       padding: const EdgeInsets.fromLTRB(
                         CsSpacing.pageHorizontal,
                         0,
                         CsSpacing.pageHorizontal,
-                        CsSpacing.sm,
+                        CsSpacing.base,
                       ),
-                      child: _ModeToggle(
-                        wine: _wineMode,
-                        onChanged: _setWineMode,
-                      ),
+                      child: _wineMode
+                          ? _WineSearchButton(onTap: _openWineSearch)
+                          : Row(
+                              children: [
+                                _FilterButton(
+                                  label: _filter.label,
+                                  onTap: _openFilterMenu,
+                                ),
+                                const Spacer(),
+                                if (canAddPlaces)
+                                  _AddButton(onTap: _openAddPlaces),
+                              ],
+                            ),
                     ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.xs,
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.sm,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          _wineMode
-                              ? 'Wine regions'
-                              : widget._isFriend
-                              ? "$_ownerName's Map"
-                              : 'My Map',
-                          style: CsTypography.screenTitle.copyWith(
-                            color: AppColors.ivory,
-                          ),
-                        ),
-                        const SizedBox(height: CsSpacing.xs),
-                        Text(
-                          _wineMode
-                              ? 'Tap a region to see its grapes and how they taste.'
-                              : widget._isFriend
-                              ? 'Every place $_ownerName has shared with you.'
-                              : "Every place you've experienced.",
-                          style: CsTypography.body.copyWith(
-                            color: AppColors.secondaryOnDark,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      0,
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.base,
-                    ),
-                    child: _wineMode
-                        ? _WineSearchButton(onTap: _openWineSearch)
-                        : Row(
-                            children: [
-                              _FilterButton(
-                                label: _filter.label,
-                                onTap: _openFilterMenu,
-                              ),
-                              const Spacer(),
-                              if (canAddPlaces)
-                                _AddButton(onTap: _openAddPlaces),
-                            ],
-                          ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: ColoredBox(
-              color: AppColors.deepGreen,
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: GlobeView(
-                      controller: _globeController,
-                      pins: _wineMode ? const [] : plottable,
-                      visitedCountryCodes: _wineMode
-                          ? const {}
-                          : _visitedCountryCodes,
-                      onPinTap: (pin) => _onPinTap(context, pin),
-                      onClusterTap: (pins) => _onClusterTap(context, pins),
-                      regions: _wineMode ? _globeRegions : const [],
-                      selectedRegionId: _selectedRegionId,
-                      onRegionTap: (globeRegion) {
-                        final region = _atlas.region(globeRegion.id);
-                        if (region != null) _openRegion(region);
-                      },
-                    ),
-                  ),
-                  // No overlay in wine mode. SizedBox.expand, not shrink: a
-                  // zero-sized child here would make this Stack, and with it
-                  // the globe, zero wide (seen in the simulator, 2026-11-20).
-                  if (_wineMode)
-                    const SizedBox.expand()
-                  else if (_loading)
-                    const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.ivory,
-                        strokeWidth: 2,
+            Expanded(
+              child: ColoredBox(
+                color: AppColors.deepGreen,
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: GlobeView(
+                        controller: _globeController,
+                        pins: _wineMode ? const [] : plottable,
+                        visitedCountryCodes: _wineMode
+                            ? const {}
+                            : _visitedCountryCodes,
+                        onPinTap: (pin) => _onPinTap(context, pin),
+                        onClusterTap: (pins) => _onClusterTap(context, pins),
+                        regions: _wineMode ? _globeRegions : const [],
+                        selectedRegionId: _selectedRegionId,
+                        onRegionTap: (globeRegion) {
+                          final region = _atlas.region(globeRegion.id);
+                          if (region != null) _openRegion(region);
+                        },
                       ),
-                    )
-                  else if (_loadError)
-                    _MapMessage(
-                      icon: Icons.wifi_off_rounded,
-                      message: widget._isFriend
-                          ? "Could not load $_ownerName's places."
-                          : 'Could not load your visited venues.',
-                      actionLabel: 'Retry',
-                      onAction: () {
-                        setState(() => _loading = true);
-                        _load();
-                      },
-                    )
-                  else if (!hasAnyHistory)
-                    _MapMessage(
-                      icon: Icons.explore_outlined,
-                      message: widget._isFriend
-                          ? "$_ownerName hasn't shared any places yet."
-                          : 'Your map is waiting for its first destination.',
-                    )
-                  else if (plottable.isEmpty)
-                    _MapMessage(
-                      icon: Icons.location_off_outlined,
-                      message: switch (_filter) {
-                        MapFilterType.hotels => 'No hotel stays yet.',
-                        MapFilterType.restaurants =>
-                          'No restaurant visits yet.',
-                        MapFilterType.events => 'No event attendance yet.',
-                        MapFilterType.all => 'No visited venues yet.',
-                      },
                     ),
-                ],
+                    // No overlay in wine mode. SizedBox.expand, not shrink: a
+                    // zero-sized child here would make this Stack, and with it
+                    // the globe, zero wide (seen in the simulator, 2026-11-20).
+                    if (_wineMode)
+                      const SizedBox.expand()
+                    else if (_loading)
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.ivory,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    else if (_loadError)
+                      _MapMessage(
+                        icon: Icons.wifi_off_rounded,
+                        message: widget._isFriend
+                            ? "Could not load $_ownerName's places."
+                            : 'Could not load your visited venues.',
+                        actionLabel: 'Retry',
+                        onAction: () {
+                          setState(() => _loading = true);
+                          _load();
+                        },
+                      )
+                    else if (!hasAnyHistory)
+                      _MapMessage(
+                        icon: Icons.explore_outlined,
+                        message: widget._isFriend
+                            ? "$_ownerName hasn't shared any places yet."
+                            : 'Your map is waiting for its first destination.',
+                      )
+                    else if (plottable.isEmpty)
+                      _MapMessage(
+                        icon: Icons.location_off_outlined,
+                        message: switch (_filter) {
+                          MapFilterType.hotels => 'No hotel stays yet.',
+                          MapFilterType.restaurants =>
+                            'No restaurant visits yet.',
+                          MapFilterType.events => 'No event attendance yet.',
+                          MapFilterType.all => 'No visited venues yet.',
+                        },
+                      ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
