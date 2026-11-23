@@ -3,11 +3,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
-import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/map_repository.dart';
 import '../../data/repositories/undated_visit_repository.dart';
+import '../../data/repositories/undated_visit_preview_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wine_atlas_repository.dart';
 import '../../models/passport_venue.dart';
@@ -85,9 +85,9 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   late final MapRepository _mapRepo = MapRepository(Supabase.instance.client);
   late final EventConfirmedAttendanceRepository _eventsRepo =
       EventConfirmedAttendanceRepository(Supabase.instance.client);
-  late final UndatedVisitRepository _undatedRepo = UndatedVisitRepository(
-    Supabase.instance.client,
-  );
+  late final UndatedVisitRepository _undatedRepo = undatedPreview
+      ? PreviewUndatedVisitRepository(Supabase.instance.client)
+      : UndatedVisitRepository(Supabase.instance.client);
   final _globeController = GlobeController();
 
   List<VenueEntry>? _entries; // null until the first load completes.
@@ -366,6 +366,14 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       if (!mounted) return;
       await celebrateNewStamp(context, EarnedStamp.visit(visit));
       await _load();
+    } on UnsupportedError catch (e) {
+      // LOCAL PREVIEW ONLY: see undated_visit_preview_repository.dart.
+      if (!mounted) return;
+      await _load();
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('${e.message}')));
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -461,6 +469,48 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => _globeController.fitTo(_visiblePoints),
     );
+  }
+
+  Future<void> _openFilterMenu() async {
+    final picked = await showModalBottomSheet<MapFilterType>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            decoration: BoxDecoration(
+              color: AppColors.card,
+              borderRadius: BorderRadius.circular(22),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (final type in MapFilterType.values)
+                  ListTile(
+                    title: Text(
+                      type.label,
+                      style: CsFonts.serif(
+                        color: AppColors.textPrimary,
+                        fontSize: 18,
+                      ),
+                    ),
+                    trailing: type == _filter
+                        ? const Icon(
+                            Icons.check_rounded,
+                            color: AppColors.forestGreen,
+                          )
+                        : null,
+                    onTap: () => Navigator.pop(context, type),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    if (picked != null && picked != _filter) _onSelectFilter(picked);
   }
 
   void _onClusterTap(BuildContext context, List<MapPin> pins) =>
@@ -574,21 +624,16 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                     ),
                     child: _wineMode
                         ? _WineSearchButton(onTap: _openWineSearch)
-                        : SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                for (final type in MapFilterType.values) ...[
-                                  if (type != MapFilterType.values.first)
-                                    const SizedBox(width: CsSpacing.sm),
-                                  CsFilterChip(
-                                    label: type.label,
-                                    selected: _filter == type,
-                                    onTap: () => _onSelectFilter(type),
-                                  ),
-                                ],
-                              ],
-                            ),
+                        : Row(
+                            children: [
+                              _FilterButton(
+                                label: _filter.label,
+                                onTap: _openFilterMenu,
+                              ),
+                              const Spacer(),
+                              if (canAddPlaces)
+                                _AddButton(onTap: _openAddPlaces),
+                            ],
                           ),
                   ),
                 ],
@@ -658,12 +703,6 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                         MapFilterType.events => 'No event attendance yet.',
                         MapFilterType.all => 'No visited venues yet.',
                       },
-                    ),
-                  if (canAddPlaces)
-                    Positioned(
-                      top: CsSpacing.md,
-                      right: CsSpacing.pageHorizontal,
-                      child: _AddPlacesButton(onTap: _openAddPlaces),
                     ),
                 ],
               ),
@@ -790,45 +829,72 @@ class _ModeToggle extends StatelessWidget {
   );
 }
 
-/// "+ Add places": venues the member has been to, added without a date.
-class _AddPlacesButton extends StatelessWidget {
+/// What the globe shows: one button with the active filter's name,
+/// opening the four choices, so the row stays calm.
+class _FilterButton extends StatelessWidget {
+  final String label;
   final VoidCallback onTap;
-  const _AddPlacesButton({required this.onTap});
+  const _FilterButton({required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: 'Showing $label. Change filter',
+    excludeSemantics: true,
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 44,
+        padding: const EdgeInsets.only(left: 18, right: 12),
+        decoration: BoxDecoration(
+          color: AppColors.ivory,
+          borderRadius: BorderRadius.circular(22),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              label,
+              style: CsTypography.smallLabel.copyWith(
+                color: AppColors.deepGreen,
+              ),
+            ),
+            const SizedBox(width: 4),
+            const Icon(
+              Icons.expand_more_rounded,
+              size: 18,
+              color: AppColors.deepGreen,
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+/// "+": add venues the member has been to, without a date.
+class _AddButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _AddButton({required this.onTap});
 
   @override
   Widget build(BuildContext context) => Semantics(
     button: true,
     label: 'Add places you have been',
+    excludeSemantics: true,
     child: GestureDetector(
       onTap: onTap,
       child: Container(
-        height: 40,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        decoration: BoxDecoration(
+        width: 44,
+        height: 44,
+        decoration: const BoxDecoration(
           color: AppColors.ivory,
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.black38,
-              blurRadius: 8,
-              offset: Offset(0, 3),
-            ),
-          ],
+          shape: BoxShape.circle,
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.add_rounded, size: 18, color: AppColors.deepGreen),
-            const SizedBox(width: 6),
-            Text(
-              'Add places',
-              style: CsFonts.sans(
-                color: AppColors.deepGreen,
-                fontSize: 13.5,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
+        child: const Icon(
+          Icons.add_rounded,
+          size: 24,
+          color: AppColors.deepGreen,
         ),
       ),
     ),
