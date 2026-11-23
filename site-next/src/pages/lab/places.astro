@@ -1,0 +1,956 @@
+---
+// A try-out for the product owner (2026-11-23): four ways to add a visit
+// without a date and to find your places back, on the member's own data.
+// The design canvas has the reasoning; this page is for trying it by hand.
+//
+// Reads the member's visits and Wishlist, read-only. Anything added here
+// stays in this browser (src/lib/lab/places.ts): the undated visit has no
+// table yet, and nothing on this page writes to the account. Not linked
+// from anywhere and never indexed.
+import Base from '../../layouts/Base.astro';
+import '../../styles/account.css';
+---
+<Base title="Places, a try-out" description="Four ways to keep your places." noindex>
+  <section class="stage" aria-label="Places">
+    <div class="wrap head">
+      <p class="eyebrow kicker">A try-out</p>
+      <h1 class="display">Places</h1>
+      <p class="sub" data-summary>Loading…</p>
+      <div class="switch" role="tablist" aria-label="Directions">
+        <button type="button" role="tab" data-dir="index">1 · Index</button>
+        <button type="button" role="tab" data-dir="album">2 · Album</button>
+        <button type="button" role="tab" data-dir="globe">3 · Globe</button>
+        <button type="button" role="tab" data-dir="guide">4 · Your guide</button>
+      </div>
+      <p class="about" data-about></p>
+    </div>
+  </section>
+
+  <section class="globe-stage" data-globe-stage hidden aria-label="Your globe">
+    <div class="globe-grid wrap">
+      <div class="canvas-box" data-box>
+        <canvas data-canvas aria-hidden="true"></canvas>
+        <div class="pins" data-pins></div>
+        <div class="controls" role="group" aria-label="Globe controls">
+          <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+          <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+          <button type="button" class="whole" data-whole>Whole globe</button>
+        </div>
+      </div>
+      <div class="globe-panel" data-globe-panel></div>
+    </div>
+  </section>
+
+  <div class="wrap lab-body">
+    <div class="ribbon">
+      <p>Visits you add here stay in this browser only. Your Passport and your account are not changed.</p>
+      <button type="button" class="text-button" data-clear>Remove what I added</button>
+    </div>
+    <p class="notice" data-signed-out hidden>You’re not signed in, so your own visits aren’t shown. <a href="/account/sign-in?next=/lab/places">Sign in</a> to try this with your own places, or try it empty.</p>
+    <p class="notice error" data-error hidden>Something didn’t load. Please reload the page.</p>
+    <div data-view></div>
+  </div>
+
+  <dialog class="sheet" data-sheet aria-label="Add a visit">
+    <form method="dialog" class="sheet-inner" data-sheet-form>
+      <button class="close" type="button" data-sheet-close aria-label="Close">×</button>
+      <div data-step-search>
+        <p class="sheet-title">A place you’ve been</p>
+        <input class="search" type="search" placeholder="Search by name or city" autocomplete="off" data-search>
+        <ul class="results" data-results></ul>
+      </div>
+      <div data-step-date hidden>
+        <p class="sheet-kicker" data-venue-place></p>
+        <p class="sheet-title" data-venue-name></p>
+        <p class="label">When were you there?</p>
+        <div class="seg" role="radiogroup" aria-label="When">
+          <button type="button" role="radio" data-when="date">On a date</button>
+          <button type="button" role="radio" data-when="year">Only the year</button>
+          <button type="button" role="radio" data-when="none">Not sure</button>
+        </div>
+        <input class="date" type="date" data-date-input>
+        <select class="date" data-year-input aria-label="Year"></select>
+        <p class="help" data-when-help></p>
+        <label class="toggle"><input type="checkbox" data-friends checked> Friends can see this</label>
+        <button class="button" type="button" data-save>Add to Places</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" data-toast hidden role="status"><span data-toast-text></span><button type="button" class="text-button" data-toast-action></button></div>
+</Base>
+
+<style>
+  .stage { background: var(--green); color: var(--ivory); padding-bottom: 36px; }
+  .head { padding-top: 48px; }
+  .kicker { color: var(--on-green-accent); margin-bottom: 12px; }
+  h1 { font-size: clamp(40px, 5.6vw, 68px); }
+  .sub { color: var(--on-green-muted); margin: 10px 0 24px; }
+  .switch { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border: 1px solid var(--on-green-rule); border-radius: 999px; }
+  .switch button { font: 500 14px var(--body); color: var(--on-green-muted); background: none; border: 0; border-radius: 999px; padding: 10px 18px; cursor: pointer; }
+  .switch button[aria-selected="true"] { background: var(--ivory); color: var(--green); }
+  .about { color: var(--on-green-muted); max-width: 640px; margin: 16px 0 0; font-size: 15px; line-height: 1.55; }
+
+  .lab-body { padding-top: 40px; padding-bottom: 120px; max-width: 1200px; }
+  .ribbon { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; justify-content: space-between; border: 1px solid var(--rule); border-radius: 14px; padding: 12px 16px; margin-bottom: 28px; }
+  .ribbon p { margin: 0; font-size: 14px; color: var(--ink-soft); }
+  [data-signed-out] { background: #E3EBE4; color: var(--green); margin-bottom: 28px; }
+  [data-signed-out] a { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Shared bits the views build. */
+  .lab-body :global(.row-head) { display: flex; flex-wrap: wrap; gap: 12px; align-items: baseline; justify-content: space-between; margin-bottom: 18px; }
+  .lab-body :global(.big) { font-family: var(--display); font-weight: 300; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 0; }
+  .lab-body :global(.muted) { color: var(--ink-soft); }
+  .lab-body :global(.gold) { color: var(--gold); letter-spacing: 0.08em; }
+  .lab-body :global(.selection) { color: var(--claret); }
+  .lab-body :global(.link) { font: inherit; font-size: 14px; background: none; border: 0; padding: 0; color: var(--green); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .lab-body :global(.back) { font: inherit; font-size: 14px; background: none; border: 0; padding: 0; color: var(--ink-soft); cursor: pointer; margin-bottom: 14px; }
+  .lab-body :global(.empty-state) { background: var(--card); border-radius: 22px; padding: 36px 28px; text-align: center; }
+  .lab-body :global(.empty-state p) { margin: 0 0 16px; color: var(--ink-soft); }
+  .lab-body :global(.pending) { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--taupe); }
+
+  /* 1 · Index */
+  .lab-body :global(.countries) { list-style: none; margin: 0; padding: 0; background: var(--card); border-radius: 22px; }
+  .lab-body :global(.countries > li) { border-bottom: 1px solid var(--rule); }
+  .lab-body :global(.countries > li:last-child) { border-bottom: 0; }
+  .lab-body :global(.country-btn) { width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 26px; background: none; border: 0; cursor: pointer; text-align: left; font: inherit; color: var(--green); }
+  .lab-body :global(.country-btn .name) { font-family: var(--display); font-size: 26px; }
+  .lab-body :global(.country-btn .count) { font-size: 14px; color: var(--ink-soft); }
+  .lab-body :global(.cities) { padding: 0 26px 18px; }
+  .lab-body :global(.city) { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin: 14px 0 4px; }
+  .lab-body :global(.venue-row) { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); }
+  .lab-body :global(.venue-row .v-name) { font-family: var(--display); font-size: 19px; color: var(--green); }
+  .lab-body :global(.venue-row .v-meta) { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+  /* 2 · Album */
+  .lab-body :global(.album) { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 28px 20px; }
+  .lab-body :global(.album-card) { background: none; border: 0; padding: 0; text-align: left; cursor: pointer; font: inherit; color: var(--green); }
+  .lab-body :global(.mosaic) { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 90px 90px; gap: 3px; border-radius: 14px; overflow: hidden; margin-bottom: 10px; }
+  .lab-body :global(.tile) { display: flex; align-items: flex-end; padding: 10px; font-family: var(--display); font-size: 30px; color: rgba(244, 240, 231, 0.9); line-height: 1; }
+  .lab-body :global(.tile.blank) { background: var(--placeholder); }
+  .lab-body :global(.album-card .name) { font-family: var(--display); font-size: 22px; }
+  .lab-body :global(.album-card .count) { font-size: 13px; color: var(--ink-soft); }
+  .lab-body :global(.venue-grid) { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 24px 18px; }
+  .lab-body :global(.venue-card .photo) { height: 150px; border-radius: 14px; display: flex; align-items: flex-end; justify-content: space-between; padding: 12px; font-family: var(--display); font-size: 40px; color: rgba(244, 240, 231, 0.9); margin-bottom: 10px; }
+  .lab-body :global(.venue-card .photo .tag) { font: 600 11px var(--body); letter-spacing: 0.1em; text-transform: uppercase; background: rgba(14, 36, 31, 0.6); color: var(--ivory); border-radius: 999px; padding: 4px 9px; }
+  .lab-body :global(.venue-card .v-name) { font-family: var(--display); font-size: 19px; }
+  .lab-body :global(.been) { font: 600 14px var(--body); border-radius: 999px; padding: 10px 18px; cursor: pointer; border: 1px solid var(--green); background: none; color: var(--green); margin-top: 10px; }
+  .lab-body :global(.been.on) { background: var(--green); color: var(--ivory); }
+  .lab-body :global(.finder) { background: var(--card); border-radius: 22px; padding: 22px 24px; margin-bottom: 40px; }
+  .lab-body :global(.finder .search) { margin-top: 0; }
+
+  /* 4 · Guide */
+  .lab-body :global(.guide-cover) { text-align: center; padding: 24px 0 30px; }
+  .lab-body :global(.guide-cover .kick) { font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--taupe); }
+  .lab-body :global(.guide-cover .since) { font-family: var(--display); font-style: italic; color: var(--ink-soft); }
+  .lab-body :global(.toc) { list-style: none; margin: 0 auto; padding: 0; max-width: 640px; }
+  .lab-body :global(.toc button) { width: 100%; display: flex; align-items: baseline; gap: 10px; background: none; border: 0; border-bottom: 1px solid var(--rule); padding: 14px 0; cursor: pointer; font: inherit; color: var(--green); }
+  .lab-body :global(.toc .name) { font-family: var(--display); font-size: 24px; }
+  .lab-body :global(.toc .leader) { flex: 1; border-bottom: 1px dotted var(--taupe); transform: translateY(-6px); }
+  .lab-body :global(.chapter) { max-width: 720px; margin: 0 auto; }
+  .lab-body :global(.entry) { padding: 20px 0; border-bottom: 1px solid var(--rule); }
+  .lab-body :global(.entry-head) { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+  .lab-body :global(.entry .v-name) { font-family: var(--display); font-size: 23px; color: var(--green); }
+  .lab-body :global(.entry .score) { font-family: var(--display); font-size: 23px; color: var(--green); }
+  .lab-body :global(.entry .note) { font-family: var(--display); font-style: italic; font-size: 17px; line-height: 1.5; margin: 8px 0 0; }
+  .lab-body :global(.wish) { max-width: 720px; margin: 56px auto 0; }
+
+  /* 3 · Globe */
+  .globe-stage { background: var(--green); color: var(--ivory); padding-bottom: 30px; }
+  .globe-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+  .canvas-box { position: relative; height: min(72vh, 700px); min-height: 380px; touch-action: none; cursor: grab; user-select: none; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .pins { position: absolute; inset: 0; pointer-events: none; }
+  .pins :global(button) { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 2px solid var(--ivory); background: var(--green); color: var(--ivory); padding: 0; cursor: pointer; pointer-events: auto; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.38); font: 500 11px var(--body); }
+  .pins :global(button.undated) { border-style: dashed; background: rgba(14, 36, 31, 0.5); }
+  .controls { position: absolute; right: 12px; top: 12px; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .controls button { min-width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--on-green-rule); background: rgba(14, 36, 31, 0.72); color: var(--ivory); font: 400 18px var(--body); cursor: pointer; padding: 0 12px; }
+  .controls .whole { font-size: 12px; }
+  .globe-panel { background: var(--paper); color: var(--green); border-radius: 22px; padding: 24px 24px 18px; max-height: min(72vh, 700px); overflow-y: auto; }
+  .globe-panel :global(.p-title) { font-family: var(--display); font-size: 28px; margin: 0; }
+  .globe-panel :global(.p-sub) { font-size: 14px; color: var(--ink-soft); margin: 4px 0 14px; }
+  .globe-panel :global(.p-row) { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 11px 0; border-top: 1px solid var(--rule); }
+  .globe-panel :global(.p-row button.c) { font: inherit; font-family: var(--display); font-size: 19px; background: none; border: 0; padding: 0; color: var(--green); cursor: pointer; text-align: left; }
+  .globe-panel :global(.p-meta) { font-size: 13px; color: var(--ink-soft); }
+  .globe-panel :global(.gold) { color: var(--gold); letter-spacing: 0.08em; }
+  .globe-panel :global(.link) { font: inherit; font-size: 14px; background: none; border: 0; padding: 0; color: var(--green); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .globe-panel :global(.back) { font: inherit; font-size: 14px; background: none; border: 0; padding: 0; color: var(--ink-soft); cursor: pointer; margin-bottom: 10px; }
+  .globe-panel :global(.tick) { display: flex; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); font-size: 15px; cursor: pointer; }
+  .globe-panel :global(.tick input) { width: 20px; height: 20px; accent-color: var(--green); }
+  .globe-panel :global(.tick .city) { font-size: 12px; color: var(--ink-soft); }
+  .globe-panel :global(.sticky) { position: sticky; bottom: -18px; background: var(--paper); padding: 14px 0 4px; }
+  .globe-panel :global(select), .globe-panel :global(input[type="search"]) { font: inherit; font-size: 15px; width: 100%; border: 1px solid var(--rule); border-radius: 999px; padding: 10px 14px; background: var(--card); color: var(--green); margin: 8px 0 6px; box-sizing: border-box; }
+  @media (max-width: 860px) {
+    .globe-grid { grid-template-columns: 1fr; }
+    .canvas-box { height: auto; min-height: 0; aspect-ratio: 1 / 1; }
+    .globe-panel { max-height: none; }
+  }
+
+  /* The add sheet */
+  .sheet { border: 0; border-radius: 24px; padding: 0; width: min(480px, calc(100% - 24px)); background: var(--paper); color: var(--green); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45); }
+  .sheet::backdrop { background: rgba(14, 33, 28, 0.55); }
+  .sheet-inner { position: relative; padding: 28px 26px 24px; display: flex; flex-direction: column; }
+  .sheet .close { position: absolute; top: 10px; right: 14px; border: 0; background: none; font-size: 26px; color: var(--ink-soft); cursor: pointer; }
+  .sheet-title { font-family: var(--display); font-size: 28px; line-height: 1.2; margin: 0 0 14px; padding-right: 28px; }
+  .sheet-kicker { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin: 0 0 4px; }
+  [data-step-date] { display: flex; flex-direction: column; gap: 12px; }
+  [data-step-date][hidden] { display: none; }
+  [data-step-date] .sheet-title { margin-bottom: 4px; }
+  .label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); margin: 8px 0 0; }
+  .seg { display: flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; gap: 2px; background: var(--card); }
+  .seg button { flex: 1; font: 500 14px var(--body); border: 0; background: none; color: var(--ink-soft); border-radius: 999px; padding: 10px 4px; cursor: pointer; }
+  .seg button[aria-checked="true"] { background: var(--green); color: var(--ivory); }
+  .date { font: inherit; font-size: 16px; border: 1px solid var(--rule); border-radius: 14px; padding: 12px 14px; background: var(--card); color: var(--green); }
+  .date[hidden] { display: none; }
+  .toggle { display: flex; gap: 10px; align-items: center; font-size: 15px; }
+  .toggle input { width: 20px; height: 20px; accent-color: var(--green); }
+  [data-save] { align-self: stretch; margin-top: 6px; }
+  .search, .lab-body :global(.search) { font: inherit; font-size: 16px; width: 100%; box-sizing: border-box; border: 1px solid var(--rule); border-radius: 999px; padding: 13px 18px; background: var(--card); color: var(--green); margin-top: 4px; }
+  .results, .lab-body :global(.results) { list-style: none; margin: 10px 0 0; padding: 0; max-height: 46vh; overflow-y: auto; }
+  .results :global(li), .lab-body :global(.results li) { border-top: 1px solid var(--rule); }
+  .results :global(button.pick) { width: 100%; text-align: left; background: none; border: 0; padding: 12px 2px; cursor: pointer; font: inherit; color: var(--green); }
+  .results :global(.r-name) { font-family: var(--display); font-size: 19px; display: block; }
+  .results :global(.r-meta) { font-size: 13px; color: var(--ink-soft); }
+  .results :global(.gold) { color: var(--gold); letter-spacing: 0.08em; }
+
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--green); color: var(--ivory); border-radius: 999px; padding: 12px 20px; display: flex; gap: 16px; align-items: center; box-shadow: 0 16px 30px -12px rgba(0, 0, 0, 0.5); z-index: 20; max-width: calc(100% - 32px); font-size: 14px; }
+  .toast[hidden] { display: none; }
+  .toast .text-button { color: var(--on-green-accent); font-size: 14px; }
+</style>
+
+<script>
+  import { fullSession } from '../../lib/account/client';
+  import { loadWishlist } from '../../lib/account/data';
+  import { el } from '../../lib/account/catalogue';
+  import { clampCamera, clusterPins, decodeOutlines, fitCamera, paintGlobe, type Camera, type GlobeCountry } from '../../lib/account/globe';
+  import {
+    addLocal, allVenues, award, buildEntries, byCity, byCountry, clearLocal, countryName, hasDate, loadOwnVisits, localVisits,
+    removeLocal, search, updateLocal, venuesByIds, visitsLine, when, type Country, type Entry, type Venue,
+  } from '../../lib/lab/places';
+
+  type Dir = 'index' | 'album' | 'globe' | 'guide';
+
+  const ABOUT: Record<Dir, string> = {
+    index: 'Add a visit with a choice of date: on a date, only the year, or not sure. Places is a quiet list by country and city.',
+    album: 'One tap, Been here, on any venue. Places is an album: every country a set of its venues.',
+    globe: 'Tap a country and tick the venues you remember. They light the globe at once, no dates needed.',
+    guide: 'Already been, straight from your Wishlist. Places reads like a guidebook you wrote yourself.',
+  };
+
+  const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
+  const view = $('[data-view]');
+
+  let dir: Dir = 'index';
+  let rows: Awaited<ReturnType<typeof loadOwnVisits>> = [];
+  let venues = new Map<string, Venue>();
+  let entries: Entry[] = [];
+  let wishlistIds: { type: 'restaurant' | 'hotel'; id: string }[] = [];
+  let openCountry: string | null = null;
+  let albumQuery = '';
+
+  // ---- Data -------------------------------------------------------------
+
+  async function refreshVenues() {
+    const ids = [...rows.map((r) => r.entity_id), ...localVisits().map((l) => l.venueId), ...wishlistIds.map((w) => w.id)];
+    const missing = ids.filter((id) => !venues.has(id));
+    if (missing.length) for (const [id, v] of await venuesByIds(missing)) venues.set(id, v);
+  }
+
+  function rebuild() {
+    entries = buildEntries(rows, venues);
+    const countries = new Set(entries.map((e) => e.venue.countryCode)).size;
+    const undated = entries.filter((e) => !hasDate(e)).length;
+    $('[data-summary]').textContent = entries.length
+      ? `${entries.length} venue${entries.length === 1 ? '' : 's'} in ${countries} countr${countries === 1 ? 'y' : 'ies'}${undated ? `, ${undated} without a date` : ''}`
+      : 'No places yet';
+  }
+
+  // ---- Small builders ---------------------------------------------------
+
+  const TONES = ['#4E5F4A', '#7A5F48', '#5E4A4D', '#6E6553', '#3F5560', '#6A6850', '#2F4A40', '#6B2E36'];
+  const tone = (id: string) => TONES[[...id].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7) % TONES.length];
+
+  function awardSpan(v: Venue) {
+    const a = award(v);
+    if (!a) return null;
+    return el('span', v.stars ? 'gold' : 'muted', ` ${a}`);
+  }
+
+  function nameLine(v: Venue, className: string) {
+    const p = el('div', className, v.name);
+    const a = awardSpan(v);
+    if (a) p.append(a);
+    return p;
+  }
+
+  /** The undated visit this page added for [e], if any. */
+  const undatedLocal = (e: Entry) => e.visits.find((v) => v.local && !v.date);
+
+  function addDateButton(e: Entry) {
+    const local = undatedLocal(e);
+    if (!local || hasDate(e)) return null;
+    const b = el('button', 'link', 'Add the date');
+    b.type = 'button';
+    b.addEventListener('click', () => openSheet({ venue: e.venue, localId: local.localId }));
+    return b;
+  }
+
+  function emptyState(text: string, action: string, run: () => void) {
+    const box = el('div', 'empty-state');
+    const b = el('button', 'button', action);
+    b.type = 'button';
+    b.addEventListener('click', run);
+    box.append(el('p', undefined, text), b);
+    return box;
+  }
+
+  // ---- 1 · Index ----------------------------------------------------------
+
+  function renderIndex() {
+    const head = el('div', 'row-head');
+    const add = el('button', 'button', 'Add a visit');
+    add.type = 'button';
+    add.addEventListener('click', () => openSheet({}));
+    head.append(el('p', 'big', 'Where you have been'), add);
+    view.append(head);
+    const countries = byCountry(entries);
+    if (!countries.length) {
+      view.append(emptyState('Nothing here yet. Add a place you remember, with or without its date.', 'Add a visit', () => openSheet({})));
+      return;
+    }
+    const list = el('ul', 'countries');
+    for (const c of countries) {
+      const li = el('li');
+      const btn = el('button', 'country-btn');
+      btn.type = 'button';
+      btn.setAttribute('aria-expanded', String(openCountry === c.code));
+      btn.append(el('span', 'name', c.name), el('span', 'count', countLine(c)));
+      btn.addEventListener('click', () => { openCountry = openCountry === c.code ? null : c.code; render(); });
+      li.append(btn);
+      if (openCountry === c.code) {
+        const cities = el('div', 'cities');
+        for (const [city, list2] of byCity(c.entries)) {
+          cities.append(el('p', 'city', city));
+          for (const e of list2) cities.append(venueRow(e));
+        }
+        li.append(cities);
+      }
+      list.append(li);
+    }
+    view.append(list);
+  }
+
+  function countLine(c: Country) {
+    const r = c.entries.filter((e) => e.venue.kind === 'restaurant').length;
+    const h = c.entries.length - r;
+    const parts = [r && `${r} restaurant${r === 1 ? '' : 's'}`, h && `${h} hotel${h === 1 ? '' : 's'}`].filter(Boolean);
+    return parts.join(' · ') + (c.undated ? ` · ${c.undated} without a date` : '');
+  }
+
+  function venueRow(e: Entry) {
+    const row = el('div', 'venue-row');
+    const text = el('div');
+    text.append(nameLine(e.venue, 'v-name'), el('div', 'v-meta', visitsLine(e)));
+    row.append(text);
+    const b = addDateButton(e);
+    if (b) row.append(b);
+    return row;
+  }
+
+  // ---- 2 · Album ----------------------------------------------------------
+
+  function renderAlbum() {
+    if (openCountry) return renderAlbumCountry();
+    const finder = el('div', 'finder');
+    finder.append(el('p', 'big', 'Been somewhere?'));
+    const input = el('input', 'search');
+    input.type = 'search';
+    input.placeholder = 'Find the venue, then one tap';
+    const results = el('div', 'venue-grid');
+    results.style.marginTop = '18px';
+    // Kept across re-renders, so a tap on Been here leaves the results in place.
+    const show = async () => {
+      albumQuery = input.value;
+      const all = await allVenues();
+      results.replaceChildren(...search(all, input.value, 8).map(beenCard));
+    };
+    input.value = albumQuery;
+    input.addEventListener('input', show);
+    if (albumQuery) show();
+    finder.append(input, results);
+    view.append(finder);
+
+    const countries = byCountry(entries);
+    if (!countries.length) return;
+    view.append(el('p', 'big', 'Your album'));
+    const grid = el('div', 'album');
+    grid.style.marginTop = '18px';
+    for (const c of countries) {
+      const card = el('button', 'album-card');
+      card.type = 'button';
+      const mosaic = el('div', 'mosaic');
+      for (let i = 0; i < 4; i++) {
+        const e = c.entries[i];
+        const t = el('div', e ? 'tile' : 'tile blank', e ? e.venue.name[0] : '');
+        if (e) t.style.background = tone(e.venue.id);
+        mosaic.append(t);
+      }
+      card.append(mosaic, el('div', 'name', c.name), el('div', 'count', countLine(c)));
+      card.addEventListener('click', () => { openCountry = c.code; render(); window.scrollTo({ top: view.offsetTop - 20, behavior: 'smooth' }); });
+      grid.append(card);
+    }
+    view.append(grid);
+  }
+
+  function renderAlbumCountry() {
+    const c = byCountry(entries).find((k) => k.code === openCountry);
+    const back = el('button', 'back', '‹ Your album');
+    back.type = 'button';
+    back.addEventListener('click', () => { openCountry = null; render(); });
+    view.append(back);
+    if (!c) return;
+    view.append(el('p', 'big', c.name), el('p', 'muted', countLine(c)));
+    const grid = el('div', 'venue-grid');
+    grid.style.marginTop = '24px';
+    for (const e of c.entries) {
+      const card = el('div', 'venue-card');
+      const photo = el('div', 'photo', e.venue.name[0]);
+      photo.style.background = tone(e.venue.id);
+      if (!hasDate(e)) photo.append(el('span', 'tag', 'No date'));
+      else if (e.visits.length > 1) photo.append(el('span', 'tag', `${e.visits.length} visits`));
+      card.append(photo, nameLine(e.venue, 'v-name'), el('div', 'muted', `${e.venue.city} · ${when(e.visits[0])}`));
+      const b = addDateButton(e);
+      if (b) card.append(b);
+      grid.append(card);
+    }
+    view.append(grid);
+  }
+
+  function beenCard(v: Venue) {
+    const card = el('div', 'venue-card');
+    const photo = el('div', 'photo', v.name[0]);
+    photo.style.background = tone(v.id);
+    card.append(photo, nameLine(v, 'v-name'), el('div', 'muted', `${v.city}, ${countryName(v.countryCode)}`));
+    const already = entries.find((e) => e.venue.id === v.id);
+    const mine = localVisits().find((l) => l.venueId === v.id && !l.date);
+    const b = el('button', already ? 'been on' : 'been', already ? '✓ Been here' : 'Been here');
+    b.type = 'button';
+    b.addEventListener('click', async () => {
+      if (mine) {
+        removeLocal(mine.localId);
+        await after();
+        toast(`${v.name} taken out of your Places`);
+      } else if (already) {
+        toast(`${v.name} is already in your Places`);
+        return;
+      } else {
+        const row = addLocal({ kind: v.kind, venueId: v.id, date: null, year: null, friends: true });
+        venues.set(v.id, v);
+        await after();
+        toast(`Added to your Places: ${countryName(v.countryCode)}`, 'Add the date', () => openSheet({ venue: v, localId: row.localId }));
+      }
+    });
+    card.append(b);
+    return card;
+  }
+
+  // ---- 3 · Globe ----------------------------------------------------------
+
+  const box = $('[data-box]');
+  const canvas = $<HTMLCanvasElement>('[data-canvas]');
+  const pinLayer = $('[data-pins]');
+  const panel = $('[data-globe-panel]');
+  let outlines: GlobeCountry[] = [];
+  let camera: Camera = { latitude: 35, longitude: 8, zoom: 1 };
+  let spinning = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ticking: string | null = null;
+
+  async function ensureOutlines() {
+    if (outlines.length) return;
+    const res = await fetch('/account/globe/countries.bin');
+    if (!res.ok) throw new Error(`outlines: ${res.status}`);
+    outlines = decodeOutlines(await res.arrayBuffer());
+  }
+
+  function draw() {
+    if (dir !== 'globe') return;
+    const w = box.clientWidth, h = box.clientHeight, dpr = window.devicePixelRatio || 1;
+    if (!w || !h) return;
+    if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+    }
+    const ctx = canvas.getContext('2d')!;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const lit = new Set(entries.map((e) => e.venue.countryCode));
+    const projection = paintGlobe(ctx, w, h, camera, outlines, lit);
+    const placed = entries.filter((e) => e.venue.latitude !== null && e.venue.longitude !== null);
+    pinLayer.replaceChildren();
+    for (const c of clusterPins(placed, projection, (e) => e.venue.latitude!, (e) => e.venue.longitude!)) {
+      const b = el('button', c.members.every((m) => !hasDate(m)) ? 'undated' : undefined, c.members.length > 1 ? String(c.members.length) : '');
+      b.type = 'button';
+      b.style.left = `${c.x}px`;
+      b.style.top = `${c.y}px`;
+      b.style.opacity = String(c.opacity);
+      if (c.opacity < 0.5) b.style.pointerEvents = 'none';
+      b.setAttribute('aria-label', c.members.map((m) => m.venue.name).join(', '));
+      const code = c.members[0].venue.countryCode;
+      b.addEventListener('click', () => showCountry(code));
+      pinLayer.append(b);
+    }
+  }
+
+  function flyTo(target: Camera) {
+    spinning = false;
+    const from = camera;
+    const dLon = ((((target.longitude - from.longitude + 180) % 360) + 360) % 360) - 180;
+    const t0 = performance.now();
+    const step = (now: number) => {
+      const t = Math.min(1, (now - t0) / 650);
+      const e = t < 0.5 ? 2 * t * t : 1 - (-2 * t + 2) ** 2 / 2;
+      camera = clampCamera({
+        latitude: from.latitude + (target.latitude - from.latitude) * e,
+        longitude: from.longitude + dLon * e,
+        zoom: Math.exp(Math.log(from.zoom) + (Math.log(target.zoom) - Math.log(from.zoom)) * e),
+      });
+      draw();
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  function flyToCountry(code: string) {
+    const pts = entries.filter((e) => e.venue.countryCode === code && e.venue.latitude !== null).map((e) => [e.venue.latitude!, e.venue.longitude!] as [number, number]);
+    if (pts.length) return flyTo(fitCamera(pts, camera, 5));
+    const shape = outlines.find((o) => o.code.toUpperCase() === code.toUpperCase());
+    if (!shape) return;
+    const lat = Math.atan2(shape.cz, Math.hypot(shape.cx, shape.cy)) * 180 / Math.PI;
+    const lon = Math.atan2(shape.cy, shape.cx) * 180 / Math.PI;
+    flyTo(clampCamera({ latitude: lat, longitude: lon, zoom: 4 }));
+  }
+
+  function spin() {
+    if (spinning && dir === 'globe') {
+      camera = clampCamera({ ...camera, longitude: camera.longitude + 0.06 });
+      draw();
+    }
+    requestAnimationFrame(spin);
+  }
+
+  const pointers = new Map<number, { x: number; y: number }>();
+  let pinchStart = 0, zoomStart = 1;
+  box.addEventListener('pointerdown', (e) => {
+    spinning = false;
+    if ((e.target as HTMLElement).closest('button')) return;
+    box.setPointerCapture(e.pointerId);
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinchStart = Math.hypot(a.x - b.x, a.y - b.y);
+      zoomStart = camera.zoom;
+    }
+  });
+  box.addEventListener('pointermove', (e) => {
+    const prev = pointers.get(e.pointerId);
+    if (!prev) return;
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      camera = clampCamera({ ...camera, zoom: zoomStart * Math.hypot(a.x - b.x, a.y - b.y) / Math.max(pinchStart, 1) });
+    } else {
+      const radius = Math.min(box.clientWidth, box.clientHeight) * 0.42 * camera.zoom;
+      const perPx = 180 / Math.PI / radius;
+      camera = clampCamera({ ...camera, longitude: camera.longitude - (e.clientX - prev.x) * perPx, latitude: camera.latitude + (e.clientY - prev.y) * perPx });
+    }
+    draw();
+  });
+  const release = (e: PointerEvent) => pointers.delete(e.pointerId);
+  box.addEventListener('pointerup', release);
+  box.addEventListener('pointercancel', release);
+  box.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    spinning = false;
+    camera = clampCamera({ ...camera, zoom: camera.zoom * Math.exp(-e.deltaY * 0.0015) });
+    draw();
+  }, { passive: false });
+  document.querySelectorAll<HTMLButtonElement>('[data-zoom]').forEach((b) => b.addEventListener('click', () => {
+    flyTo(clampCamera({ ...camera, zoom: camera.zoom * (b.dataset.zoom === 'in' ? 2 : 0.5) }));
+  }));
+  $('[data-whole]').addEventListener('click', () => { openCountry = null; ticking = null; renderGlobePanel(); flyTo({ ...camera, zoom: 1 }); });
+  new ResizeObserver(() => draw()).observe(box);
+
+  function showCountry(code: string) {
+    openCountry = code;
+    ticking = null;
+    renderGlobePanel();
+    flyToCountry(code);
+  }
+
+  async function renderGlobe() {
+    view.append(el('p', 'muted', 'Drag the globe to turn it, scroll or pinch to zoom. A dashed pin is a visit without a date.'));
+    renderGlobePanel();
+    try { await ensureOutlines(); } catch { $('[data-error]').hidden = false; }
+    draw();
+  }
+
+  function renderGlobePanel() {
+    panel.replaceChildren();
+    if (ticking) return renderTickList(ticking);
+    if (openCountry) return renderGlobeCountry(openCountry);
+    const countries = byCountry(entries);
+    const n = countries.length;
+    panel.append(el('p', 'p-title', n ? `${n} countr${n === 1 ? 'y' : 'ies'}` : 'An empty globe'), el('p', 'p-sub', n ? 'Tap one to turn the globe to it.' : 'Pick a country below and tick the venues you remember.'));
+    for (const c of countries) {
+      const row = el('div', 'p-row');
+      const b = el('button', 'c', c.name);
+      b.type = 'button';
+      b.addEventListener('click', () => showCountry(c.code));
+      row.append(b, el('span', 'p-meta', countLine(c)));
+      panel.append(row);
+    }
+    const more = el('div');
+    more.style.marginTop = '22px';
+    more.append(el('p', 'p-sub', 'Been somewhere before you joined? Choose a country and tick what you remember.'));
+    const select = el('select');
+    select.setAttribute('aria-label', 'Choose a country');
+    select.append(new Option('Choose a country', ''));
+    allVenues().then((all) => {
+      const codes = [...new Set(all.map((v) => v.countryCode).filter(Boolean))];
+      codes.map((c) => [c, countryName(c)] as const).sort((a, b) => a[1].localeCompare(b[1])).forEach(([c, name]) => select.append(new Option(name, c)));
+    });
+    select.addEventListener('change', () => {
+      if (!select.value) return;
+      openCountry = select.value;
+      ticking = select.value;
+      renderGlobePanel();
+      flyToCountry(select.value);
+    });
+    more.append(select);
+    panel.append(more);
+  }
+
+  function renderGlobeCountry(code: string) {
+    const c = byCountry(entries).find((k) => k.code === code);
+    const back = el('button', 'back', '‹ All countries');
+    back.type = 'button';
+    back.addEventListener('click', () => { openCountry = null; renderGlobePanel(); flyTo({ ...camera, zoom: 1 }); });
+    panel.append(back, el('p', 'p-title', countryName(code)), el('p', 'p-sub', c ? countLine(c) : 'Not on your globe yet'));
+    for (const e of c?.entries ?? []) {
+      const row = el('div', 'p-row');
+      const text = el('div');
+      text.append(nameLine(e.venue, 'p-name'), el('div', 'p-meta', `${e.venue.city} · ${visitsLine(e)}`));
+      (text.firstChild as HTMLElement).style.fontFamily = 'var(--display)';
+      (text.firstChild as HTMLElement).style.fontSize = '18px';
+      row.append(text);
+      const b = addDateButton(e);
+      if (b) row.append(b);
+      panel.append(row);
+    }
+    const tick = el('button', 'button', c ? 'Tick more you remember' : 'Tick what you remember');
+    tick.type = 'button';
+    tick.style.marginTop = '18px';
+    tick.addEventListener('click', () => { ticking = code; renderGlobePanel(); });
+    panel.append(tick);
+  }
+
+  async function renderTickList(code: string) {
+    const back = el('button', 'back', '‹ Cancel');
+    back.type = 'button';
+    back.addEventListener('click', () => { ticking = null; renderGlobePanel(); });
+    panel.append(back, el('p', 'p-title', `Where in ${countryName(code)} have you been?`), el('p', 'p-sub', 'Starred first, then by city. Tick every one you remember; the dates can wait.'));
+    const filter = el('input');
+    filter.type = 'search';
+    filter.placeholder = 'Search by name or city';
+    const list = el('div');
+    const save = el('button', 'button', 'Add to your globe');
+    save.type = 'button';
+    save.disabled = true;
+    const sticky = el('div', 'sticky');
+    sticky.append(save);
+    panel.append(filter, list, sticky);
+
+    const all = (await allVenues()).filter((v) => v.countryCode === code)
+      .sort((a, b) => (b.stars ?? -1) - (a.stars ?? -1) || (b.keys ?? 0) - (a.keys ?? 0) || a.city.localeCompare(b.city) || a.name.localeCompare(b.name));
+    const known = new Set(entries.map((e) => e.venue.id));
+    const picked = new Set<string>();
+    const fold = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    const paint = () => {
+      const q = fold(filter.value.trim());
+      const shown = all.filter((v) => !q || fold(v.name).includes(q) || fold(v.city).includes(q)).slice(0, 120);
+      list.replaceChildren(...shown.map((v) => {
+        const label = el('label', 'tick');
+        const box2 = el('input');
+        box2.type = 'checkbox';
+        box2.checked = known.has(v.id) || picked.has(v.id);
+        box2.disabled = known.has(v.id);
+        box2.addEventListener('change', () => {
+          if (box2.checked) picked.add(v.id); else picked.delete(v.id);
+          save.disabled = picked.size === 0;
+          save.textContent = picked.size ? `Add ${picked.size} to your globe` : 'Add to your globe';
+        });
+        const text = el('span');
+        text.append(nameLine(v, 'p-name'), el('span', 'city', known.has(v.id) ? `${v.city} · already in your Places` : v.city));
+        label.append(box2, text);
+        return label;
+      }));
+      if (all.length > shown.length && !q) list.append(el('p', 'p-meta', `Showing ${shown.length} of ${all.length}. Search to find the rest.`));
+    };
+    filter.addEventListener('input', paint);
+    paint();
+    save.addEventListener('click', async () => {
+      for (const id of picked) {
+        const v = all.find((x) => x.id === id)!;
+        venues.set(v.id, v);
+        addLocal({ kind: v.kind, venueId: v.id, date: null, year: null, friends: false });
+      }
+      const n = picked.size;
+      ticking = null;
+      openCountry = code;
+      await after();
+      toast(`${countryName(code)}: ${n} added without a date`);
+    });
+  }
+
+  // ---- 4 · Your guide -----------------------------------------------------
+
+  const ORDINALS = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+  const words = (n: number) => (n <= 12 ? ORDINALS[n - 1] : String(n));
+  const cap = (s: string) => s[0].toUpperCase() + s.slice(1);
+
+  function renderGuide() {
+    if (openCountry) return renderChapter(openCountry);
+    const countries = byCountry(entries);
+    const cover = el('div', 'guide-cover');
+    const years = entries.flatMap((e) => e.visits.map((v) => v.year).filter((y): y is number => !!y));
+    cover.append(el('p', 'kick', 'Your guide'));
+    cover.append(el('p', 'big', countries.length
+      ? `${cap(words(countries.length))} countr${countries.length === 1 ? 'y' : 'ies'}, ${words(entries.length)} venue${entries.length === 1 ? '' : 's'}`
+      : 'A guide still to be written'));
+    if (years.length) cover.append(el('p', 'since', `since ${Math.min(...years)}`));
+    const add = el('button', 'link', '+ A place you’ve been');
+    add.type = 'button';
+    add.style.marginTop = '14px';
+    add.addEventListener('click', () => openSheet({}));
+    cover.append(add);
+    view.append(cover);
+
+    const toc = el('ul', 'toc');
+    countries.forEach((c, i) => {
+      const li = el('li');
+      const b = el('button');
+      b.type = 'button';
+      b.append(el('span', 'name', c.name), el('span', 'leader'), el('span', 'muted', String(c.entries.length)));
+      b.setAttribute('aria-label', `Chapter ${i + 1}, ${c.name}, ${c.entries.length} venues`);
+      b.addEventListener('click', () => { openCountry = c.code; render(); window.scrollTo({ top: view.offsetTop - 20, behavior: 'smooth' }); });
+      li.append(b);
+      toc.append(li);
+    });
+    view.append(toc);
+    renderWishlistBeen();
+  }
+
+  function renderChapter(code: string) {
+    const countries = byCountry(entries);
+    const i = countries.findIndex((c) => c.code === code);
+    const c = countries[i];
+    const back = el('button', 'back', '‹ Your guide');
+    back.type = 'button';
+    back.addEventListener('click', () => { openCountry = null; render(); });
+    view.append(back);
+    if (!c) return;
+    const chapter = el('div', 'chapter');
+    chapter.append(el('p', 'pending', `Chapter ${words(i + 1)}`), el('p', 'big', c.name));
+    for (const [city, list] of byCity(c.entries)) {
+      const cityHead = el('p', 'pending', city);
+      cityHead.style.marginTop = '28px';
+      chapter.append(cityHead);
+      for (const e of list) {
+        const entry = el('div', 'entry');
+        const head = el('div', 'entry-head');
+        head.append(nameLine(e.venue, 'v-name'));
+        const rated = e.visits.find((v) => v.rating !== null);
+        head.append(rated ? el('span', 'score', String(rated.rating)) : el('span', 'muted', 'no verdict'));
+        entry.append(head, el('div', 'muted', visitsLine(e)));
+        const noted = e.visits.find((v) => v.notes);
+        if (noted?.notes) entry.append(el('p', 'note', noted.notes));
+        const b = addDateButton(e);
+        if (b) entry.append(b);
+        chapter.append(entry);
+      }
+    }
+    view.append(chapter);
+  }
+
+  function renderWishlistBeen() {
+    const known = new Set(entries.map((e) => e.venue.id));
+    const items = wishlistIds.map((w) => venues.get(w.id)).filter((v): v is Venue => !!v && !known.has(v.id));
+    if (!items.length) return;
+    const wrap = el('div', 'wish');
+    wrap.append(el('p', 'pending', 'From your Wishlist'), el('p', 'muted', 'Been to one already? It moves into your guide, with a date or without.'));
+    for (const v of items.slice(0, 12)) {
+      const row = el('div', 'venue-row');
+      const text = el('div');
+      text.append(nameLine(v, 'v-name'), el('div', 'v-meta', `${v.city}, ${countryName(v.countryCode)}`));
+      const b = el('button', 'button quiet', 'Already been');
+      b.type = 'button';
+      b.addEventListener('click', () => openSheet({ venue: v }));
+      row.append(text, b);
+      wrap.append(row);
+    }
+    view.append(wrap);
+  }
+
+  // ---- The add sheet ------------------------------------------------------
+
+  const sheet = $<HTMLDialogElement>('[data-sheet]');
+  const stepSearch = $('[data-step-search]');
+  const stepDate = $('[data-step-date]');
+  const searchInput = $<HTMLInputElement>('[data-search]');
+  const results = $('[data-results]');
+  const dateInput = $<HTMLInputElement>('[data-date-input]');
+  const yearInput = $<HTMLSelectElement>('[data-year-input]');
+  const friends = $<HTMLInputElement>('[data-friends]');
+  const saveButton = $<HTMLButtonElement>('[data-save]');
+  let sheetVenue: Venue | null = null;
+  let sheetLocalId: string | undefined;
+  let whenMode: 'date' | 'year' | 'none' = 'none';
+
+  const today = new Date().toISOString().slice(0, 10);
+  dateInput.max = today;
+  for (let y = new Date().getFullYear(); y >= 1970; y--) yearInput.append(new Option(String(y), String(y)));
+
+  function setWhen(mode: typeof whenMode) {
+    whenMode = mode;
+    document.querySelectorAll<HTMLButtonElement>('[data-when]').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.when === mode)));
+    dateInput.hidden = mode !== 'date';
+    yearInput.hidden = mode !== 'year';
+    $('[data-when-help]').textContent = mode === 'date'
+      ? 'With a date it becomes a stamp in your Passport.'
+      : 'Without a full date it goes to your Places, not your Passport. Add the date later and it is stamped.';
+    saveButton.textContent = sheetLocalId ? 'Save the date' : mode === 'date' ? 'Add and stamp' : 'Add to Places';
+  }
+  document.querySelectorAll<HTMLButtonElement>('[data-when]').forEach((b) => b.addEventListener('click', () => setWhen(b.dataset.when as typeof whenMode)));
+
+  function showDateStep(v: Venue) {
+    sheetVenue = v;
+    stepSearch.hidden = true;
+    stepDate.hidden = false;
+    $('[data-venue-name]').textContent = v.name;
+    $('[data-venue-place]').textContent = [v.city, countryName(v.countryCode), award(v)].filter(Boolean).join(' · ');
+    friends.parentElement!.hidden = !!sheetLocalId;
+    setWhen(sheetLocalId ? 'date' : dir === 'guide' ? 'none' : 'date');
+  }
+
+  function openSheet(opts: { venue?: Venue; localId?: string }) {
+    sheetLocalId = opts.localId;
+    searchInput.value = '';
+    results.replaceChildren();
+    dateInput.value = '';
+    if (opts.venue) showDateStep(opts.venue);
+    else { stepSearch.hidden = false; stepDate.hidden = true; }
+    sheet.showModal();
+    if (!opts.venue) searchInput.focus();
+  }
+
+  searchInput.addEventListener('input', async () => {
+    const all = await allVenues();
+    results.replaceChildren(...search(all, searchInput.value).map((v) => {
+      const li = el('li');
+      const b = el('button', 'pick');
+      b.type = 'button';
+      const name = el('span', 'r-name', v.name);
+      const a = award(v);
+      if (a) name.append(el('span', v.stars ? 'gold' : undefined, ` ${a}`));
+      b.append(name, el('span', 'r-meta', `${v.city}, ${countryName(v.countryCode)}${v.kind === 'hotel' ? ' · hotel' : ''}`));
+      b.addEventListener('click', () => showDateStep(v));
+      li.append(b);
+      return li;
+    }));
+  });
+  $('[data-sheet-close]').addEventListener('click', () => sheet.close());
+
+  saveButton.addEventListener('click', async () => {
+    const v = sheetVenue!;
+    if (whenMode === 'date' && !dateInput.value) { dateInput.focus(); return; }
+    const date = whenMode === 'date' ? dateInput.value : null;
+    const year = whenMode === 'year' ? Number(yearInput.value) : null;
+    venues.set(v.id, v);
+    if (sheetLocalId) {
+      updateLocal(sheetLocalId, { date, year });
+    } else {
+      addLocal({ kind: v.kind, venueId: v.id, date, year, friends: friends.checked });
+    }
+    sheet.close();
+    await after();
+    toast(date ? `${v.name}: dated, so it would be stamped in your Passport` : `${v.name} added to your Places`);
+  });
+
+  // ---- Toast, switching, start ---------------------------------------------
+
+  let toastTimer = 0;
+  function toast(text: string, action?: string, run?: () => void) {
+    const t = $('[data-toast]');
+    $('[data-toast-text]').textContent = text;
+    const b = $<HTMLButtonElement>('[data-toast-action]');
+    b.hidden = !action;
+    b.textContent = action ?? '';
+    b.onclick = () => { t.hidden = true; run?.(); };
+    t.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => { t.hidden = true; }, 6000);
+  }
+
+  async function after() {
+    await refreshVenues();
+    rebuild();
+    render();
+  }
+
+  function render() {
+    document.querySelectorAll<HTMLButtonElement>('[data-dir]').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.dir === dir)));
+    $('[data-about]').textContent = ABOUT[dir];
+    $('[data-globe-stage]').hidden = dir !== 'globe';
+    view.replaceChildren();
+    if (dir === 'index') renderIndex();
+    else if (dir === 'album') renderAlbum();
+    else if (dir === 'globe') renderGlobe();
+    else renderGuide();
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-dir]').forEach((b) => b.addEventListener('click', () => {
+    dir = b.dataset.dir as Dir;
+    openCountry = null;
+    ticking = null;
+    try { history.replaceState(null, '', `#${dir}`); } catch { /* fine without */ }
+    render();
+  }));
+
+  $('[data-clear]').addEventListener('click', async () => {
+    if (!localVisits().length) { toast('Nothing added here yet'); return; }
+    clearLocal();
+    await after();
+    toast('Everything you added here is gone; your own visits are untouched');
+  });
+
+  async function main() {
+    const fromHash = location.hash.slice(1) as Dir;
+    if (['index', 'album', 'globe', 'guide'].includes(fromHash)) dir = fromHash;
+    try {
+      const session = await fullSession();
+      if (session) {
+        const [own, wish] = await Promise.all([loadOwnVisits(session.user.id), loadWishlist(session.user.id)]);
+        rows = own;
+        wishlistIds = wish.filter((w) => w.entity_type !== 'event').map((w) => ({ type: w.entity_type as 'restaurant' | 'hotel', id: w.entity_id }));
+      } else {
+        $('[data-signed-out]').hidden = false;
+      }
+      await refreshVenues();
+    } catch {
+      $('[data-error]').hidden = false;
+    }
+    rebuild();
+    render();
+    requestAnimationFrame(spin);
+  }
+  main();
+</script>
