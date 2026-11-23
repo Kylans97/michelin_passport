@@ -218,6 +218,38 @@ void main() {
       expect(saved?.place, isNull);
     });
 
+    testWidgets('Close leaves the sheet without saving anything', (
+      tester,
+    ) async {
+      var saves = 0;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Builder(
+            builder: (context) => Scaffold(
+              body: TextButton(
+                onPressed: () => showWineSheet(
+                  context,
+                  keptWithoutVisit: true,
+                  onSave: (_) async {
+                    saves++;
+                    return true;
+                  },
+                ),
+                child: const Text('open'),
+              ),
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.text('open'));
+      await tester.pumpAndSettle();
+      expect(find.text('Add a wine'), findsOneWidget);
+      await tester.tap(find.bySemanticsLabel('Close'));
+      await tester.pumpAndSettle();
+      expect(find.text('Add a wine'), findsNothing);
+      expect(saves, 0);
+    });
+
     testWidgets('tapping the chosen verdict again clears it', (tester) async {
       VisitWine? saved;
       await tester.pumpWidget(

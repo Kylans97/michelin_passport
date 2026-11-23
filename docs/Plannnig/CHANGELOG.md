@@ -22,6 +22,16 @@ The format follows Keep a Changelog.
 
 ---
 
+### Fixed
+
+- **The wine sheet now has a Close control.** Opened from the Cellar's
+  Add a wine, the sheet could fill the screen, leaving no backdrop to tap,
+  and its scroll view took the swipe down, so a member who changed their
+  mind had no way out. It now carries the shared `SheetDismissHandle`,
+  like Create Trip, which pops with no result and saves nothing. The same
+  sheet serves a visit's wines, so they get it too. Reported by the
+  product owner, 2026-11-23. Test: `wine_verdicts_test.dart`.
+
 ## v1.9.0 (49) — 2026-11-22
 
 1.9.0 (48) plus grapes by region (names only on a region's sheet, the region's own words on the grape screen) and the Mantelier Selection's invitation to suggest a restaurant (product owner: "En dan was er nog een build die je wilde doen toch? laten we dat nog doen"; "van die andere sessie moet ook mergen en naar main"). Built from main after merging `claude/selection-suggest` (one conflict, in this changelog only: the branch's entry sat in an older section; moved here) and the Selection session's data log commit `3a23954`. One migration since 48, `20261101690000_split_region_grape_notes.sql`, applied to production before this build; ledger 175/175. **Schema diff for this bump**, as in `NEW_MACHINE_SETUP.md` §4: all 175 migrations replayed on a scratch stack, then `supabase db dump` of both: the same single quoting difference as for 44 and 47 (`EXTRACT(day ...)` against `EXTRACT("day" ...)`) and six filtered blank lines, the three new `wine_region_grapes` columns identical on both sides; storage and auth identical apart from the same three platform `storage.buckets` triggers in production. `MAPTILER_KEY` present. `flutter analyze` clean, `flutter test` 3,131 passing. Archived with `flutter build ipa --release` (the export fails without a command-line Apple account, as expected): `~/Library/Developer/Xcode/Archives/2026-11-22/Runner 1.9.0 (49).xcarchive`, version checked with PlistBuddy, entitlements carrying `com.apple.developer.applesignin` and `applinks:mantelier.app`, for upload from the Organizer. Supersedes 48.

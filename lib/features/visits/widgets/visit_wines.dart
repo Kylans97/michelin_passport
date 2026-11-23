@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/sheet_dismiss_handle.dart';
 import '../../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../../data/repositories/vineyard_repository.dart';
 import '../../../data/repositories/visit_wine_repository.dart';
@@ -672,6 +673,14 @@ class _WineSheetState extends State<WineSheet> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
+              // The sheet can fill the screen, leaving no backdrop to tap
+              // and a scroll view that takes the swipe, so it needs its
+              // own Close. Pops with no result: nothing is saved.
+              SheetDismissHandle(
+                onClose: () => Navigator.pop(context),
+                color: AppColors.textPrimary,
+              ),
+              const SizedBox(height: CsSpacing.sm),
               Text(
                 _editing ? 'Edit wine' : 'Add a wine',
                 style: CsTypography.placeTitle.copyWith(
