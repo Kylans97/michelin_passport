@@ -7,7 +7,6 @@ import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/map_repository.dart';
 import '../../data/repositories/undated_visit_repository.dart';
-import '../../data/repositories/undated_visit_preview_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wine_atlas_repository.dart';
 import '../../models/passport_venue.dart';
@@ -85,9 +84,9 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   late final MapRepository _mapRepo = MapRepository(Supabase.instance.client);
   late final EventConfirmedAttendanceRepository _eventsRepo =
       EventConfirmedAttendanceRepository(Supabase.instance.client);
-  late final UndatedVisitRepository _undatedRepo = undatedPreview
-      ? PreviewUndatedVisitRepository(Supabase.instance.client)
-      : UndatedVisitRepository(Supabase.instance.client);
+  late final UndatedVisitRepository _undatedRepo = UndatedVisitRepository(
+    Supabase.instance.client,
+  );
   final _globeController = GlobeController();
 
   List<VenueEntry>? _entries; // null until the first load completes.
@@ -366,14 +365,6 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       if (!mounted) return;
       await celebrateNewStamp(context, EarnedStamp.visit(visit));
       await _load();
-    } on UnsupportedError catch (e) {
-      // LOCAL PREVIEW ONLY: see undated_visit_preview_repository.dart.
-      if (!mounted) return;
-      await _load();
-      if (!mounted) return;
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('${e.message}')));
     } catch (_) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
@@ -872,7 +863,7 @@ class _FilterButton extends StatelessWidget {
   );
 }
 
-/// "+": add venues the member has been to, without a date.
+/// "+ Add places": venues the member has been to, added without a date.
 class _AddButton extends StatelessWidget {
   final VoidCallback onTap;
   const _AddButton({required this.onTap});
@@ -885,16 +876,24 @@ class _AddButton extends StatelessWidget {
     child: GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 44,
         height: 44,
-        decoration: const BoxDecoration(
+        padding: const EdgeInsets.only(left: 12, right: 18),
+        decoration: BoxDecoration(
           color: AppColors.ivory,
-          shape: BoxShape.circle,
+          borderRadius: BorderRadius.circular(22),
         ),
-        child: const Icon(
-          Icons.add_rounded,
-          size: 24,
-          color: AppColors.deepGreen,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.add_rounded, size: 20, color: AppColors.deepGreen),
+            const SizedBox(width: 6),
+            Text(
+              'Add places',
+              style: CsTypography.smallLabel.copyWith(
+                color: AppColors.deepGreen,
+              ),
+            ),
+          ],
         ),
       ),
     ),
