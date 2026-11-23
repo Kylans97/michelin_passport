@@ -1,0 +1,42 @@
+point,region,grape,field,old,new
+R1,Corsica,Sciaccarellu,role_note,At least 40 percent of Ajaccio red plantings.,"The leading grape of Ajaccio, whose rules require a minimum share of it in reds and rosés."
+R2,Getariako Txakolina,Hondarrabi Zuri,role_note,About 90 percent of the vineyard.,"The main grape, with Hondarrabi Beltza for the reds and rosés."
+R3,Cigales,Tempranillo,local_name,Tinta del País,Tinto del País
+F1,McLaren Vale,Chardonnay,role_note,The most planted white grape.,The main white grape in a region known for its reds.
+F2,Orange,Syrah,role_note,The most widely planted variety.,A leading grape of the region.
+F3,Mudgee,Syrah,taste_note,Robust in style.,Made in styles from elegant and bright to full flavoured and robust.
+F6,Vulkanland Steiermark,Pinot Gris,role_note,The lead variety in Straden.,"A lead variety in Straden, beside Sauvignon Blanc."
+F7,Añelo,Malbec,role_note,More than a third of the province's vineyard.,The main grape of the province's vineyard.
+F8,General Roca,Malbec,role_note,About a quarter of the province's vineyard.,One of the main grapes of the province's vineyard.
+F9,San Juan,Malbec,role_note,"The leading red, ahead of Syrah.",One of the province's main reds.
+F10,San Juan,Syrah,role_note,The province's traditional red.,The province's flagship red.
+F12,Central Otago,Pinot Noir,role_note,About four fifths of the vineyard area.,By far the main grape of the region.
+F13,North Canterbury,Riesling,role_note,Close to half of New Zealand's Riesling is planted here.,A large part of New Zealand's Riesling grows here.
+F14,Elgin,Sauvignon Blanc,role_note,About 37 to 38 percent of the vines.,The region's main grape.
+F15,Tulbagh,Chenin Blanc,role_note,The most planted variety.,The region's main white grape.
+F15b,Tulbagh,Chenin Blanc,local_name,Steen.,Steen
+F16,Dão,Tempranillo,local_name,Tinta Roriz or Aragonez,Tinta Roriz or Aragonês
+F17,Colares,Malvasia de Colares,role_note,At least 80 percent of every Colares white.,The main grape of Colares whites.
+F18,Sonoma County,Chardonnay,role_note,The county's most planted grape.,"A main white grape, grown from the coast to the warm inland valleys."
+F19,Walla Walla Valley,Syrah,role_note,Close to half the vineyard in The Rocks District.,"Grown across the valley and above all on the cobbled soils of The Rocks District, where it is the leading grape."
+F20,Paso Robles,Cabernet Sauvignon,role_note,The most planted grape.,The region's main grape.
+F22,Zenata,Syrah,taste_note,It is full bodied here.,
+F24,Yamanashi,Koshu,role_note,"The main grape, well over half of the wine grape harvest.",The main grape of the region.
+F28,Moravia,Blaufränkisch,role_note,"The most planted red, strongest in Velkopavlovická.","A main red grape, strongest in the Velkopavlovická subregion."
+F29,Tokaj,Muscat Blanc à Petits Grains,local_name,Sárga Muskotály,Sárgamuskotály
+F31,Bekaa Valley,Cinsault,role_note,Old vines are also bottled on their own as a lighter red.,Old vines are also bottled on their own.
+D5,Krasochoria Lemesou,Mavro,role_note,,"Red PDO wines may also be built on Mavro, with permitted local and international grapes making up the rest."
+D6,Graubünden,Müller-Thurgau,local_name,,Riesling-Silvaner
+H1,Beaujolais,Gamay,taste_note,"In Beaujolais it is mostly fruity and supple with little tannin, while crus on the granite and schist of the north, such as Morgon and Moulin à Vent, give firmer wines that can age.","In Beaujolais it is mostly fruity and supple with little tannin, while crus on the granite and schist of the north, such as Morgon and Moulin-à-Vent, give firmer wines that can age."
+H1,Savoie,Mondeuse,role_note,The only grape of red wines from the Arbin and Saint Jean de la Porte crus.,The only grape of red wines from the Arbin and Saint-Jean-de-la-Porte crus.
+H1,Bordeaux,Merlot,role_note,"The most planted red grape across Bordeaux, and the lead grape of the Right Bank, above all in Pomerol, Saint Émilion and Fronsac, where it suits the cooler clay soils.","The most planted red grape across Bordeaux, and the lead grape of the Right Bank, above all in Pomerol, Saint-Émilion and Fronsac, where it suits the cooler clay soils."
+H1,Bordeaux,Cabernet Franc,taste_note,"Here it is lighter in colour than Cabernet Sauvignon and brings freshness, floral notes and fine tannins to the Merlot led blends of the Right Bank, above all in Saint Émilion.","Here it is lighter in colour than Cabernet Sauvignon and brings freshness, floral notes and fine tannins to the Merlot led blends of the Right Bank, above all in Saint-Émilion."
+H1,Rhône Valley,Grenache,role_note,"The leading grape of the southern Rhône, at the heart of the red blends of Côtes du Rhône, Côtes du Rhône Villages and crus such as Châteauneuf du Pape, usually with Syrah and Mourvèdre. It is also made into rosé, notably in Tavel.","The leading grape of the southern Rhône, at the heart of the red blends of Côtes du Rhône, Côtes du Rhône Villages and crus such as Châteauneuf-du-Pape, usually with Syrah and Mourvèdre. It is also made into rosé, notably in Tavel."
+H1,Rhône Valley,Syrah,role_note,"The red grape of the northern Rhône crus such as Côte Rôtie, Hermitage, Crozes Hermitage and Saint Joseph. In the south it is a blending partner for Grenache.","The red grape of the northern Rhône crus such as Côte-Rôtie, Hermitage, Crozes-Hermitage and Saint-Joseph. In the south it is a blending partner for Grenache."
+H1,Loire Valley,Sauvignon Blanc,role_note,"The grape behind the dry whites of the Centre Loire, in Sancerre, Pouilly Fumé, Menetou Salon, Quincy and Reuilly.","The grape behind the dry whites of the Centre Loire, in Sancerre, Pouilly-Fumé, Menetou-Salon, Quincy and Reuilly."
+H1,Friuli,Merlot,role_note,"The most planted red grape of Friuli Venezia Giulia, brought from Bordeaux in the nineteenth century. At least 85 percent of Friuli Merlot.","The most planted red grape of Friuli-Venezia Giulia, brought from Bordeaux in the nineteenth century. At least 85 percent of Friuli Merlot."
+H1,Hemel-en-Aarde,Chardonnay,role_note,"One of the area's two signature grapes with Pinot Noir, and the main planting in the Hemel en Aarde Valley ward.","One of the area's two signature grapes with Pinot Noir, and the main planting in the Hemel-en-Aarde Valley ward."
+H1,Walker Bay,Chardonnay,role_note,"A leading white of this cool coastal district, best known from the Hemel en Aarde wards.","A leading white of this cool coastal district, best known from the Hemel-en-Aarde wards."
+H1,Walker Bay,Pinot Noir,role_note,"Made here as a single variety wine, with the Hemel en Aarde wards its best known source.","Made here as a single variety wine, with the Hemel-en-Aarde wards its best known source."
+H1,Hemel-en-Aarde,Pinot Noir,role_note,"One of the area's two signature grapes with Chardonnay, and the main planting on the Hemel en Aarde Ridge.","One of the area's two signature grapes with Chardonnay, and the main planting on the Hemel-en-Aarde Ridge."
+F25,Les Coteaux de l'Atlas,Tempranillo,link,linked,
