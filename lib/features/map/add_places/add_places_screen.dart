@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_fonts.dart';
@@ -113,95 +114,102 @@ class _AddPlacesScreenState extends State<AddPlacesScreen> {
         if (!widget.yourCountries.containsKey(c.code)) c,
     ];
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: CsSpacing.base),
-              child: EditorialBackButton(color: AppColors.textPrimary),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.pageHorizontal,
-                CsSpacing.xs,
-                CsSpacing.pageHorizontal,
-                CsSpacing.base,
+    // Dark status bar on the ivory page, whatever the green map set.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: CsSpacing.base),
+                child: EditorialBackButton(color: AppColors.textPrimary),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Where have you been?', style: CsTypography.screenTitle),
-                  const SizedBox(height: CsSpacing.xs),
-                  Text(
-                    'Choose a country and tick the venues you remember. '
-                    'Dates can follow later.',
-                    style: CsTypography.body.copyWith(
-                      color: AppColors.textSecondary,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.xs,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.base,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Where have you been?',
+                      style: CsTypography.screenTitle,
                     ),
-                  ),
-                  const SizedBox(height: CsSpacing.base),
-                  AddPlacesSearchField(
-                    hint: 'Search a country',
-                    onChanged: (v) => setState(() => _query = v),
-                  ),
-                ],
+                    const SizedBox(height: CsSpacing.xs),
+                    Text(
+                      'Choose a country and tick the venues you remember. '
+                      'Dates can follow later.',
+                      style: CsTypography.body.copyWith(
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.base),
+                    AddPlacesSearchField(
+                      hint: 'Search a country',
+                      onChanged: (v) => setState(() => _query = v),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: _error
-                  ? Center(
-                      child: TextButton(
-                        onPressed: () {
-                          setState(() => _error = false);
-                          _load();
-                        },
-                        child: Text(
-                          'Could not load the countries. Try again',
-                          style: CsFonts.sans(color: AppColors.forestGreen),
-                        ),
-                      ),
-                    )
-                  : countries == null
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.forestGreen,
-                        strokeWidth: 2,
-                      ),
-                    )
-                  : ListView(
-                      padding: const EdgeInsets.fromLTRB(
-                        CsSpacing.pageHorizontal,
-                        0,
-                        CsSpacing.pageHorizontal,
-                        CsSpacing.section,
-                      ),
-                      children: [
-                        if (yours.isNotEmpty) ...[
-                          _heading('Your countries'),
-                          for (final c in yours)
-                            _CountryRow(
-                              name: c.name,
-                              trailing: '${widget.yourCountries[c.code]}',
-                              onTap: () => _open(c),
-                            ),
-                          const SizedBox(height: CsSpacing.xl),
-                        ],
-                        if (others.isNotEmpty) ...[
-                          _heading(
-                            yours.isEmpty && q.isEmpty
-                                ? 'Every country'
-                                : 'Not on your globe yet',
+              Expanded(
+                child: _error
+                    ? Center(
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() => _error = false);
+                            _load();
+                          },
+                          child: Text(
+                            'Could not load the countries. Try again',
+                            style: CsFonts.sans(color: AppColors.forestGreen),
                           ),
-                          for (final c in others)
-                            _CountryRow(name: c.name, onTap: () => _open(c)),
+                        ),
+                      )
+                    : countries == null
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.forestGreen,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : ListView(
+                        padding: const EdgeInsets.fromLTRB(
+                          CsSpacing.pageHorizontal,
+                          0,
+                          CsSpacing.pageHorizontal,
+                          CsSpacing.section,
+                        ),
+                        children: [
+                          if (yours.isNotEmpty) ...[
+                            _heading('Your countries'),
+                            for (final c in yours)
+                              _CountryRow(
+                                name: c.name,
+                                trailing: '${widget.yourCountries[c.code]}',
+                                onTap: () => _open(c),
+                              ),
+                            const SizedBox(height: CsSpacing.xl),
+                          ],
+                          if (others.isNotEmpty) ...[
+                            _heading(
+                              yours.isEmpty && q.isEmpty
+                                  ? 'Every country'
+                                  : 'Not on your globe yet',
+                            ),
+                            for (final c in others)
+                              _CountryRow(name: c.name, onTap: () => _open(c)),
+                          ],
                         ],
-                      ],
-                    ),
-            ),
-          ],
+                      ),
+              ),
+            ],
+          ),
         ),
       ),
     );

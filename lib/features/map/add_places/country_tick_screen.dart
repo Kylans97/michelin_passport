@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_fonts.dart';
@@ -96,148 +97,152 @@ class _CountryTickScreenState extends State<CountryTickScreen> {
     ];
     final count = _picked.length;
 
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: CsSpacing.base),
-              child: EditorialBackButton(color: AppColors.textPrimary),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.pageHorizontal,
-                CsSpacing.xs,
-                CsSpacing.pageHorizontal,
-                CsSpacing.md,
+    // Dark status bar on the ivory page, whatever the green map set.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: CsSpacing.base),
+                child: EditorialBackButton(color: AppColors.textPrimary),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Where in ${widget.country.name} have you been?',
-                    style: CsTypography.screenTitle,
-                  ),
-                  const SizedBox(height: CsSpacing.xs),
-                  Text(
-                    'Starred first, then by city. Tick every one you '
-                    'remember; the dates can wait.',
-                    style: CsTypography.body.copyWith(
-                      color: AppColors.textSecondary,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.xs,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.md,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Where in ${widget.country.name} have you been?',
+                      style: CsTypography.screenTitle,
                     ),
-                  ),
-                  const SizedBox(height: CsSpacing.base),
-                  AddPlacesSearchField(
-                    hint: 'Search ${widget.country.name}',
-                    onChanged: (v) => setState(() => _query = v),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: _loadError
-                  ? Center(
-                      child: TextButton(
-                        onPressed: () {
-                          setState(() => _loadError = false);
-                          _load();
-                        },
-                        child: Text(
-                          'Could not load the venues. Try again',
-                          style: CsFonts.sans(color: AppColors.forestGreen),
-                        ),
+                    const SizedBox(height: CsSpacing.xs),
+                    Text(
+                      'Starred first, then by city. Tick every one you '
+                      'remember; the dates can wait.',
+                      style: CsTypography.body.copyWith(
+                        color: AppColors.textSecondary,
                       ),
-                    )
-                  : _choices == null
-                  ? const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.forestGreen,
-                        strokeWidth: 2,
-                      ),
-                    )
-                  : ListView.builder(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: CsSpacing.pageHorizontal,
-                      ),
-                      itemCount: shown.length,
-                      itemBuilder: (context, i) {
-                        final c = shown[i];
-                        final known = widget.knownVenueKeys.contains(_key(c));
-                        return _TickRow(
-                          choice: c,
-                          known: known,
-                          ticked: known || _picked.contains(_key(c)),
-                          onChanged: known
-                              ? null
-                              : (on) => setState(
-                                  () => on
-                                      ? _picked.add(_key(c))
-                                      : _picked.remove(_key(c)),
-                                ),
-                        );
-                      },
                     ),
-            ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.pageHorizontal,
-                CsSpacing.sm,
-                CsSpacing.pageHorizontal,
-                CsSpacing.base,
+                    const SizedBox(height: CsSpacing.base),
+                    AddPlacesSearchField(
+                      hint: 'Search ${widget.country.name}',
+                      onChanged: (v) => setState(() => _query = v),
+                    ),
+                  ],
+                ),
               ),
-              decoration: const BoxDecoration(
-                color: AppColors.background,
-                border: Border(top: BorderSide(color: AppColors.cardBorder)),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Friends can see these',
-                          style: CsFonts.sans(
-                            color: AppColors.textPrimary,
-                            fontSize: 14.5,
+              Expanded(
+                child: _loadError
+                    ? Center(
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() => _loadError = false);
+                            _load();
+                          },
+                          child: Text(
+                            'Could not load the venues. Try again',
+                            style: CsFonts.sans(color: AppColors.forestGreen),
                           ),
                         ),
+                      )
+                    : _choices == null
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.forestGreen,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : ListView.builder(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: CsSpacing.pageHorizontal,
+                        ),
+                        itemCount: shown.length,
+                        itemBuilder: (context, i) {
+                          final c = shown[i];
+                          final known = widget.knownVenueKeys.contains(_key(c));
+                          return _TickRow(
+                            choice: c,
+                            known: known,
+                            ticked: known || _picked.contains(_key(c)),
+                            onChanged: known
+                                ? null
+                                : (on) => setState(
+                                    () => on
+                                        ? _picked.add(_key(c))
+                                        : _picked.remove(_key(c)),
+                                  ),
+                          );
+                        },
                       ),
-                      Switch.adaptive(
-                        value: _friends,
-                        activeTrackColor: AppColors.forestGreen,
-                        onChanged: (v) => setState(() => _friends = v),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: CsSpacing.sm),
-                  SizedBox(
-                    width: double.infinity,
-                    child: FilledButton(
-                      style: FilledButton.styleFrom(
-                        backgroundColor: AppColors.deepGreen,
-                        foregroundColor: AppColors.textOnDark,
-                        disabledBackgroundColor: AppColors.cardBorder,
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.sm,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.base,
+                ),
+                decoration: const BoxDecoration(
+                  color: AppColors.background,
+                  border: Border(top: BorderSide(color: AppColors.cardBorder)),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            'Friends can see these',
+                            style: CsFonts.sans(
+                              color: AppColors.textPrimary,
+                              fontSize: 14.5,
+                            ),
+                          ),
+                        ),
+                        Switch.adaptive(
+                          value: _friends,
+                          activeTrackColor: AppColors.forestGreen,
+                          onChanged: (v) => setState(() => _friends = v),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: CsSpacing.sm),
+                    SizedBox(
+                      width: double.infinity,
+                      child: FilledButton(
+                        style: FilledButton.styleFrom(
+                          backgroundColor: AppColors.deepGreen,
+                          foregroundColor: AppColors.textOnDark,
+                          disabledBackgroundColor: AppColors.cardBorder,
+                          padding: const EdgeInsets.symmetric(vertical: 14),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                        ),
+                        onPressed: count == 0 || _saving ? null : _save,
+                        child: Text(
+                          count == 0
+                              ? 'Tick the venues you remember'
+                              : 'Add $count to your globe',
+                          style: CsFonts.sans(fontWeight: FontWeight.w600),
                         ),
                       ),
-                      onPressed: count == 0 || _saving ? null : _save,
-                      child: Text(
-                        count == 0
-                            ? 'Tick the venues you remember'
-                            : 'Add $count to your globe',
-                        style: CsFonts.sans(fontWeight: FontWeight.w600),
-                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
