@@ -8,6 +8,13 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Grape notes, round 3: Germany, Austria, Portugal and the New World, strong part applied to production 2026-11-23** (product owner: "kan je verder gaan met de wijn rondes?", then after the review at https://claude.ai/artifact/GugFuxS53nZTA2GfSyFEFY, "Pas alleen het sterke deel van ronde 3 toe op productie en merge daarna naar main"). Data only, `supabase/data/enrichment/wine_regions/grape_notes_round3/`. Shown by 1.9.0 (49) and later through the three fields, by older builds through `local_note`.
+  - **Applied:** `grape_notes_round3_strong.sql` by `supabase db query --linked --file`: 359 empty region grape fields filled (224 roles, 101 tastes, 34 local names, among them Shiraz in Australia and Steen in South Africa) on 274 links, each with two independent organisations as sources, and `local_note` rebuilt from the three fields for builds up to 1.9.0 (48). The file fills only fields still empty and stops as a whole otherwise. Checked after: names 151 to 185, roles 381 to 605, tastes 104 to 205; no dashes in any field; every `local_note` equal to its composition from the three fields. Tested first on a scratch stack holding production data of the same day, with the weak part on top.
+  - **Held, not applied:** `grape_notes_round3_weak.sql` (81 fields resting on a lower tier or sponsored source, such as WineAlign paid by Austrian Wine, ProWein or travel sites). Seventeen fields held back outright: eight South African Shiraz names, three Durbanville roles and the Rutherglen Muscat taste on one organisation each, four German and Wachau tastes on a single source, and Schilcher, which names the wine, not the grape.
+  - Each research agent worked in its own folder this round, after round 2's near-miss; no files crossed.
+  - **Open, not changed:** twenty existing notes that sources contradict, mostly dated shares and rankings (Central Otago, General Roca, San Juan, Walla Walla) and one spelling (Aragonês), listed in the `round3_*_flags.csv` files; and whether proper names keep their own hyphen (Hemel-en-Aarde, as Müller-Thurgau does), which the round wrote as "Hemel en Aarde".
+
 ---
 
 ## v1.9.0 (49) — 2026-11-22
