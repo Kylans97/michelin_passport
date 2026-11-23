@@ -7,19 +7,24 @@ import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/map_repository.dart';
+import '../../data/repositories/undated_visit_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wine_atlas_repository.dart';
 import '../../models/passport_venue.dart';
+import '../../models/undated_visit.dart';
 import '../../models/venue_entry.dart';
 import '../../models/wine_atlas.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../passport/passport_view_model.dart';
+import '../passport/stamp_ceremony.dart';
+import 'add_places/add_places_screen.dart';
 import 'models/map_filter_type.dart';
 import 'globe/globe_region_layer.dart';
 import 'globe/globe_view.dart';
 import 'models/map_pin.dart';
 import 'widgets/event_map_preview_sheet.dart';
 import 'widgets/map_cluster_sheet.dart';
+import 'widgets/undated_visit_sheet.dart';
 import 'widgets/venue_preview_sheet.dart';
 import 'wine/wine_list_search_screen.dart';
 import 'wine/wine_region_sheet.dart';
@@ -80,10 +85,20 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   late final MapRepository _mapRepo = MapRepository(Supabase.instance.client);
   late final EventConfirmedAttendanceRepository _eventsRepo =
       EventConfirmedAttendanceRepository(Supabase.instance.client);
+  late final UndatedVisitRepository _undatedRepo = UndatedVisitRepository(
+    Supabase.instance.client,
+  );
   final _globeController = GlobeController();
 
   List<VenueEntry>? _entries; // null until the first load completes.
   List<EventAttendanceEntry>? _eventEntries; // null until the first load.
+
+  // Visits without a date (undated_visits), drawn as dashed pins. Until the
+  // table exists (before 20261101700000 is applied) the load fails quietly,
+  // [_undatedAvailable] stays false, and My Map is exactly as before: no
+  // Add places button, no dashed pins.
+  List<UndatedVenue> _undated = const [];
+  bool _undatedAvailable = false;
 
   // Keyed by Restaurant.id / Hotel.id. Loaded separately from _entries, via
   // MapRepository — see that class for why coordinates are never part of
@@ -188,9 +203,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   Future<void> _load() async {
     try {
       final uid =
-          widget.userId ??
-          Supabase.instance.client.auth.currentUser?.id ??
-          '';
+          widget.userId ?? Supabase.instance.client.auth.currentUser?.id ?? '';
       // Kicked off immediately, alongside the venue-entries load below —
       // fully independent of it (Event confirmed attendance has no
       // dependency on restaurant/hotel ids), so it runs concurrently rather
@@ -198,7 +211,9 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       // down Restaurant/Hotel pins any more than a coordinate hiccup does
       // (see the comment below) — it only means no Event pins this load.
       final eventEntriesFuture = _loadEventEntriesSafely(uid);
+      final undatedFuture = _loadUndatedSafely(uid);
       final entries = await _visitedRepo.loadPassportVenues(uid);
+      final undated = await undatedFuture;
 
       // Coordinate loading is independent of the venue-entries load above:
       // a coordinate failure (migration not applied, network hiccup) must
@@ -209,10 +224,14 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
         for (final entry in entries)
           if (entry.venue case RestaurantVenue(:final restaurant))
             restaurant.id,
+        for (final u in undated?.list ?? const <UndatedVenue>[])
+          if (!u.visit.isHotel) u.visit.entityId,
       ];
       final hotelIds = [
         for (final entry in entries)
           if (entry.venue case HotelVenue(:final hotel)) hotel.id,
+        for (final u in undated?.list ?? const <UndatedVenue>[])
+          if (u.visit.isHotel) u.visit.entityId,
       ];
       final restaurantCoordsFuture = _mapRepo.loadRestaurantCoordinates(
         restaurantIds,
@@ -226,6 +245,8 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       setState(() {
         _entries = entries;
         _eventEntries = eventEntries;
+        _undated = undated?.list ?? const [];
+        _undatedAvailable = undated != null;
         _restaurantCoords = restaurantCoords;
         _hotelCoords = hotelCoords;
         _loading = false;
@@ -254,6 +275,139 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     }
   }
 
+  /// Null when the undated_visits table can't be read (not there yet, or
+  /// a hiccup): like the Event load above, never the whole map failing.
+  Future<({List<UndatedVenue> list})?> _loadUndatedSafely(String uid) async {
+    try {
+      return (list: await _undatedRepo.loadUndatedVenues(uid));
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// `restaurant:id` / `hotel:id` of every venue with a dated visit.
+  Set<String> get _datedVenueKeys => {
+    for (final entry in _entries ?? const <VenueEntry>[])
+      switch (entry.venue) {
+        RestaurantVenue(:final restaurant) => 'restaurant:${restaurant.id}',
+        HotelVenue(:final hotel) => 'hotel:${hotel.id}',
+      },
+  };
+
+  Future<void> _openAddPlaces() async {
+    final yourCountries = <String, int>{};
+    for (final pin in _allPins) {
+      if (pin.type == MapPinType.event || pin.countryCode.isEmpty) continue;
+      final code = pin.countryCode.toUpperCase();
+      yourCountries[code] = (yourCountries[code] ?? 0) + 1;
+    }
+    final result = await Navigator.push<AddPlacesResult>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => AddPlacesScreen(
+          yourCountries: yourCountries,
+          knownVenueKeys: {
+            ..._datedVenueKeys,
+            for (final u in _undated)
+              '${u.visit.entityType}:${u.visit.entityId}',
+          },
+          repository: _undatedRepo,
+        ),
+      ),
+    );
+    if (result == null || !mounted) return;
+    await _load();
+    if (!mounted) return;
+    setState(() => _filter = MapFilterType.all);
+    final code = result.countryCode.toUpperCase();
+    final points = [
+      for (final pin in _allPins)
+        if (pin.countryCode.toUpperCase() == code)
+          (pin.latitude, pin.longitude),
+    ];
+    if (points.isNotEmpty) _globeController.fitTo(points);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '${result.countryName} is on your globe: ${result.added} without '
+          'a date. Tap a dashed pin to add its date.',
+        ),
+      ),
+    );
+  }
+
+  Future<void> _openUndated(UndatedVenue undated) async {
+    final action = await showUndatedVisitSheet(
+      context,
+      undated,
+      isOwn: !widget._isFriend,
+    );
+    if (!mounted || action == null) return;
+    switch (action) {
+      case UndatedSheetAction.addDate:
+        await _addDate(undated);
+      case UndatedSheetAction.remove:
+        await _remove(undated);
+    }
+  }
+
+  Future<void> _addDate(UndatedVenue undated) async {
+    final now = DateTime.now();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: DateTime(1950),
+      lastDate: now, // future dates not allowed, as everywhere a visit is dated
+      helpText: undated.venue.name,
+    );
+    if (picked == null || !mounted) return;
+    try {
+      final visit = await _undatedRepo.addDate(undated.visit.id, picked);
+      if (!mounted) return;
+      await celebrateNewStamp(context, EarnedStamp.visit(visit));
+      await _load();
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Could not add the date. Please try again.'),
+        ),
+      );
+    }
+  }
+
+  Future<void> _remove(UndatedVenue undated) async {
+    final sure = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Remove ${undated.venue.name}?'),
+        content: const Text(
+          'It comes off your map. You can add it again whenever you like.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Keep'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Remove'),
+          ),
+        ],
+      ),
+    );
+    if (sure != true || !mounted) return;
+    try {
+      await _undatedRepo.remove(undated.visit.id);
+      await _load();
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Could not remove it. Please try again.')),
+      );
+    }
+  }
+
   /// Every pin this user could possibly see, before the active filter —
   /// Restaurant/Hotel pins adapted from the same [PassportFilterResult.of]
   /// aggregation My Passport uses (requesting every venue type here; the
@@ -271,6 +425,12 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       ).entries,
       restaurantCoords: _restaurantCoords,
       hotelCoords: _hotelCoords,
+    ),
+    ...undatedMapPins(
+      undated: _undated,
+      restaurantCoords: _restaurantCoords,
+      hotelCoords: _hotelCoords,
+      datedVenueKeys: _datedVenueKeys,
     ),
     ...eventMapPins(_eventEntries ?? []),
   ];
@@ -316,6 +476,8 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
         showVenuePreviewSheet(context, stats);
       case HotelMapPin(:final stats):
         showVenuePreviewSheet(context, stats);
+      case UndatedMapPin(:final undated):
+        _openUndated(undated);
       case EventMapPin():
         showEventMapPreviewSheet(context, pin);
     }
@@ -325,7 +487,11 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   Widget build(BuildContext context) {
     final plottable = _visiblePins;
     final hasAnyHistory =
-        (_entries ?? []).isNotEmpty || (_eventEntries ?? []).isNotEmpty;
+        (_entries ?? []).isNotEmpty ||
+        (_eventEntries ?? []).isNotEmpty ||
+        _undated.isNotEmpty;
+    final canAddPlaces =
+        !widget._isFriend && !_wineMode && !_loading && _undatedAvailable;
 
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
@@ -493,6 +659,12 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                         MapFilterType.all => 'No visited venues yet.',
                       },
                     ),
+                  if (canAddPlaces)
+                    Positioned(
+                      top: CsSpacing.md,
+                      right: CsSpacing.pageHorizontal,
+                      child: _AddPlacesButton(onTap: _openAddPlaces),
+                    ),
                 ],
               ),
             ),
@@ -612,6 +784,51 @@ class _ModeToggle extends StatelessWidget {
             fontSize: 13,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
           ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// "+ Add places": venues the member has been to, added without a date.
+class _AddPlacesButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _AddPlacesButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: 'Add places you have been',
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 40,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: AppColors.ivory,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black38,
+              blurRadius: 8,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.add_rounded, size: 18, color: AppColors.deepGreen),
+            const SizedBox(width: 6),
+            Text(
+              'Add places',
+              style: CsFonts.sans(
+                color: AppColors.deepGreen,
+                fontSize: 13.5,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
         ),
       ),
     ),
