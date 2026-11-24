@@ -1,19 +1,18 @@
 // Covers Friends round one (2026-11-22, ideas 1, 2 and 3 from the Friends
 // Ideas canvas): the pure shaping behind Coming up, Recommended by, Where
 // your tastes meet, cities, trips together and Plans in motion, the Taste
-// tab, and the new Community FRIENDS sections.
+// tab (Palate since 2026-11-24), and the new Community FRIENDS sections.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/data/repositories/venue_invite_repository.dart';
-import 'package:michelin_passport/data/repositories/visit_wine_repository.dart';
 import 'package:michelin_passport/features/community/community_screen.dart';
 import 'package:michelin_passport/features/community/friends_activity.dart';
 import 'package:michelin_passport/features/community/friends_plans.dart';
 import 'package:michelin_passport/features/friends/friend_profile_data.dart';
 import 'package:michelin_passport/features/friends/friend_profile_screen.dart';
 import 'package:michelin_passport/features/friends/friends_together_data.dart';
-import 'package:michelin_passport/features/friends/tabs/friend_profile_taste_tab.dart';
+import 'package:michelin_passport/features/friends/tabs/friend_profile_palate_tab.dart';
 import 'package:michelin_passport/models/event.dart';
 import 'package:michelin_passport/models/event_attendance.dart';
 import 'package:michelin_passport/models/friendship.dart';
@@ -23,7 +22,6 @@ import 'package:michelin_passport/models/profile_identity.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 import 'package:michelin_passport/models/venue_entry.dart';
 import 'package:michelin_passport/models/visit.dart';
-import 'package:michelin_passport/models/visit_wine.dart';
 
 const _elise = Friendship(
   friendshipId: 'f1',
@@ -378,8 +376,8 @@ void main() {
     });
   });
 
-  group('Taste tab', () {
-    testWidgets('shows countries, shared scores, cities and wines', (
+  group('Palate tab', () {
+    testWidgets('shows countries, shared scores and cities, no wines', (
       tester,
     ) async {
       final r1 = _restaurant('r1');
@@ -418,20 +416,10 @@ void main() {
         myVisitedEntries: [
           VenueEntry(venue: RestaurantVenue(r1), visits: [mineVisit]),
         ],
-        wines: const [
-          CellarWine(
-            wine: VisitWine(
-              wineName: 'Savagnin',
-              vintage: 2020,
-              verdict: WineVerdict.again,
-              tastingNote: 'Salty and nutty.',
-            ),
-          ),
-        ],
       );
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(body: FriendProfileTasteTab(data: data)),
+          home: Scaffold(body: FriendProfilePalateTab(data: data)),
         ),
       );
       expect(find.text('Most often in Belgium.'), findsOneWidget);
@@ -440,9 +428,8 @@ void main() {
       expect(find.text('8.0'), findsOneWidget);
       expect(find.text("ELISE'S CITIES"), findsOneWidget);
       expect(find.text('Antwerp'), findsOneWidget);
-      expect(find.text('Savagnin 2020'), findsOneWidget);
-      expect(find.text('AGAIN'), findsOneWidget);
-      expect(find.text('Salty and nutty.'), findsOneWidget);
+      // The wines live in the Cellar tab now.
+      expect(find.textContaining("'s glass"), findsNothing);
     });
   });
 

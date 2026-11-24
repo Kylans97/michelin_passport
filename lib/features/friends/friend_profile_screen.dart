@@ -9,7 +9,7 @@ import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
-import '../../data/repositories/visit_wine_repository.dart';
+import '../passport/widgets/cellar_body.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance.dart';
 import '../../models/planned_trip.dart';
@@ -32,7 +32,7 @@ import 'friend_profile_data.dart';
 import 'tabs/friend_profile_overview_tab.dart';
 import 'friends_together_data.dart';
 import 'tabs/friend_profile_passport_tab.dart';
-import 'tabs/friend_profile_taste_tab.dart';
+import 'tabs/friend_profile_palate_tab.dart';
 import 'tabs/friend_profile_together_tab.dart';
 import 'widgets/friend_profile_header.dart';
 import 'widgets/friend_profile_plan_dinner_sheet.dart';
@@ -175,7 +175,6 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
     Supabase.instance.client,
   );
   late final _tripsRepo = PlannedTripsRepository(Supabase.instance.client);
-  late final _wineRepo = VisitWineRepository(Supabase.instance.client);
   // Constructed eagerly in initState, NOT as a `late final` field
   // initializer: `late final x = TabController(...)` only actually runs
   // the initializer the first time `x` is read, and this widget's own
@@ -197,7 +196,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
   void initState() {
     super.initState();
     trackScreenOpened(AnalyticsScreen.friendProfile);
-    _tabController = TabController(length: 4, vsync: this);
+    _tabController = TabController(length: 5, vsync: this);
     _load();
   }
 
@@ -268,7 +267,6 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       upcomingEvents: extras.upcoming,
       myVisitedEntries: extras.myVisited,
       tripsTogether: extras.trips,
-      wines: extras.wines,
       identity: identity,
       myIdentity: myIdentity,
       visitedEntries: entries,
@@ -286,7 +284,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
   }
 
   /// Friends round one (2026-11-22): the friend's events, the viewer's own
-  /// Passport and intents, trips both are on, and the friend's wines. Each
+  /// Passport and intents, and trips both are on. Each
   /// falls back to empty on its own, so a failure here only hides a
   /// section and never the profile.
   Future<
@@ -294,14 +292,13 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       List<FriendUpcomingEvent> upcoming,
       List<VenueEntry> myVisited,
       List<PlannedTrip> trips,
-      List<CellarWine> wines,
     })
   >
   _loadRoundOneExtras(String myId) async {
     Future<T> orElse<T>(Future<T> future, T fallback) =>
         future.catchError((Object _) => fallback);
 
-    final (going, interested, myIntents, myVisited, myTrips, wines) = await (
+    final (going, interested, myIntents, myVisited, myTrips) = await (
       orElse(
         _attendanceRepo.getFriendUpcomingEvents(
           userId: widget.userId,
@@ -322,7 +319,6 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       ),
       orElse(_visitedRepo.loadPassportVenues(myId), const <VenueEntry>[]),
       orElse(_tripsRepo.loadTrips(myId), const <PlannedTrip>[]),
-      orElse(_wineRepo.loadCellar(widget.userId), const <CellarWine>[]),
     ).wait;
     final members = await orElse(
       _tripsRepo.loadAcceptedMemberIds([for (final t in myTrips) t.id]),
@@ -341,7 +337,6 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
         friendId: widget.userId,
         today: DateTime.now(),
       ),
-      wines: wines,
     );
   }
 
@@ -616,7 +611,19 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
                             Supabase.instance.client.auth.currentUser?.id ?? '',
                         onPlanDinner: (venue) => _planDinner(data, venue),
                       ),
-                      FriendProfileTasteTab(data: data),
+                      FriendProfilePalateTab(data: data),
+                      // The friend's Cellar, read only (2026-11-24). The
+                      // real Cellar screen, loading itself; the visit
+                      // places come from the visits already loaded here.
+                      CellarBody(
+                        key: PageStorageKey('cellar-${widget.userId}'),
+                        ownerId: widget.userId,
+                        ownerFirstName: data.friendName.split(' ').first,
+                        visitPlaceById: {
+                          for (final fv in data.visits)
+                            fv.visit.id: fv.venue.name,
+                        },
+                      ),
                     ],
                   ),
                 );

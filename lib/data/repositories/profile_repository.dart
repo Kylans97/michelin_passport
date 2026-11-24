@@ -180,6 +180,34 @@ class ProfileRepository {
         .eq('id', userId);
   }
 
+  /// Share my Cellar with friends (`profiles.cellar_shared`,
+  /// 20261101710000). The caller's own row only, like [getDiscoverable].
+  /// Null before that migration is applied, so the setting can stay out
+  /// of sight rather than fail.
+  Future<bool?> getCellarShared(String userId) async {
+    try {
+      final row = await _client
+          .from('profiles')
+          .select('cellar_shared')
+          .eq('id', userId)
+          .limit(1)
+          .single();
+      return row['cellar_shared'] as bool? ?? true;
+    } on PostgrestException {
+      return null;
+    }
+  }
+
+  Future<void> setCellarShared({
+    required String userId,
+    required bool value,
+  }) async {
+    await _client
+        .from('profiles')
+        .update({'cellar_shared': value})
+        .eq('id', userId);
+  }
+
   // ── Avatar (PROFILE UI REDESIGN V1 — proposed, not yet applied) ────────
   //
   // Mirrors PhotoRepository's own upload/resolve/remove shape exactly —

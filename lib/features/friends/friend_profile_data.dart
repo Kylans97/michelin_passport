@@ -1,4 +1,3 @@
-import '../../data/repositories/visit_wine_repository.dart' show CellarWine;
 import '../../models/passport_venue.dart';
 import '../../models/planned_trip.dart';
 import '../../models/profile_identity.dart';
@@ -181,10 +180,6 @@ class FriendProfileLayoutData {
   /// a friend's own private trips never show.
   final List<PlannedTrip> tripsTogether;
 
-  /// The friend's wines a friend may see: on shared visits, and every one
-  /// kept without a visit (idea 3, Taste).
-  final List<CellarWine> wines;
-
   const FriendProfileLayoutData({
     required this.identity,
     required this.myIdentity,
@@ -199,7 +194,6 @@ class FriendProfileLayoutData {
     this.upcomingEvents = const [],
     this.myVisitedEntries = const [],
     this.tripsTogether = const [],
-    this.wines = const [],
   });
 
   String get friendName => identity.displayName?.trim().isNotEmpty == true
