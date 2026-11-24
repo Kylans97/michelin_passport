@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
-import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/map_repository.dart';
+import '../../data/repositories/undated_visit_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wine_atlas_repository.dart';
 import '../../models/passport_venue.dart';
+import '../../models/undated_visit.dart';
 import '../../models/venue_entry.dart';
 import '../../models/wine_atlas.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../passport/passport_view_model.dart';
+import '../passport/stamp_ceremony.dart';
+import 'add_places/add_places_screen.dart';
 import 'models/map_filter_type.dart';
 import 'globe/globe_region_layer.dart';
 import 'globe/globe_view.dart';
 import 'models/map_pin.dart';
 import 'widgets/event_map_preview_sheet.dart';
 import 'widgets/map_cluster_sheet.dart';
+import 'widgets/undated_visit_sheet.dart';
 import 'widgets/venue_preview_sheet.dart';
 import 'wine/wine_list_search_screen.dart';
 import 'wine/wine_region_sheet.dart';
@@ -80,10 +85,20 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   late final MapRepository _mapRepo = MapRepository(Supabase.instance.client);
   late final EventConfirmedAttendanceRepository _eventsRepo =
       EventConfirmedAttendanceRepository(Supabase.instance.client);
+  late final UndatedVisitRepository _undatedRepo = UndatedVisitRepository(
+    Supabase.instance.client,
+  );
   final _globeController = GlobeController();
 
   List<VenueEntry>? _entries; // null until the first load completes.
   List<EventAttendanceEntry>? _eventEntries; // null until the first load.
+
+  // Visits without a date (undated_visits), drawn as dashed pins. Until the
+  // table exists (before 20261101700000 is applied) the load fails quietly,
+  // [_undatedAvailable] stays false, and My Map is exactly as before: no
+  // Add places button, no dashed pins.
+  List<UndatedVenue> _undated = const [];
+  bool _undatedAvailable = false;
 
   // Keyed by Restaurant.id / Hotel.id. Loaded separately from _entries, via
   // MapRepository — see that class for why coordinates are never part of
@@ -188,9 +203,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   Future<void> _load() async {
     try {
       final uid =
-          widget.userId ??
-          Supabase.instance.client.auth.currentUser?.id ??
-          '';
+          widget.userId ?? Supabase.instance.client.auth.currentUser?.id ?? '';
       // Kicked off immediately, alongside the venue-entries load below —
       // fully independent of it (Event confirmed attendance has no
       // dependency on restaurant/hotel ids), so it runs concurrently rather
@@ -198,7 +211,9 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       // down Restaurant/Hotel pins any more than a coordinate hiccup does
       // (see the comment below) — it only means no Event pins this load.
       final eventEntriesFuture = _loadEventEntriesSafely(uid);
+      final undatedFuture = _loadUndatedSafely(uid);
       final entries = await _visitedRepo.loadPassportVenues(uid);
+      final undated = await undatedFuture;
 
       // Coordinate loading is independent of the venue-entries load above:
       // a coordinate failure (migration not applied, network hiccup) must
@@ -209,10 +224,14 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
         for (final entry in entries)
           if (entry.venue case RestaurantVenue(:final restaurant))
             restaurant.id,
+        for (final u in undated?.list ?? const <UndatedVenue>[])
+          if (!u.visit.isHotel) u.visit.entityId,
       ];
       final hotelIds = [
         for (final entry in entries)
           if (entry.venue case HotelVenue(:final hotel)) hotel.id,
+        for (final u in undated?.list ?? const <UndatedVenue>[])
+          if (u.visit.isHotel) u.visit.entityId,
       ];
       final restaurantCoordsFuture = _mapRepo.loadRestaurantCoordinates(
         restaurantIds,
@@ -226,6 +245,8 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       setState(() {
         _entries = entries;
         _eventEntries = eventEntries;
+        _undated = undated?.list ?? const [];
+        _undatedAvailable = undated != null;
         _restaurantCoords = restaurantCoords;
         _hotelCoords = hotelCoords;
         _loading = false;
@@ -254,6 +275,139 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     }
   }
 
+  /// Null when the undated_visits table can't be read (not there yet, or
+  /// a hiccup): like the Event load above, never the whole map failing.
+  Future<({List<UndatedVenue> list})?> _loadUndatedSafely(String uid) async {
+    try {
+      return (list: await _undatedRepo.loadUndatedVenues(uid));
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// `restaurant:id` / `hotel:id` of every venue with a dated visit.
+  Set<String> get _datedVenueKeys => {
+    for (final entry in _entries ?? const <VenueEntry>[])
+      switch (entry.venue) {
+        RestaurantVenue(:final restaurant) => 'restaurant:${restaurant.id}',
+        HotelVenue(:final hotel) => 'hotel:${hotel.id}',
+      },
+  };
+
+  Future<void> _openAddPlaces() async {
+    final yourCountries = <String, int>{};
+    for (final pin in _allPins) {
+      if (pin.type == MapPinType.event || pin.countryCode.isEmpty) continue;
+      final code = pin.countryCode.toUpperCase();
+      yourCountries[code] = (yourCountries[code] ?? 0) + 1;
+    }
+    final result = await Navigator.push<AddPlacesResult>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => AddPlacesScreen(
+          yourCountries: yourCountries,
+          knownVenueKeys: {
+            ..._datedVenueKeys,
+            for (final u in _undated)
+              '${u.visit.entityType}:${u.visit.entityId}',
+          },
+          repository: _undatedRepo,
+        ),
+      ),
+    );
+    if (result == null || !mounted) return;
+    await _load();
+    if (!mounted) return;
+    setState(() => _filter = MapFilterType.all);
+    final code = result.countryCode.toUpperCase();
+    final points = [
+      for (final pin in _allPins)
+        if (pin.countryCode.toUpperCase() == code)
+          (pin.latitude, pin.longitude),
+    ];
+    if (points.isNotEmpty) _globeController.fitTo(points);
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          '${result.countryName} is on your globe: ${result.added} without '
+          'a date. Tap a dashed pin to add its date.',
+        ),
+      ),
+    );
+  }
+
+  Future<void> _openUndated(UndatedVenue undated) async {
+    final action = await showUndatedVisitSheet(
+      context,
+      undated,
+      isOwn: !widget._isFriend,
+    );
+    if (!mounted || action == null) return;
+    switch (action) {
+      case UndatedSheetAction.addDate:
+        await _addDate(undated);
+      case UndatedSheetAction.remove:
+        await _remove(undated);
+    }
+  }
+
+  Future<void> _addDate(UndatedVenue undated) async {
+    final now = DateTime.now();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: now,
+      firstDate: DateTime(1950),
+      lastDate: now, // future dates not allowed, as everywhere a visit is dated
+      helpText: undated.venue.name,
+    );
+    if (picked == null || !mounted) return;
+    try {
+      final visit = await _undatedRepo.addDate(undated.visit.id, picked);
+      if (!mounted) return;
+      await celebrateNewStamp(context, EarnedStamp.visit(visit));
+      await _load();
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Could not add the date. Please try again.'),
+        ),
+      );
+    }
+  }
+
+  Future<void> _remove(UndatedVenue undated) async {
+    final sure = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Remove ${undated.venue.name}?'),
+        content: const Text(
+          'It comes off your map. You can add it again whenever you like.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Keep'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: const Text('Remove'),
+          ),
+        ],
+      ),
+    );
+    if (sure != true || !mounted) return;
+    try {
+      await _undatedRepo.remove(undated.visit.id);
+      await _load();
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Could not remove it. Please try again.')),
+      );
+    }
+  }
+
   /// Every pin this user could possibly see, before the active filter —
   /// Restaurant/Hotel pins adapted from the same [PassportFilterResult.of]
   /// aggregation My Passport uses (requesting every venue type here; the
@@ -271,6 +425,12 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       ).entries,
       restaurantCoords: _restaurantCoords,
       hotelCoords: _hotelCoords,
+    ),
+    ...undatedMapPins(
+      undated: _undated,
+      restaurantCoords: _restaurantCoords,
+      hotelCoords: _hotelCoords,
+      datedVenueKeys: _datedVenueKeys,
     ),
     ...eventMapPins(_eventEntries ?? []),
   ];
@@ -303,6 +463,48 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     );
   }
 
+  Future<void> _openFilterMenu() async {
+    final picked = await showModalBottomSheet<MapFilterType>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 0, 20, 24),
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            decoration: BoxDecoration(
+              color: AppColors.card,
+              borderRadius: BorderRadius.circular(22),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (final type in MapFilterType.values)
+                  ListTile(
+                    title: Text(
+                      type.label,
+                      style: CsFonts.serif(
+                        color: AppColors.textPrimary,
+                        fontSize: 18,
+                      ),
+                    ),
+                    trailing: type == _filter
+                        ? const Icon(
+                            Icons.check_rounded,
+                            color: AppColors.forestGreen,
+                          )
+                        : null,
+                    onTap: () => Navigator.pop(context, type),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+    if (picked != null && picked != _filter) _onSelectFilter(picked);
+  }
+
   void _onClusterTap(BuildContext context, List<MapPin> pins) =>
       showMapClusterSheet(
         context,
@@ -316,6 +518,8 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
         showVenuePreviewSheet(context, stats);
       case HotelMapPin(:final stats):
         showVenuePreviewSheet(context, stats);
+      case UndatedMapPin(:final undated):
+        _openUndated(undated);
       case EventMapPin():
         showEventMapPreviewSheet(context, pin);
     }
@@ -325,179 +529,183 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   Widget build(BuildContext context) {
     final plottable = _visiblePins;
     final hasAnyHistory =
-        (_entries ?? []).isNotEmpty || (_eventEntries ?? []).isNotEmpty;
+        (_entries ?? []).isNotEmpty ||
+        (_eventEntries ?? []).isNotEmpty ||
+        _undated.isNotEmpty;
+    final canAddPlaces =
+        !widget._isFriend && !_wineMode && !_loading && _undatedAvailable;
 
-    return Scaffold(
-      backgroundColor: AppColors.deepGreen,
-      body: Column(
-        children: [
-          SafeArea(
-            bottom: false,
-            child: ColoredBox(
-              color: AppColors.deepGreen,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      CsSpacing.base,
-                      0,
-                      CsSpacing.base,
-                      0,
+    // Light status bar on the green map, also when coming back from the
+    // ivory Add places screens, which set it dark.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: Scaffold(
+        backgroundColor: AppColors.deepGreen,
+        body: Column(
+          children: [
+            SafeArea(
+              bottom: false,
+              child: ColoredBox(
+                color: AppColors.deepGreen,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        CsSpacing.base,
+                        0,
+                        CsSpacing.base,
+                        0,
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: EditorialBackButton(color: AppColors.ivory),
+                      ),
                     ),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: EditorialBackButton(color: AppColors.ivory),
+                    if (!widget._isFriend && !_atlas.isEmpty)
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          CsSpacing.pageHorizontal,
+                          0,
+                          CsSpacing.pageHorizontal,
+                          CsSpacing.sm,
+                        ),
+                        child: _ModeToggle(
+                          wine: _wineMode,
+                          onChanged: _setWineMode,
+                        ),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.xs,
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.sm,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            _wineMode
+                                ? 'Wine regions'
+                                : widget._isFriend
+                                ? "$_ownerName's Map"
+                                : 'My Map',
+                            style: CsTypography.screenTitle.copyWith(
+                              color: AppColors.ivory,
+                            ),
+                          ),
+                          const SizedBox(height: CsSpacing.xs),
+                          Text(
+                            _wineMode
+                                ? 'Tap a region to see its grapes and how they taste.'
+                                : widget._isFriend
+                                ? 'Every place $_ownerName has shared with you.'
+                                : "Every place you've experienced.",
+                            style: CsTypography.body.copyWith(
+                              color: AppColors.secondaryOnDark,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  if (!widget._isFriend && !_atlas.isEmpty)
                     Padding(
                       padding: const EdgeInsets.fromLTRB(
                         CsSpacing.pageHorizontal,
                         0,
                         CsSpacing.pageHorizontal,
-                        CsSpacing.sm,
+                        CsSpacing.base,
                       ),
-                      child: _ModeToggle(
-                        wine: _wineMode,
-                        onChanged: _setWineMode,
-                      ),
-                    ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.xs,
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.sm,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          _wineMode
-                              ? 'Wine regions'
-                              : widget._isFriend
-                              ? "$_ownerName's Map"
-                              : 'My Map',
-                          style: CsTypography.screenTitle.copyWith(
-                            color: AppColors.ivory,
-                          ),
-                        ),
-                        const SizedBox(height: CsSpacing.xs),
-                        Text(
-                          _wineMode
-                              ? 'Tap a region to see its grapes and how they taste.'
-                              : widget._isFriend
-                              ? 'Every place $_ownerName has shared with you.'
-                              : "Every place you've experienced.",
-                          style: CsTypography.body.copyWith(
-                            color: AppColors.secondaryOnDark,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      0,
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.base,
-                    ),
-                    child: _wineMode
-                        ? _WineSearchButton(onTap: _openWineSearch)
-                        : SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
+                      child: _wineMode
+                          ? _WineSearchButton(onTap: _openWineSearch)
+                          : Row(
                               children: [
-                                for (final type in MapFilterType.values) ...[
-                                  if (type != MapFilterType.values.first)
-                                    const SizedBox(width: CsSpacing.sm),
-                                  CsFilterChip(
-                                    label: type.label,
-                                    selected: _filter == type,
-                                    onTap: () => _onSelectFilter(type),
-                                  ),
-                                ],
+                                _FilterButton(
+                                  label: _filter.label,
+                                  onTap: _openFilterMenu,
+                                ),
+                                const Spacer(),
+                                if (canAddPlaces)
+                                  _AddButton(onTap: _openAddPlaces),
                               ],
                             ),
-                          ),
-                  ),
-                ],
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Expanded(
-            child: ColoredBox(
-              color: AppColors.deepGreen,
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: GlobeView(
-                      controller: _globeController,
-                      pins: _wineMode ? const [] : plottable,
-                      visitedCountryCodes: _wineMode
-                          ? const {}
-                          : _visitedCountryCodes,
-                      onPinTap: (pin) => _onPinTap(context, pin),
-                      onClusterTap: (pins) => _onClusterTap(context, pins),
-                      regions: _wineMode ? _globeRegions : const [],
-                      selectedRegionId: _selectedRegionId,
-                      onRegionTap: (globeRegion) {
-                        final region = _atlas.region(globeRegion.id);
-                        if (region != null) _openRegion(region);
-                      },
-                    ),
-                  ),
-                  // No overlay in wine mode. SizedBox.expand, not shrink: a
-                  // zero-sized child here would make this Stack, and with it
-                  // the globe, zero wide (seen in the simulator, 2026-11-20).
-                  if (_wineMode)
-                    const SizedBox.expand()
-                  else if (_loading)
-                    const Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.ivory,
-                        strokeWidth: 2,
+            Expanded(
+              child: ColoredBox(
+                color: AppColors.deepGreen,
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: GlobeView(
+                        controller: _globeController,
+                        pins: _wineMode ? const [] : plottable,
+                        visitedCountryCodes: _wineMode
+                            ? const {}
+                            : _visitedCountryCodes,
+                        onPinTap: (pin) => _onPinTap(context, pin),
+                        onClusterTap: (pins) => _onClusterTap(context, pins),
+                        regions: _wineMode ? _globeRegions : const [],
+                        selectedRegionId: _selectedRegionId,
+                        onRegionTap: (globeRegion) {
+                          final region = _atlas.region(globeRegion.id);
+                          if (region != null) _openRegion(region);
+                        },
                       ),
-                    )
-                  else if (_loadError)
-                    _MapMessage(
-                      icon: Icons.wifi_off_rounded,
-                      message: widget._isFriend
-                          ? "Could not load $_ownerName's places."
-                          : 'Could not load your visited venues.',
-                      actionLabel: 'Retry',
-                      onAction: () {
-                        setState(() => _loading = true);
-                        _load();
-                      },
-                    )
-                  else if (!hasAnyHistory)
-                    _MapMessage(
-                      icon: Icons.explore_outlined,
-                      message: widget._isFriend
-                          ? "$_ownerName hasn't shared any places yet."
-                          : 'Your map is waiting for its first destination.',
-                    )
-                  else if (plottable.isEmpty)
-                    _MapMessage(
-                      icon: Icons.location_off_outlined,
-                      message: switch (_filter) {
-                        MapFilterType.hotels => 'No hotel stays yet.',
-                        MapFilterType.restaurants =>
-                          'No restaurant visits yet.',
-                        MapFilterType.events => 'No event attendance yet.',
-                        MapFilterType.all => 'No visited venues yet.',
-                      },
                     ),
-                ],
+                    // No overlay in wine mode. SizedBox.expand, not shrink: a
+                    // zero-sized child here would make this Stack, and with it
+                    // the globe, zero wide (seen in the simulator, 2026-11-20).
+                    if (_wineMode)
+                      const SizedBox.expand()
+                    else if (_loading)
+                      const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.ivory,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    else if (_loadError)
+                      _MapMessage(
+                        icon: Icons.wifi_off_rounded,
+                        message: widget._isFriend
+                            ? "Could not load $_ownerName's places."
+                            : 'Could not load your visited venues.',
+                        actionLabel: 'Retry',
+                        onAction: () {
+                          setState(() => _loading = true);
+                          _load();
+                        },
+                      )
+                    else if (!hasAnyHistory)
+                      _MapMessage(
+                        icon: Icons.explore_outlined,
+                        message: widget._isFriend
+                            ? "$_ownerName hasn't shared any places yet."
+                            : 'Your map is waiting for its first destination.',
+                      )
+                    else if (plottable.isEmpty)
+                      _MapMessage(
+                        icon: Icons.location_off_outlined,
+                        message: switch (_filter) {
+                          MapFilterType.hotels => 'No hotel stays yet.',
+                          MapFilterType.restaurants =>
+                            'No restaurant visits yet.',
+                          MapFilterType.events => 'No event attendance yet.',
+                          MapFilterType.all => 'No visited venues yet.',
+                        },
+                      ),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -612,6 +820,86 @@ class _ModeToggle extends StatelessWidget {
             fontSize: 13,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
           ),
+        ),
+      ),
+    ),
+  );
+}
+
+/// What the globe shows: one button with the active filter's name,
+/// opening the four choices, so the row stays calm.
+class _FilterButton extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+  const _FilterButton({required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: 'Showing $label. Change filter',
+    excludeSemantics: true,
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 44,
+        padding: const EdgeInsets.only(left: 18, right: 12),
+        decoration: BoxDecoration(
+          color: AppColors.ivory,
+          borderRadius: BorderRadius.circular(22),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              label,
+              style: CsTypography.smallLabel.copyWith(
+                color: AppColors.deepGreen,
+              ),
+            ),
+            const SizedBox(width: 4),
+            const Icon(
+              Icons.expand_more_rounded,
+              size: 18,
+              color: AppColors.deepGreen,
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+/// "+ Add places": venues the member has been to, added without a date.
+class _AddButton extends StatelessWidget {
+  final VoidCallback onTap;
+  const _AddButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: 'Add places you have been',
+    excludeSemantics: true,
+    child: GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 44,
+        padding: const EdgeInsets.only(left: 12, right: 18),
+        decoration: BoxDecoration(
+          color: AppColors.ivory,
+          borderRadius: BorderRadius.circular(22),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.add_rounded, size: 20, color: AppColors.deepGreen),
+            const SizedBox(width: 6),
+            Text(
+              'Add places',
+              style: CsTypography.smallLabel.copyWith(
+                color: AppColors.deepGreen,
+              ),
+            ),
+          ],
         ),
       ),
     ),

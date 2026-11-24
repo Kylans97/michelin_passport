@@ -474,7 +474,11 @@ class _GlobeViewState extends State<GlobeView> with TickerProviderStateMixin {
               ? Semantics(
                   button: true,
                   label: pin.title,
-                  child: VenuePin(type: pin.type, onTap: () => _tapPin(pin)),
+                  child: VenuePin(
+                    type: pin.type,
+                    undated: pin is UndatedMapPin,
+                    onTap: () => _tapPin(pin),
+                  ),
                 )
               : Semantics(
                   button: true,

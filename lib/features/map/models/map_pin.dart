@@ -20,6 +20,7 @@ import '../../../data/repositories/event_confirmed_attendance_repository.dart'
 import '../../../models/hotel.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/restaurant.dart';
+import '../../../models/undated_visit.dart';
 import '../../passport/passport_view_model.dart' show PassportVenueStats;
 
 /// Which kind of pin this is — drives icon selection ([VenuePin]) and
@@ -106,6 +107,38 @@ class HotelMapPin extends MapPin {
   String get subtitle => '${hotel.cityName}, ${hotel.countryName}';
 }
 
+/// A restaurant or hotel the member has been to without knowing when
+/// (`undated_visits`): drawn as a dashed pin, never a Passport stamp.
+class UndatedMapPin extends MapPin {
+  final UndatedVenue undated;
+  @override
+  final double latitude;
+  @override
+  final double longitude;
+
+  const UndatedMapPin({
+    required this.undated,
+    required this.latitude,
+    required this.longitude,
+  });
+
+  @override
+  String get id => 'undated:${undated.visit.id}';
+  @override
+  MapPinType get type =>
+      undated.visit.isHotel ? MapPinType.hotel : MapPinType.restaurant;
+  @override
+  String get title => undated.venue.name;
+  @override
+  String get subtitle => switch (undated.venue) {
+    RestaurantVenue(:final restaurant) =>
+      '${restaurant.cityName}, ${restaurant.countryName}',
+    HotelVenue(:final hotel) => '${hotel.cityName}, ${hotel.countryName}',
+  };
+  @override
+  String get countryCode => undated.venue.countryCode;
+}
+
 class EventMapPin extends MapPin {
   final EventAttendanceEntry entry;
   @override
@@ -187,6 +220,22 @@ List<MapPin> restaurantAndHotelMapPins({
   }
   return pins;
 }
+
+/// Adapts undated visits into dashed pins, with the same coordinate rule as
+/// [restaurantAndHotelMapPins]. A venue in [datedVenueKeys] (`restaurant:id`
+/// or `hotel:id`) already has a full pin and gets no second one.
+List<MapPin> undatedMapPins({
+  required List<UndatedVenue> undated,
+  required Map<String, (double, double)> restaurantCoords,
+  required Map<String, (double, double)> hotelCoords,
+  Set<String> datedVenueKeys = const {},
+}) => [
+  for (final u in undated)
+    if (!datedVenueKeys.contains('${u.visit.entityType}:${u.visit.entityId}'))
+      if ((u.visit.isHotel ? hotelCoords : restaurantCoords)[u.visit.entityId]
+          case final coords?)
+        UndatedMapPin(undated: u, latitude: coords.$1, longitude: coords.$2),
+];
 
 /// Adapts confirmed Event attendance into map pins. Events V2 Step 5 §6:
 /// eligible for a pin only when the Event's OWN snapshotted
