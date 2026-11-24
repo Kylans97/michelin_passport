@@ -1,15 +1,22 @@
-<!-- Supabase Auth → Email Templates → "Confirm signup".
-     Subject: Confirm your email for Mantelier
-     Sent on sign-up and when a member asks for a new confirmation link.
-     Written 2026-11-02 after a company mail server refused the bare
-     default template as suspicious content. Plain tables and inline
-     styles, no images and no web fonts, so it reads the same everywhere. -->
+<!-- Supabase Auth -> Email Templates -> "Confirm signup".
+     Subject: Welcome to Mantelier
+     Sent to a new address signing in with a code (1.9.0 and the site), on a
+     password sign-up (1.8.0), and when a member asks for a new confirmation
+     link. Written 2026-11-02 after a company mail server refused the bare
+     default template; plain tables and inline styles, no images, no web fonts.
+     Rewritten 2026-11-24: the code leads, and the button no longer confirms
+     on its own. It opens mantelier.app/auth/confirmed, where a tap confirms,
+     because company mail scanners (seen at klm.com) open every link before
+     the reader does and so used up the one-time token, code included.
+     /auth/confirmed is deliberately not a Universal Link, so the page opens
+     in the browser even with the app installed. ASCII only, with HTML
+     entities for anything else: Outlook read the old em dashes as ",Ai". -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Confirm your email for Mantelier</title>
+<title>Welcome to Mantelier</title>
 </head>
 <body style="margin:0; padding:0; background:#F4F0E7;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F4F0E7;">
@@ -26,40 +33,39 @@
             <h1 style="margin:0 0 16px; font-family:Georgia, 'Times New Roman', serif; font-size:28px; font-weight:normal; line-height:1.2; color:#16302A;">
               Welcome to Mantelier
             </h1>
-            <p style="margin:0 0 16px; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:1.6; color:#20261F;">
-              You created a Mantelier account with this email address, {{ .Email }}.
-              Confirm it to finish signing up, then open the app and sign in with your email and password.
+            <p style="margin:0 0 8px; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:1.6; color:#20261F;">
+              Your code for {{ .Email }}. Enter it in the app to finish signing up:
+            </p>
+            <p style="margin:0 0 24px; font-family:Georgia, 'Times New Roman', serif; font-size:32px; letter-spacing:6px; color:#16302A;">
+              {{ .Token }}
             </p>
             <p style="margin:0 0 28px; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:1.6; color:#20261F;">
-              Mantelier keeps track of the evenings that only happen once — four-hands dinners,
-              guest chefs, winemaker nights — and keeps the ones you go to in your Passport.
+              Mantelier keeps track of the evenings that only happen once, from four hands dinners
+              and guest chefs to winemaker nights, and keeps the ones you go to in your Passport.
+            </p>
+            <p style="margin:0 0 12px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:1.6; color:#726A60;">
+              Signed up with a password instead? Confirm your email here, then sign in with your email and password.
             </p>
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="background:#16302A; border-radius:12px;">
-                  <a href="{{ .ConfirmationURL }}" style="display:inline-block; padding:14px 28px; font-family:Helvetica, Arial, sans-serif; font-size:16px; font-weight:bold; color:#F4F0E7; text-decoration:none;">
+                  <a href="https://mantelier.app/auth/confirmed?token_hash={{ .TokenHash }}&amp;type=email" style="display:inline-block; padding:14px 28px; font-family:Helvetica, Arial, sans-serif; font-size:16px; font-weight:bold; color:#F4F0E7; text-decoration:none;">
                     Confirm my email
                   </a>
                 </td>
               </tr>
             </table>
-            <p style="margin:28px 0 8px; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:1.6; color:#726A60;">
-              Signing in with a code in the app? Enter this one instead:
-            </p>
-            <p style="margin:0; font-family:Georgia, 'Times New Roman', serif; font-size:32px; letter-spacing:6px; color:#16302A;">
-              {{ .Token }}
-            </p>
             <p style="margin:28px 0 0; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:1.6; color:#726A60;">
-              The button works once. Didn't create an account? Then you can ignore this email:
-              nothing happens without the button, and no account is made in your name.
+              The code and the button work once, and using one uses up the other. Didn&rsquo;t ask for this?
+              Then you can ignore this email: nothing happens without the code or the button, and no account is made in your name.
             </p>
           </td>
         </tr>
         <tr>
           <td align="center" style="padding:24px 8px 0; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:1.6; color:#726A60;">
-            Mantelier · <a href="https://mantelier.app" style="color:#726A60;">mantelier.app</a> ·
+            Mantelier &middot; <a href="https://mantelier.app" style="color:#726A60;">mantelier.app</a> &middot;
             <a href="mailto:hello@mantelier.app" style="color:#726A60;">hello@mantelier.app</a><br>
-            You're receiving this because someone signed up for Mantelier with this address.
+            You&rsquo;re receiving this because someone signed up for Mantelier with this address.
           </td>
         </tr>
       </table>

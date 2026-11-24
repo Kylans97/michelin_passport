@@ -74,6 +74,8 @@
   }
 
   .button[hidden] { display: none; }
+  button.button { border: 0; cursor: pointer; }
+  button.button:disabled { opacity: .6; cursor: default; }
 
   .fallback {
     margin-top: 22px;
@@ -96,6 +98,7 @@
   <p id="message">Your email address is confirmed. Open Mantelier and sign in with your email and password.</p>
 
   <a id="open-app" class="button" href="#" hidden>Open Mantelier</a>
+  <button id="confirm" class="button" type="button" hidden>Confirm my email</button>
 
   <p id="fallback" class="fallback">If the app doesn't open, open Mantelier yourself and sign in. Your account is ready.</p>
 
@@ -125,11 +128,61 @@
   var fallback = document.getElementById('fallback');
   var openApp = document.getElementById('open-app');
 
-  if (hash.get('error') || hash.get('error_code')) {
+  // The confirmation mail (since 2026-11-24) links to /auth/confirmed with
+  // ?token_hash=…&type=email instead of GoTrue's own /verify, which spends
+  // the one-time token the moment anything opens it, and company mail
+  // scanners open every link before the reader does (seen at klm.com: an
+  // address confirmed 18 seconds after the mail went out). Here nothing is
+  // spent until the reader taps. The session /verify returns is dropped:
+  // the account lives in the app, where the member then signs in.
+  var AUTH_URL = 'https://wcmxugunvwsrulcpeyrc.supabase.co/auth/v1/verify';
+  var ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndjbXh1Z3VudndzcnVsY3BleXJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA2NTI0MzksImV4cCI6MjA5NjIyODQzOX0.zGpFb-_zhFKL281kYZVcrboSHbcjbLGl_e_lE1GehQg';
+  var confirmButton = document.getElementById('confirm');
+
+  function showExpired() {
+    title.textContent = 'This link has expired or was already used';
+    message.textContent = 'If you already confirmed your email, your account is ready. Open Mantelier and sign in.';
+    fallback.textContent = 'Not confirmed yet? In the app, ask for a new code by email, or sign in with your password and choose \u201cSend a new confirmation link\u201d.';
+  }
+
+  if (query.get('token_hash')) {
+    var tokenHash = query.get('token_hash');
+    var type = query.get('type') || 'email';
+    // Keep the token out of the address bar and history once read.
+    history.replaceState(null, '', window.location.pathname);
+    title.textContent = 'Confirm your email';
+    message.textContent = 'One tap and your Mantelier account is ready.';
+    fallback.textContent = '';
+    confirmButton.hidden = false;
+    confirmButton.addEventListener('click', function () {
+      confirmButton.disabled = true;
+      fetch(AUTH_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: ANON_KEY },
+        body: JSON.stringify({ type: type, token_hash: tokenHash }),
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (body) {
+          confirmButton.hidden = true;
+          if (res.ok) {
+            title.textContent = 'Your account is confirmed';
+            message.textContent = 'Open Mantelier and sign in: with a new code by email, or with your password if you chose one.';
+            fallback.textContent = '';
+          } else if (body.error_code === 'otp_expired' || res.status === 403) {
+            showExpired();
+          } else {
+            title.textContent = "We couldn't confirm your email";
+            message.textContent = 'Something went wrong. Open Mantelier and sign in with a new code by email.';
+            fallback.textContent = '';
+          }
+        });
+      }).catch(function () {
+        confirmButton.disabled = false;
+        message.textContent = 'No connection. Check your internet and tap again.';
+      });
+    });
+  } else if (hash.get('error') || hash.get('error_code')) {
     if (hash.get('error_code') === 'otp_expired') {
-      title.textContent = 'This link has expired or was already used';
-      message.textContent = 'If you already confirmed your email, your account is ready. Open Mantelier and sign in.';
-      fallback.textContent = "Not confirmed yet? Sign in from the app and choose \u201cSend a new confirmation link\u201d.";
+      showExpired();
     } else {
       title.textContent = "We couldn't confirm your email";
       message.textContent = 'Something went wrong with this link. Open Mantelier and sign in. If your email still needs confirming, the app will offer to send a new link.';

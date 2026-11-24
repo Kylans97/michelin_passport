@@ -254,7 +254,7 @@ otp_expiry = 3600
 # takes them from the dashboard (Authentication → Email Templates), pasted by
 # hand from these same files; this only makes local stacks match.
 [auth.email.template.confirmation]
-subject = "Confirm your email for Mantelier"
+subject = "Welcome to Mantelier"
 content_path = "./supabase/templates/confirmation.html"
 
 [auth.email.template.recovery]
