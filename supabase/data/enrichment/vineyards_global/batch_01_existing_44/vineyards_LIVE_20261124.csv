@@ -1,0 +1,45 @@
+vineyard_code,name,country_code,region,city,address,lat,lng,pid,website_url,wine_region_id
+vine_0001,Schloss Johannisberg,DE,Rheingau,Geisenheim,"Schloss Johannisberg, 65366 Geisenheim-Johannisberg",49.9999818,7.9837394,false,https://schloss-johannisberg.de/,NULL
+vine_0002,Bodegas Ysios,ES,Rioja,Laguardia,"Camino de La Hoya s/n, 01300 Laguardia - Álava, Spain",NULL,NULL,false,https://bodegasysios.com/en/,NULL
+vine_0003,Montes,CL,Colchagua Valley,Santa Cruz,"Bodega de Apalta, Parcela 15 - Millahue de Apalta, Santa Cruz, Chile",NULL,NULL,false,https://www.monteswines.com/,NULL
+vine_0004,Maison Ruinart,FR,Champagne,Reims,"4 rue des Crayères, Reims, France",NULL,NULL,false,https://www.ruinart.com/en-uk,NULL
+vine_0005,Creation,ZA,Hemel-en-Aarde,Hermanus,"Hemel-en-Aarde Road, Hermanus 7200, South Africa",NULL,NULL,false,https://www.creationwines.com/,NULL
+vine_0006,Clos Apalta,CL,Colchagua Valley,NULL,"Apalta KM 5, Apalta Valley, Colchagua, Chile",-34.5927294,-71.291969,false,https://www.closapalta.com/,NULL
+vine_0007,Klein Constantia,ZA,Western Cape Province,Constantia,"Klein Constantia Road (estate entrance at the end of the road), Constantia; postal: PO Box 375, Constantia, 7848",-34.0386111,18.4129167,false,https://www.kleinconstantia.com/,NULL
+vine_0008,Château Smith Haut Lafitte,FR,Bordeaux,Martillac,"Château Smith Haut Lafitte, 33650 Bordeaux Martillac, France",44.7326094,-0.558248,false,https://www.smith-haut-lafitte.com/en/home/,NULL
+vine_0009,Château D'Yquem,FR,Sauternes,Sauternes,"Château d'Yquem, 33210 Sauternes, France",44.5436001,-0.3281159,false,http://yquem.fr/int-en/,NULL
+vine_0010,Durigutti Family Winemakers,AR,Mendoza,Luján de Cuyo,"Pasaje La Reta S/N, Las Compuertas, Luján de Cuyo, Mendoza",-33.0248598,-68.9502697,false,https://durigutti.com/,NULL
+vine_0011,Champagne Taittinger,FR,Champagne,Reims,"9, place Saint-Nicaise - CS 10011 - 51722 Reims Cedex, France",NULL,NULL,false,https://www.taittinger.com/,NULL
+vine_0012,Pago De Carraovejas,ES,Ribera del Duero,Peñafiel,"Camino de Carraovejas, s/n, 47300 Peñafiel, Valladolid, España",41.594799,-4.087881,false,http://www.pagodecarraovejas.com,NULL
+vine_0013,Casas del Bosque,CL,Casablanca Valley,Casablanca,"Hijuela Nº 2 Ex Fundo Santa Rosa, Casablanca, Chile",-33.3174912,-71.4349889,false,https://www.casasdelbosque.cl/,NULL
+vine_0014,Château Pape Clément,FR,Bordeaux,Pessac,"216 avenue Dr Nancel Pénard, 33600 Pessac, France",44.8053852,-0.6440558,false,https://en.chateau-pape-clement.fr/,NULL
+vine_0016,Quinta do Crasto,PT,Douro Valley,Sabrosa,"Quinta do Crasto, Gouvinhas, 5060-063 Sabrosa, Portugal",41.165037,-7.628309,false,https://www.quintadocrasto.wine/en/,NULL
+vine_0017,Vasse Felix,AU,Margaret River,Cowaramup,"Caves Road (Cnr Tom Cullity Drive), Cowaramup, Margaret River, WA 6284, Australia",NULL,NULL,false,https://www.vassefelix.com.au/,NULL
+vine_0018,Château Kefraya,LB,Bekaa Valley,NULL,NULL,NULL,NULL,false,https://www.chateaukefraya.com/,NULL
+vine_0019,Viu Manent,CL,Colchagua Valley,Cunaco,"Carretera del Vino Km 37, Cunaco, VI Región, Chile",-34.6513564,-71.3100159,false,https://viumanent.cl/en/,NULL
+vine_0020,Bodega Garzón,UY,Maldonado,Garzón,"Ruta 9 km. 175 - Garzón, Maldonado, Uruguay",-34.5697479,-54.6289692,false,https://www.bodegagarzon.com/,NULL
+vine_0022,Ceretto,IT,Piedmont,Alba,"Strada Provinciale Alba/Barolo, Località San Cassiano, 34, 12051 Alba (CN), Italy",44.6722487,7.9962875,false,https://www.ceretto.com/it,NULL
+vine_0023,Concha y Toro,CL,Maipo Valley,Pirque,"Av. Virginia Subercaseaux 210, Pirque, Región Metropolitana, Chile",-33.6356005,-70.5765944,false,https://conchaytoro.com/en/,NULL
+vine_0024,Gusbourne,GB,Kent,Appledore,"Kenardington Road, Appledore, Ashford, Kent, TN26 2BE, United Kingdom",51.0469246,0.7971409,false,https://www.gusbourne.com/,NULL
+vine_0025,Bodegas Muga,ES,Rioja,Haro,"Avda. Vizcaya, 2, Barrio de la Estación, 26200 Haro, La Rioja, Spain",NULL,NULL,false,https://www.bodegasmuga.com/en/,NULL
+vine_0026,Perelada,ES,Empordà,Peralada,"Paraje la Granja, s/n, 17491 Peralada, Girona, Spain",NULL,NULL,false,https://perelada.com/,NULL
+vine_0027,Jordan Vineyard & Winery,US,Alexander Valley,Healdsburg,"1474 Alexander Valley Road, Healdsburg, CA 95448-9003, USA",38.656218,-122.8437964,false,https://www.jordanwinery.com/,NULL
+vine_0029,William Chris Vineyards,US,Texas Hill Country,Hye,"10352 US Highway 290, Hye, TX 78635, USA",NULL,NULL,false,https://williamchriswines.com,NULL
+vine_0030,Szepsy Pince,HU,Tokaj,NULL,NULL,NULL,NULL,false,https://szepsy.hu/,NULL
+vine_0031,Cloudy Bay Vineyards,NZ,Marlborough,NULL,NULL,NULL,NULL,false,http://www.cloudybay.com,NULL
+vine_0032,Riccitelli Wine Company,AR,Mendoza,Luján de Cuyo,"Las Compuertas, Luján de Cuyo, Mendoza, Argentina (no street address published)",NULL,NULL,false,https://matiasriccitelli.com/en/winery/,NULL
+vine_0034,Shafer Vineyards,US,Napa Valley,Napa,"6154 Silverado Trail, Napa, CA 94558, USA",NULL,NULL,false,https://shafervineyards.com/,NULL
+vine_0035,Viña Cobos,AR,Mendoza,Luján de Cuyo,"Costa Flores y Ruta 7, Agrelo, Luján de Cuyo, Mendoza, Argentina",NULL,NULL,false,https://vinacobos.com/,NULL
+vine_0036,M. Chapoutier,FR,Rhône Valley,Tain l'Hermitage,"18 avenue du Docteur Paul Durand, 26600 Tain l'Hermitage, France",NULL,NULL,false,https://www.chapoutier.com/en/,NULL
+vine_0037,Champagne Bollinger,FR,Champagne,Aÿ,"20 Boulevard Maréchal de Lattre, 51160 Aÿ, France",NULL,NULL,false,https://www.champagne-bollinger.com/,NULL
+vine_0038,Aperture Cellars,US,Sonoma,Healdsburg,"12291 Old Redwood Highway, Healdsburg, CA 95448, USA",NULL,NULL,false,https://aperture-cellars.com/,NULL
+vine_0039,Craggy Range,NZ,Hawke’s Bay,Havelock North,"253 Waimarama Road, Havelock North, Hawke's Bay 4294, New Zealand",-39.6928384,176.923042,false,https://craggyrange.com/,NULL
+vine_0040,Marqués de Murrieta,ES,Rioja,Logroño,"N-232a Km 402, 26006 Logroño, La Rioja, Spain",42.4579426,-2.381978,false,https://marquesdemurrieta.com/,NULL
+vine_0041,Leeuwin Estate,AU,Margaret River,Margaret River,"Stevens Road, Margaret River, WA 6285, Australia",NULL,NULL,false,https://leeuwinestate.com.au/,NULL
+vine_0042,Château Pichon Baron,FR,Bordeaux,Pauillac,"Château Pichon Baron, 33250 Pauillac, France",45.1770493,-0.7516086,false,https://www.pichonbaron.com/en/,NULL
+vine_0043,Delaire Graff Estate,ZA,Stellenbosch,Stellenbosch,"Helshoogte Rd, Stellenbosch, 7602, South Africa",-33.920723,18.919449,false,https://www.delaire.co.za/,NULL
+vine_0044,Vivanco,ES,Rioja,Briones,"Carretera Nacional 232, 26330 Briones, La Rioja, España",42.5393224,-2.7764055,false,https://vivancoculturadevino.es/es/,NULL
+vine_0045,Seppeltsfield,AU,Barossa Valley,Seppeltsfield,"730 Seppeltsfield Road, Seppeltsfield, Barossa Valley SA 5355, Australia",NULL,NULL,false,https://seppeltsfield.com.au/,NULL
+vine_0046,Tokara Wine Estate,ZA,Stellenbosch,Stellenbosch,"Helshoogte Pass, at the gateway to the Banghoek Valley, Stellenbosch, South Africa (no street address published)",-33.9180637,18.9187235,false,https://www.tokara.com/,NULL
+vine_0049,Gramona,ES,Alt Penedès,Sant Sadurní d'Anoia,"Carrer Indústria 36, 08770 Sant Sadurní d'Anoia, Spain",41.4232548,1.7863346,false,https://gramona.com/en/,NULL
+vine_0050,Bodega Colomé,AR,Salta,Molinos,"Road 53, Km 20, Molinos (4419), Salta, Argentina",NULL,NULL,false,https://www.bodegacolome.com/,NULL

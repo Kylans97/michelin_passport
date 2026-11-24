@@ -34,15 +34,66 @@ class VineyardRepository {
 
   final SupabaseClient _client;
 
-  /// Every estate. The catalogue starts at fifty, so the whole list is read
-  /// at once and filtered on the device (the producer suggestion too).
+  /// Every estate, read a page at a time in a fixed order, so a catalogue
+  /// past the server's row limit (1,000) is never cut off silently. Used by
+  /// the Wine Estates collection and the pickers that still filter on the
+  /// device; the wine sheet searches on the server instead ([search]).
   Future<List<Vineyard>> getAll() async {
-    final rows = await _client
-        .from('vineyards_full')
-        .select(vineyardFullColumns);
-    return sortVineyardsForCollection([
-      for (final row in rows as List) Vineyard.fromMap(row),
-    ]);
+    const page = 1000;
+    final all = <Vineyard>[];
+    for (var from = 0; ; from += page) {
+      final rows = await _client
+          .from('vineyards_full')
+          .select(vineyardFullColumns)
+          .order('vineyard_code')
+          .range(from, from + page - 1) as List;
+      all.addAll([for (final row in rows) Vineyard.fromMap(row)]);
+      if (rows.length < page) break;
+    }
+    return sortVineyardsForCollection(all);
+  }
+
+  /// Set once the server says `search_vineyards` does not exist (before
+  /// 20261101740000 is applied); [search] then filters the whole list on
+  /// the device, as every build did before.
+  bool _serverSearchMissing = false;
+  List<Vineyard>? _deviceCatalogue;
+
+  /// The estates a typed producer could be, best first, at most [limit].
+  /// On the server (`search_vineyards`: names and other names, accents
+  /// folded) when it exists, else on the device with [matchingVineyards].
+  /// Only proposes: the member picks, nothing is linked by name.
+  Future<List<Vineyard>> search(
+    String query, {
+    String? countryCode,
+    int limit = 3,
+  }) async {
+    final typed = query.trim();
+    if (foldForSearch(typed).length < 2) return const [];
+    if (!_serverSearchMissing) {
+      try {
+        final rows = await _client.rpc(
+          'search_vineyards',
+          params: {
+            'p_query': typed,
+            'p_country': countryCode,
+            'p_limit': limit,
+          },
+        );
+        return [
+          for (final row in rows as List)
+            Vineyard.fromMap(row as Map<String, dynamic>),
+        ];
+      } on PostgrestException catch (e) {
+        if (!isMissingFunctionError(e)) rethrow;
+        _serverSearchMissing = true;
+      }
+    }
+    final all = _deviceCatalogue ??= await getAll();
+    final inCountry = countryCode == null
+        ? all
+        : all.where((v) => v.countryCode == countryCode);
+    return matchingVineyards(inCountry, typed, limit: limit);
   }
 
   /// Whether any estate is readable — false before the vineyards migration
@@ -191,3 +242,8 @@ class VineyardRepository {
     ];
   }
 }
+
+/// PostgREST's answer when an RPC does not exist on this database yet
+/// (PGRST202), or Postgres's own (42883).
+bool isMissingFunctionError(PostgrestException e) =>
+    e.code == 'PGRST202' || e.code == '42883';

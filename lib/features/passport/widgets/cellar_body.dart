@@ -89,7 +89,7 @@ class _CellarBodyState extends State<CellarBody> {
       context,
       keptWithoutVisit: true,
       suggestions: _suggestions(uid),
-      vineyards: loadVineyardsForWineSheet(),
+      searchVineyards: searchVineyardsForWineSheet,
       onSave: (wine) async {
         try {
           await _repo.addKept(userId: uid, wine: wine);
@@ -117,7 +117,7 @@ class _CellarBodyState extends State<CellarBody> {
       initial: existing,
       keptWithoutVisit: kept,
       suggestions: _suggestions(uid),
-      vineyards: loadVineyardsForWineSheet(),
+      searchVineyards: searchVineyardsForWineSheet,
       onSave: (wine) async {
         try {
           if (kept) {

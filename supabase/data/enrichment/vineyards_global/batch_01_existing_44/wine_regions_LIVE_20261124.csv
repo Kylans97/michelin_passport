@@ -1,0 +1,276 @@
+region_code,name,aliases,country_code,has_parent,has_outline,publication_status,radius_km,latitude,longitude
+wr_0233,Vayots Dzor,[],AM,false,false,published,30,39.722,45.184
+wr_0026,Mendoza,[],AR,false,true,published,218,-34.794,-68.436
+wr_0027,Valle de Uco,[Uco Valley Uco],AR,false,true,published,75,-33.87,-69.086
+wr_0028,Cafayate,[Valle de Cafayate Salta],AR,false,true,published,22,-26.09,-65.919
+wr_0246,Añelo,[I.G. Añelo Anelo San Patricio del Chañar Neuquén],AR,false,true,published,62,-38.192,-69.001
+wr_0247,General Roca,[I.G. General Roca],AR,false,true,published,69,-38.371,-67.687
+wr_0248,San Juan,[I.G. San Juan],AR,false,true,published,168,-30.508,-68.849
+wr_0072,Wachau,[],AT,false,true,published,8,48.358,15.424
+wr_0073,Kremstal,[],AT,false,true,published,7,48.406,15.639
+wr_0074,Kamptal,[],AT,false,true,published,8,48.495,15.672
+wr_0075,Wagram,[],AT,false,true,published,15,48.352,15.95
+wr_0076,Weinviertel,[],AT,false,true,published,40,48.51,16.337
+wr_0077,Leithaberg,[Neusiedlersee-Hügelland],AT,false,true,published,14,47.857,16.56
+wr_0078,Neusiedlersee,[],AT,false,true,published,18,47.9,16.947
+wr_0079,Südsteiermark,[South Styria Southern Styria],AT,false,true,published,13,46.773,15.464
+wr_0153,Vulkanland Steiermark,[Südoststeiermark],AT,false,true,published,37,47.094,15.8
+wr_0195,Wien,[Vienna],AT,false,true,published,11,48.211,16.368
+wr_0196,Carnuntum,[],AT,false,true,published,15,48.032,16.616
+wr_0197,Thermenregion,[],AT,false,true,published,32,47.788,15.961
+wr_0198,Traisental,[],AT,false,true,published,22,48.137,15.734
+wr_0199,Weststeiermark,[West Styria Schilcherland],AT,false,true,published,27,46.997,15.206
+wr_0200,Rosalia,[],AT,false,true,published,8,47.74,16.413
+wr_0201,Mittelburgenland,[Blaufränkischland],AT,false,true,published,15,47.508,16.503
+wr_0202,Eisenberg,[],AT,false,true,published,22,47.139,16.313
+wr_0044,Barossa Valley,[],AU,false,true,published,14,-34.535,138.936
+wr_0045,McLaren Vale,[],AU,false,true,published,12,-35.202,138.562
+wr_0046,Clare Valley,[],AU,false,true,published,15,-33.909,138.651
+wr_0047,Coonawarra,[],AU,false,true,published,11,-37.266,140.883
+wr_0048,Adelaide Hills,[],AU,false,true,published,22,-35.023,138.803
+wr_0049,Hunter,[Hunter Valley],AU,false,true,published,80,-32.377,150.944
+wr_0050,Yarra Valley,[],AU,false,true,published,32,-37.724,145.63
+wr_0051,Margaret River,[],AU,false,true,published,26,-33.94,115.144
+wr_0052,Tasmania,[],AU,false,true,published,149,-42.111,146.672
+wr_0250,Eden Valley,[],AU,false,true,published,14,-34.585,139.084
+wr_0251,Mornington Peninsula,[],AU,false,true,published,16,-38.343,145.066
+wr_0252,Heathcote,[],AU,false,true,published,25,-36.748,144.725
+wr_0253,Rutherglen,[],AU,false,true,published,18,-36.114,146.521
+wr_0254,Beechworth,[],AU,false,true,published,11,-36.363,146.677
+wr_0255,Orange,[],AU,false,true,published,34,-33.367,149.073
+wr_0256,Mudgee,[],AU,false,true,published,56,-32.496,149.632
+wr_0257,Great Southern,[],AU,false,true,published,74,-34.633,117.713
+wr_0258,Canberra District,[],AU,false,true,published,53,-35,149.047
+wr_0127,Hagelandse wijn,[Hageland],BE,false,true,published,18,50.874,4.885
+wr_0128,Haspengouwse wijn,[Haspengouw],BE,false,true,published,15,50.828,5.397
+wr_0129,Heuvellandse wijn,[Heuvelland],BE,false,true,published,6,50.764,2.833
+wr_0130,Côtes de Sambre et Meuse,[Côtes de Sambre-et-Meuse],BE,false,true,published,63,50.156,5.405
+wr_0217,Melnik,[],BG,false,false,published,30,41.567,23.283
+wr_0218,Sakar,[],BG,false,false,published,30,41.768,26.198
+wr_0143,Vale dos Vinhedos,[DO Vale dos Vinhedos],BR,false,true,published,5,-29.186,-51.559
+wr_0144,Campanha Gaúcha,[Campanha],BR,false,false,published,30,-30.781,-55.482
+wr_0145,Vale do São Francisco,[],BR,false,true,published,90,-9.079,-40.999
+wr_0249,Altos de Pinto Bandeira,[DO Altos de Pinto Bandeira],BR,false,true,published,5,-29.098,-51.46
+wr_0141,Niagara Peninsula,[],CA,false,false,published,30,43.151,-79.394
+wr_0142,Okanagan Valley,[],CA,false,false,published,30,49.847,-119.519
+wr_0270,Prince Edward County,[The County PEC],CA,false,false,published,30,44,-77.249
+wr_0271,Nova Scotia,[Wines of Nova Scotia],CA,false,true,published,135,45.228,-62.697
+wr_0065,Valais,[Wallis AOC Valais],CH,false,true,published,41,46.243,7.635
+wr_0066,Vaud,[Waadt AOC Vaud],CH,false,true,published,31,46.583,6.474
+wr_0067,Lavaux,[AOC Lavaux],CH,false,true,published,8,46.504,6.749
+wr_0068,Genève,[Geneva Genf AOC Genève],CH,false,true,published,10,46.212,6.066
+wr_0069,Ticino,[Tessin Ticino DOC],CH,false,true,published,31,46.233,8.861
+wr_0070,Neuchâtel,[Neuenburg AOC Neuchâtel],CH,false,true,published,15,47.006,6.809
+wr_0071,Graubünden,[Grisons Grigioni AOC Graubünden],CH,false,true,published,9,46.924,9.592
+wr_0029,Valle del Maipo,[Maipo Maipo Valley],CL,false,true,published,70,-33.636,-70.631
+wr_0030,Valle de Colchagua,[Colchagua Colchagua Valley],CL,false,true,published,54,-34.451,-71.683
+wr_0031,Valle de Casablanca,[Casablanca Casablanca Valley],CL,false,true,published,18,-33.329,-71.368
+wr_0239,Valle del Elqui,[Elqui Valley Elqui D.O. Valle del Elqui],CL,false,true,published,74,-29.776,-70.617
+wr_0240,Valle del Limarí,[Limarí Valley Limari Valley Limarí D.O. Valle del Limarí],CL,false,true,published,65,-30.81,-70.991
+wr_0241,Valle del Aconcagua,[Aconcagua Valley D.O. Valle del Aconcagua],CL,false,true,published,47,-32.716,-70.721
+wr_0242,Valle de San Antonio,[San Antonio Valley D.O. Valle de San Antonio Leyda Valle de Leyda Leyda Valley],CL,false,true,published,22,-33.639,-71.512
+wr_0243,Valle del Maule,[Maule Valley Maule D.O. Valle del Maule],CL,false,true,published,83,-35.767,-71.369
+wr_0244,Valle del Itata,[Itata Valley Itata D.O. Valle del Itata],CL,false,true,published,45,-36.519,-72.334
+wr_0245,Valle del Biobío,[Bío Bío Valley Bío-Bío Valley Biobío Valley Bio Bio Valley Valle del Bío Bío D.O. Valle del Bío Bío Bío Bío],CL,false,true,published,37,-37.55,-72.798
+wr_0151,Helan Mountain East Foothill,[贺兰山东麓 Ningxia Eastern Foothills of Helan Mountain],CN,false,false,published,30,38.615,106.067
+wr_0275,Yantai,[烟台 Yantai Wine 烟台葡萄酒],CN,false,false,published,30,37.217,120.815
+wr_0231,Commandaria,[Κουμανδαρία],CY,false,true,published,7,34.828,32.975
+wr_0232,Krasochoria Lemesou,[Κρασοχώρια Λεμεσού Krasohoria Lemesou],CY,false,false,published,30,34.848,32.809
+wr_0213,Moravia,[Morava],CZ,false,true,published,38,48.957,16.85
+wr_0009,Mosel,[Moselle Mosel-Saar-Ruwer],DE,false,true,published,60,49.9,6.95
+wr_0080,Rheingau,[],DE,false,true,published,17,50.067,8.093
+wr_0081,Pfalz,[Palatinate Rheinpfalz],DE,false,true,published,24,49.358,8.197
+wr_0082,Rheinhessen,[],DE,false,true,published,21,49.799,8.134
+wr_0083,Nahe,[],DE,false,true,published,16,49.802,7.696
+wr_0084,Franken,[],DE,false,true,published,35,49.831,9.761
+wr_0085,Baden,[],DE,false,true,published,43,49.572,9.661
+wr_0086,Ahr,[],DE,false,true,published,7,50.532,7.086
+wr_0152,Württemberg,[],DE,false,true,published,31,49.002,9.082
+wr_0191,Mittelrhein,[Middle Rhine],DE,false,true,published,18,50.22,7.595
+wr_0192,Saale-Unstrut,[],DE,false,true,published,34,50.755,11.442
+wr_0193,Sachsen,[Saxony],DE,false,true,published,33,51.179,13.434
+wr_0194,Hessische Bergstraße,[Hessische Bergstrasse],DE,false,true,published,10,49.871,8.943
+wr_0006,Rioja,[],ES,false,true,published,50,42.45,-2.45
+wr_0007,Ribera del Duero,[Ribera],ES,false,true,published,50,41.65,-3.8
+wr_0095,Priorat,[Priorato DOQ Priorat DOCa Priorat],ES,false,true,published,8,41.222,0.806
+wr_0096,Rías Baixas,[Rias Baixas DO Rías Baixas],ES,false,true,published,23,42.733,-8.511
+wr_0097,Jerez-Xérès-Sherry,[Sherry Jerez Xérès],ES,false,true,published,29,36.701,-6.174
+wr_0098,Penedès,[Penedés DO Penedès],ES,false,true,published,22,41.377,1.681
+wr_0099,Rueda,[DO Rueda],ES,false,true,published,30,41.262,-4.944
+wr_0100,Bierzo,[El Bierzo DO Bierzo],ES,false,true,published,28,42.571,-6.651
+wr_0101,Toro,[DO Toro],ES,false,true,published,15,41.426,-5.463
+wr_0176,Ribeira Sacra,[DO Ribeira Sacra DOP Ribeira Sacra],ES,false,false,published,30,42.399,-7.516
+wr_0177,Valdeorras,[DO Valdeorras DOP Valdeorras],ES,false,true,published,15,42.367,-6.969
+wr_0178,Ribeiro,[DO Ribeiro DOP Ribeiro],ES,false,true,published,12,42.352,-8.144
+wr_0179,Monterrei,[DO Monterrei DOP Monterrei],ES,false,true,published,18,42.013,-7.421
+wr_0180,Getariako Txakolina,[Txakoli de Getaria Chacolí de Getaria],ES,false,true,published,25,43.157,-2.207
+wr_0181,Bizkaiko Txakolina,[Txakoli de Bizkaia],ES,false,true,published,27,43.238,-2.863
+wr_0182,Navarra,[Navarre],ES,false,true,published,37,42.4,-1.616
+wr_0183,Cigales,[],ES,false,true,published,13,41.798,-4.649
+wr_0184,Somontano,[],ES,false,true,published,26,42.097,0.036
+wr_0185,Calatayud,[],ES,false,true,published,26,41.31,-1.714
+wr_0186,Campo de Borja,[],ES,false,true,published,15,41.785,-1.508
+wr_0187,Jumilla,[],ES,false,true,published,28,38.596,-1.564
+wr_0188,Montsant,[],ES,false,true,published,15,41.146,0.683
+wr_0189,Cava,[],ES,false,true,published,40,41.401,1.736
+wr_0190,Islas Canarias,[DOP Islas Canarias Canary Islands],ES,false,true,published,49,28.328,-16.632
+wr_0036,Rift Valley (Ziway),[Ziway Batu Ethiopia],ET,false,false,published,5,7.933,38.717
+wr_0001,Burgundy,[Bourgogne],FR,false,true,published,70,47.05,4.85
+wr_0002,Bordeaux,[],FR,false,true,published,60,44.85,-0.45
+wr_0003,Champagne,[],FR,false,true,published,50,49.05,4
+wr_0004,Rhône Valley,[Rhône Côtes du Rhône],FR,false,true,published,110,44.9,4.8
+wr_0005,Loire Valley,[Loire],FR,false,true,published,150,47.3,0.4
+wr_0107,Alsace,[Vin d'Alsace],FR,false,true,published,21,48.203,7.323
+wr_0108,Beaujolais,[Vin du Beaujolais],FR,false,true,published,17,46.055,4.644
+wr_0109,Languedoc,[],FR,false,true,published,49,43.419,3.025
+wr_0110,Roussillon,[],FR,false,true,published,25,42.659,2.752
+wr_0111,Provence,[],FR,false,true,published,46,43.407,6.19
+wr_0112,Jura,[],FR,false,true,published,17,46.757,5.591
+wr_0113,Cahors,[AOC Cahors Vin de Cahors],FR,false,true,published,15,44.46,1.301
+wr_0114,Savoie,[],FR,false,true,published,16,46.085,6.445
+wr_0206,Jurançon,[Jurançon Sec],FR,false,true,published,12,43.263,-0.488
+wr_0207,Madiran,[AOP Madiran],FR,false,true,published,10,43.544,-0.127
+wr_0208,Bergerac,[],FR,false,true,published,21,44.839,0.479
+wr_0209,Gaillac,[],FR,false,true,published,20,43.933,1.876
+wr_0210,Irouléguy,[],FR,false,true,published,10,43.159,-1.329
+wr_0211,Corsica,[Corse Vin de Corse],FR,false,true,published,43,42.211,9.4
+wr_0132,Sussex,[Sussex PDO],GB,false,true,published,35,50.966,-0.059
+wr_0133,Kakheti,[Kakhuri Kakheti (Kakhuri) კახეთი],GE,false,true,published,61,41.806,45.72
+wr_0124,Santorini,[Σαντορίνη],GR,false,true,published,5,36.414,25.452
+wr_0125,Naoussa,[Νάουσα],GR,false,true,published,11,40.62,22.017
+wr_0126,Nemea,[Νεμέα],GR,false,true,published,11,37.822,22.662
+wr_0155,Amyndeon,[Amynteo Αμύνταιο],GR,false,true,published,10,40.659,21.663
+wr_0212,Crete,[Κρήτη],GR,false,true,published,23,35.181,25.118
+wr_0223,Rapsani,[Ραψάνη],GR,false,true,published,6,39.889,22.559
+wr_0224,Mantinia,[Μαντινεία Mantineia],GR,false,true,published,14,37.577,22.44
+wr_0225,Goumenissa,[Γουμένισσα],GR,false,true,published,8,40.948,22.438
+wr_0226,Patras,[Patra Πάτρα],GR,false,true,published,23,38.089,21.665
+wr_0227,Drama,[Δράμα],GR,false,true,published,33,41.285,24.156
+wr_0228,Paros,[Πάρος],GR,false,true,published,9,37.054,25.19
+wr_0229,Monemvasia,[Monemvasia - Malvasia Μονεμβασία],GR,false,true,published,15,36.677,22.946
+wr_0230,Samos,[Σάμος],GR,false,false,published,30,37.733,26.812
+wr_0060,Hrvatska Istra,[Istria Croatian Istria Istra],HR,false,true,published,30,45.12,13.909
+wr_0061,Srednja i Južna Dalmacija,[Central and Southern Dalmatia Central and South Dalmatia],HR,false,true,published,35,43.154,16.731
+wr_0062,Slavonija,[Slavonia],HR,false,true,published,50,45.515,17.614
+wr_0063,Hrvatsko Podunavlje,[Croatian Danube Podunavlje],HR,false,true,published,41,45.384,18.74
+wr_0064,Plešivica,[Plesivica],HR,false,true,published,19,45.686,15.573
+wr_0118,Tokaj,[Tokaji],HU,false,true,published,17,48.258,21.396
+wr_0119,Villány,[Villányi],HU,false,true,published,10,45.886,18.261
+wr_0120,Eger,[Egri],HU,false,true,published,14,47.905,20.369
+wr_0121,Somló,[Somlói],HU,false,true,published,7,47.245,17.14
+wr_0154,Badacsony,[Badacsonyi],HU,false,true,published,9,46.853,17.473
+wr_0234,Galilee,[],IL,false,false,published,30,33.017,35.489
+wr_0235,Judean Hills,[],IL,false,false,published,30,31.774,35.073
+wr_0236,Negev,[],IL,false,false,published,30,30.609,34.801
+wr_0274,Nashik,[Nashik Valley Nashik Valley Wine Nasik],IN,false,false,published,30,19.997,73.791
+wr_0010,Piedmont,[Piemonte],IT,false,true,published,70,44.65,8
+wr_0011,Tuscany,[Toscana],IT,false,true,published,90,43.45,11.25
+wr_0087,Valpolicella,[],IT,false,true,published,15,45.519,11.013
+wr_0088,Soave,[],IT,false,true,published,9,45.476,11.209
+wr_0089,Prosecco,[],IT,false,true,published,82,45.888,12.425
+wr_0090,Alto Adige,[Südtirol dell'Alto Adige],IT,false,true,published,26,46.509,11.443
+wr_0091,Friuli,[Friuli Venezia Giulia Furlanija],IT,false,true,published,38,45.957,13.033
+wr_0092,Etna,[],IT,false,true,published,19,37.694,15.047
+wr_0093,Franciacorta,[],IT,false,true,published,9,45.603,10.049
+wr_0094,Taurasi,[],IT,false,true,published,9,40.995,14.953
+wr_0156,Friuli Colli Orientali,[Colli Orientali del Friuli],IT,false,true,published,13,46.079,13.416
+wr_0160,Abruzzo,[Montepulciano d'Abruzzo],IT,false,true,published,42,42.368,14.072
+wr_0161,Verdicchio di Matelica,[Matelica],IT,false,true,published,14,43.245,12.967
+wr_0162,Castelli di Jesi,[Verdicchio dei Castelli di Jesi Jesi],IT,false,false,published,30,43.521,13.244
+wr_0163,Primitivo di Manduria,[Manduria],IT,false,true,published,18,40.422,17.506
+wr_0164,Sardinia,[Sardegna Cannonau di Sardegna],IT,false,true,published,88,40.062,9.097
+wr_0165,Gallura,[Vermentino di Gallura],IT,false,true,published,31,40.964,9.212
+wr_0166,Marsala,[],IT,false,true,published,27,37.866,12.697
+wr_0167,Cerasuolo di Vittoria,[Vittoria],IT,false,true,published,29,37.067,14.481
+wr_0168,Trentodoc,[Trento DOC Trento],IT,false,true,published,27,45.974,11.104
+wr_0169,Lugana,[],IT,false,true,published,8,45.451,10.562
+wr_0170,Lambrusco di Sorbara,[Sorbara],IT,false,true,published,15,44.686,10.959
+wr_0171,Lambrusco Grasparossa di Castelvetro,[Grasparossa Castelvetro],IT,false,true,published,16,44.564,10.953
+wr_0172,Valtellina,[Valtellina Superiore],IT,false,false,published,30,46.183,9.917
+wr_0173,Montefalco,[Montefalco Sagrantino],IT,false,true,published,10,42.901,12.578
+wr_0174,Fiano di Avellino,[],IT,false,true,published,9,40.912,14.788
+wr_0175,Greco di Tufo,[],IT,false,true,published,5,41.019,14.823
+wr_0148,Yamanashi,[山梨 GI Yamanashi],JP,false,true,published,38,35.602,138.684
+wr_0149,Hokkaido,[北海道 GI Hokkaido],JP,false,true,published,158,43.468,143.326
+wr_0150,Nagano,[長野 GI Nagano],JP,false,true,published,66,36.115,138.098
+wr_0272,Yamagata,[山形 GI Yamagata],JP,false,true,published,55,38.443,140.155
+wr_0273,Osaka,[大阪 GI Osaka],JP,false,true,published,25,34.659,135.537
+wr_0115,Bekaa Valley,[Beqaa Valley Bekaa Beqaa],LB,false,false,published,30,33.833,36
+wr_0131,Moselle Luxembourgeoise,[Luxembourg Moselle AOP Moselle Luxembourgeoise],LU,false,true,published,9,49.636,6.366
+wr_0032,Guerrouane,[Guerrouane AOG],MA,false,false,published,15,33.731,-5.579
+wr_0033,Beni M'Tir,[Beni M'tir Béni M'Tir Beni Mtir],MA,false,false,published,15,33.903,-5.378
+wr_0034,Les Coteaux de l'Atlas,[Coteaux de l'Atlas],MA,false,false,published,5,33.838,-5.445
+wr_0035,Zenata,[Zenata AOG],MA,false,false,published,15,33.616,-7.122
+wr_0220,Codru,[],MD,false,false,published,30,47.224,28.408
+wr_0221,Ștefan Vodă,[],MD,false,false,published,30,46.513,29.662
+wr_0222,Valul lui Traian,[],MD,false,false,published,30,45.905,28.195
+wr_0146,Querétaro,[Vinos de la Región Vitivinícola de Querétaro],MX,false,true,published,62,20.843,-99.996
+wr_0147,Valle de Guadalupe,[Guadalupe Valley],MX,false,false,published,30,32.066,-116.608
+wr_0012,Achterhoek-Winterswijk,[Winterswijk],NL,false,true,published,7,51.969,6.739
+wr_0013,Maasvallei Limburg,[Maasvallei],NL,false,false,published,7,51.079,5.822
+wr_0014,Mergelland,[],NL,false,true,published,12,50.834,5.827
+wr_0015,Oolde,[],NL,false,true,published,5,52.205,6.34
+wr_0016,Rivierenland,[],NL,false,false,published,31,51.932,5.559
+wr_0017,Schouwen-Duiveland,[],NL,false,true,published,9,51.69,3.964
+wr_0018,Twente,[],NL,false,true,published,22,52.31,6.688
+wr_0019,Vijlen,[],NL,false,true,published,5,50.78,5.964
+wr_0020,Voerendaalse Bergen,[],NL,false,false,published,5,50.874,5.911
+wr_0053,Marlborough,[],NZ,false,true,published,66,-41.664,173.608
+wr_0054,Hawke's Bay,[Hawkes Bay],NZ,false,true,published,68,-39.495,176.543
+wr_0055,Central Otago,[],NZ,false,true,published,79,-44.892,169.087
+wr_0056,North Canterbury,[],NZ,false,true,published,78,-42.998,172.188
+wr_0057,Gisborne,[],NZ,false,true,published,52,-38.259,177.906
+wr_0058,Wairarapa,[],NZ,false,true,published,44,-41.15,175.616
+wr_0059,Nelson,[],NZ,false,true,published,57,-41.406,172.91
+wr_0008,Douro,[Douro Valley],PT,false,true,published,60,41.15,-7.6
+wr_0102,Vinho Verde,[Vinhos Verdes Região Demarcada dos Vinhos Verdes],PT,false,true,published,52,41.461,-8.263
+wr_0103,Dão,[Dao Região Demarcada do Dão],PT,false,true,published,35,40.506,-7.882
+wr_0104,Bairrada,[],PT,false,true,published,19,40.453,-8.51
+wr_0105,Madeira,[Vinho da Madeira Madeira Wine Madère],PT,false,true,published,16,32.76,-16.991
+wr_0106,Setúbal,[Setubal Moscatel de Setúbal],PT,false,true,published,20,38.63,-8.801
+wr_0157,Colares,[],PT,false,true,published,6,38.849,-9.423
+wr_0158,Alentejo,[],PT,false,false,published,30,38.566,-7.904
+wr_0203,Lisboa,[Vinho Regional Lisboa Estremadura],PT,false,true,published,42,39.361,-9.189
+wr_0204,Tejo,[Ribatejo DoTejo Do Tejo Vinho Regional Tejo],PT,false,true,published,46,39.248,-8.574
+wr_0205,Açores,[Azores],PT,false,false,published,30,38.514,-28.537
+wr_0214,Dealu Mare,[Dealul Mare],RO,false,true,published,18,45.085,26.456
+wr_0215,Cotnari,[],RO,false,true,published,14,47.403,26.933
+wr_0216,Murfatlar,[],RO,false,true,published,23,44.223,28.174
+wr_0219,Fruška Gora,[],RS,false,false,published,30,45.203,19.934
+wr_0122,Goriška Brda,[Brda],SI,false,true,published,5,46.017,13.549
+wr_0123,Vipavska dolina,[Vipava Vipava Valley],SI,false,true,published,15,45.924,13.804
+wr_0159,Štajerska Slovenija,[Slovenska Štajerska],SI,false,false,published,30,46.473,16.19
+wr_0237,Thrace,[Trakya],TR,false,false,published,30,40.668,27.246
+wr_0238,Cappadocia,[Kapadokya],TR,false,false,published,30,38.63,34.912
+wr_0021,Napa Valley,[Napa],US,false,true,published,23,38.46,-122.314
+wr_0022,Sonoma County,[Sonoma],US,false,true,published,36,38.498,-122.874
+wr_0023,Willamette Valley,[Willamette],US,false,true,published,69,44.68,-123.174
+wr_0024,Paso Robles,[],US,false,true,published,28,35.559,-120.505
+wr_0025,Finger Lakes,[],US,false,true,published,54,42.695,-76.98
+wr_0134,Sta. Rita Hills,[Santa Rita Hills],US,false,true,published,7,34.635,-120.329
+wr_0135,Santa Maria Valley,[],US,false,true,published,12,34.924,-120.306
+wr_0136,Russian River Valley,[],US,false,true,published,15,38.468,-122.862
+wr_0137,Columbia Valley,[],US,false,true,published,123,46.754,-119.725
+wr_0138,Walla Walla Valley,[],US,false,true,published,21,46.022,-118.465
+wr_0139,Santa Cruz Mountains,[],US,false,true,published,24,37.236,-122.185
+wr_0140,Long Island,[],US,false,true,published,35,40.885,-72.997
+wr_0265,Santa Lucia Highlands,[SLH],US,false,true,published,5,36.423,-121.423
+wr_0266,Anderson Valley,[],US,false,true,published,9,39.064,-123.432
+wr_0267,Lodi,[],US,false,true,published,27,38.244,-121.24
+wr_0268,Sierra Foothills,[],US,false,true,published,59,38.404,-120.699
+wr_0269,Monticello,[Monticello AVA],US,false,true,published,35,38.008,-78.598
+wr_0116,Canelones,[],UY,false,true,published,38,-34.566,-55.979
+wr_0117,Maldonado,[],UY,false,true,published,40,-34.465,-54.792
+wr_0037,Stellenbosch,[],ZA,false,true,published,16,-33.99,18.841
+wr_0038,Franschhoek,[Franschhoek Valley Franschhoek Vallei],ZA,false,true,published,7,-33.896,19.107
+wr_0039,Paarl,[],ZA,false,true,published,18,-33.733,18.974
+wr_0040,Swartland,[],ZA,false,true,published,57,-33.035,18.596
+wr_0041,Constantia,[],ZA,false,true,published,5,-34.041,18.411
+wr_0042,Elgin,[],ZA,false,true,published,12,-34.206,19.076
+wr_0043,Walker Bay,[],ZA,false,true,published,17,-34.38,19.191
+wr_0259,Hemel-en-Aarde,[Hemel en Aarde],ZA,false,true,published,5,-34.363,19.257
+wr_0260,Durbanville,[],ZA,false,true,published,5,-33.807,18.613
+wr_0261,Tulbagh,[],ZA,false,true,published,15,-33.264,19.089
+wr_0262,Robertson,[],ZA,false,true,published,26,-33.869,19.868
+wr_0263,Cederberg,[],ZA,false,true,published,7,-32.521,19.303
+wr_0264,Breedekloof,[],ZA,false,true,published,18,-33.654,19.272
