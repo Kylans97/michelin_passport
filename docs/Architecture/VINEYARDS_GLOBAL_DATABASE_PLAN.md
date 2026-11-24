@@ -142,11 +142,14 @@ needs the migration. QA-540 to QA-543 proposed in its README.
 
 Applying part A alone already lets the 4 linked wines reach a region.
 
-## Decisions for the product owner
+## Decisions (product owner, 2026-11-24)
 
-1. The tier order above, and the estate definition.
-2. Apply batch 1 part A now (no migration)?
-3. The proposed migration, and the three step order: server search in the
-   next build before the catalogue passes a few hundred estates.
-4. Should the Wine Estates collection keep listing only recognised estates
-   once the catalogue grows?
+1. Scope and order: approved ("ja laten we dit allemaal doen").
+2. Batch 1 part A: applied ("Yes, apply part A").
+3. Migration and three step order: applied ("Yes, apply them"); every
+   picker now searches on the server (PR #16, ships with the next build).
+4. The Wine Estates collection shows only the top recognised estates;
+   every other estate is found through search ("we willen alleen die top
+   erkende wijnhuizen echt in de collectie in de app tonen en de rest
+   gewoon via zoeken vindbaar maken"). Today that is the current 50 Best
+   list; an official classification joins it once its table exists.
