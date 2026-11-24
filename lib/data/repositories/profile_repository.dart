@@ -181,7 +181,7 @@ class ProfileRepository {
   }
 
   /// Share my Cellar with friends (`profiles.cellar_shared`,
-  /// 20261101710000). The caller's own row only, like [getDiscoverable].
+  /// 20261101730000). The caller's own row only, like [getDiscoverable].
   /// Null before that migration is applied, so the setting can stay out
   /// of sight rather than fail.
   Future<bool?> getCellarShared(String userId) async {

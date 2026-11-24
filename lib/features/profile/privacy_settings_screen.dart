@@ -37,7 +37,7 @@ import 'two_step_settings_screen.dart';
 /// that isn't real.
 ///
 /// Share my Cellar with friends (`profiles.cellar_shared`,
-/// 20261101710000, product owner 2026-11-24): one switch for the whole
+/// 20261101730000, product owner 2026-11-24): one switch for the whole
 /// Cellar. Loaded on its own, so a failure or a database without the
 /// column leaves the row out and never blocks the rest of the screen.
 class PrivacySettingsScreen extends StatefulWidget {

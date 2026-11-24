@@ -20,7 +20,7 @@ import '../models/cellar.dart';
 /// Cellar tab on their profile (product owner, 2026-11-24). The same
 /// screen, so it never drifts from what they see themselves. No edit
 /// sheet, no Add a wine; a friend who keeps their Cellar private
-/// (`can_see_cellar`, 20261101710000) shows only that.
+/// (`can_see_cellar`, 20261101730000) shows only that.
 class CellarBody extends StatefulWidget {
   const CellarBody({
     super.key,

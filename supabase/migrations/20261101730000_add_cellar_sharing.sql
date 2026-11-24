@@ -5,8 +5,10 @@
 -- approved the same day ("let's do it for the whole cellar then someone
 -- doesn't have to do that for every wine"; "oke dit kunnen we bouwen").
 -- Written 2026-11-24 on claude/friends-cellar. The number is sort order,
--- not a date: it follows 20261101700000_add_undated_visits.sql, which
--- another branch holds and is not on main yet.
+-- not a date: written as 20261101710000, renumbered the same day (not
+-- applied) to follow 20261101720000, the restaurant_cuisines 'editorial'
+-- source another session applied to production first; production also
+-- holds 20261101700000 from the places-globe branch.
 --
 -- PREPARED -- NOT APPLIED until the product owner says yes to applying it.
 --

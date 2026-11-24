@@ -113,7 +113,7 @@ class VisitWineRepository {
   }
 
   /// Whether the signed in member may see [ownerId]'s Cellar
-  /// (`can_see_cellar`, 20261101710000): their own, or a friend's who
+  /// (`can_see_cellar`, 20261101730000): their own, or a friend's who
   /// shares it. Before that migration there is no switch and every
   /// friend's Cellar is shared, so a missing function reads as true; the
   /// database still decides which rows come back.
@@ -142,7 +142,7 @@ class VisitWineRepository {
   /// Wines the given friends would drink again, from shared visits and
   /// kept without one, newest first, each with whose it is. RLS decides
   /// which rows come back: a wine on a private visit never does, a kept
-  /// wine only from a friend who shares their Cellar (20261101710000).
+  /// wine only from a friend who shares their Cellar (20261101730000).
   /// A friend who keeps their Cellar to themself is left out entirely,
   /// shared visits included, so this list never shows a hidden Cellar.
   /// At most [limit].

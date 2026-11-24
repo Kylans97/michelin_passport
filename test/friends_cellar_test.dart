@@ -1,6 +1,6 @@
 // Friends in the Cellar (product owner, 2026-11-24): a friend's Cellar is
 // a tab on their profile, read only; "Share my Cellar with friends" is one
-// switch for the whole Cellar (20261101710000); Taste became Palate, with
+// switch for the whole Cellar (20261101730000); Taste became Palate, with
 // the friend's favourites and the cuisines they return to.
 
 import 'package:flutter/material.dart';
