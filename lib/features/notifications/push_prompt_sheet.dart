@@ -31,7 +31,10 @@ class BookingReminderPrompt extends PushPromptReason {
 /// The app's own ask, shown before iOS's one-time prompt so that prompt
 /// only ever appears to someone who has already said yes. Returns true
 /// for "Turn on", false for "Not now", null if dismissed.
-Future<bool?> showPushPromptSheet(BuildContext context, PushPromptReason reason) {
+Future<bool?> showPushPromptSheet(
+  BuildContext context,
+  PushPromptReason reason,
+) {
   return showModalBottomSheet<bool>(
     context: context,
     isScrollControlled: true,
@@ -76,19 +79,30 @@ class PushPromptSheet extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(title, style: CsTypography.sectionTitle.copyWith(color: AppColors.forestGreen)),
+            Text(
+              title,
+              style: CsTypography.sectionTitle.copyWith(
+                color: AppColors.forestGreen,
+              ),
+            ),
             const SizedBox(height: CsSpacing.sm),
-            Text(body, style: CsTypography.body.copyWith(color: AppColors.textSecondary)),
+            Text(
+              body,
+              style: CsTypography.body.copyWith(color: AppColors.textSecondary),
+            ),
             const SizedBox(height: CsSpacing.xs),
             Text(
               'You can change this any time in Profile → Notification settings.',
               style: CsTypography.metadata.copyWith(color: AppColors.taupe),
             ),
             const SizedBox(height: CsSpacing.xl),
-            CsPrimaryButton(
-              label: 'Turn on notifications',
-              surface: CsSurface.light,
-              onTap: () => Navigator.pop(context, true),
+            SizedBox(
+              width: double.infinity,
+              child: CsPrimaryButton(
+                label: 'Turn on notifications',
+                surface: CsSurface.light,
+                onTap: () => Navigator.pop(context, true),
+              ),
             ),
             const SizedBox(height: CsSpacing.sm),
             Center(
@@ -96,7 +110,9 @@ class PushPromptSheet extends StatelessWidget {
                 onPressed: () => Navigator.pop(context, false),
                 child: Text(
                   'Not now',
-                  style: CsTypography.bodyMedium.copyWith(color: AppColors.forestGreen),
+                  style: CsTypography.bodyMedium.copyWith(
+                    color: AppColors.forestGreen,
+                  ),
                 ),
               ),
             ),
