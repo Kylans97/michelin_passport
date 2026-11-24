@@ -37,19 +37,23 @@ class CsContentSheet extends StatelessWidget {
         mediaQuery.size.height - mediaQuery.padding.top - bottomInset;
     final maxHeight = availableHeight * maxHeightFraction;
 
+    // The background runs to the screen's bottom edge and the safe area
+    // pads the content inside it. With the SafeArea outside, the home
+    // indicator's strip stayed transparent under the sheet, so the dimmed
+    // screen showed through below it.
     return Padding(
       padding: EdgeInsets.only(bottom: bottomInset),
-      child: SafeArea(
-        top: false,
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: maxHeight),
-          child: Container(
-            decoration: BoxDecoration(
-              color: backgroundColor,
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(CsRadius.large),
-              ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: Container(
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(CsRadius.large),
             ),
+          ),
+          child: SafeArea(
+            top: false,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
