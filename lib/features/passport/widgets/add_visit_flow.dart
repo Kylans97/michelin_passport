@@ -148,7 +148,9 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   List<PassportVenue>? _eventVenues; // null = still loading
   // Wine estates: the catalogue is small, so it is read once and filtered
   // on the device, the way the producer suggestion already works.
-  List<Vineyard>? _allVineyards; // null = not loaded yet
+  // The estates the server found for the query; null = not loaded yet.
+  List<Vineyard>? _allVineyards;
+  VineyardRepository? _vineyardRepo;
   List<Vineyard> _wishlistVineyards = const [];
 
   PassportVenue? _selectedVenue;
@@ -294,7 +296,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   Future<void> _runSearch() async {
     final query = _query;
     if (query.length < 2 || !mounted) return;
-    if (_type == _VenueType.estate) return; // filtered on the device
+    if (_type == _VenueType.estate) {
+      await _searchEstates(query);
+      return;
+    }
     setState(() => _searching = true);
     try {
       final List<PassportVenue> results = _type == _VenueType.restaurant
@@ -324,21 +329,33 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     if (_query.length >= 2) _runSearch();
   }
 
+  /// The wishlisted estates, shown before anything is typed. Estates
+  /// themselves are searched on the server as the member types.
   Future<void> _loadVineyards() async {
     if (_allVineyards != null) return;
-    final client = Supabase.instance.client;
+    final wishlisted = await _wishlistRepo
+        .getWishlistVineyards(widget.userId)
+        .catchError((Object _) => const <Vineyard>[]);
+    if (!mounted) return;
+    setState(() {
+      _allVineyards = const [];
+      _wishlistVineyards = wishlisted;
+    });
+    if (_query.length >= 2) _runSearch();
+  }
+
+  Future<void> _searchEstates(String query) async {
+    final repo = _vineyardRepo ??= VineyardRepository(Supabase.instance.client);
+    setState(() => _searching = true);
     try {
-      final all = await VineyardRepository(client).getAll();
-      final wishlisted = await _wishlistRepo
-          .getWishlistVineyards(widget.userId)
-          .catchError((Object _) => const <Vineyard>[]);
-      if (!mounted) return;
+      final found = await repo.search(query, limit: 20);
+      if (!mounted || query != _query) return;
       setState(() {
-        _allVineyards = all;
-        _wishlistVineyards = wishlisted;
+        _allVineyards = found;
+        _searching = false;
       });
     } catch (_) {
-      if (mounted) setState(() => _allVineyards = const []);
+      if (mounted) setState(() => _searching = false);
     }
   }
 
@@ -400,7 +417,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   Future<void> _addWine() => showWineSheet(
     context,
     suggestions: _wineSuggestions(),
-    vineyards: loadVineyardsForWineSheet(),
+    searchVineyards: searchVineyardsForWineSheet,
     onSave: (wine) async {
       setState(() => _stagedWines.add(wine));
       return true;
@@ -411,7 +428,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     context,
     initial: _stagedWines[index],
     suggestions: _wineSuggestions(),
-    vineyards: loadVineyardsForWineSheet(),
+    searchVineyards: searchVineyardsForWineSheet,
     onSave: (wine) async {
       setState(() => _stagedWines[index] = wine);
       return true;
@@ -964,8 +981,8 @@ class _SearchResultsSection extends StatelessWidget {
   }
 }
 
-/// Step 1 with "Wine estate" chosen: the wishlisted estates first, then
-/// every estate whose name matches what was typed.
+/// Step 1 with "Wine estate" chosen: the wishlisted estates until two
+/// letters are typed, then the estates the server's search found.
 class _EstateResults extends StatelessWidget {
   final List<Vineyard>? all;
   final List<Vineyard> wishlisted;
@@ -995,7 +1012,7 @@ class _EstateResults extends StatelessWidget {
     }
     final searching = query.length >= 2;
     final shown = searching
-        ? matchingVineyards(vineyards, query, limit: 20)
+        ? vineyards
         : wishlisted;
     if (shown.isEmpty) {
       return Padding(

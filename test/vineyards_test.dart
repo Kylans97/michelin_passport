@@ -1,6 +1,9 @@
-// Vineyards (20261101550000): the estate model, the producer suggestion,
+// Vineyards (20261101550000): the estate model, the producer suggestion
+// (on the device, and from the server's search, 20261101740000),
 // a wine's link to its estate, the Cellar's grouping, and the wine sheet's
 // "pick an estate or keep it as written". Estate names here are made up.
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/data/repositories/vineyard_repository.dart';
@@ -273,5 +276,116 @@ void main() {
       );
       expect(find.text('Domaine Lavaux-Mercier'), findsNothing);
     });
+  });
+
+  group('WineSheet with server search', () {
+    Future<List<String>> pumpSheet(
+      WidgetTester tester,
+      VineyardSearch search, {
+      VisitWine? initial,
+      List<VisitWine>? saved,
+    }) async {
+      final queries = <String>[];
+      tester.view.physicalSize = const Size(1170, 2532);
+      tester.view.devicePixelRatio = 3;
+      addTearDown(tester.view.reset);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: WineSheet(
+              initial: initial,
+              searchVineyards: (q) {
+                queries.add(q);
+                return search(q);
+              },
+              onSave: (w) async {
+                saved?.add(w);
+                return true;
+              },
+            ),
+          ),
+        ),
+      );
+      await tester.pump();
+      return queries;
+    }
+
+    Finder producerField() => find.byType(TextField).first;
+
+    testWidgets('asks once typing pauses and shows what the server found, '
+        'other names included', (tester) async {
+      // The server matched an alias: the name does not contain "yquem".
+      final queries = await pumpSheet(
+        tester,
+        (q) async => q.toLowerCase().contains('yquem') ? [_chateau] : [],
+      );
+      await tester.enterText(producerField(), 'Yq');
+      await tester.pump(const Duration(milliseconds: 100));
+      await tester.enterText(producerField(), 'Yquem');
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(queries, ['Yquem']);
+      expect(find.text(_chateau.name), findsOneWidget);
+    });
+
+    testWidgets('a picked estate from the search links the wine', (
+      tester,
+    ) async {
+      final saved = <VisitWine>[];
+      await pumpSheet(tester, (q) async => [_lavaux], saved: saved);
+      await tester.enterText(producerField(), 'Lavaux');
+      await tester.pump(const Duration(milliseconds: 300));
+      await tester.tap(find.text('Domaine Lavaux-Mercier'));
+      await tester.pump();
+      await tester.tap(find.text('Add'));
+      await tester.pump();
+      expect(saved.single.vineyardId, 'v1');
+    });
+
+    testWidgets('an answer for letters no longer typed is dropped', (
+      tester,
+    ) async {
+      final slow = Completer<List<Vineyard>>();
+      await pumpSheet(
+        tester,
+        (q) => q == 'Lavaux' ? slow.future : Future.value(const []),
+      );
+      await tester.enterText(producerField(), 'Lavaux');
+      await tester.pump(const Duration(milliseconds: 300));
+      await tester.enterText(producerField(), 'Quinta');
+      slow.complete([_lavaux]);
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(find.text('Domaine Lavaux-Mercier'), findsNothing);
+    });
+
+    testWidgets('an edited wine keeps its estate while the producer is '
+        'unchanged', (tester) async {
+      final saved = <VisitWine>[];
+      final queries = await pumpSheet(
+        tester,
+        (q) async => const [],
+        initial: const VisitWine(
+          id: 'w',
+          producer: 'Domaine Lavaux-Mercier',
+          vineyardId: 'v1',
+        ),
+        saved: saved,
+      );
+      await tester.tap(find.text('Save'));
+      await tester.pump();
+      expect(queries, isEmpty);
+      expect(saved.single.vineyardId, 'v1');
+    });
+  });
+
+  test('placeLine shows a region spelled like the town once', () {
+    const v = Vineyard(
+      id: 'y',
+      vineyardCode: 'vine_9999',
+      name: 'Château Test',
+      countryCode: 'FR',
+      city: 'Sauternes',
+      region: 'Sauternes',
+    );
+    expect(v.placeLine, 'Sauternes');
   });
 }

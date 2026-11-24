@@ -258,7 +258,7 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
     await showWineSheet(
       context,
       suggestions: _loadSuggestions(userId),
-      vineyards: loadVineyardsForWineSheet(),
+      searchVineyards: searchVineyardsForWineSheet,
       onSave: (wine) async {
         try {
           final saved = await _repo.add(
@@ -285,7 +285,7 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
       context,
       initial: existing,
       suggestions: _loadSuggestions(userId),
-      vineyards: loadVineyardsForWineSheet(),
+      searchVineyards: searchVineyardsForWineSheet,
       onSave: (wine) async {
         try {
           await _repo.update(existing.id!, wine, previous: existing);
@@ -348,22 +348,31 @@ class _VisitWinesSectionState extends State<VisitWinesSection> {
   }
 }
 
-/// The estates the Producer field can suggest. Empty on failure, and
-/// before the vineyards migration is applied: the sheet then works exactly
-/// as it did before estates existed.
-Future<List<Vineyard>> loadVineyardsForWineSheet() => VineyardRepository(
-  Supabase.instance.client,
-).getAll().catchError((Object _) => const <Vineyard>[]);
+/// Looks up the estates a typed producer could be.
+typedef VineyardSearch = Future<List<Vineyard>> Function(String query);
+
+VineyardRepository? _wineSheetVineyards;
+
+/// The estates the Producer field suggests for what is typed, from the
+/// server's search (on the device before 20261101740000 is applied). Empty
+/// on failure: the sheet then works exactly as it did before estates
+/// existed.
+Future<List<Vineyard>> searchVineyardsForWineSheet(String query) =>
+    (_wineSheetVineyards ??= VineyardRepository(Supabase.instance.client))
+        .search(query)
+        .catchError((Object _) => const <Vineyard>[]);
 
 /// The short sheet that adds or edits one wine. [onSave] returns true when
 /// the wine was taken. A new wine can be followed by another without
-/// leaving the sheet. [vineyards] are the estates the Producer field may
-/// suggest; the member picks one or keeps what they wrote.
+/// leaving the sheet. [searchVineyards] (or, in tests, a fixed list of
+/// [vineyards]) gives the estates the Producer field may suggest; the
+/// member picks one or keeps what they wrote.
 Future<void> showWineSheet(
   BuildContext context, {
   VisitWine? initial,
   Future<WineSuggestions>? suggestions,
   Future<List<Vineyard>>? vineyards,
+  VineyardSearch? searchVineyards,
   required Future<bool> Function(VisitWine wine) onSave,
   Future<void> Function()? onDelete,
   bool keptWithoutVisit = false,
@@ -381,6 +390,7 @@ Future<void> showWineSheet(
     initial: initial,
     suggestions: suggestions,
     vineyards: vineyards,
+    searchVineyards: searchVineyards,
     onSave: onSave,
     onDelete: onDelete,
     keptWithoutVisit: keptWithoutVisit,
@@ -393,6 +403,7 @@ class WineSheet extends StatefulWidget {
     this.initial,
     this.suggestions,
     this.vineyards,
+    this.searchVineyards,
     required this.onSave,
     this.onDelete,
     this.keptWithoutVisit = false,
@@ -405,6 +416,10 @@ class WineSheet extends StatefulWidget {
   final VisitWine? initial;
   final Future<WineSuggestions>? suggestions;
   final Future<List<Vineyard>>? vineyards;
+
+  /// Searched as the producer is typed. When given, it is the source of
+  /// the suggestions and [vineyards] is not used for them.
+  final VineyardSearch? searchVineyards;
   final Future<bool> Function(VisitWine wine) onSave;
   final Future<void> Function()? onDelete;
 
@@ -428,6 +443,11 @@ class _WineSheetState extends State<WineSheet> {
   int _added = 0;
   WineSuggestions _suggestions = const WineSuggestions();
   List<Vineyard> _vineyards = const [];
+
+  /// The last search's answer and what was typed for it.
+  List<Vineyard> _found = const [];
+  String _foundFor = '';
+  Timer? _searchDelay;
 
   /// The estate the member picked for the producer. Cleared as soon as the
   /// producer no longer reads as that estate's name.
@@ -481,6 +501,7 @@ class _WineSheetState extends State<WineSheet> {
 
   @override
   void dispose() {
+    _searchDelay?.cancel();
     _producer.dispose();
     _name.dispose();
     _year.dispose();
@@ -516,14 +537,35 @@ class _WineSheetState extends State<WineSheet> {
   /// saving early never drops a link the member made.
   String? get _unresolvedVineyardId {
     final initial = widget.initial;
-    if (initial?.vineyardId == null || _vineyards.isNotEmpty) return null;
+    if (initial?.vineyardId == null || _linked != null) return null;
+    if (widget.searchVineyards == null && _vineyards.isNotEmpty) return null;
     return _clean(_producer) == initial!.producer ? initial.vineyardId : null;
   }
 
-  void _onProducerChanged(String text) => setState(() {
-    final linked = _linked;
-    if (linked != null && text.trim() != linked.name) _linked = null;
-  });
+  void _onProducerChanged(String text) {
+    setState(() {
+      final linked = _linked;
+      if (linked != null && text.trim() != linked.name) _linked = null;
+    });
+    _searchSoon(text.trim());
+  }
+
+  /// Asks the server once typing pauses, and keeps only the answer for
+  /// what is still typed.
+  void _searchSoon(String typed) {
+    final search = widget.searchVineyards;
+    if (search == null) return;
+    _searchDelay?.cancel();
+    if (foldForSearch(typed).length < 2 || typed == _keptAsWritten) return;
+    _searchDelay = Timer(const Duration(milliseconds: 250), () async {
+      final found = await search(typed);
+      if (!mounted || _producer.text.trim() != typed) return;
+      setState(() {
+        _found = found;
+        _foundFor = typed;
+      });
+    });
+  }
 
   void _pickVineyard(Vineyard vineyard) => setState(() {
     _linked = vineyard;
@@ -539,6 +581,11 @@ class _WineSheetState extends State<WineSheet> {
     final typed = _producer.text.trim();
     if (_linked != null || typed.isEmpty || typed == _keptAsWritten) {
       return const [];
+    }
+    if (widget.searchVineyards != null) {
+      // While the answer for the latest letters is on its way, the previous
+      // one narrows on the device rather than flickering away.
+      return typed == _foundFor ? _found : matchingVineyards(_found, typed);
     }
     return matchingVineyards(_vineyards, typed);
   }

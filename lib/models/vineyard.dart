@@ -74,10 +74,16 @@ class Vineyard {
   ].join(', ');
 
   /// "Pinhão, Douro Valley" — where the estate is, most specific first.
-  String get placeLine => [
-    if ((city ?? '').trim().isNotEmpty) city!.trim(),
-    if ((region ?? '').trim().isNotEmpty) region!.trim(),
-  ].join(', ');
+  /// A region spelled like the town is shown once ("Sauternes", not
+  /// "Sauternes, Sauternes").
+  String get placeLine {
+    final town = (city ?? '').trim();
+    final area = (region ?? '').trim();
+    return [
+      if (town.isNotEmpty) town,
+      if (area.isNotEmpty && foldForSearch(area) != foldForSearch(town)) area,
+    ].join(', ');
+  }
 
   /// "No. 3 · World's 50 Best Vineyards 2025", or null when unranked.
   /// "🇪🇸  Laguardia, Spain" — the flag, the town (else the region) and

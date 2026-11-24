@@ -34,15 +34,140 @@ class VineyardRepository {
 
   final SupabaseClient _client;
 
-  /// Every estate. The catalogue starts at fifty, so the whole list is read
-  /// at once and filtered on the device (the producer suggestion too).
+  /// Every estate, read a page at a time in a fixed order, so a catalogue
+  /// past the server's row limit (1,000) is never cut off silently. Only the
+  /// device fallback of [search] needs it now; the collection reads
+  /// [getRecognised] and every picker searches.
   Future<List<Vineyard>> getAll() async {
+    const page = 1000;
+    final all = <Vineyard>[];
+    for (var from = 0; ; from += page) {
+      final rows = await _client
+          .from('vineyards_full')
+          .select(vineyardFullColumns)
+          .order('vineyard_code')
+          .range(from, from + page - 1) as List;
+      all.addAll([for (final row in rows) Vineyard.fromMap(row)]);
+      if (rows.length < page) break;
+    }
+    return sortVineyardsForCollection(all);
+  }
+
+  /// Explore's estate search: names first ([search]), then estates whose
+  /// region, wine region or town contains what was typed, at most [limit]
+  /// in all. The place match is plain `ilike`, so it is not accent folded.
+  Future<List<Vineyard>> searchByNameOrPlace(
+    String query, {
+    String? countryCode,
+    int limit = 20,
+  }) async {
+    final byName = await search(query, countryCode: countryCode, limit: limit);
+    // Characters PostgREST's or() filter reads as syntax are dropped.
+    final safe = query
+        .trim()
+        .replaceAll(RegExp(r'[,()*%.:"\\]'), ' ')
+        .replaceAll(RegExp(r'\s+'), ' ')
+        .trim();
+    if (safe.length < 2 || byName.length >= limit) return byName;
+    List rows;
+    try {
+      var request = _client
+          .from('vineyards_full')
+          .select(vineyardFullColumns)
+          .or('region.ilike.*$safe*,city.ilike.*$safe*,'
+              'wine_region_name.ilike.*$safe*');
+      if (countryCode != null) request = request.eq('country_code', countryCode);
+      rows = await request.order('name').limit(limit) as List;
+    } on PostgrestException {
+      return byName;
+    }
+    final seen = {for (final v in byName) v.id};
+    return [
+      ...byName,
+      for (final row in rows)
+        if (seen.add(row['id'] as String)) Vineyard.fromMap(row),
+    ].take(limit).toList();
+  }
+
+  /// Every country that has an estate: three short columns per estate,
+  /// read a page at a time, for Explore's country filter.
+  Future<List<({String code, String name, String flag})>> getCountries() async {
+    const page = 1000;
+    final seen = <String, ({String code, String name, String flag})>{};
+    for (var from = 0; ; from += page) {
+      final rows = await _client
+          .from('vineyards_full')
+          .select('vineyard_code, country_code, country_name, flag_emoji')
+          .order('vineyard_code')
+          .range(from, from + page - 1) as List;
+      for (final row in rows) {
+        final code = row['country_code'] as String;
+        final name = row['country_name'] as String?;
+        if (name == null || name.isEmpty) continue;
+        seen[code] ??= (code: code, name: name, flag: row['flag_emoji'] as String? ?? '');
+      }
+      if (rows.length < page) break;
+    }
+    return seen.values.toList();
+  }
+
+  /// The estates the Wine Estates collection shows: only recognised ones,
+  /// today those on the current World's 50 Best Vineyards list, in rank
+  /// order (product owner, 2026-11-24: only the top recognised estates in
+  /// the collection, the rest found through search). An official
+  /// classification joins this when its table exists.
+  Future<List<Vineyard>> getRecognised() async {
     final rows = await _client
         .from('vineyards_full')
-        .select(vineyardFullColumns);
+        .select(vineyardFullColumns)
+        .not('worlds_50_best_rank', 'is', null)
+        .order('worlds_50_best_rank') as List;
     return sortVineyardsForCollection([
-      for (final row in rows as List) Vineyard.fromMap(row),
+      for (final row in rows) Vineyard.fromMap(row),
     ]);
+  }
+
+  /// Set once the server says `search_vineyards` does not exist (before
+  /// 20261101740000 is applied); [search] then filters the whole list on
+  /// the device, as every build did before.
+  bool _serverSearchMissing = false;
+  List<Vineyard>? _deviceCatalogue;
+
+  /// The estates a typed producer could be, best first, at most [limit].
+  /// On the server (`search_vineyards`: names and other names, accents
+  /// folded) when it exists, else on the device with [matchingVineyards].
+  /// Only proposes: the member picks, nothing is linked by name.
+  Future<List<Vineyard>> search(
+    String query, {
+    String? countryCode,
+    int limit = 3,
+  }) async {
+    final typed = query.trim();
+    if (foldForSearch(typed).length < 2) return const [];
+    if (!_serverSearchMissing) {
+      try {
+        final rows = await _client.rpc(
+          'search_vineyards',
+          params: {
+            'p_query': typed,
+            'p_country': countryCode,
+            'p_limit': limit,
+          },
+        );
+        return [
+          for (final row in rows as List)
+            Vineyard.fromMap(row as Map<String, dynamic>),
+        ];
+      } on PostgrestException catch (e) {
+        if (!isMissingFunctionError(e)) rethrow;
+        _serverSearchMissing = true;
+      }
+    }
+    final all = _deviceCatalogue ??= await getAll();
+    final inCountry = countryCode == null
+        ? all
+        : all.where((v) => v.countryCode == countryCode);
+    return matchingVineyards(inCountry, typed, limit: limit);
   }
 
   /// Whether any estate is readable — false before the vineyards migration
@@ -191,3 +316,8 @@ class VineyardRepository {
     ];
   }
 }
+
+/// PostgREST's answer when an RPC does not exist on this database yet
+/// (PGRST202), or Postgres's own (42883).
+bool isMissingFunctionError(PostgrestException e) =>
+    e.code == 'PGRST202' || e.code == '42883';

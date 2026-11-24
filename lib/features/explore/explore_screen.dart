@@ -258,26 +258,31 @@ class _ExploreScreenState extends State<ExploreScreen> {
   // "All" (run concurrently, awaited in turn) — never one query per
   // result, never N+1. Query text and country are independent filters on
   // every one of the three catalogue searches.
-  // Wine estates and trains and ships are small catalogues: read once, on
-  // first search, and filtered on the device (the Wishlist's add sheet
-  // does the same). A failure, or the tables not readable yet, leaves
-  // them out of "All" rather than failing the search.
-  Future<List<Vineyard>>? _vineyardCatalogue;
+  // Wine estates are searched on the server (names, then region and town),
+  // since the catalogue grows past what a phone should download; their
+  // countries are read once, three short columns per estate. Trains and
+  // ships are a small catalogue: read once, on first search, and filtered
+  // on the device. A failure, or the tables not readable yet, leaves them
+  // out of "All" rather than failing the search.
+  late final _vineyardRepo = VineyardRepository(Supabase.instance.client);
+  Future<void>? _vineyardCountriesLoad;
+  List<VenueCountry> _vineyardCountries = const [];
   Future<List<Journey>>? _journeyCatalogue;
-  List<Vineyard> _vineyardsLoaded = const [];
   List<Journey> _journeysLoaded = const [];
 
-  Future<List<Vineyard>> _vineyards() =>
-      _vineyardCatalogue ??= VineyardRepository(Supabase.instance.client)
-          .getAll()
-          .then((all) {
-            _vineyardsLoaded = all;
-            return all;
-          })
-          .catchError((Object _) {
-            _vineyardCatalogue = null; // try again on the next search
-            return const <Vineyard>[];
-          });
+  void _loadVineyardCountries() => _vineyardCountriesLoad ??= _vineyardRepo
+      .getCountries()
+      .then((rows) {
+        if (!mounted) return;
+        setState(() {
+          _vineyardCountries = mergeVenueCountries([
+            [for (final c in rows) VenueCountry(name: c.name, code: c.code, flag: c.flag)],
+          ]);
+        });
+      })
+      .catchError((Object _) {
+        _vineyardCountriesLoad = null; // try again on the next search
+      });
 
   Future<List<Journey>> _journeys() =>
       _journeyCatalogue ??= JourneyRepository(Supabase.instance.client)
@@ -291,12 +296,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
             return const <Journey>[];
           });
 
-  Future<List<Vineyard>> _matchingVineyards(String query) async =>
-      filterExploreVineyards(
-        await _vineyards(),
-        query: query,
-        countryCode: _country?.code,
-      );
+  Future<List<Vineyard>> _matchingVineyards(String query) async {
+    _loadVineyardCountries();
+    return _vineyardRepo
+        .searchByNameOrPlace(query, countryCode: _country?.code)
+        .catchError((Object _) => const <Vineyard>[]);
+  }
 
   Future<List<Journey>> _matchingJourneys(
     String query, {
@@ -708,9 +713,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     ExploreSearchType.restaurants => restaurantCountries,
                     ExploreSearchType.hotels => hotelCountries,
                     ExploreSearchType.events => eventCountries,
-                    ExploreSearchType.estates => vineyardCountries(
-                      _vineyardsLoaded,
-                    ),
+                    ExploreSearchType.estates => _vineyardCountries,
                     ExploreSearchType.trains => journeyCountries(
                       _journeysLoaded,
                       JourneyKind.train,
