@@ -47,6 +47,8 @@ class _FriendsScreenState extends State<FriendsScreen> {
   late Future<List<Friendship>> _friendsFuture;
   late Future<List<FriendRequest>> _incomingFuture;
   late Future<List<FriendRequest>> _outgoingFuture;
+  // Bumped when a link is made, so the open links line counts it.
+  int _linksVersion = 0;
 
   @override
   void initState() {
@@ -83,7 +85,9 @@ class _FriendsScreenState extends State<FriendsScreen> {
     try {
       await _repo.acceptRequest(request.friendshipId);
       _load();
-      if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
+      if (mounted) {
+        PushService.instance.askAfter(context, const FriendsPrompt());
+      }
     } catch (_) {
       _showSnack('Could not accept. Please try again.', isError: true);
       _load();
@@ -161,6 +165,12 @@ class _FriendsScreenState extends State<FriendsScreen> {
     _load();
   }
 
+  void _openInvite() => showInviteSheet(
+    context,
+    onFindByUsername: _openAddFriend,
+    onLinkMade: () => setState(() => _linksVersion++),
+  );
+
   void _openProfile(String userId) async {
     await Navigator.push(
       context,
@@ -210,10 +220,10 @@ class _FriendsScreenState extends State<FriendsScreen> {
                           children: [
                             EditorialBackButton(color: AppColors.ivory),
                             Tooltip(
-                              message: 'Add friend',
+                              message: 'Add a friend',
                               child: _HeroIconButtonStandIn(
                                 icon: Icons.person_add_alt_1_rounded,
-                                onTap: _openAddFriend,
+                                onTap: _openInvite,
                               ),
                             ),
                           ],
@@ -261,7 +271,9 @@ class _FriendsScreenState extends State<FriendsScreen> {
                           future: _friendsFuture,
                           onTapFriend: (f) => _openProfile(f.friendId),
                           onRemove: _removeFriend,
-                          onFindFriends: _openAddFriend,
+                          onShareLink: _openInvite,
+                          linksVersion: _linksVersion,
+                          onLinksChanged: _load,
                         ),
                         _IncomingTab(
                           future: _incomingFuture,
@@ -315,12 +327,16 @@ class _FriendsTab extends StatelessWidget {
   final Future<List<Friendship>> future;
   final ValueChanged<Friendship> onTapFriend;
   final ValueChanged<Friendship> onRemove;
-  final VoidCallback onFindFriends;
+  final VoidCallback onShareLink;
+  final int linksVersion;
+  final VoidCallback onLinksChanged;
   const _FriendsTab({
     required this.future,
     required this.onTapFriend,
     required this.onRemove,
-    required this.onFindFriends,
+    required this.onShareLink,
+    required this.linksVersion,
+    required this.onLinksChanged,
   });
 
   @override
@@ -344,9 +360,13 @@ class _FriendsTab extends StatelessWidget {
         );
       }
       final friends = snap.data ?? [];
-      // Invite links (20261101670000) sit above the list, and above the
-      // empty state, where a first friend is most likely to come from.
-      const invites = InviteLinksSection();
+      // The friends first (product owner, 2026-11-24). Inviting sits
+      // behind the person-plus icon; the member's own links are one quiet
+      // line under the list, only while one is open.
+      final openLinks = OpenInviteLinksLine(
+        key: ValueKey(linksVersion),
+        onChanged: onLinksChanged,
+      );
       if (friends.isEmpty) {
         return ListView(
           padding: const EdgeInsets.fromLTRB(
@@ -356,7 +376,6 @@ class _FriendsTab extends StatelessWidget {
             CsSpacing.section,
           ),
           children: [
-            invites,
             Padding(
               padding: const EdgeInsets.all(CsSpacing.xl),
               child: Column(
@@ -372,20 +391,22 @@ class _FriendsTab extends StatelessWidget {
                   ),
                   const SizedBox(height: CsSpacing.sm),
                   Text(
-                    'Search for people you know by username.',
+                    'Send a link, and when they sign up you are friends right '
+                    'away. Or search for people you know by username.',
                     textAlign: TextAlign.center,
                     style: CsTypography.body.copyWith(color: AppColors.taupe),
                   ),
                   const SizedBox(height: CsSpacing.xl),
                   CsPrimaryButton(
-                    label: 'Find friends',
+                    label: 'Add a friend',
                     icon: Icons.person_add_alt_1_rounded,
-                    onTap: onFindFriends,
+                    onTap: onShareLink,
                     surface: CsSurface.light,
                   ),
                 ],
               ),
             ),
+            openLinks,
           ],
         );
       }
@@ -398,8 +419,13 @@ class _FriendsTab extends StatelessWidget {
         ),
         itemCount: friends.length + 1,
         itemBuilder: (context, i) {
-          if (i == 0) return invites;
-          final friend = friends[i - 1];
+          if (i == friends.length) {
+            return Padding(
+              padding: const EdgeInsets.only(top: CsSpacing.md),
+              child: openLinks,
+            );
+          }
+          final friend = friends[i];
           return IdentityRow(
             label: friend.label,
             username: friend.username,

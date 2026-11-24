@@ -293,8 +293,8 @@ class _VenueInviteScreenState extends State<VenueInviteScreen> {
             if (link.displayCode != null) ...[
               const SizedBox(height: CsSpacing.xs),
               Text(
-                'Or the code ${link.displayCode}, typed at the entrance of '
-                'the app.',
+                'Or the code ${link.displayCode}, entered in the app under '
+                'Friends.',
                 style: CsTypography.metadata.copyWith(color: AppColors.taupe),
               ),
             ],

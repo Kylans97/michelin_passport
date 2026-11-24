@@ -123,10 +123,10 @@ class InviteLinkPreview {
 
   /// "Kruishoutem, Belgium", as far as it is known.
   String? get venuePlace {
-    final parts = [venueCity, venueCountry]
-        .whereType<String>()
-        .where((s) => s.trim().isNotEmpty)
-        .toList();
+    final parts = [
+      venueCity,
+      venueCountry,
+    ].whereType<String>().where((s) => s.trim().isNotEmpty).toList();
     return parts.isEmpty ? null : parts.join(', ');
   }
 
@@ -338,8 +338,37 @@ class MyInviteLink {
     InviteLinkKind.visit when venueName != null && visitedOn != null =>
       '$venueName, ${visitedOn!.day} ${_months[visitedOn!.month - 1]}',
     InviteLinkKind.trip when tripTitle != null => tripTitle!,
-    _ => 'Friend link',
+    _ => isGroup ? 'Group link for $maxUses' : 'Personal link',
   };
+
+  /// "12 days left", "Last day", or why it no longer works.
+  String timeLine(DateTime now) {
+    if (isRevoked) return 'Cancelled';
+    if (isExpired(now)) return 'Expired';
+    if (isUsedUp) return 'Used';
+    final days = (expiresAt.difference(now).inHours / 24).ceil();
+    return days <= 1 ? 'Last day' : '$days days left';
+  }
+
+  /// The line under [title]: "Personal link · 13 days left" style, e.g.
+  /// "12 days left", "3 of 8 joined · 12 days left", or for a visit or
+  /// trip shared with a group, "Group link for 8 · 12 days left".
+  String statusLine(DateTime now) {
+    final usage = [
+      if (isGroup && useCount > 0) '$useCount of $maxUses joined',
+      if (!isGroup && useCount > 0 && lastUsedByName != null)
+        'Accepted by $lastUsedByName',
+    ];
+    // "Used" says nothing the line about who used it hasn't.
+    final time = isUsedUp && !isRevoked && usage.isNotEmpty
+        ? null
+        : timeLine(now);
+    return [
+      if (isGroup && kind != InviteLinkKind.friend) 'Group link for $maxUses',
+      ...usage,
+      ?time,
+    ].join(' · ');
+  }
 
   factory MyInviteLink.fromRow(Map<String, dynamic> row) => MyInviteLink(
     id: row['id'] as String,

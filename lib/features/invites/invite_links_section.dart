@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
-import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_content_sheet.dart';
 import '../../core/widgets/cs_primary_button.dart';
@@ -14,11 +13,123 @@ import '../friends/widgets/identity_row.dart';
 import 'pending_invite.dart';
 import 'share_invite_sheet.dart';
 
-/// Friends' own invitation corner: "Bring someone to Mantelier" with a
-/// friend link, "Have a code?" for a link that got lost on the way, and
-/// the member's links of the last 60 days, each with who used it.
-class InviteLinksSection extends StatefulWidget {
-  const InviteLinksSection({super.key, this.repository, this.onChanged});
+/// Inviting, behind Friends' person-plus icon (product owner, 2026-11-24:
+/// Friends opens on the friends themselves, not on a green block and a
+/// list of links). Share a link, find someone already here by username,
+/// or enter a code from the invitation page.
+Future<void> showInviteSheet(
+  BuildContext context, {
+  required VoidCallback onFindByUsername,
+  InviteLinkRepository? repository,
+  VoidCallback? onLinkMade,
+}) async {
+  final repo = repository ?? InviteLinkRepository(Supabase.instance.client);
+  final choice = await showModalBottomSheet<String>(
+    context: context,
+    backgroundColor: Colors.transparent,
+    builder: (sheetContext) => CsContentSheet(
+      child: ListView(
+        shrinkWrap: true,
+        padding: const EdgeInsets.fromLTRB(
+          CsSpacing.pageHorizontal,
+          CsSpacing.md,
+          CsSpacing.pageHorizontal,
+          CsSpacing.xl,
+        ),
+        children: [
+          Text('Add a friend', style: CsTypography.sectionTitle),
+          const SizedBox(height: CsSpacing.sm),
+          _SheetChoice(
+            title: 'Share a link',
+            subtitle: 'When they sign up, you are friends right away.',
+            onTap: () => Navigator.pop(sheetContext, 'share'),
+          ),
+          _SheetChoice(
+            title: 'Find by username',
+            subtitle: 'For someone already on Mantelier.',
+            onTap: () => Navigator.pop(sheetContext, 'find'),
+          ),
+          _SheetChoice(
+            title: 'Enter a code',
+            subtitle: 'The eight characters on an invitation page.',
+            onTap: () => Navigator.pop(sheetContext, 'code'),
+            last: true,
+          ),
+        ],
+      ),
+    ),
+  );
+  if (!context.mounted) return;
+  switch (choice) {
+    case 'share':
+      final made = await showShareInviteSheet(
+        context,
+        kind: InviteLinkKind.friend,
+        repository: repo,
+      );
+      if (made) onLinkMade?.call();
+    case 'find':
+      onFindByUsername();
+    case 'code':
+      await showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (_) => _EnterCodeSheet(repo: repo),
+      );
+  }
+}
+
+class _SheetChoice extends StatelessWidget {
+  const _SheetChoice({
+    required this.title,
+    required this.subtitle,
+    required this.onTap,
+    this.last = false,
+  });
+
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+  final bool last;
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+    onTap: onTap,
+    child: Container(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
+      decoration: BoxDecoration(
+        border: last
+            ? null
+            : const Border(
+                bottom: BorderSide(color: AppColors.divider, width: 0.5),
+              ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: CsTypography.bodyMedium),
+                const SizedBox(height: 2),
+                Text(subtitle, style: CsTypography.metadata),
+              ],
+            ),
+          ),
+          const Icon(Icons.chevron_right_rounded, color: AppColors.taupe),
+        ],
+      ),
+    ),
+  );
+}
+
+/// One quiet line under the friends list: "3 open links", opening the
+/// links still open. Nothing at all while none is. Links that expired,
+/// were cancelled or are used up wait folded away in that list, for a
+/// Remove or a late trip request.
+class OpenInviteLinksLine extends StatefulWidget {
+  const OpenInviteLinksLine({super.key, this.repository, this.onChanged});
 
   final InviteLinkRepository? repository;
 
@@ -26,10 +137,10 @@ class InviteLinksSection extends StatefulWidget {
   final VoidCallback? onChanged;
 
   @override
-  State<InviteLinksSection> createState() => _InviteLinksSectionState();
+  State<OpenInviteLinksLine> createState() => _OpenInviteLinksLineState();
 }
 
-class _InviteLinksSectionState extends State<InviteLinksSection> {
+class _OpenInviteLinksLineState extends State<OpenInviteLinksLine> {
   late final InviteLinkRepository _repo =
       widget.repository ?? InviteLinkRepository(Supabase.instance.client);
   late Future<List<MyInviteLink>> _links = _load();
@@ -38,117 +149,151 @@ class _InviteLinksSectionState extends State<InviteLinksSection> {
     try {
       return await _repo.myLinks();
     } catch (_) {
-      // Before the migration, or offline: just no list.
+      // Before the migration, or offline: just no line.
       return const [];
     }
   }
 
-  void _reload() => setState(() => _links = _load());
-
-  Future<void> _shareFriendLink() async {
-    final made = await showShareInviteSheet(
-      context,
-      kind: InviteLinkKind.friend,
-      repository: _repo,
-    );
-    if (made) _reload();
-  }
-
-  Future<void> _enterCode() async {
-    await showModalBottomSheet<void>(
+  Future<void> _open(List<MyInviteLink> links) async {
+    final changed = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _EnterCodeSheet(repo: _repo),
+      builder: (_) => _OpenLinksSheet(links: links, repo: _repo),
     );
+    if (!mounted) return;
+    setState(() => _links = _load());
+    if (changed == true) widget.onChanged?.call();
   }
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<List<MyInviteLink>>(
+    future: _links,
+    builder: (context, snap) {
+      final links = snap.data ?? const <MyInviteLink>[];
+      final now = DateTime.now();
+      final open = links.where((l) => l.isOpen(now)).length;
+      if (open == 0) return const SizedBox.shrink();
+      return InkWell(
+        onTap: () => _open(links),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(minHeight: 48),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  open == 1 ? '1 open link' : '$open open links',
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.forestGreen,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: AppColors.taupe,
+                size: 20,
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+/// The open links, newest first; the rest folded under "Show earlier".
+class _OpenLinksSheet extends StatefulWidget {
+  const _OpenLinksSheet({required this.links, required this.repo});
+
+  final List<MyInviteLink> links;
+  final InviteLinkRepository repo;
+
+  @override
+  State<_OpenLinksSheet> createState() => _OpenLinksSheetState();
+}
+
+class _OpenLinksSheetState extends State<_OpenLinksSheet> {
+  late List<MyInviteLink> _links = widget.links;
+  bool _showEarlier = false;
+  bool _changed = false;
 
   Future<void> _manage(MyInviteLink link) async {
     final changed = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (_) => _ManageLinkSheet(link: link, repo: _repo),
+      builder: (_) => _ManageLinkSheet(link: link, repo: widget.repo),
     );
-    if (changed == true) {
-      _reload();
-      widget.onChanged?.call();
-    }
+    if (changed != true || !mounted) return;
+    _changed = true;
+    try {
+      final links = await widget.repo.myLinks();
+      if (mounted) setState(() => _links = links);
+    } catch (_) {}
   }
 
   @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      Container(
-        padding: const EdgeInsets.all(CsSpacing.lg),
-        decoration: BoxDecoration(
-          color: AppColors.deepGreen,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+  Widget build(BuildContext context) {
+    final now = DateTime.now();
+    final open = _links.where((l) => l.isOpen(now)).toList();
+    final earlier = _links.where((l) => !l.isOpen(now)).toList();
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) Navigator.pop(context, _changed);
+      },
+      child: CsContentSheet(
+        maxHeightFraction: 0.85,
+        child: ListView(
+          shrinkWrap: true,
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.pageHorizontal,
+            CsSpacing.md,
+            CsSpacing.pageHorizontal,
+            CsSpacing.xl,
+          ),
           children: [
+            Text('Open links', style: CsTypography.sectionTitle),
+            const SizedBox(height: 2),
             Text(
-              'Bring someone to Mantelier',
-              style: CsTypography.sectionTitle.copyWith(
-                color: AppColors.textOnDark,
+              'Links you shared that can still be used.',
+              style: CsTypography.metadata,
+            ),
+            const SizedBox(height: CsSpacing.sm),
+            if (open.isEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
+                child: Text('None open now.', style: CsTypography.metadata),
               ),
-            ),
-            const SizedBox(height: CsSpacing.xs),
-            Text(
-              'Send a link. When they sign up, you are friends right away.',
-              style: CsTypography.metadata.copyWith(
-                color: AppColors.secondaryOnDark,
+            for (final l in open)
+              _LinkRow(link: l, now: now, onManage: () => _manage(l)),
+            if (earlier.isNotEmpty) ...[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton(
+                  onPressed: () => setState(() => _showEarlier = !_showEarlier),
+                  style: TextButton.styleFrom(
+                    foregroundColor: AppColors.taupe,
+                    padding: EdgeInsets.zero,
+                    minimumSize: const Size(0, 44),
+                  ),
+                  child: Text(
+                    _showEarlier
+                        ? 'Hide earlier links'
+                        : 'Show earlier links (${earlier.length})',
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: CsSpacing.base),
-            CsPrimaryButton(
-              label: 'Share a link',
-              surface: CsSurface.dark,
-              onTap: _shareFriendLink,
-            ),
+              if (_showEarlier)
+                for (final l in earlier)
+                  _LinkRow(link: l, now: now, onManage: () => _manage(l)),
+            ],
           ],
         ),
       ),
-      Align(
-        alignment: Alignment.centerLeft,
-        child: TextButton(
-          onPressed: _enterCode,
-          style: TextButton.styleFrom(
-            foregroundColor: AppColors.forestGreen,
-            padding: EdgeInsets.zero,
-            minimumSize: const Size(0, 44),
-          ),
-          child: Text(
-            'Have an invitation code? Enter it',
-            style: CsTypography.bodyMedium.copyWith(fontSize: 14.5),
-          ),
-        ),
-      ),
-      FutureBuilder<List<MyInviteLink>>(
-        future: _links,
-        builder: (context, snap) {
-          final links = snap.data ?? const <MyInviteLink>[];
-          if (links.isEmpty) return const SizedBox.shrink();
-          final now = DateTime.now();
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: CsSpacing.sm),
-              Text(
-                'YOUR LINKS',
-                style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-              ),
-              for (final l in links)
-                _LinkRow(link: l, now: now, onManage: () => _manage(l)),
-              const SizedBox(height: CsSpacing.lg),
-            ],
-          );
-        },
-      ),
-    ],
-  );
+    );
+  }
 }
 
 class _LinkRow extends StatelessWidget {
@@ -161,24 +306,6 @@ class _LinkRow extends StatelessWidget {
   final MyInviteLink link;
   final DateTime now;
   final VoidCallback onManage;
-
-  String get _status {
-    final parts = <String>[
-      if (link.isGroup)
-        'Group link · ${link.useCount} of ${link.maxUses} joined'
-      else if (link.useCount > 0 && link.lastUsedByName != null)
-        'Accepted by ${link.lastUsedByName}',
-    ];
-    if (link.isRevoked) {
-      parts.add('Cancelled');
-    } else if (link.isExpired(now)) {
-      parts.add('Expired');
-    } else if (!link.isUsedUp) {
-      final days = link.expiresAt.difference(now).inDays;
-      parts.add(days < 1 ? 'Open until tomorrow' : 'Open for $days more days');
-    }
-    return parts.join(' · ');
-  }
 
   @override
   Widget build(BuildContext context) => InkWell(
@@ -197,17 +324,11 @@ class _LinkRow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(link.title, style: CsTypography.bodyMedium),
-                Text(_status, style: CsTypography.metadata),
+                Text(link.statusLine(now), style: CsTypography.metadata),
               ],
             ),
           ),
-          Text(
-            'Manage',
-            style: CsTypography.metadata.copyWith(
-              color: AppColors.forestGreen,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          const Icon(Icons.chevron_right_rounded, color: AppColors.taupe),
         ],
       ),
     ),
