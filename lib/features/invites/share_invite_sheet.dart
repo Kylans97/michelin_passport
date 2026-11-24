@@ -115,7 +115,8 @@ class _ShareInviteSheetState extends State<_ShareInviteSheet> {
       InviteLinkKind.trip =>
         'For a group chat. Everyone who accepts becomes your friend; you let '
             'each of them in on the trip yourself.',
-      InviteLinkKind.friend =>
+      // A venue's link is shared from its own screen, never this sheet.
+      InviteLinkKind.friend || InviteLinkKind.venue =>
         'For a group chat. Everyone who accepts becomes your friend. You can '
             'remove anyone afterwards.',
     };

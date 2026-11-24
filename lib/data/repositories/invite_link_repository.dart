@@ -37,10 +37,13 @@ class InviteLinkRepository {
     );
   }
 
+  /// v2 (20261101750000) also shows a venue's link; v1, which 1.9.0
+  /// reads, calls one unavailable. Falls back to v1 while the server
+  /// predates v2, so this build works on either side of the migration.
   Future<InviteLinkPreview> preview(String token) async {
-    final rows = await _client.rpc(
-      'get_invite_link_preview',
-      params: {'p_token': token},
+    final rows = await _withV1Fallback(
+      () => _client.rpc('get_invite_link_preview_v2', params: {'p_token': token}),
+      () => _client.rpc('get_invite_link_preview', params: {'p_token': token}),
     );
     final row = (rows as List).cast<Map<String, dynamic>>().single;
     return InviteLinkPreview.fromRow(row, token: token);
@@ -49,13 +52,59 @@ class InviteLinkRepository {
   /// A typed code; state 'not_found' when it matches nothing. Ten misses
   /// an hour, then the server refuses with its own message.
   Future<InviteLinkPreview> previewByCode(String code) async {
-    final rows = await _client.rpc(
-      'get_invite_link_preview_by_code',
-      params: {'p_code': code},
+    final rows = await _withV1Fallback(
+      () => _client.rpc(
+        'get_invite_link_preview_by_code_v2',
+        params: {'p_code': code},
+      ),
+      () => _client.rpc(
+        'get_invite_link_preview_by_code',
+        params: {'p_code': code},
+      ),
     );
     final row = (rows as List).cast<Map<String, dynamic>>().single;
     return InviteLinkPreview.fromRow(row);
   }
+
+  // PGRST202: PostgREST knows no such function, i.e. v2 isn't there yet.
+  static Future<dynamic> _withV1Fallback(
+    Future<dynamic> Function() v2,
+    Future<dynamic> Function() v1,
+  ) async {
+    try {
+      return await v2();
+    } on PostgrestException catch (e) {
+      if (e.code != 'PGRST202') rethrow;
+      return v1();
+    }
+  }
+
+  /// The venue's standing link and how many followed through it. Only
+  /// for the venue's active managers; the server refuses anyone else.
+  Future<VenueInviteLink> venueLink(String venueType, String venueId) async {
+    final rows = await _client.rpc(
+      'get_venue_invite_link',
+      params: {'p_venue_type': venueType, 'p_venue_id': venueId},
+    );
+    return VenueInviteLink.fromRow(
+      (rows as List).cast<Map<String, dynamic>>().single,
+    );
+  }
+
+  /// The open link, made the first time it's asked for. [replace] stops
+  /// the open one and makes a new one.
+  Future<void> createVenueLink(
+    String venueType,
+    String venueId, {
+    bool replace = false,
+  }) => _client.rpc(
+    'create_venue_invite_link',
+    params: {
+      'p_venue_type': venueType,
+      'p_venue_id': venueId,
+      'p_replace': replace,
+    },
+  );
 
   Future<InviteLinkResult> redeem(String token, {bool addVisit = true}) async {
     final result = await _client.rpc(

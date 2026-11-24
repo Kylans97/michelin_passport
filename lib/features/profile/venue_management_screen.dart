@@ -10,6 +10,7 @@ import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/booking_window_repository.dart';
 import '../../data/repositories/venue_events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/invite_link_repository.dart';
 import '../../data/repositories/opening_hours_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
@@ -18,6 +19,7 @@ import '../../data/repositories/venue_contact_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/booking_window.dart';
+import '../../models/invite_link.dart';
 import '../../models/managed_venue.dart';
 import '../../models/opening_hours.dart';
 import '../../models/private_chef_photo.dart';
@@ -35,6 +37,7 @@ import 'venue_contact_screen.dart';
 import 'venue_events_screen.dart';
 import 'venue_opening_hours_screen.dart';
 import 'venue_host_welcome_screen.dart';
+import 'venue_invite_screen.dart';
 import 'venue_photos_screen.dart';
 import 'venue_preview_photo_merge.dart';
 import 'venue_profile_screen.dart';
@@ -65,7 +68,8 @@ Uri venueQuestionMailtoUri(String venueName) =>
 /// (VenueTeamScreen, restaurants and hotels only: the chef and manager
 /// on the page), Photos
 /// (VenuePhotosScreen, order, framing and the card photo) and Events
-/// (VenueEventsScreen), each with a one-line summary, then Preview my
+/// (VenueEventsScreen) and Invite guests to follow (VenueInviteScreen, the
+/// venue's own link), each with a one-line summary, then Preview my
 /// page and the contact line. Venue events plan phase 2: the same
 /// content as the former one-screen version, split up and nothing
 /// removed. Private chefs get the same page.
@@ -93,6 +97,7 @@ class VenueManagementScreen extends StatefulWidget {
   final OpeningHoursRepository? openingHoursRepo;
   final BookingWindowRepository? bookingWindowRepo;
   final VenueContactRepository? contactRepo;
+  final InviteLinkRepository? inviteRepo;
 
   // Owner preview only — the fresh venue re-fetch _openPreview does
   // alongside its existing photo/about-text fetches. Same DI-seam
@@ -115,6 +120,7 @@ class VenueManagementScreen extends StatefulWidget {
     this.openingHoursRepo,
     this.bookingWindowRepo,
     this.contactRepo,
+    this.inviteRepo,
     this.restaurantRepo,
     this.hotelRepo,
     this.privateChefRepo,
@@ -156,6 +162,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       widget.openingHoursRepo ?? OpeningHoursRepository(Supabase.instance.client);
   late final _bookingWindowRepo =
       widget.bookingWindowRepo ?? BookingWindowRepository(Supabase.instance.client);
+  late final _inviteRepo =
+      widget.inviteRepo ?? InviteLinkRepository(Supabase.instance.client);
   late final _restaurantRepo =
       widget.restaurantRepo ?? RestaurantRepository(Supabase.instance.client);
   late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
@@ -174,6 +182,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   // Restaurants only, like opening hours.
   Future<BookingWindow?>? _bookingWindowFuture;
   late Future<VenueContact> _contactFuture;
+  late Future<VenueInviteLink> _inviteFuture;
 
   bool get _hasTeam => widget.venue.venueTypeWireValue != 'private_chef';
 
@@ -241,6 +250,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       _hoursFuture = type == 'restaurant' ? (_hoursRepo.load(id)..ignore()) : null;
       _bookingWindowFuture =
           type == 'restaurant' ? (_bookingWindowRepo.load(id)..ignore()) : null;
+      _inviteFuture = _inviteRepo.venueLink(type, id)..ignore();
     });
   }
 
@@ -584,6 +594,16 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                     : null,
                 onTap: () => _open(
                   VenueEventsScreen(venue: widget.venue, repository: widget.eventsRepo),
+                ),
+              ),
+            ),
+            FutureBuilder<VenueInviteLink>(
+              future: _inviteFuture,
+              builder: (context, snap) => _SectionRow(
+                title: 'Invite guests to follow',
+                summary: snap.hasData ? VenueInviteScreen.summary(snap.data!) : null,
+                onTap: () => _open(
+                  VenueInviteScreen(venue: widget.venue, repository: widget.inviteRepo),
                 ),
               ),
             ),

@@ -80,6 +80,14 @@ class _InviteLinkBannerState extends State<InviteLinkBanner> {
   Widget build(BuildContext context) {
     final token = _store.token.value;
     final p = _preview;
+    if (token != null && p != null && p.isOpen && p.kind == InviteLinkKind.venue) {
+      final name = p.venueName ?? 'A venue';
+      return _Strip(
+        leading: MemberAvatar(avatarUrl: null, displayName: name, size: 38),
+        title: '$name invites you to follow them',
+        body: 'Sign in to follow.',
+      );
+    }
     if (token != null && p != null && p.isOpen) {
       return _Strip(
         leading: MemberAvatar(avatarUrl: null, displayName: p.sender, size: 38),

@@ -1,7 +1,11 @@
 /// Invite links (20261101670000): a member shares `mantelier.app/i/<token>`
 /// from a visit, a trip or Friends; whoever accepts becomes their friend
-/// and gets the visit or a place on the trip.
+/// and gets the visit or a place on the trip. A venue's managers share
+/// the venue's own standing link (20261101750000); whoever opens it
+/// follows the venue, and nothing else.
 library;
+
+import 'photo_framing.dart';
 
 const _months = [
   'January',
@@ -35,7 +39,8 @@ String inviteMonths(DateTime start, DateTime end) {
 enum InviteLinkKind {
   friend('friend'),
   visit('visit'),
-  trip('trip');
+  trip('trip'),
+  venue('venue');
 
   const InviteLinkKind(this.wire);
   final String wire;
@@ -49,8 +54,9 @@ enum InviteLinkKind {
 }
 
 /// What a link looks like to whoever opens it. [state] is 'open',
-/// 'expired', 'unavailable', 'own', 'accepted', or for a typed code that
-/// matched nothing, 'not_found'.
+/// 'expired', 'unavailable', 'own', 'accepted', for a venue the viewer
+/// already follows 'following', or for a typed code that matched nothing,
+/// 'not_found'.
 class InviteLinkPreview {
   final String token;
   final String state;
@@ -59,8 +65,12 @@ class InviteLinkPreview {
   final bool needsApproval;
   final String? senderName;
   final String? venueType;
+
+  /// For a venue link only: what to open after following.
+  final String? venueId;
   final String? venueName;
   final String? venueCity;
+  final String? venueCountry;
   final int? michelinStars;
   final int? michelinKeys;
   final DateTime? visitedOn;
@@ -68,6 +78,10 @@ class InviteLinkPreview {
   final DateTime? tripStartDate;
   final DateTime? tripEndDate;
   final String? code;
+
+  /// A venue link's card photo, cropped as the venue framed it.
+  final String? cardPhotoUrl;
+  final PhotoFraming cardFraming;
 
   const InviteLinkPreview({
     required this.token,
@@ -77,8 +91,10 @@ class InviteLinkPreview {
     this.needsApproval = false,
     this.senderName,
     this.venueType,
+    this.venueId,
     this.venueName,
     this.venueCity,
+    this.venueCountry,
     this.michelinStars,
     this.michelinKeys,
     this.visitedOn,
@@ -86,6 +102,8 @@ class InviteLinkPreview {
     this.tripStartDate,
     this.tripEndDate,
     this.code,
+    this.cardPhotoUrl,
+    this.cardFraming = PhotoFraming.center,
   });
 
   bool get isOpen => state == 'open';
@@ -103,10 +121,20 @@ class InviteLinkPreview {
     _ => null,
   };
 
+  /// "Kruishoutem, Belgium", as far as it is known.
+  String? get venuePlace {
+    final parts = [
+      venueCity,
+      venueCountry,
+    ].whereType<String>().where((s) => s.trim().isNotEmpty).toList();
+    return parts.isEmpty ? null : parts.join(', ');
+  }
+
   /// The message the share sheet starts with. No dashes in copy.
   String shareMessage(String url) {
     final name = sender;
     return switch (kind) {
+      InviteLinkKind.venue => venueShareMessage(venueName ?? 'We', url),
       InviteLinkKind.visit =>
         '$name invited you to Mantelier. We had '
             '${venueType == 'hotel' ? 'a stay' : 'dinner'} at $venueName on '
@@ -136,8 +164,10 @@ class InviteLinkPreview {
     needsApproval: (row['needs_approval'] as bool?) ?? false,
     senderName: row['sender_name'] as String?,
     venueType: row['venue_type'] as String?,
+    venueId: row['venue_id'] as String?,
     venueName: row['venue_name'] as String?,
     venueCity: row['venue_city'] as String?,
+    venueCountry: row['venue_country'] as String?,
     michelinStars: (row['michelin_stars'] as num?)?.toInt(),
     michelinKeys: (row['michelin_keys'] as num?)?.toInt(),
     visitedOn: _date(row['visited_on']),
@@ -145,6 +175,65 @@ class InviteLinkPreview {
     tripStartDate: _date(row['trip_start_date']),
     tripEndDate: _date(row['trip_end_date']),
     code: row['code'] as String?,
+    cardPhotoUrl: row['card_photo_url'] as String?,
+    cardFraming: PhotoFraming(
+      focusX: (row['card_focus_x'] as num?)?.toDouble() ?? 0.5,
+      focusY: (row['card_focus_y'] as num?)?.toDouble() ?? 0.5,
+      zoom: (row['card_zoom'] as num?)?.toDouble() ?? 1,
+    ),
+  );
+}
+
+/// What a venue's link says when its manager shares it. It speaks for the
+/// venue: whoever shares it is never named. No dashes in copy.
+String venueShareMessage(String venueName, String url) =>
+    '$venueName invites you to follow them on Mantelier, for their events '
+    'and evenings worth keeping.\n$url';
+
+/// A venue's standing link, for its managers (get_venue_invite_link).
+/// [followedCount] is null under 5: the venue never sees small numbers,
+/// and never who.
+class VenueInviteLink {
+  final String? token;
+  final String? code;
+  final DateTime? createdAt;
+  final int? followedCount;
+  final DateTime? followedSince;
+
+  const VenueInviteLink({
+    this.token,
+    this.code,
+    this.createdAt,
+    this.followedCount,
+    this.followedSince,
+  });
+
+  String? get url => token == null ? null : inviteLinkUrl(token!);
+
+  /// "23 followed through your link", "Fewer than 5 so far", or for a
+  /// venue that never made one, "Not shared yet".
+  String get summary {
+    if (followedSince == null) return 'Not shared yet';
+    final n = followedCount;
+    if (n == null) return 'Fewer than 5 followed so far';
+    return '$n followed through your link';
+  }
+
+  /// "R4CW 7KMB": two blocks of four, easier to read aloud or type.
+  String? get displayCode => code == null || code!.length != 8
+      ? code
+      : '${code!.substring(0, 4)} ${code!.substring(4)}';
+
+  factory VenueInviteLink.fromRow(Map<String, dynamic> row) => VenueInviteLink(
+    token: row['token'] as String?,
+    code: row['code'] as String?,
+    createdAt: row['created_at'] == null
+        ? null
+        : DateTime.parse(row['created_at'] as String),
+    followedCount: (row['followed_count'] as num?)?.toInt(),
+    followedSince: row['followed_since'] == null
+        ? null
+        : DateTime.parse(row['followed_since'] as String),
   );
 }
 
@@ -156,6 +245,10 @@ class InviteLinkResult {
   final bool visitAlreadyPresent;
   final String? tripId;
 
+  /// For a venue link: the venue now followed.
+  final String? venueType;
+  final String? venueId;
+
   /// 'joined', 'already_on_trip', 'awaiting_approval', 'sender_left', or
   /// null for a link that isn't a trip's.
   final String? tripState;
@@ -166,6 +259,8 @@ class InviteLinkResult {
     this.visitId,
     this.visitAlreadyPresent = false,
     this.tripId,
+    this.venueType,
+    this.venueId,
     this.tripState,
   });
 
@@ -176,6 +271,8 @@ class InviteLinkResult {
         visitId: json['visit_id'] as String?,
         visitAlreadyPresent: (json['visit_already_present'] as bool?) ?? false,
         tripId: json['trip_id'] as String?,
+        venueType: json['venue_type'] as String?,
+        venueId: json['venue_id'] as String?,
         tripState: json['trip_state'] as String?,
       );
 }
@@ -241,8 +338,37 @@ class MyInviteLink {
     InviteLinkKind.visit when venueName != null && visitedOn != null =>
       '$venueName, ${visitedOn!.day} ${_months[visitedOn!.month - 1]}',
     InviteLinkKind.trip when tripTitle != null => tripTitle!,
-    _ => 'Friend link',
+    _ => isGroup ? 'Group link for $maxUses' : 'Personal link',
   };
+
+  /// "12 days left", "Last day", or why it no longer works.
+  String timeLine(DateTime now) {
+    if (isRevoked) return 'Cancelled';
+    if (isExpired(now)) return 'Expired';
+    if (isUsedUp) return 'Used';
+    final days = (expiresAt.difference(now).inHours / 24).ceil();
+    return days <= 1 ? 'Last day' : '$days days left';
+  }
+
+  /// The line under [title]: "Personal link · 13 days left" style, e.g.
+  /// "12 days left", "3 of 8 joined · 12 days left", or for a visit or
+  /// trip shared with a group, "Group link for 8 · 12 days left".
+  String statusLine(DateTime now) {
+    final usage = [
+      if (isGroup && useCount > 0) '$useCount of $maxUses joined',
+      if (!isGroup && useCount > 0 && lastUsedByName != null)
+        'Accepted by $lastUsedByName',
+    ];
+    // "Used" says nothing the line about who used it hasn't.
+    final time = isUsedUp && !isRevoked && usage.isNotEmpty
+        ? null
+        : timeLine(now);
+    return [
+      if (isGroup && kind != InviteLinkKind.friend) 'Group link for $maxUses',
+      ...usage,
+      ?time,
+    ].join(' · ');
+  }
 
   factory MyInviteLink.fromRow(Map<String, dynamic> row) => MyInviteLink(
     id: row['id'] as String,

@@ -4,11 +4,19 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/app_network_image.dart';
+import '../../core/widgets/cs_editorial_glyphs.dart';
 import '../../core/widgets/cs_primary_button.dart';
+import '../../core/widgets/framed_image.dart';
 import '../../core/widgets/member_avatar.dart';
+import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/invite_link_repository.dart';
+import '../../data/repositories/restaurant_repository.dart';
 import '../../models/invite_link.dart';
 import '../auth/widgets/auth_presentation.dart';
+import '../hotels/hotel_detail_screen.dart';
+import '../private_chefs/private_chef_detail_screen.dart';
+import '../restaurants/restaurant_detail_screen.dart';
 
 /// "Elise Laurent invited you": the one step between an invitation link
 /// and what it does. Shown by InviteLinkGate over the app, right after
@@ -17,6 +25,11 @@ import '../auth/widgets/auth_presentation.dart';
 /// (product owner, 2026-11-22): friends always, the visit unless the
 /// person unticks it, and for a trip either a place on it or, through a
 /// group link, a request the sender answers.
+///
+/// A venue's link (20261101750000) asks one thing: Follow. Following
+/// sends that venue's event pushes to the phone, so it still waits for
+/// the tap (product owner, 2026-11-23); it never makes a friend, and the
+/// manager who shared it is never named.
 ///
 /// [onDone] is called once the person is finished here, accepted or not;
 /// [onNotNow] keeps nothing on the phone, the link stays usable until it
@@ -111,7 +124,12 @@ class _InviteConfirmScreenState extends State<InviteConfirmScreen> {
         ),
       );
     }
-    if (_result != null) return _done(p, _result!);
+    if (_result != null) {
+      return p.kind == InviteLinkKind.venue
+          ? _venueDone(p)
+          : _done(p, _result!);
+    }
+    if (p.kind == InviteLinkKind.venue) return _venue(p);
     return switch (p.state) {
       'open' => _ask(p),
       'own' => _message(
@@ -136,6 +154,163 @@ class _InviteConfirmScreenState extends State<InviteConfirmScreen> {
         body: 'Ask whoever sent it for a new link.',
       ),
     };
+  }
+
+  // A venue link: Follow, or what is already true.
+  Widget _venue(InviteLinkPreview p) {
+    final name = p.venueName ?? 'This venue';
+    return switch (p.state) {
+      'open' => AuthStepLayout(
+        header: _venueHeader(p),
+        title: name,
+        subtitle:
+            'Follow ${p.venueName ?? 'them'} and you hear first when they '
+            'announce a dinner, a guest chef or a festival.',
+        footer: [
+          if (_error != null) ...[
+            AuthErrorBanner(message: _error!),
+            const SizedBox(height: CsSpacing.base),
+          ],
+          CsPrimaryButton(
+            label: 'Follow',
+            surface: CsSurface.dark,
+            loading: _saving,
+            onTap: _saving ? null : _accept,
+          ),
+          Center(
+            child: AuthQuietAction(
+              label: 'Not now',
+              onTap: _saving ? null : widget.onDone,
+            ),
+          ),
+        ],
+        children: const [],
+      ),
+      'following' || 'accepted' => _venueMessage(
+        p,
+        title: 'You already follow $name',
+        body: 'Nothing to do. Their events already reach you.',
+      ),
+      'own' => _message(
+        title: 'This is your venue\'s link',
+        body: 'Share it with your guests, so they can follow $name.',
+      ),
+      _ => _message(
+        title: 'This link is no longer available',
+        body:
+            'The venue has made a new one. You can still find them in '
+            'Explore.',
+      ),
+    };
+  }
+
+  Widget _venueDone(InviteLinkPreview p) => _venueMessage(
+    p,
+    title: 'You follow ${p.venueName ?? 'them'}',
+    body: 'Their events reach you first, in the app and on your phone.',
+  );
+
+  Widget _venueMessage(
+    InviteLinkPreview p, {
+    required String title,
+    required String body,
+  }) => AuthStepLayout(
+    header: _venueHeader(p),
+    title: title,
+    subtitle: body,
+    footer: [
+      if (p.venueId != null && p.venueType != null)
+        CsPrimaryButton(
+          label: 'View ${p.venueName ?? 'the venue'}',
+          surface: CsSurface.dark,
+          onTap: () => _openVenue(p.venueType!, p.venueId!),
+        ),
+      Center(child: AuthQuietAction(label: 'Close', onTap: widget.onDone)),
+    ],
+    children: const [],
+  );
+
+  // The card photo as the venue framed it, then its place and stars or
+  // Keys in gold, which is what gold is for.
+  Widget _venueHeader(InviteLinkPreview p) {
+    final url = p.cardPhotoUrl;
+    final stars = p.michelinStars ?? 0;
+    final keys = p.michelinKeys ?? 0;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (url != null) ...[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(14),
+            child: AspectRatio(
+              aspectRatio: 3 / 2,
+              child: FramedImage(
+                framing: p.cardFraming,
+                builder: (alignment) => AppNetworkImage(
+                  url,
+                  zoom: p.cardFraming.zoom,
+                  fit: BoxFit.cover,
+                  alignment: alignment,
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: CsSpacing.base),
+        ],
+        Row(
+          children: [
+            if (stars > 0) ...[
+              CsEditorialStarRow(count: stars),
+              const SizedBox(width: CsSpacing.sm),
+            ],
+            if (keys > 0) ...[
+              CsEditorialKeyRow(count: keys),
+              const SizedBox(width: CsSpacing.sm),
+            ],
+            if (p.venuePlace != null)
+              Flexible(
+                child: Text(
+                  p.venuePlace!,
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.secondaryOnDark,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  // Replaces this screen, so InviteLinkGate's push completes and the
+  // link is cleared, and Back leads to wherever the person was.
+  Future<void> _openVenue(String type, String id) async {
+    final navigator = Navigator.of(context);
+    Widget? screen;
+    try {
+      final client = Supabase.instance.client;
+      screen = switch (type) {
+        'restaurant' => switch (await RestaurantRepository(client).getById(id)) {
+          final r? => RestaurantDetailScreen(restaurant: r),
+          null => null,
+        },
+        'hotel' => switch (await HotelRepository(client).getById(id)) {
+          final h? => HotelDetailScreen(hotel: h),
+          null => null,
+        },
+        'private_chef' => PrivateChefDetailScreen(chefId: id),
+        _ => null,
+      };
+    } catch (_) {
+      screen = null;
+    }
+    if (!mounted) return;
+    if (screen == null) {
+      widget.onDone();
+      return;
+    }
+    navigator.pushReplacement(MaterialPageRoute<void>(builder: (_) => screen!));
   }
 
   Widget _avatars(InviteLinkPreview p) => Align(
