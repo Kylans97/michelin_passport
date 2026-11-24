@@ -3,7 +3,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../../data/repositories/profile_repository.dart';
 import '../../../data/repositories/visit_wine_repository.dart';
 import '../../profile/privacy_settings_screen.dart';
@@ -150,7 +149,7 @@ class _CellarBodyState extends State<CellarBody> {
   /// on the line above).
   String? _detail(CellarWine w) {
     if (!_isFriend) return null;
-    final day = w.date == null ? null : formatVenueVisitDate(w.date!);
+    final day = w.date == null ? null : _shortDate(w.date!);
     final place = w.visitId == null ? null : widget.visitPlaceById[w.visitId];
     if (place != null) return day == null ? 'At $place' : 'At $place, $day';
     return day;
@@ -657,6 +656,25 @@ class _AddWine extends StatelessWidget {
 
 /// What friends see of the member's Cellar, at its foot, opening the
 /// switch in Privacy.
+const _shortMonths = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+/// "11 Nov 2025", as the friend profile's verdicts read.
+String _shortDate(DateTime d) =>
+    '${d.day} ${_shortMonths[d.month - 1]} ${d.year}';
+
 class _SharingLine extends StatelessWidget {
   const _SharingLine({required this.shared, required this.onChange});
 
