@@ -6,7 +6,7 @@
 -- stay out. location only where the estate itself publishes a pin; NULL
 -- otherwise, never geocoded. Region and village by vineyard_code and
 -- region_code; the village foreign key refuses a village outside its region.
--- PREPARED -- review before applying.
+-- APPLIED to production 2026-11-24 (product owner: "Yes, apply batch 2").
 -- Refuses (nothing written) if any of these codes already exists.
 
 begin;

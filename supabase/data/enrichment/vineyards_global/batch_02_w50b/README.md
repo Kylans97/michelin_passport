@@ -1,7 +1,13 @@
 # Batch 2: finish The World's 50 Best Vineyards 2026, plus the Dutch estates
 
 Prepared 2026-11-24 (product owner: "ja laten we dit allemaal doen").
-**Nothing here is applied.** Waiting for the product owner's review.
+**APPLIED to production 2026-11-24** (product owner: "Yes, apply batch 2") by
+`supabase db query --linked --file prepared_batch02.sql`. Checked after:
+102 estates, all 58 batch rows match `batch02_estates.csv` (region,
+village, rank, list type, inclusion reason, pin); 92 with a region, 61
+with a village, 97 ranked, 44 with a pin; the 3 held rows absent; anon
+search returns the new estates with region and village. QA-544..549 are in
+`qa_issues.csv`.
 
 ## What is in it
 

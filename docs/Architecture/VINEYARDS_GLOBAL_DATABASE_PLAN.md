@@ -142,6 +142,12 @@ needs the migration. QA-540 to QA-543 proposed in its README.
 
 Applying part A alone already lets the 4 linked wines reach a region.
 
+## Batch 2 (applied 2026-11-24)
+
+58 estates: 50 Best ranks 51 to 100, four rechecked held rows, the five
+Dutch estates. Production now holds 102 estates, 97 ranked. Details and
+QA in `supabase/data/enrichment/vineyards_global/batch_02_w50b/README.md`.
+
 ## Decisions (product owner, 2026-11-24)
 
 1. Scope and order: approved ("ja laten we dit allemaal doen").
@@ -153,3 +159,5 @@ Applying part A alone already lets the 4 linked wines reach a region.
    erkende wijnhuizen echt in de collectie in de app tonen en de rest
    gewoon via zoeken vindbaar maken"). Today that is the current 50 Best
    list; an official classification joins it once its table exists.
+5. Addresses read from the page HTML under an unanswered client-side age
+   check may stay; clicking one stays off limits ("Yes, keep them").
