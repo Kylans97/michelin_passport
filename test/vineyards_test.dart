@@ -376,4 +376,16 @@ void main() {
       expect(saved.single.vineyardId, 'v1');
     });
   });
+
+  test('placeLine shows a region spelled like the town once', () {
+    const v = Vineyard(
+      id: 'y',
+      vineyardCode: 'vine_9999',
+      name: 'Château Test',
+      countryCode: 'FR',
+      city: 'Sauternes',
+      region: 'Sauternes',
+    );
+    expect(v.placeLine, 'Sauternes');
+  });
 }
