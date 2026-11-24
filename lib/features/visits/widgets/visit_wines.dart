@@ -20,10 +20,14 @@ class WineRow extends StatelessWidget {
     required this.wine,
     this.onTap,
     this.showYearColumn = true,
+    this.detail,
   });
 
   final VisitWine wine;
   final VoidCallback? onTap;
+
+  /// A last quiet line: where and when, on a friend's Cellar.
+  final String? detail;
 
   /// Kept when any wine in the list has a year, so the names line up.
   final bool showYearColumn;
@@ -76,6 +80,15 @@ class WineRow extends StatelessWidget {
                       style: CsTypography.body.copyWith(
                         fontStyle: FontStyle.italic,
                         color: AppColors.textSecondary,
+                      ),
+                    ),
+                  ],
+                  if (detail != null) ...[
+                    const SizedBox(height: 2),
+                    Text(
+                      detail!,
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.taupe,
                       ),
                     ),
                   ],
@@ -132,10 +145,18 @@ class _VerdictMark extends StatelessWidget {
 
 /// A list of [WineRow]s split by hairlines.
 class WineList extends StatelessWidget {
-  const WineList({super.key, required this.wines, this.onTapWine});
+  const WineList({
+    super.key,
+    required this.wines,
+    this.onTapWine,
+    this.details,
+  });
 
   final List<VisitWine> wines;
   final ValueChanged<int>? onTapWine;
+
+  /// One line per wine under its note, or null; see [WineRow.detail].
+  final List<String?>? details;
 
   @override
   Widget build(BuildContext context) {
@@ -149,6 +170,7 @@ class WineList extends StatelessWidget {
             wine: wines[i],
             showYearColumn: anyYear,
             onTap: onTapWine == null ? null : () => onTapWine!(i),
+            detail: details?[i],
           ),
         ],
       ],

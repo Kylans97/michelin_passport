@@ -3,7 +3,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../data/repositories/profile_repository.dart';
 import '../../../data/repositories/visit_wine_repository.dart';
+import '../../profile/privacy_settings_screen.dart';
 import '../../vineyards/vineyard_detail_screen.dart';
 import '../../visits/widgets/visit_wines.dart';
 import '../models/cellar.dart';
@@ -13,10 +15,37 @@ import '../models/cellar.dart';
 /// linked to an estate kept apart, exactly as written. One quiet filter
 /// keeps the wines the member would drink again. A wine never makes a
 /// stamp; stamps come only from a confirmed visit or event.
+///
+/// Given a friend's [ownerId] it is that friend's Cellar, read only: the
+/// Cellar tab on their profile (product owner, 2026-11-24). The same
+/// screen, so it never drifts from what they see themselves. No edit
+/// sheet, no Add a wine; a friend who keeps their Cellar private
+/// (`can_see_cellar`, 20261101730000) shows only that.
 class CellarBody extends StatefulWidget {
-  const CellarBody({super.key, this.repository});
+  const CellarBody({
+    super.key,
+    this.repository,
+    this.ownerId,
+    this.ownerFirstName,
+    this.visitPlaceById = const {},
+    this.loadCellarShared,
+  });
 
   final VisitWineRepository? repository;
+
+  /// A friend's id for their Cellar tab; null for the member's own.
+  final String? ownerId;
+
+  /// The friend's first name, for the private and empty lines.
+  final String? ownerFirstName;
+
+  /// Where each of the friend's shared visits was ("De Librije"), by
+  /// visit id, for the line under a wine. Already loaded by the profile.
+  final Map<String, String> visitPlaceById;
+
+  /// The member's own Share my Cellar switch, for the line at the foot.
+  /// Defaults to [ProfileRepository.getCellarShared].
+  final Future<bool?> Function()? loadCellarShared;
 
   @override
   State<CellarBody> createState() => _CellarBodyState();
@@ -31,7 +60,21 @@ class _CellarBodyState extends State<CellarBody> {
   bool _loading = true;
   bool _error = false;
 
+  /// A friend's Cellar they keep private.
+  bool _hidden = false;
+
+  /// The member's own switch; null while unknown or before the migration.
+  bool? _shared;
+
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
+
+  /// A friend's Cellar: read only.
+  bool get _isFriend {
+    final owner = widget.ownerId;
+    return owner != null && owner != _userId;
+  }
+
+  String get _friendName => widget.ownerFirstName ?? 'Your friend';
 
   @override
   void initState() {
@@ -40,7 +83,7 @@ class _CellarBodyState extends State<CellarBody> {
   }
 
   Future<void> _load() async {
-    final uid = _userId;
+    final uid = _isFriend ? widget.ownerId : _userId;
     setState(() {
       _loading = true;
       _error = false;
@@ -53,9 +96,20 @@ class _CellarBodyState extends State<CellarBody> {
       return;
     }
     try {
+      if (_isFriend && !await _repo.canSeeCellar(uid)) {
+        if (!mounted) return;
+        setState(() {
+          _hidden = true;
+          _wines = const [];
+          _loading = false;
+        });
+        return;
+      }
       final wines = await _repo.loadCellar(uid);
+      if (!_isFriend) _loadShared(uid);
       if (!mounted) return;
       setState(() {
+        _hidden = false;
         _wines = wines;
         _loading = false;
       });
@@ -66,6 +120,39 @@ class _CellarBodyState extends State<CellarBody> {
         _error = true;
       });
     }
+  }
+
+  Future<void> _loadShared(String uid) async {
+    try {
+      final load =
+          widget.loadCellarShared ??
+          () =>
+              ProfileRepository(Supabase.instance.client).getCellarShared(uid);
+      final shared = await load();
+      if (mounted) setState(() => _shared = shared);
+    } catch (_) {
+      // The line at the foot simply stays out.
+    }
+  }
+
+  Future<void> _openPrivacy() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const PrivacySettingsScreen()),
+    );
+    final uid = _userId;
+    if (uid != null) await _loadShared(uid);
+  }
+
+  /// Where and when, under a friend's wine: the venue of the shared visit
+  /// and its day, or the day a kept wine was drunk (its place is already
+  /// on the line above).
+  String? _detail(CellarWine w) {
+    if (!_isFriend) return null;
+    final day = w.date == null ? null : _shortDate(w.date!);
+    final place = w.visitId == null ? null : widget.visitPlaceById[w.visitId];
+    if (place != null) return day == null ? 'At $place' : 'At $place, $day';
+    return day;
   }
 
   void _failed() {
@@ -175,7 +262,18 @@ class _CellarBodyState extends State<CellarBody> {
         ),
       );
     }
+    if (_isFriend && _hidden) {
+      return _FriendNote(
+        icon: Icons.lock_outline_rounded,
+        title: "$_friendName's Cellar is private.",
+        body: 'The wines on visits they share still show on those visits.',
+      );
+    }
+    if (_isFriend && _wines.isEmpty) {
+      return _FriendNote(title: "$_friendName hasn't shared any wines yet.");
+    }
     if (_wines.isEmpty) return _EmptyCellar(onAdd: _addKept);
+    final onTapWine = _isFriend ? null : _edit;
     final whole = buildCellar(_wines);
     final again = [
       for (final w in _wines)
@@ -226,7 +324,8 @@ class _CellarBodyState extends State<CellarBody> {
                 child: _EstateCard(
                   estate: estate,
                   onTap: () => _openEstate(estate),
-                  onTapWine: _edit,
+                  onTapWine: onTapWine,
+                  detail: _detail,
                 ),
               ),
           ],
@@ -235,13 +334,22 @@ class _CellarBodyState extends State<CellarBody> {
               'Not linked to an estate · ${cellar.unlinked.length} '
               '${cellar.unlinked.length == 1 ? 'wine' : 'wines'}',
             ),
-            _UnlinkedCard(wines: cellar.unlinked, onTapWine: _edit),
+            _UnlinkedCard(
+              wines: cellar.unlinked,
+              onTapWine: onTapWine,
+              detail: _detail,
+              ownNotes: !_isFriend,
+            ),
           ],
-          const SizedBox(height: CsSpacing.lg),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: _AddWine(onTap: _addKept),
-          ),
+          if (!_isFriend) ...[
+            const SizedBox(height: CsSpacing.lg),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _AddWine(onTap: _addKept),
+            ),
+            if (_shared != null)
+              _SharingLine(shared: _shared!, onChange: _openPrivacy),
+          ],
         ],
       ),
     );
@@ -322,11 +430,15 @@ class _EstateCard extends StatelessWidget {
     required this.estate,
     required this.onTap,
     required this.onTapWine,
+    required this.detail,
   });
 
   final CellarEstate estate;
   final VoidCallback onTap;
-  final ValueChanged<CellarWine> onTapWine;
+
+  /// Null on a friend's Cellar: read only.
+  final ValueChanged<CellarWine>? onTapWine;
+  final String? Function(CellarWine) detail;
 
   @override
   Widget build(BuildContext context) {
@@ -374,7 +486,10 @@ class _EstateCard extends StatelessWidget {
               const SizedBox(height: CsSpacing.sm),
               WineList(
                 wines: [for (final w in estate.wines) w.wine],
-                onTapWine: (i) => onTapWine(estate.wines[i]),
+                onTapWine: onTapWine == null
+                    ? null
+                    : (i) => onTapWine!(estate.wines[i]),
+                details: [for (final w in estate.wines) detail(w)],
               ),
             ],
           ),
@@ -387,10 +502,19 @@ class _EstateCard extends StatelessWidget {
 /// The wines kept as written: shown as the member wrote them, on a quieter
 /// dashed-feeling card, with a line saying they can be linked any time.
 class _UnlinkedCard extends StatelessWidget {
-  const _UnlinkedCard({required this.wines, required this.onTapWine});
+  const _UnlinkedCard({
+    required this.wines,
+    required this.onTapWine,
+    required this.detail,
+    required this.ownNotes,
+  });
 
   final List<CellarWine> wines;
-  final ValueChanged<CellarWine> onTapWine;
+  final ValueChanged<CellarWine>? onTapWine;
+  final String? Function(CellarWine) detail;
+
+  /// The member's own Cellar: says the wines can be linked to an estate.
+  final bool ownNotes;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -404,14 +528,17 @@ class _UnlinkedCard extends StatelessWidget {
       children: [
         WineList(
           wines: [for (final w in wines) w.wine],
-          onTapWine: (i) => onTapWine(wines[i]),
+          onTapWine: onTapWine == null ? null : (i) => onTapWine!(wines[i]),
+          details: [for (final w in wines) detail(w)],
         ),
-        const SizedBox(height: CsSpacing.sm),
-        Text(
-          'Your own notes stay exactly as you wrote them. Open a wine to link '
-          'it to an estate whenever you like.',
-          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-        ),
+        if (ownNotes) ...[
+          const SizedBox(height: CsSpacing.sm),
+          Text(
+            'Your own notes stay exactly as you wrote them. Open a wine to '
+            'link it to an estate whenever you like.',
+            style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+          ),
+        ],
       ],
     ),
   );
@@ -523,6 +650,112 @@ class _AddWine extends StatelessWidget {
     label: Text(
       'Add a wine',
       style: CsTypography.bodyMedium.copyWith(color: AppColors.textOnDark),
+    ),
+  );
+}
+
+/// What friends see of the member's Cellar, at its foot, opening the
+/// switch in Privacy.
+const _shortMonths = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+/// "11 Nov 2025", as the friend profile's verdicts read.
+String _shortDate(DateTime d) =>
+    '${d.day} ${_shortMonths[d.month - 1]} ${d.year}';
+
+class _SharingLine extends StatelessWidget {
+  const _SharingLine({required this.shared, required this.onChange});
+
+  final bool shared;
+  final VoidCallback onChange;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    margin: const EdgeInsets.only(top: CsSpacing.lg),
+    padding: const EdgeInsets.only(top: CsSpacing.md),
+    decoration: const BoxDecoration(
+      border: Border(top: BorderSide(color: AppColors.subtleBorderDark)),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: Text(
+            shared
+                ? 'Friends can see your Cellar.'
+                : 'Your Cellar is only for you.',
+            style: CsTypography.metadata.copyWith(
+              color: AppColors.secondaryOnDark,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: onChange,
+          style: TextButton.styleFrom(foregroundColor: AppColors.textOnDark),
+          child: Text(
+            'Change',
+            style: CsTypography.metadata.copyWith(
+              color: AppColors.textOnDark,
+              decoration: TextDecoration.underline,
+              decorationColor: AppColors.textOnDark,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+/// A friend's Cellar with nothing to show: kept to themself, or empty.
+class _FriendNote extends StatelessWidget {
+  const _FriendNote({required this.title, this.body, this.icon});
+
+  final String title;
+  final String? body;
+  final IconData? icon;
+
+  @override
+  Widget build(BuildContext context) => Center(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: CsSpacing.pageHorizontal),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (icon != null) ...[
+            Icon(icon, color: AppColors.secondaryOnDark, size: 22),
+            const SizedBox(height: CsSpacing.sm),
+          ],
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: CsTypography.editorialLead().copyWith(
+              color: AppColors.textOnDark,
+            ),
+          ),
+          if (body != null) ...[
+            const SizedBox(height: CsSpacing.sm),
+            Text(
+              body!,
+              textAlign: TextAlign.center,
+              style: CsTypography.body.copyWith(
+                color: AppColors.secondaryOnDark,
+              ),
+            ),
+          ],
+        ],
+      ),
     ),
   );
 }

@@ -2,38 +2,39 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../data/repositories/visit_wine_repository.dart' show CellarWine;
 import '../../../models/visit.dart' show formatOverall;
-import '../../../models/visit_wine.dart';
 import '../friend_profile_all_visits_screen.dart';
 import '../friend_profile_data.dart';
 import '../friend_profile_screen.dart' show openFriendVenue, openVisitDetail;
 import '../friends_together_data.dart';
 import '../widgets/friend_event_row.dart' show FriendSectionLabel;
+import '../widgets/friend_profile_verdict_row.dart';
 
 const _sharedPreviewCount = 5;
 const _cityCount = 6;
-const _winePreviewCount = 6;
+const _favouritesPreviewCount = 3;
 
-/// Tab 4, Taste (Friends round one, 2026-11-22, idea 3): where the friend
-/// eats most, the places you've both been with each one's score, their
-/// cities, and the wines they shared. Built only from what a friend may
-/// already see: shared visits, and wines on shared visits or kept without
-/// one (verdict and note included, product owner 2026-11-21).
+/// Tab 4, Palate: the friend's palate next to yours (product owner,
+/// 2026-11-24, renamed from Taste when the wines moved to the Cellar tab).
+/// Where they eat most, the places you've both been with each one's
+/// score, their favourites at places you haven't been (moved here from
+/// Overview), the cuisines they return to, and their cities. Built only
+/// from their shared visits.
 ///
 /// Compared per place only. No overall "taste match" figure and no
 /// ranking of friends against each other.
-class FriendProfileTasteTab extends StatelessWidget {
+class FriendProfilePalateTab extends StatelessWidget {
   final FriendProfileLayoutData data;
 
-  const FriendProfileTasteTab({super.key, required this.data});
+  const FriendProfilePalateTab({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     final shared = data.sharedScores;
     final cities = data.cities;
-    final wines = [...data.wines]
-      ..sort((a, b) => _verdictRank(a).compareTo(_verdictRank(b)));
+    final favourites = data.recommended;
+    final cuisines = topCuisines(data.visits);
+    final firstName = data.friendName.split(' ').first;
     final countries = [
       for (final code in topCountryCodes(data.visits))
         countryInSentence(code, data.countryNameByCode[code] ?? code),
@@ -79,6 +80,37 @@ class FriendProfileTasteTab extends StatelessWidget {
             ),
           const SizedBox(height: CsSpacing.xl),
         ],
+        if (favourites.isNotEmpty) ...[
+          FriendSectionLabel("$firstName's favourites"),
+          const SizedBox(height: CsSpacing.xs),
+          Text(
+            "Their best scores at places you haven't been.",
+            style: CsTypography.editorialBody.copyWith(
+              color: AppColors.secondaryOnDark,
+              fontSize: 13,
+            ),
+          ),
+          const SizedBox(height: CsSpacing.sm),
+          for (final fv in favourites.take(_favouritesPreviewCount))
+            FriendVerdictRow(
+              visit: fv,
+              photoUrl: null,
+              onTap: () => openFriendVenue(context, fv.venue),
+            ),
+          const SizedBox(height: CsSpacing.xl),
+        ],
+        if (cuisines.isNotEmpty) ...[
+          FriendSectionLabel('The cuisines $firstName returns to'),
+          const SizedBox(height: CsSpacing.sm),
+          Text(
+            listInSentence(cuisines),
+            style: CsTypography.editorialTitle(
+              size: 19,
+              italic: true,
+            ).copyWith(color: AppColors.textOnDark),
+          ),
+          const SizedBox(height: CsSpacing.xl),
+        ],
         if (cities.isNotEmpty) ...[
           FriendSectionLabel("${data.friendName}'s cities"),
           const SizedBox(height: CsSpacing.sm),
@@ -107,15 +139,11 @@ class FriendProfileTasteTab extends StatelessWidget {
           ),
           const SizedBox(height: CsSpacing.xl),
         ],
-        if (wines.isNotEmpty) ...[
-          FriendSectionLabel("In ${data.friendName}'s glass"),
-          for (final w in wines.take(_winePreviewCount)) _WineRow(wine: w),
-        ],
-        if (countries.isEmpty && shared.isEmpty && wines.isEmpty)
+        if (countries.isEmpty && shared.isEmpty && favourites.isEmpty)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: CsSpacing.lg),
             child: Text(
-              'This fills in as ${data.friendName} shares visits and wines.',
+              'This fills in as ${data.friendName} shares visits.',
               style: CsTypography.editorialLead().copyWith(
                 color: AppColors.secondaryOnDark,
               ),
@@ -125,15 +153,6 @@ class FriendProfileTasteTab extends StatelessWidget {
     );
   }
 }
-
-/// Wines they'd drink again first, then the rest, each group newest first
-/// (the order they arrive in).
-int _verdictRank(CellarWine w) => switch (w.wine.verdict) {
-  WineVerdict.again => 0,
-  null => 1,
-  WineVerdict.fine => 2,
-  WineVerdict.notForMe => 3,
-};
 
 class _ScoreHeader extends StatelessWidget {
   final String friendName;
@@ -281,82 +300,6 @@ class _CityChip extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _WineRow extends StatelessWidget {
-  final CellarWine wine;
-  const _WineRow({required this.wine});
-
-  @override
-  Widget build(BuildContext context) {
-    final w = wine.wine;
-    final title = [w.title, ?w.yearLabel].join(' ');
-    final verdict = switch (w.verdict) {
-      WineVerdict.again => 'Again',
-      WineVerdict.fine => 'Fine',
-      WineVerdict.notForMe => 'Not for me',
-      null => null,
-    };
-    final note = w.tastingNote?.trim();
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Container(height: 1, color: AppColors.hairlineOnGreen),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: Text(
-                      title,
-                      style: CsTypography.editorialTitle(
-                        size: 16.5,
-                      ).copyWith(color: AppColors.textOnDark),
-                    ),
-                  ),
-                  if (verdict != null) ...[
-                    const SizedBox(width: CsSpacing.sm),
-                    Text(
-                      verdict.toUpperCase(),
-                      style: CsTypography.editorialLabel().copyWith(
-                        color: w.verdict == WineVerdict.again
-                            ? AppColors.ivory
-                            : AppColors.secondaryOnDark,
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-              if (w.subtitle case final sub?) ...[
-                const SizedBox(height: 2),
-                Text(
-                  sub,
-                  style: CsTypography.editorialBody.copyWith(
-                    color: AppColors.secondaryOnDark,
-                    fontSize: 12.5,
-                  ),
-                ),
-              ],
-              if (note != null && note.isNotEmpty) ...[
-                const SizedBox(height: 4),
-                Text(
-                  note,
-                  style: CsTypography.editorialTitle(
-                    size: 15,
-                    italic: true,
-                  ).copyWith(color: AppColors.secondaryOnDark),
-                ),
-              ],
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

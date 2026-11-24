@@ -14,7 +14,7 @@ import 'friend_profile_screen.dart' show FriendVenueVisit;
 /// and 3 from the Friends Ideas canvas, idea 4 later). Every function here
 /// is pure and works only on rows the viewer can already read through
 /// RLS: a friend's shared visits, their friends-visible Going/Interested,
-/// trips both are on, and wines a friend may always show. Nothing widens
+/// trips both are on, and what a friend may see. Nothing widens
 /// what a friend can see.
 ///
 /// Saved events on a friend's wishlist are left out on purpose, although
@@ -370,6 +370,44 @@ List<String> topCountryCodes(List<FriendVenueVisit> visits, {int take = 2}) {
     });
   return codes.take(take).toList();
 }
+
+/// The cuisines the friend returns to: MICHELIN's first cuisine label of
+/// each restaurant they shared a visit to, counted once per restaurant,
+/// kept only when at least [minPlaces] places share it. Most places first,
+/// then alphabetically; at most [take]. Hotels and restaurants without a
+/// cuisine are left out. For Palate (2026-11-24).
+List<String> topCuisines(
+  List<FriendVenueVisit> visits, {
+  int take = 3,
+  int minPlaces = 2,
+}) {
+  final placesByCuisine = <String, Set<String>>{};
+  for (final fv in visits) {
+    final venue = fv.venue;
+    if (venue is! RestaurantVenue) continue;
+    final label = (venue.restaurant.cuisineNames ?? '').split(',').first.trim();
+    if (label.isEmpty) continue;
+    (placesByCuisine[label] ??= {}).add(venue.restaurant.id);
+  }
+  final labels =
+      [
+        for (final e in placesByCuisine.entries)
+          if (e.value.length >= minPlaces) e.key,
+      ]..sort((a, b) {
+        final byCount = placesByCuisine[b]!.length.compareTo(
+          placesByCuisine[a]!.length,
+        );
+        return byCount != 0 ? byCount : a.compareTo(b);
+      });
+  return labels.take(take).toList();
+}
+
+/// "Nordic", "Nordic and Creative", "Nordic, Creative and Japanese".
+String listInSentence(List<String> items) => switch (items.length) {
+  0 => '',
+  1 => items.first,
+  _ => '${items.sublist(0, items.length - 1).join(', ')} and ${items.last}',
+};
 
 /// The trips in [trips] (the viewer's own and those they accepted) that
 /// [friendId] is also on, as owner or accepted member, and that haven't

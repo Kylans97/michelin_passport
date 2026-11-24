@@ -35,14 +35,23 @@ import 'two_step_settings_screen.dart';
 /// moves until the write has actually succeeded, so a failure never
 /// needs a rollback step and the UI can never show a persisted state
 /// that isn't real.
+///
+/// Share my Cellar with friends (`profiles.cellar_shared`,
+/// 20261101730000, product owner 2026-11-24): one switch for the whole
+/// Cellar. Loaded on its own, so a failure or a database without the
+/// column leaves the row out and never blocks the rest of the screen.
 class PrivacySettingsScreen extends StatefulWidget {
   final Future<bool> Function()? loadDiscoverable;
   final Future<void> Function(bool value)? setDiscoverable;
+  final Future<bool?> Function()? loadCellarShared;
+  final Future<void> Function(bool value)? setCellarShared;
 
   const PrivacySettingsScreen({
     super.key,
     this.loadDiscoverable,
     this.setDiscoverable,
+    this.loadCellarShared,
+    this.setCellarShared,
   });
 
   @override
@@ -55,10 +64,56 @@ class _PrivacySettingsScreenState extends State<PrivacySettingsScreen> {
   bool _saving = false;
   String? _saveError;
 
+  /// Null while loading, on failure, or before the migration: no row.
+  bool? _cellarShared;
+  bool _savingCellar = false;
+
   @override
   void initState() {
     super.initState();
     _load();
+    _loadCellar();
+  }
+
+  Future<void> _loadCellar() async {
+    try {
+      final load =
+          widget.loadCellarShared ??
+          () =>
+              ProfileRepository(Supabase.instance.client).getCellarShared(_uid);
+      final value = await load();
+      if (!mounted) return;
+      setState(() => _cellarShared = value);
+    } catch (_) {
+      // The row stays out.
+    }
+  }
+
+  Future<void> _toggleCellar(bool next) async {
+    if (_savingCellar || _cellarShared == null) return;
+    setState(() {
+      _savingCellar = true;
+      _saveError = null;
+    });
+    try {
+      final set =
+          widget.setCellarShared ??
+          (value) => ProfileRepository(
+            Supabase.instance.client,
+          ).setCellarShared(userId: _uid, value: value);
+      await set(next);
+      if (!mounted) return;
+      setState(() {
+        _cellarShared = next;
+        _savingCellar = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _savingCellar = false;
+        _saveError = 'Could not update. Please try again.';
+      });
+    }
   }
 
   static String get _uid => Supabase.instance.client.auth.currentUser?.id ?? '';
@@ -163,6 +218,20 @@ class _PrivacySettingsScreenState extends State<PrivacySettingsScreen> {
                           busy: _saving,
                           onChanged: _toggle,
                         ),
+                        if (_cellarShared != null) ...[
+                          const SizedBox(height: CsSpacing.lg),
+                          _ToggleRow(
+                            title: 'Share my Cellar with friends',
+                            lines: const [
+                              'Friends see your wines, verdicts and notes '
+                                  'in the Cellar tab on your profile.',
+                              'Wines on a visit follow that visit.',
+                            ],
+                            value: _cellarShared!,
+                            busy: _savingCellar,
+                            onChanged: _toggleCellar,
+                          ),
+                        ],
                         const SizedBox(height: CsSpacing.xl),
                         _NavRow(
                           label: 'Two-step sign-in',
@@ -324,5 +393,59 @@ class _NavRow extends StatelessWidget {
         ],
       ),
     ),
+  );
+}
+
+/// A setting with a line or two under it and a switch, like
+/// [_DiscoverabilityToggleRow].
+class _ToggleRow extends StatelessWidget {
+  final String title;
+  final List<String> lines;
+  final bool value;
+  final bool busy;
+  final ValueChanged<bool> onChanged;
+
+  const _ToggleRow({
+    required this.title,
+    required this.lines,
+    required this.value,
+    required this.busy,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: CsTypography.bodyMedium.copyWith(
+                color: AppColors.textOnDark,
+              ),
+            ),
+            for (final line in lines) ...[
+              const SizedBox(height: CsSpacing.xs),
+              Text(
+                line,
+                style: CsTypography.metadata.copyWith(
+                  color: AppColors.secondaryOnDark,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+      const SizedBox(width: CsSpacing.md),
+      Switch(
+        value: value,
+        onChanged: busy ? null : onChanged,
+        activeTrackColor: AppColors.forestGreen,
+        thumbColor: const WidgetStatePropertyAll(Colors.white),
+      ),
+    ],
   );
 }

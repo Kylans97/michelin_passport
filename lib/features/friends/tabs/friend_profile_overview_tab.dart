@@ -7,21 +7,20 @@ import '../../../models/passport_venue.dart';
 import '../../map/visited_map_screen.dart';
 import '../friend_profile_all_visits_screen.dart';
 import '../friend_profile_data.dart';
-import '../friend_profile_screen.dart'
-    show openFriendEvent, openFriendVenue, openVisitDetail;
+import '../friend_profile_screen.dart' show openFriendEvent, openVisitDetail;
 import '../friends_together_data.dart';
 import '../widgets/friend_event_row.dart';
 import '../widgets/friend_profile_verdict_row.dart';
 import '../widgets/friend_profile_widgets.dart';
 
 const _comingUpPreviewCount = 3;
-const _recommendedPreviewCount = 3;
 
 /// Tab 1 (default): what the friend has coming up (their Going and
 /// Interested events), the "in common, one line" bar, the way into the
-/// friend's globe, what they recommend, then the friend's latest 3
-/// verdicts. Coming up and Recommended were added in Friends round one
-/// (2026-11-22); each section only shows when it has something in it.
+/// friend's globe, then the friend's latest 3 verdicts. Coming up was
+/// added in Friends round one (2026-11-22); Recommended moved to Palate
+/// as their favourites (2026-11-24). Each section only shows when it has
+/// something in it.
 class FriendProfileOverviewTab extends StatelessWidget {
   final FriendProfileLayoutData data;
   final VoidCallback onPlanTapped;
@@ -37,7 +36,6 @@ class FriendProfileOverviewTab extends StatelessWidget {
     final shared = data.sharedWishlistVenues;
     final recent = data.visits.take(friendVerdictPreviewCount).toList();
     final upcoming = data.upcomingEvents;
-    final recommended = data.recommended;
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(
@@ -84,17 +82,6 @@ class FriendProfileOverviewTab extends StatelessWidget {
             ),
           ),
         ),
-        if (recommended.isNotEmpty) ...[
-          const SizedBox(height: CsSpacing.xl),
-          FriendSectionLabel('Recommended by ${data.friendName}'),
-          const SizedBox(height: CsSpacing.sm),
-          for (final fv in recommended.take(_recommendedPreviewCount))
-            FriendVerdictRow(
-              visit: fv,
-              photoUrl: null,
-              onTap: () => openFriendVenue(context, fv.venue),
-            ),
-        ],
         const SizedBox(height: CsSpacing.xl),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

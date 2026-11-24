@@ -93,9 +93,11 @@ class VisitWineRepository {
     return [for (final row in rows) VisitWine.fromJson(row)];
   }
 
-  /// Every wine the member has logged, from visits and kept without one,
-  /// newest first, for the Passport's Cellar. Only the member's own: the
-  /// cellar is personal.
+  /// Every wine [userId] has logged, from visits and kept without one,
+  /// newest first: the member's own Cellar, or a friend's Cellar tab.
+  /// For a friend RLS returns only wines on shared visits and, when they
+  /// share their Cellar, the ones kept without a visit; the caller checks
+  /// [canSeeCellar] first.
   Future<List<CellarWine>> loadCellar(String userId) async {
     final rows = await _withFallback(
       (columns) => _client
@@ -110,14 +112,46 @@ class VisitWineRepository {
       ..sort(_newestFirst);
   }
 
+  /// Whether the signed in member may see [ownerId]'s Cellar
+  /// (`can_see_cellar`, 20261101730000): their own, or a friend's who
+  /// shares it. Before that migration there is no switch and every
+  /// friend's Cellar is shared, so a missing function reads as true; the
+  /// database still decides which rows come back.
+  Future<bool> canSeeCellar(String ownerId) async {
+    try {
+      final result = await _client.rpc(
+        'can_see_cellar',
+        params: {'p_owner': ownerId},
+      );
+      return result == true;
+    } on PostgrestException catch (e) {
+      if (_isMissingFunction(e)) return true;
+      rethrow;
+    }
+  }
+
+  /// The ones of [ownerIds] whose Cellar the member may see.
+  Future<Set<String>> cellarsVisibleOf(List<String> ownerIds) async {
+    final visible = await [for (final id in ownerIds) canSeeCellar(id)].wait;
+    return {
+      for (var i = 0; i < ownerIds.length; i++)
+        if (visible[i]) ownerIds[i],
+    };
+  }
+
   /// Wines the given friends would drink again, from shared visits and
   /// kept without one, newest first, each with whose it is. RLS decides
-  /// which rows come back: a wine on a private visit never does, every
-  /// kept wine of a friend does (20261101640000). At most [limit].
+  /// which rows come back: a wine on a private visit never does, a kept
+  /// wine only from a friend who shares their Cellar (20261101730000).
+  /// A friend who keeps their Cellar to themself is left out entirely,
+  /// shared visits included, so this list never shows a hidden Cellar.
+  /// At most [limit].
   Future<List<({String userId, CellarWine wine})>> loadAgainWinesFor(
-    List<String> userIds, {
+    List<String> friendIds, {
     int limit = 12,
   }) async {
+    if (friendIds.isEmpty) return const [];
+    final userIds = (await cellarsVisibleOf(friendIds)).toList();
     if (userIds.isEmpty) return const [];
     final List<Map<String, dynamic>> visitRows;
     try {
@@ -302,3 +336,7 @@ class WineSuggestions {
     ...wineNames,
   ];
 }
+
+/// PostgREST's "function not found" (PGRST202), or Postgres' own 42883.
+bool _isMissingFunction(PostgrestException e) =>
+    e.code == 'PGRST202' || e.code == '42883';

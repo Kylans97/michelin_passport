@@ -311,7 +311,13 @@ class _OverflowButton extends StatelessWidget {
 /// exactly this ("de tabrij wordt sticky zodra hij de bovenkant raakt").
 class FriendProfileTabBarDelegate extends SliverPersistentHeaderDelegate {
   final TabController controller;
-  static const _labels = ['OVERVIEW', 'PASSPORT', 'TOGETHER', 'TASTE'];
+  static const _labels = [
+    'OVERVIEW',
+    'PASSPORT',
+    'TOGETHER',
+    'PALATE',
+    'CELLAR',
+  ];
 
   const FriendProfileTabBarDelegate({required this.controller});
 
