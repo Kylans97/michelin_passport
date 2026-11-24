@@ -223,9 +223,22 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       widget.removeEvent ??
       (e) => _repo.removeEvent(userId: widget.userId, eventId: e.id);
 
-  late final CatalogueLoad<Vineyard> _loadVineyards =
-      widget.loadVineyards ??
-      () => VineyardRepository(Supabase.instance.client).getAll();
+  /// Estates are searched on the server ([VineyardRepository.search]); a
+  /// test may hand in a fixed catalogue through [widget.loadVineyards],
+  /// which is then matched on the device.
+  VineyardRepository? _vineyardRepo;
+  Future<List<Vineyard>> _searchVineyards(String query) async {
+    final load = widget.loadVineyards;
+    if (load != null) {
+      return matchingVineyards(
+        _allVineyards ??= await load(),
+        query,
+        limit: 20,
+      );
+    }
+    return (_vineyardRepo ??= VineyardRepository(Supabase.instance.client))
+        .search(query, limit: 20);
+  }
   late final CatalogueLoad<Journey> _loadJourneys =
       widget.loadJourneys ??
       () => JourneyRepository(Supabase.instance.client).getPublishedJourneys();
@@ -281,8 +294,7 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
           : const <Event>[];
       var vineyards = const <Vineyard>[];
       if (type == WishlistAddType.estate) {
-        final all = _allVineyards ??= await _loadVineyards();
-        vineyards = matchingVineyards(all, query, limit: 20);
+        vineyards = await _searchVineyards(query);
       }
       var journeys = const <Journey>[];
       if (type == WishlistAddType.train || type == WishlistAddType.ship) {

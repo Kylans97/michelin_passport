@@ -11,9 +11,9 @@ import 'vineyard_detail_screen.dart';
 import 'widgets/vineyard_card.dart';
 
 /// Wine Estates — the collection of vineyards, the same masthead-over-ivory
-/// shape as [JourneysScreen]. It opens with The World's 50 Best Vineyards in
-/// rank order and nothing else: no search, sort or badge while the
-/// collection is one list of fifty.
+/// shape as [JourneysScreen]. Only recognised estates, The World's 50 Best
+/// Vineyards in rank order, and nothing else: no search, sort or badge.
+/// Every other estate is found through search (product owner, 2026-11-24).
 class VineyardsScreen extends StatefulWidget {
   const VineyardsScreen({super.key});
 
@@ -39,7 +39,7 @@ class _VineyardsScreenState extends State<VineyardsScreen> {
       _error = false;
     });
     try {
-      final vineyards = await _repo.getAll();
+      final vineyards = await _repo.getRecognised();
       if (!mounted) return;
       setState(() {
         _vineyards = vineyards;
