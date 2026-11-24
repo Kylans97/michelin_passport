@@ -57,10 +57,14 @@ lose their address and stay in only by name, country and region. Sites
 whose server refuses every page without the click stay held back
 (Mukhrani, Salentein, Santa Rita).
 
+**Decided 2026-11-24, product owner: "Yes, keep them".** Addresses read
+from the HTML under an unanswered client-side overlay stay. Clicking a
+check stays off limits.
+
 ## Proposed QA log entries
 
 ```
-QA-544,Access,Medium,vineyards batch 2,ranks 61 65 77 78 79 80 86 88 90 92 93 97 98 100; vine_0021; vine_0028,"Estate sites with a client-side age-check overlay: never clicked, but the address was read from the page HTML served beneath it (Tio Pepe's pages are served without the overlay at all; Almaviva's contact page loads under it)",Product owner decides whether reading under an unanswered overlay is acceptable; if not, drop those addresses before applying,Open
+QA-544,Access,Medium,vineyards batch 2,ranks 61 65 77 78 79 80 86 88 90 92 93 97 98 100; vine_0021; vine_0028,"Estate sites with a client-side age-check overlay: never clicked, but the address was read from the page HTML served beneath it (Tio Pepe's pages are served without the overlay at all; Almaviva's contact page loads under it)",Product owner decided 2026-11-24: keep them (reading under an unanswered overlay is acceptable; clicking stays off limits),Closed
 QA-545,Access,Medium,vineyards batch 2,vine_0060;vine_0015;vine_0048,"Still held back: Château Mukhrani, Bodegas Salentein and Santa Rita serve only an age gate on every page (server side for Salentein); nothing readable without answering it",Human opens the sites past the gate, or the estate is asked; until then not loaded,Open
 QA-546,Data conflict,Medium,vineyards wine_region_id,vine_0094,"Babylonstoren: the list and its postal address say Franschhoek, but the estate's own printed GPS (-33.8225, 18.93) lies inside the Paarl district (wr_0039), outside Franschhoek (wr_0038). Loaded without a region",Confirm the Wine of Origin on the estate's labels, then place it,Open
 QA-547,Scope gap,Low,vineyards wine_region_id,vine_0072;vine_0078;vine_0086;vine_0091;vine_0104,"No atlas region: Ridge Monte Bello (list 'Santa Clara'; Santa Cruz Mountains AVA by reputation only, not read from the estate), Bodega Bouza (Montevideo), Midalidare (Thracian Lowlands), Graham's Port Lodge (Vila Nova de Gaia is outside the Douro region), Abadía Retuerta (Sardón de Duero is outside Ribera del Duero)",Add regions from official texts where wanted; confirm Ridge from its own labels,Open
