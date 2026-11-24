@@ -15,6 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:michelin_passport/data/repositories/venue_events_repository.dart';
 import 'package:michelin_passport/data/repositories/booking_window_repository.dart';
+import 'package:michelin_passport/data/repositories/invite_link_repository.dart';
 import 'package:michelin_passport/data/repositories/opening_hours_repository.dart';
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/models/booking_window.dart';
@@ -34,6 +35,7 @@ import 'package:michelin_passport/features/profile/venue_profile_screen.dart';
 import 'package:michelin_passport/features/profile/venue_team_screen.dart';
 import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.dart';
 import 'package:michelin_passport/models/event.dart';
+import 'package:michelin_passport/models/invite_link.dart';
 import 'package:michelin_passport/models/venue_event.dart';
 import 'package:michelin_passport/models/managed_venue.dart';
 import 'package:michelin_passport/models/private_chef.dart';
@@ -315,6 +317,20 @@ class _FakeContactRepository extends VenueContactRepository {
       const VenueContact();
 }
 
+class _FakeInviteRepository extends InviteLinkRepository {
+  _FakeInviteRepository() : super(_dummyClient());
+
+  @override
+  Future<VenueInviteLink> venueLink(String venueType, String venueId) async =>
+      VenueInviteLink(
+        token: 'tok',
+        code: 'R4CW7KMB',
+        createdAt: DateTime.utc(2026, 12, 2),
+        followedCount: 23,
+        followedSince: DateTime.utc(2026, 12, 2),
+      );
+}
+
 // The landing page: VenueManagementScreen.
 Future<void> _pumpLanding(
   WidgetTester tester,
@@ -338,6 +354,7 @@ Future<void> _pumpLanding(
         openingHoursRepo: _FakeOpeningHoursRepository(),
         bookingWindowRepo: _FakeBookingWindowRepository(),
         contactRepo: _FakeContactRepository(),
+        inviteRepo: _FakeInviteRepository(),
         shouldShowWelcome: () async => showWelcome,
       ),
     ),
@@ -1087,6 +1104,13 @@ void main() {
       await tester.pumpAndSettle();
     }
 
+    testWidgets('the landing page shows the venue invite row with its count', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository());
+      await tester.scrollUntilVisible(find.text('Invite guests to follow'), 200);
+      expect(find.text('Invite guests to follow'), findsOneWidget);
+      expect(find.text('23 followed through your link'), findsOneWidget);
+    });
+
     testWidgets('the landing page shows Team for a restaurant, with its summary', (tester) async {
       await _pumpLanding(
         tester,
@@ -1239,6 +1263,7 @@ void main() {
             openingHoursRepo: _FakeOpeningHoursRepository(),
             bookingWindowRepo: _FakeBookingWindowRepository(),
             contactRepo: _FakeContactRepository(),
+            inviteRepo: _FakeInviteRepository(),
             restaurantRepo: restaurantRepo,
           ),
         ),
@@ -1370,8 +1395,14 @@ void _hostWelcomeTests() {
       await _pumpLanding(tester, _FakeVenueAboutRepository());
       expect(find.text('Welcome to Mantelier'), findsNothing);
 
-      await tester.scrollUntilVisible(find.text('Hosting on Mantelier'), 200);
-      await tester.ensureVisible(find.text('Hosting on Mantelier'));
+      // Until hittable, not merely built: the list outgrew the test
+      // screen once Invite guests to follow joined it.
+      await tester.dragUntilVisible(
+        find.text('Hosting on Mantelier'),
+        find.byType(ListView),
+        const Offset(0, -200),
+      );
+      await tester.pumpAndSettle();
       await tester.tap(find.text('Hosting on Mantelier'));
       await tester.pumpAndSettle();
       expect(find.text('Welcome to Mantelier'), findsOneWidget);

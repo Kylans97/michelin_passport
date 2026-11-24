@@ -4,9 +4,11 @@
 // opens the app instead (apple-app-site-association lists /i/*), so this
 // page is for someone who doesn't have it yet.
 //
-// It reads get_invite_link_preview with the public anon key: the sender's
-// name, the place and the date, or a trip's name and months (product
-// owner, 2026-11-22), and nothing else. The App Store button copies the
+// It reads get_invite_link_preview_v2 with the public anon key: the
+// sender's name, the place and the date, or a trip's name and months
+// (product owner, 2026-11-22), and nothing else. A venue's own link
+// (20261101750000) shows the venue, its place, awards and card photo, and
+// never who shared it. Falls back to v1 while v2 isn't on the server. The App Store button copies the
 // link on that tap, so the app can offer to paste it after installing;
 // nothing is read or written without a tap. Accepting happens in the app
 // only: a first sign-in can't happen on the website yet.
@@ -29,7 +31,7 @@ import '../styles/account.css';
           <div class="avatar big" data-initials aria-hidden="true"></div>
           <h1 class="title" data-title></h1>
           <div class="target" data-target hidden>
-            <div class="thumb" aria-hidden="true"></div>
+            <div class="thumb" aria-hidden="true"><img data-thumb alt="" hidden /></div>
             <div class="target-text">
               <p class="target-name" data-target-name></p>
               <p class="gold" data-target-award hidden></p>
@@ -71,7 +73,8 @@ import '../styles/account.css';
   .title { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; margin: 0; text-wrap: balance; color: var(--green); }
   .sub { font-size: 16px; color: var(--ink-soft); margin: 0; max-width: 36ch; }
   .target { display: flex; gap: 14px; align-items: center; text-align: left; width: 100%; border: 1px solid var(--rule); border-radius: 16px; padding: 14px; }
-  .thumb { width: 60px; height: 60px; flex: none; border-radius: 12px; background: linear-gradient(160deg, #6E5A3C, #1A211C); }
+  .thumb { width: 60px; height: 60px; flex: none; border-radius: 12px; overflow: hidden; background: linear-gradient(160deg, #6E5A3C, #1A211C); }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .target-text { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
   .target-name { font-weight: 600; margin: 0; color: var(--green); overflow-wrap: anywhere; }
   .target-meta { font-size: 14px; color: var(--ink-soft); margin: 0; }
@@ -115,13 +118,38 @@ import '../styles/account.css';
     show('[data-closed]');
   }
 
+  function award(p) {
+    const stars = p.michelin_stars || 0;
+    const keys = p.michelin_keys || 0;
+    if (stars > 0 || keys > 0) {
+      text('[data-target-award]', stars > 0 ? '★'.repeat(stars) : `${keys} MICHELIN Key${keys > 1 ? 's' : ''}`);
+      show('[data-target-award]');
+    }
+  }
+
   function render(p) {
     $('[data-loading]').hidden = true;
     const name = p.sender_name || 'A member';
     const first = firstName(name);
     text('[data-initials]', initials(name));
 
-    if (p.kind === 'trip') {
+    if (p.kind === 'venue') {
+      const venue = p.venue_name || 'A venue';
+      text('[data-initials]', initials(venue));
+      text('[data-title]', `${venue} invites you to follow them`);
+      text('[data-target-name]', venue);
+      text('[data-target-meta]', [p.venue_city, p.venue_country].filter(Boolean).join(', '));
+      award(p);
+      if (p.card_photo_url) {
+        const img = $('[data-thumb]');
+        img.src = p.card_photo_url;
+        img.style.objectPosition = `${(p.card_focus_x ?? 0.5) * 100}% ${(p.card_focus_y ?? 0.5) * 100}%`;
+        img.hidden = false;
+        $('[data-initials]').hidden = true;
+      }
+      text('[data-sub]', 'Follow them in the app and you hear first when they announce a dinner, a guest chef or a festival.');
+      show('[data-target]');
+    } else if (p.kind === 'trip') {
       text('[data-title]', `${name} invited you on a trip`);
       text('[data-target-name]', p.trip_title || 'A trip');
       text('[data-target-meta]', months(p.trip_start_date, p.trip_end_date));
@@ -135,12 +163,7 @@ import '../styles/account.css';
       const where = p.venue_city ? `${p.venue_city}, ` : '';
       const noun = p.venue_type === 'hotel' ? 'stay' : 'dinner';
       text('[data-target-meta]', `${where}${noun} on ${dateOf(p.visited_on)}`);
-      const stars = p.michelin_stars || 0;
-      const keys = p.michelin_keys || 0;
-      if (stars > 0 || keys > 0) {
-        text('[data-target-award]', stars > 0 ? '★'.repeat(stars) : `${keys} MICHELIN Key${keys > 1 ? 's' : ''}`);
-        show('[data-target-award]');
-      }
+      award(p);
       text('[data-sub]', 'Accept in the app, and you two are friends and this goes straight into your Passport.');
       show('[data-target]');
     } else {
@@ -173,12 +196,15 @@ import '../styles/account.css';
       return;
     }
     let row;
+    const preview = (fn) => fetch(`${url}/rest/v1/rpc/${fn}`, {
+      method: 'POST',
+      headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ p_token: token }),
+    });
     try {
-      const res = await fetch(`${url}/rest/v1/rpc/get_invite_link_preview`, {
-        method: 'POST',
-        headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ p_token: token }),
-      });
+      let res = await preview('get_invite_link_preview_v2');
+      // 404: the server predates v2, which knows venue links.
+      if (res.status === 404) res = await preview('get_invite_link_preview');
       if (!res.ok) throw new Error(String(res.status));
       [row] = await res.json();
     } catch (_) {
