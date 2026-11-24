@@ -144,6 +144,10 @@
   .paper .steps li, .paper .steps li::before { color: var(--ink-muted); }
   .steps strong { color: var(--ivory); font-weight: 500; }
   .paper .steps strong { color: var(--ink); }
+  /* A link inside the steps (Download Mantelier) reads like the bold words
+     beside it, not in the browser's default blue. */
+  .steps a { color: var(--ivory); text-underline-offset: 3px; }
+  .paper .steps a { color: var(--ink); }
   .rules { width: 100%; border-collapse: collapse; margin-top: 34px; font-size: 15px; }
   .rules th, .rules td { text-align: left; padding: 12px 14px 12px 0; border-top: 1px solid var(--line); vertical-align: top; }
   .rules th { font-family: var(--util); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400; color: var(--muted); }
