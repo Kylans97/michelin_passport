@@ -27,6 +27,8 @@ The format follows Keep a Changelog.
 
 ### Fixed
 
+- **Email code sign-in failed on production: codes were 8 digits, the app and the site take 6.** Reported by the product owner, 2026-11-24 ("Je kan een code invullen van 6 tekens en de e-mail geeft er 8"). The app's `EmailCodeScreen` and the site's `/account/sign-in` verify on the sixth digit and stop accepting input there, and `supabase/config.toml` sets `otp_length = 6`, but production's Email OTP Length was 8, so no emailed code could ever match, in 1.9.0 and on mantelier.app alike. No code changed: the product owner set Email OTP Length to 6 in the dashboard (Authentication, Email provider) the same day. Codes already sent stay 8 digits; a new code is needed. **Near-miss, why it slipped through:** auth settings live only in the dashboard, and the schema diff at each version bump (`NEW_MACHINE_SETUP.md` §4) leaves `auth` out entirely, so a setting that differs from `config.toml` is caught by nobody. Worth adding to that check: compare production's auth config (OTP length and expiry, providers, redirect URLs) with `config.toml`.
+
 - **The wine sheet now has a Close control.** Opened from the Cellar's
   Add a wine, the sheet could fill the screen, leaving no backdrop to tap,
   and its scroll view took the swipe down, so a member who changed their
