@@ -6,7 +6,9 @@
 -- claude/vineyards-global). The number is sort order, not a date: named
 -- after the highest migration on any branch (20261101730000, friends-cellar).
 --
--- PREPARED -- NOT APPLIED until the product owner approves.
+-- Approved by the product owner 2026-11-24 ("Yes, apply them"), after a
+-- clean replay of every migration on a scratch stack with production's
+-- regions and estates loaded.
 --
 -- What it does, all additive (shipped builds select named columns from
 -- vineyards_full and never see the new ones):

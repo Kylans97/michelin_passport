@@ -1,5 +1,6 @@
 -- Batch 1, part B: village for 24 estates.
--- PREPARED 2026-11-24, NOT APPLIED. Needs the proposed migration
+-- APPLIED to production 2026-11-24 (product owner: "Yes, apply them"), 24 villages.
+-- PREPARED 2026-11-24. Needs the migration
 -- (supabase/migrations/20261101740000_add_vineyard_villages_and_search.sql) applied and
 -- wine_region_communes loaded first; the composite foreign key then refuses
 -- any village that is not a unit of the estate's own region.

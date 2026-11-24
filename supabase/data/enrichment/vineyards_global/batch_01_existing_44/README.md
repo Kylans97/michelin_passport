@@ -1,6 +1,6 @@
 # Batch 1: region and village for the 44 estates on production
 
-Prepared 2026-11-24. **Part A APPLIED to production 2026-11-24** (product owner: "Yes, apply part A"); 40 regions set, verified after. Part B waits for the migration. QA-540..543 are in qa_issues.csv. Was: waiting for the product
+Prepared 2026-11-24. **Part A APPLIED to production 2026-11-24** (product owner: "Yes, apply part A"); 40 regions set, verified after. Part B (24 villages) APPLIED the same day after migration 20261101740000 and the village table. QA-540..543 are in qa_issues.csv. Was: waiting for the product
 owner's review.
 
 ## Files
@@ -12,7 +12,7 @@ owner's review.
 | `assign_regions.py` | One written decision per estate, then checks it (see below) |
 | `estate_regions_batch01.csv` | The result, one row per estate, for review |
 | `prepared_batch01_part_a_regions.sql` | Sets `wine_region_id` for 40 estates. Needs no migration |
-| `prepared_batch01_part_b_villages.sql` | Sets the village for 24 estates. Needs the proposed migration first |
+| `prepared_batch01_part_b_villages.sql` | Sets the village for 24 estates. Applied 2026-11-24, after the migration |
 
 ## Method
 

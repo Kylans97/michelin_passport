@@ -1,7 +1,7 @@
 # A global database of wine estates: plan
 
 Written 2026-11-24. **Proposal, waiting for the product owner.** Nothing
-applied except batch 1 part A (40 estate regions, applied 2026-11-24), no migration created. Review doc: https://claude.ai/artifact/12zjJDehFJAwfiaEuSypDT
+applied 2026-11-24: batch 1 (40 regions, 24 villages), migration 20261101740000 and the village table. Review doc: https://claude.ai/artifact/12zjJDehFJAwfiaEuSypDT
 
 Product owner, 2026-11-24: "Maybe we should first build an extensive
 database with vineyards all across the globe. So that first people can
@@ -104,7 +104,7 @@ in the wild, the catalogue should stay well under 1,000 (tiers 0 to 2 fit),
 and the collection should list only recognised estates. This is the three
 step rule: add the search, ship it, then grow.
 
-## 4. Schema change and server search (built, not applied)
+## 4. Schema change and server search (applied 2026-11-24)
 
 Product owner, 2026-11-24: "Migration + server search" first. Branch
 `claude/vineyards-global`.
@@ -132,7 +132,7 @@ Product owner, 2026-11-24: "Migration + server search" first. Branch
   applied, search over REST as anon, grants, the village guard and a
   region delete. Not tested in the simulator.
 
-## 5. Batch 1 (part A applied 2026-11-24, part B prepared)
+## 5. Batch 1 (applied 2026-11-24)
 
 `supabase/data/enrichment/vineyards_global/batch_01_existing_44/`: 24
 estates get region and village, 16 region only, 4 have no atlas region
