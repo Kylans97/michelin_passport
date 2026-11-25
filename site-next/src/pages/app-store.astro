@@ -8,11 +8,11 @@
 // page view is the count; nothing else is recorded, and the privacy
 // policy's "which pages are opened" already covers it.
 //
-// The beacon Cloudflare adds to every page reports after the page has
+// The Cloudflare beacon (below, as on every page) reports after the page has
 // loaded, so the hop waits for `load` and a moment more before it leaves;
 // the meta refresh is the way on without script, and the link is there for
 // anyone whose browser stops both.
-import { APP_STORE_URL } from '../config';
+import { APP_STORE_URL, CF_WEB_ANALYTICS_TOKEN } from '../config';
 
 const target = APP_STORE_URL ?? '/';
 ---
@@ -47,6 +47,7 @@ const target = APP_STORE_URL ?? '/';
     <p>Opening the App Store</p>
     <p><a href={target} data-target>Continue to Mantelier on the App Store</a></p>
   </main>
+  <script is:inline defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: CF_WEB_ANALYTICS_TOKEN })}></script>
   <script is:inline>
     (function () {
       var target = document.querySelector('[data-target]').href;
