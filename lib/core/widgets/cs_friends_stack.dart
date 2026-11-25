@@ -65,7 +65,7 @@ class FriendsStack extends StatelessWidget {
 
   static const _fallbackColors = [
     AppColors.green600,
-    AppColors.accent700,
+    AppColors.forestGreen,
     AppColors.stone800,
   ];
 

@@ -12,11 +12,14 @@ class AppTheme {
 
     return base.copyWith(
       scaffoldBackgroundColor: AppColors.background,
-      primaryColor: AppColors.gold,
+      // Deep green carries Material's defaults (buttons, progress, text
+      // selection) so nothing becomes a terracotta fill by accident;
+      // terracotta is the accent role, set explicitly where it applies.
+      primaryColor: AppColors.deepGreen,
       colorScheme: const ColorScheme.light(
-        primary: AppColors.gold,
+        primary: AppColors.deepGreen,
         onPrimary: AppColors.textOnDark,
-        secondary: AppColors.goldLight,
+        secondary: AppColors.terracotta,
         onSecondary: AppColors.textOnDark,
         surface: AppColors.surface,
         onSurface: AppColors.textPrimary,
@@ -61,7 +64,7 @@ class AppTheme {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.gold, width: 1.5),
+          borderSide: const BorderSide(color: AppColors.terracotta, width: 1.5),
         ),
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
@@ -76,7 +79,7 @@ class AppTheme {
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.surface,
-        selectedColor: AppColors.goldMuted,
+        selectedColor: AppColors.terracottaTint,
         side: const BorderSide(color: AppColors.cardBorder, width: 0.5),
         labelStyle: CsFonts.sans(
           color: AppColors.textSecondary,

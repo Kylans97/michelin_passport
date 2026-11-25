@@ -23,7 +23,7 @@ class FriendProfileAvatar extends StatelessWidget {
     required this.photoUrl,
     required this.label,
     this.size = 84,
-    this.ringColor = AppColors.gold600,
+    this.ringColor = AppColors.secondaryOnDark,
     this.fallbackBackground = AppColors.green800,
     this.fallbackTextColor = AppColors.textOnDark,
     this.italic = true,

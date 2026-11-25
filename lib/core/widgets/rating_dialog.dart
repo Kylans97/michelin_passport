@@ -120,7 +120,7 @@ class _RatingSheetState extends State<_RatingSheet> {
           const SizedBox(height: 4),
           Text(
             widget.restaurantName,
-            style: CsFonts.sans(color: AppColors.gold, fontSize: 13.5),
+            style: CsFonts.sans(color: AppColors.terracotta, fontSize: 13.5),
           ),
           const SizedBox(height: 24),
 
@@ -140,7 +140,7 @@ class _RatingSheetState extends State<_RatingSheet> {
                 Text(
                   _rating.toStringAsFixed(1),
                   style: CsFonts.serif(
-                    color: AppColors.gold,
+                    color: AppColors.terracotta,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                   ),
@@ -151,10 +151,10 @@ class _RatingSheetState extends State<_RatingSheet> {
             const SizedBox(height: 4),
             SliderTheme(
               data: SliderTheme.of(context).copyWith(
-                activeTrackColor: AppColors.gold,
+                activeTrackColor: AppColors.terracotta,
                 inactiveTrackColor: AppColors.surface,
-                thumbColor: AppColors.gold,
-                overlayColor: AppColors.goldAlpha10,
+                thumbColor: AppColors.terracotta,
+                overlayColor: AppColors.terracottaAlpha10,
                 trackHeight: 3,
               ),
               child: Slider(
@@ -231,11 +231,11 @@ class _RatingSheetState extends State<_RatingSheet> {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: selected ? AppColors.goldMuted : AppColors.surface,
+                      color: selected ? AppColors.terracottaTint : AppColors.surface,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
                         color: selected
-                            ? AppColors.goldBorder60
+                            ? AppColors.terracottaBorder60
                             : AppColors.cardBorder,
                         width: selected ? 1.0 : 0.5,
                       ),
@@ -244,7 +244,7 @@ class _RatingSheetState extends State<_RatingSheet> {
                       name,
                       style: CsFonts.sans(
                         color: selected
-                            ? AppColors.gold
+                            ? AppColors.terracotta
                             : AppColors.textSecondary,
                         fontSize: 12.5,
                         fontWeight: selected
@@ -280,7 +280,7 @@ class _RatingSheetState extends State<_RatingSheet> {
             child: FilledButton(
               onPressed: _save,
               style: FilledButton.styleFrom(
-                backgroundColor: AppColors.gold,
+                backgroundColor: AppColors.terracotta,
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(14),

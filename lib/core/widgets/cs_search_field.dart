@@ -107,7 +107,7 @@ class _CsSearchFieldState extends State<CsSearchField> {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
             borderSide: const BorderSide(
-              color: AppColors.mutedBrass,
+              color: AppColors.terracotta,
               width: 1.5,
             ),
           ),

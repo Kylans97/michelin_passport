@@ -49,7 +49,7 @@ class ExploreErrorState extends StatelessWidget {
         const SizedBox(height: 12),
         TextButton(
           onPressed: onRetry,
-          child: Text('Retry', style: CsFonts.sans(color: AppColors.gold)),
+          child: Text('Retry', style: CsFonts.sans(color: AppColors.terracotta)),
         ),
       ],
     ),

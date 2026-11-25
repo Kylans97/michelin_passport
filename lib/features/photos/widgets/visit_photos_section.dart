@@ -99,7 +99,7 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
             color: AppColors.textPrimary,
           ),
         ),
-        backgroundColor: isError ? AppColors.error : AppColors.gold,
+        backgroundColor: isError ? AppColors.error : AppColors.terracotta,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -231,7 +231,7 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
             width: 20,
             height: 20,
             child: CircularProgressIndicator(
-              color: AppColors.gold,
+              color: AppColors.terracotta,
               strokeWidth: 1.5,
             ),
           ),
@@ -261,7 +261,7 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
               onPressed: _load,
               child: Text(
                 'Retry',
-                style: CsFonts.sans(color: AppColors.gold),
+                style: CsFonts.sans(color: AppColors.terracotta),
               ),
             ),
           ],

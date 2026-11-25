@@ -374,7 +374,7 @@ class _InvitationPreview extends StatelessWidget {
                 const SizedBox(width: 6),
                 Text(
                   '· $awardText',
-                  style: CsTypography.editorialBody.copyWith(color: AppColors.gold600),
+                  style: CsTypography.editorialBody.copyWith(color: AppColors.terracotta),
                 ),
               ],
               if (venue is HotelVenue && (venue as HotelVenue).hotel.hasMichelinKeys) ...[

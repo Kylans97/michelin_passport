@@ -176,13 +176,13 @@ class _YearTile extends StatelessWidget {
     title: Text(
       label,
       style: CsFonts.sans(
-        color: selected ? AppColors.gold : AppColors.textPrimary,
+        color: selected ? AppColors.terracotta : AppColors.textPrimary,
         fontSize: 15,
         fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
       ),
     ),
     trailing: selected
-        ? const Icon(Icons.check_rounded, color: AppColors.gold)
+        ? const Icon(Icons.check_rounded, color: AppColors.terracotta)
         : null,
   );
 }

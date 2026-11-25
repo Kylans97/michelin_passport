@@ -92,7 +92,7 @@ class _TileLoading extends StatelessWidget {
     child: SizedBox(
       width: 16,
       height: 16,
-      child: CircularProgressIndicator(color: AppColors.gold, strokeWidth: 1.5),
+      child: CircularProgressIndicator(color: AppColors.deepGreen, strokeWidth: 1.5),
     ),
   );
 }

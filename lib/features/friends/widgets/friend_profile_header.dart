@@ -149,7 +149,7 @@ class _OverlappingAvatars extends StatelessWidget {
                 label: myLabel,
                 size: _size,
                 ringColor: Colors.transparent,
-                fallbackBackground: AppColors.accent700,
+                fallbackBackground: AppColors.forestGreen,
                 fallbackTextColor: AppColors.textOnDark,
               ),
             ),

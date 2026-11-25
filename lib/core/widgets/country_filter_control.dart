@@ -25,7 +25,7 @@ import '../theme/cs_fonts.dart';
 /// on a dark surface). Passing [CsSurface.light] explicitly (Guides'
 /// ivory-canvas catalogues) uses the redesigned ivory-canvas palette
 /// instead — [AppColors.forestGreen]/[AppColors.taupe], never
-/// [AppColors.gold] — distinct from the legacy null default so Events'
+/// [AppColors.terracotta] — distinct from the legacy null default so Events'
 /// current look is untouched by this addition. The picker sheet itself is
 /// unchanged in every case — same established light-modal pattern.
 class CountryFilterControl extends StatelessWidget {
@@ -82,7 +82,7 @@ class CountryFilterControl extends StatelessWidget {
       background = AppColors.surface;
       border = AppColors.cardBorder;
       neutralColor = AppColors.textSecondary;
-      selectedColor = AppColors.gold;
+      selectedColor = AppColors.terracotta;
     }
     final iconColor = selected == null ? neutralColor : selectedColor;
     final textColor = selected == null

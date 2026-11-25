@@ -267,7 +267,7 @@ class _TripMapScreenState extends State<TripMapScreen> {
                     Text(
                       range.toUpperCase(),
                       style: CsTypography.eyebrow.copyWith(
-                        color: AppColors.mutedBrass,
+                        color: AppColors.secondaryOnDark,
                       ),
                     ),
                   ],

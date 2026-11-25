@@ -545,7 +545,7 @@ class _EventsScreenState extends State<EventsScreen> {
           // DetailHero screens have to their content below.
           backgroundColor: AppColors.brandGreen,
           body: RefreshIndicator(
-            color: AppColors.gold,
+            color: AppColors.deepGreen,
             backgroundColor: AppColors.card,
             onRefresh: () async => _reload(),
             child: CustomScrollView(
@@ -693,7 +693,7 @@ class _EventsScreenState extends State<EventsScreen> {
                   const SliverFillRemaining(
                     child: Center(
                       child: CircularProgressIndicator(
-                        color: AppColors.gold,
+                        color: AppColors.textOnDark,
                         strokeWidth: 1.5,
                       ),
                     ),

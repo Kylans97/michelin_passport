@@ -29,7 +29,7 @@ class AddPhotosButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tint = enabled ? AppColors.gold : AppColors.textSecondary;
+    final tint = enabled ? AppColors.terracotta : AppColors.textSecondary;
     return SizedBox(
       width: double.infinity,
       height: 46,
@@ -40,7 +40,7 @@ class AddPhotosButton extends StatelessWidget {
                 width: 16,
                 height: 16,
                 child: CircularProgressIndicator(
-                  color: AppColors.gold,
+                  color: AppColors.terracotta,
                   strokeWidth: 2,
                 ),
               )
@@ -56,7 +56,7 @@ class AddPhotosButton extends StatelessWidget {
         style: OutlinedButton.styleFrom(
           foregroundColor: tint,
           side: BorderSide(
-            color: enabled ? AppColors.goldBorder60 : AppColors.cardBorder,
+            color: enabled ? AppColors.terracottaBorder60 : AppColors.cardBorder,
             width: 1,
           ),
           shape: RoundedRectangleBorder(

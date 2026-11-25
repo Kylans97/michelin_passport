@@ -125,7 +125,7 @@ class _EditorialTabItem extends StatelessWidget {
             Container(
               width: labelWidth,
               height: 1,
-              color: active ? AppColors.gold600 : Colors.transparent,
+              color: active ? AppColors.terracotta : Colors.transparent,
             ),
           ],
         ),

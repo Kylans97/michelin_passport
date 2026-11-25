@@ -298,7 +298,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           if (snap.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(
-                color: AppColors.gold,
+                color: AppColors.textOnDark,
                 strokeWidth: 1.5,
               ),
             );
@@ -320,7 +320,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Text(
                       'Retry',
                       style: CsTypography.bodyMedium.copyWith(
-                        color: AppColors.gold,
+                        color: AppColors.terracotta,
                       ),
                     ),
                   ),
@@ -332,7 +332,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           final user = snap.data!;
 
           return RefreshIndicator(
-            color: AppColors.gold,
+            color: AppColors.textOnDark,
             backgroundColor: AppColors.brandGreenLight,
             onRefresh: () async => _load(),
             child: SafeArea(

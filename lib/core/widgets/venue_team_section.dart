@@ -134,7 +134,7 @@ class TeamPortrait extends StatelessWidget {
       child: Text(
         _initials,
         style: CsTypography.placeTitle.copyWith(
-          color: AppColors.mutedBrassOnLight,
+          color: AppColors.taupe,
           fontSize: 20,
         ),
       ),

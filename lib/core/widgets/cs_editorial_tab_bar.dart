@@ -100,7 +100,7 @@ class _TabItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dim = active ? AppColors.gold300 : AppColors.stone600OnGreen;
+    final dim = active ? AppColors.terracottaOnDark : AppColors.stone600OnGreen;
     final labelColor = active ? AppColors.textOnDark : AppColors.stone600OnGreen;
 
     return Material(

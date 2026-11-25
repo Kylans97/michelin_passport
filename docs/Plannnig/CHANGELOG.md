@@ -8,6 +8,15 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Terracotta becomes the accent; gold goes back to stars and Keys** (product owner, 2026-11-25: "Ja terracotta is het beste", after a private board comparing claret, ink, plum and six terracottas on twelve screens, then terracotta and brick side by side; build approved with "Yes, build it"). New tokens in `AppColors`: `terracotta` #9E4F35 (5.2:1 on the background as text), `terracottaOnDark` #D9967C (5.4:1 on deep green), `terracottaTint`, `terracottaAlpha10`, `terracottaBorder60`; `accent` now points at terracotta.
+  - **Theme** (`AppTheme.mantelier`, the one `app.dart` uses): `primary` was gold, so every Material default (focus, progress, text selection, plain text buttons) was gold. Primary is now deep green so nothing turns into a terracotta fill by accident; `secondary` is terracotta; the focused field border and a selected chip are terracotta.
+  - **Terracotta, for what the member does or chooses**: selected venue type, year and country filters, the rating dialog (slider, chosen option, button), the active tab underline (`CsEditorialTabs`, and the light variant on green in `CsEditorialTabBar`), focused `CsTextField`/`CsSearchField`, Add photos and its links, Retry, the link in Plan a dinner.
+  - **Deep green or ivory, for loading**: the loaders on Profile, Events and photo tiles, and pull to refresh on Profile and Events. A spinner is not a choice.
+  - **Neutral, for decoration**: the venue host welcome screen's eyebrows and icons, the venue team placeholder initials, the trip map date line, a friend's avatar ring, and empty avatar backgrounds (forest green instead of deep gold).
+  - **Unchanged gold**: MICHELIN stars and Keys, award icons and World's 50 Best lines, the Add places award label, and the whole Passport (cover, stamp inks, guilloche, stats). Ornament dividers, the invitation card border and the venue image fallback keep their brass: printed ornament, not an accent. Wine keeps claret.
+  - Analyze clean, 3189 tests passing. Checked in the simulator: Explore, News, Passport, the MICHELIN guide list with gold stars, and the country search sheet with its terracotta focus border. Not looked at on device: the rating dialog, photo upload and the venue host welcome screen.
+
 ---
 
 ## v1.10.0 (52) — 2026-11-25

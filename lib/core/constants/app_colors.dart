@@ -52,9 +52,10 @@ class AppColors {
   // selected state, a badge), not painted across every icon.
   static const Color gold = Color(0xFFAC8244);
   static const Color goldLight = Color(0xFFC7A46B);
-  // Semantic alias matching the design-system brief's token name; same
-  // value as [gold] so existing call sites and new ones stay in lockstep.
-  static const Color accent = gold;
+  // The accent: what the member does or chooses (a selected state, an
+  // active tab, a link, a focused field). Terracotta since 2026-11-25
+  // (product owner), so gold stays with MICHELIN stars and Keys.
+  static const Color accent = terracotta;
   static const Color goldAlpha10 = Color(0x1AAC8244); // ~10 % opacity
   static const Color goldMuted = Color(0x33AC8244); // ~20 % opacity
   static const Color goldAlpha30 = Color(0x4DAC8244); // ~30 % opacity
@@ -142,6 +143,22 @@ class AppColors {
   static const Color claret = Color(0xFF6B2E36);
   // The claret wash behind a wine-glass icon on a light card.
   static const Color claretTint = Color(0xFFF3E9EA);
+
+  // Terracotta — the third brand colour beside deep green and ivory, chosen
+  // by the product owner on 2026-11-25 over brick, rust, cognac and claret.
+  // It marks only what the member does or chooses: a selected filter or
+  // segment, the active tab, a link, a focused field, a switch that is on.
+  // Never a surface or a large fill, and only a few times per screen; gold
+  // stays with MICHELIN stars and Keys, the Passport keeps its own inks.
+  // 5.2:1 on [background] as text.
+  static const Color terracotta = Color(0xFF9E4F35);
+  // The same accent on deep green: 5.4:1 on [deepGreen] as text.
+  static const Color terracottaOnDark = Color(0xFFD9967C);
+  // A selected chip or segment's wash on a light surface. [terracotta] text
+  // on it reads at 4.8:1.
+  static const Color terracottaTint = Color(0xFFF5E6DE);
+  static const Color terracottaAlpha10 = Color(0x1A9E4F35); // ~10 % opacity
+  static const Color terracottaBorder60 = Color(0x999E4F35); // ~60 % opacity
 
   // [textOnDark] above (0xFFF5EFE1) already matches the brief's "warm
   // ivory, approximately #F5EFE1" — reused as-is, not duplicated under a

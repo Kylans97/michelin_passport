@@ -56,25 +56,25 @@ class _Segment extends StatelessWidget {
     child: InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
-      splashColor: AppColors.goldAlpha10,
-      highlightColor: AppColors.goldAlpha10,
+      splashColor: AppColors.terracottaAlpha10,
+      highlightColor: AppColors.terracottaAlpha10,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOutCubic,
         padding: const EdgeInsets.symmetric(vertical: 10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: selected ? AppColors.goldMuted : AppColors.surface,
+          color: selected ? AppColors.terracottaTint : AppColors.surface,
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
-            color: selected ? AppColors.goldBorder60 : AppColors.cardBorder,
+            color: selected ? AppColors.terracottaBorder60 : AppColors.cardBorder,
             width: selected ? 1.0 : 0.5,
           ),
         ),
         child: Text(
           label,
           style: CsFonts.sans(
-            color: selected ? AppColors.gold : AppColors.textSecondary,
+            color: selected ? AppColors.terracotta : AppColors.textSecondary,
             fontSize: 13.5,
             fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
           ),

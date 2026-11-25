@@ -154,7 +154,7 @@ class VenueHostWelcomeScreen extends StatelessWidget {
           const SizedBox(height: CsSpacing.base),
           Text(
             'FOR VENUE HOSTS',
-            style: CsTypography.eyebrow.copyWith(color: AppColors.mutedBrass),
+            style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
           ),
           const SizedBox(height: CsSpacing.sm),
           Text(
@@ -211,7 +211,7 @@ class _Section extends StatelessWidget {
           Text(
             eyebrow,
             style: CsTypography.eyebrow.copyWith(
-              color: AppColors.mutedBrassOnLight,
+              color: AppColors.taupe,
             ),
           ),
           const SizedBox(height: CsSpacing.sm),
@@ -235,7 +235,7 @@ class _Section extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Icon(icon, size: 20, color: AppColors.mutedBrassOnLight),
+                  Icon(icon, size: 20, color: AppColors.taupe),
                   const SizedBox(width: CsSpacing.md),
                   Expanded(
                     child: Text(
@@ -278,14 +278,14 @@ class _StampPlaceholder extends StatelessWidget {
               const Icon(
                 Icons.auto_awesome_outlined,
                 size: 20,
-                color: AppColors.mutedBrassOnLight,
+                color: AppColors.taupe,
               ),
               const SizedBox(height: CsSpacing.xs),
               Text(
                 'COMING SOON',
                 textAlign: TextAlign.center,
                 style: CsTypography.eyebrow.copyWith(
-                  color: AppColors.mutedBrassOnLight,
+                  color: AppColors.taupe,
                   fontSize: 11,
                 ),
               ),

@@ -11,7 +11,7 @@ import '../theme/cs_typography.dart';
 /// ~52-56px visual field height via content padding rather than a fixed
 /// [SizedBox], so a validation error can grow the field downward instead
 /// of being clipped. No gold border ever — the focused state uses
-/// [AppColors.mutedBrass] as a single restrained hairline accent, mirroring
+/// [AppColors.terracotta] as a single restrained hairline accent, mirroring
 /// [CsSearchField]'s own focused-border treatment exactly.
 ///
 /// First built for Login/Sign up (Step 4A) — kept general enough (label,
@@ -129,7 +129,7 @@ class _CsTextFieldState extends State<CsTextField> {
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
                 borderSide: const BorderSide(
-                  color: AppColors.mutedBrass,
+                  color: AppColors.terracotta,
                   width: 1.5,
                 ),
               ),
