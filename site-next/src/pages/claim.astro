@@ -1,0 +1,62 @@
+---
+// The venue guide's way into the app: mantelier.app/claim. The app opens
+// the venue explainer and the claim flow for it (PendingClaim in the
+// app). Added 2026-11-25 with the product owner.
+//
+// From another site or a message the link opens the app directly
+// (apple-app-site-association lists /claim). From mantelier.app itself
+// iOS keeps a same-domain link in Safari, so this page carries a Smart
+// App Banner whose Open hands the same URL to the app. Without the app,
+// the App Store button copies the link on that tap, so the app can offer
+// to paste it after installing; nothing is read or written without a tap.
+// The claim itself is a request reviewed by hand, in the app.
+import Base from '../layouts/Base.astro';
+import Mark from '../components/Mark.astro';
+import { APP_STORE_URL } from '../config';
+import '../styles/account.css';
+---
+<Base title="Claim your venue" description="Claim your restaurant, hotel or private dining page on Mantelier, in the app." noindex>
+  <meta slot="head" name="apple-itunes-app" content="app-id=6806217056, app-argument=https://mantelier.app/claim" />
+  <section class="claim">
+    <div class="wrap claim-wrap">
+      <div class="card">
+        <Mark size={44} color="var(--green)" />
+        <h1 class="title">Claim your venue</h1>
+        <p class="sub">Claiming happens in the Mantelier app. Install it, create your account, and the app takes you straight to your claim.</p>
+        {APP_STORE_URL && (
+          <div class="cta">
+            <a class="button" href={APP_STORE_URL} data-store>Get Mantelier on the App Store</a>
+            <p class="help">Tapping this copies a link, so the app can find your claim after you install it. When the app asks, tap Paste.</p>
+          </div>
+        )}
+        <p class="help">Already have the app? Open it from the banner at the top of this page, or go to Profile and tap Claim your venue.</p>
+        <p class="help"><a href="/venue-guide">Back to the venue guide</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .claim { background: var(--ivory); padding: 72px 0 120px; }
+  .claim-wrap { display: flex; justify-content: center; }
+  .card { width: 100%; max-width: 460px; background: var(--card); border: 1px solid var(--rule); border-radius: 24px; padding: 40px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 18px; }
+  .title { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1.15; margin: 0; text-wrap: balance; color: var(--green); }
+  .sub { font-size: 16px; color: var(--ink-soft); margin: 0; max-width: 36ch; }
+  .cta { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+  .cta .button { display: block; width: 100%; box-sizing: border-box; text-align: center; }
+  .help a { color: var(--green); }
+  @media (max-width: 480px) { .card { padding: 32px 20px; } .claim { padding-top: 40px; } }
+</style>
+
+<script>
+  // Copy on the tap itself, then go to the store whatever the copy did.
+  const store = document.querySelector('[data-store]');
+  if (store instanceof HTMLAnchorElement) {
+    store.addEventListener('click', async (event) => {
+      event.preventDefault();
+      const href = store.href;
+      try { await navigator.clipboard.writeText('https://mantelier.app/claim'); } catch (_) { /* Profile is the fallback */ }
+      location.href = href;
+    });
+  }
+</script>

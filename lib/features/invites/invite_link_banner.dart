@@ -6,20 +6,29 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/member_avatar.dart';
 import '../../data/repositories/invite_link_repository.dart';
 import '../../models/invite_link.dart';
+import '../claims/pending_claim.dart';
 import 'pending_invite.dart';
 
 /// The strip at the top of the entrance (LoginScreen) for someone who
-/// came through an invitation link.
+/// came through an invitation link, or the website's venue guide.
 ///
 /// With an invitation waiting on the phone: "Elise Laurent invited you.
-/// Sign in to accept." With none but text on the clipboard, which iOS
-/// reports without showing it: "Opening an invitation? Paste it". Only
-/// that tap reads the clipboard, and iOS asks first. Otherwise nothing.
+/// Sign in to accept." From the venue guide (PendingClaim): "Claiming
+/// your venue. Sign in first, and we take you there." With neither but
+/// text on the clipboard, which iOS reports without showing it: "Opening
+/// a link from Mantelier? Paste it". Only that tap reads the clipboard,
+/// and iOS asks first. Otherwise nothing.
 class InviteLinkBanner extends StatefulWidget {
-  const InviteLinkBanner({super.key, this.pending, this.repository});
+  const InviteLinkBanner({
+    super.key,
+    this.pending,
+    this.repository,
+    this.pendingClaim,
+  });
 
   final PendingInvite? pending;
   final InviteLinkRepository? repository;
+  final PendingClaim? pendingClaim;
 
   @override
   State<InviteLinkBanner> createState() => _InviteLinkBannerState();
@@ -27,6 +36,7 @@ class InviteLinkBanner extends StatefulWidget {
 
 class _InviteLinkBannerState extends State<InviteLinkBanner> {
   late final PendingInvite _store = widget.pending ?? PendingInvite.instance;
+  late final PendingClaim _claim = widget.pendingClaim ?? PendingClaim.instance;
   late final InviteLinkRepository _repo =
       widget.repository ?? InviteLinkRepository(Supabase.instance.client);
 
@@ -39,13 +49,19 @@ class _InviteLinkBannerState extends State<InviteLinkBanner> {
   void initState() {
     super.initState();
     _store.token.addListener(_refresh);
+    _claim.waiting.addListener(_onClaim);
     _refresh();
   }
 
   @override
   void dispose() {
     _store.token.removeListener(_refresh);
+    _claim.waiting.removeListener(_onClaim);
     super.dispose();
+  }
+
+  void _onClaim() {
+    if (mounted) setState(() {});
   }
 
   Future<void> _refresh() async {
@@ -66,13 +82,19 @@ class _InviteLinkBannerState extends State<InviteLinkBanner> {
   }
 
   Future<void> _paste() async {
-    final found = await _store.pasteFromClipboard();
+    final found = await _store.pasteFromClipboard(
+      alsoAccept: (text) async {
+        if (!isClaimLink(text)) return false;
+        await _claim.set();
+        return true;
+      },
+    );
     if (!mounted) return;
     setState(
       () => _pasteNote = found
           ? null
-          : 'No invitation link found. After signing in you can enter its '
-                'code under Friends.',
+          : 'No Mantelier link found. After signing in you can enter an '
+                "invitation's code under Friends.",
     );
   }
 
@@ -80,7 +102,10 @@ class _InviteLinkBannerState extends State<InviteLinkBanner> {
   Widget build(BuildContext context) {
     final token = _store.token.value;
     final p = _preview;
-    if (token != null && p != null && p.isOpen && p.kind == InviteLinkKind.venue) {
+    if (token != null &&
+        p != null &&
+        p.isOpen &&
+        p.kind == InviteLinkKind.venue) {
       final name = p.venueName ?? 'A venue';
       return _Strip(
         leading: MemberAvatar(avatarUrl: null, displayName: name, size: 38),
@@ -99,6 +124,13 @@ class _InviteLinkBannerState extends State<InviteLinkBanner> {
             'Sign in to accept. ${p.tripTitle} is waiting.',
           _ => 'Sign in to accept.',
         },
+      );
+    }
+    if (token == null && _claim.waiting.value) {
+      return const _Strip(
+        leading: _StripIcon(icon: Icons.storefront_outlined),
+        title: 'Claiming your venue',
+        body: 'Sign in first, and we take you there.',
       );
     }
     if (token == null && _canPaste) {
@@ -121,7 +153,7 @@ class _InviteLinkBannerState extends State<InviteLinkBanner> {
               ),
               child: Text.rich(
                 TextSpan(
-                  text: 'Opening an invitation? ',
+                  text: 'Opening a link from Mantelier? ',
                   style: CsTypography.metadata.copyWith(
                     color: AppColors.textOnDark,
                   ),
@@ -152,6 +184,23 @@ class _InviteLinkBannerState extends State<InviteLinkBanner> {
     }
     return const SizedBox.shrink();
   }
+}
+
+class _StripIcon extends StatelessWidget {
+  const _StripIcon({required this.icon});
+
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: 38,
+    height: 38,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: AppColors.textOnDark.withValues(alpha: 0.1),
+    ),
+    child: Icon(icon, size: 20, color: AppColors.textOnDark),
+  );
 }
 
 class _Strip extends StatelessWidget {

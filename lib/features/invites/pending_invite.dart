@@ -77,10 +77,20 @@ class PendingInvite {
 
   /// Reads the clipboard, on the person's tap (iOS asks them first), and
   /// keeps the invitation in it. Returns false when there is none.
-  Future<bool> pasteFromClipboard() async {
+  ///
+  /// [alsoAccept] sees the same text first, so one read (and one iOS
+  /// prompt) also serves the venue guide's `mantelier.app/claim`
+  /// (PendingClaim); it returns true when it took the text.
+  Future<bool> pasteFromClipboard({
+    Future<bool> Function(String text)? alsoAccept,
+  }) async {
     try {
       final data = await Clipboard.getData(Clipboard.kTextPlain);
-      final t = inviteTokenFrom(data?.text);
+      final text = data?.text;
+      if (text != null && alsoAccept != null && await alsoAccept(text)) {
+        return true;
+      }
+      final t = inviteTokenFrom(text);
       if (t == null) return false;
       await set(t);
       return true;

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/widgets/branded_splash.dart';
 import '../../data/repositories/two_step_repository.dart';
+import '../claims/claim_link_gate.dart';
 import '../invites/invite_link_gate.dart';
 import '../onboarding/onboarding_gate.dart';
 import 'auth_link_notice.dart';
@@ -149,11 +150,15 @@ class _AuthGateState extends State<AuthGate> {
       // member right after "Your Passport is ready", before the welcome
       // flow (20261101670000).
       child: InviteLinkGate(
-        child: OnboardingGate(
-          userId: session.user.id,
-          hasSeenWelcome: widget.hasSeenWelcome,
-          markWelcomeSeen: widget.markWelcomeSeen,
-          child: widget.child,
+        // A venue guide arrival opens the venue explainer the same way,
+        // and OnboardingGate then leaves the guests' welcome flow out.
+        child: ClaimLinkGate(
+          child: OnboardingGate(
+            userId: session.user.id,
+            hasSeenWelcome: widget.hasSeenWelcome,
+            markWelcomeSeen: widget.markWelcomeSeen,
+            child: widget.child,
+          ),
         ),
       ),
     );

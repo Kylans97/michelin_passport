@@ -8,6 +8,19 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Claim your venue from the first minute** (product owner, 2026-11-25; canvas https://claude.ai/artifact/TiM3WfXrgJDc3uZWkxffTT, approved with decisions 1 to 3).
+  - When a Passport is issued, one quiet line under Show me around: "Run a restaurant, hotel or private dining? Link your venue". It opens `VenueClaimIntroScreen`: three pages in the welcome flow's style (your page, your guests and the venue's invite link, how claiming works), ending on Claim my venue (the existing `ClaimVenueScreen`) or Later. Afterwards the member is back on Show me around, so the guests' welcome flow still follows.
+  - The claim screen gains "How claiming works", opening the same pages with Back to my claim.
+  - The welcome flow's last page gains one line: "Own a venue? You can claim it any time in Profile."
+  - **From the website's venue guide.** Download Mantelier now points at `mantelier.app/claim` (new `site-next/src/pages/claim.astro`, and `/claim` in apple-app-site-association). With the app installed it opens the explainer (Universal Link from other sites; the page's Smart App Banner from mantelier.app itself, since iOS keeps same-domain links in Safari). Without it, the App Store button copies the link, and the entrance's Paste (now "Opening a link from Mantelier? Paste it") keeps it in the new `PendingClaim`. After sign-up `ClaimLinkGate` opens the explainer and `OnboardingGate` leaves the guests' welcome flow out and marks it seen (decision 1). App Store link parameters were checked and ruled out: they reach only App Store Connect's analytics.
+  - Nothing grants anything: a claim stays a request reviewed by hand, and permission still comes only from `is_active_venue_manager()`. No database change.
+  - **Deploy order:** the site changes go out on merge to main, but `/claim` only opens the explainer once a build with this is in the App Store. Until then the page still sends people to the App Store, and the venue guide's Profile route stays in its text.
+
+### Checked
+- `flutter analyze` is clean and `flutter test` passes all 3,183 tests. New tests (`venue_claim_onboarding_test.dart`) cover the claim link recognition, the explainer's pages, Skip, Claim my venue, Later and the claim screen variant, no dashes, three phone sizes, `ClaimLinkGate`, `OnboardingGate` leaving the welcome flow out, the entrance strip, and the welcome flow's new line.
+- In the simulator (a dedicated "Claim preview" device, preview entry point with fake saves, nobody signed in): the sign-up steps, Link your venue, all three pages, and Claim my venue opening the real claim screen with How claiming works. The paste and Universal Link routes were not exercised on a device: they need a build with the site's apple-app-site-association live. `site-next` builds; `/claim` and the venue guide link were checked in the browser at phone width.
+
 ---
 
 ## v1.10.0 (51) — 2026-11-25

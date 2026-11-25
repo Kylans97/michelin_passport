@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/widgets/branded_splash.dart';
 import '../../data/repositories/profile_repository.dart';
+import '../claims/pending_claim.dart';
 import 'welcome_flow_screen.dart';
 
 /// Sits between AuthGate and the real app — AuthGate only cares about
@@ -24,6 +25,12 @@ class OnboardingGate extends StatefulWidget {
   /// be needed, while the member is still on the first pages.
   final Future<WelcomeGreeting> Function(String userId)? welcomeGreeting;
 
+  /// Someone who arrived from the website's venue guide goes to the venue
+  /// explainer (ClaimLinkGate) instead of the guests' welcome flow, which
+  /// is then marked seen (product owner, 2026-11-25). Test seam; defaults
+  /// to [PendingClaim.instance].
+  final PendingClaim? pendingClaim;
+
   const OnboardingGate({
     super.key,
     required this.userId,
@@ -31,6 +38,7 @@ class OnboardingGate extends StatefulWidget {
     this.hasSeenWelcome,
     this.markWelcomeSeen,
     this.welcomeGreeting,
+    this.pendingClaim,
   });
 
   @override
@@ -81,6 +89,12 @@ class _OnboardingGateState extends State<OnboardingGate> {
       seen = true;
     }
     if (!mounted || userId != widget.userId) return; // stale response guard
+    if (!seen && (widget.pendingClaim ?? PendingClaim.instance).waiting.value) {
+      // Came for the claim: the explainer opens over the app instead.
+      setState(() => _needsWelcome = false);
+      _markSeen();
+      return;
+    }
     setState(() => _needsWelcome = !seen);
     if (!seen) _loadGreeting(userId);
   }
@@ -104,6 +118,11 @@ class _OnboardingGateState extends State<OnboardingGate> {
   }
 
   Future<void> _onDone() async {
+    await _markSeen();
+    if (mounted) setState(() => _needsWelcome = false);
+  }
+
+  Future<void> _markSeen() async {
     final mark =
         widget.markWelcomeSeen ??
         (id) => ProfileRepository(
@@ -118,7 +137,6 @@ class _OnboardingGateState extends State<OnboardingGate> {
     } catch (_) {
       // Swallowed deliberately — see above.
     }
-    if (mounted) setState(() => _needsWelcome = false);
   }
 
   @override

@@ -11,6 +11,7 @@ import '../../core/widgets/cs_text_field.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../models/venue_country.dart';
+import '../claims/venue_claim_intro_screen.dart';
 import 'widgets/auth_presentation.dart';
 import 'widgets/passport_preview_card.dart';
 
@@ -571,7 +572,37 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
           ],
         ),
       ),
-      footer: [CsPrimaryButton(label: 'Show me around', onTap: widget.onSaved)],
+      footer: [
+        CsPrimaryButton(label: 'Show me around', onTap: widget.onSaved),
+        // One quiet way in for whoever runs a venue (product owner,
+        // 2026-11-25). Ignoring it adds no step; coming back from the
+        // explainer or the claim leaves them here, on Show me around.
+        TextButton(
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute<void>(
+              builder: (_) => const VenueClaimIntroScreen(),
+            ),
+          ),
+          child: Text.rich(
+            TextSpan(
+              text: 'Run a restaurant, hotel or private dining?\n',
+              style: CsTypography.metadata.copyWith(
+                color: AppColors.secondaryOnDark,
+              ),
+              children: [
+                TextSpan(
+                  text: 'Link your venue',
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.textOnDark,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
       children: const [],
     );
   }

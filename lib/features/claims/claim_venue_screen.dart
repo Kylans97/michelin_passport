@@ -13,13 +13,15 @@ import '../../data/repositories/restaurant_repository.dart';
 import '../../models/venue_claim.dart';
 import '../reports/widgets/report_missing_listing_sheet.dart';
 import 'claim_venue_details_screen.dart';
+import 'venue_claim_intro_screen.dart';
 
 /// Step 1 of the claim flow — pick a venue type, search for it by name,
 /// and either proceed to [ClaimVenueDetailsScreen] with the one you meant
 /// or, if it isn't listed at all, fall through to the EXISTING missing-
 /// listing report sheet rather than this flow inventing a second "we
 /// don't have this" path. Pushed from Profile's ACCOUNT section
-/// ("Claim your venue"), never reached any other way.
+/// ("Claim your venue"), and from "Claim my venue" at the end of
+/// VenueClaimIntroScreen.
 class ClaimVenueScreen extends StatefulWidget {
   // Optional DI seams, matching NewsArticleDetailScreen/NotificationsScreen's
   // established convention — default to the real Supabase-backed
@@ -175,7 +177,31 @@ class _ClaimVenueScreenState extends State<ClaimVenueScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: CsSpacing.md),
+            // The explainer stays reachable after sign-up (product owner,
+            // 2026-11-25).
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: const Size(44, 44),
+                ),
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) =>
+                        const VenueClaimIntroScreen(fromClaimScreen: true),
+                  ),
+                ),
+                child: Text(
+                  'How claiming works',
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.forestGreen,
+                    fontWeight: FontWeight.w600,
+                    decoration: TextDecoration.underline,
+                  ),
+                ),
+              ),
+            ),
             Text(
               'What kind of venue is it?',
               style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),

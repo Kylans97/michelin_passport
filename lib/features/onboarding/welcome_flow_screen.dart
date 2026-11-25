@@ -184,20 +184,35 @@ class _WelcomeFlowState extends State<WelcomeFlow> {
               CsSpacing.base,
               CsSpacing.base,
             ),
-            child: SizedBox(
-              height: 52,
-              child: _onLastPage
-                  ? Padding(
-                      padding: const EdgeInsets.only(right: CsSpacing.base),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: CsPrimaryButton(
-                          label: 'Begin',
-                          onTap: widget.onDone,
+            child: _onLastPage
+                ? Padding(
+                    padding: const EdgeInsets.only(right: CsSpacing.base),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: CsPrimaryButton(
+                            label: 'Begin',
+                            onTap: widget.onDone,
+                          ),
                         ),
-                      ),
-                    )
-                  : Row(
+                        const SizedBox(height: CsSpacing.md),
+                        // The one line for venues in the guests' flow
+                        // (product owner, 2026-11-25).
+                        Text(
+                          'Own a venue? You can claim it any time in Profile.',
+                          textAlign: TextAlign.center,
+                          style: CsTypography.metadata.copyWith(
+                            color: AppColors.secondaryOnDark,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox(
+                    height: 52,
+                    child: Row(
                       children: [
                         _PageDots(count: _pageCount, index: _pageIndex),
                         const Spacer(),
@@ -212,7 +227,7 @@ class _WelcomeFlowState extends State<WelcomeFlow> {
                         ),
                       ],
                     ),
-            ),
+                  ),
           ),
         ],
       ),
