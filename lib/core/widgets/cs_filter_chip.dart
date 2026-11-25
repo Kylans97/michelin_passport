@@ -45,10 +45,10 @@ class CsFilterChip extends StatelessWidget {
     final Color background;
     final Color foreground;
     if (onDark) {
-      background = selected ? AppColors.ivory : AppColors.forestGreen;
+      background = selected ? AppColors.terracottaOnDark : AppColors.forestGreen;
       foreground = selected ? AppColors.deepGreen : AppColors.textOnDark;
     } else {
-      background = selected ? AppColors.deepGreen : AppColors.warmWhite;
+      background = selected ? AppColors.terracotta : AppColors.warmWhite;
       foreground = selected ? AppColors.textOnDark : AppColors.forestGreen;
     }
     final border = onDark

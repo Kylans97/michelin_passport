@@ -47,9 +47,7 @@ class FollowToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final foreground = isFollowing
-        ? AppColors.forestGreen
-        : AppColors.textOnDark;
+    final foreground = AppColors.textOnDark;
     return Semantics(
       button: true,
       selected: isFollowing,
@@ -62,12 +60,12 @@ class FollowToggleButton extends StatelessWidget {
         curve: Curves.easeOut,
         decoration: ShapeDecoration(
           color: isFollowing
-              ? AppColors.ivory
+              ? AppColors.terracotta
               : Colors.black.withValues(alpha: 0.24),
           shape: StadiumBorder(
             side: BorderSide(
               color: isFollowing
-                  ? AppColors.ivory
+                  ? AppColors.terracotta
                   : AppColors.textOnDark.withValues(alpha: 0.7),
               width: 1,
             ),

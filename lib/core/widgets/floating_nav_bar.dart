@@ -155,7 +155,9 @@ class _FloatingNavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = selected ? AppColors.ivory : AppColors.secondaryOnDark;
+    final color = selected
+        ? AppColors.terracottaOnDark
+        : AppColors.secondaryOnDark;
     return Semantics(
       button: true,
       enabled: true,

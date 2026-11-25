@@ -130,7 +130,7 @@ void main() {
     ];
 
     testWidgets('the booklet sits in the middle slot and takes the bar\'s '
-        'tone: ivory and filled when selected, muted when not', (tester) async {
+        'tone: light terracotta and filled when selected, muted when not', (tester) async {
       var selected = 0;
       await _pumpNavBar(
         tester,
@@ -155,7 +155,7 @@ void main() {
       expect(selected, 2);
       icon = tester.widget<PassportBookletIcon>(booklet);
       expect(icon.selected, isTrue);
-      expect(icon.color, AppColors.ivory);
+      expect(icon.color, AppColors.terracottaOnDark);
       expect(icon.color, isNot(AppColors.gold));
     });
   });
@@ -278,12 +278,12 @@ void main() {
       expect(decoration.border, isNotNull);
     });
 
-    testWidgets('selected icon is ivory, unselected icons are '
+    testWidgets('selected icon is light terracotta, unselected icons are '
         'secondaryOnDark — never gold', (tester) async {
       await _pumpNavBar(tester, _bar(selectedIndex: 0, onSelect: (_) {}));
       final selectedIcon = tester.widget<Icon>(find.byIcon(Icons.explore_rounded));
       final unselectedIcon = tester.widget<Icon>(find.byIcon(Icons.menu_book_outlined));
-      expect(selectedIcon.color, AppColors.ivory);
+      expect(selectedIcon.color, AppColors.terracottaOnDark);
       expect(unselectedIcon.color, AppColors.secondaryOnDark);
       expect(selectedIcon.color, isNot(AppColors.gold));
       expect(unselectedIcon.color, isNot(AppColors.gold));

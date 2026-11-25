@@ -52,7 +52,7 @@ void main() {
       expect(icon.color, isNot(AppColors.gold));
     });
 
-    testWidgets('following: a solid ivory pill reading "Following" with a '
+    testWidgets('following: a solid terracotta pill reading "Following" with a '
         'check — state spelled out, not just a filled glyph', (tester) async {
       await tester.pumpWidget(
         _wrap(
@@ -68,9 +68,9 @@ void main() {
       expect(find.byIcon(Icons.check_rounded), findsOneWidget);
       expect(find.byIcon(Icons.add_rounded), findsNothing);
       final icon = tester.widget<Icon>(find.byIcon(Icons.check_rounded));
-      expect(icon.color, AppColors.forestGreen);
+      expect(icon.color, AppColors.textOnDark);
       final box = tester.widget<AnimatedContainer>(find.byType(AnimatedContainer));
-      expect((box.decoration as ShapeDecoration).color, AppColors.ivory);
+      expect((box.decoration as ShapeDecoration).color, AppColors.terracotta);
     });
 
     testWidgets('busy: keeps showing the state (no spinner) — the screens '

@@ -127,9 +127,12 @@ class _IntentPill extends StatelessWidget {
               vertical: CsSpacing.sm,
             ),
             decoration: BoxDecoration(
-              color: selected ? AppColors.forestGreen : Colors.transparent,
+              color: selected ? AppColors.terracotta : Colors.transparent,
               borderRadius: BorderRadius.circular(CsRadius.pill),
-              border: Border.all(color: AppColors.forestGreen, width: 1),
+              border: Border.all(
+                color: selected ? AppColors.terracotta : AppColors.forestGreen,
+                width: 1,
+              ),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
