@@ -11,7 +11,7 @@ const _visitColumns =
 const vineyardFullColumns =
     'id, vineyard_code, name, country_code, country_name, flag_emoji, '
     'region, city, address, latitude, longitude, website_url, status, '
-    'worlds_50_best_year, worlds_50_best_rank';
+    'worlds_50_best_year, worlds_50_best_rank, commune_name';
 
 /// Ranked estates first, by rank; then the rest alphabetically. The calm
 /// default order for the Wine Estates collection.
@@ -144,16 +144,16 @@ class VineyardRepository {
     ]);
   }
 
-  /// Every official classification (`vineyard_recognitions`,
-  /// 20261101770000). Empty, not an error, before that migration is
-  /// applied, so the collection then shows the 50 Best alone.
-  Future<List<VineyardRecognition>> getRecognitions() async {
+  /// The official classifications (`vineyard_recognitions`,
+  /// 20261101770000), all or one [scheme]'s. Empty, not an error, before
+  /// that migration is applied, so Guides then shows no classification.
+  Future<List<VineyardRecognition>> getRecognitions({String? scheme}) async {
     try {
-      final rows =
-          await _client
-                  .from('vineyard_recognitions')
-                  .select('vineyard_id, scheme, class, class_order, edition')
-              as List;
+      var request = _client
+          .from('vineyard_recognitions')
+          .select('vineyard_id, scheme, class, class_order, edition');
+      if (scheme != null) request = request.eq('scheme', scheme);
+      final rows = await request as List;
       return [
         for (final row in rows)
           VineyardRecognition.fromMap(row as Map<String, dynamic>),

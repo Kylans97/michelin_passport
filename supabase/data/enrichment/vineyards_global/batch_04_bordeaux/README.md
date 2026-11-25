@@ -18,8 +18,8 @@ official classifications tier; "One section per list" for the collection).
 154 recognitions are spread over 153 estates: 145 new (vine_0207 onward)
 and the 8 Bordeaux estates already in the catalogue. Haut-Brion is one
 estate on two lists. 114 of the new estates get a village. Afterwards
-production would hold 247 estates. The collection would show the 97 ranked
-ones, then a section per list.
+production would hold 247 estates. Guides would show a Bordeaux
+Classifications card, one row per list.
 
 ## Method
 
@@ -53,15 +53,14 @@ Research rules as in batches 2 and 3. On top of them:
 **Tested** on a scratch stack with production's data: the migration, then
 this file. Result: 247 estates, 154 recognitions, and Haut-Brion with
 both. A second run is refused. The app, run in the simulator against that
-stack, shows the 50 Best section and then "Bordeaux 1855, Médoc" with the
-class under each estate.
+stack, shows the Bordeaux Classifications card and each list with the class
+and the village under each estate.
 
 ## For you to decide
 
-1. **The Guides entry** for the collection sits on The World's 50 Best card
-   and reads "The World's 50 Best Vineyards, estate by estate." Once
-   classifications show, that is no longer true. Should the entry get its
-   own card ("Wine Estates") and new words?
+1. ~~The Guides entry~~: decided 2026-11-25. A separate "Bordeaux
+   Classifications" card with a row per list; the 50 Best row stays the 50
+   Best alone.
 2. ~~Names without accents~~: decided 2026-11-25, own spelling (above).
 
 ## Proposed QA log entries

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -9,6 +10,8 @@ import 'gault_millau_restaurant_guide_screen.dart';
 import 'michelin_hotel_guide_screen.dart';
 import 'michelin_restaurant_guide_screen.dart';
 import 'selection_restaurant_guide_screen.dart';
+import '../../data/repositories/vineyard_repository.dart';
+import '../../models/vineyard_recognition.dart';
 import '../vineyards/vineyards_screen.dart';
 import 'shared_guide_restaurant_screen.dart';
 import 'widgets/guide_destination_row.dart';
@@ -43,7 +46,11 @@ import 'widgets/guide_family_section.dart';
 /// forestGreen — the canonical primary brand dark surface, matching
 /// Explore/Passport/Event Detail's hero.
 class GuidesScreen extends StatelessWidget {
-  const GuidesScreen({super.key});
+  const GuidesScreen({super.key, this.loadClassificationSchemes});
+
+  /// Which official classifications have estates (test seam). Defaults to
+  /// reading `vineyard_recognitions`; empty on any failure.
+  final Future<Set<String>> Function()? loadClassificationSchemes;
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +71,12 @@ class GuidesScreen extends StatelessWidget {
                 child: EditorialBackButton(color: AppColors.ivory),
               ),
             ),
-            const Expanded(child: _GuidesBody()),
+            Expanded(
+              child: _GuidesBody(
+                loadClassificationSchemes:
+                    loadClassificationSchemes ?? _loadClassificationSchemes,
+              ),
+            ),
           ],
         ),
       ),
@@ -72,14 +84,48 @@ class GuidesScreen extends StatelessWidget {
   }
 }
 
-class _GuidesBody extends StatelessWidget {
-  const _GuidesBody();
+/// The schemes that have at least one estate; empty before the
+/// recognitions migration, or without a connection, so the card stays away.
+Future<Set<String>> _loadClassificationSchemes() async {
+  try {
+    final rows = await VineyardRepository(
+      Supabase.instance.client,
+    ).getRecognitions();
+    return {for (final r in rows) r.scheme};
+  } catch (_) {
+    return const {};
+  }
+}
+
+class _GuidesBody extends StatefulWidget {
+  const _GuidesBody({required this.loadClassificationSchemes});
+
+  final Future<Set<String>> Function() loadClassificationSchemes;
+
+  @override
+  State<_GuidesBody> createState() => _GuidesBodyState();
+}
+
+class _GuidesBodyState extends State<_GuidesBody> {
+  Set<String> _schemes = const {};
+
+  @override
+  void initState() {
+    super.initState();
+    widget.loadClassificationSchemes().then((schemes) {
+      if (mounted) setState(() => _schemes = schemes);
+    });
+  }
 
   void _open(BuildContext context, Widget screen) =>
       Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
 
   @override
   Widget build(BuildContext context) {
+    final classifications = [
+      for (final scheme in bordeauxClassifications)
+        if (_schemes.contains(scheme.code)) scheme,
+    ];
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(
         CsSpacing.pageHorizontal,
@@ -143,7 +189,8 @@ class _GuidesBody extends StatelessWidget {
               ),
               // The estates came from The World's 50 Best Vineyards, so
               // they live here rather than as their own row on Explore
-              // (product owner, 2026-11-20).
+              // (product owner, 2026-11-20). Only the 50 Best: the
+              // classifications have their own card below (2026-11-25).
               GuideDestinationRow(
                 label: 'Vineyards',
                 descriptor: "The World's 50 Best Vineyards, estate by estate.",
@@ -165,6 +212,24 @@ class _GuidesBody extends StatelessWidget {
                 ),
             ],
           ),
+          // The great Bordeaux classifications, a row per list, each opening
+          // that list's estates in class order (product owner, 2026-11-25).
+          // Shown only once a list has estates.
+          if (classifications.isNotEmpty) ...[
+            const SizedBox(height: CsSpacing.section),
+            GuideFamilySection(
+              title: 'BORDEAUX CLASSIFICATIONS',
+              destinations: [
+                for (final scheme in classifications)
+                  GuideDestinationRow(
+                    label: scheme.label,
+                    descriptor: scheme.descriptor,
+                    onTap: () =>
+                        _open(context, VineyardsScreen(scheme: scheme)),
+                  ),
+              ],
+            ),
+          ],
           const SizedBox(height: CsSpacing.section),
           GuideFamilySection(
             title: 'GAULT&MILLAU',

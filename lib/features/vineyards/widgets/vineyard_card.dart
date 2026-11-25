@@ -35,7 +35,9 @@ class VineyardCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final rank = vineyard.worlds50BestRank;
     final figure = marker ?? (rank == null ? '' : '$rank');
-    final where = vineyard.regionLine;
+    // In a classification list every estate shares the region, so the
+    // village tells them apart.
+    final where = note != null ? vineyard.villageLine : vineyard.regionLine;
     return Semantics(
       button: true,
       label: [
@@ -65,15 +67,19 @@ class VineyardCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 44,
-                  child: Text(
-                    figure,
-                    style: CsTypography.placeTitle.copyWith(
-                      color: AppColors.claret,
+                // The rank column only where there is a rank: a
+                // classification list has none, so its names start at the
+                // card's edge.
+                if (figure.isNotEmpty)
+                  SizedBox(
+                    width: 44,
+                    child: Text(
+                      figure,
+                      style: CsTypography.placeTitle.copyWith(
+                        color: AppColors.claret,
+                      ),
                     ),
                   ),
-                ),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

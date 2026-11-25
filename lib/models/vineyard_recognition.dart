@@ -29,18 +29,42 @@ class VineyardRecognition {
       );
 }
 
-/// The lists the Wine Estates collection shows after the 50 Best, in this
-/// order, with the heading each gets. A scheme the app does not know yet is
-/// left out rather than shown under a raw code.
-const recognitionSchemeTitles = <String, String>{
-  'bordeaux_1855_medoc': 'Bordeaux 1855, Médoc',
-  'bordeaux_1855_sauternes': 'Bordeaux 1855, Sauternes and Barsac',
-  'graves_1959': 'Graves',
-  'saint_emilion': 'Saint-Émilion',
-};
+/// A classification list as Guides shows it: the row label, the line under
+/// it, and the heading of its own estate list. Fixed order; a scheme the app
+/// does not know yet is never shown under a raw code.
+class RecognitionScheme {
+  final String code;
+  final String label;
+  final String descriptor;
 
-/// One estate in a collection section: the big claret [marker] (the 50 Best
-/// rank, or empty) and an optional [note] under where it is (the class).
+  const RecognitionScheme(this.code, this.label, this.descriptor);
+}
+
+const bordeauxClassifications = <RecognitionScheme>[
+  RecognitionScheme(
+    'bordeaux_1855_medoc',
+    '1855, Médoc',
+    'The 1855 classification of the red wines of the Médoc and Graves.',
+  ),
+  RecognitionScheme(
+    'bordeaux_1855_sauternes',
+    '1855, Sauternes and Barsac',
+    'The 1855 classification of the sweet wines.',
+  ),
+  RecognitionScheme(
+    'graves_1959',
+    'Graves',
+    'The classified growths of the Graves.',
+  ),
+  RecognitionScheme(
+    'saint_emilion',
+    'Saint-Émilion',
+    'The Saint-Émilion classification of 2022.',
+  ),
+];
+
+/// One estate in a list: the big claret [marker] (the 50 Best rank, or
+/// empty) and an optional [note] under where it is (the class).
 class EstateCollectionEntry {
   final Vineyard vineyard;
   final String marker;
@@ -53,66 +77,27 @@ class EstateCollectionEntry {
   });
 }
 
-class EstateCollectionSection {
-  final String title;
-  final List<EstateCollectionEntry> entries;
-
-  const EstateCollectionSection({required this.title, required this.entries});
-}
-
-/// The Wine Estates collection, one section per list (product owner,
-/// 2026-11-25: "One section per list"): The World's 50 Best Vineyards in
-/// rank order first, then each official classification in its own class
-/// order, then by name. An estate on several lists appears in each.
-/// [byId] resolves the classified estates; one it cannot resolve is left
-/// out. Empty sections are left out.
-List<EstateCollectionSection> buildEstateCollection({
-  required List<Vineyard> ranked,
+/// The estates of one classification, highest class first, then by name,
+/// each with its class as printed (product owner, 2026-11-25: a Guides card
+/// with one row per list). An estate the app could not load is left out.
+List<EstateCollectionEntry> classifiedEstates({
+  required String scheme,
   required List<VineyardRecognition> recognitions,
   required Map<String, Vineyard> byId,
 }) {
-  final sections = <EstateCollectionSection>[];
-  final rankedSorted = ranked.where((v) => v.worlds50BestRank != null).toList()
-    ..sort((a, b) => a.worlds50BestRank!.compareTo(b.worlds50BestRank!));
-  if (rankedSorted.isNotEmpty) {
-    final years = {for (final v in rankedSorted) ?v.worlds50BestYear};
-    sections.add(
-      EstateCollectionSection(
-        title: years.length == 1
-            ? "The World's 50 Best Vineyards ${years.single}"
-            : "The World's 50 Best Vineyards",
-        entries: [
-          for (final v in rankedSorted)
-            EstateCollectionEntry(vineyard: v, marker: '${v.worlds50BestRank}'),
-        ],
-      ),
-    );
-  }
-  for (final scheme in recognitionSchemeTitles.keys) {
-    final rows =
-        recognitions
-            .where((r) => r.scheme == scheme && byId.containsKey(r.vineyardId))
-            .toList()
-          ..sort((a, b) {
-            final byClass = a.classOrder.compareTo(b.classOrder);
-            if (byClass != 0) return byClass;
-            return foldForSearch(
-              byId[a.vineyardId]!.name,
-            ).compareTo(foldForSearch(byId[b.vineyardId]!.name));
-          });
-    if (rows.isEmpty) continue;
-    sections.add(
-      EstateCollectionSection(
-        title: recognitionSchemeTitles[scheme]!,
-        entries: [
-          for (final r in rows)
-            EstateCollectionEntry(
-              vineyard: byId[r.vineyardId]!,
-              note: r.classLabel,
-            ),
-        ],
-      ),
-    );
-  }
-  return sections;
+  final rows =
+      recognitions
+          .where((r) => r.scheme == scheme && byId.containsKey(r.vineyardId))
+          .toList()
+        ..sort((a, b) {
+          final byClass = a.classOrder.compareTo(b.classOrder);
+          if (byClass != 0) return byClass;
+          return foldForSearch(
+            byId[a.vineyardId]!.name,
+          ).compareTo(foldForSearch(byId[b.vineyardId]!.name));
+        });
+  return [
+    for (final r in rows)
+      EstateCollectionEntry(vineyard: byId[r.vineyardId]!, note: r.classLabel),
+  ];
 }
