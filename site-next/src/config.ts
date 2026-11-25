@@ -10,6 +10,13 @@ export const HIDDEN = false;
  *  back into a quiet "Coming to the App Store" label. */
 export const APP_STORE_URL: string | null = 'https://apps.apple.com/app/mantelier/id6806217056';
 
+/** Where the site's App Store buttons point: our own /app-store, which
+ *  sends the visitor straight on to APP_STORE_URL. Cloudflare Web Analytics
+ *  counts page loads on this site, never clicks to another one, so this
+ *  one hop is how Studio's "Went to the App Store" is counted (product
+ *  owner, 2026-11-25). Null whenever APP_STORE_URL is. */
+export const APP_STORE_LINK: string | null = APP_STORE_URL ? '/app-store' : null;
+
 export const CONTACT_EMAIL = 'hello@mantelier.app';
 
 /** Events first, the primary pillar. `nav: false` keeps a section's page

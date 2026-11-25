@@ -209,3 +209,7 @@ td.heat { color: var(--ink); }
    matrices) would stretch the page past a phone's width. */
 .page > *, #tier-basic, #tier-pro { min-width: 0; }
 #tier-basic, #tier-pro { display: grid; gap: 20px; }
+
+/* Website */
+.intro { margin: 0; color: var(--muted); font-size: 14px; max-width: 70ch; }
+.hbar .path { display: block; font: 11px var(--util); color: var(--muted); overflow: hidden; text-overflow: ellipsis; }

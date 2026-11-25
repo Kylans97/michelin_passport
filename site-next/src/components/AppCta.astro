@@ -2,7 +2,8 @@
 // "Continue in the app": the one way the site points into the app.
 // Reading happens here; following, saving and planning happen there.
 // Until APP_STORE_URL is set it is a quiet label, never a dead link.
-import { APP_STORE_URL } from '../config';
+// It goes through /app-store, so Studio can count it (see config.ts).
+import { APP_STORE_LINK } from '../config';
 
 interface Props {
   label: string;
@@ -11,7 +12,7 @@ interface Props {
   size?: 'small' | 'large';
 }
 const { label, variant = 'outline', size = 'small' } = Astro.props;
-const href = APP_STORE_URL;
+const href = APP_STORE_LINK;
 ---
 {href
   ? <a class={`cta ${variant} ${size}`} href={href}>{label}</a>

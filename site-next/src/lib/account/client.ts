@@ -147,6 +147,14 @@ export async function signOut(): Promise<void> {
   try { localStorage.removeItem(NAME_KEY); } catch { /* nothing kept */ }
 }
 
+/** Counts this sign-in for Studio's Website tab (20261101810000): one row,
+ *  the member's id and the time, nothing else. Best effort and quick: a
+ *  sign-in never waits long on it or fails because of it. */
+export async function recordWebsiteSignIn(userId: string): Promise<void> {
+  const insert = supabase().from('website_sign_ins').insert({ user_id: userId }).then(() => undefined, () => undefined);
+  await Promise.race([insert, new Promise<void>((resolve) => setTimeout(resolve, 1500))]);
+}
+
 /** The member's name from their own profile, kept for the header. */
 export async function loadName(userId: string): Promise<string | null> {
   const { data } = await supabase().from('profiles').select('display_name, username').eq('id', userId).maybeSingle();

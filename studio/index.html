@@ -84,6 +84,7 @@
         <button class="tab is-active" data-tab="overview">Overview</button>
         <button class="tab" data-tab="basic">Basic</button>
         <button class="tab" data-tab="pro">Pro</button>
+        <button class="tab" data-tab="website">Website</button>
       </nav>
       <div class="bar-controls">
         <label class="period" id="period-control">Period
@@ -429,6 +430,47 @@
     </div>
 
     <p class="fine foot">As a venue would see it: counts of people only, and any group under 5 shows no number.</p>
+  </main>
+
+  <!-- Website: mantelier.app's visitors from Cloudflare Web Analytics,
+       through the studio-web-analytics Edge Function, plus sign-ins on the
+       website from admin_studio_website_report. -->
+  <main class="page" id="tab-website" hidden>
+    <p class="note" id="web-status">Loading…</p>
+    <p class="intro">Visits to mantelier.app, counted without cookies. We see totals, never a person, so one person visiting twice counts as two visits.</p>
+
+    <section class="tiles" id="web-tiles"></section>
+
+    <article class="panel">
+      <h2>Visits per day</h2>
+      <p class="sub">A visit starts when someone arrives from another site or types the address. Opening more pages stays one visit.</p>
+      <div id="web-daily"></div>
+    </article>
+
+    <section class="grid two">
+      <article class="panel">
+        <h2>Most visited pages</h2>
+        <p class="sub">Pages opened, most first</p>
+        <div id="web-pages"></div>
+      </article>
+      <article class="panel">
+        <h2>How visitors found us</h2>
+        <p class="sub">The site they came from, by visits</p>
+        <div id="web-referrers"></div>
+      </article>
+      <article class="panel">
+        <h2>Countries</h2>
+        <p class="sub">Where visitors were, by visits</p>
+        <div id="web-countries"></div>
+      </article>
+      <article class="panel">
+        <h2>Devices</h2>
+        <p class="sub">What visitors used, by visits</p>
+        <div id="web-devices"></div>
+      </article>
+    </section>
+
+    <p class="fine foot">Website numbers come from Cloudflare and are at most a few minutes old. Known bots are left out. Members signed in is counted by Mantelier itself.</p>
   </main>
 </div>
 
