@@ -145,7 +145,7 @@ class VineyardRepository {
   }
 
   /// The official classifications (`vineyard_recognitions`,
-  /// 20261101770000), all or one [scheme]'s. Empty, not an error, before
+  /// 20261101800000), all or one [scheme]'s. Empty, not an error, before
   /// that migration is applied, so Guides then shows no classification.
   Future<List<VineyardRecognition>> getRecognitions({String? scheme}) async {
     try {

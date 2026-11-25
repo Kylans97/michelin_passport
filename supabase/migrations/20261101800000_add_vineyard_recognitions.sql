@@ -1,10 +1,13 @@
+-- Renumbered 2026-11-25 (was 20261101770000) before anything applied it: the vineyard
+-- claims migration 20261101780000 went to production first, so this
+-- prepared file moved after it to keep filename order equal to apply order.
 -- Official classifications of wine estates: Bordeaux 1855 (Médoc and
 -- Sauternes), Graves, Saint-Émilion, and later VDP, Vinos de Pago and the
 -- like. Written 2026-11-25 (branch claude/vineyards-global) for batch 4.
 -- Product owner, 2026-11-24: the Wine Estates collection shows only "the
 -- top recognised estates", the rest is found through search; a
 -- classification is such a recognition. The number is sort order, not a
--- date: named after the highest migration on any branch (20261101760000).
+-- date: named after the highest migration on any branch (20261101790000).
 --
 -- PREPARED -- NOT APPLIED until the product owner approves.
 --

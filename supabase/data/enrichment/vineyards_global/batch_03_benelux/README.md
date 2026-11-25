@@ -21,7 +21,7 @@ to vine_0206. After this batch production would hold 195 estates, still 97
 ranked, so the collection is unchanged.
 
 `inclusion_reason = 'official_register'`, a new value
-(`supabase/migrations/20261101760000_add_vineyard_official_register_reason.sql`).
+(`supabase/migrations/20261101790000_add_vineyard_official_register_reason.sql`).
 Not `official_classification`: that is for rankings such as 1855 or VDP,
 which belong in the collection. Being registered to use a BOB is not one.
 

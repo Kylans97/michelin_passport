@@ -1,3 +1,6 @@
+-- Renumbered 2026-11-25 (was 20261101760000) before anything applied it: the vineyard
+-- claims migration 20261101780000 went to production first, so this
+-- prepared file moved after it to keep filename order equal to apply order.
 -- A fifth reason an estate is in the catalogue: an official register names
 -- it as a producer of a protected designation (a Dutch BOB document, the
 -- Flemish list of appellation producers, the Walloon list, the Luxembourg
