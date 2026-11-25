@@ -94,12 +94,16 @@ class _VenueEventFormScreenState extends State<VenueEventFormScreen> {
     ManagedRestaurant(:final restaurant) => restaurant.countryCode,
     ManagedHotel(:final hotel) => hotel.countryCode,
     ManagedPrivateChef(:final chef) => chef.homeCountryCode,
+    // Not reachable yet: an estate's management screen has no Events row
+    // until estates can host (a later migration).
+    ManagedVineyard(:final vineyard) => vineyard.countryCode,
   };
 
   String? get _venueAddress => switch (widget.venue) {
     ManagedRestaurant(:final restaurant) => restaurant.address,
     ManagedHotel(:final hotel) => hotel.address,
     ManagedPrivateChef() => null,
+    ManagedVineyard(:final vineyard) => vineyard.address,
   };
 
   @override

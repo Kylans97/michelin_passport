@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/cs_header_drawing.dart';
 import '../../../core/widgets/editorial_back_button.dart';
+import '../../../core/widgets/follow_toggle_button.dart';
+import '../../../core/widgets/framed_image.dart';
+import '../../../models/published_venue_photo.dart';
 import '../../../models/vineyard.dart';
 
 /// The top of a wine estate's page. Its own widget beside VenueDetailHero,
@@ -13,16 +17,32 @@ import '../../../models/vineyard.dart';
 /// line drawings, seeded by the estate's id (CsHeaderDrawing; product
 /// owner, 2026-11-20), behind the region as an eyebrow, the name, and
 /// where it is.
+///
+/// Once a claimed estate has published photos (vineyard_photos,
+/// 20261101780000), [cover], its first photo in its own framing, takes
+/// the drawing's place. Follow sits beside the heart, the way it does on
+/// a restaurant or hotel.
 class VineyardDetailHero extends StatelessWidget {
   final Vineyard vineyard;
   final bool wishlisted;
-  final VoidCallback onToggleWishlist;
+  final VoidCallback? onToggleWishlist;
+  final PublishedVenuePhoto? cover;
+  final bool isFollowing;
+  final bool followBusy;
+
+  /// Null leaves Follow out (signed out, or the follows table is not on
+  /// the server yet).
+  final VoidCallback? onToggleFollow;
 
   const VineyardDetailHero({
     super.key,
     required this.vineyard,
     required this.wishlisted,
     required this.onToggleWishlist,
+    this.cover,
+    this.isFollowing = false,
+    this.followBusy = false,
+    this.onToggleFollow,
   });
 
   // Below the status bar: the hero's own height, like VenueDetailHero's.
@@ -40,16 +60,36 @@ class VineyardDetailHero extends StatelessWidget {
         vineyard.countryName!.trim(),
     ].join(', ');
     final drawing = HeaderDrawing.vineyard(vineyard.id);
+    final photo = cover;
+    final drawn = CsHeaderDrawing(
+      drawing: drawing,
+      belowToolbar: true,
+      bottomInset: CsHeaderDrawing.heroTextBand,
+    );
     return ColoredBox(
       color: AppColors.deepGreen,
       child: Stack(
         children: [
           Positioned.fill(
-            child: CsHeaderDrawing(
-              drawing: drawing,
-              belowToolbar: true,
-              bottomInset: CsHeaderDrawing.heroTextBand,
-            ),
+            child: photo == null
+                ? drawn
+                : FramedImage(
+                    framing: photo.framing,
+                    builder: (alignment) => AppNetworkImage(
+                      photo.imageUrl,
+                      longEdgePx: displayImageSizeFor(
+                        context,
+                        MediaQuery.sizeOf(context).width,
+                        zoom: photo.framing.zoom,
+                      ),
+                      fit: BoxFit.cover,
+                      alignment: alignment,
+                      // While it loads or if it fails, the drawing.
+                      loadingBuilder: (_, child, progress) =>
+                          progress == null ? child : drawn,
+                      errorBuilder: (_, _, _) => drawn,
+                    ),
+                  ),
           ),
           // Bottom-weighted vignette so the name stays legible over the
           // drawing — the same treatment VenueDetailHero gives a photo.
@@ -90,6 +130,13 @@ class VineyardDetailHero extends StatelessWidget {
                       children: [
                         const EditorialBackButton(color: AppColors.ivory),
                         const Spacer(),
+                        if (onToggleFollow != null)
+                          FollowToggleButton(
+                            isFollowing: isFollowing,
+                            busy: followBusy,
+                            onTap: onToggleFollow,
+                            entityName: vineyard.name,
+                          ),
                         IconButton(
                           onPressed: onToggleWishlist,
                           tooltip: wishlisted

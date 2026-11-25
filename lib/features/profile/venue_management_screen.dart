@@ -18,6 +18,7 @@ import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_contact_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
+import '../../data/repositories/vineyard_repository.dart';
 import '../../models/booking_window.dart';
 import '../../models/invite_link.dart';
 import '../../models/managed_venue.dart';
@@ -30,6 +31,7 @@ import '../../models/venue_photo_submission_status.dart';
 import '../../models/venue_team_member.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
+import '../vineyards/vineyard_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'card_photo_screen.dart';
 import 'venue_booking_window_screen.dart';
@@ -169,6 +171,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
   late final _privateChefRepo =
       widget.privateChefRepo ?? PrivateChefRepository(Supabase.instance.client);
+  late final _vineyardRepo = VineyardRepository(Supabase.instance.client);
 
   // Separate summaries, so one failing lookup only blanks its own
   // row's summary line — every row stays tappable either way.
@@ -184,7 +187,13 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   late Future<VenueContact> _contactFuture;
   late Future<VenueInviteLink> _inviteFuture;
 
-  bool get _hasTeam => widget.venue.venueTypeWireValue != 'private_chef';
+  bool get _hasTeam =>
+      widget.venue.venueTypeWireValue == 'restaurant' ||
+      widget.venue.venueTypeWireValue == 'hotel';
+
+  // A wine estate's first release (20261101780000) has no events yet:
+  // hosting comes with its own later migration.
+  bool get _hasEvents => widget.venue.venueTypeWireValue != 'vineyard';
 
   bool _previewLoading = false;
   String? _previewError;
@@ -242,7 +251,9 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
           openSubmissions: r[1] as List<VenuePhotoSubmissionSummary>,
         ),
       );
-      _eventsFuture = _eventsRepo.loadVenueEvents(widget.venue);
+      _eventsFuture = _hasEvents
+          ? _eventsRepo.loadVenueEvents(widget.venue)
+          : Future.value(const <VenueEvent>[]);
       _teamFuture = _hasTeam ? _loadTeam(type, id) : null;
       // A failed load only blanks the row's summary; marked handled so a
       // reload that replaces it before it settles reports nothing.
@@ -298,6 +309,9 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
         ManagedPrivateChef() => await _privateChefRepo
             .getPrivateChefById(venue.id)
             .then((c) => c == null ? null : ManagedPrivateChef(c)),
+        ManagedVineyard() => await _vineyardRepo
+            .getById(venue.id)
+            .then((v) => v == null ? null : ManagedVineyard(v)),
       };
     } catch (_) {
       return null;
@@ -433,6 +447,21 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
               isPreview: true,
               previewIsStale: isStale,
             ),
+            ManagedVineyard(:final vineyard) => VineyardDetailScreen(
+              vineyardId: vineyard.id,
+              aboutTextOverride: aboutOverride,
+              photosOverride: [
+                for (var i = 0; i < mergedPhotos.length; i++)
+                  PublishedVenuePhoto(
+                    id: mergedPhotos[i].id,
+                    imageUrl: mergedPhotos[i].imageUrl,
+                    displayOrder: i,
+                    framing: mergedPhotos[i].framing,
+                  ),
+              ],
+              isPreview: true,
+              previewIsStale: isStale,
+            ),
           },
         ),
       );
@@ -471,6 +500,9 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   @override
   Widget build(BuildContext context) {
     final isPrivateChef = widget.venue.venueTypeWireValue == 'private_chef';
+    // An estate has a website and no phone yet, like a private chef.
+    final hasPhone = widget.venue.venueTypeWireValue == 'restaurant' ||
+        widget.venue.venueTypeWireValue == 'hotel';
     return Scaffold(
       backgroundColor: AppColors.warmWhite,
       appBar: AppBar(
@@ -509,11 +541,11 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
             FutureBuilder<VenueContact>(
               future: _contactFuture,
               builder: (context, snap) => _SectionRow(
-                title: isPrivateChef ? 'Website' : 'Website and phone',
+                title: hasPhone ? 'Website and phone' : 'Website',
                 summary: snap.hasData
                     ? VenueContactScreen.summary(
                         snap.data!,
-                        hasPhone: !isPrivateChef,
+                        hasPhone: hasPhone,
                       )
                     : null,
                 onTap: () => _open(
@@ -585,18 +617,19 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                 ),
               ),
             ),
-            FutureBuilder<List<VenueEvent>>(
-              future: _eventsFuture,
-              builder: (context, snap) => _SectionRow(
-                title: 'Events',
-                summary: snap.hasData
-                    ? VenueEventsScreen.summary(snap.data!, DateTime.now())
-                    : null,
-                onTap: () => _open(
-                  VenueEventsScreen(venue: widget.venue, repository: widget.eventsRepo),
+            if (_hasEvents)
+              FutureBuilder<List<VenueEvent>>(
+                future: _eventsFuture,
+                builder: (context, snap) => _SectionRow(
+                  title: 'Events',
+                  summary: snap.hasData
+                      ? VenueEventsScreen.summary(snap.data!, DateTime.now())
+                      : null,
+                  onTap: () => _open(
+                    VenueEventsScreen(venue: widget.venue, repository: widget.eventsRepo),
+                  ),
                 ),
               ),
-            ),
             FutureBuilder<VenueInviteLink>(
               future: _inviteFuture,
               builder: (context, snap) => _SectionRow(

@@ -13,6 +13,7 @@ String _publishedTableFor(String venueType) => switch (venueType) {
   'restaurant' => 'restaurant_photos',
   'hotel' => 'hotel_photos',
   'private_chef' => 'private_chef_photos',
+  'vineyard' => 'vineyard_photos',
   _ => throw ArgumentError('Unknown venue_type: $venueType'),
 };
 
@@ -20,6 +21,7 @@ String _venueColumnFor(String venueType) => switch (venueType) {
   'restaurant' => 'restaurant_id',
   'hotel' => 'hotel_id',
   'private_chef' => 'private_chef_id',
+  'vineyard' => 'vineyard_id',
   _ => throw ArgumentError('Unknown venue_type: $venueType'),
 };
 

@@ -487,3 +487,21 @@ Deno.test('an approved hotel claim reads the hotel view', async () => {
   assertEquals(fromCalls, ['hotels_full']);
   assertEquals(calls[0].subject, 'Welcome to Mantelier, Pulitzer Amsterdam');
 });
+
+Deno.test('an approved estate claim reads the vineyards view', async () => {
+  const { admin, fromCalls } = fakeAdmin({
+    venueTable: 'vineyards_full',
+    venue: { name: 'Test Estate' },
+  });
+  const { sendEmail, calls } = fakeSendEmail();
+  const estateClaim = { ...VALID_CLAIM, restaurant_id: undefined, vineyard_id: 'vineyard-1' };
+  const res = await handleRequest(
+    req({ body: { claim_type: 'claims_vineyards', event: 'approved', row: estateClaim } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 200);
+  assertEquals(fromCalls, ['vineyards_full']);
+  assertEquals(calls[0].subject, 'Welcome to Mantelier, Test Estate');
+});

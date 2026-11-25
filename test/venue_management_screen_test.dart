@@ -42,6 +42,7 @@ import 'package:michelin_passport/models/private_chef.dart';
 import 'package:michelin_passport/models/photo_framing.dart';
 import 'package:michelin_passport/models/published_venue_photo.dart';
 import 'package:michelin_passport/models/restaurant.dart';
+import 'package:michelin_passport/models/vineyard.dart';
 import 'package:michelin_passport/models/venue_about_submission.dart';
 import 'package:michelin_passport/models/venue_photo_submission_status.dart';
 import 'package:michelin_passport/models/venue_team_member.dart';
@@ -1414,6 +1415,39 @@ void _hostWelcomeTests() {
       final label = tester.getCenter(find.text('COMING SOON'));
       final screen = tester.getSize(find.byType(Scaffold).last);
       expect(label.dx, moreOrLessEquals(screen.width / 2, epsilon: 0.5));
+    });
+  });
+
+  group('VenueManagementScreen — a wine estate (20261101780000)', () {
+    const estate = ManagedVineyard(
+      Vineyard(
+        id: 'v1',
+        vineyardCode: 'vine_0001',
+        name: 'Test Estate',
+        countryCode: 'ES',
+        city: 'Laguardia',
+      ),
+    );
+
+    testWidgets('shows Profile, Website, Photos and the invite link, and no '
+        'Events, Team, Opening hours or Booking window yet', (tester) async {
+      await _pumpLanding(
+        tester,
+        _FakeVenueAboutRepository(currentText: 'Our vines.'),
+        venue: estate,
+      );
+      expect(find.text('Test Estate'), findsOneWidget);
+      expect(find.text('Laguardia · Vineyard'), findsOneWidget);
+      expect(find.text('Profile'), findsOneWidget);
+      expect(find.text('Website'), findsOneWidget);
+      expect(find.text('Website and phone'), findsNothing);
+      expect(find.text('Photos'), findsOneWidget);
+      await tester.scrollUntilVisible(find.text('Preview my page'), 200);
+      expect(find.text('Invite guests to follow'), findsOneWidget);
+      expect(find.text('Events'), findsNothing);
+      expect(find.text('Team'), findsNothing);
+      expect(find.text('Opening hours'), findsNothing);
+      expect(find.text('Booking window'), findsNothing);
     });
   });
 }

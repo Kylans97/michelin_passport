@@ -7,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'app.dart';
 import 'core/supabase/supabase_config.dart';
+import 'features/claims/pending_claim.dart';
 import 'features/invites/pending_invite.dart';
 import 'features/notifications/push_service.dart';
 import 'core/widgets/app_network_image.dart';
@@ -65,6 +66,9 @@ void main() async {
   // An invitation link that opened the app, or one kept from before a
   // restart, waits here until the member answers it (InviteLinkGate).
   unawaited(PendingInvite.instance.start());
+  // Likewise a mantelier.app/claim link from the website's venue guide
+  // (ClaimLinkGate).
+  unawaited(PendingClaim.instance.start());
 
   enableImageDiskCache();
   runApp(const TablePassportApp());

@@ -10,10 +10,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 const _restaurantsTable = 'follows_restaurants';
 const _hotelsTable = 'follows_hotels';
 const _privateChefsTable = 'follows_private_chefs';
+// Wine estates (20261101780000).
+const _vineyardsTable = 'follows_vineyards';
 
 const _restaurantColumn = 'restaurant_id';
 const _hotelColumn = 'hotel_id';
 const _privateChefColumn = 'private_chef_id';
+const _vineyardColumn = 'vineyard_id';
 
 /// Reads/writes the three dedicated `follows_*` tables. One type-safe
 /// repository with named per-entity methods, not three near-duplicate
@@ -131,6 +134,38 @@ class FollowRepository {
     userId: userId,
     entityColumn: _privateChefColumn,
     entityId: privateChefId,
+  );
+
+  // ── Wine estate ──────────────────────────────────────────────────────
+
+  Future<bool> isFollowingVineyard({
+    required String userId,
+    required String vineyardId,
+  }) => _isFollowing(
+    table: _vineyardsTable,
+    userId: userId,
+    entityColumn: _vineyardColumn,
+    entityId: vineyardId,
+  );
+
+  Future<void> followVineyard({
+    required String userId,
+    required String vineyardId,
+  }) => _follow(
+    table: _vineyardsTable,
+    userId: userId,
+    entityColumn: _vineyardColumn,
+    entityId: vineyardId,
+  );
+
+  Future<void> unfollowVineyard({
+    required String userId,
+    required String vineyardId,
+  }) => _unfollow(
+    table: _vineyardsTable,
+    userId: userId,
+    entityColumn: _vineyardColumn,
+    entityId: vineyardId,
   );
 
   // ── Shared implementation — identical shape across all three tables ────
