@@ -6,6 +6,34 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-25 — Mantelier Selection: Candeal (Marbella) and Onglet (Maastricht) (QA-563, QA-564)
+
+| | |
+|---|---|
+| Applied | 2026-11-25, to production, at the product owner's request ("Yes, apply"). One statement: both restaurants, their Selection entries and their cuisines |
+| Migration | None. Data SQL only |
+| Data file | `supabase/data/enrichment/editorial_selection/prepared_insert_20261125.sql`. Evidence: `candidates_20261125.csv` in the same folder |
+
+**Why.** The product owner chose both restaurants for the Selection on 2026-11-25.
+
+**Added.**
+- `rest_4216` Candeal, Plaza Blas Infante 1, 29601 Marbella. Address and phone from MICHELIN, matching Google; coordinates are Google's pin.
+- `rest_4217` Onglet, Wycker Brugstraat 27, 6221 EB Maastricht. Address, phone and website from the venue's own site, matching MICHELIN; coordinates are the BAG point.
+- Both are `editorial_selection` with `michelin_stars` NULL. Each is in the MICHELIN Guide without a star or Bib Gourmand, read 2026-11-25.
+- Cuisines from MICHELIN: Candeal is Creative (308) and Mediterranean Cuisine (392); Onglet is Modern Cuisine (395).
+- Place IDs were converted from the Google records' feature ids and opened back in Google Maps.
+
+**Before the write.** Highest code was 4215. No row shared a Place ID, phone or website. The only row within 150 m was Studio (`rest_0101`, Kesselskade 66), a different venue. Step 1 was checked with `explain` first.
+
+**Checked after the apply.** Both rows are in `editorial_selections` with `removed_on` NULL and `selected_on` 2026-11-25. `cuisine_id` was set from position 1.
+
+**Still open.**
+- QA-563: Google has one record for Onglet's shop and restaurant, categorised "Slagerij". Onglet's Instagram is not linked from its site and is left blank.
+- QA-564: Candeal's own site gives no address or phone.
+- Neither has photos yet.
+
+---
+
 # 2026-11-22 — MICHELIN Czechia 2027: four new Prague stars (QA-537–QA-539)
 
 | | |

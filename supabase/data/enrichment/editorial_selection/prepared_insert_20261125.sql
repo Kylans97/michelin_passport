@@ -2,7 +2,8 @@
 -- the editorial Selection. Values from candidates_20261125.csv in this
 -- folder. Requested by the product owner on 2026-11-25.
 --
--- NOT APPLIED. Written 2026-11-25. QA-563, QA-564.
+-- APPLIED 2026-11-25 (step 1), on the product owner's explicit go. Written
+-- 2026-11-25. QA-563, QA-564.
 --
 -- Run the checks in step 0 first and read their output. Step 1 is one
 -- statement: both restaurants, their Selection entries and their MICHELIN

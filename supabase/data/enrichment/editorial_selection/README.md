@@ -50,4 +50,4 @@ Tacite's Instagram (`tacite.amsterdam`) was supplied by the product owner on
 
 ## 2026-11-25: Candeal (Marbella), Onglet (Maastricht)
 
-`candidates_20261125.csv` and `prepared_insert_20261125.sql`, with Place IDs and MICHELIN cuisines. **Not applied yet.** Step 0 was read against production on 2026-11-25 and step 1 checked with `explain` (no rows written). QA-563, QA-564.
+`candidates_20261125.csv` and `prepared_insert_20261125.sql`, with Place IDs and MICHELIN cuisines. **Applied 2026-11-25** as `rest_4216` and `rest_4217`. Step 0 was read against production on 2026-11-25 and step 1 checked with `explain` (no rows written). QA-563, QA-564.
