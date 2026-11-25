@@ -14,9 +14,12 @@ Identity, never by name:
     identity: owner groups run one site for several classified châteaux
     (Lafite and Duhart-Milon, Léoville and Langoa Barton), and two entries
     on one list are always two estates.
-Display name: the official lists print family names in capitals
-("Château LATOUR"); the name shown is the same words in title case, and
-the printed form is kept in aliases for search.
+Display name: the estate's own spelling, read from its own site
+(names/own_names_*.csv; product owner, 2026-11-25: "use the estates own
+spelling"), used only when it is the same name as the official print once
+accents, case and punctuation are folded. Otherwise, or where the site gave
+none, the print in title case. The printed form is kept in aliases for
+search.
 Region: all Bordeaux (wr_0002); village = the commune the estate's address
 gives, matched to exactly one unit of the Bordeaux list.
 class_order sorts within a list (CLASS_ORDER); a printed class not in it
@@ -67,6 +70,16 @@ def display_name(printed):
     return ' '.join(word(w, i == 0) for i, w in enumerate(words))
 
 
+def own_names():
+    out = {}
+    for f in sorted(glob.glob(os.path.join(HERE, 'names', 'own_names_*.csv'))):
+        for r in csv.DictReader(open(f, encoding='utf-8')):
+            if r['own_name'].strip():
+                # One apostrophe for all names: the lists and sites mix ' and ’.
+                out[r['vineyard_code']] = (r['own_name'].strip().replace('’', "'"), r['source_url'])
+    return out
+
+
 def domain(url):
     host = urlparse(url or '').netloc.lower()
     return host[4:] if host.startswith('www.') else host
@@ -105,10 +118,18 @@ def main():
         by_key[key]['rows'].append(r)
         recs.append({**r, 'class_order': order, 'vineyard_code': by_key[key]['vineyard_code'], 'status': 'ok'})
 
+    owns = own_names()
     out = []
     for e in estates:
         r = e['rows'][0]
         name = display_name(r['official_name'])
+        name_note = 'print, title case'
+        own = owns.get(e['vineyard_code'])
+        if own and not e['existing']:
+            if fold(own[0]) == fold(r['official_name'].replace('’', "'")):
+                name, name_note = own[0], 'own spelling, ' + own[1]
+            else:
+                name_note = 'own spelling "' + own[0] + '" differs from the print beyond accents and case; print kept'
         printed = sorted({x['official_name'] for x in e['rows']} - {name})
         problems, checks = [], []
         village = ''
@@ -132,6 +153,7 @@ def main():
             'latitude': r['latitude'], 'longitude': r['longitude'], 'website_url': r['website_url'],
             'source_url': r['official_source_url'], 'village_id': village,
             'village_name': units[village]['lau_name'] if village else '',
+            'name_source': name_note,
             'research_status': ', '.join(sorted({x['verification_status'] for x in e['rows']})),
             'checks': '; '.join(checks), 'problems': '; '.join(problems),
         })

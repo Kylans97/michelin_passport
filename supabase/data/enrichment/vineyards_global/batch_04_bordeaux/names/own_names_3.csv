@@ -1,0 +1,48 @@
+vineyard_code,printed_name,own_name,source_url,note
+vine_0305,CLOS FOURTET,Clos Fourtet,https://www.closfourtet.com/,Page title and og:site_name; no Château prefix
+vine_0306,LA MONDOTTE,La Mondotte,https://www.neipperg.com/fr/chateaux/la-mondotte.html,Owner group (Neipperg) page for this estate; running text 'La Mondotte'; title in capitals
+vine_0307,Château BADETTE,,https://chateau-badette.com/,Site unreachable (connection timed out on https and http)
+vine_0308,Château BALESTARD LA TONNELLE,Château Balestard La Tonnelle,https://www.vignoblescapdemourlin.fr/en_GB,Owner group (Vignobles Capdemourlin) site; capital L in 'La Tonnelle' throughout
+vine_0309,Château BARDE-HAUT,Château Barde-Haut,https://www.chateaubardehaut.com/,Meta description; page title writes 'Chateau Barde-Haut' without accent; site behind unanswered age gate so little running text
+vine_0310,Château BELLEFONT-BELCIER,Château Bellefont-Belcier,https://www.vignoblesk.com/fr/nos-proprietes/chateau-bellefont-belcier.aspx,Owner group (Vignobles K) page; running text hyphenated; one alt text unhyphenated 'Château Bellefont Belcier'
+vine_0311,Château BELLEVUE,Château Bellevue,https://chateaubellevue.fr/mentions-legales/,Title and legal notice running text; company 'SC CHATEAU BELLEVUE' in capitals
+vine_0312,Château BERLIQUET,,,No website_url in input
+vine_0313,Château BOUTISSE,Château Boutisse,http://www.chateau-boutisse.fr/,Title and running text
+vine_0314,Château CADET-BON,Château Cadet-Bon,https://www.cadet-bon.com/,Title and running text hyphenated; og:site_name and meta description write 'Cadet Bon'
+vine_0315,Château CAP DE MOURLIN,Château Cap de Mourlin,https://www.vignoblescapdemourlin.fr/en_GB,Owner group (Vignobles Capdemourlin) site; family name written 'Capdemourlin' but estate 'Cap de Mourlin'
+vine_0316,Château CHAUVIN,Château Chauvin,https://www.chateauchauvin.com/,Running text; page title 'Chateau Chauvin' without accent
+vine_0317,Château CLOS DE SARPE,Château Clos de Sarpe,http://www.clos-de-sarpe.com/,Footer copyright beside Mentions légales; running text and logo alt agree; page title and og:site_name write 'Château Clos de Sarpes'
+vine_0318,Château CORBIN,Château Corbin,https://www.chateau-corbin.com/,Title and running text
+vine_0319,Château CORBIN MICHOTTE,Château Corbin Michotte,https://chateau-corbinmichotte.com/,Title and address block; site in maintenance but name text present; no hyphen
+vine_0320,Château COTE DE BALEAU,Château Côte de Baleau,http://www.cotedebaleau.com/,Holding page shared with Cuvelier family estates; logo alt 'Château Côte de Baleau' and running text 'Côte de Baleau'; page title unaccented 'Cote de Baleau'
+vine_0321,Château CROIX DE LABRIE,Château Croix de Labrie,https://www.chateau-croix-de-labrie.fr/,Meta description and alt texts; title and site_name omit Château
+vine_0322,Château DASSAULT,Château Dassault,https://www.dassaultwineestates.com/chateau-dassault/,Owner group (Dassault Wine Estates) page for this estate; title and running text
+vine_0323,Château DE FERRAND,Château de Ferrand,https://www.chateaudeferrand.com/,Title and og:site_name; lowercase 'de'
+vine_0324,Château DE PRESSAC,Château de Pressac,https://chateaudepressac.com/,Title and og:site_name; lowercase 'de'
+vine_0325,Château DESTIEUX,Château Destieux,https://chateau-destieux.com/,Title and running text
+vine_0326,Château FAUGERES,Château Faugères,https://www.vignobles-silvio-denz.com/,Owner group (Vignobles Silvio Denz) site; title form; elsewhere styled 'Château FAUGÈRES' in capitals
+vine_0327,Château FLEUR CARDINALE,Château Fleur Cardinale,https://lamaisoncardinale.com/,Owner site La Maison Cardinale; navigation and 'Château Fleur Cardinale DÉCOUVRIR' block
+vine_0328,Château FOMBRAUGE,Château Fombrauge,https://www.chateau-fombrauge.fr/,Title and address block; og:site_name unaccented 'Chateau Fombrauge'
+vine_0329,Château FONPLEGADE,Château Fonplégade,https://www.fonplegade.com/Home,Running text and footer copyright on Home page; splash page title writes 'Chateau Fonplegade' without accents
+vine_0330,Château FONROQUE,Château Fonroque,https://chateaufonroque.net/,Title and running text
+vine_0331,Château FRANC MAYNE,Château Franc Mayne,https://www.chateaufrancmayne.com/,Title and running text; no hyphen
+vine_0332,Château GRAND CORBIN,Château Grand Corbin,https://grand-corbin.com/,Title; og:site_name and logo alt style it 'Château GRAND CORBIN'
+vine_0333,Château GRAND CORBIN-DESPAGNE,Château Grand Corbin-Despagne,https://www.grand-corbin-despagne.com/,Page title; social alt texts write 'Grand Corbin Despagne' unhyphenated
+vine_0334,Château GRAND MAYNE,Château Grand Mayne,https://grand-mayne.com/,"Title, logo alt and footer copyright"
+vine_0335,Château GUADET,,,No website_url in input
+vine_0336,Château HAUT-SARPE,Château Haut-Sarpe,https://www.josephjanoueix.com/chateau-haut-sarpe-42.html,Owner group (Joseph Janoueix) page for this estate; title and running text
+vine_0337,Château JEAN FAURE,Château Jean Faure,https://www.jeanfaure.com/,"Title, logo alt and running text"
+vine_0338,Château LA COMMANDERIE,Château La Commanderie,https://mtdecoster.com/nos-proprietes/,Owner group (MT Decoster) page; running sentence writes 'Château La Commanderie'; navigation and product lists write 'Château la Commanderie'
+vine_0339,Château LA CONFESSION,Château La Confession,https://jpjdomaines.com/fr/,Owner group (Jean-Philippe Janoueix Domaines) home page; property list and address
+vine_0340,Château LA COUSPAUDE,Château La Couspaude,https://chateau-la-couspaude.com/fr/,Title and og:title
+vine_0341,Château LA CROIZILLE,Château La Croizille,https://chateaulacroizille.com/,Title and running text
+vine_0342,Château LA DOMINIQUE,Château la Dominique,https://www.chateau-ladominique.com/mentions-legales/,Legal notice page title and site title/og:site_name use lowercase 'la'; running text and meta description write 'Château La Dominique'
+vine_0343,Château LA FLEUR MORANGE,La Fleur Morange,https://www.lafleurmorange.club/,Heading and site name 'La Fleur Morange'; site never writes 'Château La Fleur Morange' as one phrase; whether Château belongs to the name not confirmed
+vine_0344,Château LA MARZELLE,Château La Marzelle,https://lamarzelle.com/fr,og:title and running text; page title unaccented 'Chateau La Marzelle'
+vine_0345,Château LA SERRE,Château La Serre,http://www.chateaulaserre.com/fr/,Title and running text
+vine_0346,Château LA TOUR FIGEAC,,,No website_url in input
+vine_0347,Château LANIOTE,Château Laniote,https://laniote.com/,Title and legal notice line; contact block styles 'Château LANIOTE'
+vine_0348,Château LARMANDE,Château Larmande,https://chateau-larmande.fr/,Running text and Facebook label; footer copyright and og:site_name unaccented 'Chateau Larmande'
+vine_0349,Château LAROQUE,Château Laroque,https://www.chateau-laroque.com/,Title and og:site_name
+vine_0350,Château LAROZE,Château Laroze,https://laroze.com/,"Title, og:site_name and running text"
+vine_0351,Château LE CHATELET,Château Le Châtelet,https://chateau-le-chatelet.com/histoire-du-chateau/,Running text and footer copyright on history page; site title writes 'Château Le Chatelet' without circumflex; running text also has 'Château le Châtelet'
