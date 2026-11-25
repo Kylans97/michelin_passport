@@ -428,7 +428,10 @@ export async function handleRequest(req: Request, deps: Deps): Promise<Response>
   // Admin and two-step first; nothing below runs for anyone else.
   const check = await deps.checkAdmin(jwt, days);
   if (!check.ok) {
-    if (check.error === 'failed') return jsonResponse({ error: 'failed', message: check.message }, 502);
+    if (check.error === 'failed') {
+      console.error('studio-web-analytics: admin check', check.message);
+      return jsonResponse({ error: 'failed' }, 502);
+    }
     return jsonResponse({ error: check.error }, 403);
   }
 
@@ -479,7 +482,10 @@ Deno.serve((req) => {
     const { data, error } = await asCaller.rpc('admin_studio_website_report', { p_days: days });
     if (error) {
       if (error.message.includes('mfa_required')) return { ok: false, error: 'mfa_required' };
-      if (error.message.includes('not_admin')) return { ok: false, error: 'not_admin' };
+      // A caller without a session lacks execute on the report itself.
+      if (error.message.includes('not_admin') || error.message.includes('permission denied')) {
+        return { ok: false, error: 'not_admin' };
+      }
       return { ok: false, error: 'failed', message: error.message };
     }
     return { ok: true, signIns: data as SignInNumbers };
