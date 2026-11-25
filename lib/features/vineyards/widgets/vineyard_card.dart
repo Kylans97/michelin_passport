@@ -15,18 +15,35 @@ class VineyardCard extends StatelessWidget {
   final Vineyard vineyard;
   final VoidCallback onTap;
 
-  const VineyardCard({super.key, required this.vineyard, required this.onTap});
+  /// The big claret figure on the left: the 50 Best rank by default; a
+  /// classification section passes an empty one.
+  final String? marker;
+
+  /// A line under where the estate is, in claret: its class in a
+  /// classification section ("Premier Cru").
+  final String? note;
+
+  const VineyardCard({
+    super.key,
+    required this.vineyard,
+    required this.onTap,
+    this.marker,
+    this.note,
+  });
 
   @override
   Widget build(BuildContext context) {
     final rank = vineyard.worlds50BestRank;
-    final where = vineyard.regionLine;
+    final figure = marker ?? (rank == null ? '' : '$rank');
+    // In a classification list every estate shares the region, so the
+    // village tells them apart.
+    final where = note != null ? vineyard.villageLine : vineyard.regionLine;
     return Semantics(
       button: true,
       label: [
         vineyard.name,
         if (where.isNotEmpty) where,
-        ?vineyard.rankLabel,
+        if (note != null) note! else ?vineyard.rankLabel,
       ].join(', '),
       excludeSemantics: true,
       child: Material(
@@ -50,15 +67,19 @@ class VineyardCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 44,
-                  child: Text(
-                    rank == null ? '' : '$rank',
-                    style: CsTypography.placeTitle.copyWith(
-                      color: AppColors.claret,
+                // The rank column only where there is a rank: a
+                // classification list has none, so its names start at the
+                // card's edge.
+                if (figure.isNotEmpty)
+                  SizedBox(
+                    width: 44,
+                    child: Text(
+                      figure,
+                      style: CsTypography.placeTitle.copyWith(
+                        color: AppColors.claret,
+                      ),
                     ),
                   ),
-                ),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -75,6 +96,15 @@ class VineyardCard extends StatelessWidget {
                           where,
                           style: CsTypography.metadata.copyWith(
                             color: AppColors.taupe,
+                          ),
+                        ),
+                      ],
+                      if (note != null) ...[
+                        const SizedBox(height: 2),
+                        Text(
+                          note!,
+                          style: CsTypography.metadata.copyWith(
+                            color: AppColors.claret,
                           ),
                         ),
                       ],

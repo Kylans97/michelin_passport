@@ -7,15 +7,21 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/vineyard_repository.dart';
 import '../../models/vineyard.dart';
+import '../../models/vineyard_recognition.dart';
 import 'vineyard_detail_screen.dart';
 import 'widgets/vineyard_card.dart';
 
-/// Wine Estates — the collection of vineyards, the same masthead-over-ivory
-/// shape as [JourneysScreen]. Only recognised estates, The World's 50 Best
-/// Vineyards in rank order, and nothing else: no search, sort or badge.
-/// Every other estate is found through search (product owner, 2026-11-24).
+/// Wine Estates — one recognised list of estates, the same
+/// masthead-over-ivory shape as [JourneysScreen]. Without a [scheme], The
+/// World's 50 Best Vineyards in rank order (Guides, under The World's 50
+/// Best); with one, that official classification in class order, the class
+/// under each estate (Guides, Bordeaux Classifications; product owner,
+/// 2026-11-25). No search, sort or badge; every other estate is found
+/// through search.
 class VineyardsScreen extends StatefulWidget {
-  const VineyardsScreen({super.key});
+  const VineyardsScreen({super.key, this.scheme});
+
+  final RecognitionScheme? scheme;
 
   @override
   State<VineyardsScreen> createState() => _VineyardsScreenState();
@@ -23,7 +29,7 @@ class VineyardsScreen extends StatefulWidget {
 
 class _VineyardsScreenState extends State<VineyardsScreen> {
   late final _repo = VineyardRepository(Supabase.instance.client);
-  List<Vineyard>? _vineyards;
+  List<EstateCollectionEntry>? _entries;
   bool _loading = true;
   bool _error = false;
 
@@ -39,10 +45,30 @@ class _VineyardsScreenState extends State<VineyardsScreen> {
       _error = false;
     });
     try {
-      final vineyards = await _repo.getRecognised();
+      final scheme = widget.scheme;
+      final List<EstateCollectionEntry> entries;
+      if (scheme == null) {
+        entries = [
+          for (final v in await _repo.getRecognised())
+            EstateCollectionEntry(
+              vineyard: v,
+              marker: '${v.worlds50BestRank ?? ''}',
+            ),
+        ];
+      } else {
+        final recognitions = await _repo.getRecognitions(scheme: scheme.code);
+        final estates = await _repo.loadByIds([
+          for (final r in recognitions) r.vineyardId,
+        ]);
+        entries = classifiedEstates(
+          scheme: scheme.code,
+          recognitions: recognitions,
+          byId: {for (final v in estates) v.id: v},
+        );
+      }
       if (!mounted) return;
       setState(() {
-        _vineyards = vineyards;
+        _entries = entries;
         _loading = false;
       });
     } catch (_) {
@@ -61,12 +87,17 @@ class _VineyardsScreenState extends State<VineyardsScreen> {
     ),
   );
 
-  /// "The World's 50 Best Vineyards 2025", from the data itself, so the
-  /// heading never claims an edition the list doesn't hold.
+  String get _title => widget.scheme?.label ?? 'Wine Estates';
+
+  /// The classification's own line, or "The World's 50 Best Vineyards
+  /// 2026." from the data, so it never claims an edition the list doesn't
+  /// hold.
   String get _subtitle {
+    final scheme = widget.scheme;
+    if (scheme != null) return scheme.descriptor;
     final years = {
-      for (final v in _vineyards ?? const <Vineyard>[])
-        if (v.worlds50BestYear != null) v.worlds50BestYear!,
+      for (final e in _entries ?? const <EstateCollectionEntry>[])
+        ?e.vineyard.worlds50BestYear,
     };
     return years.length == 1
         ? "The World's 50 Best Vineyards ${years.single}."
@@ -103,7 +134,7 @@ class _VineyardsScreenState extends State<VineyardsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Wine Estates',
+                        _title,
                         style: CsTypography.screenTitle.copyWith(
                           color: AppColors.ivory,
                         ),
@@ -152,8 +183,8 @@ class _VineyardsScreenState extends State<VineyardsScreen> {
         ),
       );
     }
-    final vineyards = _vineyards ?? const <Vineyard>[];
-    if (vineyards.isEmpty) {
+    final entries = _entries ?? const <EstateCollectionEntry>[];
+    if (entries.isEmpty) {
       return Center(
         child: Text(
           'Nothing here yet.',
@@ -168,11 +199,13 @@ class _VineyardsScreenState extends State<VineyardsScreen> {
         CsSpacing.pageHorizontal,
         CsSpacing.section,
       ),
-      itemCount: vineyards.length,
+      itemCount: entries.length,
       separatorBuilder: (_, _) => const SizedBox(height: CsSpacing.base),
       itemBuilder: (_, i) => VineyardCard(
-        vineyard: vineyards[i],
-        onTap: () => _open(vineyards[i]),
+        vineyard: entries[i].vineyard,
+        marker: entries[i].marker,
+        note: entries[i].note,
+        onTap: () => _open(entries[i].vineyard),
       ),
     );
   }

@@ -1,0 +1,163 @@
+vineyard_code,official_name,scheme,class,class_order,edition,official_source_url,status
+vine_0207,Château LAFITE-ROTHSCHILD,bordeaux_1855_medoc,Premier Cru,1,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0208,Château LATOUR,bordeaux_1855_medoc,Premier Cru,1,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0209,Château MARGAUX,bordeaux_1855_medoc,Premier Cru,1,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0096,Château MOUTON ROTHSCHILD,bordeaux_1855_medoc,Premier Cru,1,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0210,Château HAUT-BRION,bordeaux_1855_medoc,Premier Cru,1,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0211,Château RAUZAN-SEGLA,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0212,Château RAUZAN-GASSIES,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0213,Château LEOVILLE-POYFERRE,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0214,Château LEOVILLE BARTON,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+,Château DURFORT-VIVENS,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,held_back
+vine_0215,Château GRUAUD LAROSE,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0216,Château LASCOMBES,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0217,Château BRANE-CANTENAC,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0042,Château PICHON BARON,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0218,Château PICHON LONGUEVILLE COMTESSE DE LALANDE,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0219,Château DUCRU-BEAUCAILLOU,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0220,Château COS D’ESTOURNEL,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0221,Château MONTROSE,bordeaux_1855_medoc,Second Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0222,Château KIRWAN,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0223,Château D’ISSAN,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0224,Château LAGRANGE,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0225,Château LANGOA BARTON,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+,Château GISCOURS,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,held_back
+vine_0226,Château MALESCOT SAINT-EXUPERY,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0227,Château BOYD-CANTENAC,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0228,Château CANTENAC BROWN,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0101,Château PALMER,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0229,Château LA LAGUNE,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0230,Château DESMIRAIL,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0231,Château CALON SEGUR,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0232,Château FERRIERE,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0233,Château MARQUIS D’ALESME BECKER,bordeaux_1855_medoc,Troisième Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/,ok
+vine_0234,Château SAINT-PIERRE,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-saint-pierre,ok
+vine_0235,Château TALBOT,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-talbot,ok
+vine_0236,Château BRANAIRE-DUCRU,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-branaire-ducru,ok
+vine_0237,Château DUHART-MILON,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-duhart-milon,ok
+vine_0238,Château POUGET,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-pouget,ok
+vine_0239,Château LA TOUR CARNET,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-la-tour-carnet,ok
+vine_0240,Château LAFON-ROCHET,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-lafon-rochet,ok
+vine_0241,Château BEYCHEVELLE,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-beychevelle,ok
+vine_0242,Château PRIEURE-LICHINE,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-prieure-lichine,ok
+vine_0243,Château MARQUIS DE TERME,bordeaux_1855_medoc,Quatrième Cru,4,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-marquis-de-terme,ok
+vine_0244,Château PONTET-CANET,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-pontet-canet,ok
+vine_0245,Château BATAILLEY,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-batailley,ok
+vine_0246,Château HAUT-BATAILLEY,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-haut-batailley,ok
+vine_0247,Château GRAND-PUY-LACOSTE,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-grand-puy-lacoste,ok
+vine_0248,Château GRAND-PUY DUCASSE,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-grand-puy-ducasse,ok
+vine_0249,Château LYNCH-BAGES,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-lynch-bages,ok
+vine_0250,Château LYNCH-MOUSSAS,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-lynch-moussas,ok
+vine_0251,Château DAUZAC,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-dauzac,ok
+vine_0252,Château D’ARMAILHAC,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-darmailhac,ok
+vine_0253,Château DU TERTRE,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-du-tertre,ok
+vine_0254,Château HAUT-BAGES LIBERAL,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-haut-bages-liberal,ok
+vine_0255,Château PEDESCLAUX,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-pedesclaux,ok
+vine_0256,Château BELGRAVE,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-belgrave,ok
+vine_0257,Château de CAMENSAC,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-de-camensac,ok
+vine_0258,Château COS LABORY,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-cos-labory,ok
+vine_0259,Château CLERC MILON,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-clerc-milon,ok
+vine_0260,Château CROIZET-BAGES,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-croizet-bages,ok
+vine_0261,Château CANTEMERLE,bordeaux_1855_medoc,Cinquième Cru,5,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-cantemerle,ok
+vine_0009,Château d’YQUEM,bordeaux_1855_sauternes,Premier Cru Supérieur,1,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-dyquem,ok
+vine_0262,Château LA TOUR BLANCHE,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-la-tour-blanche,ok
+vine_0263,Château LAFAURIE-PEYRAGUEY,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-lafaurie-peyraguey,ok
+vine_0264,Clos HAUT-PEYRAGUEY,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#clos-haut-peyraguey,ok
+vine_0265,Château de RAYNE-VIGNEAU,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-de-rayne-vigneau,ok
+vine_0266,Château SUDUIRAUT,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-suduiraut,ok
+vine_0267,Château COUTET,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-coutet,ok
+vine_0268,Château CLIMENS,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-climens,ok
+vine_0269,Château GUIRAUD,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-guiraud,ok
+vine_0270,Château RIEUSSEC,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-rieussec,ok
+vine_0271,Château RABAUD-PROMIS,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-rabaud-promis,ok
+vine_0272,Château SIGALAS-RABAUD,bordeaux_1855_sauternes,Premier Cru,2,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-sigalas-rabaud,ok
+vine_0273,Château de MYRAT,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-de-myrat,ok
+vine_0274,Château DOISY DAËNE,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-doisy-daene,ok
+vine_0275,Château DOISY-DUBROCA,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-doisy-dubroca,ok
+,Château DOISY-VEDRINES,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-doisy-vedrines,held_back
+vine_0276,Château d’ARCHE,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-darche,ok
+vine_0277,Château FILHOT,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-filhot,ok
+vine_0278,Château BROUSTET,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-broustet,ok
+,Château NAIRAC,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-nairac,held_back
+vine_0279,Château CAILLOU,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-caillou,ok
+,Château SUAU,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-suau,held_back
+,Château de MALLE,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-de-malle,held_back
+vine_0280,Château ROMER,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-romer,ok
+vine_0281,Château ROMER-DU-HAYOT,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-romer-du-hayot,ok
+vine_0282,Château LAMOTHE,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-lamothe,ok
+vine_0283,Château LAMOTHE-GUIGNARD,bordeaux_1855_sauternes,Second Cru,3,1855,https://gcc-1855.fr/classement-grands-crus-classes-1855/#chateau-lamothe-guignard,ok
+vine_0210,Château Haut-Brion,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0284,Château Bouscaut,graves_1959,Cru Classé de Graves (rouge et blanc),1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0285,Château Carbonnieux,graves_1959,Cru Classé de Graves (rouge et blanc),1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0103,Domaine De Chevalier,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0286,Château Couhins,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0287,Château Couhins-Lurton,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0288,Château De Fieuzal,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0090,Château Haut-Bailly,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0289,Château Latour-Martillac,graves_1959,Cru Classé de Graves (rouge et blanc),1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0290,Château Malartic-Lagravière,graves_1959,Cru Classé de Graves (rouge et blanc),1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0291,Château La Mission Haut-Brion,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0292,Château Olivier,graves_1959,Cru Classé de Graves (rouge et blanc),1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0014,Château Pape-Clément,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+vine_0008,Château Smith Haut Lafitte,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,ok
+,Château Laville Haut-Brion,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,held_back
+,Château La Tour Haut-Brion,graves_1959,Cru Classé de Graves,1,1959,https://www.pessac-leognan.com/les-crus-classes-de-graves/,held_back
+vine_0293,Château FIGEAC,saint_emilion,Premier Grand Cru Classé A,1,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0294,Château PAVIE,saint_emilion,Premier Grand Cru Classé A,1,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0295,Château BEAU-SEJOUR BECOT,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0296,Château BEAUSEJOUR HERITIERS DUFFAU LAGARROSSE,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0297,Château BELAIR MONANGE,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0298,Château CANON,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0299,Château CANON LA GAFFELIERE,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0300,Château LARCIS DUCASSE,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0301,Château PAVIE MACQUIN,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0302,Château TROPLONG MONDOT,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0303,Château TROTTEVIEILLE,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0304,Château VALANDRAUD,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0305,CLOS FOURTET,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0306,LA MONDOTTE,saint_emilion,Premier Grand Cru Classé B,2,2022,https://www.inao.gouv.fr/sites/default/files/2024-10/CP_Classement%20St%20Emilion_08%2009%202022.pdf,ok
+vine_0307,Château BADETTE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0308,Château BALESTARD LA TONNELLE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0309,Château BARDE-HAUT,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0310,Château BELLEFONT-BELCIER,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0311,Château BELLEVUE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0312,Château BERLIQUET,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0313,Château BOUTISSE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0314,Château CADET-BON,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0315,Château CAP DE MOURLIN,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0316,Château CHAUVIN,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0317,Château CLOS DE SARPE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0318,Château CORBIN,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0319,Château CORBIN MICHOTTE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0320,Château COTE DE BALEAU,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0321,Château CROIX DE LABRIE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0322,Château DASSAULT,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0323,Château DE FERRAND,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0324,Château DE PRESSAC,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0325,Château DESTIEUX,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0326,Château FAUGERES,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0327,Château FLEUR CARDINALE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0328,Château FOMBRAUGE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0329,Château FONPLEGADE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0330,Château FONROQUE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0331,Château FRANC MAYNE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0332,Château GRAND CORBIN,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0333,Château GRAND CORBIN-DESPAGNE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0334,Château GRAND MAYNE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0335,Château GUADET,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0336,Château HAUT-SARPE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0337,Château JEAN FAURE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0338,Château LA COMMANDERIE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0339,Château LA CONFESSION,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0340,Château LA COUSPAUDE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0341,Château LA CROIZILLE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0342,Château LA DOMINIQUE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0343,Château LA FLEUR MORANGE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0344,Château LA MARZELLE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0345,Château LA SERRE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0346,Château LA TOUR FIGEAC,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0347,Château LANIOTE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0348,Château LARMANDE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0349,Château LAROQUE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0350,Château LAROZE,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok
+vine_0351,Château LE CHATELET,saint_emilion,Grand Cru Classé,3,2022,https://www.inao.gouv.fr/saint-emilion-grand-cru-classement-prochaine-decennie,ok

@@ -1,0 +1,50 @@
+vineyard_code,printed_name,own_name,source_url,note
+vine_0207,Château LAFITE-ROTHSCHILD,Château Lafite Rothschild,https://www.lafite.com/domaines/chateau-lafite-rothschild/,"Page title, H1 and menu all write it without hyphen; hyphen only in URL slug. Homepage is the DBR (Lafite) group site."
+vine_0208,Château LATOUR,,https://www.chateau-latour.com/,Site unreachable by fetcher (blocked); left blank.
+vine_0209,Château MARGAUX,Château Margaux,https://www.chateau-margaux.com/,Page title and running text.
+vine_0210,Château HAUT-BRION,Château Haut-Brion,https://www.haut-brion.com/,Running text; page title uses short form 'Haut-Brion'; logo has empty alt.
+vine_0211,Château RAUZAN-SEGLA,,https://www.chateaurauzansegla.com/,Site returned HTTP 403 (homepage and /fr/); left blank.
+vine_0212,Château RAUZAN-GASSIES,Château Rauzan-Gassies,https://www.domaines-quie.com/,Owner group site (Domaines Quié): menu link and footer heading for this estate.
+vine_0213,Château LEOVILLE-POYFERRE,Château Léoville Poyferré,https://www.leoville-poyferre.fr/,"Page title, headings, running text and footer all write it without hyphen."
+vine_0214,Château LEOVILLE BARTON,Château Léoville Barton,https://www.leoville-barton.com/fr/mentions-legales,Legal notice: 'SAS Château Léoville Barton'; page title same form.
+vine_0215,Château GRUAUD LAROSE,Château Gruaud Larose,https://www.gruaud-larose.com/,"Page title, logo alt 'Logo Château Gruaud Larose', footer address; no hyphen."
+vine_0216,Château LASCOMBES,Château Lascombes,https://www.chateau-lascombes.com/,Site name and footer; one image alt has unaccented 'Chateau Lascombes'.
+vine_0217,Château BRANE-CANTENAC,Château Brane-Cantenac,https://www.brane-cantenac.com/,Page title only (rest of page not in fetched text).
+vine_0218,Château PICHON LONGUEVILLE COMTESSE DE LALANDE,Château Pichon Longueville Comtesse de Lalande,https://www.pichon-comtesse.com/en/mentions-legales,"Legal notice form. Variants: header 'Comtesse De Lalande', page title unaccented 'Chateau', short form 'Pichon Comtesse'."
+vine_0219,Château DUCRU-BEAUCAILLOU,Château Ducru-Beaucaillou,https://www.chateau-ducru-beaucaillou.com/,Page title and logo alt. Company in copyright written 'Ducru Beaucaillou SA' (no hyphen).
+vine_0220,Château COS D’ESTOURNEL,Château Cos d'Estournel,https://www.estournel.com/,"Footer address block (straight apostrophe). Title and copyright use 'Cos d’Estournel' (curly apostrophe, no Château)."
+vine_0221,Château MONTROSE,Château Montrose,https://www.chateau-montrose.com/,"Page title, logo alt, running text, footer."
+vine_0222,Château KIRWAN,Château Kirwan,https://www.chateau-kirwan.com/,Page title and running text (also /le-domaine/).
+vine_0223,Château D’ISSAN,Château d'Issan,https://www.chateau-issan.com/,"Title and running text use curly apostrophe 'Château d’Issan'; footer logo alt uses straight apostrophe. Lowercase d."
+vine_0224,Château LAGRANGE,Château Lagrange,https://chateau-lagrange.com/,Page title and running text.
+vine_0225,Château LANGOA BARTON,Château Langoa Barton,https://www.langoa-barton.com/,"Input URL (leoville-barton.com) does not mention Langoa; the estate's own site langoa-barton.com used: title and running text."
+vine_0226,Château MALESCOT SAINT-EXUPERY,Château Malescot Saint-Exupéry,https://www.malescot.com/,"Page title, H1, logo alt. One image alt 'Malescot Saint Exupéry' (no hyphen)."
+vine_0227,Château BOYD-CANTENAC,Château Boyd-Cantenac,https://boyd-cantenac.fr/,Page title and logo alt. Copyright line writes '© 2026 Château Boyd Cantenac' (no hyphen).
+vine_0228,Château CANTENAC BROWN,Château Cantenac Brown,https://www.cantenacbrown.com/,Page title and H1.
+vine_0229,Château LA LAGUNE,Château La Lagune,https://chateau-lalagune.com/,Page title and headings: capital 'La'. Copyright 'CHATEAU LA LAGUNE' (caps).
+vine_0230,Château DESMIRAIL,Château Desmirail,https://www.desmirail.com/,"Title, logo alt, footer; copyright '© SCEA Château Desmirail'."
+vine_0231,Château CALON SEGUR,Château Calon Ségur,https://www.calon-segur.fr/,Page title and running text; no hyphen.
+vine_0232,Château FERRIERE,,https://www.gc-lurton-estates.com/en/chateau-ferriere.html,"Owner group site is inconsistent: title/H1/menu 'Château Ferriere' (no accent), body text also 'Château Ferrière'. No legal notice found to settle it; left blank."
+vine_0233,Château MARQUIS D’ALESME BECKER,Château Marquis d'Alesme,https://www.marquisdalesme.wine/mentions-legales/,"Legal notice writes 'Château Marquis d’Alesme' (curly apostrophe); 'Becker' appears nowhere in text. Page title 'Marquis d'Alesme'. Company: SC Château Labégorce."
+vine_0234,Château SAINT-PIERRE,,http://www.domaines-henri-martin.com,Connection refused (same server as Talbot); left blank.
+vine_0235,Château TALBOT,,http://www.chateau-talbot.com,Connection refused; left blank.
+vine_0236,Château BRANAIRE-DUCRU,Château Branaire-Ducru,https://www.branaire.com/,"Page title, footer logo alt, footer. Title also has 'Branaire Ducru' (no hyphen) once."
+vine_0237,Château DUHART-MILON,Château Duhart-Milon,https://www.lafite.com/domaines/chateau-duhart-milon/,"Owner group (DBR Lafite) page: title, H1, menu."
+vine_0238,Château POUGET,Château Pouget,https://www.chateau-pouget.com/,"Footer '© Château Pouget'; running text 'CHATEAU POUGET' in caps. Page title wrongly reads 'Chateau Boyd-Cantenac' (shared owner)."
+vine_0239,Château LA TOUR CARNET,Château La Tour Carnet,https://www.chateau-latourcarnet.fr/,"Page title, H1, footer; capital 'La'."
+vine_0240,Château LAFON-ROCHET,Château Lafon-Rochet,https://www.lafon-rochet.com/,"Title, headings, footer. Image alts 'Lafon Rochet' (no hyphen)."
+vine_0241,Château BEYCHEVELLE,Château Beychevelle,https://www.beychevelle.com/,Running text.
+vine_0242,Château PRIEURE-LICHINE,Château Prieuré-Lichine,https://prieure-lichine.fr/,Header and running text. One menu item 'Prieuré Lichine' (no hyphen).
+vine_0243,Château MARQUIS DE TERME,Château Marquis de Terme,https://chateau-marquis-de-terme.com/,"Page title, logo alt, footer address."
+vine_0244,Château PONTET-CANET,Château Pontet-Canet,https://www.pontet-canet.com/,Page title and running text.
+vine_0245,Château BATAILLEY,Château Batailley,https://batailley.com/,Title and running text; footer 'Château batailley' (lowercase b).
+vine_0246,Château HAUT-BATAILLEY,Château Haut-Batailley,https://hautbatailley.com/,Page title only ('Bienvenue au Château Haut-Batailley').
+vine_0247,Château GRAND-PUY-LACOSTE,Château Grand-Puy-Lacoste,https://www.chateau-grand-puy-lacoste.com/fr_FR/,"Title, heading, footer address. Home link text 'Château Grand Puy Lacoste' (no hyphens)."
+vine_0248,Château GRAND-PUY DUCASSE,,http://www.cagrandscrus.com,TLS certificate mismatch (OVH hosting cert); page not read; left blank.
+vine_0249,Château LYNCH-BAGES,Château Lynch-Bages,https://www.lynchbages.com/,Page title and running text. Footer 'Chateau Lynch bages'.
+vine_0250,Château LYNCH-MOUSSAS,Château Lynch-Moussas,https://www.lynch-moussas.com/,"Running text (hyphen). Page title and cookie logo alt 'Château Lynch Moussas' (no hyphen)."
+vine_0251,Château DAUZAC,Château Dauzac,https://www.chateaudauzac.com/,Footer 'Château Dauzac 2026' and running text. Page title stylises 'Château DAUZAC'.
+vine_0252,Château D’ARMAILHAC,Château d'Armailhac,https://www.chateau-darmailhac.com/,Page title and running text (straight apostrophe); copyright uses curly 'Château d’Armailhac'. Lowercase d.
+vine_0253,Château DU TERTRE,Château du Tertre,https://www.chateaudutertre.fr/,"Page title, logo alt, copyright."
+vine_0254,Château HAUT-BAGES LIBERAL,Château Haut-Bages Libéral,https://www.gc-lurton-estates.com/en/chateau-haut-bages-liberal.html,"Owner group site: title, H1, footer accented. Some tasting/experience text has 'Liberal' or 'Chateau' unaccented."
+vine_0255,Château PEDESCLAUX,Château Pédesclaux,https://www.chateau-pedesclaux.com/,"Page title, H1, menu, running text. Image alts and footer unaccented 'Pedesclaux'."

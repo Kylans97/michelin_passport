@@ -16,6 +16,11 @@ class Vineyard {
   /// The wine region as the list prints it ("Douro Valley").
   final String? region;
 
+  /// The village (`vineyards_full.commune_name`, 20261101740000): the unit
+  /// of the region's official commune list that holds the estate. Null in a
+  /// one-unit region, or where the village is not known.
+  final String? communeName;
+
   /// The town or village of the cellar door.
   final String? city;
   final String? address;
@@ -37,6 +42,7 @@ class Vineyard {
     this.countryName,
     this.flagEmoji,
     this.region,
+    this.communeName,
     this.city,
     this.address,
     this.latitude,
@@ -55,6 +61,7 @@ class Vineyard {
     countryName: map['country_name'] as String?,
     flagEmoji: map['flag_emoji'] as String?,
     region: map['region'] as String?,
+    communeName: map['commune_name'] as String?,
     city: map['city'] as String?,
     address: map['address'] as String?,
     latitude: (map['latitude'] as num?)?.toDouble(),
@@ -68,6 +75,17 @@ class Vineyard {
   bool get isPermanentlyClosed => status == 'permanently_closed';
 
   /// "Douro Valley, Portugal" — the region when known, then the country.
+  /// "Pauillac, France" — the village when known, else [regionLine]. What a
+  /// classification list shows, where every estate shares the region.
+  String get villageLine {
+    final village = (communeName ?? '').trim();
+    if (village.isEmpty) return regionLine;
+    return [
+      village,
+      if ((countryName ?? '').trim().isNotEmpty) countryName!.trim(),
+    ].join(', ');
+  }
+
   String get regionLine => [
     if ((region ?? '').trim().isNotEmpty) region!.trim(),
     if ((countryName ?? '').trim().isNotEmpty) countryName!.trim(),
