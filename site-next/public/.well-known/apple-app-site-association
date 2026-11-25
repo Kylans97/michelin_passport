@@ -6,7 +6,8 @@
         "components": [
           { "/": "/auth/reset-password" },
           { "/": "/auth/confirm" },
-          { "/": "/i/*" }
+          { "/": "/i/*" },
+          { "/": "/claim" }
         ]
       }
     ]
