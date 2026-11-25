@@ -281,5 +281,6 @@ Deno.test('labels in plain words', () => {
   assertEquals(pageLabel('/'), 'Home');
   assertEquals(pageLabel('/events/'), 'Events');
   assertEquals(pageLabel('/news/a-new-season?ref=ig'), 'A news article');
+  assertEquals(pageLabel('/lookbook'), 'Lookbook');
   assertEquals(pageLabel('/something-new'), '/something-new');
 });

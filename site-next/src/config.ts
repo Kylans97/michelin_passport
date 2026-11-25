@@ -17,6 +17,13 @@ export const APP_STORE_URL: string | null = 'https://apps.apple.com/app/mantelie
  *  owner, 2026-11-25). Null whenever APP_STORE_URL is. */
 export const APP_STORE_LINK: string | null = APP_STORE_URL ? '/app-store' : null;
 
+/** Cloudflare Web Analytics, installed by hand (product owner, 2026-11-25:
+ *  "Yes, add the snippet"): Cloudflare's automatic setup never reached the
+ *  pages this Pages project serves. The site token is public by design; it
+ *  only lets a browser report a page view. Also in public/*.html and
+ *  app-store.astro, which don't use this layout. */
+export const CF_WEB_ANALYTICS_TOKEN = '44aaf7d826304cc1931b518e12e10c6f';
+
 export const CONTACT_EMAIL = 'hello@mantelier.app';
 
 /** Events first, the primary pillar. `nav: false` keeps a section's page

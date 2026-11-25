@@ -4,11 +4,17 @@
 // what each one means.
 
 const fmt = new Intl.NumberFormat("en-GB");
+/** Below this many visits, numbers are rough (see compareText). */
+export const SMALL = 200;
+
 const num = (n) => (n == null ? "–" : fmt.format(n));
 
 /** "Up 18% on the 30 days before", or null when there is nothing to compare. */
 export function compareText(now, before, days) {
   if (before == null || now == null) return null;
+  // Cloudflare samples visits and scales them up, so below this a change
+  // in percent says more about the sample than about visitors.
+  if (Math.max(now, before) < SMALL) return "Too few visits to compare yet";
   const span = days === 365 ? "12 months" : `${days} days`;
   if (before === 0) return now === 0 ? null : `None in the ${span} before`;
   const change = Math.round(((now - before) / before) * 100);

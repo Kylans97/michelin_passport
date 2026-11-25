@@ -195,6 +195,14 @@ const PAGES: Record<string, string> = {
   '/support.html': 'Support',
   '/account': 'Your account',
   '/account/sign-in': 'Sign in',
+  '/lookbook': 'Lookbook',
+  '/lookbook.html': 'Lookbook',
+  '/journey': 'The journey',
+  '/journey.html': 'The journey',
+  '/venue-guide': 'Guide for venues',
+  '/venue-guide.html': 'Guide for venues',
+  '/hosts': 'For hosts',
+  '/hosts.html': 'For hosts',
 };
 
 const SECTIONS: [string, string][] = [

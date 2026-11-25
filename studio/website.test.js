@@ -3,11 +3,12 @@ import { assertEquals } from "jsr:@std/assert@1";
 import { compareText, deviceRows, historyNote, perVisitText, websiteProblem, websiteTiles } from "./website.js";
 
 Deno.test("comparison in plain words", () => {
-  assertEquals(compareText(118, 100, 30), "Up 18% on the 30 days before");
-  assertEquals(compareText(80, 100, 30), "Down 20% on the 30 days before");
-  assertEquals(compareText(101, 100, 7), "About the same as the 7 days before");
-  assertEquals(compareText(5, 0, 365), "None in the 12 months before");
-  assertEquals(compareText(0, 0, 30), null);
+  assertEquals(compareText(1180, 1000, 30), "Up 18% on the 30 days before");
+  assertEquals(compareText(800, 1000, 30), "Down 20% on the 30 days before");
+  assertEquals(compareText(1010, 1000, 7), "About the same as the 7 days before");
+  assertEquals(compareText(500, 0, 365), "None in the 12 months before");
+  assertEquals(compareText(70, 40, 30), "Too few visits to compare yet", "small samples say nothing in percent");
+  assertEquals(compareText(0, 0, 30), "Too few visits to compare yet");
   assertEquals(compareText(10, null, 30), null, "no comparison when Cloudflare no longer keeps it");
 });
 

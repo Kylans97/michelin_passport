@@ -212,4 +212,5 @@ td.heat { color: var(--ink); }
 
 /* Website */
 .intro { margin: 0; color: var(--muted); font-size: 14px; max-width: 70ch; }
+#tab-website .hbar .label { white-space: normal; }
 .hbar .path { display: block; font: 11px var(--util); color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
