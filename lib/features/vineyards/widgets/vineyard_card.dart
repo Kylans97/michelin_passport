@@ -15,18 +15,33 @@ class VineyardCard extends StatelessWidget {
   final Vineyard vineyard;
   final VoidCallback onTap;
 
-  const VineyardCard({super.key, required this.vineyard, required this.onTap});
+  /// The big claret figure on the left: the 50 Best rank by default; a
+  /// classification section passes an empty one.
+  final String? marker;
+
+  /// A line under where the estate is, in claret: its class in a
+  /// classification section ("Premier Cru").
+  final String? note;
+
+  const VineyardCard({
+    super.key,
+    required this.vineyard,
+    required this.onTap,
+    this.marker,
+    this.note,
+  });
 
   @override
   Widget build(BuildContext context) {
     final rank = vineyard.worlds50BestRank;
+    final figure = marker ?? (rank == null ? '' : '$rank');
     final where = vineyard.regionLine;
     return Semantics(
       button: true,
       label: [
         vineyard.name,
         if (where.isNotEmpty) where,
-        ?vineyard.rankLabel,
+        if (note != null) note! else ?vineyard.rankLabel,
       ].join(', '),
       excludeSemantics: true,
       child: Material(
@@ -53,7 +68,7 @@ class VineyardCard extends StatelessWidget {
                 SizedBox(
                   width: 44,
                   child: Text(
-                    rank == null ? '' : '$rank',
+                    figure,
                     style: CsTypography.placeTitle.copyWith(
                       color: AppColors.claret,
                     ),
@@ -75,6 +90,15 @@ class VineyardCard extends StatelessWidget {
                           where,
                           style: CsTypography.metadata.copyWith(
                             color: AppColors.taupe,
+                          ),
+                        ),
+                      ],
+                      if (note != null) ...[
+                        const SizedBox(height: 2),
+                        Text(
+                          note!,
+                          style: CsTypography.metadata.copyWith(
+                            color: AppColors.claret,
                           ),
                         ),
                       ],

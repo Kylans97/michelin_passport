@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/vineyard.dart';
+import '../../models/vineyard_recognition.dart';
 import '../../models/vineyard_visit.dart';
 
 // Every column of public.vineyards_full, listed explicitly so a schema
@@ -42,11 +43,13 @@ class VineyardRepository {
     const page = 1000;
     final all = <Vineyard>[];
     for (var from = 0; ; from += page) {
-      final rows = await _client
-          .from('vineyards_full')
-          .select(vineyardFullColumns)
-          .order('vineyard_code')
-          .range(from, from + page - 1) as List;
+      final rows =
+          await _client
+                  .from('vineyards_full')
+                  .select(vineyardFullColumns)
+                  .order('vineyard_code')
+                  .range(from, from + page - 1)
+              as List;
       all.addAll([for (final row in rows) Vineyard.fromMap(row)]);
       if (rows.length < page) break;
     }
@@ -74,9 +77,13 @@ class VineyardRepository {
       var request = _client
           .from('vineyards_full')
           .select(vineyardFullColumns)
-          .or('region.ilike.*$safe*,city.ilike.*$safe*,'
-              'wine_region_name.ilike.*$safe*');
-      if (countryCode != null) request = request.eq('country_code', countryCode);
+          .or(
+            'region.ilike.*$safe*,city.ilike.*$safe*,'
+            'wine_region_name.ilike.*$safe*',
+          );
+      if (countryCode != null) {
+        request = request.eq('country_code', countryCode);
+      }
       rows = await request.order('name').limit(limit) as List;
     } on PostgrestException {
       return byName;
@@ -95,16 +102,24 @@ class VineyardRepository {
     const page = 1000;
     final seen = <String, ({String code, String name, String flag})>{};
     for (var from = 0; ; from += page) {
-      final rows = await _client
-          .from('vineyards_full')
-          .select('vineyard_code, country_code, country_name, flag_emoji')
-          .order('vineyard_code')
-          .range(from, from + page - 1) as List;
+      final rows =
+          await _client
+                  .from('vineyards_full')
+                  .select(
+                    'vineyard_code, country_code, country_name, flag_emoji',
+                  )
+                  .order('vineyard_code')
+                  .range(from, from + page - 1)
+              as List;
       for (final row in rows) {
         final code = row['country_code'] as String;
         final name = row['country_name'] as String?;
         if (name == null || name.isEmpty) continue;
-        seen[code] ??= (code: code, name: name, flag: row['flag_emoji'] as String? ?? '');
+        seen[code] ??= (
+          code: code,
+          name: name,
+          flag: row['flag_emoji'] as String? ?? '',
+        );
       }
       if (rows.length < page) break;
     }
@@ -117,14 +132,36 @@ class VineyardRepository {
   /// the collection, the rest found through search). An official
   /// classification joins this when its table exists.
   Future<List<Vineyard>> getRecognised() async {
-    final rows = await _client
-        .from('vineyards_full')
-        .select(vineyardFullColumns)
-        .not('worlds_50_best_rank', 'is', null)
-        .order('worlds_50_best_rank') as List;
+    final rows =
+        await _client
+                .from('vineyards_full')
+                .select(vineyardFullColumns)
+                .not('worlds_50_best_rank', 'is', null)
+                .order('worlds_50_best_rank')
+            as List;
     return sortVineyardsForCollection([
       for (final row in rows) Vineyard.fromMap(row),
     ]);
+  }
+
+  /// Every official classification (`vineyard_recognitions`,
+  /// 20261101770000). Empty, not an error, before that migration is
+  /// applied, so the collection then shows the 50 Best alone.
+  Future<List<VineyardRecognition>> getRecognitions() async {
+    try {
+      final rows =
+          await _client
+                  .from('vineyard_recognitions')
+                  .select('vineyard_id, scheme, class, class_order, edition')
+              as List;
+      return [
+        for (final row in rows)
+          VineyardRecognition.fromMap(row as Map<String, dynamic>),
+      ];
+    } on PostgrestException catch (e) {
+      if (isMissingTableError(e)) return const [];
+      rethrow;
+    }
   }
 
   /// Set once the server says `search_vineyards` does not exist (before
@@ -321,3 +358,8 @@ class VineyardRepository {
 /// (PGRST202), or Postgres's own (42883).
 bool isMissingFunctionError(PostgrestException e) =>
     e.code == 'PGRST202' || e.code == '42883';
+
+/// PostgREST's answer when a table is not in its schema cache (PGRST205),
+/// or Postgres's own (42P01).
+bool isMissingTableError(PostgrestException e) =>
+    e.code == 'PGRST205' || e.code == '42P01';
