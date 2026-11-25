@@ -8,6 +8,12 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.10.0 (52) — 2026-11-25
+
+1.10.0 (51) plus claiming a venue at sign up (the Link your venue line when the Passport is issued, a three page explainer, How claiming works kept reachable from Profile), claiming and managing wine estates (migration `20261101780000`, applied), wine estate classifications shown on estate pages (the code reads `vineyard_recognitions`, still empty until migration `20261101800000` and batch 4 are approved), and the Studio website tab (Studio only, no app change). Product owner, 2026-11-25: "51 is not in review, it's only visible to me through test flight"; 52 replaces it before review. The website part of claiming (`claude/venue-claim-website`) goes live once this build is in the App Store. Built from main `e6e2edc`: analyze clean, 3189 tests passing; `MAPTILER_KEY` present in the archiving checkout's `.env`, target `lib/main.dart`. No schema diff: the version stays 1.10.0, diffed for 51 the same day; since then `20261101780000` and `20261101810000` were applied, each checked on its own, and `20261101790000` and `20261101800000` are prepared, not applied.
+
 ### Added
 - **Studio: a Website tab with mantelier.app's visitors** (product owner, 2026-11-25: "de web analytics staat aan op cloudflare, maar de taal is best technisch. Kunnen we wat we op cloudflare zien niet naar het dashboard halen van mij in mantelier studio?"; plan https://claude.ai/artifact/JumVvtZWi8RNevSQKYDp2w approved: "Ja helemaal goed en eens met het plan, ja graag voor 2 en ja graag voor 3"). Built on `claude/studio-website`, merged to main as PR #18 (`4f9d2d2`).
   - **Studio** (`studio/index.html`, `studio/studio.js`, new `studio/website.js`): a fourth tab, Website, with the same period picker. Visits (and the change on the period before), pages opened, went to the App Store, members signed in; visits per day; most visited pages; how visitors found us; countries; devices. Cloudflare's words become plain ones: page views are "Pages opened", an empty referrer is "Typed in or bookmarked", mobile and desktop are Phone and Computer, paths get page names. It says plainly that visits are not people. Without the Cloudflare key, or when Cloudflare doesn't answer, the tab says so and still shows the sign-ins. `website.js` is served no-cache like `studio.js`; `scripts/deploy-studio.sh` leaves `*.test.js` out of the upload.
