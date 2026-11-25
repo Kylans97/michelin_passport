@@ -11,6 +11,8 @@
 # Always revalidate them; the etag keeps that a cheap 304.
 /studio.js
   Cache-Control: no-cache
+/website.js
+  Cache-Control: no-cache
 /studio.css
   Cache-Control: no-cache
 /config.js

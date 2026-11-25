@@ -463,6 +463,13 @@ verify_jwt = false
 [functions.notify-signup-watch]
 verify_jwt = false
 
+# studio-web-analytics is called by Studio with the signed-in admin's own
+# JWT, so the gateway's JWT check stays on (the default). The function then
+# calls admin_studio_website_report as that user, which requires aal2 and
+# is_admin(), before it asks Cloudflare anything.
+[functions.studio-web-analytics]
+verify_jwt = true
+
 [analytics]
 enabled = true
 port = 54327

@@ -14,7 +14,7 @@
 // only: a first sign-in can't happen on the website yet.
 import Base from '../layouts/Base.astro';
 import Mark from '../components/Mark.astro';
-import { APP_STORE_URL } from '../config';
+import { APP_STORE_LINK } from '../config';
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from '../lib/supabase';
 import '../styles/account.css';
 ---
@@ -39,9 +39,9 @@ import '../styles/account.css';
             </div>
           </div>
           <p class="sub" data-sub></p>
-          {APP_STORE_URL && (
+          {APP_STORE_LINK && (
             <div class="cta">
-              <a class="button" href={APP_STORE_URL} data-store>Get Mantelier on the App Store</a>
+              <a class="button" href={APP_STORE_LINK} data-store>Get Mantelier on the App Store</a>
               <p class="help">Tapping this copies your invitation, so the app can find it after you install it.</p>
             </div>
           )}
@@ -56,7 +56,7 @@ import '../styles/account.css';
           <div class="avatar big muted" data-closed-initials aria-hidden="true"></div>
           <h1 class="title" data-closed-title></h1>
           <p class="sub" data-closed-sub></p>
-          {APP_STORE_URL && <a class="button" href={APP_STORE_URL}>Get Mantelier on the App Store</a>}
+          {APP_STORE_LINK && <a class="button" href={APP_STORE_LINK}>Get Mantelier on the App Store</a>}
         </div>
       </div>
     </div>

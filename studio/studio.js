@@ -12,6 +12,7 @@
 // names are venue-supplied text.
 
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/+esm";
+import { deviceRows, historyNote, websiteProblem, websiteTiles } from "./website.js";
 
 const { supabaseUrl, supabaseAnonKey } = window.STUDIO_CONFIG;
 
@@ -167,8 +168,11 @@ async function openDashboard() {
   await load();
 }
 
+let loadedDays = null;
+
 async function load() {
   const days = Number($("period").value);
+  loadedDays = days;
   const status = $("status");
   status.className = "note";
   status.textContent = "Loading…";
@@ -313,7 +317,7 @@ function renderFeatures(res, days) {
   ], "No articles opened in this period.");
 }
 
-$("period").addEventListener("change", load);
+$("period").addEventListener("change", () => (activeTab === "website" ? loadWebsite() : load()));
 
 function titleCase(s) {
   return (s ?? "").replace(/_/g, " ").replace(/^\w/, (c) => c.toUpperCase());
@@ -353,7 +357,7 @@ function renderBars(target, rows, emptyText = "Nothing in this period.") {
         const numCell = el("span", { class: "num", text: r.value == null ? "fewer than 5" : num(r.value) });
         if (r.extra) numCell.append(" ", el("small", { text: `· ${r.extra}` }));
         return el("div", { class: "hbar" },
-          el("span", { class: "label", text: r.label, title: r.label }),
+          el("span", { class: "label", title: r.label }, r.label, r.sub ? el("span", { class: "path", text: r.sub }) : null),
           el("div", { class: "track" }, fill),
           numCell,
         );
@@ -365,8 +369,8 @@ function renderBars(target, rows, emptyText = "Nothing in this period.") {
 // A small column chart in SVG, one column per row. [label] gives each
 // column's axis label and tooltip; a null value is a group under 5 and is
 // drawn as a hairline with "fewer than 5" in its tooltip.
-function renderColumns(target, rows, key, label = (r) => r.week) {
-  const W = 560, H = 200, padL = 36, padB = 24, padT = 10;
+function renderColumns(target, rows, key, label = (r) => r.week, W = 560) {
+  const H = 200, padL = 36, padB = 24, padT = 10;
   const values = rows.map((r) => r[key]);
   const max = Math.max(...values.map((v) => v ?? 0), 1);
   const step = (W - padL) / Math.max(values.length, 1);
@@ -489,6 +493,76 @@ function renderInsights(rows) {
   renderBars($("ages"), ages, "No members yet.");
 }
 
+// ------------------------------------------------------------- Website
+//
+// mantelier.app's visitors from Cloudflare Web Analytics, through the
+// studio-web-analytics Edge Function (it checks admin and two-step first,
+// via admin_studio_website_report, 20261101810000). Members signed in on
+// the website come from that same report. If Cloudflare's numbers are
+// missing, the tab says why and still shows the sign-ins.
+
+let websiteRequest = 0;
+
+async function loadWebsite() {
+  const days = Number($("period").value);
+  const request = ++websiteRequest;
+  const status = $("web-status");
+  status.className = "note";
+  status.textContent = "Loading…";
+
+  const { data, error } = await supabase.functions.invoke("studio-web-analytics", { body: { days } });
+  if (request !== websiteRequest) return; // a newer period was picked meanwhile
+
+  if (error) {
+    let code = null;
+    try { code = (await error.context?.json?.())?.error ?? null; } catch { /* no body */ }
+    if (code === "not_admin") return show("denied");
+    if (code === "mfa_required") return route();
+    status.className = "note error";
+    status.textContent = "Could not load the website numbers. Try again in a few minutes.";
+    return;
+  }
+  renderWebsite(data);
+}
+
+function renderWebsite(res) {
+  const w = res.website;
+  const when = new Date(res.until).toLocaleString("en-GB", { dateStyle: "medium", timeStyle: "short" });
+  const status = $("web-status");
+  status.className = w ? "note" : "note error";
+  status.textContent = w
+    ? [`Last ${res.days === 365 ? "12 months" : `${res.days} days`} · as of ${when}`, historyNote(w.history_from)].filter(Boolean).join(" · ")
+    : websiteProblem(res.website_error);
+
+  $("web-tiles").replaceChildren(
+    ...websiteTiles(res).map(([k, v, d]) =>
+      el("div", { class: "tile" },
+        el("div", { class: "k", text: k }),
+        el("div", { class: "v", text: num(v) }),
+        d ? el("div", { class: "d", text: d }) : null,
+      ),
+    ),
+  );
+
+  const panels = ["web-daily", "web-pages", "web-referrers", "web-countries", "web-devices"];
+  if (!w) {
+    panels.forEach((id) => $(id).replaceChildren(el("p", { class: "empty", text: "No website numbers to show." })));
+    return;
+  }
+  if (w.daily.some((d) => d.visits > 0)) {
+    renderColumns($("web-daily"), w.daily, "visits", dayLabel, 1120); // full width, so wider
+  } else {
+    $("web-daily").replaceChildren(el("p", { class: "empty", text: "No visits in this period." }));
+  }
+  renderBars($("web-pages"), w.pages.map((p) => ({ label: p.label, sub: p.path && p.path !== p.label ? p.path : null, value: p.value })), "No pages opened in this period.");
+  renderBars($("web-referrers"), w.referrers, "No visits in this period.");
+  renderBars($("web-countries"), w.countries, "No visits in this period.");
+  renderBars($("web-devices"), deviceRows(w.devices, w.visits), "No visits in this period.");
+}
+
+const dayLabel = (d, long) => new Date(`${d.date}T00:00:00Z`).toLocaleDateString(
+  "en-GB", long ? { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" } : { day: "numeric", month: "short", timeZone: "UTC" });
+
 // ------------------------------------------------------- Basic and Pro
 //
 // What one venue would see on each subscription, for showing venues the
@@ -513,14 +587,21 @@ function openTab(tab) {
   document.querySelectorAll("[data-tab]").forEach((b) =>
     b.classList.toggle("is-active", b.dataset.tab === tab),
   );
+  const tiers = tab === "basic" || tab === "pro";
   $("tab-overview").hidden = tab !== "overview";
-  $("tab-tiers").hidden = tab === "overview";
+  $("tab-tiers").hidden = !tiers;
+  $("tab-website").hidden = tab !== "website";
   // Kept in the layout, only made invisible: removing it narrowed the
   // right of the bar and slid the tabs sideways on every switch.
-  $("period-control").style.visibility = tab === "overview" ? "" : "hidden";
-  $("tier-basic").hidden = tab === "overview";
+  $("period-control").style.visibility = tiers ? "hidden" : "";
+  $("tier-basic").hidden = !tiers;
   $("tier-pro").hidden = tab !== "pro";
-  if (tab !== "overview") {
+  if (tab === "website") {
+    loadWebsite();
+  } else if (tab === "overview") {
+    // The period may have changed while the Website tab was open.
+    if (loadedDays !== Number($("period").value)) load();
+  } else {
     if (!tierVenue) showExample();
     else renderTier();
   }

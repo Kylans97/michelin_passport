@@ -21,6 +21,7 @@ fi
 out="$(mktemp -d)"
 trap 'rm -rf "$out"' EXIT
 cp -R studio/. "$out/"
+rm -f "$out"/*.test.js  # tests stay in the repository, not on the site
 sed -i '' "s/__STUDIO_VERSION__/${version}/g" "$out/index.html"
 
 echo "Deploying studio/ at ${version}"

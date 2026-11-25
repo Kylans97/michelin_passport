@@ -105,7 +105,7 @@ import '../../styles/account.css';
 
 <script>
   import {
-    completeAppleSignIn, loadName, resendConfirmation, sendEmailCode, signIn, signOut, startAppleSignIn,
+    completeAppleSignIn, loadName, recordWebsiteSignIn, resendConfirmation, sendEmailCode, signIn, signOut, startAppleSignIn,
     supabase, verifyEmailCode, verifyTwoStep,
   } from '../../lib/account/client';
   import { peek, safeNext } from '../../lib/account/peek';
@@ -128,7 +128,7 @@ import '../../styles/account.css';
 
   async function finish() {
     const { data } = await supabase().auth.getUser();
-    if (data.user) await loadName(data.user.id);
+    if (data.user) await Promise.all([loadName(data.user.id), recordWebsiteSignIn(data.user.id)]);
     location.replace(next);
   }
 

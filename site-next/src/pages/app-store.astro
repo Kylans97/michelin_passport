@@ -1,0 +1,59 @@
+---
+// /app-store: one short stop on the way to the App Store, so Studio can
+// count how many visitors went there (product owner, 2026-11-25: "ja graag").
+//
+// Cloudflare Web Analytics counts page loads on mantelier.app and never a
+// click to another site. Every App Store button on the site points here
+// (APP_STORE_LINK), and this page sends the visitor on to Apple. Its own
+// page view is the count; nothing else is recorded, and the privacy
+// policy's "which pages are opened" already covers it.
+//
+// The beacon Cloudflare adds to every page reports after the page has
+// loaded, so the hop waits for `load` and a moment more before it leaves;
+// the meta refresh is the way on without script, and the link is there for
+// anyone whose browser stops both.
+import { APP_STORE_URL } from '../config';
+
+const target = APP_STORE_URL ?? '/';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="refresh" content={`2;url=${target}`}>
+  <meta name="theme-color" content="#16302A">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32">
+  <title>Mantelier on the App Store</title>
+  <style>
+    html, body { margin: 0; height: 100%; }
+    body {
+      display: grid;
+      place-items: center;
+      background: #16302A;
+      color: #F4F0E7;
+      font: 16px/1.5 Georgia, 'Times New Roman', serif;
+      text-align: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    p { margin: 0 0 12px; }
+    a { color: #F4F0E7; }
+  </style>
+</head>
+<body>
+  <main>
+    <p>Opening the App Store</p>
+    <p><a href={target} data-target>Continue to Mantelier on the App Store</a></p>
+  </main>
+  <script is:inline>
+    (function () {
+      var target = document.querySelector('[data-target]').href;
+      var go = function () { setTimeout(function () { location.replace(target); }, 400); };
+      if (document.readyState === 'complete') go();
+      else window.addEventListener('load', go);
+    })();
+  </script>
+</body>
+</html>
