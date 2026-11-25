@@ -3,9 +3,11 @@ import '../../models/hotel.dart';
 import '../../models/managed_venue.dart';
 import '../../models/private_chef.dart';
 import '../../models/restaurant.dart';
+import '../../models/vineyard.dart';
 import 'hotel_repository.dart' show hotelFullColumns;
 import 'private_chef_repository.dart' show privateChefFullColumns;
 import 'restaurant_repository.dart' show restaurantFullColumns;
+import 'vineyard_repository.dart' show vineyardFullColumns;
 
 /// Reads venue_managers_restaurants/_hotels/_private_chefs — the CURRENT
 /// state of who manages what — never claims_restaurants/claims_hotels/
@@ -51,6 +53,15 @@ class VenueManagerRepository {
           .select('private_chef_id')
           .eq('user_id', userId)
           .isFilter('revoked_at', null),
+      // Estates (20261101780000). Until that migration is on the server
+      // the table is missing; that must not hide the other venues.
+      _client
+          .from('venue_managers_vineyards')
+          .select('vineyard_id')
+          .eq('user_id', userId)
+          .isFilter('revoked_at', null)
+          .then<List<Map<String, dynamic>>>((rows) => rows)
+          .catchError((Object _) => <Map<String, dynamic>>[]),
     ]);
 
     final restaurantIds = [
@@ -61,7 +72,16 @@ class VenueManagerRepository {
       for (final row in grantRows[2]) row['private_chef_id'] as String,
     ];
 
-    if (restaurantIds.isEmpty && hotelIds.isEmpty && chefIds.isEmpty) return [];
+    final vineyardIds = [
+      for (final row in grantRows[3]) row['vineyard_id'] as String,
+    ];
+
+    if (restaurantIds.isEmpty &&
+        hotelIds.isEmpty &&
+        chefIds.isEmpty &&
+        vineyardIds.isEmpty) {
+      return [];
+    }
 
     final restaurantsFuture = restaurantIds.isEmpty
         ? Future.value(const <Map<String, dynamic>>[])
@@ -85,14 +105,24 @@ class VenueManagerRepository {
               .inFilter('id', chefIds)
               .then((r) => (r as List).cast<Map<String, dynamic>>());
 
+    final vineyardsFuture = vineyardIds.isEmpty
+        ? Future.value(const <Map<String, dynamic>>[])
+        : _client
+              .from('vineyards_full')
+              .select(vineyardFullColumns)
+              .inFilter('id', vineyardIds)
+              .then((r) => (r as List).cast<Map<String, dynamic>>());
+
     final restaurantRows = await restaurantsFuture;
     final hotelRows = await hotelsFuture;
     final chefRows = await chefsFuture;
+    final vineyardRows = await vineyardsFuture;
 
     final venues = <ManagedVenue>[
       for (final row in restaurantRows) ManagedRestaurant(Restaurant.fromJson(row)),
       for (final row in hotelRows) ManagedHotel(Hotel.fromJson(row)),
       for (final row in chefRows) ManagedPrivateChef(PrivateChef.fromJson(row)),
+      for (final row in vineyardRows) ManagedVineyard(Vineyard.fromMap(row)),
     ]..sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
 
     return venues;

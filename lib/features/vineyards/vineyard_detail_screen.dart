@@ -11,15 +11,20 @@ import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_visit_row.dart' show formatVenueVisitDate;
 import '../../data/repositories/events_repository.dart';
+import '../../data/repositories/follow_repository.dart';
+import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../data/repositories/vineyard_repository.dart';
 import '../../data/repositories/visit_wine_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
+import '../../models/published_venue_photo.dart';
 import '../../models/vineyard.dart';
 import '../../models/vineyard_visit.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
 import '../passport/widgets/own_passport_entry_row.dart';
+import '../profile/widgets/owner_preview_marker.dart';
 import '../visits/widgets/visit_wines.dart';
 import 'log_estate_visit.dart';
 import 'widgets/log_estate_visit_sheet.dart';
@@ -30,10 +35,28 @@ import 'widgets/vineyard_detail_hero.dart';
 /// website. Only verified facts and the member's own notes: the estate's
 /// description and photos come from the estate after review, and until
 /// then that space stays quiet rather than showing text we wrote.
+///
+/// Since estates can be claimed (20261101780000) the estate's approved
+/// text (venue_about_current) leads "The estate", its first published
+/// photo replaces the drawing, and members can follow it. A manager's
+/// "Preview my page" renders this same screen with their pending text and
+/// photos ([aboutTextOverride], [photosOverride]); [isPreview] skips the
+/// member's own state and leaves the controls inert, as on every venue.
 class VineyardDetailScreen extends StatefulWidget {
   final String vineyardId;
+  final String? aboutTextOverride;
+  final List<PublishedVenuePhoto>? photosOverride;
+  final bool isPreview;
+  final bool previewIsStale;
 
-  const VineyardDetailScreen({super.key, required this.vineyardId});
+  const VineyardDetailScreen({
+    super.key,
+    required this.vineyardId,
+    this.aboutTextOverride,
+    this.photosOverride,
+    this.isPreview = false,
+    this.previewIsStale = false,
+  });
 
   @override
   State<VineyardDetailScreen> createState() => _VineyardDetailScreenState();
@@ -45,6 +68,9 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
   late final _wineRepo = VisitWineRepository(_client);
   late final _eventsRepo = EventsRepository(_client);
   late final _wishlistRepo = WishlistRepository(_client);
+  late final _aboutRepo = VenueAboutRepository(_client);
+  late final _photoRepo = VenuePhotoSubmissionRepository(_client);
+  late final _followRepo = FollowRepository(_client);
 
   Vineyard? _vineyard;
   List<CellarWine> _myWines = const [];
@@ -52,6 +78,12 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
   bool _wishlisted = false;
   bool _wishlistBusy = false;
   List<Event> _events = const [];
+  String? _aboutText;
+  List<PublishedVenuePhoto> _photos = const [];
+  bool _following = false;
+  bool _followBusy = false;
+  // False while the follows table is not on the server yet.
+  bool _canFollow = false;
   bool _loading = true;
   bool _error = false;
 
@@ -70,7 +102,36 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
       final vineyard = await _repo.getById(widget.vineyardId);
       // The member's wines and the events are enhancements: a failed
       // lookup leaves its section out, never the whole page in error.
-      final uid = _client.auth.currentUser?.id;
+      // In a manager's preview there is no member: nothing personal.
+      final uid = widget.isPreview ? null : _client.auth.currentUser?.id;
+      // The estate's own text and photos: overrides in a preview, else
+      // what is approved. Before 20261101780000 is on the server these
+      // reads fail, and the page stays as it was.
+      final aboutText = widget.aboutTextOverride ??
+          (vineyard == null
+              ? null
+              : await _aboutRepo
+                    .loadCurrentText(venueType: 'vineyard', venueId: vineyard.id)
+                    .catchError((Object _) => null));
+      final photos = widget.photosOverride ??
+          (vineyard == null
+              ? const <PublishedVenuePhoto>[]
+              : await _photoRepo
+                    .loadPublishedPhotos(venueType: 'vineyard', venueId: vineyard.id)
+                    .catchError((Object _) => const <PublishedVenuePhoto>[]));
+      var canFollow = false;
+      var following = false;
+      if (vineyard != null && uid != null) {
+        try {
+          following = await _followRepo.isFollowingVineyard(
+            userId: uid,
+            vineyardId: vineyard.id,
+          );
+          canFollow = true;
+        } catch (_) {
+          // No follows table yet: Follow stays out.
+        }
+      }
       final myWines = (vineyard == null || uid == null)
           ? const <CellarWine>[]
           : await _wineRepo
@@ -100,6 +161,10 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
         _myVisits = myVisits;
         _wishlisted = wishlisted;
         _events = events;
+        _aboutText = aboutText;
+        _photos = photos;
+        _following = following;
+        _canFollow = canFollow;
         _loading = false;
         _error = vineyard == null;
       });
@@ -157,6 +222,34 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
       setState(() {
         _wishlisted = was;
         _wishlistBusy = false;
+      });
+      _snack('Could not update. Please try again.', isError: true);
+    }
+  }
+
+  // Optimistic, reverted if the write fails, like the wishlist heart.
+  Future<void> _toggleFollow() async {
+    final vineyard = _vineyard;
+    final uid = _client.auth.currentUser?.id;
+    if (vineyard == null || uid == null || _followBusy) return;
+    final was = _following;
+    setState(() {
+      _following = !was;
+      _followBusy = true;
+    });
+    try {
+      if (was) {
+        await _followRepo.unfollowVineyard(userId: uid, vineyardId: vineyard.id);
+      } else {
+        await _followRepo.followVineyard(userId: uid, vineyardId: vineyard.id);
+      }
+      if (!mounted) return;
+      setState(() => _followBusy = false);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _following = was;
+        _followBusy = false;
       });
       _snack('Could not update. Please try again.', isError: true);
     }
@@ -250,10 +343,20 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
-    value: SystemUiOverlayStyle.light,
-    child: Scaffold(backgroundColor: AppColors.ivory, body: _body()),
-  );
+  Widget build(BuildContext context) {
+    final page = AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: Scaffold(backgroundColor: AppColors.ivory, body: _body()),
+    );
+    return widget.isPreview
+        ? OwnerPreviewMarker(
+            subtitle: widget.previewIsStale
+                ? 'Showing your last saved details'
+                : null,
+            child: page,
+          )
+        : page;
+  }
 
   Widget _body() {
     if (_loading) {
@@ -289,7 +392,14 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
         VineyardDetailHero(
           vineyard: vineyard,
           wishlisted: _wishlisted,
-          onToggleWishlist: _toggleWishlist,
+          // Inert in a preview, as on every venue page.
+          onToggleWishlist: widget.isPreview ? () {} : _toggleWishlist,
+          cover: _photos.isEmpty ? null : _photos.first,
+          isFollowing: _following,
+          followBusy: _followBusy,
+          onToggleFollow: widget.isPreview
+              ? () {}
+              : (_canFollow ? _toggleFollow : null),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(
@@ -315,6 +425,15 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
                   style: CsTypography.metadata.copyWith(color: AppColors.taupe),
                 ),
               ],
+              if ((_aboutText ?? '').trim().isNotEmpty) ...[
+                _sectionTitle('THE ESTATE'),
+                Text(
+                  _aboutText!.trim(),
+                  style: CsTypography.reading.copyWith(
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+              ],
               _sectionTitle('IN YOUR PASSPORT'),
               if (_myVisits.isEmpty)
                 Text(
@@ -336,7 +455,7 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
               CsPrimaryButton(
                 label: 'I visited this estate',
                 surface: CsSurface.light,
-                onTap: _logVisit,
+                onTap: widget.isPreview ? () {} : _logVisit,
               ),
               if (_myWines.isNotEmpty) ...[
                 const SizedBox(height: CsSpacing.lg),
@@ -356,7 +475,9 @@ class _VineyardDetailScreenState extends State<VineyardDetailScreen> {
                 ),
               ],
               if (url.isNotEmpty) ...[
-                _sectionTitle('THE ESTATE'),
+                _sectionTitle(
+                  (_aboutText ?? '').trim().isNotEmpty ? 'WEBSITE' : 'THE ESTATE',
+                ),
                 SubtleTextAction(
                   label: 'Estate website',
                   onTap: () => _openUrl(url),

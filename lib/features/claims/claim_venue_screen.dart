@@ -10,6 +10,7 @@ import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/missing_listing_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
+import '../../data/repositories/vineyard_repository.dart';
 import '../../models/venue_claim.dart';
 import '../reports/widgets/report_missing_listing_sheet.dart';
 import 'claim_venue_details_screen.dart';
@@ -31,12 +32,14 @@ class ClaimVenueScreen extends StatefulWidget {
   final RestaurantRepository? restaurantRepo;
   final HotelRepository? hotelRepo;
   final PrivateChefRepository? privateChefRepo;
+  final VineyardRepository? vineyardRepo;
 
   const ClaimVenueScreen({
     super.key,
     this.restaurantRepo,
     this.hotelRepo,
     this.privateChefRepo,
+    this.vineyardRepo,
   });
 
   @override
@@ -58,6 +61,8 @@ class _SearchResult {
 class _ClaimVenueScreenState extends State<ClaimVenueScreen> {
   late final _restaurantRepo =
       widget.restaurantRepo ?? RestaurantRepository(Supabase.instance.client);
+  late final _vineyardRepo =
+      widget.vineyardRepo ?? VineyardRepository(Supabase.instance.client);
   late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
   late final _privateChefRepo =
       widget.privateChefRepo ?? PrivateChefRepository(Supabase.instance.client);
@@ -121,6 +126,11 @@ class _ClaimVenueScreenState extends State<ClaimVenueScreen> {
         results = [
           for (final c in rows) _SearchResult(id: c.id, name: c.displayName, city: c.homeCity),
         ];
+      case VenueClaimVenueType.vineyard:
+        final rows = await _vineyardRepo.search(query, limit: 20);
+        results = [
+          for (final v in rows) _SearchResult(id: v.id, name: v.name, city: v.city),
+        ];
     }
     if (!mounted || query != _query) return;
     setState(() {
@@ -152,6 +162,9 @@ class _ClaimVenueScreenState extends State<ClaimVenueScreen> {
         VenueClaimVenueType.restaurant => MissingListingSubjectType.restaurant,
         VenueClaimVenueType.hotel => MissingListingSubjectType.hotel,
         VenueClaimVenueType.privateChef => MissingListingSubjectType.privateChef,
+        // A missing-listing report has no estate kind; the picker opens
+        // with nothing chosen and the message says which estate.
+        VenueClaimVenueType.vineyard => null,
       },
     );
   }

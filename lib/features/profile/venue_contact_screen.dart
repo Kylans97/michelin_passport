@@ -47,7 +47,7 @@ class _VenueContactScreenState extends State<VenueContactScreen> {
   String? _error;
 
   String get _type => widget.venue.venueTypeWireValue;
-  bool get _hasPhone => _type != 'private_chef';
+  bool get _hasPhone => _type != 'private_chef' && _type != 'vineyard';
 
   @override
   void initState() {

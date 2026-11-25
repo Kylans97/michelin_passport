@@ -81,7 +81,7 @@ export interface NotifySubmissionAdminClient {
 }
 
 export type SubmissionType = 'venue_about_submissions' | 'venue_photo_submissions' | 'events';
-export type VenueType = 'restaurant' | 'hotel' | 'private_chef';
+export type VenueType = 'restaurant' | 'hotel' | 'private_chef' | 'vineyard';
 
 // The venue_about_submissions/venue_photo_submissions row, sent verbatim
 // as the trigger's own to_jsonb(new) — same reasoning as ClaimPayload:
@@ -148,6 +148,8 @@ const VENUE_LOOKUP: Record<VenueType, { table: string; nameColumn: string; codeC
     nameColumn: 'display_name',
     codeColumn: 'slug',
   },
+  // Wine estates (20261101780000).
+  vineyard: { table: 'vineyards_full', nameColumn: 'name', codeColumn: 'vineyard_code' },
 };
 
 function jsonResponse(body: unknown, status: number): Response {

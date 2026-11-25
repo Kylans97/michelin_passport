@@ -585,7 +585,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
           ),
           child: Text.rich(
             TextSpan(
-              text: 'Run a restaurant, hotel or private dining?\n',
+              text: 'Run a restaurant, hotel or vineyard?\n',
               style: CsTypography.metadata.copyWith(
                 color: AppColors.secondaryOnDark,
               ),

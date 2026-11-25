@@ -38,7 +38,7 @@ String? venuePhoneProblem(String phone) {
 }
 
 /// A venue's own website and phone number (restaurants and hotels; a
-/// private chef has a website only). The manager changes them through
+/// private chef and a wine estate have a website only). The manager changes them through
 /// set_venue_contact, live at once with no review; each change puts an
 /// item in the admin review queue to glance at (decided 2026-11-02).
 class VenueContactRepository {
@@ -53,6 +53,7 @@ class VenueContactRepository {
     final (view, columns) = switch (venueType) {
       'restaurant' => ('restaurants_full', 'website_url, phone'),
       'hotel' => ('hotels_full', 'website_url, phone'),
+      'vineyard' => ('vineyards_full', 'website_url'),
       _ => ('private_chefs_full', 'website_url'),
     };
     final row = await _client
@@ -78,7 +79,9 @@ class VenueContactRepository {
       'p_venue_type': venueType,
       'p_venue_id': venueId,
       'p_website': website.trim(),
-      'p_phone': venueType == 'private_chef' ? null : phone.trim(),
+      'p_phone': venueType == 'private_chef' || venueType == 'vineyard'
+          ? null
+          : phone.trim(),
     },
   );
 }

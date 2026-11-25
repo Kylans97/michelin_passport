@@ -12,6 +12,9 @@ void main() {
       expect(VenueClaimVenueType.restaurant.wireValue, 'restaurant');
       expect(VenueClaimVenueType.hotel.wireValue, 'hotel');
       expect(VenueClaimVenueType.privateChef.wireValue, 'private_chef');
+      // Wine estates, claims_vineyards (20261101780000).
+      expect(VenueClaimVenueType.vineyard.wireValue, 'vineyard');
+      expect(VenueClaimVenueType.vineyard.label, 'Vineyard');
     });
   });
 

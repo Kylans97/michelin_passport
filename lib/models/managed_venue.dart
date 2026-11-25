@@ -1,6 +1,7 @@
 import 'hotel.dart';
 import 'private_chef.dart';
 import 'restaurant.dart';
+import 'vineyard.dart';
 
 /// A venue the signed-in user actively manages — sourced from
 /// venue_managers_restaurants/_hotels/_private_chefs (revoked_at is
@@ -85,4 +86,27 @@ class ManagedPrivateChef extends ManagedVenue {
 
   @override
   String get venueTypeWireValue => 'private_chef';
+}
+
+/// A wine estate (venue_managers_vineyards, 20261101780000). Its facts
+/// (name, region, location, World's 50 Best rank) stay ours; the
+/// manager looks after its text, photos and website.
+class ManagedVineyard extends ManagedVenue {
+  final Vineyard vineyard;
+  const ManagedVineyard(this.vineyard);
+
+  @override
+  String get id => vineyard.id;
+
+  @override
+  String get name => vineyard.name;
+
+  @override
+  String? get cityName => vineyard.city;
+
+  @override
+  String get typeLabel => 'Vineyard';
+
+  @override
+  String get venueTypeWireValue => 'vineyard';
 }

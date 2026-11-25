@@ -115,7 +115,8 @@ class _VenueClaimIntroScreenState extends State<VenueClaimIntroScreen> {
                   visual: _VenuePageSketch(),
                   title: 'Your venue, in your own words',
                   body:
-                      'Claim your restaurant, hotel or private dining and look '
+                      // The product owner's wording, 2026-11-25.
+                      'Claim your restaurant, hotel or vineyard and look '
                       'after its page yourself: your photos, your own '
                       'description, your events.',
                 ),

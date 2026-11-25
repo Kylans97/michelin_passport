@@ -99,6 +99,7 @@ export interface ClaimRow {
   restaurant_id?: string;
   hotel_id?: string;
   private_chef_id?: string;
+  vineyard_id?: string;
   role: string;
   business_email: string;
   phone: string;
@@ -126,7 +127,7 @@ export type LegacyClaimPayload = ClaimRow;
 
 interface ClaimTypeConfig {
   readonly viewName: string;
-  readonly subjectIdField: 'restaurant_id' | 'hotel_id' | 'private_chef_id';
+  readonly subjectIdField: 'restaurant_id' | 'hotel_id' | 'private_chef_id' | 'vineyard_id';
   // Column names on the venue's own `_full` view — deliberately NOT
   // uniform across the three. Restaurants and hotels share `name` plus a
   // stable `*_code`; private chefs have neither — only `display_name`
@@ -160,6 +161,15 @@ const CLAIM_TYPES: Record<string, ClaimTypeConfig> = {
     nameColumn: 'display_name',
     codeColumn: 'slug',
     venueLabel: 'private chef',
+  },
+  // Wine estates (20261101780000): vineyards_full has name and the
+  // stable vineyard_code, like restaurants and hotels.
+  claims_vineyards: {
+    viewName: 'vineyards_full',
+    subjectIdField: 'vineyard_id',
+    nameColumn: 'name',
+    codeColumn: 'vineyard_code',
+    venueLabel: 'wine estate',
   },
 };
 

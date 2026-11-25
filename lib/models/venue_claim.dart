@@ -8,18 +8,23 @@
 enum VenueClaimVenueType {
   restaurant,
   hotel,
-  privateChef;
+  privateChef,
+
+  /// A wine estate (claims_vineyards, 20261101780000).
+  vineyard;
 
   String get wireValue => switch (this) {
     VenueClaimVenueType.restaurant => 'restaurant',
     VenueClaimVenueType.hotel => 'hotel',
     VenueClaimVenueType.privateChef => 'private_chef',
+    VenueClaimVenueType.vineyard => 'vineyard',
   };
 
   String get label => switch (this) {
     VenueClaimVenueType.restaurant => 'Restaurant',
     VenueClaimVenueType.hotel => 'Hotel',
     VenueClaimVenueType.privateChef => 'Private chef',
+    VenueClaimVenueType.vineyard => 'Vineyard',
   };
 }
 

@@ -6,12 +6,14 @@ String _tableFor(VenueClaimVenueType type) => switch (type) {
   VenueClaimVenueType.restaurant => 'claims_restaurants',
   VenueClaimVenueType.hotel => 'claims_hotels',
   VenueClaimVenueType.privateChef => 'claims_private_chefs',
+  VenueClaimVenueType.vineyard => 'claims_vineyards',
 };
 
 String _venueColumnFor(VenueClaimVenueType type) => switch (type) {
   VenueClaimVenueType.restaurant => 'restaurant_id',
   VenueClaimVenueType.hotel => 'hotel_id',
   VenueClaimVenueType.privateChef => 'private_chef_id',
+  VenueClaimVenueType.vineyard => 'vineyard_id',
 };
 
 /// Maps a 23505 (unique_violation) from a claim insert to the UI-safe
@@ -129,6 +131,14 @@ class VenueClaimRepository {
           .from('claims_private_chefs')
           .select('id, private_chef_id, status, requested_at')
           .eq('user_id', userId),
+      // Estates (20261101780000). Until that migration is on the server
+      // the table is missing; that must not hide the other claims.
+      _client
+          .from('claims_vineyards')
+          .select('id, vineyard_id, status, requested_at')
+          .eq('user_id', userId)
+          .then<List<Map<String, dynamic>>>((rows) => rows)
+          .catchError((Object _) => <Map<String, dynamic>>[]),
     ]);
 
     final claims = [
@@ -149,6 +159,12 @@ class VenueClaimRepository {
           row,
           venueType: VenueClaimVenueType.privateChef,
           venueIdColumn: 'private_chef_id',
+        ),
+      for (final row in results[3])
+        VenueClaim.fromJson(
+          row,
+          venueType: VenueClaimVenueType.vineyard,
+          venueIdColumn: 'vineyard_id',
         ),
     ]..sort((a, b) => b.requestedAt.compareTo(a.requestedAt));
     return claims;
