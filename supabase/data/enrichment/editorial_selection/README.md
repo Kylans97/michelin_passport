@@ -47,3 +47,7 @@ Tacite's Instagram (`tacite.amsterdam`) was supplied by the product owner on
 ## 2026-11-22: Mont Blanc, Troef, Dame aan de Kade, Camarat
 
 `candidates_20261122.csv` and `prepared_insert_20261122.sql`. **Applied 2026-11-22** as `rest_4208`–`rest_4211`, with Place IDs. QA-534–QA-536; see the Michelin_Database changelog.
+
+## 2026-11-25: Candeal (Marbella), Onglet (Maastricht)
+
+`candidates_20261125.csv` and `prepared_insert_20261125.sql`, with Place IDs and MICHELIN cuisines. **Not applied yet.** Step 0 was read against production on 2026-11-25 and step 1 checked with `explain` (no rows written). QA-563, QA-564.
