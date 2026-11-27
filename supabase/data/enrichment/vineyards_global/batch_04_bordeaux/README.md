@@ -2,7 +2,8 @@
 
 Prepared 2026-11-25 (product owner: "Oke, laten we doorgaan", on the
 official classifications tier; "One section per list" for the collection).
-**Nothing here is applied.** Waiting for the product owner's review.
+**APPLIED to production 2026-11-27 (product owner: "Yes, apply both")**, right after batch 3: 340 estates in all, 154 recognitions on 153
+estates. QA-557 to QA-562 are in qa_issues.csv.
 
 ## What is in it
 
@@ -48,7 +49,7 @@ Research rules as in batches 2 and 3. On top of them:
   Premier Cru Supérieur 1, Premier 2, Second 3; Saint-Émilion A 1, B 2,
   Grand Cru Classé 3.
 
-**Needs** migration `20261101830000_add_vineyard_recognitions.sql`.
+**Needs** migration `20261101890000_add_vineyard_recognitions.sql`.
 
 **Tested** on a scratch stack with production's data: the migration, then
 this file. Result: 247 estates, 154 recognitions, and Haut-Brion with

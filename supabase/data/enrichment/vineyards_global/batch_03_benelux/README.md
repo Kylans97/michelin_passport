@@ -1,10 +1,9 @@
 # Batch 3: the Benelux, from official producer lists
 
 Prepared 2026-11-25 (product owner: "ja is goed", on the Benelux tier).
-**Nothing here is applied.** It waits for two things: the product owner's
-review, and a build with server search in the app's hands. Until then,
-shipped builds list every estate in the Wine Estates collection, and this
-batch would add 93 there.
+**APPLIED to production 2026-11-27 (product owner: "Yes, apply both")**, after
+1.10.0 (52), the build with server search, went live in the App Store.
+Production then held 195 estates; QA-550 to QA-556 are in qa_issues.csv.
 
 ## What is in it
 
@@ -21,7 +20,7 @@ to vine_0206. After this batch production would hold 195 estates, still 97
 ranked, so the collection is unchanged.
 
 `inclusion_reason = 'official_register'`, a new value
-(`supabase/migrations/20261101820000_add_vineyard_official_register_reason.sql`).
+(`supabase/migrations/20261101880000_add_vineyard_official_register_reason.sql`).
 Not `official_classification`: that is for rankings such as 1855 or VDP,
 which belong in the collection. Being registered to use a BOB is not one.
 

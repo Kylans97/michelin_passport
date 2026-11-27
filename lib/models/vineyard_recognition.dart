@@ -1,7 +1,7 @@
 import 'vineyard.dart';
 
 /// One official classification of an estate: a row of
-/// `public.vineyard_recognitions` (20261101830000). The class is printed as
+/// `public.vineyard_recognitions` (20261101890000). The class is printed as
 /// the official list prints it; [classOrder] sorts within a list (1 is the
 /// highest), so nothing here parses the printed class. Never gold.
 class VineyardRecognition {

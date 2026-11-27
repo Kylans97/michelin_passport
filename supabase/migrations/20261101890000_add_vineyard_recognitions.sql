@@ -1,7 +1,8 @@
--- Renumbered again 2026-11-27 (was 20261101800000) before anything applied it:
--- 20261101810000 (website sign ins) reached production first, so this
--- file moved after the highest migration to keep filename order equal
--- to apply order.
+-- Renumbered again 2026-11-27, twice (was 20261101800000, then 20261101830000) before
+-- anything applied it: 20261101810000 (website sign ins), then
+-- 20261101850000 to 20261101870000 (visit companions, Chapeau,
+-- challenges) reached production first, so this file moved after the
+-- highest migration to keep filename order equal to apply order.
 -- Renumbered 2026-11-25 (was 20261101770000) before anything applied it: the vineyard
 -- claims migration 20261101780000 went to production first, so this
 -- prepared file moved after it to keep filename order equal to apply order.
@@ -13,7 +14,7 @@
 -- classification is such a recognition. The number is sort order, not a
 -- date: named after the highest migration on any branch (20261101790000).
 --
--- PREPARED -- NOT APPLIED until the product owner approves.
+-- Applied to production 2026-11-27 (product owner: "Yes, apply both").
 --
 -- One row per estate per scheme: the class as the official list prints it,
 -- the edition, and the official page it was verified against. Shaped like
