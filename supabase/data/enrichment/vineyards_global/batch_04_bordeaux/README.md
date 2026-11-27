@@ -48,7 +48,7 @@ Research rules as in batches 2 and 3. On top of them:
   Premier Cru Supérieur 1, Premier 2, Second 3; Saint-Émilion A 1, B 2,
   Grand Cru Classé 3.
 
-**Needs** migration `20261101800000_add_vineyard_recognitions.sql`.
+**Needs** migration `20261101830000_add_vineyard_recognitions.sql`.
 
 **Tested** on a scratch stack with production's data: the migration, then
 this file. Result: 247 estates, 154 recognitions, and Haut-Brion with

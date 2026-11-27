@@ -1,3 +1,7 @@
+-- Renumbered again 2026-11-27 (was 20261101800000) before anything applied it:
+-- 20261101810000 (website sign ins) reached production first, so this
+-- file moved after the highest migration to keep filename order equal
+-- to apply order.
 -- Renumbered 2026-11-25 (was 20261101770000) before anything applied it: the vineyard
 -- claims migration 20261101780000 went to production first, so this
 -- prepared file moved after it to keep filename order equal to apply order.
