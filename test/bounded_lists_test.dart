@@ -77,7 +77,7 @@ void main() {
         (r) => r.url.path.contains('/rpc/get_notifications'),
       );
       final q = reads.single.url.queryParameters;
-      expect(reads.single.url.path, endsWith('/rpc/get_notifications_v8'));
+      expect(reads.single.url.path, endsWith('/rpc/get_notifications_v9'));
       expect(requests.last.url.path, endsWith('/rpc/get_member_avatar_paths'));
       expect(q['order'], 'created_at.desc.nullslast,id.desc.nullslast');
       expect(q['offset'], '50');
@@ -98,7 +98,8 @@ void main() {
       final repo = NotificationsRepository(
         clientWith(
           (r) async =>
-              r.url.path.endsWith('_v8') ||
+              r.url.path.endsWith('_v9') ||
+                  r.url.path.endsWith('_v8') ||
                   r.url.path.endsWith('_v7') ||
                   r.url.path.endsWith('_v6') ||
                   r.url.path.endsWith('_v5') ||

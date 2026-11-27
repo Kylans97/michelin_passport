@@ -65,7 +65,11 @@ enum AppNotificationType {
   // a visit. To the owner of the visit: the friend said yes. Only
   // get_notifications_v8 returns these.
   visitTagReceived,
-  visitTagAccepted;
+  visitTagAccepted,
+
+  // Chapeau (20261101860000): friends gave one on a visit, stay or event
+  // stamp; one row per item while unread. Only get_notifications_v9.
+  chapeauReceived;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -94,6 +98,7 @@ enum AppNotificationType {
     'invite_link_join_declined' => AppNotificationType.inviteLinkJoinDeclined,
     'visit_tag_received' => AppNotificationType.visitTagReceived,
     'visit_tag_accepted' => AppNotificationType.visitTagAccepted,
+    'chapeau_received' => AppNotificationType.chapeauReceived,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 
@@ -242,6 +247,13 @@ class AppNotification {
   final DateTime? tagVisitedOn;
   final String? tagCopyVisitId;
 
+  // Chapeau: how many there are now, the item's name (restaurant, hotel
+  // or event) and, for a visit, 'restaurant' or 'hotel'. subjectType is
+  // 'visit' or 'event_stamp'; otherUser* is the latest to give one.
+  final int? chapeauCount;
+  final String? chapeauSubjectName;
+  final String? chapeauEntityType;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -305,6 +317,9 @@ class AppNotification {
     this.tagVenueName,
     this.tagVisitedOn,
     this.tagCopyVisitId,
+    this.chapeauCount,
+    this.chapeauSubjectName,
+    this.chapeauEntityType,
   });
 
   /// A booking reminder's line: "Bookings for March 2027 at Le Pré
@@ -410,6 +425,9 @@ class AppNotification {
         ? null
         : DateTime.parse(row['tag_visited_on'] as String),
     tagCopyVisitId: row['tag_copy_visit_id'] as String?,
+    chapeauCount: (row['chapeau_count'] as num?)?.toInt(),
+    chapeauSubjectName: row['chapeau_subject_name'] as String?,
+    chapeauEntityType: row['chapeau_entity_type'] as String?,
   );
 
   /// Whether a friend_request_received row should still offer

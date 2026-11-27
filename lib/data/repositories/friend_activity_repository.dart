@@ -46,7 +46,7 @@ class FriendActivityRepository {
           .inFilter('user_id', ids),
       _client
           .from('event_confirmed_attendance')
-          .select('event_id, user_id, confirmed_at, rating')
+          .select('id, event_id, user_id, confirmed_at, rating')
           .inFilter('user_id', ids),
     ).wait;
     final intentRows = (intentResult as List).cast<Map<String, dynamic>>();
@@ -78,6 +78,7 @@ class FriendActivityRepository {
       for (final row in stampRows)
         if (eventsById[row['event_id'] as String] case final event?)
           FriendEventStamp(
+            id: row['id'] as String?,
             userId: row['user_id'] as String,
             event: event,
             confirmedAt: DateTime.parse(row['confirmed_at'] as String),

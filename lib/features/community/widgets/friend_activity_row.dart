@@ -3,7 +3,9 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../data/repositories/chapeau_repository.dart';
 import '../../../data/repositories/visit_companion_repository.dart' show companionsLine;
+import 'chapeau_button.dart';
 import '../../../models/event_attendance.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/photo_framing.dart';
@@ -135,7 +137,13 @@ class FriendActivityRow extends StatelessWidget {
     final meta = _meta;
     final friend = activity.friend;
 
-    return Semantics(
+    final chapeau = switch (activity) {
+      VisitActivity(:final visit) => (ChapeauSubject.visit, visit.id),
+      EventStampActivity(:final stampId?) => (ChapeauSubject.eventStamp, stampId),
+      _ => null,
+    };
+
+    final row = Semantics(
       button: true,
       label: ['$who $verb $what', meta, ...milestones].join(', '),
       excludeSemantics: true,
@@ -217,6 +225,18 @@ class FriendActivityRow extends StatelessWidget {
           ),
         ),
       ),
+    );
+    if (chapeau == null) return row;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        row,
+        Padding(
+          padding: const EdgeInsets.only(left: 40 + CsSpacing.md),
+          child: ChapeauButton(subject: chapeau.$1, subjectId: chapeau.$2),
+        ),
+      ],
     );
   }
 }

@@ -113,11 +113,15 @@ class EventStampActivity extends FriendActivity {
   final Event event;
   final int? rating;
 
+  /// The confirmed attendance's own id, what a Chapeau is given on.
+  final String? stampId;
+
   const EventStampActivity({
     required super.friend,
     required super.sortDate,
     required this.event,
     this.rating,
+    this.stampId,
   });
 }
 
@@ -138,12 +142,14 @@ class FriendEventIntent {
 
 /// One friend's friends-visible confirmed attendance, joined to its event.
 class FriendEventStamp {
+  final String? id;
   final String userId;
   final Event event;
   final DateTime confirmedAt;
   final int? rating;
 
   const FriendEventStamp({
+    this.id,
     required this.userId,
     required this.event,
     required this.confirmedAt,
@@ -234,6 +240,7 @@ List<FriendActivity> buildFriendActivity({
         sortDate: stamp.confirmedAt,
         event: stamp.event,
         rating: stamp.rating,
+        stampId: stamp.id,
       ),
     );
   }

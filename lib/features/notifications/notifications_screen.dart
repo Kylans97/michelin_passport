@@ -703,7 +703,30 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.visitTagReceived:
       case AppNotificationType.visitTagAccepted:
         return _visitTag();
+      case AppNotificationType.chapeauReceived:
+        return _chapeau();
     }
+  }
+
+  // Chapeau (20261101860000): the latest friend by name, the rest counted.
+  Widget _chapeau() {
+    final n = notification;
+    final name = n.chapeauSubjectName;
+    final what = switch ((n.subjectType, n.chapeauEntityType)) {
+      ('event_stamp', _) => name == null ? 'your evening' : 'your evening at $name',
+      (_, 'hotel') => name == null ? 'your stay' : 'your stay at $name',
+      _ => name == null ? 'your visit' : 'your evening at $name',
+    };
+    final others = (n.chapeauCount ?? 1) - 1;
+    return _NotificationTile(
+      unread: _unread,
+      leading: _avatar,
+      title: n.otherLabel,
+      description: others <= 0
+          ? 'Chapeau for $what.'
+          : 'And $others ${others == 1 ? 'other' : 'others'}: Chapeau for $what.',
+      onTap: onTapOther,
+    );
   }
 
   // Visit companions (20261101850000). The friend answers here whether
