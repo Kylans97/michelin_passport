@@ -17,6 +17,8 @@ import '../photos/widgets/visit_photos_section.dart';
 import 'widgets/visit_wines.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import '../../core/theme/cs_fonts.dart';
+import '../../data/repositories/visit_companion_repository.dart';
+import 'widgets/visit_companions_field.dart';
 
 const _monthNames = [
   'January',
@@ -86,9 +88,34 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
   // on the migration.
   bool _sharedCopy = false;
 
+  // Friends tagged on this visit (20261101850000). The server returns
+  // only what this viewer may see: accepted companions for a friend,
+  // every tag for the owner.
+  List<VisitCompanion> _companions = const [];
+  late final _companionRepo = VisitCompanionRepository(Supabase.instance.client);
+
+  Future<void> _loadCompanions() async {
+    try {
+      final map = await _companionRepo.forVisits([_visit.id]);
+      if (mounted) setState(() => _companions = map[_visit.id] ?? const []);
+    } catch (_) {}
+  }
+
+  Future<void> _setCompanions(List<CompanionChoice> picked) async {
+    try {
+      final saved = await _companionRepo.setCompanions(_visit.id, [
+        for (final c in picked) c.userId,
+      ]);
+      if (mounted) setState(() => _companions = saved);
+    } catch (_) {
+      if (mounted) _showSnack('Could not save who you were with.');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    _loadCompanions();
     if (_isOwner) {
       InviteLinkRepository(Supabase.instance.client)
           .isSharedCopy(_visit.id)
@@ -416,8 +443,23 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                   style: CsTypography.metadata.copyWith(color: AppColors.taupe),
                 ),
               ],
+              if (!_isOwner && _companions.any((c) => c.isAccepted)) ...[
+                const SizedBox(height: 6),
+                Text(
+                  'With ${companionsLine([for (final c in _companions) if (c.isAccepted) c.label])}',
+                  style: CsTypography.metadata.copyWith(color: AppColors.forestGreen),
+                ),
+              ],
               if (_isOwner && !_sharedCopy) ...[
                 const SizedBox(height: 24),
+                VisitCompanionsField(
+                  companions: [
+                    for (final c in _companions) CompanionChoice.fromCompanion(c),
+                  ],
+                  friendsVisible: _visit.visibility == VisitVisibility.friends,
+                  onChanged: _setCompanions,
+                ),
+                const SizedBox(height: CsSpacing.sm),
                 _InviteCard(onTap: _inviteWithLink),
               ],
               const SizedBox(height: 32),
@@ -508,8 +550,9 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
   }
 }
 
-/// "Who was with you?": shares this visit through an invite link, so
-/// whoever accepts gets it in their own Passport and becomes a friend.
+/// For someone not on Mantelier yet: shares this visit through an invite
+/// link, so whoever accepts gets it in their own Passport and becomes a
+/// friend. Friends already on Mantelier are tagged above it instead.
 class _InviteCard extends StatelessWidget {
   const _InviteCard({required this.onTap});
 
@@ -530,14 +573,14 @@ class _InviteCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Who was with you?',
+                'Not on Mantelier yet?',
                 style: CsTypography.bodyMedium.copyWith(
                   color: AppColors.forestGreen,
                 ),
               ),
               const SizedBox(height: 2),
               Text(
-                'Send them a link. When they join, this visit goes into '
+                'Send a link. When they join, this visit goes into '
                 'their Passport too, and you are friends straight away.',
                 style: CsTypography.metadata,
               ),

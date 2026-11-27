@@ -34,7 +34,8 @@ export type PushType =
   | 'birthday'
   | 'booking_window_opening'
   | 'invite_link_accepted'
-  | 'invite_link_join_request';
+  | 'invite_link_join_request'
+  | 'visit_tag_received';
 export type ApnsEnvironment = 'sandbox' | 'production';
 
 export interface NotificationRow {
@@ -77,6 +78,13 @@ export interface InviteLinkContent {
   visitCopied: boolean;
 }
 
+/// A friend tagged the recipient on a visit (20261101850000).
+export interface VisitTagContent {
+  ownerName: string | null;
+  venueName: string | null;
+  hotel: boolean;
+}
+
 export interface BookingReminderContent {
   restaurantName: string;
   plannedMonth: string; // yyyy-mm-01
@@ -97,6 +105,7 @@ export interface PushStore {
   eventContent(eventId: string): Promise<EventContent | null>;
   bookingReminderContent(reminderId: string): Promise<BookingReminderContent | null>;
   inviteLinkContent(redemptionId: string): Promise<InviteLinkContent | null>;
+  visitTagContent(tagId: string): Promise<VisitTagContent | null>;
   deleteDevice(token: string): Promise<void>;
   setDeviceEnvironment(token: string, environment: ApnsEnvironment): Promise<void>;
   /// Records that APNs accepted the push for at least one device
@@ -125,6 +134,7 @@ const PUSH_TYPES: ReadonlySet<string> = new Set([
   'booking_window_opening',
   'invite_link_accepted',
   'invite_link_join_request',
+  'visit_tag_received',
 ]);
 
 function jsonResponse(body: unknown, status: number): Response {
@@ -144,7 +154,8 @@ function wantsPush(type: PushType, pref: PreferenceRow | undefined): boolean {
   // Someone using an invite link is a new friend: the friends toggle.
   return type === 'friend_request_received' ||
       type === 'invite_link_accepted' ||
-      type === 'invite_link_join_request'
+      type === 'invite_link_join_request' ||
+      type === 'visit_tag_received'
     ? pref.push_friend_requests
     : pref.push_followed_venue_events;
 }
@@ -190,6 +201,16 @@ export function inviteLinkCopy(type: PushType, c: InviteLinkContent): PushCopy {
     return { body: `${name} accepted your invitation and is coming on ${c.tripTitle}.` };
   }
   return { body: `${name} accepted your invitation. You are friends now.` };
+}
+
+export function visitTagCopy(c: VisitTagContent): PushCopy {
+  const name = c.ownerName ?? 'A friend';
+  const verb = c.hotel ? 'stayed' : 'dined';
+  return {
+    body: c.venueName
+      ? `${name} says you ${verb} together at ${c.venueName}. Were you there?`
+      : `${name} says you were together. Were you there?`,
+  };
 }
 
 export function birthdayCopy(): PushCopy {
@@ -385,6 +406,13 @@ export async function handleRequest(
         continue;
       }
       copy = inviteLinkCopy(type, link);
+    } else if (type === 'visit_tag_received') {
+      const tag = await store.visitTagContent(n.subject_id);
+      if (!tag) {
+        console.error('send-push: visit tag not found for notification', { notificationId: n.id });
+        continue;
+      }
+      copy = visitTagCopy(tag);
     } else if (type === 'booking_window_opening') {
       const reminder = await store.bookingReminderContent(n.subject_id);
       if (!reminder) {
@@ -602,6 +630,26 @@ function supabaseStore(): PushStore {
         venueName,
         tripTitle,
         visitCopied: r.visit_id != null,
+      };
+    },
+    async visitTagContent(tagId) {
+      const { data: c, error } = await admin.from('visit_companions')
+        .select('tagged_by, visit_id').eq('id', tagId).maybeSingle();
+      if (error || !c) return null;
+      const { data: p } = await admin.from('profiles')
+        .select('display_name, username').eq('id', c.tagged_by).maybeSingle();
+      const { data: v } = await admin.from('visits')
+        .select('entity_type, entity_id').eq('id', c.visit_id).maybeSingle();
+      let venueName: string | null = null;
+      if (v) {
+        const { data: venue } = await admin.from(v.entity_type === 'hotel' ? 'hotels' : 'restaurants')
+          .select('name').eq('id', v.entity_id).maybeSingle();
+        venueName = (venue?.name as string | undefined) ?? null;
+      }
+      return {
+        ownerName: (p?.display_name as string | undefined) ?? (p?.username as string | undefined) ?? null,
+        venueName,
+        hotel: v?.entity_type === 'hotel',
       };
     },
     async deleteDevice(token) {

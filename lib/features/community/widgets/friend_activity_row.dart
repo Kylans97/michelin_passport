@@ -3,6 +3,9 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../data/repositories/chapeau_repository.dart';
+import '../../../data/repositories/visit_companion_repository.dart' show companionsLine;
+import 'chapeau_button.dart';
 import '../../../models/event_attendance.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/photo_framing.dart';
@@ -63,9 +66,9 @@ String milestoneLabel(
 /// (friend, verb, subject).
 (String, String, String) activitySentence(FriendActivity activity) =>
     switch (activity) {
-      VisitActivity(:final friend, :final venue) => (
+      VisitActivity(:final friend, :final venue, :final companions, :final companionsAllKnown) => (
         friend.label,
-        venue is HotelVenue ? 'stayed at' : 'visited',
+        _visitVerb(venue is HotelVenue, companions, companionsAllKnown),
         venue.name,
       ),
       EventIntentActivity(:final friend, :final event, :final status) => (
@@ -134,7 +137,13 @@ class FriendActivityRow extends StatelessWidget {
     final meta = _meta;
     final friend = activity.friend;
 
-    return Semantics(
+    final chapeau = switch (activity) {
+      VisitActivity(:final visit) => (ChapeauSubject.visit, visit.id),
+      EventStampActivity(:final stampId?) => (ChapeauSubject.eventStamp, stampId),
+      _ => null,
+    };
+
+    final row = Semantics(
       button: true,
       label: ['$who $verb $what', meta, ...milestones].join(', '),
       excludeSemantics: true,
@@ -217,5 +226,29 @@ class FriendActivityRow extends StatelessWidget {
         ),
       ),
     );
+    if (chapeau == null) return row;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        row,
+        Padding(
+          padding: const EdgeInsets.only(left: 40 + CsSpacing.md),
+          child: ChapeauButton(subject: chapeau.$1, subjectId: chapeau.$2),
+        ),
+      ],
+    );
   }
+}
+
+/// "visited", or with friends who confirmed they were there
+/// (20261101850000): "and Pieter dined together at" when the viewer knows
+/// that one friend too, otherwise "dined with Pieter and Anouk at".
+String _visitVerb(bool hotel, List<String> companions, bool allKnown) {
+  if (companions.isEmpty) return hotel ? 'stayed at' : 'visited';
+  final verb = hotel ? 'stayed' : 'dined';
+  if (allKnown && companions.length == 1 && companions.first != 'you') {
+    return 'and ${companions.first} $verb together at';
+  }
+  return '$verb with ${companionsLine(companions)} at';
 }

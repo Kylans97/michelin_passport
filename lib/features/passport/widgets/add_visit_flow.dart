@@ -29,6 +29,8 @@ import '../utils/passport_stamp_style.dart';
 import 'passport_stamp.dart';
 import 'venue_picker_parts.dart';
 import '../../../core/theme/cs_fonts.dart';
+import '../../../data/repositories/visit_companion_repository.dart';
+import '../../visits/widgets/visit_companions_field.dart';
 
 
 /// The Passport booklet's "add a visit" flow — two steps inside ONE
@@ -239,6 +241,13 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             .then((shared) {
               if (mounted && shared) setState(() => _dateLocked = true);
             });
+        _companionRepo.forVisits([visit.id]).then((map) {
+          if (!mounted || _companionsChanged) return;
+          setState(() => _companions = [
+            for (final c in map[visit.id] ?? const <VisitCompanion>[])
+              CompanionChoice.fromCompanion(c),
+          ]);
+        }).catchError((_) {});
       }
       return; // no venue picker, so no shortcuts to load
     }
@@ -375,6 +384,11 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   void _backToStep1() => setState(() => _step = 1);
 
   bool _dateLocked = false;
+  // Friends tagged on the visit (20261101850000). Saved after the visit
+  // row, like photos and wines; never on a visit that is itself a copy.
+  List<CompanionChoice> _companions = const [];
+  bool _companionsChanged = false;
+  late final _companionRepo = VisitCompanionRepository(Supabase.instance.client);
 
   Future<void> _pickDate() async {
     if (_dateLocked) {
@@ -436,6 +450,15 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     onDelete: () async => setState(() => _stagedWines.removeAt(index)),
   );
 
+  // Best-effort, like photos and wines: the visit is saved either way.
+  Future<void> _saveCompanions(String visitId) async {
+    try {
+      await _companionRepo.setCompanions(visitId, [
+        for (final c in _companions) c.userId,
+      ]);
+    } catch (_) {}
+  }
+
   Future<void> _save() async {
     final venue = _selectedVenue;
     if (venue == null || _saving) return;
@@ -484,6 +507,9 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
               ? VisitVisibility.friends
               : VisitVisibility.private,
         );
+        if (_companionsChanged && !_dateLocked) {
+          await _saveCompanions(editing.id);
+        }
         if (!mounted) return;
         Navigator.pop(context, SavedVisit(updated, SaveOutcome.saved));
         return;
@@ -573,6 +599,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
           wineFailures++;
         }
       }
+      if (_companions.isNotEmpty) await _saveCompanions(saved.id);
       if (!mounted) return;
       Navigator.pop(
         context,
@@ -694,6 +721,16 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                                 onMenuTypeChanged: (v) => setState(() => _menuType = v),
                                 friendsVisible: _friendsVisible,
                                 onFriendsVisibleChanged: (v) => setState(() => _friendsVisible = v),
+                                companionsField: _dateLocked
+                                    ? null
+                                    : VisitCompanionsField(
+                                        companions: _companions,
+                                        friendsVisible: _friendsVisible,
+                                        onChanged: (v) => setState(() {
+                                          _companions = v;
+                                          _companionsChanged = true;
+                                        }),
+                                      ),
                                 stagedPhotos: _stagedPhotos,
                                 pickingPhotos: _pickingPhotos,
                                 onAddPhotos: _addPhotos,
@@ -1088,6 +1125,7 @@ class _Step2 extends StatelessWidget {
   final ValueChanged<MenuType?> onMenuTypeChanged;
   final bool friendsVisible;
   final ValueChanged<bool> onFriendsVisibleChanged;
+  final Widget? companionsField;
   final List<StagedPhoto> stagedPhotos;
   final bool pickingPhotos;
   final VoidCallback onAddPhotos;
@@ -1129,6 +1167,7 @@ class _Step2 extends StatelessWidget {
     required this.onMenuTypeChanged,
     required this.friendsVisible,
     required this.onFriendsVisibleChanged,
+    this.companionsField,
     required this.stagedPhotos,
     required this.pickingPhotos,
     required this.onAddPhotos,
@@ -1284,6 +1323,10 @@ class _Step2 extends StatelessWidget {
             friendsVisible: friendsVisible,
             onChanged: onFriendsVisibleChanged,
           ),
+          if (companionsField != null) ...[
+            const SizedBox(height: 10),
+            companionsField!,
+          ],
           const SizedBox(height: 24),
           Container(height: 1, color: AppColors.hairlineOnPaper),
           TextField(

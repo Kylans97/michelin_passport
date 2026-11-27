@@ -37,6 +37,7 @@ import 'widgets/friend_activity_row.dart';
 import 'widgets/community_events_preview.dart';
 import 'widgets/community_local_tab_bar.dart';
 import 'widgets/community_ranking_preview.dart';
+import 'widgets/challenges_preview.dart';
 import 'widgets/community_shared.dart';
 import 'widgets/friends_circle_row.dart';
 
@@ -717,6 +718,9 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
             );
           },
         ),
+        // Challenges and standings (20261101870000): nothing at all until
+        // the server has them.
+        const ChallengesPreview(),
         FutureBuilder<(_FriendActivityData, FriendsTabExtras)>(
           future: _roundOneFuture,
           builder: (context, snap) {

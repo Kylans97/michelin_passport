@@ -4,6 +4,7 @@ import '../../models/friendship.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import '../../models/visit.dart';
+import '../../data/repositories/visit_companion_repository.dart';
 
 /// Community → Friends → Friends' Activity: what the people you are friends
 /// with have done lately, merged across friends and newest first.
@@ -62,13 +63,35 @@ class VisitActivity extends FriendActivity {
   final Visit visit;
   final List<FriendMilestone> milestones;
 
+  /// The friends who confirmed they were there (20261101850000), as the
+  /// viewer knows them: a friend of the viewer by their own label, anyone
+  /// else by the name they chose, the viewer as "you".
+  final List<String> companions;
+
+  /// True when every companion is also the viewer's friend (or the
+  /// viewer): then the row reads "Kylan and Pieter dined together".
+  final bool companionsAllKnown;
+
   const VisitActivity({
     required super.friend,
     required super.sortDate,
     required this.venue,
     required this.visit,
     this.milestones = const [],
+    this.companions = const [],
+    this.companionsAllKnown = false,
   });
+
+  VisitActivity withCompanions(List<String> names, {required bool allKnown}) =>
+      VisitActivity(
+        friend: friend,
+        sortDate: sortDate,
+        venue: venue,
+        visit: visit,
+        milestones: milestones,
+        companions: names,
+        companionsAllKnown: allKnown,
+      );
 }
 
 /// Interested in, or going to, an event that hasn't ended yet. Never a
@@ -90,11 +113,15 @@ class EventStampActivity extends FriendActivity {
   final Event event;
   final int? rating;
 
+  /// The confirmed attendance's own id, what a Chapeau is given on.
+  final String? stampId;
+
   const EventStampActivity({
     required super.friend,
     required super.sortDate,
     required this.event,
     this.rating,
+    this.stampId,
   });
 }
 
@@ -115,12 +142,14 @@ class FriendEventIntent {
 
 /// One friend's friends-visible confirmed attendance, joined to its event.
 class FriendEventStamp {
+  final String? id;
   final String userId;
   final Event event;
   final DateTime confirmedAt;
   final int? rating;
 
   const FriendEventStamp({
+    this.id,
     required this.userId,
     required this.event,
     required this.confirmedAt,
@@ -145,15 +174,50 @@ List<FriendActivity> buildFriendActivity({
   required Map<String, List<VenueEntry>> visitsByFriend,
   required List<FriendEventIntent> intents,
   required List<FriendEventStamp> stamps,
+  Map<String, List<VisitCompanion>> companionsByVisit = const {},
+  String? viewerId,
 }) {
   final byId = {for (final f in friends) f.friendId: f};
   final items = <FriendActivity>[];
+
+  // A dinner two friends shared is one row: the owner's, naming the
+  // companion. The companion's own copy of it is left out when that
+  // companion is also the viewer's friend.
+  final copiesShownElsewhere = <String>{
+    for (final list in companionsByVisit.values)
+      for (final c in list)
+        if (c.isAccepted && c.copyVisitId != null && byId.containsKey(c.userId))
+          c.copyVisitId!,
+  };
 
   for (final MapEntry(key: friendId, value: entries)
       in visitsByFriend.entries) {
     final friend = byId[friendId];
     if (friend == null) continue;
-    items.addAll(_visitActivities(friend, entries));
+    for (final activity in _visitActivities(friend, entries)) {
+      if (copiesShownElsewhere.contains(activity.visit.id)) continue;
+      final accepted = [
+        for (final c in companionsByVisit[activity.visit.id] ?? const <VisitCompanion>[])
+          if (c.isAccepted) c,
+      ];
+      if (accepted.isEmpty) {
+        items.add(activity);
+        continue;
+      }
+      items.add(
+        activity.withCompanions(
+          [
+            for (final c in accepted)
+              c.userId == viewerId
+                  ? 'you'
+                  : (byId[c.userId]?.label ?? c.label),
+          ],
+          allKnown: accepted.every(
+            (c) => c.userId == viewerId || byId.containsKey(c.userId),
+          ),
+        ),
+      );
+    }
   }
   for (final intent in intents) {
     final friend = byId[intent.userId];
@@ -176,6 +240,7 @@ List<FriendActivity> buildFriendActivity({
         sortDate: stamp.confirmedAt,
         event: stamp.event,
         rating: stamp.rating,
+        stampId: stamp.id,
       ),
     );
   }

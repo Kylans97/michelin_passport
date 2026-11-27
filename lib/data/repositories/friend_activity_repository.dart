@@ -12,6 +12,7 @@ import 'friendship_repository.dart';
 import 'planned_trips_repository.dart';
 import 'venue_invite_repository.dart';
 import 'visit_wine_repository.dart';
+import 'visit_companion_repository.dart';
 import 'visited_repository.dart';
 
 /// Loads Friends' Activity ([buildFriendActivity]) for the signed-in user.
@@ -45,7 +46,7 @@ class FriendActivityRepository {
           .inFilter('user_id', ids),
       _client
           .from('event_confirmed_attendance')
-          .select('event_id, user_id, confirmed_at, rating')
+          .select('id, event_id, user_id, confirmed_at, rating')
           .inFilter('user_id', ids),
     ).wait;
     final intentRows = (intentResult as List).cast<Map<String, dynamic>>();
@@ -77,6 +78,7 @@ class FriendActivityRepository {
       for (final row in stampRows)
         if (eventsById[row['event_id'] as String] case final event?)
           FriendEventStamp(
+            id: row['id'] as String?,
             userId: row['user_id'] as String,
             event: event,
             confirmedAt: DateTime.parse(row['confirmed_at'] as String),
@@ -84,11 +86,24 @@ class FriendActivityRepository {
           ),
     ];
 
+    // Who was there (20261101850000): one call for every visible visit.
+    // Best-effort: without it the feed is the same, one row per visit.
+    var companions = const <String, List<VisitCompanion>>{};
+    try {
+      companions = await VisitCompanionRepository(_client).forVisits([
+        for (final entries in visitsByFriend.values)
+          for (final entry in entries)
+            for (final visit in entry.visits) visit.id,
+      ]);
+    } catch (_) {}
+
     return buildFriendActivity(
       friends: friendList,
       visitsByFriend: visitsByFriend,
       intents: intents,
       stamps: stamps,
+      companionsByVisit: companions,
+      viewerId: _client.auth.currentUser?.id,
     );
   }
 

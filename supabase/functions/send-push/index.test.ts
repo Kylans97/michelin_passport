@@ -88,6 +88,14 @@ class FakeStore implements PushStore {
   inviteLinkContent(_id: string) {
     return Promise.resolve(this.inviteLink);
   }
+  visitTag: { ownerName: string | null; venueName: string | null; hotel: boolean } | null = {
+    ownerName: 'Kylan',
+    venueName: 'Tacite',
+    hotel: false,
+  };
+  visitTagContent(_id: string) {
+    return Promise.resolve(this.visitTag);
+  }
   deleteDevice(token: string) {
     this.deleted.push(token);
     return Promise.resolve();
@@ -466,5 +474,29 @@ Deno.test('an invite link use whose row is gone is skipped, not sent blank', asy
   const apns = recordingApns();
   const res = await handleRequest(req({ body: { notification_ids: ['i2'] } }), store, apns.send, SECRET, NOW);
   assertEquals(res.status, 200);
+  assertEquals(apns.sent.length, 0);
+});
+
+Deno.test('a visit tag is pushed on the friends toggle and asks whether you were there', async () => {
+  const store = new FakeStore();
+  store.notifications = [{ id: 't1', recipient_id: 'u1', type: 'visit_tag_received', subject_id: 'c1' }];
+  store.devices = [DEVICE];
+  let apns = recordingApns();
+  await handleRequest(req({ body: { notification_ids: ['t1'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(apns.sent.length, 1);
+  const payload = apns.sent[0].payload as Record<string, unknown>;
+  assertEquals((payload.aps as { alert: unknown }).alert, {
+    body: 'Kylan says you dined together at Tacite. Were you there?',
+  });
+
+  store.preferences = [{ user_id: 'u1', push_friend_requests: false, push_followed_venue_events: true }];
+  apns = recordingApns();
+  await handleRequest(req({ body: { notification_ids: ['t1'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(apns.sent.length, 0);
+
+  store.preferences = [];
+  store.visitTag = null;
+  apns = recordingApns();
+  await handleRequest(req({ body: { notification_ids: ['t1'] } }), store, apns.send, SECRET, NOW);
   assertEquals(apns.sent.length, 0);
 });
