@@ -59,7 +59,13 @@ enum AppNotificationType {
   inviteLinkAccepted,
   inviteLinkJoinRequest,
   inviteLinkJoinApproved,
-  inviteLinkJoinDeclined;
+  inviteLinkJoinDeclined,
+
+  // Visit companions (20261101850000). To the friend: you were tagged on
+  // a visit. To the owner of the visit: the friend said yes. Only
+  // get_notifications_v8 returns these.
+  visitTagReceived,
+  visitTagAccepted;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -86,6 +92,8 @@ enum AppNotificationType {
     'invite_link_join_request' => AppNotificationType.inviteLinkJoinRequest,
     'invite_link_join_approved' => AppNotificationType.inviteLinkJoinApproved,
     'invite_link_join_declined' => AppNotificationType.inviteLinkJoinDeclined,
+    'visit_tag_received' => AppNotificationType.visitTagReceived,
+    'visit_tag_accepted' => AppNotificationType.visitTagAccepted,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 
@@ -221,6 +229,19 @@ class AppNotification {
   final bool? linkBecameFriends;
   final String? linkVisitId;
 
+  // subjectId is the visit_companions id when subjectType ==
+  // 'visit_companion' (get_notifications_v8): what respond_to_visit_tag
+  // takes. tagStatus is its CURRENT status ('pending', 'accepted',
+  // 'declined'), null once the tag was removed. tagVisitId is the owner's
+  // visit; tagCopyVisitId the friend's own copy, when they added it.
+  final String? tagStatus;
+  final String? tagVisitId;
+  final String? tagEntityType;
+  final String? tagEntityId;
+  final String? tagVenueName;
+  final DateTime? tagVisitedOn;
+  final String? tagCopyVisitId;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -277,6 +298,13 @@ class AppNotification {
     this.linkRedemptionStatus,
     this.linkBecameFriends,
     this.linkVisitId,
+    this.tagStatus,
+    this.tagVisitId,
+    this.tagEntityType,
+    this.tagEntityId,
+    this.tagVenueName,
+    this.tagVisitedOn,
+    this.tagCopyVisitId,
   });
 
   /// A booking reminder's line: "Bookings for March 2027 at Le Pré
@@ -373,6 +401,15 @@ class AppNotification {
     linkRedemptionStatus: row['link_redemption_status'] as String?,
     linkBecameFriends: row['link_became_friends'] as bool?,
     linkVisitId: row['link_visit_id'] as String?,
+    tagStatus: row['tag_status'] as String?,
+    tagVisitId: row['tag_visit_id'] as String?,
+    tagEntityType: row['tag_entity_type'] as String?,
+    tagEntityId: row['tag_entity_id'] as String?,
+    tagVenueName: row['tag_venue_name'] as String?,
+    tagVisitedOn: row['tag_visited_on'] == null
+        ? null
+        : DateTime.parse(row['tag_visited_on'] as String),
+    tagCopyVisitId: row['tag_copy_visit_id'] as String?,
   );
 
   /// Whether a friend_request_received row should still offer

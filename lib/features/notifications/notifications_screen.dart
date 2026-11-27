@@ -16,12 +16,15 @@ import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_invite_repository.dart';
+import '../../data/repositories/visit_companion_repository.dart';
 import '../../models/app_notification.dart';
+import '../../models/booking_window.dart' show monthNames;
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/identity_row.dart';
 import '../profile/my_venues_screen.dart';
 import '../profile/venue_host_welcome_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import '../visits/widgets/visit_tag_answer_sheet.dart';
 import '../../core/analytics/screen_usage.dart';
 import 'push_prompt_sheet.dart';
 import 'push_service.dart';
@@ -80,6 +83,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   late final _friendRepo = FriendshipRepository(Supabase.instance.client);
   late final _venueInviteRepo = VenueInviteRepository(Supabase.instance.client);
   late final _inviteLinkRepo = InviteLinkRepository(Supabase.instance.client);
+  late final _visitTagRepo = VisitCompanionRepository(Supabase.instance.client);
   late final _tripsRepo = PlannedTripsRepository(Supabase.instance.client);
   late final AnalyticsService _analytics =
       widget.analytics ?? SupabaseAnalyticsService(Supabase.instance.client);
@@ -187,6 +191,19 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           );
         case AppNotificationType.inviteLinkJoinRequest:
           await _inviteLinkRepo.decideJoin(n.subjectId, approve: true);
+        case AppNotificationType.visitTagReceived:
+          final answer = await showVisitTagAnswerSheet(
+            context,
+            ownerName: n.otherLabel,
+            venueName: n.tagVenueName ?? 'this place',
+            entityType: n.tagEntityType,
+          );
+          if (answer == null) return;
+          await _visitTagRepo.respond(
+            n.subjectId,
+            accept: answer != VisitTagAnswer.notMe,
+            addToPassport: answer == VisitTagAnswer.addToPassport,
+          );
         default:
           return;
       }
@@ -218,6 +235,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           );
         case AppNotificationType.inviteLinkJoinRequest:
           await _inviteLinkRepo.decideJoin(n.subjectId, approve: false);
+        case AppNotificationType.visitTagReceived:
+          await _visitTagRepo.respond(n.subjectId, accept: false);
         default:
           return;
       }
@@ -487,6 +506,7 @@ Widget _answerButtons({
   required VoidCallback onDecline,
   required VoidCallback onAccept,
   String acceptLabel = 'Accept',
+  String declineLabel = 'Decline',
 }) => Row(
   mainAxisSize: MainAxisSize.min,
   children: [
@@ -514,7 +534,7 @@ Widget _answerButtons({
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       child: Text(
-        'Decline',
+        declineLabel,
         style: CsTypography.metadata.copyWith(color: AppColors.taupe),
       ),
     ),
@@ -680,7 +700,50 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.inviteLinkJoinApproved:
       case AppNotificationType.inviteLinkJoinDeclined:
         return _inviteLink();
+      case AppNotificationType.visitTagReceived:
+      case AppNotificationType.visitTagAccepted:
+        return _visitTag();
     }
+  }
+
+  // Visit companions (20261101850000). The friend answers here whether
+  // they were there; the owner hears when they said yes.
+  Widget _visitTag() {
+    final n = notification;
+    final venue = n.tagVenueName ?? 'a place';
+    final verb = togetherVerb(n.tagEntityType);
+    final on = n.tagVisitedOn == null
+        ? ''
+        : ' on ${n.tagVisitedOn!.day} ${monthNames[n.tagVisitedOn!.month - 1]}';
+    if (n.type == AppNotificationType.visitTagAccepted) {
+      return _NotificationTile(
+        unread: _unread,
+        leading: _avatar,
+        title: n.otherLabel,
+        description: 'Confirmed you $verb together at $venue.',
+        onTap: onTapOther,
+      );
+    }
+    return _NotificationTile(
+      unread: _unread,
+      leading: _avatar,
+      title: n.otherLabel,
+      description: 'Says you $verb together at $venue$on.',
+      onTap: onTapOther,
+      footer: switch (n.tagStatus) {
+        'pending' => _answerButtons(
+          onDecline: onDecline,
+          onAccept: onAccept,
+          acceptLabel: 'I was there',
+          declineLabel: 'Not me',
+        ),
+        'accepted' => _statusText(
+          n.tagCopyVisitId != null ? 'In your Passport' : 'You confirmed',
+        ),
+        'declined' => _statusText('Not you'),
+        _ => null,
+      },
+    );
   }
 
   // Invite links (20261101670000). The sender hears who accepted, and for
